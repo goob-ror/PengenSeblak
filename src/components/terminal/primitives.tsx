@@ -26,12 +26,10 @@ export function Panel({
 }) {
   return (
     <section className={cn("panel-in border border-border bg-card", className)}>
-      <header className="flex min-h-12 items-center justify-between gap-3 border-b border-border px-4 py-2">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-sm font-semibold text-foreground">{title}</h2>
-            {kicker && <span className="text-[10px] uppercase text-primary">{kicker}</span>}
-          </div>
+      <header className="flex min-h-11 items-center justify-between gap-3 border-b border-border px-4 py-2">
+        <div className="flex items-center gap-2">
+          <h2 className="text-sm font-semibold text-foreground">{title}</h2>
+          {kicker && <span className="text-[10px] uppercase text-primary/70">{kicker}</span>}
         </div>
         {action}
       </header>

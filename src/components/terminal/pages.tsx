@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import {
   Sheet,
   SheetContent,
@@ -123,30 +124,36 @@ export function MarketOverview() {
           </div>
         </Panel>
         <Panel title="Sector Heatmap" kicker="Relative performance">
-          <div className="grid h-[316px] grid-cols-2 gap-px bg-border p-px">
-            {sectors.map((s, i) => (
-              <div
-                key={s.name}
-                className={cn(
-                  "group flex min-h-16 flex-col justify-between p-3 transition-colors",
-                  s.performance > 1
-                    ? "bg-positive/20 hover:bg-positive/25"
-                    : s.performance > 0
-                      ? "bg-positive/10 hover:bg-positive/15"
-                      : s.performance < -1
-                        ? "bg-negative/20 hover:bg-negative/25"
-                        : "bg-negative/10 hover:bg-negative/15",
-                  i === 0 && "col-span-1 row-span-2",
-                )}
-                title={`Market cap: Rp ${s.cap}T`}
-              >
-                <span className="text-[10px] text-muted-foreground">{s.code}</span>
-                <div>
-                  <div className="text-xs font-medium">{s.name}</div>
+          <div className="divide-y divide-border">
+            {sectors.map((s, i) => {
+              const isPos = s.performance >= 0;
+              const abs = Math.abs(s.performance);
+              const barWidth = Math.min(100, abs * 25);
+              return (
+                <div
+                  key={s.name}
+                  className="grid grid-cols-[40px_1fr_auto] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
+                  title={`Market cap: Rp ${s.cap}T`}
+                >
+                  <span className="text-[10px] font-medium text-muted-foreground tabular-nums">
+                    {s.code}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="mb-1 text-xs">{s.name}</div>
+                    <div className="h-1 w-full rounded-full bg-secondary overflow-hidden">
+                      <div
+                        className={cn(
+                          "h-full rounded-full transition-all",
+                          isPos ? "bg-positive/60" : "bg-negative/60",
+                        )}
+                        style={{ width: `${Math.max(3, barWidth)}%` }}
+                      />
+                    </div>
+                  </div>
                   <Change value={s.performance} />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Panel>
       </div>
@@ -1009,46 +1016,80 @@ export function Watchlist() {
   );
 }
 export function SettingsPage() {
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    try {
+      return (localStorage.getItem("theme") as "dark" | "light") || "dark";
+    } catch {
+      return "dark";
+    }
+  });
+
+  const toggleTheme = (value: "dark" | "light") => {
+    setTheme(value);
+    localStorage.setItem("theme", value);
+    const html = document.documentElement;
+    if (value === "light") {
+      html.classList.remove("dark");
+      html.classList.add("light");
+    } else {
+      html.classList.remove("light");
+      html.classList.add("dark");
+    }
+  };
+
   return (
     <div className="space-y-4">
       <PageHeader title="Settings" />
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Panel title="Workspace Preferences">
-          <div className="divide-y divide-border">
-            {[
-              ["Default market", "Indonesia Stock Exchange"],
-              ["Number format", "Indonesian locale"],
-              ["Time zone", "Asia/Jakarta (WIB)"],
-              ["Density", "Compact terminal"],
-            ].map(([a, b]) => (
-              <div className="flex items-center justify-between p-4" key={a}>
-                <span className="text-xs">{a}</span>
-                <span className="text-xs text-muted-foreground">{b}</span>
+      <Panel title="Workspace Preferences">
+        <div className="divide-y divide-border">
+          {[
+            ["Default market", "Indonesia Stock Exchange"],
+            ["Number format", "Indonesian locale"],
+            ["Time zone", "Asia/Jakarta (WIB)"],
+            ["Density", "Compact terminal"],
+          ].map(([a, b]) => (
+            <div className="flex items-center justify-between px-4 py-3" key={a}>
+              <span className="text-xs">{a}</span>
+              <span className="text-xs text-muted-foreground">{b}</span>
+            </div>
+          ))}
+          <div className="flex items-center justify-between px-4 py-3">
+            <div>
+              <div className="text-xs">Tampilan</div>
+              <div className="mt-0.5 text-[10px] text-muted-foreground">
+                {theme === "light" ? "Mode terang aktif" : "Mode gelap aktif"}
               </div>
-            ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-muted-foreground">Dark</span>
+              <Switch
+                checked={theme === "light"}
+                onCheckedChange={(checked) => toggleTheme(checked ? "light" : "dark")}
+                aria-label="Toggle light mode"
+              />
+              <span className="text-[10px] text-muted-foreground">Light</span>
+            </div>
           </div>
-        </Panel>
-        <Panel title="Data & Disclosure">
-          <div className="p-5">
-            <div className="flex gap-3 border border-warning/30 bg-warning/5 p-4">
+          <div className="px-4 py-4">
+            <div className="flex gap-3 border border-warning/30 bg-warning/5 p-3">
               <CircleAlert className="mt-0.5 size-4 shrink-0 text-warning" />
               <p className="text-xs leading-5 text-muted-foreground">
                 Prototype mode uses realistic mock data. Custom scores are independent analytical
                 models and are not official market ratings or investment recommendations.
               </p>
             </div>
-            <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+            <div className="mt-3 flex items-center justify-between">
               <div>
                 <div className="text-xs">Live Sectors data</div>
-                <div className="mt-1 text-[10px] text-muted-foreground">
+                <div className="mt-0.5 text-[10px] text-muted-foreground">
                   Adapter ready · connection not configured
                 </div>
               </div>
               <Tag tone="warning">OFFLINE</Tag>
             </div>
           </div>
-        </Panel>
-      </div>
+        </div>
+      </Panel>
     </div>
   );
 }
