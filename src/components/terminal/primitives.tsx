@@ -26,7 +26,8 @@ export function Panel({
 }) {
   return (
     <section className={cn("panel-in border border-border bg-card", className)}>
-      <header className="flex min-h-11 items-center justify-between gap-3 border-b border-border px-4 py-2">
+      <header className="relative flex min-h-11 items-center justify-between gap-3 border-b border-border px-4 py-2">
+        <div className="absolute left-0 top-0 h-0.5 w-12 bg-primary" />
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-semibold text-foreground">{title}</h2>
           {kicker && <span className="text-[10px] uppercase text-primary/70">{kicker}</span>}
@@ -45,7 +46,15 @@ export function InsightLabel({ children = "Derived insight" }: { children?: Reac
     </span>
   );
 }
-export function Tag({ children, tone = "neutral" }: { children: ReactNode; tone?: Tone }) {
+export function Tag({
+  children,
+  tone = "neutral",
+  className,
+}: {
+  children: ReactNode;
+  tone?: Tone;
+  className?: string;
+}) {
   return (
     <span
       className={cn(
@@ -55,6 +64,7 @@ export function Tag({ children, tone = "neutral" }: { children: ReactNode; tone?
         tone === "warning" && "border-warning/30 bg-warning/10 text-warning",
         tone === "accent" && "border-primary/30 bg-primary/10 text-primary",
         tone === "neutral" && "border-border bg-secondary text-muted-foreground",
+        className,
       )}
     >
       {children}
@@ -115,11 +125,18 @@ export function MetricStrip({
   items: { label: string; value: ReactNode; sub?: ReactNode }[];
 }) {
   return (
-    <div className="grid border-y border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
+    <div className="grid border border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
       {items.map((x, i) => (
-        <div key={x.label} className={cn("min-h-20 px-4 py-3", i > 0 && "border-l border-border")}>
-          <div className="text-[10px] uppercase text-muted-foreground">{x.label}</div>
-          <div className="mt-1 text-xl font-semibold text-data text-foreground">{x.value}</div>
+        <div
+          key={x.label}
+          className={cn(
+            "relative min-h-[72px] px-4 py-3 transition-colors hover:bg-secondary/50",
+            i > 0 && "border-l border-border",
+          )}
+        >
+          <div className="absolute left-0 top-0 h-0.5 w-full bg-primary/30" />
+          <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{x.label}</div>
+          <div className="mt-1.5 text-xl font-semibold text-data text-foreground">{x.value}</div>
           {x.sub && <div className="mt-1 text-[11px] text-muted-foreground">{x.sub}</div>}
         </div>
       ))}
@@ -178,14 +195,17 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3 border-b border-border pb-4 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <div className="text-[10px] uppercase text-primary">{eyebrow}</div>
-        <h1 className="mt-1 text-2xl font-semibold text-foreground">{title}</h1>
-        <p className="mt-1 text-xs text-muted-foreground">
-          DATA <span className="text-primary">→</span> ANALYSIS{" "}
-          <span className="text-primary">→</span> INSIGHT
-        </p>
+    <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex items-start gap-3">
+        <div className="mt-1 h-8 w-0.5 shrink-0 bg-primary" />
+        <div>
+          <div className="text-[10px] uppercase tracking-widest text-primary">{eyebrow}</div>
+          <h1 className="mt-0.5 text-2xl font-semibold text-foreground">{title}</h1>
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            DATA <span className="text-primary font-medium">→</span> ANALYSIS{" "}
+            <span className="text-primary font-medium">→</span> INSIGHT
+          </p>
+        </div>
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
     </div>

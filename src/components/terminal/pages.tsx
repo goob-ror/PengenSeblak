@@ -165,73 +165,132 @@ export function MarketOverview() {
             <MethodTip text="SHI weights normalized growth (40%), margin stability (35%), and debt condition (25%) across sector constituents." />
           }
         >
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[700px]">
-              <thead>
-                <tr>
-                  <th className={th}>Rank</th>
-                  <th className={th}>Sector</th>
-                  <th className={th}>SHI</th>
-                  <th className={th}>Growth</th>
-                  <th className={th}>Margin</th>
-                  <th className={th}>Debt</th>
-                  <th className={th}>Trend</th>
-                  <th className={th}>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sectorHealth.slice(0, 6).map((s, i) => (
-                  <tr key={s.name} className="hover:bg-secondary/60">
-                    <td className={td}>0{i + 1}</td>
-                    <td className={cn(td, "font-medium")}>{s.name}</td>
-                    <td className={td}>
-                      <Score value={s.score} />
-                    </td>
-                    <td className={td}>{s.growth}</td>
-                    <td className={td}>{s.margin}</td>
-                    <td className={td}>{s.debt}</td>
-                    <td className={td}>{s.trend}</td>
-                    <td className={td}>
-                      <Tag tone={toneFor(s.score - 64)}>{healthLabel(s.score)}</Tag>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="divide-y divide-border">
+            {sectorHealth.slice(0, 6).map((s, i) => {
+              const tone = toneFor(s.score - 64);
+              const barColor =
+                tone === "positive"
+                  ? "bg-positive"
+                  : tone === "accent"
+                    ? "bg-primary"
+                    : tone === "warning"
+                      ? "bg-warning"
+                      : "bg-negative";
+              const scoreColor =
+                tone === "positive"
+                  ? "text-positive"
+                  : tone === "accent"
+                    ? "text-primary"
+                    : tone === "warning"
+                      ? "text-warning"
+                      : "text-negative";
+              return (
+                <div
+                  key={s.name}
+                  className="grid grid-cols-[28px_1fr_56px_auto] items-center gap-3 px-4 py-3 hover:bg-secondary/50 transition-colors"
+                >
+                  {/* rank */}
+                  <span className="text-[10px] tabular-nums text-muted-foreground">0{i + 1}</span>
+                  {/* name + bar */}
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-medium truncate">{s.name}</span>
+                      <span className="text-[10px] text-muted-foreground ml-2 shrink-0">
+                        {s.trend}
+                      </span>
+                    </div>
+                    <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
+                      <div
+                        className={cn("h-full rounded-full transition-all", barColor)}
+                        style={{ width: `${s.score}%` }}
+                      />
+                    </div>
+                    <div className="flex gap-3 mt-1.5 text-[9px] text-muted-foreground">
+                      <span>G {s.growth}</span>
+                      <span>M {s.margin}</span>
+                      <span>D {s.debt}</span>
+                    </div>
+                  </div>
+                  {/* SHI score */}
+                  <div className="text-center">
+                    <span className={cn("text-xl font-semibold tabular-nums", scoreColor)}>
+                      {s.score}
+                    </span>
+                  </div>
+                  {/* status tag */}
+                  <Tag tone={tone}>{healthLabel(s.score)}</Tag>
+                </div>
+              );
+            })}
           </div>
         </Panel>
         <Panel
           title="Market Anomaly Monitor"
           kicker="System detected"
           action={
-            <span className="text-[10px] text-muted-foreground">{anomalies.length} active</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
+              <span className="size-1.5 rounded-full bg-negative animate-pulse" />
+              {anomalies.length} active
+            </span>
           }
         >
-          <div>
+          <div className="divide-y divide-border">
             {anomalies.map((a) => (
               <button
                 key={a.company + a.metric}
                 onClick={() => setDetail(a)}
-                className="grid w-full grid-cols-[48px_1fr_auto] items-center gap-3 border-b border-border px-4 py-3 text-left hover:bg-secondary/60"
+                className="w-full text-left hover:bg-secondary/50 transition-colors"
               >
-                <div className="text-xs font-semibold text-primary">{a.company}</div>
-                <div className="min-w-0">
-                  <div className="truncate text-xs">{a.insight}</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">
-                    {a.metric} {a.value} · peer {a.average}
-                  </div>
-                </div>
-                <div className="text-right">
-                  <Change value={a.deviation} />
-                  <div className="mt-1">
-                    <Tag tone={a.severity === "High" ? "negative" : "warning"}>{a.severity}</Tag>
+                <div className="flex items-stretch">
+                  {/* severity strip */}
+                  <div
+                    className={cn(
+                      "w-1 shrink-0",
+                      a.severity === "High" ? "bg-negative" : "bg-warning",
+                    )}
+                  />
+                  <div className="flex flex-1 items-center gap-3 px-3 py-3">
+                    {/* ticker badge */}
+                    <div
+                      className={cn(
+                        "flex h-9 w-12 shrink-0 items-center justify-center border text-[11px] font-bold",
+                        a.severity === "High"
+                          ? "border-negative/30 bg-negative/10 text-negative"
+                          : "border-warning/30 bg-warning/10 text-warning",
+                      )}
+                    >
+                      {a.company}
+                    </div>
+                    {/* insight */}
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate text-xs font-medium">{a.insight}</div>
+                      <div className="mt-0.5 text-[10px] text-muted-foreground">
+                        {a.metric} <span className="text-foreground">{a.value}</span> · peer{" "}
+                        {a.average}
+                      </div>
+                    </div>
+                    {/* deviation */}
+                    <div className="shrink-0 text-right">
+                      <div
+                        className={cn(
+                          "text-sm font-semibold tabular-nums",
+                          a.deviation >= 0 ? "text-positive" : "text-negative",
+                        )}
+                      >
+                        +{a.deviation}%
+                      </div>
+                      <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">
+                        {a.severity}
+                      </Tag>
+                    </div>
                   </div>
                 </div>
               </button>
             ))}
           </div>
-          <div className="px-4 py-3">
+          <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
             <InsightLabel>Deviation-based analysis</InsightLabel>
+            <span className="text-[10px] text-muted-foreground">Click row for detail</span>
           </div>
         </Panel>
       </div>
