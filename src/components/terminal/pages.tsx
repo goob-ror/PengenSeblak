@@ -125,32 +125,31 @@ export function MarketOverview() {
         </Panel>
         <Panel title="Sector Heatmap" kicker="Relative performance">
           <div className="divide-y divide-border">
-            {sectors.map((s, i) => {
+            {sectors.map((s) => {
               const isPos = s.performance >= 0;
-              const abs = Math.abs(s.performance);
-              const barWidth = Math.min(100, abs * 25);
+              const barWidth = Math.min(100, Math.abs(s.performance) * 25);
               return (
                 <div
                   key={s.name}
-                  className="grid grid-cols-[40px_1fr_auto] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
+                  className="grid grid-cols-[72px_1fr_64px] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
                   title={`Market cap: Rp ${s.cap}T`}
                 >
-                  <span className="text-[10px] font-medium text-muted-foreground tabular-nums">
-                    {s.code}
-                  </span>
+                  <span className="text-[10px] text-muted-foreground truncate">{s.code}</span>
                   <div className="min-w-0">
-                    <div className="mb-1 text-xs">{s.name}</div>
+                    <div className="mb-1.5 text-xs font-medium">{s.name}</div>
                     <div className="h-1 w-full rounded-full bg-secondary overflow-hidden">
                       <div
                         className={cn(
                           "h-full rounded-full transition-all",
-                          isPos ? "bg-positive/60" : "bg-negative/60",
+                          isPos ? "bg-positive/70" : "bg-negative/60",
                         )}
                         style={{ width: `${Math.max(3, barWidth)}%` }}
                       />
                     </div>
                   </div>
-                  <Change value={s.performance} />
+                  <div className="text-right">
+                    <Change value={s.performance} />
+                  </div>
                 </div>
               );
             })}
