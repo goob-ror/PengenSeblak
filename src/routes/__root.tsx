@@ -4,13 +4,16 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useNavigate,
   HeadContent,
   Scripts,
+  useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { TerminalShell } from "@/components/terminal/shell";
+import { useAuthStore } from "@/stores/authStore";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
@@ -87,6 +90,34 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { user, token, initialize } = useAuthStore();
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Rehydrate session on first render
+  useEffect(() => {
+    void initialize();
+  }, [initialize]);
+
+  // Auth guard — redirect to /login if no token and not already there
+  useEffect(() => {
+    if (!token && pathname !== "/login") {
+      void navigate({ to: "/login", replace: true });
+    }
+  }, [token, pathname, navigate]);
+
+  // If on /login route, render without the shell
+  if (pathname === "/login") {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+      </QueryClientProvider>
+    );
+  }
+
+  // If not authenticated yet, show nothing (redirect in progress)
+  if (!user) return null;
+
   return (
     <QueryClientProvider client={queryClient}>
       <TerminalShell>

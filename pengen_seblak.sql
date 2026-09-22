@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `api_cache` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `cache_key` varchar(255) NOT NULL,
   `endpoint` varchar(255) DEFAULT NULL,
   `params_hash` json DEFAULT NULL,
@@ -44,7 +45,7 @@ CREATE TABLE `api_cache` (
 --
 
 CREATE TABLE `api_credit_log` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `endpoint` varchar(255) DEFAULT NULL,
   `params` json DEFAULT NULL,
   `credits_used` int DEFAULT NULL,
@@ -59,7 +60,7 @@ CREATE TABLE `api_credit_log` (
 --
 
 CREATE TABLE `derived_scores` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `symbol` varchar(50) NOT NULL,
   `score_type` varchar(50) DEFAULT NULL,
   `score_value` double DEFAULT NULL,
@@ -75,7 +76,7 @@ CREATE TABLE `derived_scores` (
 --
 
 CREATE TABLE `sector_health_index` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `sub_sector` varchar(255) DEFAULT NULL,
   `shi_score` double DEFAULT NULL,
   `growth_score` double DEFAULT NULL,
@@ -92,7 +93,7 @@ CREATE TABLE `sector_health_index` (
 --
 
 CREATE TABLE `shi_history` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `sub_sector` varchar(255) DEFAULT NULL,
   `shi_score` double DEFAULT NULL,
   `record_date` date DEFAULT NULL
@@ -105,11 +106,10 @@ CREATE TABLE `shi_history` (
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `full_name` varchar(255) DEFAULT NULL,
-  `plan` varchar(50) DEFAULT NULL,
   `last_login` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -121,7 +121,7 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `user_alerts` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `symbol` varchar(50) NOT NULL,
   `alert_type` varchar(50) NOT NULL,
@@ -138,7 +138,7 @@ CREATE TABLE `user_alerts` (
 --
 
 CREATE TABLE `user_screener_presets` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `preset_name` varchar(255) NOT NULL,
   `where_clause` json DEFAULT NULL,
@@ -153,72 +153,30 @@ CREATE TABLE `user_screener_presets` (
 --
 
 CREATE TABLE `user_watchlists` (
-  `id` int NOT NULL,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `symbol` varchar(50) NOT NULL,
   `note` text,
   `added_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `api_cache`
---
-ALTER TABLE `api_cache`
-  ADD PRIMARY KEY (`cache_key`);
-
---
--- Indexes for table `api_credit_log`
---
-ALTER TABLE `api_credit_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `derived_scores`
---
-ALTER TABLE `derived_scores`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sector_health_index`
---
-ALTER TABLE `sector_health_index`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `shi_history`
---
-ALTER TABLE `shi_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_alerts`
 --
 ALTER TABLE `user_alerts`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_alerts_user` (`user_id`);
 
 --
 -- Indexes for table `user_screener_presets`
 --
 ALTER TABLE `user_screener_presets`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_screener_presets_user` (`user_id`);
 
 --
 -- Indexes for table `user_watchlists`
 --
 ALTER TABLE `user_watchlists`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_watchlists_user` (`user_id`);
 
 --
@@ -242,6 +200,16 @@ ALTER TABLE `user_screener_presets`
 --
 ALTER TABLE `user_watchlists`
   ADD CONSTRAINT `fk_user_watchlists_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Seed data for table `users`
+-- Starter account: pengenseblak@nt.com / Password#123
+-- Hash generated with bcrypt, cost factor 12
+--
+
+INSERT INTO `users` (`id`, `email`, `password_hash`, `full_name`, `last_login`, `created_at`) VALUES
+(1, 'pengenseblak@nt.com', '$2b$12$sGy154rNeVFb18AHf2MChe9kqnpR4F.ogoNcNtbuPmNbci14O94Pm', 'Pengen Seblak', NULL, NOW());
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

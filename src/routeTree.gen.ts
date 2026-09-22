@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CompaniesRouteImport } from './routes/companies'
 import { Route as ExportRouteImport } from './routes/export'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ScreenerRouteImport } from './routes/screener'
@@ -32,6 +33,11 @@ const CompaniesRoute = CompaniesRouteImport.update({
 const ExportRoute = ExportRouteImport.update({
   id: '/export',
   path: '/export',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MethodologyRoute = MethodologyRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/companies': typeof CompaniesRoute
   '/export': typeof ExportRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/news': typeof NewsRoute
   '/screener': typeof ScreenerRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/companies': typeof CompaniesRoute
   '/export': typeof ExportRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/news': typeof NewsRoute
   '/screener': typeof ScreenerRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/companies': typeof CompaniesRoute
   '/export': typeof ExportRoute
+  '/login': typeof LoginRoute
   '/methodology': typeof MethodologyRoute
   '/news': typeof NewsRoute
   '/screener': typeof ScreenerRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/companies'
     | '/export'
+    | '/login'
     | '/methodology'
     | '/news'
     | '/screener'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/companies'
     | '/export'
+    | '/login'
     | '/methodology'
     | '/news'
     | '/screener'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/companies'
     | '/export'
+    | '/login'
     | '/methodology'
     | '/news'
     | '/screener'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompaniesRoute: typeof CompaniesRoute
   ExportRoute: typeof ExportRoute
+  LoginRoute: typeof LoginRoute
   MethodologyRoute: typeof MethodologyRoute
   NewsRoute: typeof NewsRoute
   ScreenerRoute: typeof ScreenerRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/export'
       fullPath: '/export'
       preLoaderRoute: typeof ExportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/methodology': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompaniesRoute: CompaniesRoute,
   ExportRoute: ExportRoute,
+  LoginRoute: LoginRoute,
   MethodologyRoute: MethodologyRoute,
   NewsRoute: NewsRoute,
   ScreenerRoute: ScreenerRoute,

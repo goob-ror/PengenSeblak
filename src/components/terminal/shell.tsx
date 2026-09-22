@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Activity,
   BarChart3,
@@ -8,17 +8,20 @@ import {
   FileText,
   Filter,
   Gauge,
+  LogOut,
   Menu,
   Newspaper,
   Search,
   Settings,
   Star,
+  User,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { companies, news, sectors } from "@/lib/market-data";
 import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/stores/authStore";
 
 const main = [
   { to: "/", label: "Ringkasan Pasar", icon: Gauge },
@@ -36,6 +39,13 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
   const [mobile, setMobile] = useState(false);
   const [search, setSearch] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await logout();
+    void navigate({ to: "/login", replace: true });
+  }
   useEffect(() => {
     const fn = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
@@ -100,6 +110,26 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
         ))}
       </div>
       <div className="mt-auto border-t border-border p-4">
+        {/* User info */}
+        {user && (
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
+              <User className="size-3.5" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-[11px] font-medium text-foreground">{user.fullName}</div>
+              <div className="truncate text-[9px] text-muted-foreground">{user.email}</div>
+            </div>
+            <button
+              id="sidebar-logout-btn"
+              onClick={() => void handleLogout()}
+              title="Keluar"
+              className="shrink-0 rounded p-1 text-muted-foreground transition-colors hover:bg-destructive/15 hover:text-destructive"
+            >
+              <LogOut className="size-3.5" />
+            </button>
+          </div>
+        )}
         <div className="flex items-center justify-between text-[10px]">
           <span className="text-muted-foreground">Data mode</span>
           <span className="text-warning">PROTOTYPE</span>
