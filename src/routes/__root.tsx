@@ -90,23 +90,24 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const { user, token, initialize } = useAuthStore();
+  const { user, token, isInitializing, initialize } = useAuthStore();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  // Rehydrate session on first render
+  // Validate persisted session against the server on first mount
   useEffect(() => {
     void initialize();
   }, [initialize]);
 
-  // Auth guard — redirect to /login if no token and not already there
+  // Auth guard — only redirect after initialization is complete so a hard
+  // refresh doesn't bounce authenticated users to /login while /me is in-flight
   useEffect(() => {
-    if (!token && pathname !== "/login") {
+    if (!isInitializing && !token && pathname !== "/login") {
       void navigate({ to: "/login", replace: true });
     }
-  }, [token, pathname, navigate]);
+  }, [isInitializing, token, pathname, navigate]);
 
-  // If on /login route, render without the shell
+  // Login page always renders without the terminal shell
   if (pathname === "/login") {
     return (
       <QueryClientProvider client={queryClient}>
@@ -115,7 +116,22 @@ function RootComponent() {
     );
   }
 
-  // If not authenticated yet, show nothing (redirect in progress)
+  // Show a minimal loading state while validating the session.
+  // This prevents the flash-to-login on hard refresh for authenticated users.
+  if (isInitializing) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-3">
+          <div className="size-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          <span className="text-xs uppercase tracking-widest text-muted-foreground">
+            Memuat sesi…
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // Not authenticated after initialization — redirect is in progress
   if (!user) return null;
 
   return (

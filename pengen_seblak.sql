@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 22, 2026 at 07:20 AM
+-- Generation Time: Sep 22, 2026 at 12:51 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.31
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `api_cache` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `cache_key` varchar(255) NOT NULL,
   `endpoint` varchar(255) DEFAULT NULL,
   `params_hash` json DEFAULT NULL,
@@ -45,10 +45,10 @@ CREATE TABLE `api_cache` (
 --
 
 CREATE TABLE `api_credit_log` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` bigint NOT NULL,
   `endpoint` varchar(255) DEFAULT NULL,
   `params` json DEFAULT NULL,
-  `credits_used` int DEFAULT NULL,
+  `credits_used` smallint DEFAULT NULL,
   `cache_hit` tinyint(1) DEFAULT NULL,
   `called_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -60,7 +60,7 @@ CREATE TABLE `api_credit_log` (
 --
 
 CREATE TABLE `derived_scores` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `symbol` varchar(50) NOT NULL,
   `score_type` varchar(50) DEFAULT NULL,
   `score_value` double DEFAULT NULL,
@@ -72,11 +72,26 @@ CREATE TABLE `derived_scores` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `id` bigint NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `success` tinyint(1) NOT NULL DEFAULT '0',
+  `attempted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sector_health_index`
 --
 
 CREATE TABLE `sector_health_index` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `sub_sector` varchar(255) DEFAULT NULL,
   `shi_score` double DEFAULT NULL,
   `growth_score` double DEFAULT NULL,
@@ -93,7 +108,7 @@ CREATE TABLE `sector_health_index` (
 --
 
 CREATE TABLE `shi_history` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `sub_sector` varchar(255) DEFAULT NULL,
   `shi_score` double DEFAULT NULL,
   `record_date` date DEFAULT NULL
@@ -106,13 +121,20 @@ CREATE TABLE `shi_history` (
 --
 
 CREATE TABLE `users` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `full_name` varchar(255) DEFAULT NULL,
   `last_login` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password_hash`, `full_name`, `last_login`, `created_at`) VALUES
+(1, 'pengenseblak@nt.com', '$2b$12$sGy154rNeVFb18AHf2MChe9kqnpR4F.ogoNcNtbuPmNbci14O94Pm', 'Pengen Seblak', '2026-09-22 11:40:40', '2026-09-22 08:58:41');
 
 -- --------------------------------------------------------
 
@@ -121,7 +143,7 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `user_alerts` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `user_id` int NOT NULL,
   `symbol` varchar(50) NOT NULL,
   `alert_type` varchar(50) NOT NULL,
@@ -138,7 +160,7 @@ CREATE TABLE `user_alerts` (
 --
 
 CREATE TABLE `user_screener_presets` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `user_id` int NOT NULL,
   `preset_name` varchar(255) NOT NULL,
   `where_clause` json DEFAULT NULL,
@@ -153,31 +175,146 @@ CREATE TABLE `user_screener_presets` (
 --
 
 CREATE TABLE `user_watchlists` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int NOT NULL,
   `user_id` int NOT NULL,
   `symbol` varchar(50) NOT NULL,
   `note` text,
   `added_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `api_cache`
+--
+ALTER TABLE `api_cache`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `api_credit_log`
+--
+ALTER TABLE `api_credit_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `derived_scores`
+--
+ALTER TABLE `derived_scores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_la_email_time` (`email`,`attempted_at`),
+  ADD KEY `idx_la_ip_time` (`ip_address`,`attempted_at`);
+
+--
+-- Indexes for table `sector_health_index`
+--
+ALTER TABLE `sector_health_index`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shi_history`
+--
+ALTER TABLE `shi_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_users_email` (`email`);
 
 --
 -- Indexes for table `user_alerts`
 --
 ALTER TABLE `user_alerts`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_alerts_user` (`user_id`);
 
 --
 -- Indexes for table `user_screener_presets`
 --
 ALTER TABLE `user_screener_presets`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_screener_presets_user` (`user_id`);
 
 --
 -- Indexes for table `user_watchlists`
 --
 ALTER TABLE `user_watchlists`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_watchlists_user` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `api_cache`
+--
+ALTER TABLE `api_cache`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `api_credit_log`
+--
+ALTER TABLE `api_credit_log`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `derived_scores`
+--
+ALTER TABLE `derived_scores`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sector_health_index`
+--
+ALTER TABLE `sector_health_index`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shi_history`
+--
+ALTER TABLE `shi_history`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_alerts`
+--
+ALTER TABLE `user_alerts`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_screener_presets`
+--
+ALTER TABLE `user_screener_presets`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_watchlists`
+--
+ALTER TABLE `user_watchlists`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -200,16 +337,6 @@ ALTER TABLE `user_screener_presets`
 --
 ALTER TABLE `user_watchlists`
   ADD CONSTRAINT `fk_user_watchlists_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Seed data for table `users`
--- Starter account: pengenseblak@nt.com / Password#123
--- Hash generated with bcrypt, cost factor 12
---
-
-INSERT INTO `users` (`id`, `email`, `password_hash`, `full_name`, `last_login`, `created_at`) VALUES
-(1, 'pengenseblak@nt.com', '$2b$12$sGy154rNeVFb18AHf2MChe9kqnpR4F.ogoNcNtbuPmNbci14O94Pm', 'Pengen Seblak', NULL, NOW());
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

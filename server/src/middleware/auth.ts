@@ -16,6 +16,17 @@ declare global {
   }
 }
 
+function getSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("JWT_SECRET tidak diset di production. Server configuration error.");
+    }
+    return "dev-secret-CHANGE-IN-PRODUCTION";
+  }
+  return secret;
+}
+
 export function authenticate(req: Request, res: Response, next: NextFunction): void {
   // Accept token from Authorization header OR httpOnly cookie
   const authHeader = req.headers["authorization"];
@@ -29,10 +40,29 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET ?? "secret") as JwtPayload;
-    req.user = decoded;
+    const decoded = jwt.verify(token, getSecret()) as JwtPayload;
+
+    // Validate required fields — never trust deserialized data blindly
+    if (
+      typeof decoded.userId !== "number" ||
+      typeof decoded.email !== "string" ||
+      typeof decoded.fullName !== "string"
+    ) {
+      res.status(401).json({ success: false, message: "Token tidak valid." });
+      return;
+    }
+
+    req.user = {
+      userId: decoded.userId,
+      email: decoded.email,
+      fullName: decoded.fullName,
+    };
     next();
-  } catch {
-    res.status(401).json({ success: false, message: "Token tidak valid atau sudah kedaluwarsa." });
+  } catch (err) {
+    if (err instanceof jwt.TokenExpiredError) {
+      res.status(401).json({ success: false, message: "Sesi sudah berakhir. Silakan login kembali." });
+    } else {
+      res.status(401).json({ success: false, message: "Token tidak valid atau sudah kedaluwarsa." });
+    }
   }
 }

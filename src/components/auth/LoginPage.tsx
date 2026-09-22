@@ -83,6 +83,7 @@ export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ export function LoginPage() {
     }
 
     try {
-      await login(email.trim(), password);
+      await login(email.trim(), password, rememberMe);
       await navigate({ to: "/" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login gagal. Coba lagi.");
@@ -220,6 +221,58 @@ export function LoginPage() {
                     {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                   </button>
                 </div>
+              </div>
+
+              {/* Remember Me */}
+              <div className="flex items-center gap-2.5">
+                <button
+                  type="button"
+                  role="checkbox"
+                  aria-checked={rememberMe}
+                  id="remember-me"
+                  onClick={() => setRememberMe((v) => !v)}
+                  disabled={isLoading}
+                  className={cn(
+                    "relative flex size-4 shrink-0 items-center justify-center rounded border transition-all",
+                    rememberMe
+                      ? "border-primary bg-primary"
+                      : "border-white/20 bg-white/5 hover:border-white/40",
+                    isLoading && "opacity-60 cursor-not-allowed",
+                  )}
+                >
+                  {rememberMe && (
+                    <svg
+                      viewBox="0 0 12 10"
+                      fill="none"
+                      className="size-3 text-primary-foreground"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 5l3 3 7-7"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </button>
+                <label
+                  htmlFor="remember-me"
+                  onClick={() => !isLoading && setRememberMe((v) => !v)}
+                  className={cn(
+                    "select-none text-xs text-white/50 transition-colors",
+                    !isLoading && "cursor-pointer hover:text-white/70",
+                  )}
+                >
+                  Ingat saya selama 30 hari
+                </label>
+                <span
+                  className="ml-auto text-[10px] text-white/25"
+                  title="Tanpa 'Ingat saya', sesi berakhir dalam 8 jam atau saat browser ditutup."
+                >
+                  {rememberMe ? "30 hari" : "8 jam"}
+                </span>
               </div>
 
               {/* Error message */}
