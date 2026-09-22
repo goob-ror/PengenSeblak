@@ -23,6 +23,8 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 AGENTS.md
+Sectors API Documentation.md
+Features To Be Implemented.md
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -32,3 +34,6 @@ AGENTS.md
 *.sln
 *.sw?
 .env
+
+# etc.
+bbca_report.json

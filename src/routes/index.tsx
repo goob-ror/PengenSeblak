@@ -3,13 +3,13 @@ import { MarketOverview } from "@/components/terminal/pages";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "IndoMarket Terminal — Sectors Terminal" },
+      { title: "Nusantara Terminal — Sectors Terminal" },
       {
         name: "description",
         content:
           "Live Indonesian market breadth, sector health, anomalies, and derived intelligence.",
       },
-      { property: "og:title", content: "IndoMarket Terminal — Sectors Terminal" },
+      { property: "og:title", content: "Nusantara Terminal — Sectors Terminal" },
       {
         property: "og:description",
         content:

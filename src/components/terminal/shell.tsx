@@ -49,11 +49,14 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
   const nav = (
     <>
       <div className="flex h-16 items-center border-b border-border px-4">
-        <div className="flex size-8 items-center justify-center border border-primary/40 bg-primary/10 text-primary">
-          <Activity className="size-4" />
+        <div className="flex size-12 items-center justify-center text-primary">
+          <img
+            src="Nusantara Terminal Icon Transparent.png"
+            alt="Web Icons"
+          />
         </div>
         <div className="ml-3">
-          <div className="text-sm font-semibold">SECTORS</div>
+          <div className="text-sm font-semibold">Nusantara</div>
           <div className="text-[10px] uppercase text-muted-foreground">Terminal / ID</div>
         </div>
       </div>
