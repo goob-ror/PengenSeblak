@@ -70,7 +70,12 @@ function BackgroundEffect() {
 function StatPill({ label, value, up }: { label: string; value: string; up: boolean }) {
   return (
     <div className="flex flex-col items-center rounded border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
-      <span className={cn("text-sm font-semibold tabular-nums", up ? "text-emerald-400" : "text-rose-400")}>
+      <span
+        className={cn(
+          "text-sm font-semibold tabular-nums",
+          up ? "text-emerald-400" : "text-rose-400",
+        )}
+      >
         {value}
       </span>
       <span className="mt-0.5 text-[9px] uppercase tracking-wider text-white/40">{label}</span>
@@ -159,7 +164,10 @@ export function LoginPage() {
             <form id="login-form" onSubmit={handleSubmit} noValidate className="space-y-4">
               {/* Email field */}
               <div>
-                <label htmlFor="login-email" className="mb-1.5 block text-[11px] font-medium uppercase tracking-wider text-white/50">
+                <label
+                  htmlFor="login-email"
+                  className="mb-1.5 block text-[11px] font-medium uppercase tracking-wider text-white/50"
+                >
                   Email
                 </label>
                 <div className="relative">
@@ -188,7 +196,10 @@ export function LoginPage() {
 
               {/* Password field */}
               <div>
-                <label htmlFor="login-password" className="mb-1.5 block text-[11px] font-medium uppercase tracking-wider text-white/50">
+                <label
+                  htmlFor="login-password"
+                  className="mb-1.5 block text-[11px] font-medium uppercase tracking-wider text-white/50"
+                >
                   Password
                 </label>
                 <div className="relative">
@@ -315,8 +326,7 @@ export function LoginPage() {
           <p className="mt-6 text-center text-[10px] leading-relaxed text-white/20">
             Platform ini hanya untuk pengguna terdaftar.
             <br />
-            Data bersumber dari{" "}
-            <span className="text-primary/60">Sectors</span>.
+            Data bersumber dari <span className="text-primary/60">Sectors</span>.
           </p>
         </div>
       </div>
