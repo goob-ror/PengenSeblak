@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "symbol": "BALI.JK",
+      "company_name": "PT Bali Towerindo Sentra Tbk.",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 28.9269190414727,
+        "roe_ttm": 0.0735729880686813,
+        "net_profit_margin[2025]": 0.147098726314231
+      }
+    },
+    {
+      "symbol": "DATA.JK",
+      "company_name": "PT Remala Abadi Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 17.6656392819601,
+        "roe_ttm": 0.276614481854163,
+        "net_profit_margin[2025]": 0.237044599136182
+      }
+    },
+    {
+      "symbol": "GHON.JK",
+      "company_name": "PT Gihon Telekomunikasi Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 12.8938527143055,
+        "roe_ttm": 0.0974256933230812,
+        "net_profit_margin[2025]": 0.369690478132685
+      }
+    },
+    {
+      "symbol": "GOLD.JK",
+      "company_name": "PT Visi Telekomunikasi Infrastruktur Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 18.3054602518657,
+        "roe_ttm": 0.0436241794049719,
+        "net_profit_margin[2025]": 0.343082924523514
+      }
+    },
+    {
+      "symbol": "IBST.JK",
+      "company_name": "Inti Bangun Sejahtera Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 27.869677499927,
+        "roe_ttm": 0.149791066545123,
+        "net_profit_margin[2025]": 0.471894454817799
+      }
+    },
+    {
+      "symbol": "INET.JK",
+      "company_name": "PT Sinergi Inti Andalan Prima Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 200.467709587308,
+        "roe_ttm": 0.00980843010385051,
+        "net_profit_margin[2025]": 0.26671438802502
+      }
+    },
+    {
+      "symbol": "ISAT.JK",
+      "company_name": "PT Indosat Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 10.4294107889792,
+        "roe_ttm": 0.186638333296297,
+        "net_profit_margin[2025]": 0.0974855666254132
+      }
+    },
+    {
+      "symbol": "KETR.JK",
+      "company_name": "PT Ketrosden Triasmitra Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 37.8424593388207,
+        "roe_ttm": 0.0592386314319067,
+        "net_profit_margin[2025]": 0.184583635769898
+      }
+    },
+    {
+      "symbol": "MORA.JK",
+      "company_name": "PT Ekamas Mora Republik Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 404.879284863801,
+        "roe_ttm": 0.0315501359631357,
+        "net_profit_margin[2025]": 0.112117139615891
+      }
+    },
+    {
+      "symbol": "MTEL.JK",
+      "company_name": "PT Dayamitra Telekomunikasi Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 19.0898680293643,
+        "roe_ttm": 0.0666450471648443,
+        "net_profit_margin[2025]": 0.222292170101729
+      }
+    },
+    {
+      "symbol": "SUPR.JK",
+      "company_name": "Solusi Tunas Pratama Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 42.6021969079314,
+        "roe_ttm": 0.137669768168098,
+        "net_profit_margin[2025]": 0.693218442420036
+      }
+    },
+    {
+      "symbol": "TBIG.JK",
+      "company_name": "PT Tower Bersama Infrastructure Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 21.2271311940624,
+        "roe_ttm": 0.115400933859572,
+        "net_profit_margin[2025]": 0.224382090557974
+      }
+    },
+    {
+      "symbol": "TLKM.JK",
+      "company_name": "PT Telkom Indonesia (Persero) Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 13.8421606061161,
+        "roe_ttm": 0.129493948742288,
+        "net_profit_margin[2025]": 0.121396737130474
+      }
+    },
+    {
+      "symbol": "TOWR.JK",
+      "company_name": "Sarana Menara Nusantara Tbk",
+      "query_values": {
+        "sub_sector": "Telecommunication",
+        "pe_ttm": 6.14887212908709,
+        "roe_ttm": 0.133489974059567,
+        "net_profit_margin[2025]": 0.275986019410249
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 14,
+    "showing": 14,
+    "limit": 30,
+    "offset": 0,
+    "has_next": false,
+    "has_previous": false,
+    "next_offset": null,
+    "previous_offset": null
+  }
+}

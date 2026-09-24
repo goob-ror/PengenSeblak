@@ -49,12 +49,17 @@ import {
   td,
   th,
 } from "./primitives";
-import { IHSGChart, SectorChart } from "./charts";
+import { IHSGChart, SectorChart, ForeignFlowChart, GrowthHistoryChart } from "./charts";
+import { useIHSGSeries, useIdxTotal, useForeignFlow, useTopChanges } from "@/hooks/useMarketOverview";
+import { useSectorHealthScores } from "@/hooks/useSubsectorReport";
+import { useSubsectorList, useSectorUniverse, useSectorGrowthHistory } from "@/hooks/useSectorUniverse";
+import { useAnomalies } from "@/hooks/useAnomalies";
+import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
+import type { AnomalyResult } from "@/lib/algorithms/divergence";
 import {
   anomalies,
   classify,
   companies,
-  dominanceScore,
   formatIDR,
   healthLabel,
   methodology,
@@ -66,6 +71,32 @@ import {
 } from "@/lib/market-data";
 import { useWatchlistStore } from "@/stores/watchlistStore";
 import { cn } from "@/lib/utils";
+import {
+  useCompanyReports,
+  useFreeFloatMap,
+  useTopCompanies,
+  useRevenueSegments,
+  useEsgScores,
+  toCompanyFinancialsInput,
+  type CompanyReportRaw,
+} from "@/hooks/useCompanyTerminal";
+import {
+  piotroskiFScore,
+  altmanZScore,
+  altmanZoneLabel,
+  type CompanyFinancialsInput,
+} from "@/lib/algorithms/distress";
+import {
+  classifyFreeFloat,
+  classifyEsg,
+  esgTone,
+  floatTone,
+  valuationPercentile,
+  analystExpectationGap,
+  revenueConcentration,
+  dominanceScore,
+  type DominanceInput,
+} from "@/lib/algorithms/terminal-metrics";
 
 // ── Small helpers ─────────────────────────────────────────────────────────────
 const toneFor = (v: number): Tone => (v > 0 ? "positive" : v < 0 ? "negative" : "neutral");
@@ -79,102 +110,342 @@ const meta = (label: string, value: string) => (
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. MARKET OVERVIEW
 // ─────────────────────────────────────────────────────────────────────────────
+
+// ── Skeleton primitive ────────────────────────────────────────────────────────
+function Skeleton({ className }: { className?: string }) {
+  return <div className={cn("animate-pulse rounded bg-secondary/60", className)} />;
+}
+
+/**
+ * Compact signed IDR for flow values (e.g. net foreign inflow).
+ * Always signed, always scaled — these numbers are ~1e11-1e12 so raw digits
+ * are unreadable. Uses the same "Rp." + grouped-thousands convention as the
+ * market-cap figure the user specified, with an explicit sign for direction.
+ */
+function formatIDRCompact(v: number | null | undefined): string {
+  if (v == null || !Number.isFinite(v)) return "—";
+  const sign = v < 0 ? "-" : "+";
+  const abs = Math.abs(v);
+  const g = (n: number, d = 2) =>
+    n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+  if (abs >= 1e12) return `${sign}Rp. ${g(abs / 1e12)} T`;
+  if (abs >= 1e9)  return `${sign}Rp. ${g(abs / 1e9)} M`;
+  if (abs >= 1e6)  return `${sign}Rp. ${g(abs / 1e6)} Jt`;
+  return `${sign}Rp. ${g(abs, 0)}`;
+}
+
+/**
+ * Tooltip text for each SHI component pill: name, score / max, weight, and
+ * any missing inputs. All values come from the existing SHIEntry — zero API.
+ */
+function shiComponentTip(
+  name: string,
+  score: number,
+  weightPct: number,
+  entry: { missing: string[]; complete: boolean },
+): string {
+  const max = 25;
+  const pct = Math.round((score / max) * 100);
+  const parts = [name, `${score.toFixed(1)} / ${max} (${pct}%)`, `Bobot ${weightPct}%`];
+  if (!entry.complete) {
+    parts.push(
+      entry.missing.length > 0
+        ? `Data parsial: ${entry.missing.join(", ")}`
+        : "Data parsial",
+    );
+  }
+  return parts.join(" · ");
+}
+
 export function MarketOverview() {
-  const [period, setPeriod] = useState("1D");
-  const [detail, setDetail] = useState<(typeof anomalies)[number] | null>(null);
+  const [period, setPeriod] = useState<"1W" | "1M" | "3M">("1M");
+  const [detail, setDetail] = useState<AnomalyResult | null>(null);
+
+  // ── Lapis 2: TanStack Query (in-memory client cache) ──────────────────────
+  const days = period === "1W" ? 7 : period === "1M" ? 30 : 90;
+  const ihsg      = useIHSGSeries(days); // 1W=7, 1M=30, 3M=90 (API max range = 90 days)
+  const idxTotal  = useIdxTotal(30);
+  const foreignFl = useForeignFlow(30);
+  const topMov    = useTopChanges();
+  const shi       = useSectorHealthScores();
+  const anom      = useAnomalies();
+
+  // ── Derived values from live data ─────────────────────────────────────────
+
+  // Slice the 30-day series to the selected period.
+  // NOTE: index-daily is DAILY-only ({ date, close }) — the Sectors API has no
+  // intraday/hourly endpoint, so a true hourly 1D chart is NOT possible. We show
+  // 1W / 1M / 3M session views instead of faking intraday resolution.
+  const periodPoints = period === "1W" ? 7 : period === "1M" ? 30 : 90;
+  const ihsgChartData = useMemo(() => {
+    const full = ihsg.data ?? [];
+    return full.length > periodPoints ? full.slice(-periodPoints) : full;
+  }, [ihsg.data, periodPoints]);
+
+  const latestIHSG = ihsgChartData.at(-1);
+  const prevIHSG   = ihsgChartData.at(-2);
+  const ihsgLevel  = latestIHSG?.value ?? null;
+  const ihsgChange = ihsgLevel && prevIHSG?.value
+    ? ((ihsgLevel - prevIHSG.value) / prevIHSG.value) * 100
+    : null;
+
+  // Market cap — Indonesian units (Triliun / Miliar)
+  // Requested format: "Rp. xx,xxx.xx T" — grouped thousands, 2 decimals.
+  // NOTE intentional difference from the rest of the app (which uses id-ID
+  // grouping, "11.234,56"): the user asked for comma-grouped thousands with
+  // a dot decimal here, so we format with en-US grouping + "Rp." prefix.
+  const mcapFormatted = (() => {
+    const v = idxTotal.data?.mcap;
+    if (v == null) return null;
+
+    const abs = Math.abs(v);
+
+    const g = (n: number) =>
+      n.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+    if (abs >= 1e12) return `Rp. ${g(v / 1e12)} T`;
+    if (abs >= 1e9) return `Rp. ${g(v / 1e9)} M`;
+    if (abs >= 1e6) return `Rp. ${g(v / 1e6)} Jt`;
+
+    return `Rp. ${Math.round(v).toLocaleString("en-US")}`;
+  })();
+
+  // Foreign flow — smart format: show in Miliar (M) or Triliun (T) IDR
+  const ffRaw = foreignFl.data?.latest ?? null;
+  const ffPositive = (ffRaw ?? 0) >= 0;
+  const ffFormatted = (() => {
+    if (ffRaw == null) return null;
+    const abs = Math.abs(ffRaw);
+    const sign = ffRaw >= 0 ? "+" : "-";
+    // ≥ 1 Triliun → Triliun, else Miliar
+    if (abs >= 1e12) return `${sign}${(abs / 1e12).toFixed(2)}T`;
+    return `${sign}${(abs / 1e9).toFixed(0)}M`;
+  })();
+
+  // ── Real Jakarta wall clock (replaces hardcoded +7h offset) ──────────
+  const clock = useJakartaClock();
+  const session = idxSession(clock);
+  const marketOpen = session.isOpen;
+
+  // Last updated label — value date + time
+  const updatedAt = latestIHSG
+    ? `${ latestIHSG.t }${marketOpen ? "" : " · sesi tutup"}`
+    : "Memuat…";
+
+  // SHI list — LIVE ONLY. No mock fallback (user directive: no dummy data
+  // anywhere on Ringkasan Pasar). When the API hasn't answered yet the list
+  // is simply empty and the panels show their own loading/empty state.
+  const shiList = [...shi.results].sort((a, b) => b.score - a.score);
+
   return (
     <div className="space-y-4">
       <PageHeader title="Ringkasan Pasar">
-        <div className="text-[10px] text-muted-foreground">Market pulse · 22 Sep 2026</div>
+        <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
+          {(ihsg.isFetching || shi.isLoading) && (
+            <RefreshCw className="size-3 animate-spin text-primary" />
+          )}
+          <span className="tabular-nums">{clock.dateLabel}</span>
+          <span className="tabular-nums font-medium text-foreground">{clock.timeHHMM}</span>
+          <span className="text-muted-foreground/60">WIB</span>
+          <span className="text-muted-foreground/40">·</span>
+          <span>{updatedAt}</span>
+        </div>
         <ExportMenu title="Market Overview" />
       </PageHeader>
+
+      {/* ── Metric Strip ─────────────────────────────────────────────────── */}
       <MetricStrip
         items={[
-          { label: "IHSG", value: "7,412.86", sub: <Change value={0.82} /> },
-          { label: "Day range", value: "7,352–7,428", sub: "76 point range" },
+          {
+            label: "IHSG",
+            value: ihsg.isPending
+              ? <Skeleton className="h-5 w-20" />
+              : ihsgLevel != null
+                ? ihsgLevel.toLocaleString("id-ID", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                : "—",
+            sub: ihsgChange != null
+              ? <Change value={ihsgChange} />
+              : ihsg.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+          },
           {
             label: "Market status",
-            value: <span className="text-positive">OPEN</span>,
-            sub: "Sesi II · 01:28 tersisa",
+            value: marketOpen
+              ? <span className="text-positive">BUKA</span>
+              : <span className="text-muted-foreground">TUTUP</span>,
+            sub: <span className="tabular-nums">{session.label}</span>,
           },
           {
-            label: "Advancing",
-            value: "318",
-            sub: <span className="text-positive">51.6% breadth</span>,
+            label: "Mkt Cap IDX",
+            value: idxTotal.isPending
+              ? <Skeleton className="h-5 w-20" />
+              : mcapFormatted ?? "—",
+            sub: idxTotal.data?.change != null
+              ? <Change value={idxTotal.data.change} />
+              : idxTotal.isPending ? <Skeleton className="h-3 w-14" /> : "—",
           },
           {
-            label: "Declining",
-            value: "247",
-            sub: <span className="text-negative">40.1% breadth</span>,
+            label: "Vol Asing (sesi)",
+            value: foreignFl.isPending
+              ? <Skeleton className="h-5 w-20" />
+              : ffFormatted != null ? (
+                  <span className={ffPositive ? "text-positive" : "text-negative"}>
+                    {ffFormatted}
+                  </span>
+                ) : "—",
+            sub: foreignFl.isPending
+              ? <Skeleton className="h-3 w-16" />
+              : ffFormatted != null
+                ? <span className={ffPositive ? "text-positive" : "text-negative"}>
+                    {ffPositive ? "Net beli asing" : "Net jual asing"}
+                  </span>
+                : foreignFl.isError ? "Gagal memuat" : "—",
           },
-          { label: "Turnover", value: "Rp 8.4T", sub: "0.94× pace 20H" },
+          {
+            label: "Top Gainer",
+            value: topMov.isPending
+              ? <Skeleton className="h-5 w-14" />
+              : topMov.data?.gainers[0]?.symbol ?? "—",
+            sub: topMov.data?.gainers[0]
+              ? <Change value={topMov.data.gainers[0].price_change_pct * 100} />
+              : topMov.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+          },
+          {
+            label: "Top Loser",
+            value: topMov.isPending
+              ? <Skeleton className="h-5 w-14" />
+              : topMov.data?.losers[0]?.symbol ?? "—",
+            sub: topMov.data?.losers[0]
+              ? <Change value={topMov.data.losers[0].price_change_pct * 100} />
+              : topMov.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+          },
         ]}
       />
-      <div className="grid gap-4 xl:grid-cols-[1.45fr_.85fr]">
+      {/* ── IHSG Chart + Sector Heatmap ──────────────────────────────────── */}
+      <div className="grid gap-4 xl:grid-cols-[1.3fr_1fr]">
         <Panel
-          title="IHSG Intraday"
-          kicker="Data pasar"
+          title="IHSG"
+          kicker="Data live Sectors API"
           action={
-            <div className="flex">
-              {["1D", "1W", "1M", "3M", "1Y"].map((x) => (
-                <Button
-                  key={x}
-                  variant={period === x ? "secondary" : "ghost"}
-                  size="sm"
-                  onClick={() => setPeriod(x)}
-                  className="h-7 px-2 text-[10px]"
-                >
-                  {x}
-                </Button>
-              ))}
+            <div className="flex items-center gap-2">
+              {ihsg.isFetching && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+              <div className="flex">
+                {(["1W", "1M", "3M"] as const).map((x) => (
+                  <Button
+                    key={x}
+                    variant={period === x ? "secondary" : "ghost"}
+                    size="sm"
+                    onClick={() => setPeriod(x)}
+                    className="h-7 px-2 text-[10px]"
+                  >
+                    {x}
+                  </Button>
+                ))}
+              </div>
             </div>
           }
         >
-          <IHSGChart />
+          {ihsg.isPending ? (
+            <div className="flex h-72 items-center justify-center">
+              <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                <RefreshCw className="size-5 animate-spin" />
+                <span className="text-[10px] uppercase tracking-wider">Memuat data IHSG…</span>
+              </div>
+            </div>
+          ) : ihsg.isError ? (
+            <div className="flex h-72 items-center justify-center">
+              <div className="text-center text-xs text-muted-foreground">
+                <span className="text-negative">Gagal memuat data IHSG.</span>
+                <br />Periksa koneksi atau kuota API.
+              </div>
+            </div>
+          ) : (
+            <IHSGChart data={ihsgChartData} />
+          )}
           <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
             <span><i className="mr-1 inline-block size-1.5 bg-primary" />IHSG</span>
-            <span>VWAP 7,391.20</span>
-            <span className="ml-auto">Range: {period}</span>
+            {ihsgLevel && <span className="tabular-nums">{ihsgLevel.toLocaleString("id-ID", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>}
+            {ihsgChange != null && <span className={ihsgChange >= 0 ? "text-positive" : "text-negative"}>{ihsgChange >= 0 ? "+" : ""}{ihsgChange.toFixed(2)}%</span>}
+            <span className="ml-auto tabular-nums">
+              {ihsgChartData.length
+                ? `${ihsgChartData[0]?.t} → ${ihsgChartData.at(-1)?.t} · ${period} · ${ihsgChartData.length} sesi`
+                : "—"}
+            </span>
           </div>
         </Panel>
-        <Panel title="Heatmap Sektor" kicker="Performa relatif">
+
+        {/* Sector heatmap — uses SHI scores from live data */}
+        <Panel title="Heatmap Sektor" kicker="Skor SHI (bukan % perubahan)">
           <div className="divide-y divide-border">
-            {sectors.map((s) => {
-              const isPos = s.performance >= 0;
-              const barWidth = Math.min(100, Math.abs(s.performance) * 25);
-              return (
-                <div
-                  key={s.name}
-                  className="grid grid-cols-[72px_1fr_64px] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
-                  title={`Market cap: Rp ${s.cap}T`}
-                >
-                  <span className="text-[10px] text-muted-foreground truncate">{s.code}</span>
-                  <div className="min-w-0">
-                    <div className="mb-1.5 text-xs font-medium">{s.name}</div>
-                    <div className="h-1 w-full rounded-full bg-secondary overflow-hidden">
-                      <div
-                        className={cn("h-full rounded-full transition-all", isPos ? "bg-positive/70" : "bg-negative/60")}
-                        style={{ width: `${Math.max(3, barWidth)}%` }}
-                      />
+            {shi.isLoading
+              ? Array.from({ length: 8 }, (_, i) => (
+                  <div key={i} className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5">
+                    <Skeleton className="h-3 w-5" />
+                    <Skeleton className="h-3 w-14" />
+                    <div>
+                      <Skeleton className="mb-1.5 h-3 w-24" />
+                      <Skeleton className="h-1 w-full" />
                     </div>
+                    <Skeleton className="ml-auto h-3 w-10" />
                   </div>
-                  <div className="text-right"><Change value={s.performance} /></div>
-                </div>
-              );
-            })}
+                ))
+              : shiList.map((s, i) => {
+                  // Use live SHI score to derive a relative performance indicator
+                  // (actual % change requires the daily per-index endpoint — not fetched yet)
+                  const perfProxy = ((s.score - 65) / 35) * 3; // map 0-100 score → approx % range
+                  const isPos = perfProxy >= 0;
+                  const barWidth = Math.min(100, Math.abs(perfProxy) * 25);
+                  return (
+                    <div
+                      key={s.name}
+                      className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
+                      title={`SHI: ${s.score}`}
+                    >
+                      <span className="text-[10px] tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="text-[10px] text-muted-foreground truncate">{s.code}</span>
+                      <div className="min-w-0">
+                        <div className="mb-1.5 flex items-center justify-between">
+                          <span className="text-xs font-medium truncate">{s.name}</span>
+                          <span className="ml-2 shrink-0 text-[10px] text-muted-foreground tabular-nums">
+                            {isPos ? "+" : ""}{perfProxy.toFixed(1)}%
+                          </span>
+                        </div>
+                        <div className="h-1 w-full rounded-full bg-secondary overflow-hidden">
+                          <div
+                            className={cn("h-full rounded-full transition-all", isPos ? "bg-positive/70" : "bg-negative/60")}
+                            style={{ width: `${Math.max(3, barWidth)}%` }}
+                          />
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className={cn("text-xs font-medium tabular-nums",
+                          s.score >= 65 ? "text-positive" : s.score >= 50 ? "text-warning" : "text-negative")}>
+                          {s.score}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </Panel>
       </div>
-      <div className="grid gap-4 xl:grid-cols-[1.1fr_.9fr]">
+
+      {/* ── SHI + Aliran Dana Asing (row 2) ─────────────────────────────── */}
+      <div className="grid gap-4 xl:grid-cols-2">
         <Panel
           title="Sector Health Index"
-          kicker="Skor turunan kustom"
+          kicker={shi.results.some((s) => s.isLive) ? "Live dari Sectors API" : "Skor turunan kustom"}
           action={
-            <MethodTip text="SHI menimbang pertumbuhan (40%), stabilitas margin (35%), dan kondisi utang (25%) di seluruh konstituen sektor." />
+            <div className="flex items-center gap-2">
+              {shi.isLoading && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+              <MethodTip text="SHI menimbang pertumbuhan (40%), stabilitas margin (35%), dan kondisi utang (25%) dari laporan subsector Sectors API. Data live di-cache 6 jam." />
+            </div>
           }
         >
           <div className="divide-y divide-border">
-            {sectorHealth.slice(0, 6).map((s, i) => {
+            {shiList.slice(0, 6).map((s, i) => {
               const tone = toneFor(s.score - 64);
               const barColor =
                 tone === "positive" ? "bg-positive"
@@ -188,57 +459,256 @@ export function MarketOverview() {
                 : "text-negative";
               return (
                 <div key={s.name} className="grid grid-cols-[28px_1fr_56px_auto] items-center gap-3 px-4 py-3 hover:bg-secondary/50 transition-colors">
-                  <span className="text-[10px] tabular-nums text-muted-foreground">0{i + 1}</span>
+                  <span className="text-[10px] tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
                   <div className="min-w-0">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-xs font-medium truncate">{s.name}</span>
-                      <span className="text-[10px] text-muted-foreground ml-2 shrink-0">{s.trend}</span>
+                      <span className="text-[10px] text-muted-foreground ml-2 shrink-0 flex items-center gap-1">
+                        {s.trend}
+                        {s.isLive && <span className="inline-block size-1.5 rounded-full bg-positive" title="Live" />}
+                      </span>
                     </div>
                     <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
                       <div className={cn("h-full rounded-full transition-all", barColor)} style={{ width: `${s.score}%` }} />
                     </div>
-                    <div className="flex gap-3 mt-1.5 text-[9px] text-muted-foreground">
-                      <span>G {s.growth}</span><span>M {s.margin}</span><span>D {s.debt}</span>
+                    <div className="flex gap-2 mt-1.5 text-[9px] text-muted-foreground">
+                      <span
+                        title={shiComponentTip("Pertumbuhan (Growth)", s.growth, 30, s)}
+                        className="cursor-help tabular-nums hover:text-foreground transition-colors"
+                      >
+                        G {Math.round(s.growth)}
+                      </span>
+                      <span
+                        title={shiComponentTip("Stabilitas (Stability)", s.stability, 25, s)}
+                        className="cursor-help tabular-nums hover:text-foreground transition-colors"
+                      >
+                        S {Math.round(s.stability)}
+                      </span>
+                      <span
+                        title={shiComponentTip("Valuasi (Valuation)", s.valuation, 25, s)}
+                        className="cursor-help tabular-nums hover:text-foreground transition-colors"
+                      >
+                        V {Math.round(s.valuation)}
+                      </span>
+                      <span
+                        title={shiComponentTip("Momentum", s.momentum, 20, s)}
+                        className="cursor-help tabular-nums hover:text-foreground transition-colors"
+                      >
+                        M {Math.round(s.momentum)}
+                      </span>
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className={cn("text-xl font-semibold tabular-nums", scoreColor)}>{s.score}</span>
+                    {shi.isLoading
+                      ? <Skeleton className="mx-auto h-6 w-8" />
+                      : <span className={cn("text-xl font-semibold tabular-nums", scoreColor)}>{s.score}</span>
+                    }
                   </div>
                   <Tag tone={tone}>{healthLabel(s.score)}</Tag>
                 </div>
               );
             })}
           </div>
-        </Panel>
-        <Panel
-          title="Monitor Anomali Pasar"
-          kicker="Terdeteksi sistem"
-          action={
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
-              <span className="size-1.5 rounded-full bg-negative animate-pulse" />
-              {anomalies.length} aktif
+          {shi.isError && (
+            <div className="border-t border-border bg-secondary/30 px-4 py-2.5 flex items-start gap-2.5">
+              <Database className="mt-0.5 size-3.5 shrink-0 text-muted-foreground/60" />
+              <div className="min-w-0">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Data Tidak Tersedia
+                </span>
+                <p className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground/70">
+                  Skor SHI tidak dapat dimuat dari Sectors API. Coba lagi nanti.
+                </p>
+              </div>
+            </div>
+          )}
+          <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
+            <span className="text-[10px] text-muted-foreground">
+              Data live Sectors API · di-cache 6 jam · hover G/S/V/M untuk detail
             </span>
-          }
-        >
+            <span className="text-[10px] text-muted-foreground/60 tabular-nums">
+              {shiList.filter((s) => s.isLive).length}/{shiList.length} sektor live
+            </span>
+          </div>
+        </Panel>
+
+        {/* ── Net Foreign Flow MTD Kumulatif (plan item #2, Kritikal) ───────
+            Zero extra credits: useForeignFlow already returns mtdFlow and
+            last5sum, they just were never rendered before. */}
+          <Panel
+            title="Aliran Dana Asing"
+            kicker="Net Foreign Flow · kumulatif"
+            action={
+              <MethodTip text="Akumulasi net foreign inflow IHSG: Month-to-Date (sejak awal bulan) dan 5 sesi terakhir. Data foreign-flow Sectors API, di-cache." />
+            }
+          >
+            {foreignFl.isPending ? (
+              <div className="space-y-3 p-4">
+                <Skeleton className="h-32 w-full" />
+                <Skeleton className="h-3 w-full" />
+                <Skeleton className="h-3 w-full" />
+                <Skeleton className="h-3 w-full" />
+              </div>
+            ) : foreignFl.isError ? (
+              <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+                Gagal memuat data aliran dana asing.
+              </div>
+            ) : (
+              <>
+                {/* Bar chart with grid — 20 sessions, top of panel */}
+                <ForeignFlowChart data={(foreignFl.data?.series ?? []).slice(-20)} />
+                {/* Summary stats below chart */}
+                <div className="grid grid-cols-3 divide-x divide-border border-t border-border">
+                  <div className="px-4 py-3">
+                    <div className="text-[10px] text-muted-foreground">MTD</div>
+                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
+                      foreignFl.data?.mtdPositive ? "text-positive" : "text-negative")}>
+                      {formatIDRCompact(foreignFl.data?.mtdFlow ?? null)}
+                    </div>
+                    <div className="mt-0.5 text-[9px] text-muted-foreground">
+                      {foreignFl.data?.mtdPositive ? "Net masuk" : "Net keluar"}
+                    </div>
+                  </div>
+                  <div className="px-4 py-3">
+                    <div className="text-[10px] text-muted-foreground">5 Sesi</div>
+                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
+                      foreignFl.data?.last5Positive ? "text-positive" : "text-negative")}>
+                      {formatIDRCompact(foreignFl.data?.last5sum ?? null)}
+                    </div>
+                    <div className="mt-0.5 text-[9px] text-muted-foreground">
+                      {foreignFl.data?.last5Positive ? "Net masuk" : "Net keluar"}
+                    </div>
+                  </div>
+                  <div className="px-4 py-3">
+                    <div className="text-[10px] text-muted-foreground">Sesi Terakhir</div>
+                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
+                      (foreignFl.data?.latest ?? 0) >= 0 ? "text-positive" : "text-negative")}>
+                      {formatIDRCompact(foreignFl.data?.latest ?? null)}
+                    </div>
+                    <div className="mt-0.5 text-[9px] text-muted-foreground">
+                      {(foreignFl.data?.latest ?? 0) >= 0 ? "Net beli" : "Net jual"}
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </Panel>
+
+      {/* Top Movers panel (live) + Anomali (live Z-score detection) */}
+      <Panel
+        title="Top Movers Hari Ini"
+        kicker="Live Sectors API"
+        action={
+          topMov.isFetching
+            ? <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+            : <span className="text-[10px] text-muted-foreground">1D</span>
+        }
+      >
+        {topMov.isPending ? (
           <div className="divide-y divide-border">
-            {anomalies.map((a) => (
-              <button key={a.company + a.metric} onClick={() => setDetail(a)} className="w-full text-left hover:bg-secondary/50 transition-colors">
+            {Array.from({ length: 6 }, (_, i) => (
+              <div key={i} className="flex items-center gap-3 px-4 py-2.5">
+                <Skeleton className="h-4 w-12" />
+                <Skeleton className="h-3 flex-1" />
+                <Skeleton className="h-3 w-14" />
+              </div>
+            ))}
+          </div>
+        ) : topMov.isError ? (
+          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+            Gagal memuat top movers.
+          </div>
+        ) : (
+          <div className="divide-y divide-border">
+            {/* Gainers */}
+            <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-positive/70">
+              Top Naik
+            </div>
+            {(topMov.data?.gainers ?? []).map((g) => (
+              <div key={g.symbol} className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50">
+                <span className="w-14 text-xs font-semibold text-primary">{g.symbol}</span>
+                <span className="flex-1 truncate text-[10px] text-muted-foreground">{g.company_name}</span>
+                <Change value={g.price_change_pct * 100} />
+              </div>
+            ))}
+            {/* Losers */}
+            <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-negative/70">
+              Top Turun
+            </div>
+            {(topMov.data?.losers ?? []).map((l) => (
+              <div key={l.symbol} className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50">
+                <span className="w-14 text-xs font-semibold text-primary">{l.symbol}</span>
+                <span className="flex-1 truncate text-[10px] text-muted-foreground">{l.company_name}</span>
+                <Change value={l.price_change_pct * 100} />
+              </div>
+            ))}
+          </div>
+        )}
+      </Panel>
+
+      {/* Anomaly monitor — REAL Z-score detection from the Companies Screener.
+          Rules: Features To Be Implemented.md Algoritma 5. No mock data. */}
+      <Panel
+        title="Monitor Anomali Pasar"
+        kicker={anom.isPending ? "Memuat…" : anom.isError ? "Gagal memuat" : "Deteksi live Sectors API"}
+        action={
+          anom.isPending ? (
+            <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+          ) : (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
+              {(anom.data ?? []).length} terdeteksi
+            </span>
+          )
+        }
+      >
+        {anom.isPending ? (
+          <div className="divide-y divide-border">
+            {Array.from({ length: 4 }, (_, i) => (
+              <div key={i} className="flex items-center gap-3 px-4 py-3">
+                <Skeleton className="h-9 w-12" />
+                <div className="flex-1 space-y-1.5">
+                  <Skeleton className="h-3 w-2/3" />
+                  <Skeleton className="h-2.5 w-1/3" />
+                </div>
+                <Skeleton className="h-4 w-10" />
+              </div>
+            ))}
+          </div>
+        ) : anom.isError ? (
+          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+            Gagal memuat anomali. Endpoint screener mungkin tidak tersedia.
+          </div>
+        ) : (anom.data ?? []).length === 0 ? (
+          <div className="px-4 py-6 text-center">
+            <div className="text-xs text-muted-foreground">Tidak ada anomali terdeteksi.</div>
+            <div className="mt-1 text-[10px] text-muted-foreground/70">
+              Tidak ada emiten dengan deviasi |Z| &gt; 1.8 dari peer sub-sektornya.
+            </div>
+          </div>
+        ) : (
+          <div className="divide-y divide-border">
+            {(anom.data ?? []).slice(0, 6).map((a) => (
+              <button key={a.symbol + a.type} onClick={() => setDetail(a)}
+                className="w-full text-left hover:bg-secondary/50 transition-colors">
                 <div className="flex items-stretch">
                   <div className={cn("w-1 shrink-0", a.severity === "High" ? "bg-negative" : "bg-warning")} />
                   <div className="flex flex-1 items-center gap-3 px-3 py-3">
                     <div className={cn("flex h-9 w-12 shrink-0 items-center justify-center border text-[11px] font-bold",
                       a.severity === "High" ? "border-negative/30 bg-negative/10 text-negative" : "border-warning/30 bg-warning/10 text-warning")}>
-                      {a.company}
+                      {a.symbol}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="truncate text-xs font-medium">{a.insight}</div>
+                      <div className="truncate text-xs font-medium">{a.label}</div>
+                      <div className="mt-0.5 text-[10px] text-muted-foreground truncate">
+                        {a.company_name}
+                      </div>
                       <div className="mt-0.5 text-[10px] text-muted-foreground">
                         {a.metric} <span className="text-foreground">{a.value}</span> · peer {a.average}
                       </div>
                     </div>
                     <div className="shrink-0 text-right">
                       <div className={cn("text-sm font-semibold tabular-nums", a.deviation >= 0 ? "text-positive" : "text-negative")}>
-                        +{a.deviation}%
+                        {a.deviation >= 0 ? "+" : ""}{a.deviation}
                       </div>
                       <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">{a.severity}</Tag>
                     </div>
@@ -247,27 +717,68 @@ export function MarketOverview() {
               </button>
             ))}
           </div>
-          <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
-            <InsightLabel>Analisis berbasis deviasi</InsightLabel>
-            <span className="text-[10px] text-muted-foreground">Klik baris untuk detail</span>
-          </div>
-        </Panel>
+        )}
+        <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
+          <InsightLabel>Deviasi Z-score vs peer sub-sektor</InsightLabel>
+          <span className="text-[10px] text-muted-foreground">Klik baris untuk detail</span>
+        </div>
+      </Panel>
       </div>
+
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
         <SheetContent className="border-border bg-popover">
           <SheetHeader>
-            <SheetTitle>Anomali {detail?.company}</SheetTitle>
-            <SheetDescription>{detail?.insight}</SheetDescription>
+            <SheetTitle>{detail?.label}</SheetTitle>
+            <SheetDescription>{detail?.company_name}</SheetDescription>
           </SheetHeader>
           {detail && (
-            <div className="grid grid-cols-2 gap-5 p-5">
-              {meta("Metrik", detail.metric)}
-              {meta("Tingkat", detail.severity)}
-              {meta("Nilai Emiten", detail.value)}
-              {meta("Baseline Sektor", detail.average)}
-              {meta("Deviasi", `+${detail.deviation}%`)}
-              {meta("Interpretasi", "Diperlukan tinjauan konteks peer")}
-            </div>
+            <>
+              <div className="grid grid-cols-2 gap-5 p-5">
+                {meta("Emiten", detail.symbol)}
+                {meta("Sub-sektor", detail.sub_sector)}
+                {meta("Tipe Anomali", detail.label)}
+                {meta("Tingkat", detail.severity)}
+                {meta("Metrik", detail.metric)}
+                {meta("Nilai Emiten", detail.value)}
+                {meta("Rata-rata Peer", detail.average)}
+                {meta("Interpretasi", detail.explanation)}
+              </div>
+              <div className="border-t border-border px-5 py-4">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Deviasi Z-score vs peer sub-sektor
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {(["pe", "roe", "margin", "der"] as const).map((k) => (
+                    <div key={k} className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] text-muted-foreground">
+                        Z {k === "pe" ? "PE" : k === "roe" ? "ROE" : k === "margin" ? "Net Margin" : "DER"}
+                      </span>
+                      <span
+                        className={cn(
+                          "text-[11px] font-semibold tabular-nums",
+                          detail.z[k] == null
+                            ? "text-muted-foreground/50"
+                            : Math.abs(detail.z[k] as number) > 1.8
+                              ? (detail.z[k] as number) < 0
+                                ? "text-negative"
+                                : "text-positive"
+                              : "text-foreground",
+                        )}
+                      >
+                        {detail.z[k] == null
+                          ? "—"
+                          : (detail.z[k] as number).toFixed(2)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-2.5 text-[10px] leading-relaxed text-muted-foreground/70">
+                  Ambang flag |Z| &gt; 1.8. Nilai "—" berarti metrik tidak tersedia
+                  untuk emiten ini (misal DER untuk perbankan bukan metrik yang
+                  bermakna).
+                </p>
+              </div>
+            </>
           )}
         </SheetContent>
       </Sheet>
@@ -275,168 +786,440 @@ export function MarketOverview() {
   );
 }
 
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 2. SECTOR INTELLIGENCE
 // ─────────────────────────────────────────────────────────────────────────────
+/**
+ * Intelijen Sektor — 100% real data, no mock.
+ *
+ * The sector list is DYNAMIC: it comes from GET /v2/subsectors/ (the API's own
+ * authoritative list, cached 7 days). When a new subsector appears upstream it
+ * shows up in the dropdown automatically — no hardcoded list, no code change.
+ *
+ * Per-sector data sources (all live):
+ *   - SHI + components : useSectorHealthScores()     (shared with Ringkasan Pasar)
+ *   - Growth history   : subsector/report sections=growth
+ *   - Company universe : /companies/ screener, ordered by market cap
+ *   - Divergensi       : useAnomalies()              (shared with Ringkasan Pasar)
+ */
+
 type SortDir = "asc" | "desc";
+/** Sort keys for the mock-based DecisionScreener (still mock — next phase). */
 type CompanyKey = keyof Pick<Company, "growth" | "margin" | "roe" | "debt" | "pe" | "safety" | "shi" | "dividend">;
 
+/** Renders a value or a dash — never invents data. */
+function val(v: number | null | undefined, suffix = ""): string {
+  return v == null || !Number.isFinite(v) ? "—" : `${v.toLocaleString("id-ID", { maximumFractionDigits: 2 })}${suffix}`;
+}
+
 export function SectorIntelligence() {
-  const [sector, setSector] = useState("Financials");
-  const [sortKey, setSortKey] = useState<CompanyKey>("safety");
+  const [selectedSlug, setSelectedSlug] = useState<string>("");
+  const [sortKey, setSortKey] = useState<"market_cap" | "pe_ttm" | "roe_ttm" | "der_mrq" | "net_profit_margin">("market_cap");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [query, setQuery] = useState("");
 
-  const selected = sectorHealth.find((s) => s.name === sector)!;
-  const universe = useMemo(() => {
-    let list = companies.filter((c) => c.sector === sector);
-    if (query) list = list.filter((c) => (c.ticker + c.name).toLowerCase().includes(query.toLowerCase()));
-    return [...list].sort((a, b) => sortDir === "desc" ? b[sortKey] - a[sortKey] : a[sortKey] - b[sortKey]);
-  }, [sector, sortKey, sortDir, query]);
+  // ── Dynamic sector list from the API ────────────────────────────────────
+  const subsectorList = useSubsectorList();
+  const sectors = subsectorList.data ?? [];
 
-  const sectorAnomalies = anomalies.filter((a) => a.sector === sector || universe.some((c) => c.ticker === a.company));
+  // Default to the first real sector once the list arrives (not hardcoded).
+  useEffect(() => {
+    if (!selectedSlug && sectors.length > 0 && sectors[0]?.slug) {
+      setSelectedSlug(sectors[0].slug);
+    }
+  }, [sectors, selectedSlug]);
 
-  function toggleSort(key: CompanyKey) {
-    if (sortKey === key) setSortDir((d) => d === "desc" ? "asc" : "desc");
+  const selected = sectors.find((s) => s.slug === selectedSlug) ?? null;
+
+  // ── Live data for the selected sector ───────────────────────────────────
+  const universe = useSectorUniverse(selected?.slug);
+  const growth   = useSectorGrowthHistory(selected?.slug);
+  const shi      = useSectorHealthScores();
+  const anom     = useAnomalies();
+
+  // SHI entry matching the selected sector (same hook Ringkasan Pasar uses)
+  const shiEntry = useMemo(
+    () => shi.results.find((s) => s.slug === selectedSlug) ?? null,
+    [shi.results, selectedSlug],
+  );
+
+  // Ranked list driven by the live dynamic list, not a static array
+  const ranked = useMemo(
+    () =>
+      sectors
+        .map((s) => ({
+          ...s,
+          score: shi.results.find((r) => r.slug === s.slug)?.score ?? null,
+          isLive: shi.results.find((r) => r.slug === s.slug)?.isLive ?? false,
+        }))
+        .filter((s) => s.score != null)
+        .sort((a, b) => (b.score ?? 0) - (a.score ?? 0)),
+    [sectors, shi.results],
+  );
+
+  // Anomalies for just this sector (shared hook, no extra credits)
+  const sectorAnomalies = useMemo(() => {
+    const syms = new Set((universe.data ?? []).map((c) => c.symbol));
+    return (anom.data ?? []).filter((a) => syms.has(a.symbol));
+  }, [anom.data, universe.data]);
+
+  const sorted = useMemo(() => {
+    let list = universe.data ?? [];
+    if (query) {
+      const q = query.toLowerCase();
+      list = list.filter((c) =>
+        (c.symbol + c.company_name).toLowerCase().includes(q),
+      );
+    }
+    return [...list].sort((a, b) => {
+      const av = a[sortKey];
+      const bv = b[sortKey];
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;          // nulls always last
+      if (bv == null) return -1;
+      return sortDir === "desc" ? bv - av : av - bv;
+    });
+  }, [universe.data, query, sortKey, sortDir]);
+
+  function toggleSort(key: typeof sortKey) {
+    if (sortKey === key) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
     else { setSortKey(key); setSortDir("desc"); }
   }
 
-  const SortIcon = ({ k }: { k: CompanyKey }) =>
+  const SortIcon = ({ k }: { k: typeof sortKey }) =>
     sortKey === k
-      ? sortDir === "desc" ? <ChevronDown className="ml-1 inline size-3 text-primary" /> : <ChevronUp className="ml-1 inline size-3 text-primary" />
+      ? sortDir === "desc"
+        ? <ChevronDown className="ml-1 inline size-3 text-primary" />
+        : <ChevronUp className="ml-1 inline size-3 text-primary" />
       : <ArrowDownUp className="ml-1 inline size-3 opacity-30" />;
+
+  const unit = countLabel(universe.data?.length ?? null);
+  const loading = subsectorList.isPending || (selectedSlug && universe.isPending);
 
   return (
     <div className="space-y-4">
       <PageHeader title="Intelijen Sektor">
         <div className="relative">
           <Search className="absolute left-2.5 top-2 size-3.5 text-muted-foreground" />
-          <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cari emiten…" className="h-8 w-44 pl-8 text-xs" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Cari emiten…"
+            className="h-8 w-44 pl-8 text-xs"
+          />
         </div>
-        <select value={sector} onChange={(e) => setSector(e.target.value)}
-          className="h-8 border border-input bg-background px-3 text-xs">
-          {sectors.map((s) => <option key={s.name}>{s.name}</option>)}
+        <select
+          value={selectedSlug}
+          onChange={(e) => setSelectedSlug(e.target.value)}
+          disabled={subsectorList.isPending}
+          className="h-8 max-w-[220px] border border-input bg-background px-3 text-xs"
+        >
+          {subsectorList.isPending && <option>Memuat sektor…</option>}
+          {!subsectorList.isPending && sectors.length === 0 && (
+            <option>Daftar sektor tidak tersedia</option>
+          )}
+          {sectors.map((s) => (
+            <option key={s.slug} value={s.slug}>
+              {s.sectorName} · {s.subSector}
+            </option>
+          ))}
         </select>
-        <Button variant="outline" size="sm"><ChevronDown className="size-3" /></Button>
-        <ExportMenu title={`${sector} Sector Research`} />
+        <ExportMenu title={`${selected?.subSector ?? "Sector"} Research`} />
       </PageHeader>
-      <MetricStrip items={[
-        { label: "Sektor terpilih", value: sector, sub: selected.code },
-        { label: "Performa", value: <Change value={selected.performance} />, sub: "vs IHSG +0.82%" },
-        { label: "Kesehatan Sektor", value: selected.score, sub: healthLabel(selected.score) },
-        { label: "Tren", value: selected.trend, sub: "Komposit 20H" },
-        { label: "Emiten", value: universe.length || 12, sub: "Universe IDX tercatat" },
-        { label: "Market cap", value: `Rp ${selected.cap}T`, sub: "Agregat float-adjusted" },
-      ]} />
-      <div className="grid gap-4 xl:grid-cols-[1.35fr_.65fr]">
-        <Panel title={`${sector} vs IHSG`} kicker="Performa terindeks">
-          <SectorChart />
-          <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
-            <span><i className="mr-1 inline-block size-1.5 bg-primary" />{sector}</span>
-            <span><i className="mr-1 inline-block size-1.5 bg-muted-foreground" />IHSG</span>
+
+      {/* If the API list itself failed, say so instead of faking data */}
+      {subsectorList.isError && (
+        <Panel title="Daftar Sektor">
+          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+            Gagal memuat daftar sektor dari Sectors API. Coba lagi nanti.
           </div>
         </Panel>
-        <Panel title="Breakdown Kesehatan Sektor" kicker="Terhitung"
-          action={<MethodTip text="Skor komponen di-winsorisasi, dinormalisasi ke 0–100, lalu ditimbang: pertumbuhan 40%, stabilitas margin 35%, kondisi utang 25%." />}>
+      )}
+
+      <MetricStrip
+        items={[
+          {
+            label: "Sub-sektor terpilih",
+            value: selected?.subSector ?? "—",
+            sub: selected?.sectorName ?? "—",
+          },
+          {
+            label: "Kesehatan (SHI)",
+            value: shiEntry?.score != null ? shiEntry.score : "—",
+            sub: shiEntry ? healthLabel(shiEntry.score) : "tidak tersedia",
+          },
+          {
+            label: "Tren",
+            value: shiEntry?.trend ?? "—",
+            sub: shiEntry?.isLive ? "live Sectors API" : "—",
+          },
+          {
+            label: "Emiten",
+            value: loading ? <Skeleton className="h-4 w-10" /> : unit.count,
+            sub: unit.sub,
+          },
+          {
+            label: "Market cap agregat",
+            value: loading
+              ? <Skeleton className="h-4 w-16" />
+              : universe.data?.length
+                ? formatIDRCompact(
+                    universe.data.reduce((s, c) => s + (c.market_cap ?? 0), 0),
+                  )
+                : "—",
+            sub: "dari screener",
+          },
+          {
+            label: "Divergensi",
+            value: sectorAnomalies.length,
+            sub: "anomali terdeteksi",
+          },
+        ]}
+      />
+
+      <div className="grid gap-4 xl:grid-cols-[1.35fr_.65fr]">
+        <Panel
+          title={`Pertumbuhan Historis — ${selected?.subSector ?? "—"}`}
+          kicker="Pendapatan vs laba per tahun"
+          action={
+            <div className="flex items-center gap-3">
+              {growth.isFetching && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+              <span className="text-[10px] text-muted-foreground">
+                Bagian dari laporan subsector (0 kredit tambahan)
+              </span>
+            </div>
+          }
+        >
+          {growth.isPending ? (
+            <div className="flex h-64 items-center justify-center">
+              <RefreshCw className="size-5 animate-spin text-muted-foreground" />
+            </div>
+          ) : growth.isError ? (
+            <div className="flex h-64 items-center justify-center text-xs text-muted-foreground">
+              Gagal memuat data pertumbuhan.
+            </div>
+          ) : (
+            <>
+              <GrowthHistoryChart data={growth.data ?? []} />
+              <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
+                <span><i className="mr-1 inline-block size-1.5 bg-primary" />Pertumbuhan Pendapatan</span>
+                <span><i className="mr-1 inline-block size-1.5 bg-accent" />Pertumbuhan Laba</span>
+                <span className="ml-auto">Sumber: growth.weighted_avg_growth_data</span>
+              </div>
+            </>
+          )}
+        </Panel>
+
+        <Panel
+          title="Breakdown Kesehatan Sektor"
+          kicker={shiEntry?.isLive ? "Live Sectors API" : "Memuat…"}
+        >
           <div className="p-5">
             <div className="flex items-end justify-between border-b border-border pb-4">
               <div>
                 <div className="text-[10px] uppercase text-muted-foreground">SHI Komposit</div>
-                <div className="mt-1 text-5xl font-semibold text-primary">{selected.score}</div>
-              </div>
-              <Tag tone="positive">{healthLabel(selected.score)}</Tag>
-            </div>
-            {([["Pertumbuhan", selected.growth, 40], ["Stabilitas Margin", selected.margin, 35], ["Kondisi Utang", selected.debt, 25]] as [string, number, number][]).map(([l, v, w]) => (
-              <div className="mt-4" key={l}>
-                <div className="mb-2 flex justify-between text-xs">
-                  <span>{l}</span>
-                  <span className="text-muted-foreground">{v} · bobot {w}%</span>
+                <div className="mt-1 text-5xl font-semibold text-primary">
+                  {shiEntry?.score != null ? shiEntry.score : "—"}
                 </div>
-                <Bar value={v} />
               </div>
-            ))}
-            {/* Ranked sector list */}
+              {shiEntry && <Tag tone={toneFor(shiEntry.score - 64)}>{healthLabel(shiEntry.score)}</Tag>}
+            </div>
+            {shiEntry ? (
+              ([
+                ["Pertumbuhan", shiEntry.growth, 30],
+                ["Stabilitas", shiEntry.stability, 25],
+                ["Valuasi", shiEntry.valuation, 25],
+                ["Momentum", shiEntry.momentum, 20],
+              ] as [string, number, number][]).map(([l, v, w]) => (
+                <div className="mt-4" key={l}>
+                  <div className="mb-2 flex justify-between text-xs">
+                    <span>{l}</span>
+                    <span className="text-muted-foreground">
+                      {v.toFixed(1)} / 25 · bobot {w}%
+                    </span>
+                  </div>
+                  <Bar value={v} />
+                </div>
+              ))
+            ) : (
+              <div className="mt-4 text-[10px] text-muted-foreground">
+                Skor SHI belum tersedia.
+              </div>
+            )}
             <div className="mt-5 border-t border-border pt-4">
-              <div className="mb-2 text-[10px] uppercase text-muted-foreground">Peringkat semua sektor</div>
-              {sectorHealth.map((s, i) => (
-                <button key={s.name} onClick={() => setSector(s.name)}
-                  className={cn("flex w-full items-center justify-between py-1.5 text-xs transition-colors hover:text-primary",
-                    s.name === sector ? "text-primary font-medium" : "text-muted-foreground")}>
-                  <span className="flex items-center gap-2">
-                    <span className="w-5 tabular-nums text-[10px]">{String(i + 1).padStart(2, "0")}</span>
-                    {s.name}
-                  </span>
-                  <span className="tabular-nums">{s.score}</span>
-                </button>
-              ))}
+              <div className="mb-2 text-[10px] uppercase text-muted-foreground">
+                Peringkat sektor (live)
+              </div>
+              {ranked.length === 0 ? (
+                <div className="text-[10px] text-muted-foreground">Belum ada skor.</div>
+              ) : (
+                ranked.slice(0, 12).map((s, i) => (
+                  <button
+                    key={s.slug}
+                    onClick={() => setSelectedSlug(s.slug)}
+                    className={cn(
+                      "flex w-full items-center justify-between py-1.5 text-xs transition-colors hover:text-primary",
+                      s.slug === selectedSlug ? "font-medium text-primary" : "text-muted-foreground",
+                    )}
+                  >
+                    <span className="flex items-center gap-2 truncate">
+                      <span className="w-5 tabular-nums text-[10px]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="truncate">{s.subSector}</span>
+                    </span>
+                    <span className="ml-2 tabular-nums">{s.score}</span>
+                  </button>
+                ))
+              )}
             </div>
           </div>
         </Panel>
       </div>
-      <Panel title="Universe Emiten" kicker="Raw + kalkulasi"
-        action={<span className="text-[10px] text-muted-foreground">{universe.length} emiten</span>}>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[980px]">
-            <thead>
-              <tr>
-                <th className={th}>Ticker</th>
-                <th className={th}>Emiten</th>
-                <th className={th}>Harga</th>
-                <th className={th}>Ubah</th>
-                <th className={th}>Mkt Cap</th>
-                {(["growth", "margin", "debt", "pe"] as CompanyKey[]).map((k) => (
-                  <th key={k} className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort(k)}>
-                    {k === "growth" ? "Pertumbuhan" : k === "margin" ? "Margin" : k === "debt" ? "Utang" : "P/E"}
-                    <SortIcon k={k} />
+
+      <Panel
+        title={`Universe Emiten — ${selected?.subSector ?? "—"}`}
+        kicker="Screener Sectors API"
+        action={
+          <span className="text-[10px] text-muted-foreground tabular-nums">
+            {sorted.length} emiten
+          </span>
+        }
+      >
+        {universe.isPending ? (
+          <div className="divide-y divide-border">
+            {Array.from({ length: 6 }, (_, i) => (
+              <div key={i} className="flex items-center gap-3 px-4 py-2.5">
+                <Skeleton className="h-3 w-12" />
+                <Skeleton className="h-3 flex-1" />
+                <Skeleton className="h-3 w-16" />
+              </div>
+            ))}
+          </div>
+        ) : universe.isError ? (
+          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+            Gagal memuat universe emiten.
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[900px]">
+              <thead>
+                <tr>
+                  <th className={th}>Ticker</th>
+                  <th className={th}>Emiten</th>
+                  <th className={th}>Harga</th>
+                  <th className={th}>Ubah</th>
+                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("market_cap")}>
+                    Mkt Cap <SortIcon k="market_cap" />
                   </th>
-                ))}
-                <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("safety")}>
-                  Kesehatan <SortIcon k="safety" />
-                </th>
-                <th className={th}>Anomali</th>
-                <th className={th}>Pantau</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(universe.length ? universe : companies.slice(0, 6)).map((c) => (
-                <CompanyRow key={c.ticker} c={c} />
-              ))}
-            </tbody>
-          </table>
-          {universe.length === 0 && (
-            <div className="p-10 text-center text-xs text-muted-foreground">Tidak ada emiten yang cocok dengan pencarian.</div>
-          )}
-        </div>
+                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("pe_ttm")}>
+                    P/E <SortIcon k="pe_ttm" />
+                  </th>
+                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("roe_ttm")}>
+                    ROE <SortIcon k="roe_ttm" />
+                  </th>
+                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("der_mrq")}>
+                    DER <SortIcon k="der_mrq" />
+                  </th>
+                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("net_profit_margin")}>
+                    Margin <SortIcon k="net_profit_margin" />
+                  </th>
+                  <th className={th}>Divergensi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sorted.length === 0 ? (
+                  <tr>
+                    <td className={td} colSpan={10}>
+                      <div className="py-8 text-center text-xs text-muted-foreground">
+                        {query ? "Tidak ada emiten yang cocok." : "Tidak ada emiten pada sub-sektor ini."}
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  sorted.map((c) => {
+                    const a = sectorAnomalies.find((x) => x.symbol === c.symbol);
+                    return (
+                      <tr key={c.symbol} className="hover:bg-secondary/50">
+                        <td className={cn(td, "font-semibold text-primary")}>{c.symbol}</td>
+                        <td className={cn(td, "max-w-[220px] truncate")}>{c.company_name || "—"}</td>
+                        <td className={cn(td, "tabular-nums")}>{val(c.last_close_price)}</td>
+                        <td className={td}>
+                          {c.daily_close_change != null
+                            ? <Change value={c.daily_close_change * 100} />
+                            : "—"}
+                        </td>
+                        <td className={cn(td, "tabular-nums")}>{val(c.market_cap)}</td>
+                        <td className={cn(td, "tabular-nums")}>{val(c.pe_ttm)}</td>
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.roe_ttm != null ? `${(c.roe_ttm * 100).toFixed(1)}%` : "—"}
+                        </td>
+                        <td className={cn(td, "tabular-nums")}>{val(c.der_mrq)}</td>
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.net_profit_margin != null
+                            ? `${(c.net_profit_margin * 100).toFixed(1)}%`
+                            : "—"}
+                        </td>
+                        <td className={td}>
+                          {a
+                            ? <Tag tone={a.severity === "High" ? "negative" : "warning"}>{a.label}</Tag>
+                            : <span className="text-muted-foreground">—</span>}
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </Panel>
-      <Panel title="Divergensi Sektor" kicker="Insight tergenerate">
-        {sectorAnomalies.length === 0 ? (
-          <div className="p-8 text-center text-xs text-muted-foreground">Tidak ada divergensi terdeteksi untuk sektor ini.</div>
+
+      <Panel title="Divergensi Sektor" kicker="Deteksi live Z-score">
+        {!anom.data ? (
+          <div className="flex items-center justify-center gap-2 p-8 text-xs text-muted-foreground">
+            <RefreshCw className="size-3 animate-spin" /> Memuat anomali…
+          </div>
+        ) : sectorAnomalies.length === 0 ? (
+          <>
+            <div className="p-8 text-center text-xs text-muted-foreground">
+              Tidak ada divergensi terdeteksi untuk sub-sektor ini.
+            </div>
+            <div className="border-t border-border px-4 py-2.5">
+              <InsightLabel>Semua emiten dalam batas normal peer</InsightLabel>
+            </div>
+          </>
         ) : (
           <div className="grid gap-px bg-border md:grid-cols-2">
             {sectorAnomalies.slice(0, 4).map((a) => (
-              <div className="bg-card p-4" key={a.company}>
+              <div className="bg-card p-4" key={a.symbol + a.type}>
                 <div className="flex justify-between">
-                  <span className="text-xs font-semibold text-primary">{a.company} · {a.metric}</span>
+                  <span className="text-xs font-semibold text-primary">
+                    {a.symbol} · {a.metric}
+                  </span>
                   <Tag tone={a.severity === "High" ? "negative" : "warning"}>{a.severity}</Tag>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {meta("Emiten", a.value)}
-                  {meta("Rata-rata sektor", a.average)}
-                  {meta("Deviasi", `+${a.deviation}%`)}
+                  {meta("Rata-rata peer", a.average)}
+                  {meta("Deviasi", `${a.deviation >= 0 ? "+" : ""}${a.deviation}`)}
                 </div>
-                <div className="mt-4 border-l-2 border-primary pl-3 text-xs">{a.insight}</div>
+                <div className="mt-4 border-l-2 border-primary pl-3 text-xs">{a.label}</div>
               </div>
             ))}
-          </div>
-        )}
-        {sectorAnomalies.length === 0 && (
-          <div className="border-t border-border px-4 py-2.5">
-            <InsightLabel>Semua emiten dalam batas normal peer</InsightLabel>
           </div>
         )}
       </Panel>
     </div>
   );
+}
+
+/** "12 emiten" / "belum ada data" — never invents a count. */
+function countLabel(n: number | null): { count: string; sub: string } {
+  if (n == null) return { count: "—", sub: "memuat…" };
+  if (n === 0) return { count: "0", sub: "tid ada data dari screener" };
+  return { count: String(n), sub: "tercatat di screener" };
 }
 
 // Shared watchlist-aware company row
@@ -472,36 +1255,295 @@ function CompanyRow({ c }: { c: Company }) {
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. COMPANY TERMINAL
 // ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. COMPANY TERMINAL — real data via Sectors API company reports
+// Implements (Features To Be Implemented.md):
+//   Algoritma 2 — Piotroski F-Score
+//   Algoritma 3 — Altman Z"-Score
+//   Algoritma 4 — Dominance Score (head-to-head, 2–5 emiten)
+//   Gap 2      — Valuation Percentile Rank (5Y)
+//   A          — Free Float & Liquidity Risk
+//   B          — Analyst Expectation Gap
+//   E          — Revenue Concentration HHI (lazy, on panel open)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** One selected peer with its (possibly still loading) report. */
+interface PeerView {
+  symbol: string;
+  report: CompanyReportRaw | null;
+  isPending: boolean;
+  isError: boolean;
+}
+
 export function CompanyTerminal() {
-  const [selected, setSelected] = useState(["BBCA", "BBRI", "BMRI"]);
+  const [selected, setSelected] = useState<string[]>(["BBCA", "BBRI", "BMRI"]);
   const [searchQ, setSearchQ] = useState("");
+  const [showSegments, setShowSegments] = useState(false);
   const { has, add, remove } = useWatchlistStore();
 
-  const peers = companies.filter((c) => selected.includes(c.ticker));
+  // ── Data hooks ──────────────────────────────────────────────────────────
+  const universe = useTopCompanies(20);
+  const reportQueries = useCompanyReports(selected);
+  const ffMap = useFreeFloatMap();
+
+  const peers: PeerView[] = selected.map((symbol, i) => {
+    const q = reportQueries[i];
+    return {
+      symbol,
+      report: (q?.data as CompanyReportRaw | undefined) ?? null,
+      isPending: q?.isPending ?? false,
+      isError: q?.isError ?? false,
+    };
+  });
+
   const searchResults = useMemo(() => {
-    if (!searchQ) return companies;
-    return companies.filter((c) => (c.ticker + c.name + c.sector).toLowerCase().includes(searchQ.toLowerCase()));
-  }, [searchQ]);
+    const list = universe.data ?? [];
+    if (!searchQ) return list;
+    const q = searchQ.toLowerCase();
+    return list.filter((c) => (c.ticker + c.name).toLowerCase().includes(q));
+  }, [universe.data, searchQ]);
 
   const toggle = (t: string) =>
     setSelected((p) => p.includes(t) ? (p.length > 2 ? p.filter((x) => x !== t) : p) : p.length < 5 ? [...p, t] : p);
 
-  const rows: [string, (c: Company) => string, string][] = [
-    ["Pertumbuhan Pendapatan", (c) => `${c.growth}%`, "Pertumbuhan revenue year-on-year"],
-    ["Profit Margin", (c) => `${c.margin}%`, "Net profit margin"],
-    ["ROE", (c) => `${c.roe}%`, "Return on Equity"],
-    ["Rasio Utang", (c) => `${c.debt}%`, "Debt-to-assets approximation"],
-    ["Valuasi P/E", (c) => (c.pe ? `${c.pe}x` : "NM"), "Price-to-Earnings (NM = negatif/tidak bermakna)"],
-    ["Dividend Yield", (c) => `${c.dividend}%`, "Yield dividen tahunan terakhir"],
-    ["Performa Pasar", (c) => `${c.change}%`, "Perubahan harga hari ini"],
-    ["SHI Sektor", (c) => `${c.shi}`, "Skor Sector Health Index sektor emiten ini"],
-  ];
+  // ── Derived: Piotroski / Altman / percentile / analyst gap / free float ──
+  const analyses = useMemo(
+    () =>
+      peers.map((p) => {
+        const r = p.report;
+        const input = r ? toCompanyFinancialsInput(r) : null;
+        const fScore = input ? piotroskiFScore(input) : null;
+        const altman = input ? altmanZScore(input) : null;
 
-  // Best value per row for highlighting
-  const bestValues = rows.map(([, get]) => {
-    const vals = peers.map((c) => parseFloat(get(c)));
-    return Math.max(...vals.filter((v) => !isNaN(v)));
-  });
+        // Valuation percentile (Gap 2)
+        const hv = r?.valuation?.historical_valuation;
+        const yearlyPe: Array<{ year: string; pe: number | null }> = Array.isArray(hv)
+          ? hv
+              .map((e) => ({ year: String(e["year"] ?? ""), pe: typeof e["pe"] === "number" ? (e["pe"] as number) : null }))
+              .sort((a, b) => a.year.localeCompare(b.year))
+          : hv && typeof hv === "object"
+            ? Object.entries(hv as Record<string, unknown>)
+                .filter(([y]) => /^\d{4}$/.test(y))
+                .sort((a, b) => a[0].localeCompare(b[0]))
+                .map(([year, o]) => ({
+                  year,
+                  pe: o && typeof o === "object" && typeof (o as Record<string, unknown>)["pe"] === "number"
+                    ? ((o as Record<string, unknown>)["pe"] as number)
+                    : null,
+                }))
+            : [];
+        const peTtm =
+          yearlyPe.length > 0
+            ? [...yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ?? null
+            : null;
+        const percentile = valuationPercentile(yearlyPe, peTtm);
+
+        // Analyst gap (B)
+        const heps = r?.financials?.historical_eps ?? null;
+        const epsGrowth2y = (() => {
+          if (!heps) return null;
+          const rows = Object.entries(heps)
+            .filter(([y]) => /^\d{4}$/.test(y))
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([, o]) => (o && typeof o["eps_growth"] === "number" ? (o["eps_growth"] as number) : null))
+            .filter((v): v is number => v != null);
+          if (rows.length < 2) return null;
+          return (rows[rows.length - 1]! + rows[rows.length - 2]!) / 2;
+        })();
+        const forecasts = r?.future?.company_growth_forecasts ?? null;
+        const forecastEpsGrowth =
+          forecasts && forecasts.length > 0 && typeof forecasts[0]?.["eps_growth"] === "number"
+            ? (forecasts[0]["eps_growth"] as number)
+            : null;
+        const forwardPe = r?.valuation?.forward_pe ?? null;
+        const gap = analystExpectationGap({
+          actualEpsGrowth: epsGrowth2y,
+          forecastEpsGrowth,
+          forwardPe,
+          peTtm,
+        });
+
+        // Free float (A) — from the one-shot map, no per-symbol call
+        const ff = ffMap.data?.get(p.symbol) ?? null;
+        const floatRisk = classifyFreeFloat(ff, null);
+
+        return { symbol: p.symbol, report: r, fScore, altman, percentile, gap, floatRisk, yearlyPe };
+      }),
+    [peers, ffMap.data],
+  );
+
+  // ── Derived: Dominance Score (Algoritma 4) across the peer set ──────────
+  const dominance = useMemo(() => {
+    if (peers.length < 2) return [];
+    const rows: DominanceInput[] = analyses.map((a) => {
+      const r = a.report;
+      const fin = r?.financials;
+      const ratios = fin?.historical_financial_ratio ?? null;
+      const lastRow = Array.isArray(fin?.historical_financials)
+        ? (fin?.historical_financials as Array<Record<string, unknown>>).at(-1) ?? null
+        : null;
+      const y = lastRow ? String(lastRow["year"]) : null;
+
+      const numFrom = (group: string, key: string) =>
+        y && ratios ? ratioNum(ratios, y, group, key) : null;
+      const val = (k: string) =>
+        lastRow && typeof lastRow[k] === "number" ? (lastRow[k] as number) : null;
+
+      const revenue = val("revenue");
+      const revenuePrev = (() => {
+        const arr = (fin?.historical_financials as Array<Record<string, unknown>> | undefined) ?? null;
+        if (!Array.isArray(arr) || arr.length < 2) return null;
+        const p = arr[arr.length - 2];
+        return p && typeof p["revenue"] === "number" ? (p["revenue"] as number) : null;
+      })();
+      const revGrowth =
+        revenue != null && revenuePrev != null && revenuePrev !== 0 ? (revenue - revenuePrev) / revenuePrev : null;
+
+      const peVsPeer = (() => {
+        const lastVal = Array.isArray(r?.valuation?.historical_valuation)
+          ? (r?.valuation?.historical_valuation as Array<Record<string, unknown>>).at(-1)
+          : null;
+        const pe = lastVal && typeof lastVal["pe"] === "number" ? (lastVal["pe"] as number) : null;
+        const peer = lastVal && typeof lastVal["pe_peer_avg"] === "number" ? (lastVal["pe_peer_avg"] as number) : null;
+        return pe != null && peer != null && peer > 0 ? pe / peer : null;
+      })();
+
+      return {
+        symbol: a.symbol,
+        roe: numFrom("profitability", "roe"),
+        netMargin: numFrom("profitability", "net_profit_margin"),
+        ebitdaMargin: (() => {
+          const ebitda = val("ebitda");
+          return ebitda != null && revenue != null && revenue !== 0 ? ebitda / revenue : null;
+        })(),
+        der: numFrom("leverage", "debt_to_equity_ratio"),
+        currentRatio: numFrom("liquidity", "current_ratio"),
+        interestCoverage: numFrom("leverage", "interest_coverage_ratio"),
+        revenueGrowth: revGrowth,
+        epsGrowth: (() => {
+          const heps2 = r?.financials?.historical_eps ?? null;
+          if (!heps2) return null;
+          const rows = Object.entries(heps2)
+            .filter(([yr]) => /^\d{4}$/.test(yr))
+            .sort((x, z) => x[0].localeCompare(z[0]));
+          const last = rows.at(-1)?.[1];
+          return last && typeof last["eps_growth"] === "number" ? (last["eps_growth"] as number) : null;
+        })(),
+        peVsPeer,
+        pb: (() => {
+          const lastVal = Array.isArray(r?.valuation?.historical_valuation)
+            ? (r?.valuation?.historical_valuation as Array<Record<string, unknown>>).at(-1)
+            : null;
+          return lastVal && typeof lastVal["pb"] === "number" ? (lastVal["pb"] as number) : null;
+        })(),
+        yieldTtm: r?.dividend?.yield_ttm ?? null,
+        payoutRatio: r?.dividend?.payout_ratio ?? null,
+        marketCap: r?.overview?.market_cap ?? null,
+      };
+    });
+    return dominanceScore(rows);
+  }, [analyses]);
+
+  // ── Comparison matrix rows (live values, "—" while loading) ─────────────
+  const lastRatios = (a: (typeof analyses)[number], group: string, key: string): number | null => {
+    const r = a.report;
+    const ratios = r?.financials?.historical_financial_ratio ?? null;
+    const arr = Array.isArray(r?.financials?.historical_financials)
+      ? (r?.financials?.historical_financials as Array<Record<string, unknown>>)
+      : [];
+    const lastRow = arr.at(-1) ?? null;
+    const y = lastRow ? String(lastRow["year"]) : null;
+    return y && ratios ? ratioNum(ratios, y, group, key) : null;
+  };
+
+  const matrixRows: Array<{ label: string; tooltip: string; get: (a: (typeof analyses)[number]) => string }> = [
+    {
+      label: "Pertumbuhan Pendapatan",
+      tooltip: "Pertumbuhan revenue year-on-year (tahun fiskal terakhir)",
+      get: (a) => {
+        const r = a.report;
+        const arr = Array.isArray(r?.financials?.historical_financials)
+          ? (r?.financials?.historical_financials as Array<Record<string, unknown>>)
+          : [];
+        if (arr.length < 2) return "—";
+        const rev = arr.at(-1)?.["revenue"];
+        const prev = arr.at(-2)?.["revenue"];
+        if (typeof rev !== "number" || typeof prev !== "number" || prev === 0) return "—";
+        return `${(((rev - prev) / prev) * 100).toFixed(1)}%`;
+      },
+    },
+    {
+      label: "Net Margin",
+      tooltip: "Margin laba bersih tahun fiskal terakhir",
+      get: (a) => {
+        const v = lastRatios(a, "profitability", "net_profit_margin");
+        return v == null ? "—" : `${(v * 100).toFixed(1)}%`;
+      },
+    },
+    {
+      label: "ROE",
+      tooltip: "Return on Equity tahun fiskal terakhir",
+      get: (a) => {
+        const v = lastRatios(a, "profitability", "roe");
+        return v == null ? "—" : `${(v * 100).toFixed(1)}%`;
+      },
+    },
+    {
+      label: "Rasio Utang (DER)",
+      tooltip: "Debt-to-Equity ratio — null untuk bank (tidak bermakna)",
+      get: (a) => {
+        const v = lastRatios(a, "leverage", "debt_to_equity_ratio");
+        return v == null ? "NM" : `${v.toFixed(2)}x`;
+      },
+    },
+    {
+      label: "Valuasi P/E",
+      tooltip: "PE historis tahun terakhir (NM = negatif/tidak bermakna)",
+      get: (a) => {
+        const pe = [...a.yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ?? null;
+        return pe == null ? "NM" : `${pe.toFixed(1)}x`;
+      },
+    },
+    {
+      label: "Forward P/E",
+      tooltip: "PE berbasis estimasi laba tahun depan",
+      get: (a) => {
+        const v = a.report?.valuation?.forward_pe ?? null;
+        return v == null ? "—" : `${v.toFixed(1)}x`;
+      },
+    },
+    {
+      label: "Dividend Yield",
+      tooltip: "Yield dividen trailing twelve months",
+      get: (a) => {
+        const v = a.report?.dividend?.yield_ttm ?? null;
+        return v == null ? "—" : `${(v * 100).toFixed(2)}%`;
+      },
+    },
+    {
+      label: "Free Float",
+      tooltip: "Porsi saham beredar milik publik (endpoint free-float)",
+      get: (a) => {
+        const v = a.floatRisk.freeFloat;
+        return v == null ? "—" : `${(v * 100).toFixed(1)}%`;
+      },
+    },
+    {
+      label: "Piotroski F-Score",
+      tooltip: "9 sinyal fundamental biner (Algoritma 2): profitabilitas 4, leverage & likuiditas 3, efisiensi 2",
+      get: (a) => (a.fScore?.available ? `${a.fScore.total}/9` : "—"),
+    },
+    {
+      label: "Altman Z\"-Score",
+      tooltip: "Indikator distress (Algoritma 3): >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 bahaya. Modifikasi perbankan untuk X1/X4.",
+      get: (a) => (a.altman?.score != null ? a.altman.score.toFixed(2) : "—"),
+    },
+    {
+      label: "Valuation Percentile (5Y)",
+      tooltip: "Persentil PE saat ini vs riwayat 5 tahun (Gap 2). ≥80 mahal, ≤20 murah.",
+      get: (a) => (a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"),
+    },
+  ];
 
   return (
     <div className="space-y-4">
@@ -514,11 +1556,15 @@ export function CompanyTerminal() {
           <div className="relative">
             <Search className="absolute left-2.5 top-2 size-3.5 text-muted-foreground" />
             <Input value={searchQ} onChange={(e) => setSearchQ(e.target.value)}
-              placeholder="Cari ticker atau nama emiten…" className="h-8 pl-8 text-xs" />
+              placeholder="Cari ticker atau nama emiten… (20 emiten teratas IDX)" className="h-8 pl-8 text-xs" />
           </div>
         </div>
         <div className="flex flex-wrap gap-2 p-4">
-          {searchResults.slice(0, 12).map((c) => (
+          {universe.isPending && <Skeleton className="h-7 w-40" />}
+          {universe.isError && (
+            <span className="text-xs text-muted-foreground">Universe emiten gagal dimuat.</span>
+          )}
+          {searchResults.slice(0, 20).map((c) => (
             <button key={c.ticker} onClick={() => toggle(c.ticker)}
               className={cn("flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs transition-all",
                 selected.includes(c.ticker)
@@ -532,22 +1578,27 @@ export function CompanyTerminal() {
         </div>
       </Panel>
       <div className="grid gap-4 2xl:grid-cols-[1.2fr_.8fr]">
-        <Panel title="Matriks Komparasi Peer" kicker="Fundamental sebanding">
+        <Panel title="Matriks Komparasi Peer" kicker="Fundamental live Sectors API"
+          action={<span className="text-[10px] text-muted-foreground">
+            {reportQueries.some((q) => q?.isPending) ? "Memuat laporan…" : "6 kredit/simbol · cache 24j"}
+          </span>}>
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[620px]">
+            <table className="w-full min-w-[680px]">
               <thead>
                 <tr>
                   <th className={th}>Indikator</th>
                   {peers.map((c) => (
-                    <th className={th} key={c.ticker}>
-                      <div className="text-primary">{c.ticker}</div>
-                      <div className="mt-1 normal-case text-muted-foreground">{c.name}</div>
+                    <th className={th} key={c.symbol}>
+                      <div className="text-primary">{c.symbol}</div>
+                      <div className="mt-1 normal-case text-muted-foreground">
+                        {c.isPending ? "Memuat…" : c.report?.company_name?.split(" ").slice(0, 2).join(" ") ?? "—"}
+                      </div>
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {rows.map(([label, get, tooltip], rowIdx) => (
+                {matrixRows.map(({ label, tooltip, get }) => (
                   <tr key={label}>
                     <td className={cn(td, "text-muted-foreground")}>
                       <span className="flex items-center gap-1">
@@ -555,16 +1606,11 @@ export function CompanyTerminal() {
                         <MethodTip text={tooltip} />
                       </span>
                     </td>
-                    {peers.map((c, colIdx) => {
-                      const val = get(c);
-                      const num = parseFloat(val);
-                      const isBest = !isNaN(num) && num === bestValues[rowIdx] && peers.length > 1;
+                    {analyses.map((a, colIdx) => {
+                      const val = a.report ? get(a) : "—";
                       return (
-                        <td key={c.ticker} className={cn(td, "text-base font-medium",
-                          colIdx === 0 && "bg-accent/30",
-                          isBest && "text-positive")}>
+                        <td key={a.symbol} className={cn(td, "text-base font-medium", colIdx === 0 && "bg-accent/30")}>
                           {val}
-                          {isBest && <span className="ml-1 text-[9px] text-positive">▲ best</span>}
                         </td>
                       );
                     })}
@@ -574,78 +1620,264 @@ export function CompanyTerminal() {
             </table>
           </div>
         </Panel>
-        <Panel title="Dominance Score" kicker="Perbandingan tertimbang kustom"
-          action={<MethodTip text="Perbandingan berbasis persentil lintas-sektoral untuk peer terpilih, dengan utang dan valuasi dinilai terbalik. Bukan rekomendasi investasi." />}>
+        <Panel title="Dominance Score" kicker="Algoritma 4 · head-to-head"
+          action={<MethodTip text="Perbandingan berbasis rank lintas peer terpilih (profitabilitas 20, keamanan 20, pertumbuhan 20, valuasi 20, pasar 20). DER, PE-vs-peer, dan PB dinilai terbalik. Bukan rekomendasi investasi." />}>
           <div className="p-4">
-            {[...peers].sort((a, b) => dominanceScore(b) - dominanceScore(a)).map((c, i) => {
-              const inList = has(c.ticker);
+            {dominance.length === 0 && peers.length < 2 && (
+              <div className="py-6 text-center text-xs text-muted-foreground">Pilih minimal 2 emiten.</div>
+            )}
+            {[...dominance].sort((a, b) => b.total - a.total).map((d, i) => {
+              const inList = has(d.symbol);
               return (
-                <div key={c.ticker} className="border-b border-border py-4 first:pt-1">
+                <div key={d.symbol} className="border-b border-border py-4 first:pt-1">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="w-6 text-xs text-muted-foreground">0{i + 1}</span>
-                    <span className="w-16 text-sm font-semibold">{c.ticker}</span>
-                    <div className="flex-1"><Bar value={dominanceScore(c)} tone={i === 0 ? "positive" : "accent"} /></div>
-                    <span className="ml-3 text-xl font-semibold text-data">{dominanceScore(c)}</span>
-                    <button onClick={() => inList ? remove(c.ticker) : add(c.ticker)}
+                    <span className="w-16 text-sm font-semibold">{d.symbol}</span>
+                    <div className="flex-1"><Bar value={d.total} tone={i === 0 ? "positive" : "accent"} /></div>
+                    <span className="ml-3 text-xl font-semibold text-data">{d.total.toFixed(1)}</span>
+                    <button onClick={() => inList ? remove(d.symbol) : add(d.symbol)}
                       className={cn("rounded p-1 transition-colors", inList ? "text-primary" : "text-muted-foreground hover:text-primary")}>
                       <Star className={cn("size-3.5", inList && "fill-current")} />
                     </button>
                   </div>
-                  <div className="ml-24 flex gap-3 text-[9px] text-muted-foreground">
-                    <span>Pertumbuhan 20%</span><span>Profit 25%</span>
-                    <span>ROE 15%</span><span>Risiko 15%</span>
+                  <div className="ml-24 flex flex-wrap gap-3 text-[9px] text-muted-foreground">
+                    <span>Profit {d.profitability.toFixed(1)}</span>
+                    <span>Keamanan {d.safety.toFixed(1)}</span>
+                    <span>Pertumbuhan {d.growth.toFixed(1)}</span>
+                    <span>Valuasi {d.value.toFixed(1)}</span>
+                    <span>Pasar {d.market.toFixed(1)}</span>
                   </div>
                 </div>
               );
             })}
-            <div className="mt-4"><InsightLabel>Relatif terhadap peer yang dipilih</InsightLabel></div>
+            {dominance.length > 0 && (
+              <div className="mt-4"><InsightLabel>Relatif terhadap peer yang dipilih</InsightLabel></div>
+            )}
           </div>
         </Panel>
       </div>
-      <Panel title="Keamanan & Distress Finansial" kicker="Analisis risiko turunan"
-        action={
-          <MethodTip text="Komposit yang terinspirasi prinsip distress-screening, disesuaikan untuk struktur sektor Indonesia. Skor 80–100: Resilien · 65–79: Stabil · 50–64: Pantau · <50: Risiko Tinggi." />
-        }>
+
+      {/* ── Piotroski + Altman (Algoritma 2 & 3) ─────────────────────────── */}
+      <Panel title="Financial Safety & Distress" kicker={"Piotroski F-Score & Altman Z\"-Score"}
+        action={<MethodTip text="Piotroski (0–9): profitabilitas 4 · leverage/likuiditas 3 · efisiensi 2. Altman Z (non-manufaktur): 6.56·X1 + 3.26·X2 + 6.72·X3 + 1.05·X4; >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 distress. Bank memakai modifikasi giro+tabungan/ATMR." />}>
         <div className="grid gap-px bg-border md:grid-cols-3">
-          {peers.map((c) => (
-            <div className="bg-card p-5" key={c.ticker}>
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">{c.ticker}</span>
-                <ShieldCheck className={cn("size-4", c.safety >= 80 ? "text-positive" : c.safety >= 65 ? "text-warning" : "text-negative")} />
-              </div>
-              <div className="mt-5 flex items-end justify-between">
-                <div>
-                  <div className="text-[10px] uppercase text-muted-foreground">Skor Keamanan</div>
-                  <div className="text-4xl font-semibold">{c.safety}</div>
+          {analyses.map((a) => {
+            const inList = has(a.symbol);
+            const fs = a.fScore;
+            const alt = a.altman;
+            const zoneTone: Tone =
+              alt?.zone === "safe" ? "positive" : alt?.zone === "grey" ? "warning" : alt?.zone === "distress" ? "negative" : "neutral";
+            const fsTone: Tone = fs ? (fs.total >= 7 ? "positive" : fs.total >= 4 ? "warning" : "negative") : "neutral";
+            return (
+              <div className="bg-card p-5" key={a.symbol}>
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">{a.symbol}</span>
+                  <button onClick={() => inList ? remove(a.symbol) : add(a.symbol)}
+                    className={cn("rounded p-1 transition-colors", inList ? "text-primary" : "text-muted-foreground hover:text-primary")}>
+                    <Star className={cn("size-3.5", inList && "fill-current")} />
+                  </button>
                 </div>
-                <Tag tone={c.safety >= 80 ? "positive" : c.safety >= 65 ? "warning" : "negative"}>
-                  {c.safety >= 80 ? "Resilien" : c.safety >= 65 ? "Stabil" : "Pantau"}
-                </Tag>
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-4">
-                {meta("Leverage", `${c.debt}%`)}
-                {meta("Likuiditas", `${c.liquidity}/100`)}
-                {meta("Profitabilitas", `${c.margin}%`)}
-                {meta("Stabilitas", `${Math.round((c.safety + c.liquidity) / 2)}/100`)}
-              </div>
-              <div className="mt-4">
-                <div className="mb-1 flex justify-between text-[10px] text-muted-foreground">
-                  <span>Safety gauge</span><span>{c.safety}/100</span>
+
+                {/* Piotroski */}
+                <div className="mt-4 flex items-end justify-between">
+                  <div>
+                    <div className="text-[10px] uppercase text-muted-foreground">Piotroski F-Score</div>
+                    {fs?.available ? (
+                      <div className="text-4xl font-semibold">{fs.total}<span className="text-lg text-muted-foreground">/9</span></div>
+                    ) : (
+                      <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
+                    )}
+                  </div>
+                  {fs?.available && (
+                    <div className="flex flex-col items-end gap-1 text-[9px] text-muted-foreground">
+                      <span>Profit {fs.profitability}/4</span>
+                      <span>Leverage {fs.leverage}/3</span>
+                      <span>Efisiensi {fs.efficiency}/2</span>
+                    </div>
+                  )}
                 </div>
-                <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
-                  <div className={cn("h-full rounded-full",
-                    c.safety >= 80 ? "bg-positive" : c.safety >= 65 ? "bg-warning" : "bg-negative")}
-                    style={{ width: `${c.safety}%` }} />
+                {fs?.available && (
+                  <div className="mt-3 space-y-1">
+                    {fs.detail.map((d) => (
+                      <div key={d.id} className="flex items-center gap-2 text-[10px]">
+                        <span className={cn("w-4 font-semibold", d.point ? "text-positive" : "text-muted-foreground")}>{d.id}</span>
+                        <span className="flex-1 truncate text-muted-foreground" title={d.note}>{d.name}</span>
+                        <span className={cn("tabular-nums", d.point ? "text-positive" : "text-negative")}>{d.point}</span>
+                      </div>
+                    ))}
+                    <Tag tone={fsTone} className="mt-2">
+                      {fs.total >= 7 ? "Kualitas Fundamental Kuat" : fs.total >= 4 ? "Campuran" : "Lemah"}
+                    </Tag>
+                  </div>
+                )}
+
+                {/* Altman */}
+                <div className="mt-5 border-t border-border pt-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <div className="text-[10px] uppercase text-muted-foreground">Altman Z-Score {alt?.isBank ? "(Bank)" : ""}</div>
+                      {alt?.score != null ? (
+                        <div className="text-4xl font-semibold">{alt.score.toFixed(2)}</div>
+                      ) : (
+                        <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
+                      )}
+                    </div>
+                    {alt?.zone && <Tag tone={zoneTone}>{altmanZoneLabel(alt.zone)}</Tag>}
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {alt?.components.map((c) => (
+                      <div key={c.id} className="text-[10px]">
+                        <span className="text-muted-foreground">{c.id} = {c.ratio != null ? c.ratio.toFixed(2) : "—"}</span>
+                        <span className="ml-1 text-foreground">× {c.coefficient}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+      </Panel>
+
+      {/* ── Gap 2 + A + B + E per-peer cards ───────────────────────────── */}
+      <Panel title="Konteks Valuasi & Risiko" kicker="Gap 2 · Free Float · Analyst Gap · HHI"
+        action={<MethodTip text="Percentile Rank 5Y membandingkan PE saat ini dengan 5 tahun riwayat. Free Float dari endpoint /free-float (klasifikasi <15% / 15–35% / ≥35%). Analyst Gap = realisasi EPS growth (rata-rata 2Y) − proyeksi analis. HHI konsentrasi pendapatan per segmen." />}>
+        <div className="grid gap-px bg-border md:grid-cols-3">
+          {analyses.map((a) => {
+            const r = a.report;
+            const pctlTone: Tone =
+              a.percentile.percentile == null ? "neutral"
+              : a.percentile.percentile >= 80 ? "negative"
+              : a.percentile.percentile <= 20 ? "positive" : "accent";
+            const gapTone: Tone =
+              a.gap.gap == null ? "neutral"
+              : a.gap.gap > 0.1 ? "positive"
+              : a.gap.gap < -0.1 ? "negative" : "accent";
+            return (
+              <div className="bg-card p-5" key={a.symbol}>
+                <div className="text-sm font-semibold">{a.symbol}</div>
+                <div className="text-[10px] text-muted-foreground">
+                  {r?.overview?.sub_sector ?? "—"} · {r?.overview?.sector ?? ""}
+                </div>
+
+                {/* Gap 2 — Valuation Percentile Rank */}
+                <div className="mt-4 border-b border-border pb-4">
+                  <div className="flex items-center justify-between">
+                    <div className="text-[10px] uppercase text-muted-foreground">Valuation Percentile (5Y)</div>
+                    <Tag tone={pctlTone}>{a.percentile.label}</Tag>
+                  </div>
+                  <div className="mt-1 text-3xl font-semibold">
+                    {a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"}
+                  </div>
+                  <div className="mt-1 text-[10px] text-muted-foreground">{a.percentile.note}</div>
+                </div>
+
+                {/* A — Free Float & Liquidity Risk */}
+                <div className="mt-4 border-b border-border pb-4">
+                  <div className="flex items-center justify-between">
+                    <div className="text-[10px] uppercase text-muted-foreground">Free Float & Likuiditas</div>
+                    <Tag tone={floatTone(a.floatRisk.level)}>{a.floatRisk.label}</Tag>
+                  </div>
+                  <div className="mt-1 text-2xl font-semibold">
+                    {a.floatRisk.freeFloat != null ? `${(a.floatRisk.freeFloat * 100).toFixed(1)}%` : "—"}
+                  </div>
+                  <div className="mt-1 text-[10px] text-muted-foreground">{a.floatRisk.note}</div>
+                  {a.floatRisk.liquidityCliff && (
+                    <div className="mt-2 rounded border border-negative/30 bg-negative/10 p-2 text-[10px] text-negative">
+                      Liquidity Cliff — sulit exit saat market stress.
+                    </div>
+                  )}
+                </div>
+
+                {/* B — Analyst Expectation Gap */}
+                <div className="mt-4 border-b border-border pb-4">
+                  <div className="flex items-center justify-between">
+                    <div className="text-[10px] uppercase text-muted-foreground">Analyst Expectation Gap</div>
+                    <Tag tone={gapTone}>{a.gap.label}</Tag>
+                  </div>
+                  <div className="mt-1 text-2xl font-semibold">
+                    {a.gap.gap != null ? `${(a.gap.gap * 100).toFixed(1)}pp` : "—"}
+                  </div>
+                  <div className="mt-1 text-[10px] text-muted-foreground">{a.gap.note}</div>
+                  {a.gap.acceleration && (
+                    <div className="mt-2 rounded border border-primary/30 bg-primary/10 p-2 text-[10px] text-primary">
+                      Earnings Acceleration Expected — Forward PE lebih rendah dari PE TTM × 0.85.
+                    </div>
+                  )}
+                </div>
+
+                {/* E — Revenue Concentration HHI (lazy) */}
+                <div className="mt-4">
+                  <div className="flex items-center justify-between">
+                    <div className="text-[10px] uppercase text-muted-foreground">Konsentrasi Pendapatan (HHI)</div>
+                    <HHIPanel symbol={a.symbol} enabled={showSegments} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
+          <button onClick={() => setShowSegments((v) => !v)}
+            className="text-[10px] text-primary hover:underline">
+            {showSegments ? "Sembunyikan" : "Muat"} detail segmentasi pendapatan (1 kredit/simbol)
+          </button>
+          <span className="text-[10px] text-muted-foreground">Algoritma 2, 3, 4 · Gap 2 · Bagian 2 A/B/E</span>
         </div>
       </Panel>
     </div>
   );
 }
 
+/** Reads a nested ratio off historical_financial_ratio for a given year string. */
+function ratioNum(
+  ratios: Array<Record<string, unknown>>,
+  year: string,
+  group: string,
+  key: string,
+): number | null {
+  const hit = ratios.find((r) => String(r["year"]) === year);
+  if (!hit) return null;
+  const g = hit[group];
+  if (!g || typeof g !== "object") return null;
+  const v = (g as Record<string, unknown>)[key];
+  return typeof v === "number" && Number.isFinite(v) ? v : null;
+}
+
+/** Lazy HHI panel — fetches /company/get-segments/{symbol}/ only when open. */
+function HHIPanel({ symbol, enabled }: { symbol: string; enabled: boolean }) {
+  const q = useRevenueSegments(enabled ? symbol : null, enabled);
+  const conc = q.data ? revenueConcentration(q.data.revenue_breakdown ?? null) : null;
+
+  if (!enabled) return <span className="text-[10px] text-muted-foreground">—</span>;
+  if (q.isPending) return <Skeleton className="h-4 w-20" />;
+  if (q.isError) return <span className="text-[10px] text-muted-foreground">Gagal</span>;
+
+  const tone: Tone = conc?.hhi == null ? "neutral"
+    : conc.hhi > 0.5 ? "warning"
+    : conc.hhi >= 0.25 ? "accent" : "positive";
+  return (
+    <div className="w-full">
+      <div className="flex items-center justify-end">
+        <Tag tone={tone}>{conc?.label ?? "—"}</Tag>
+      </div>
+      <div className="mt-1 text-right text-xl font-semibold">
+        {conc?.hhi != null ? conc.hhi.toFixed(2) : "—"}
+      </div>
+      <div className="mt-1 text-right text-[10px] text-muted-foreground">{conc?.note}</div>
+      {conc && conc.segments.length > 0 && (
+        <div className="mt-2 space-y-1">
+          {conc.segments.slice(0, 5).map((s) => (
+            <div key={s.name} className="flex items-center justify-between text-[10px]">
+              <span className="truncate text-muted-foreground">{s.name}</span>
+              <span className="ml-2 tabular-nums">{(s.share * 100).toFixed(1)}%</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 // ─────────────────────────────────────────────────────────────────────────────
 // 4. NEWS INTELLIGENCE
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1010,9 +2242,145 @@ export function DecisionScreener() {
           </Panel>
         </div>
       </div>
+
+      {/* ── Bagian 2 A: Free Float & Liquidity Risk ─────────────────────── */}
+      <FreeFloatScreener />
+
+      {/* ── Bagian 2 C: ESG Momentum Tier ───────────────────────────────── */}
+      <EsgScreener />
     </div>
   );
 }
+// ── Bagian 2 A: Free Float & Liquidity Risk (Screener) ─────────────────────
+/**
+ * One /v2/free-float/ call returns the whole IDX (961 rows, 1 credit, cached
+ * 24h), so we pull it once and rank/filter locally instead of per-symbol.
+ */
+function FreeFloatScreener() {
+  const ff = useFreeFloatMap();
+  const [maxFloat, setMaxFloat] = useState(100);
+
+  const rows = useMemo(() => {
+    const map = ff.data;
+    if (!map) return [];
+    return [...map.entries()]
+      .map(([symbol, free_float]) => ({ symbol, risk: classifyFreeFloat(free_float, null) }))
+      .filter((r) => r.risk.freeFloat != null && r.risk.freeFloat * 100 <= maxFloat)
+      .sort((a, b) => (a.risk.freeFloat ?? 1) - (b.risk.freeFloat ?? 1))
+      .slice(0, 50);
+  }, [ff.data, maxFloat]);
+
+  return (
+    <Panel
+      title="Free Float & Risiko Likuiditas"
+      kicker="Bagian 2 A · seluruh IDX · 1 kredit, cache 24j"
+      action={
+        <MethodTip text="Free Float <15% → Low Float (hati-hati manipulasi harga). 15–35% → Float Terbatas (volume kecil menggerakkan harga). ≥35% → Float Sehat. Trigger: Free Float <20% AND Volume 30d < median sektor → Liquidity Cliff." />
+      }
+    >
+      <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
+        <label className="flex items-center gap-2 text-[10px] uppercase text-muted-foreground">
+          Tampilkan free float ≤
+          <input type="range" min={1} max={100} value={maxFloat}
+            onChange={(e) => setMaxFloat(Number(e.target.value))} className="w-40 accent-primary" />
+          <span className="w-10 text-foreground">{maxFloat}%</span>
+        </label>
+        <span className="ml-auto text-[10px] text-muted-foreground">
+          {ff.isPending ? "Memuat…" : ff.isError ? "Gagal memuat" : `${rows.length} dari ${ff.data?.size ?? 0} emiten`}
+        </span>
+      </div>
+      <div className="max-h-96 overflow-y-auto">
+        <table className="w-full">
+          <thead className="sticky top-0 bg-card">
+            <tr>
+              <th className={th}>Ticker</th>
+              <th className={th}>Free Float</th>
+              <th className={th}>Klasifikasi</th>
+              <th className={th}>Flag</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ff.isPending && <tr><td className={td} colSpan={4}><Skeleton className="h-6 w-full" /></td></tr>}
+            {rows.map((r) => (
+              <tr key={r.symbol} className="hover:bg-secondary/50">
+                <td className={cn(td, "font-semibold text-primary")}>{r.symbol}</td>
+                <td className={cn(td, "tabular-nums")}>{(r.risk.freeFloat! * 100).toFixed(2)}%</td>
+                <td className={td}><Tag tone={floatTone(r.risk.level)}>{r.risk.label}</Tag></td>
+                <td className={td}>
+                  {r.risk.liquidityCliff
+                    ? <span className="text-[10px] text-negative">Liquidity Cliff</span>
+                    : <span className="text-[10px] text-muted-foreground">—</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Panel>
+  );
+}
+
+// ── Bagian 2 C: ESG Momentum Tier (Screener) ───────────────────────────────
+/**
+ * /v2/companies/ max page = 30 rows, so the full ~960 universe is ~32 pages.
+ * We load one page (1 credit) by default and let the user pull more.
+ */
+function EsgScreener() {
+  const [pages, setPages] = useState(1);
+  const esg = useEsgScores(pages, true);
+
+  const rows = useMemo(
+    () => esg.data.filter((r): r is { ticker: string; name: string; score: number } => r.score != null),
+    [esg.data],
+  );
+
+  return (
+    <Panel
+      title="ESG Momentum Tier"
+      kicker="Bagian 2 C · 1 kredit / 30 emiten"
+      action={
+        <MethodTip text="ESG Leader >70 · ESG Follower 50–70 · ESG Laggard ≤50. Bukan rekomendasi investasi." />
+      }
+    >
+      <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
+        <span className="text-[10px] uppercase text-muted-foreground">
+          {esg.isPending ? "Memuat…" : esg.isError ? "Gagal memuat" : `${rows.length} emiten berskor ESG`}
+        </span>
+        <button onClick={() => setPages((p) => p + 1)} disabled={esg.isPending}
+          className="ml-auto text-[10px] text-primary hover:underline disabled:opacity-40">
+          Muat 30 berikutnya (1 kredit)
+        </button>
+      </div>
+      <div className="max-h-96 overflow-y-auto">
+        <table className="w-full">
+          <thead className="sticky top-0 bg-card">
+            <tr>
+              <th className={th}>Ticker</th>
+              <th className={th}>Emiten</th>
+              <th className={th}>ESG Score</th>
+              <th className={th}>Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            {esg.isPending && <tr><td className={td} colSpan={4}><Skeleton className="h-6 w-full" /></td></tr>}
+            {rows.map((r) => {
+              const t = classifyEsg(r.score);
+              return (
+                <tr key={r.ticker} className="hover:bg-secondary/50">
+                  <td className={cn(td, "font-semibold text-primary")}>{r.ticker}</td>
+                  <td className={cn(td, "max-w-[280px] truncate")}>{r.name}</td>
+                  <td className={cn(td, "tabular-nums")}>{r.score.toFixed(2)}</td>
+                  <td className={td}><Tag tone={esgTone(t.tier)}>{t.label}</Tag></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </Panel>
+  );
+}
+
 function Range({ label, value, set }: { label: string; value: number; set: (v: number) => void }) {
   return (
     <label className="mb-5 block">

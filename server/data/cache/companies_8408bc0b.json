@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "symbol": "AALI.JK",
+      "company_name": "Astra Agro Lestari Tbk",
+      "query_values": {
+        "eps_growth[2025]": 0.2825
+      }
+    },
+    {
+      "symbol": "ABDA.JK",
+      "company_name": "Asuransi Bina Dana Arta Tbk",
+      "query_values": {
+        "eps_growth[2025]": 0.2463
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 407,
+    "showing": 2,
+    "limit": 2,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 2,
+    "previous_offset": null
+  }
+}

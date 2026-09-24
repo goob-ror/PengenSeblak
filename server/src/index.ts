@@ -15,9 +15,12 @@ import { RedisStore } from "rate-limit-redis";
 import crypto from "crypto";
 
 import { testConnection } from "./config/db";
+import { connectRedis } from "./config/redis";
 import { errorHandler } from "./middleware/errorHandler";
 import authRouter from "./routes/auth";
 import healthRouter from "./routes/health";
+import sectorsRouter from "./routes/sectors";
+import { startPrefetchSchedule } from "./jobs/prefetch";
 
 // ─── Validation guard ────────────────────────────────────────────────────────
 if (process.env.NODE_ENV === "production" && !process.env.JWT_SECRET) {
@@ -135,21 +138,8 @@ app.use("/api", healthRouter);
 
 // ─── Bootstrap (async — registers rate limiters + auth routes after Redis init) ─
 async function bootstrap() {
-  // 1. Try Redis for distributed rate limiting (optional)
-  let redisClient: Redis | null = null;
-  try {
-    const client = new Redis(process.env.REDIS_URL ?? "redis://localhost:6379", {
-      enableOfflineQueue: false,
-      connectTimeout: 3000,
-      lazyConnect: true,
-      maxRetriesPerRequest: 1,
-    });
-    await client.connect();
-    redisClient = client;
-    console.log("✅  Redis terhubung — menggunakan Redis rate limit store.");
-  } catch {
-    console.warn("⚠️   Redis tidak tersedia — menggunakan in-memory rate limit store.");
-  }
+  // 1. Try Redis for rate limiting + API cache
+  const redisClient = await connectRedis();
 
   // 2. Build rate limiters after Redis is ready
   function buildStore(prefix: string) {
@@ -192,6 +182,9 @@ async function bootstrap() {
   app.use(generalLimiter);
   app.use("/api/auth", loginLimiter);
   app.use("/api/auth", authRouter);
+  
+  // Sectors API Proxy
+  app.use("/api/sectors", sectorsRouter);
 
   // 4. 404 catch-all (after all routes are registered)
   app.use((_req, res) => {
@@ -210,7 +203,11 @@ async function bootstrap() {
     console.warn("⚠️   Server tetap berjalan — pastikan MySQL aktif sebelum menggunakan fitur data.");
   }
 
-  // 7. Start server
+  // 7. Start morning prefetch scheduler (Lapis 4 - AGENTS.md)
+  // Warms up cache before market opens at 09:00 WIB
+  startPrefetchSchedule();
+  
+  // 8. Start server
   app.listen(PORT, () => {
     console.log(`🚀  Pengen Seblak API berjalan di http://localhost:${PORT}`);
     console.log(`    NODE_ENV  : ${process.env.NODE_ENV ?? "development"}`);

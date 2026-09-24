@@ -1,0 +1,64 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:38:07.081Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "esg_score > 50",
+      "limit": "5",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 123
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "BYAN.JK",
+        "company_name": "Bayan Resources Tbk",
+        "query_values": {
+          "esg_score": 52.73
+        }
+      },
+      {
+        "symbol": "CUAN.JK",
+        "company_name": "PT Petrindo Jaya Kreasi Tbk",
+        "query_values": {
+          "esg_score": 54.64
+        }
+      },
+      {
+        "symbol": "DSSA.JK",
+        "company_name": "Dian Swastatika Sentosa Tbk",
+        "query_values": {
+          "esg_score": 51.33
+        }
+      },
+      {
+        "symbol": "FIRE.JK",
+        "company_name": "PT Alfa Energi Investama Tbk",
+        "query_values": {
+          "esg_score": 54.71
+        }
+      },
+      {
+        "symbol": "GEMS.JK",
+        "company_name": "Golden Energy Mines Tbk",
+        "query_values": {
+          "esg_score": 50.21
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 11,
+      "showing": 5,
+      "limit": 5,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 5,
+      "previous_offset": null
+    }
+  }
+}

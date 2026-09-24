@@ -1,0 +1,118 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T10:49:03.693Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Transportation' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 305
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "ASSA.JK",
+        "company_name": "Adi Sarana Armada Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 5.35697454892729,
+          "roe_ttm": 0.121763616342546,
+          "net_profit_margin[2025]": 0.0697471249672572,
+          "der_mrq": 1.27897753165977
+        }
+      },
+      {
+        "symbol": "BIRD.JK",
+        "company_name": "PT Blue Bird Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 6.42699584991408,
+          "roe_ttm": 0.099683091915866,
+          "net_profit_margin[2025]": 0.111446607771783,
+          "der_mrq": 0.34886682203045
+        }
+      },
+      {
+        "symbol": "BPTR.JK",
+        "company_name": "PT Batavia Prosperindo Trans Tbk.",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 7.73916972183063,
+          "roe_ttm": 0.0612552038554015,
+          "net_profit_margin[2025]": 0.0578695480818707,
+          "der_mrq": 2.25417172453743
+        }
+      },
+      {
+        "symbol": "HELI.JK",
+        "company_name": "PT Jaya Trishindo Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 7.79516257924207,
+          "roe_ttm": 0.284187604669139,
+          "net_profit_margin[2025]": 0.170803350928283,
+          "der_mrq": 0.793101042007476
+        }
+      },
+      {
+        "symbol": "IMJS.JK",
+        "company_name": "PT Indomobil Multi Jasa Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 10.4373788403848,
+          "roe_ttm": 0.0348713283335585,
+          "net_profit_margin[2025]": 0.0212362026478747,
+          "der_mrq": 4.8437604328561
+        }
+      },
+      {
+        "symbol": "SAFE.JK",
+        "company_name": "Steady Safe Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 21.8804657487049,
+          "roe_ttm": 0.415593315129338,
+          "net_profit_margin[2025]": 0.188484865776079,
+          "der_mrq": 0
+        }
+      },
+      {
+        "symbol": "TRJA.JK",
+        "company_name": "PT Transkon Jaya Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 628.385043779983,
+          "roe_ttm": 0.000770769533210527,
+          "net_profit_margin[2025]": 0.00638955221587599,
+          "der_mrq": 0.619629096632435
+        }
+      },
+      {
+        "symbol": "WEHA.JK",
+        "company_name": "PT WEHA Transportasi Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 8.2132332900854,
+          "roe_ttm": 0.0770907085710264,
+          "net_profit_margin[2025]": 0.069851486488623,
+          "der_mrq": 0.424261839396527
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 8,
+      "showing": 8,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

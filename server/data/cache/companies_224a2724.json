@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "symbol": "WOWS.JK",
+      "company_name": "PT Ginting Jaya Energi Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 8.80967417964749,
+        "roe_ttm": 0.026992747904969,
+        "net_profit_margin[2025]": 0.0656021981803024,
+        "der_mrq": 0.103665172583583
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 61,
+    "showing": 1,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

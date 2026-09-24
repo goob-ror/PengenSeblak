@@ -1,0 +1,284 @@
+{
+  "results": [
+    {
+      "symbol": "BAJA.JK",
+      "company_name": "Saranacentral Bajatama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 784800000000,
+        "net_profit_margin[2025]": -0.0441833918643232
+      }
+    },
+    {
+      "symbol": "IPOL.JK",
+      "company_name": "Indopoly Swakarsa Industry Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 773205541080,
+        "net_profit_margin[2025]": 0.00435593831225738
+      }
+    },
+    {
+      "symbol": "SMGA.JK",
+      "company_name": "PT Sumber Mineral Global Abadi Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 770000000000,
+        "net_profit_margin[2025]": 0.0248383395358574
+      }
+    },
+    {
+      "symbol": "KDSI.JK",
+      "company_name": "Kedawung Setia Industrial Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 751680000000,
+        "net_profit_margin[2025]": 0.0151447030539152
+      }
+    },
+    {
+      "symbol": "PTMR.JK",
+      "company_name": "PT Master Print Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 713218000000,
+        "net_profit_margin[2025]": -0.204174479839658
+      }
+    },
+    {
+      "symbol": "WTON.JK",
+      "company_name": "Wijaya Karya Beton",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 662375461600,
+        "net_profit_margin[2025]": 0.0111603566600171
+      }
+    },
+    {
+      "symbol": "BRNA.JK",
+      "company_name": "Berlina Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 646212600000,
+        "net_profit_margin[2025]": 0.0121290745015927
+      }
+    },
+    {
+      "symbol": "SMLE.JK",
+      "company_name": "PT Sinergi Multi Lestarindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 619288710768,
+        "net_profit_margin[2025]": 0.00116819964611208
+      }
+    },
+    {
+      "symbol": "TIRT.JK",
+      "company_name": "Tirta Mahakam Resources Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 596947102500,
+        "net_profit_margin[2025]": -3.02549135676561
+      }
+    },
+    {
+      "symbol": "SULI.JK",
+      "company_name": "PT SLJ Global Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 543586807896,
+        "net_profit_margin[2025]": -0.22048427077332
+      }
+    },
+    {
+      "symbol": "NIKL.JK",
+      "company_name": "Pelat Timah Nusantara Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 539996900000,
+        "net_profit_margin[2025]": 0.00696137856177272
+      }
+    },
+    {
+      "symbol": "SMKL.JK",
+      "company_name": "PT Satyamitra Kemas Lestari Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 529803219950,
+        "net_profit_margin[2025]": 0.0219824002852177
+      }
+    },
+    {
+      "symbol": "MDKI.JK",
+      "company_name": "PT Emdeki Utama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 490849100388,
+        "net_profit_margin[2025]": 0.107815799532543
+      }
+    },
+    {
+      "symbol": "CLPI.JK",
+      "company_name": "Colorpak Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 487078215000,
+        "net_profit_margin[2025]": 0.0696274192305495
+      }
+    },
+    {
+      "symbol": "IGAR.JK",
+      "company_name": "Champion Pacific Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 424923514800,
+        "net_profit_margin[2025]": 0.0648222152217328
+      }
+    },
+    {
+      "symbol": "ASPR.JK",
+      "company_name": "PT Asia Pramulia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 398664000000,
+        "net_profit_margin[2025]": 0.0349970569345628
+      }
+    },
+    {
+      "symbol": "APLI.JK",
+      "company_name": "Asiaplast Industries Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 381547992000,
+        "net_profit_margin[2025]": 0.0187543726612767
+      }
+    },
+    {
+      "symbol": "BMSR.JK",
+      "company_name": "Bintang Mitra Semestaraya Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 380217607872,
+        "net_profit_margin[2025]": 0.0128866040584025
+      }
+    },
+    {
+      "symbol": "AKPI.JK",
+      "company_name": "Argha Karya Prima Ind. Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 312246480000,
+        "net_profit_margin[2025]": 0.00430900107185539
+      }
+    },
+    {
+      "symbol": "BATR.JK",
+      "company_name": "PT Benteng Api Technic Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 284353511182,
+        "net_profit_margin[2025]": 0.0904078064410647
+      }
+    },
+    {
+      "symbol": "ALMI.JK",
+      "company_name": "Alumindo Light Metal Industry Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 282384000000,
+        "net_profit_margin[2025]": -32.3354265400442
+      }
+    },
+    {
+      "symbol": "SOLA.JK",
+      "company_name": "PT Xolare RCR Energy Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 279426875000,
+        "net_profit_margin[2025]": 0.133672518224353
+      }
+    },
+    {
+      "symbol": "OKAS.JK",
+      "company_name": "Ancora Indonesia Resources Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 270573204810,
+        "net_profit_margin[2025]": -0.011477379968479
+      }
+    },
+    {
+      "symbol": "BTON.JK",
+      "company_name": "Betonjaya Manunggal Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 257760000000,
+        "net_profit_margin[2025]": 0.186411443417
+      }
+    },
+    {
+      "symbol": "INTD.JK",
+      "company_name": "Inter-Delta Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 211874424000,
+        "net_profit_margin[2025]": -0.0674188163363348
+      }
+    },
+    {
+      "symbol": "PPRI.JK",
+      "company_name": "PT Paperocks Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 178454529808,
+        "net_profit_margin[2025]": 0.0191335190024193
+      }
+    },
+    {
+      "symbol": "FWCT.JK",
+      "company_name": "PT Wijaya Cahaya Timber Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 174707000000,
+        "net_profit_margin[2025]": 0.00666622112491807
+      }
+    },
+    {
+      "symbol": "INCI.JK",
+      "company_name": "Intanwijaya Internasional Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 167163576685,
+        "net_profit_margin[2025]": 0.0674176003723825
+      }
+    },
+    {
+      "symbol": "EPAC.JK",
+      "company_name": "PT Megalestari Epack Sentosaraya Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 165170000000,
+        "net_profit_margin[2025]": -0.0198593394295165
+      }
+    },
+    {
+      "symbol": "AYLS.JK",
+      "company_name": "PT Agro Yasa Lestari Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 160443568368,
+        "net_profit_margin[2025]": -0.316410097298793
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 99,
+    "showing": 30,
+    "limit": 30,
+    "offset": 60,
+    "has_next": true,
+    "has_previous": true,
+    "next_offset": 90,
+    "previous_offset": 30
+  }
+}

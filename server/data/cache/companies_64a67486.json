@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "symbol": "ABDA.JK",
+      "company_name": "Asuransi Bina Dana Arta Tbk",
+      "query_values": {
+        "sector": "Financials"
+      }
+    },
+    {
+      "symbol": "ADMF.JK",
+      "company_name": "Adira Dinamika Multi Finance Tbk",
+      "query_values": {
+        "sector": "Financials"
+      }
+    },
+    {
+      "symbol": "AGRO.JK",
+      "company_name": "PT Bank Raya Indonesia Tbk",
+      "query_values": {
+        "sector": "Financials"
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 107,
+    "showing": 3,
+    "limit": 3,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 3,
+    "previous_offset": null
+  }
+}

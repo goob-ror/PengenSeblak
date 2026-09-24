@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:10:59.616Z",
+    "endpoint": "/subsector/report/software-it-services/",
+    "query_params": {
+      "sections": "growth,stability"
+    },
+    "http_status": 200,
+    "credits_used": 2,
+    "cache_hit": false,
+    "response_time_ms": 150
+  },
+  "data": {
+    "sector": "Technology",
+    "sub_sector": "Software & IT Services",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.698161578253726,
+          "avg_annual_revenue_growth": 0.788465874200207
+        },
+        "2020": {
+          "avg_annual_earning_growth": 0.532109601129566,
+          "avg_annual_revenue_growth": 0.449504859731688
+        },
+        "2021": {
+          "avg_annual_earning_growth": 0.669302293852512,
+          "avg_annual_revenue_growth": 0.338659075904942
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.484021397733357,
+          "avg_annual_revenue_growth": 0.433107008066705
+        },
+        "2023": {
+          "avg_annual_earning_growth": -0.0634587350770336,
+          "avg_annual_revenue_growth": 0.186164942258
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.577458900231806,
+          "avg_annual_revenue_growth": 0.320775980893162
+        },
+        "2025": {
+          "avg_annual_earning_growth": 1.38329992948528,
+          "avg_annual_revenue_growth": 0.368439452239685
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.51389520579323,
+          "revenue_growth": -0.0269066131362786
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 1.89463970658608,
+          "revenue_growth": 0.284786032094435
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.47082044025269,
+      "weighted_rsd_close": 0.2065741766079012
+    }
+  }
+}

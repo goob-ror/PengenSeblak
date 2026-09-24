@@ -71,7 +71,11 @@ export function Tag({
     </span>
   );
 }
-export function Change({ value, suffix = "%" }: { value: number; suffix?: string }) {
+export function Change({ value, suffix = "%" }: { value: number | null | undefined; suffix?: string }) {
+  // Guard against null/undefined/NaN coming from API responses
+  if (value == null || !isFinite(value)) {
+    return <span className="text-data font-medium text-muted-foreground">—</span>;
+  }
   return (
     <span className={cn("text-data font-medium", value >= 0 ? "text-positive" : "text-negative")}>
       {value >= 0 ? "+" : ""}

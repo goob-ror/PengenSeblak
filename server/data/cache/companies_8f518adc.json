@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "symbol": "SURE.JK",
+      "company_name": "PT Super Energy Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 1848.96814291445,
+        "roe_ttm": 0.0111657249507414,
+        "net_profit_margin[2025]": -0.0761901950500287
+      }
+    },
+    {
+      "symbol": "TCPI.JK",
+      "company_name": "PT Transcoal Pacific Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 54.1424340430414,
+        "roe_ttm": 0.0605563574903898,
+        "net_profit_margin[2025]": 0.0611403532600178
+      }
+    },
+    {
+      "symbol": "TEBE.JK",
+      "company_name": "PT Dana Brata Luhur Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 21.0540510339967,
+        "roe_ttm": 0.119857576882631,
+        "net_profit_margin[2025]": 0.27468642206753
+      }
+    },
+    {
+      "symbol": "TPMA.JK",
+      "company_name": "Trans Power Marine Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 8.41605963014925,
+        "roe_ttm": 0.0759619152950868,
+        "net_profit_margin[2025]": 0.157495745050833
+      }
+    },
+    {
+      "symbol": "UNIQ.JK",
+      "company_name": "PT Ulima Nitra Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 14.2038073335985,
+        "roe_ttm": 0.0551679413148035,
+        "net_profit_margin[2025]": 0.0657919202844105
+      }
+    },
+    {
+      "symbol": "WINS.JK",
+      "company_name": "Wintermar Offshore Marine Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 7.00643049463383,
+        "roe_ttm": 0.0879742174453881,
+        "net_profit_margin[2025]": 0.246344312712322
+      }
+    },
+    {
+      "symbol": "WOWS.JK",
+      "company_name": "PT Ginting Jaya Energi Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "pe_ttm": 8.80967417964749,
+        "roe_ttm": 0.026992747904969,
+        "net_profit_margin[2025]": 0.0656021981803024
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 67,
+    "showing": 7,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

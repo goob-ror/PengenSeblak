@@ -1,0 +1,42 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:22:47.677Z",
+    "endpoint": "/foreign-flow/IHSG/",
+    "query_params": {
+      "start": "2026-09-20",
+      "end": "2026-09-24"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 154
+  },
+  "data": {
+    "symbol": "IHSG",
+    "start": "2026-09-20",
+    "end": "2026-09-24",
+    "data": [
+      {
+        "date": "2026-09-21",
+        "net_foreign_inflow": -503111072200,
+        "foreign_buy_idr": 2645569460400,
+        "foreign_sell_idr": 3148680532600,
+        "foreign_share": 0.2364
+      },
+      {
+        "date": "2026-09-22",
+        "net_foreign_inflow": -671625243500,
+        "foreign_buy_idr": 3654240766900,
+        "foreign_sell_idr": 4325866010400,
+        "foreign_share": 0.2634
+      },
+      {
+        "date": "2026-09-23",
+        "net_foreign_inflow": -467694039400,
+        "foreign_buy_idr": 3788651501100,
+        "foreign_sell_idr": 4256345540500,
+        "foreign_share": 0.2918
+      }
+    ]
+  }
+}

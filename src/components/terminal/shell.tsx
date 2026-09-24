@@ -22,6 +22,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { companies, news, sectors } from "@/lib/market-data";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/authStore";
+import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
 
 const main = [
   { to: "/", label: "Ringkasan Pasar", icon: Gauge },
@@ -41,6 +42,8 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
+  const clock = useJakartaClock();
+  const session = idxSession(clock);
 
   async function handleLogout() {
     await logout();
@@ -130,13 +133,6 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
             </button>
           </div>
         )}
-        <div className="flex items-center justify-between text-[10px]">
-          <span className="text-muted-foreground">Data mode</span>
-          <span className="text-warning">PROTOTYPE</span>
-        </div>
-        <div className="mt-2 text-[10px] leading-4 text-muted-foreground">
-          Scores are custom research models, not official ratings.
-        </div>
       </div>
     </>
   );
@@ -171,10 +167,12 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
             <Menu />
           </Button>
           <div className="flex items-center gap-2 text-[10px] uppercase">
-            <span className="size-1.5 bg-positive" />
-            <span className="text-positive">IDX Open</span>
+            <span className={cn("size-1.5", session.isOpen ? "bg-positive" : "bg-muted-foreground")} />
+            <span className={session.isOpen ? "text-positive" : "text-muted-foreground"}>
+              {session.isOpen ? "IDX Buka" : "IDX Tutup"}
+            </span>
             <span className="hidden text-muted-foreground sm:inline">
-              Session II · Jakarta 14:32 WIB
+              {session.label} · Jakarta {clock.timeHHMM} WIB
             </span>
           </div>
           <Button
@@ -187,9 +185,9 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
             Cari ticker, sektor, berita <kbd className="ml-auto text-[9px]">⌘K</kbd>
           </Button>
           <div className="ml-3 hidden text-right text-[10px] sm:block">
-            <div>20 SEP 2026</div>
-            <div className="text-muted-foreground">Updated 14:31:42</div>
-          </div>
+            <div>{clock.dateISO}</div>
+            <div className="text-muted-foreground tabular-nums">{clock.timeHHMMSS} WIB</div>
+            </div>
         </header>
         <main className="p-4 md:p-6">{children}</main>
       </div>

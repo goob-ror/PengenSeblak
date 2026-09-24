@@ -1,0 +1,194 @@
+{
+  "results": [
+    {
+      "symbol": "SBMA.JK",
+      "company_name": "PT Surya Biru Murni Acetylene Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 15.6258378262624,
+        "roe_ttm": 0.0288841341125888,
+        "net_profit_margin[2025]": 0.0859712595980853
+      }
+    },
+    {
+      "symbol": "SMBR.JK",
+      "company_name": "PT Semen Baturaja Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 14.4455098251123,
+        "roe_ttm": 0.0341710811298284,
+        "net_profit_margin[2025]": 0.0727907510193973
+      }
+    },
+    {
+      "symbol": "SMCB.JK",
+      "company_name": "PT Solusi Bangun Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 10.429411492125,
+        "roe_ttm": 0.0508933648909424,
+        "net_profit_margin[2025]": 0.0613510908286572
+      }
+    },
+    {
+      "symbol": "SMGA.JK",
+      "company_name": "PT Sumber Mineral Global Abadi Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 14.2382260852524,
+        "roe_ttm": 0.13118774530533,
+        "net_profit_margin[2025]": 0.0248383395358574
+      }
+    },
+    {
+      "symbol": "SMGR.JK",
+      "company_name": "Semen Indonesia (Persero) Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 28.7601938240453,
+        "roe_ttm": 0.00791836014175462,
+        "net_profit_margin[2025]": 0.0054150876278748
+      }
+    },
+    {
+      "symbol": "SMKL.JK",
+      "company_name": "PT Satyamitra Kemas Lestari Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 13.3517852483653,
+        "roe_ttm": 0.0380880575540847,
+        "net_profit_margin[2025]": 0.0219824002852177
+      }
+    },
+    {
+      "symbol": "SOLA.JK",
+      "company_name": "PT Xolare RCR Energy Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 8.80420648157614,
+        "roe_ttm": 0.166876655818665,
+        "net_profit_margin[2025]": 0.133672518224353
+      }
+    },
+    {
+      "symbol": "SPMA.JK",
+      "company_name": "Suparma Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 9.94270749126511,
+        "roe_ttm": 0.0356506384547541,
+        "net_profit_margin[2025]": 0.0387597784049156
+      }
+    },
+    {
+      "symbol": "SRSN.JK",
+      "company_name": "Indo Acidatama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 6.32720807302392,
+        "roe_ttm": 0.142402067748604,
+        "net_profit_margin[2025]": 0.0615682518504672
+      }
+    },
+    {
+      "symbol": "TALF.JK",
+      "company_name": "PT Tunas Alfin Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 14.7682441959656,
+        "roe_ttm": 0.046468989634285,
+        "net_profit_margin[2025]": 0.0361776981140425
+      }
+    },
+    {
+      "symbol": "TBMS.JK",
+      "company_name": "Tembaga Mulia Semanan Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 12.4097251235312,
+        "roe_ttm": 0.0521834356906652,
+        "net_profit_margin[2025]": 0.00441444063489156
+      }
+    },
+    {
+      "symbol": "TINS.JK",
+      "company_name": "PT Timah Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 9.58876225522975,
+        "roe_ttm": 0.353468014776814,
+        "net_profit_margin[2025]": 0.113707293330505
+      }
+    },
+    {
+      "symbol": "TKIM.JK",
+      "company_name": "Pabrik Kertas Tjiwi Kimia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 3.0583031389326,
+        "roe_ttm": 0.132064668172144,
+        "net_profit_margin[2025]": 0.280080672105061
+      }
+    },
+    {
+      "symbol": "TPIA.JK",
+      "company_name": "PT Chandra Asri Pacific Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 77.8666656785019,
+        "roe_ttm": 0.0233816953669967,
+        "net_profit_margin[2025]": 0.155283463392558
+      }
+    },
+    {
+      "symbol": "TRST.JK",
+      "company_name": "Trias Sentosa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 12.0994777859543,
+        "roe_ttm": 0.0376868571642418,
+        "net_profit_margin[2025]": -0.00984466498494658
+      }
+    },
+    {
+      "symbol": "UNIC.JK",
+      "company_name": "Unggul Indah Cahaya Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 6.01902057294264,
+        "roe_ttm": 0.167714912023886,
+        "net_profit_margin[2025]": 0.0923251947745242
+      }
+    },
+    {
+      "symbol": "WTON.JK",
+      "company_name": "Wijaya Karya Beton",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 16.3885438365948,
+        "roe_ttm": 0.0109738387320183,
+        "net_profit_margin[2025]": 0.0111603566600171
+      }
+    },
+    {
+      "symbol": "YPAS.JK",
+      "company_name": "Yanaprima Hastapersada Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 35.0759272940155,
+        "roe_ttm": 0.169319883257831,
+        "net_profit_margin[2025]": 0.0151797841961712
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 78,
+    "showing": 18,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

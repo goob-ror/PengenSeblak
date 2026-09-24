@@ -1,0 +1,217 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T10:19:45.969Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Software & IT Services' and pe_ttm > 0 and roe_ttm > -100 and der_mrq >= 0 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 761
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AREA.JK",
+        "company_name": "PT Dunia Virtual Online Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 102.230251834429,
+          "roe_ttm": 0.0331618200985262,
+          "der_mrq": 0.0793668716507416,
+          "net_profit_margin[2025]": 0.155219628283868
+        }
+      },
+      {
+        "symbol": "ATIC.JK",
+        "company_name": "PT Anabatic Technologies Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 8.62793505050845,
+          "roe_ttm": 0.196619695805807,
+          "der_mrq": 2.85561792458372,
+          "net_profit_margin[2025]": 0.0245780487992262
+        }
+      },
+      {
+        "symbol": "BUKA.JK",
+        "company_name": "PT Bukalapak.com Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 5.94490544901728,
+          "roe_ttm": 0.0763938377922292,
+          "der_mrq": 0.00436009931371217,
+          "net_profit_margin[2025]": 0.482648245455143
+        }
+      },
+      {
+        "symbol": "CYBR.JK",
+        "company_name": "PT ITSEC Asia Tbk.",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 116.324288914696,
+          "roe_ttm": 0.196697322338555,
+          "der_mrq": 0.138397505826083,
+          "net_profit_margin[2025]": 0.121848060534911
+        }
+      },
+      {
+        "symbol": "DCII.JK",
+        "company_name": "PT DCI Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 422.574300934713,
+          "roe_ttm": 0.235731174609955,
+          "der_mrq": 0.538540797605121,
+          "net_profit_margin[2025]": 0.394221244805175
+        }
+      },
+      {
+        "symbol": "DMMX.JK",
+        "company_name": "PT Digital Mediatama Maxima Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 36.4295178469013,
+          "roe_ttm": 0.058334531950566,
+          "der_mrq": 0.0722602167135513,
+          "net_profit_margin[2025]": 0.0995563891584249
+        }
+      },
+      {
+        "symbol": "EDGE.JK",
+        "company_name": "PT Indointernet Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 159.381340997431,
+          "roe_ttm": 0.0334900386495653,
+          "der_mrq": 3.3610984706201,
+          "net_profit_margin[2025]": 0.143523999634255
+        }
+      },
+      {
+        "symbol": "ELIT.JK",
+        "company_name": "PT Data Sinergitama Jaya Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 16.7422386431867,
+          "roe_ttm": 0.19098512191682,
+          "der_mrq": 0.185742495065024,
+          "net_profit_margin[2025]": 0.0728426107206922
+        }
+      },
+      {
+        "symbol": "EMTK.JK",
+        "company_name": "Elang Mahkota Teknologi Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 12.2142341265,
+          "roe_ttm": 0.0431532155179292,
+          "der_mrq": 0.0579181610867938,
+          "net_profit_margin[2025]": 0.355093619552249
+        }
+      },
+      {
+        "symbol": "GOTO.JK",
+        "company_name": "PT GoTo Gojek Tokopedia Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 30826.3045194595,
+          "roe_ttm": 0.0000638350496795411,
+          "der_mrq": 0.178993134247111,
+          "net_profit_margin[2025]": -0.0647116269369964
+        }
+      },
+      {
+        "symbol": "JATI.JK",
+        "company_name": "PT Informasi Teknologi Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 19.7699164830437,
+          "roe_ttm": 0.106795484736229,
+          "der_mrq": 1.05994413905994,
+          "net_profit_margin[2025]": 0.0327742197530908
+        }
+      },
+      {
+        "symbol": "MLPT.JK",
+        "company_name": "PT Multipolar Technology Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 138.871415468779,
+          "roe_ttm": 0.495586624313993,
+          "der_mrq": 0.287098032853268,
+          "net_profit_margin[2025]": 0.0876535764942164
+        }
+      },
+      {
+        "symbol": "MPIX.JK",
+        "company_name": "PT Mitra Pedagang Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 26.7027631508005,
+          "roe_ttm": 0.069804260606477,
+          "der_mrq": 0.0656196575116927,
+          "net_profit_margin[2025]": 0.00407148237916474
+        }
+      },
+      {
+        "symbol": "TOSK.JK",
+        "company_name": "PT Topindo Solusi Komunika Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 106.576239794607,
+          "roe_ttm": 0.0216676484042988,
+          "der_mrq": 0.190674262261782,
+          "net_profit_margin[2025]": 0.00327840917264871
+        }
+      },
+      {
+        "symbol": "UVCR.JK",
+        "company_name": "PT Trimegah Karya Pratama Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 27.174835699213,
+          "roe_ttm": 0.11405713690675,
+          "der_mrq": 0.477610534756753,
+          "net_profit_margin[2025]": 0.00557276619211892
+        }
+      },
+      {
+        "symbol": "WIFI.JK",
+        "company_name": "PT Solusi Sinergi Digital Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 19.0850213052948,
+          "roe_ttm": 0.0567687984913666,
+          "der_mrq": 1.1128040191143,
+          "net_profit_margin[2025]": 0.246204772439265
+        }
+      },
+      {
+        "symbol": "WIRG.JK",
+        "company_name": "PT Wir Asia Tbk",
+        "query_values": {
+          "sub_sector": "Software & IT Services",
+          "pe_ttm": 10.8520938139432,
+          "roe_ttm": 0.0819602340616911,
+          "der_mrq": 0.151053708492457,
+          "net_profit_margin[2025]": 0.0273584107802778
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 17,
+      "showing": 17,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

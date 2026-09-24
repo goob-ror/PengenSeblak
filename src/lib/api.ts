@@ -118,4 +118,12 @@ export const api = {
 
     me: () => request<MeResponse>("/api/auth/me"),
   },
+  sectors: {
+    get: <T = unknown>(endpoint: string, query?: Record<string, string | number | boolean>) => {
+      const queryString = query ? "?" + new URLSearchParams(query as Record<string, string>).toString() : "";
+      // Ensure endpoint starts with a slash
+      const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+      return request<T>(`/api/sectors${cleanEndpoint}${queryString}`);
+    },
+  },
 };

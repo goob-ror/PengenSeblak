@@ -1,0 +1,47 @@
+{
+  "sector": "Transportation & Logistic",
+  "sub_sector": "Transportation",
+  "growth": {
+    "weighted_avg_growth_data": {
+      "2018": {
+        "avg_annual_earning_growth": null,
+        "avg_annual_revenue_growth": null
+      },
+      "2019": {
+        "avg_annual_earning_growth": -0.230521422130654,
+        "avg_annual_revenue_growth": 0.228799469465024
+      },
+      "2020": {
+        "avg_annual_earning_growth": -254.795425658533,
+        "avg_annual_revenue_growth": -0.528735491624514
+      },
+      "2021": {
+        "avg_annual_earning_growth": 0.738836666840079,
+        "avg_annual_revenue_growth": -0.0262899455051153
+      },
+      "2022": {
+        "avg_annual_earning_growth": 23.7104141438228,
+        "avg_annual_revenue_growth": 0.711690275482578
+      },
+      "2023": {
+        "avg_annual_earning_growth": -0.538987448012485,
+        "avg_annual_revenue_growth": 0.309129448944241
+      },
+      "2024": {
+        "avg_annual_earning_growth": -0.803380320899568,
+        "avg_annual_revenue_growth": 0.12408501549564
+      },
+      "2025": {
+        "avg_annual_earning_growth": 110881.080904407,
+        "avg_annual_revenue_growth": 61399.4616353283
+      }
+    },
+    "growth_forecasts": {
+      "2026": {
+        "base_year": 2025,
+        "eps_growth": -0.0114585003006195,
+        "revenue_growth": -0.0172852749588069
+      }
+    }
+  }
+}

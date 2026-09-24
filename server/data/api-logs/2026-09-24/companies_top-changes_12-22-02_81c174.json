@@ -1,0 +1,94 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:22:02.862Z",
+    "endpoint": "/companies/top-changes/",
+    "query_params": {
+      "classifications": "top_gainers,top_losers",
+      "periods": "1d"
+    },
+    "http_status": 200,
+    "credits_used": 2,
+    "cache_hit": false,
+    "response_time_ms": 391
+  },
+  "data": {
+    "top_gainers": {
+      "1d": [
+        {
+          "name": "PT Singaraja Putra Tbk",
+          "symbol": "SINI.JK",
+          "price_change": 0.14018691588785,
+          "last_close_price": 18300,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "Perdana Karya Perkasa Tbk",
+          "symbol": "PKPK.JK",
+          "price_change": 0.125541125541126,
+          "last_close_price": 5200,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "PT Golden Flower Tbk",
+          "symbol": "POLU.JK",
+          "price_change": 0.120500782472613,
+          "last_close_price": 17900,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "Indika Energy Tbk",
+          "symbol": "INDY.JK",
+          "price_change": 0.1003861003861,
+          "last_close_price": 2850,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "Darma Henwa Tbk",
+          "symbol": "DEWA.JK",
+          "price_change": 0.0919540229885057,
+          "last_close_price": 380,
+          "latest_close_date": "2026-09-23"
+        }
+      ]
+    },
+    "top_losers": {
+      "1d": [
+        {
+          "name": "MNC Tourism Indonesia Tbk",
+          "symbol": "KPIG.JK",
+          "price_change": -0.140625,
+          "last_close_price": 55,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "PT Victoria Care Indonesia Tbk",
+          "symbol": "VICI.JK",
+          "price_change": -0.0523809523809524,
+          "last_close_price": 995,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "PT MNC Digital Entertainment Tbk",
+          "symbol": "MSIN.JK",
+          "price_change": -0.032,
+          "last_close_price": 242,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "PT Famon Awal Bros Sedaya Tbk",
+          "symbol": "PRAY.JK",
+          "price_change": -0.0318471337579618,
+          "last_close_price": 760,
+          "latest_close_date": "2026-09-23"
+        },
+        {
+          "name": "PT Diamond Food Indonesia Tbk",
+          "symbol": "DMND.JK",
+          "price_change": -0.0298507462686567,
+          "last_close_price": 650,
+          "latest_close_date": "2026-09-23"
+        }
+      ]
+    }
+  }
+}

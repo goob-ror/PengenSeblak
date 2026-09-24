@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:22:01.494Z",
+    "endpoint": "/subsector/report/telecommunication/",
+    "query_params": {
+      "sections": "growth,stability"
+    },
+    "http_status": 200,
+    "credits_used": 2,
+    "cache_hit": false,
+    "response_time_ms": 364
+  },
+  "data": {
+    "sector": "Infrastructures",
+    "sub_sector": "Telecommunication",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.197736264361752,
+          "avg_annual_revenue_growth": -0.140330540495071
+        },
+        "2020": {
+          "avg_annual_earning_growth": -0.289932105989518,
+          "avg_annual_revenue_growth": 0.0127034190720602
+        },
+        "2021": {
+          "avg_annual_earning_growth": -0.845798607748043,
+          "avg_annual_revenue_growth": 0.142693907407662
+        },
+        "2022": {
+          "avg_annual_earning_growth": -0.140155474461611,
+          "avg_annual_revenue_growth": -0.0100839423739845
+        },
+        "2023": {
+          "avg_annual_earning_growth": 94.7854557358144,
+          "avg_annual_revenue_growth": 108.340528957905
+        },
+        "2024": {
+          "avg_annual_earning_growth": -0.596079939938999,
+          "avg_annual_revenue_growth": 0.00118715780688732
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.194434546099646,
+          "avg_annual_revenue_growth": 0.037603262713346
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.517387558745894,
+          "revenue_growth": 0.0768714768030467
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 0.621295417771931,
+          "revenue_growth": 0.120421891078234
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.41589916587118,
+      "weighted_rsd_close": 0.1532066521185315
+    }
+  }
+}

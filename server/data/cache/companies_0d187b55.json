@@ -1,0 +1,284 @@
+{
+  "results": [
+    {
+      "symbol": "ALKA.JK",
+      "company_name": "Alakasa Industrindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 3756721407000,
+        "net_profit_margin[2025]": 0.114004131310832
+      }
+    },
+    {
+      "symbol": "SAMF.JK",
+      "company_name": "PT Saraswanti Anugerah Makmur Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 3177500000000,
+        "net_profit_margin[2025]": 0.0626804238550877
+      }
+    },
+    {
+      "symbol": "DAAZ.JK",
+      "company_name": "PT Daaz Bara Lestari Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 3175230000000,
+        "net_profit_margin[2025]": 0.0196629887383189
+      }
+    },
+    {
+      "symbol": "FPNI.JK",
+      "company_name": "PT Lotte Chemical Titan Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2978031490000,
+        "net_profit_margin[2025]": 0.0132597374247669
+      }
+    },
+    {
+      "symbol": "ISSP.JK",
+      "company_name": "PT Steel Pipe Industry of Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2874396814000,
+        "net_profit_margin[2025]": 0.0900497691055332
+      }
+    },
+    {
+      "symbol": "PNGO.JK",
+      "company_name": "PT Pinago Utama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2695312500000,
+        "net_profit_margin[2025]": 0.139601284451294
+      }
+    },
+    {
+      "symbol": "ALDO.JK",
+      "company_name": "Alkindo Naratama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2579181625520,
+        "net_profit_margin[2025]": 0.016571111512052
+      }
+    },
+    {
+      "symbol": "CTBN.JK",
+      "company_name": "Citra Tubindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2417121930000,
+        "net_profit_margin[2025]": 0.0816068078393247
+      }
+    },
+    {
+      "symbol": "IFSH.JK",
+      "company_name": "PT Ifishdeco Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2178125000000,
+        "net_profit_margin[2025]": 0.0720731862797361
+      }
+    },
+    {
+      "symbol": "NICE.JK",
+      "company_name": "PT Adhi Kartiko Pratama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2165199120000,
+        "net_profit_margin[2025]": -0.0227078602275468
+      }
+    },
+    {
+      "symbol": "KMTR.JK",
+      "company_name": "PT Kirana Megatara Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2103133793024,
+        "net_profit_margin[2025]": 0.0144308666231504
+      }
+    },
+    {
+      "symbol": "IFII.JK",
+      "company_name": "PT Indonesia Fibreboard Industry Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2014168000000,
+        "net_profit_margin[2025]": 0.142996166342477
+      }
+    },
+    {
+      "symbol": "DGWG.JK",
+      "company_name": "PT Delta Giri Wacana Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1905882372000,
+        "net_profit_margin[2025]": 0.0527685978510532
+      }
+    },
+    {
+      "symbol": "BLES.JK",
+      "company_name": "PT Superior Prima Sukses Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1742480454400,
+        "net_profit_margin[2025]": 0.0558384524438398
+      }
+    },
+    {
+      "symbol": "SMBR.JK",
+      "company_name": "PT Semen Baturaja Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1678598302784,
+        "net_profit_margin[2025]": 0.0727907510193973
+      }
+    },
+    {
+      "symbol": "LTLS.JK",
+      "company_name": "PT Lautan Luas Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1552200000000,
+        "net_profit_margin[2025]": 0.0169846527727189
+      }
+    },
+    {
+      "symbol": "SQMI.JK",
+      "company_name": "Wilton Makmur Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1444996002897,
+        "net_profit_margin[2025]": -16.0201313742986
+      }
+    },
+    {
+      "symbol": "EKAD.JK",
+      "company_name": "Ekadharma International Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1390562250000,
+        "net_profit_margin[2025]": 0.100135530924846
+      }
+    },
+    {
+      "symbol": "TRST.JK",
+      "company_name": "Trias Sentosa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1364688000000,
+        "net_profit_margin[2025]": -0.00984466498494658
+      }
+    },
+    {
+      "symbol": "MINE.JK",
+      "company_name": "PT Sinar Terang Mandiri Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1208992848800,
+        "net_profit_margin[2025]": 0.085521038330361
+      }
+    },
+    {
+      "symbol": "GDST.JK",
+      "company_name": "Gunawan Dianjaya Steel Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1136827500000,
+        "net_profit_margin[2025]": 0.031264108647066
+      }
+    },
+    {
+      "symbol": "MOLI.JK",
+      "company_name": "PT Madusari Murni Indah Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 1046030047104,
+        "net_profit_margin[2025]": 0.0503710660558589
+      }
+    },
+    {
+      "symbol": "PDPP.JK",
+      "company_name": "PT Primadaya Plastisindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 997997308788,
+        "net_profit_margin[2025]": 0.0632476138803142
+      }
+    },
+    {
+      "symbol": "ADMG.JK",
+      "company_name": "Polychem Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 964516530632,
+        "net_profit_margin[2025]": -0.0184796219941726
+      }
+    },
+    {
+      "symbol": "TALF.JK",
+      "company_name": "PT Tunas Alfin Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 927102975000,
+        "net_profit_margin[2025]": 0.0361776981140425
+      }
+    },
+    {
+      "symbol": "SPMA.JK",
+      "company_name": "Suparma Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 895508894280,
+        "net_profit_margin[2025]": 0.0387597784049156
+      }
+    },
+    {
+      "symbol": "TBMS.JK",
+      "company_name": "Tembaga Mulia Semanan Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 892636200000,
+        "net_profit_margin[2025]": 0.00441444063489156
+      }
+    },
+    {
+      "symbol": "YPAS.JK",
+      "company_name": "Yanaprima Hastapersada Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 865060115255,
+        "net_profit_margin[2025]": 0.0151797841961712
+      }
+    },
+    {
+      "symbol": "WSBP.JK",
+      "company_name": "PT Waskita Beton Precast Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 797428292444,
+        "net_profit_margin[2025]": -0.342366371132013
+      }
+    },
+    {
+      "symbol": "SRSN.JK",
+      "company_name": "Indo Acidatama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 788620000000,
+        "net_profit_margin[2025]": 0.0615682518504672
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 99,
+    "showing": 30,
+    "limit": 30,
+    "offset": 30,
+    "has_next": true,
+    "has_previous": true,
+    "next_offset": 60,
+    "previous_offset": 0
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "symbol": "SOLA.JK",
+      "company_name": "PT Xolare RCR Energy Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 8.80420648157614,
+        "roe_ttm": 0.166876655818665,
+        "net_profit_margin[2025]": 0.133672518224353,
+        "der_mrq": 0.168555907437269
+      }
+    },
+    {
+      "symbol": "SPMA.JK",
+      "company_name": "Suparma Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 9.94270749126511,
+        "roe_ttm": 0.0356506384547541,
+        "net_profit_margin[2025]": 0.0387597784049156,
+        "der_mrq": 0.330092601252825
+      }
+    },
+    {
+      "symbol": "SRSN.JK",
+      "company_name": "Indo Acidatama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 6.32720807302392,
+        "roe_ttm": 0.142402067748604,
+        "net_profit_margin[2025]": 0.0615682518504672,
+        "der_mrq": 0.0106395731827031
+      }
+    },
+    {
+      "symbol": "TALF.JK",
+      "company_name": "PT Tunas Alfin Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 14.7682441959656,
+        "roe_ttm": 0.046468989634285,
+        "net_profit_margin[2025]": 0.0361776981140425,
+        "der_mrq": 0.196486678583168
+      }
+    },
+    {
+      "symbol": "TBMS.JK",
+      "company_name": "Tembaga Mulia Semanan Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 12.4097251235312,
+        "roe_ttm": 0.0521834356906652,
+        "net_profit_margin[2025]": 0.00441444063489156,
+        "der_mrq": 0.809580955594607
+      }
+    },
+    {
+      "symbol": "TINS.JK",
+      "company_name": "PT Timah Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 9.58876225522975,
+        "roe_ttm": 0.353468014776814,
+        "net_profit_margin[2025]": 0.113707293330505,
+        "der_mrq": 0.102166131553087
+      }
+    },
+    {
+      "symbol": "TKIM.JK",
+      "company_name": "Pabrik Kertas Tjiwi Kimia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 3.0583031389326,
+        "roe_ttm": 0.132064668172144,
+        "net_profit_margin[2025]": 0.280080672105061,
+        "der_mrq": 0.233305634067977
+      }
+    },
+    {
+      "symbol": "TPIA.JK",
+      "company_name": "PT Chandra Asri Pacific Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 77.8666656785019,
+        "roe_ttm": 0.0233816953669967,
+        "net_profit_margin[2025]": 0.155283463392558,
+        "der_mrq": 1.19068532113695
+      }
+    },
+    {
+      "symbol": "TRST.JK",
+      "company_name": "Trias Sentosa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 12.0994777859543,
+        "roe_ttm": 0.0376868571642418,
+        "net_profit_margin[2025]": -0.00984466498494658,
+        "der_mrq": 0.71318908017057
+      }
+    },
+    {
+      "symbol": "UNIC.JK",
+      "company_name": "Unggul Indah Cahaya Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 6.01902057294264,
+        "roe_ttm": 0.167714912023886,
+        "net_profit_margin[2025]": 0.0923251947745242,
+        "der_mrq": 0.0175744959455057
+      }
+    },
+    {
+      "symbol": "WTON.JK",
+      "company_name": "Wijaya Karya Beton",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 16.3885438365948,
+        "roe_ttm": 0.0109738387320183,
+        "net_profit_margin[2025]": 0.0111603566600171,
+        "der_mrq": 0.0453175742251614
+      }
+    },
+    {
+      "symbol": "YPAS.JK",
+      "company_name": "Yanaprima Hastapersada Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "pe_ttm": 35.0759272940155,
+        "roe_ttm": 0.169319883257831,
+        "net_profit_margin[2025]": 0.0151797841961712,
+        "der_mrq": 0.49156828477612
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 72,
+    "showing": 12,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

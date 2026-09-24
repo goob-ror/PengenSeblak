@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:42:28.189Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Banks'",
+      "limit": "3",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 203
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AGRO.JK",
+        "company_name": "PT Bank Raya Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks"
+        }
+      },
+      {
+        "symbol": "AGRS.JK",
+        "company_name": "PT Bank IBK Indonesia Tbk.",
+        "query_values": {
+          "sub_sector": "Banks"
+        }
+      },
+      {
+        "symbol": "AMAR.JK",
+        "company_name": "PT Bank Amar Indonesia Tbk.",
+        "query_values": {
+          "sub_sector": "Banks"
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 48,
+      "showing": 3,
+      "limit": 3,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 3,
+      "previous_offset": null
+    }
+  }
+}

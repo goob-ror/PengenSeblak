@@ -1,0 +1,62 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:55:21.556Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sector='Financials' and pe_ttm > 0 and roe_ttm > 0.1 and forward_pe > 0 and forecast_eps_growth[2026] > 0",
+      "limit": "3",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1722
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "BBCA.JK",
+        "company_name": "PT Bank Central Asia Tbk.",
+        "query_values": {
+          "sector": "Financials",
+          "pe_ttm": 13.229820093447,
+          "roe_ttm": 0.214714061275701,
+          "forward_pe": 13.0575357663439,
+          "forecast_eps_growth[2026]": 0.099789989937308
+        }
+      },
+      {
+        "symbol": "BBNI.JK",
+        "company_name": "PT Bank Negara Indonesia (Persero) Tbk",
+        "query_values": {
+          "sector": "Financials",
+          "pe_ttm": 6.37095052474185,
+          "roe_ttm": 0.123679520615341,
+          "forward_pe": 5.32206665920485,
+          "forecast_eps_growth[2026]": 0.292196060045084
+        }
+      },
+      {
+        "symbol": "BBRI.JK",
+        "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk",
+        "query_values": {
+          "sector": "Financials",
+          "pe_ttm": 7.6800241697938,
+          "roe_ttm": 0.189617543571432,
+          "forward_pe": 7.24687062929064,
+          "forecast_eps_growth[2026]": 0.222358719565794
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 8,
+      "showing": 3,
+      "limit": 3,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 3,
+      "previous_offset": null
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:44:13.932Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "eps_growth[2024] > 0",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1886
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AALI.JK",
+        "company_name": "Astra Agro Lestari Tbk",
+        "query_values": {
+          "eps_growth[2024]": 0.0868
+        }
+      },
+      {
+        "symbol": "ABMM.JK",
+        "company_name": "ABM Investama Tbk",
+        "query_values": {
+          "eps_growth[2024]": 7790.6011
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 393,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}
