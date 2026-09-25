@@ -8,50 +8,50 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 0.0756767777540064,
-        "avg_annual_revenue_growth": 0.0863249732587265
+        "avg_annual_earning_growth": 0.076136879524618,
+        "avg_annual_revenue_growth": 0.0865600365458273
       },
       "2020": {
-        "avg_annual_earning_growth": -0.111585848544461,
-        "avg_annual_revenue_growth": 0.44625822910559
+        "avg_annual_earning_growth": -0.113847309766812,
+        "avg_annual_revenue_growth": 0.447881462840316
       },
       "2021": {
-        "avg_annual_earning_growth": -4.71368463125438,
-        "avg_annual_revenue_growth": 0.209395053980902
+        "avg_annual_earning_growth": -4.8034819134614,
+        "avg_annual_revenue_growth": 0.203633233749799
       },
       "2022": {
-        "avg_annual_earning_growth": 0.404267573113316,
-        "avg_annual_revenue_growth": 0.391275734059079
+        "avg_annual_earning_growth": 0.403116481159236,
+        "avg_annual_revenue_growth": 0.388002994326736
       },
       "2023": {
-        "avg_annual_earning_growth": 0.224725020075416,
-        "avg_annual_revenue_growth": 0.129506218656901
+        "avg_annual_earning_growth": 0.223945527535278,
+        "avg_annual_revenue_growth": 0.129743349557206
       },
       "2024": {
-        "avg_annual_earning_growth": 0.0687996014320358,
-        "avg_annual_revenue_growth": 0.362558825950645
+        "avg_annual_earning_growth": 0.0688989261338619,
+        "avg_annual_revenue_growth": 0.361743210427605
       },
       "2025": {
-        "avg_annual_earning_growth": -0.1911010433206,
-        "avg_annual_revenue_growth": 0.0178264560129412
+        "avg_annual_earning_growth": -0.190618374879704,
+        "avg_annual_revenue_growth": 0.0181882903814185
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.165836940981666,
-        "revenue_growth": 0.198833185530262
+        "eps_growth": 0.165598669826748,
+        "revenue_growth": 0.198491864770723
       },
       "2027": {
         "base_year": 2025,
-        "eps_growth": 0.254516051634381,
-        "revenue_growth": 0.287615412686681
+        "eps_growth": 0.254193352851936,
+        "revenue_growth": 0.286965276428034
       }
     }
   },
   "stability": {
-    "weighted_max_drawdown": -0.404861033627792,
-    "weighted_rsd_close": 0.12851353595604623
+    "weighted_max_drawdown": -0.401796401320864,
+    "weighted_rsd_close": 0.12860918907889587
   },
   "valuation": {
     "historical_valuation": {
@@ -80,20 +80,20 @@
         "pcf": 2.76312177274512
       },
       "2026": {
-        "pb": 0.785811101651629,
-        "pe": 9.381448790111,
-        "ps": 2.6405125053603,
-        "pcf": 2.56664484580078,
+        "pb": 0.77980423772773,
+        "pe": 9.18661976115803,
+        "ps": 2.58445461784756,
+        "pcf": 2.50854076018286,
         "pb_rank": 2,
-        "pe_rank": 19,
+        "pe_rank": 17,
         "ps_rank": 25,
         "pcf_rank": 7
       }
     }
   },
   "market_cap": {
-    "total_market_cap": 2375310022861408,
-    "avg_market_cap": 49485625476279.336,
+    "total_market_cap": 2337381186778715,
+    "avg_market_cap": 48695441391223.23,
     "quarterly_market_cap": {
       "prev_ttm_mcap": {
         "2024.Q4": 3127779808736190,
@@ -116,9 +116,9 @@
     },
     "mcap_summary": {
       "mcap_change": {
-        "1w": -0.03440168367073241,
-        "1y": -0.18447804325484823,
-        "ytd": -0.20618911746794613
+        "1w": -0.01764205857786895,
+        "1y": -0.1776370430613566,
+        "ytd": -0.19953024046766132
       },
       "monthly_performance": {
         "2025-10-31": 0.046062449327964876,
@@ -132,9 +132,9 @@
         "2026-06-30": -0.07265115178117373,
         "2026-07-31": 0.09692623787842058,
         "2026-08-31": 0.027082326759486144,
-        "2026-09-22": -0.03171204649267946
+        "2026-09-23": -0.023589569810706822
       },
-      "performance_quantile": 0.303030303030303
+      "performance_quantile": 0.272727272727273
     }
   }
 }

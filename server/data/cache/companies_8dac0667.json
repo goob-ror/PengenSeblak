@@ -1,0 +1,13 @@
+{
+  "results": [],
+  "pagination": {
+    "total_count": 30,
+    "showing": 0,
+    "limit": 30,
+    "offset": 30,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 0
+  }
+}

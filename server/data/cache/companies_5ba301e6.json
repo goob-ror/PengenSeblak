@@ -5,7 +5,7 @@
       "company_name": "Polychem Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 20.4979462969085,
+        "pe_ttm": 20.3326402783851,
         "roe_ttm": 0.0222132442927667,
         "net_profit_margin[2025]": -0.0184796219941726,
         "der_mrq": 0.0000048754785457524
@@ -16,7 +16,7 @@
       "company_name": "PT Samator Indo Gas Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 107.214192474918,
+        "pe_ttm": 105.999300775486,
         "roe_ttm": 0.0260660007899649,
         "net_profit_margin[2025]": 0.0194027325816944,
         "der_mrq": 1.01356932458004
@@ -27,7 +27,7 @@
       "company_name": "Argha Karya Prima Ind. Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 3.60176196144213,
+        "pe_ttm": 3.63707335322097,
         "roe_ttm": 0.0447829623536158,
         "net_profit_margin[2025]": 0.00430900107185539,
         "der_mrq": 0.809376586014336
@@ -49,7 +49,7 @@
       "company_name": "PT Amman Mineral Internasional Tbk.",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 38.3050550077613,
+        "pe_ttm": 37.2038829952179,
         "roe_ttm": 0.0971825700701001,
         "net_profit_margin[2025]": 0.134836809329545,
         "der_mrq": 1.16775978900822
@@ -60,7 +60,7 @@
       "company_name": "Aneka Tambang Tbk.",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 8.8552371122508,
+        "pe_ttm": 8.82823943812809,
         "roe_ttm": 0.231006978183056,
         "net_profit_margin[2025]": 0.0851680798092314,
         "der_mrq": 0.151180929275565
@@ -71,7 +71,7 @@
       "company_name": "Asiaplast Industries Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 26.1686993424421,
+        "pe_ttm": 25.4210222183723,
         "roe_ttm": 0.0496945994386252,
         "net_profit_margin[2025]": 0.0187543726612767,
         "der_mrq": 0.0916727907391937
@@ -82,7 +82,7 @@
       "company_name": "PT Archi Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 13.4823633200025,
+        "pe_ttm": 13.0329512093357,
         "roe_ttm": 0.341288120145456,
         "net_profit_margin[2025]": 0.205189237487668,
         "der_mrq": 1.18826481519558
@@ -93,7 +93,7 @@
       "company_name": "PT Asia Pramulia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 50.8298740410415,
+        "pe_ttm": 48.4094038486109,
         "roe_ttm": 0.0432970037146961,
         "net_profit_margin[2025]": 0.0349970569345628,
         "der_mrq": 0.598683324870159
@@ -104,7 +104,7 @@
       "company_name": "PT Avia Avian Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 11.1971296491917,
+        "pe_ttm": 11.0669304672243,
         "roe_ttm": 0.198003864896726,
         "net_profit_margin[2025]": 0.215107060404238,
         "der_mrq": 0.00241722492259179
@@ -115,7 +115,7 @@
       "company_name": "Saranacentral Bajatama Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 542.92160448003,
+        "pe_ttm": 483.150418665714,
         "roe_ttm": 0.0338688857205716,
         "net_profit_margin[2025]": -0.0441833918643232,
         "der_mrq": 1.66588581007503
@@ -126,7 +126,7 @@
       "company_name": "PT Benteng Api Technic Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 18.6937140170837,
+        "pe_ttm": 18.4948447190296,
         "roe_ttm": 0.0934409779705128,
         "net_profit_margin[2025]": 0.0904078064410647,
         "der_mrq": 0.249991534198009
@@ -137,7 +137,7 @@
       "company_name": "PT Superior Prima Sukses Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 7.81607670700036,
+        "pe_ttm": 7.73632082223505,
         "roe_ttm": 0.178195104759771,
         "net_profit_margin[2025]": 0.0558384524438398,
         "der_mrq": 0.42658470700952
@@ -148,7 +148,7 @@
       "company_name": "Bintang Mitra Semestaraya Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 3.31155360748139,
+        "pe_ttm": 3.45290040780072,
         "roe_ttm": 0.132967493768512,
         "net_profit_margin[2025]": 0.0128866040584025,
         "der_mrq": 0.456785528241785
@@ -159,7 +159,7 @@
       "company_name": "Bumi Resources Minerals Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 147.823752476977,
+        "pe_ttm": 144.633311776035,
         "roe_ttm": 0.0355157365816908,
         "net_profit_margin[2025]": 0.200557065071693,
         "der_mrq": 0.278571754312321
@@ -170,7 +170,7 @@
       "company_name": "Barito Pacific Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 61.0660894108135,
+        "pe_ttm": 58.8043823955982,
         "roe_ttm": 0.0213968922692664,
         "net_profit_margin[2025]": 0.0641893193539433,
         "der_mrq": 1.32002977028281
@@ -181,7 +181,7 @@
       "company_name": "Colorpak Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 6.55393183918097,
+        "pe_ttm": 6.57454168773185,
         "roe_ttm": 0.127663667401794,
         "net_profit_margin[2025]": 0.0696274192305495,
         "der_mrq": 0.193876156004141
@@ -192,7 +192,7 @@
       "company_name": "Citra Tubindo Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 29.7799636306908,
+        "pe_ttm": 29.5827453285008,
         "roe_ttm": 0.0441314100053547,
         "net_profit_margin[2025]": 0.0816068078393247,
         "der_mrq": 0.0227883091877181
@@ -203,7 +203,7 @@
       "company_name": "PT Daaz Bara Lestari Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 11.6270716122563,
+        "pe_ttm": 12.0658290315867,
         "roe_ttm": 0.122061541976617,
         "net_profit_margin[2025]": 0.0196629887383189,
         "der_mrq": 1.38605346404701
@@ -225,7 +225,7 @@
       "company_name": "Central Omega Resources Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 5.72579299464072,
+        "pe_ttm": 5.47318448017127,
         "roe_ttm": 0.437027178442899,
         "net_profit_margin[2025]": 0.363845646752401,
         "der_mrq": 0.338833747082999
@@ -236,7 +236,7 @@
       "company_name": "Ekadharma International Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 23.2825790037117,
+        "pe_ttm": 23.165581119271,
         "roe_ttm": 0.0471225175136011,
         "net_profit_margin[2025]": 0.100135530924846,
         "der_mrq": 0.0211761461543191
@@ -247,7 +247,7 @@
       "company_name": "PT Sinergi Inti Plastindo Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 53.7742011143408,
+        "pe_ttm": 52.8307940772471,
         "roe_ttm": 0.0235482733751029,
         "net_profit_margin[2025]": 0.0248171010466633,
         "der_mrq": 0.0100095703190472
@@ -258,7 +258,7 @@
       "company_name": "ESSA Industries Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 11.0792390210395,
+        "pe_ttm": 10.8067987172435,
         "roe_ttm": 0.0956170691067519,
         "net_profit_margin[2025]": 0.136572861368626,
         "der_mrq": 0.00019146956532688
@@ -269,7 +269,7 @@
       "company_name": "PT Lotte Chemical Titan Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 10.4615284485181,
+        "pe_ttm": 10.2659858606953,
         "roe_ttm": 0.143183497077621,
         "net_profit_margin[2025]": 0.0132597374247669,
         "der_mrq": 0.0013234420296379
@@ -280,7 +280,7 @@
       "company_name": "Gunawan Dianjaya Steel Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 11.1249564914252,
+        "pe_ttm": 10.8536160891953,
         "roe_ttm": 0.068934342626207,
         "net_profit_margin[2025]": 0.031264108647066,
         "der_mrq": 1.07729321110917
@@ -291,7 +291,7 @@
       "company_name": "PT Indonesia Fibreboard Industry Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 13.2011930548952,
+        "pe_ttm": 13.4479443269494,
         "roe_ttm": 0.108462366559006,
         "net_profit_margin[2025]": 0.142996166342477,
         "der_mrq": 0.13743329648904
@@ -302,7 +302,7 @@
       "company_name": "PT Ifishdeco Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 17.7063034130365,
+        "pe_ttm": 17.4471867777238,
         "roe_ttm": 0.137328070157454,
         "net_profit_margin[2025]": 0.0720731862797361,
         "der_mrq": 0.0593037971885846
@@ -313,7 +313,7 @@
       "company_name": "Intanwijaya Internasional Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 3.70083478756646,
+        "pe_ttm": 3.67784823609089,
         "roe_ttm": 0.0896964288438262,
         "net_profit_margin[2025]": 0.0674176003723825,
         "der_mrq": 0.00372581422393695
@@ -324,7 +324,7 @@
       "company_name": "Vale Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 18.8595798269741,
+        "pe_ttm": 18.5839701009014,
         "roe_ttm": 0.0528218020703384,
         "net_profit_margin[2025]": 0.07681618267109,
         "der_mrq": 0.000558744456704015

@@ -8,39 +8,39 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 0.698161578253726,
-        "avg_annual_revenue_growth": 0.788465874200207
+        "avg_annual_earning_growth": 0.699254479429388,
+        "avg_annual_revenue_growth": 0.78455436784731
       },
       "2020": {
-        "avg_annual_earning_growth": 0.532109601129566,
-        "avg_annual_revenue_growth": 0.449504859731688
+        "avg_annual_earning_growth": 0.537238943421408,
+        "avg_annual_revenue_growth": 0.453714159983297
       },
       "2021": {
-        "avg_annual_earning_growth": 0.669302293852512,
-        "avg_annual_revenue_growth": 0.338659075904942
+        "avg_annual_earning_growth": 0.663332663544161,
+        "avg_annual_revenue_growth": 0.334314964109596
       },
       "2022": {
-        "avg_annual_earning_growth": 0.484021397733357,
-        "avg_annual_revenue_growth": 0.433107008066705
+        "avg_annual_earning_growth": 0.480507314305314,
+        "avg_annual_revenue_growth": 0.431005271064245
       },
       "2023": {
-        "avg_annual_earning_growth": -0.0634587350770336,
-        "avg_annual_revenue_growth": 0.186164942258
+        "avg_annual_earning_growth": -0.0490825878200136,
+        "avg_annual_revenue_growth": 0.18911814873132
       },
       "2024": {
-        "avg_annual_earning_growth": 0.577458900231806,
-        "avg_annual_revenue_growth": 0.320775980893162
+        "avg_annual_earning_growth": 0.576182331642709,
+        "avg_annual_revenue_growth": 0.322525229499166
       },
       "2025": {
-        "avg_annual_earning_growth": 1.38329992948528,
-        "avg_annual_revenue_growth": 0.368439452239685
+        "avg_annual_earning_growth": 1.31719781403272,
+        "avg_annual_revenue_growth": 0.369350033129643
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.51389520579323,
-        "revenue_growth": -0.0269066131362786
+        "eps_growth": 0.517008185179962,
+        "revenue_growth": -0.0257636395239645
       },
       "2027": {
         "base_year": 2025,

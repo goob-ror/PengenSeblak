@@ -5,6 +5,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Line,
   LineChart,
   ReferenceLine,
@@ -119,7 +120,7 @@ export function ForeignFlowChart({ data }: { data: ForeignFlowChartPoint[] }) {
 
   if (series.length === 0) {
     return (
-      <div className="flex h-32 items-center justify-center text-[10px] text-muted-foreground">
+      <div className="flex h-48 items-center justify-center text-[10px] text-muted-foreground">
         Tidak ada data aliran dana asing.
       </div>
     );
@@ -128,8 +129,14 @@ export function ForeignFlowChart({ data }: { data: ForeignFlowChartPoint[] }) {
   const g = (v: number) =>
     `Rp. ${(v / 1e12).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} T`;
 
+  // Recharts emits `fill` as an SVG *attribute*, which does NOT resolve
+  // var(--…) in most browsers — it silently paints black. Use literal theme
+  // values here so inflow/outflow colours actually render.
+  const POS = "oklch(0.72 0.13 150)";
+  const NEG = "oklch(0.68 0.16 25)";
+
   return (
-    <div className="h-32 w-full px-2 pt-3">
+    <div className="h-48 w-full px-2 pt-3">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={series} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
           {/* Both axes grid + the zero baseline give the "grid" look requested */}
@@ -159,32 +166,65 @@ export function ForeignFlowChart({ data }: { data: ForeignFlowChartPoint[] }) {
               borderRadius: 2,
               fontSize: 11,
             }}
-            labelStyle={{ color: "var(--color-muted-foreground)" }}
-            formatter={(v: number) => [
-              `${v >= 0 ? "+" : "-"}${g(Math.abs(v))}`,
-              v >= 0 ? "Net masuk" : "Net keluar",
-            ]}
-          />
-          <Bar
-            isAnimationActive={false}
-            dataKey="value"
-            radius={[1, 1, 0, 0]}
-            // Per-cell colour: positive green, negative red
-            shape={(props: any) => {
-              const { x, y, width, height, payload } = props;
-              const v = payload?.value ?? 0;
+            labelStyle={{ color: "var(--color-muted-foreground)", marginBottom: 2 }}
+            itemStyle={{ padding: 0 }}
+            formatter={(v: number) => {
+              const inflow = v >= 0;
+              const color = inflow ? POS : NEG;
+              return [
+                `${inflow ? "+" : "-"}${g(Math.abs(v))}`,
+                inflow ? "Net Masuk" : "Net Keluar",
+              ] as unknown as string;
+            }}
+            content={(props: any) => {
+              const p = props.payload?.[0];
+              if (!p) return null;
+              const v = Number(p.value ?? 0);
+              const inflow = v >= 0;
+              const color = inflow ? POS : NEG;
               return (
-                <rect
-                  x={x}
-                  y={y}
-                  width={width}
-                  height={Math.max(Math.abs(height), 1)}
-                  fill={v >= 0 ? "var(--color-positive)" : "var(--color-negative)"}
-                  opacity={0.75}
-                />
+                <div
+                  style={{
+                    background: "var(--color-popover)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: 2,
+                    fontSize: 11,
+                    padding: "6px 8px",
+                  }}
+                >
+                  <div style={{ color: "var(--color-muted-foreground)", fontSize: 10 }}>
+                    {props.label}
+                  </div>
+                  <div style={{ marginTop: 2, display: "flex", gap: 8, alignItems: "center" }}>
+                    <span style={{ width: 6, height: 6, background: color, borderRadius: 1 }} />
+                    <span style={{ color: "var(--color-muted-foreground)" }}>
+                      {inflow ? "Net Masuk" : "Net Keluar"}
+                    </span>
+                    <span style={{ color, fontWeight: 600, fontVariantNumeric: "tabular-nums" }}>
+                      {inflow ? "+" : "-"}
+                      {g(Math.abs(v))}
+                    </span>
+                  </div>
+                </div>
               );
             }}
           />
+          {/*
+            Bar height MUST be drawn by recharts, not by a custom `shape`.
+            A manual <rect> using Math.abs(height) draws downward from the zero
+            line for negative values — measured overflow was bottom=219.8 with
+            the x-axis at y=170, i.e. straight through the date labels.
+            <Cell> keeps recharts in charge of geometry (negative bars extend
+            upward from zero) while giving per-bar colour.
+          */}
+          <Bar isAnimationActive={false} dataKey="value" radius={[1, 1, 0, 0]}>
+            {series.map((p, i) => (
+              <Cell
+                key={`${p.date}-${i}`}
+                style={{ fill: p.value >= 0 ? POS : NEG, opacity: 0.85 }}
+              />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -217,7 +257,7 @@ export function GrowthHistoryChart({ data }: { data: GrowthChartPoint[] }) {
   }
 
   return (
-    <div className="h-64 w-full px-2 pt-3">
+    <div className="h-80 w-full px-2 pt-3">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={series} margin={{ top: 4, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid stroke="var(--color-grid)" vertical={false} />

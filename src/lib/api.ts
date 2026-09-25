@@ -1,5 +1,7 @@
 // Central API client for server communication
-const BASE_URL = (import.meta.env["VITE_API_URL"] as string | undefined) ?? "http://localhost:3001";
+// Use a relative path so the same code works behind any proxy (ngrok, etc.).
+// In dev, Vite's server.proxy forwards /api/* to the Express server on :3001.
+const BASE_URL = (import.meta.env["VITE_API_URL"] as string | undefined) ?? "";
 
 export interface ApiResponse<T = unknown> {
   success: boolean;

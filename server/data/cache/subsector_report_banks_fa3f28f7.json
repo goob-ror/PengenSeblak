@@ -8,44 +8,44 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 0.0756767777540064,
-        "avg_annual_revenue_growth": 0.0863249732587265
+        "avg_annual_earning_growth": 0.076136879524618,
+        "avg_annual_revenue_growth": 0.0865600365458273
       },
       "2020": {
-        "avg_annual_earning_growth": -0.111585848544461,
-        "avg_annual_revenue_growth": 0.44625822910559
+        "avg_annual_earning_growth": -0.113847309766812,
+        "avg_annual_revenue_growth": 0.447881462840316
       },
       "2021": {
-        "avg_annual_earning_growth": -4.71368463125438,
-        "avg_annual_revenue_growth": 0.209395053980902
+        "avg_annual_earning_growth": -4.8034819134614,
+        "avg_annual_revenue_growth": 0.203633233749799
       },
       "2022": {
-        "avg_annual_earning_growth": 0.404267573113316,
-        "avg_annual_revenue_growth": 0.391275734059079
+        "avg_annual_earning_growth": 0.403116481159236,
+        "avg_annual_revenue_growth": 0.388002994326736
       },
       "2023": {
-        "avg_annual_earning_growth": 0.224725020075416,
-        "avg_annual_revenue_growth": 0.129506218656901
+        "avg_annual_earning_growth": 0.223945527535278,
+        "avg_annual_revenue_growth": 0.129743349557206
       },
       "2024": {
-        "avg_annual_earning_growth": 0.0687996014320358,
-        "avg_annual_revenue_growth": 0.362558825950645
+        "avg_annual_earning_growth": 0.0688989261338619,
+        "avg_annual_revenue_growth": 0.361743210427605
       },
       "2025": {
-        "avg_annual_earning_growth": -0.1911010433206,
-        "avg_annual_revenue_growth": 0.0178264560129412
+        "avg_annual_earning_growth": -0.190618374879704,
+        "avg_annual_revenue_growth": 0.0181882903814185
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.165836940981666,
-        "revenue_growth": 0.198833185530262
+        "eps_growth": 0.165598669826748,
+        "revenue_growth": 0.198491864770723
       },
       "2027": {
         "base_year": 2025,
-        "eps_growth": 0.254516051634381,
-        "revenue_growth": 0.287615412686681
+        "eps_growth": 0.254193352851936,
+        "revenue_growth": 0.286965276428034
       }
     }
   }

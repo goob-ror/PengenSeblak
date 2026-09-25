@@ -18,7 +18,7 @@
  */
 
 import { useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { STALE_SECTOR } from "@/lib/query-config";
 
@@ -69,6 +69,25 @@ export interface UniverseSector {
   sectorName: string;  // parent sector display name
 }
 
+// The subsectors endpoint returns slugs, while the screener expects the
+// display label in `sub_sector`. Keep this translation local and deterministic.
+const SUBSECTOR_DISPLAY: Record<string, string> = {
+  "basic-materials": "Basic Materials",
+  "oil-gas-coal": "Oil, Gas & Coal",
+  "software-it-services": "Software & IT Services",
+  "telecommunication": "Telecommunication",
+  "transportation": "Transportation",
+  banks: "Banks",
+  retailing: "Retailing",
+};
+
+function displaySubsector(slug: string): string {
+  return SUBSECTOR_DISPLAY[slug] ?? slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 // ── 1. The authoritative sector list ───────────────────────────────────────
 
 /**
@@ -89,8 +108,8 @@ export function useSubsectorList() {
         .map((r) => {
           const obj = (r ?? {}) as Record<string, unknown>;
           const slug = pickField(obj, ["subsector", "sub_sector"]) ?? "";
-          const sectorName = pickField(obj, ["sector", "sub_sector"]) ?? slug;
-          return { subSector: slug, slug, sectorName };
+          const sectorName = pickField(obj, ["sector"]) ?? slug;
+          return { subSector: displaySubsector(slug), slug, sectorName };
         })
         .filter((r) => r.slug)
         .filter((r) => {
@@ -150,9 +169,16 @@ async function fetchUniversePage(
   offset: number,
   marginYear: number,
 ): Promise<UniverseRow[]> {
+  // Every term must be a full comparison — a bare field name (e.g. "and der_mrq")
+  // is rejected upstream as INVALID_WHERE_CLAUSE. Clauses mirror useAnomalies.
+  // der_mrq must be OMITTED for banks (absent upstream → 0 rows if filtered).
+  const isBank = displayName.toLowerCase().includes("bank");
   const where =
     `sub_sector='${displayName}' and market_cap > 0 ` +
-    `and net_profit_margin[${marginYear}] > -100`;
+    `and last_close_price > 0 and daily_close_change > -100 ` +
+    `and pe_ttm > 0 and roe_ttm > -100 ` +
+    `and net_profit_margin[${marginYear}] > -100` +
+    (isBank ? "" : ` and der_mrq >= 0`);
 
   const env = await api.sectors.get<ScreenerEnvelope>("/companies/", {
     where,
@@ -188,6 +214,7 @@ export function useSectorUniverse(displayName: string | undefined) {
     enabled: !!displayName,
     retry: false,
     ...STALE_SECTOR,
+    placeholderData: keepPreviousData,
     queryFn: async () => {
       const marginYear = new Date().getFullYear() - 1;
       const rows: UniverseRow[] = [];
@@ -230,6 +257,7 @@ export function useSectorGrowthHistory(slug: string | undefined) {
     enabled: !!slug,
     retry: false,
     ...STALE_SECTOR,
+    placeholderData: keepPreviousData,
     queryFn: async () => {
       const raw = await api.sectors.get<Record<string, unknown>>(
         `/subsector/report/${slug}/`,

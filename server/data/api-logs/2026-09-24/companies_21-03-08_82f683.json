@@ -1,0 +1,30 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T13:03:08.836Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='retailing' and market_cap > 0 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "30",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 293
+  },
+  "data": {
+    "results": [],
+    "pagination": {
+      "total_count": 30,
+      "showing": 0,
+      "limit": 30,
+      "offset": 30,
+      "has_next": false,
+      "has_previous": true,
+      "next_offset": null,
+      "previous_offset": 0
+    }
+  }
+}

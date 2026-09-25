@@ -1,0 +1,182 @@
+{
+  "results": [
+    {
+      "symbol": "ASPR.JK",
+      "company_name": "PT Asia Pramulia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 379680000000,
+        "last_close_price": 140,
+        "daily_close_change": -0.0476190476190476,
+        "pe_ttm": 48.4094038486109,
+        "roe_ttm": 0.0432970037146961,
+        "net_profit_margin[2025]": 0.0349970569345628,
+        "der_mrq": 0.598683324870159
+      }
+    },
+    {
+      "symbol": "APLI.JK",
+      "company_name": "Asiaplast Industries Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 370646620800,
+        "last_close_price": 272,
+        "daily_close_change": -0.0285714285714286,
+        "pe_ttm": 25.4210222183723,
+        "roe_ttm": 0.0496945994386252,
+        "net_profit_margin[2025]": 0.0187543726612767,
+        "der_mrq": 0.0916727907391937
+      }
+    },
+    {
+      "symbol": "AKPI.JK",
+      "company_name": "Argha Karya Prima Ind. Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 315307720000,
+        "last_close_price": 515,
+        "daily_close_change": 0.00980392156862745,
+        "pe_ttm": 3.63707335322097,
+        "roe_ttm": 0.0447829623536158,
+        "net_profit_margin[2025]": 0.00430900107185539,
+        "der_mrq": 0.809376586014336
+      }
+    },
+    {
+      "symbol": "BATR.JK",
+      "company_name": "PT Benteng Api Technic Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 281328473829,
+        "last_close_price": 93,
+        "daily_close_change": -0.0106382978723404,
+        "pe_ttm": 18.4948447190296,
+        "roe_ttm": 0.0934409779705128,
+        "net_profit_margin[2025]": 0.0904078064410647,
+        "der_mrq": 0.249991534198009
+      }
+    },
+    {
+      "symbol": "SOLA.JK",
+      "company_name": "PT Xolare RCR Energy Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 276139500000,
+        "last_close_price": 84,
+        "daily_close_change": -0.0117647058823529,
+        "pe_ttm": 8.70062758179289,
+        "roe_ttm": 0.166876655818665,
+        "net_profit_margin[2025]": 0.133672518224353,
+        "der_mrq": 0.168555907437269
+      }
+    },
+    {
+      "symbol": "PPRI.JK",
+      "company_name": "PT Paperocks Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 170929338792,
+        "last_close_price": 159,
+        "daily_close_change": -0.0421686746987952,
+        "pe_ttm": 62.5325053462499,
+        "roe_ttm": 0.0276803676103957,
+        "net_profit_margin[2025]": 0.0191335190024193,
+        "der_mrq": 0.160229725995152
+      }
+    },
+    {
+      "symbol": "INCI.JK",
+      "company_name": "Intanwijaya Internasional Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 166125293600,
+        "last_close_price": 800,
+        "daily_close_change": -0.0062111801242236,
+        "pe_ttm": 3.67784823609089,
+        "roe_ttm": 0.0896964288438262,
+        "net_profit_margin[2025]": 0.0674176003723825,
+        "der_mrq": 0.00372581422393695
+      }
+    },
+    {
+      "symbol": "OBMD.JK",
+      "company_name": "PT OBM Drilchem Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 159586600338,
+        "last_close_price": 198,
+        "daily_close_change": 0,
+        "pe_ttm": 10.0310850505184,
+        "roe_ttm": 0.0751176650419297,
+        "net_profit_margin[2025]": 0.197198829334581,
+        "der_mrq": 0.00928674359446411
+      }
+    },
+    {
+      "symbol": "KKES.JK",
+      "company_name": "PT Kusuma Kemindo Sentosa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 124500000000,
+        "last_close_price": 83,
+        "daily_close_change": 0,
+        "pe_ttm": 115.017738751644,
+        "roe_ttm": 0.0169931356895652,
+        "net_profit_margin[2025]": -0.0151205503300558,
+        "der_mrq": 0.628916404402515
+      }
+    },
+    {
+      "symbol": "ESIP.JK",
+      "company_name": "PT Sinergi Inti Plastindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 124314830864,
+        "last_close_price": 112,
+        "daily_close_change": -0.0175438596491228,
+        "pe_ttm": 52.8307940772471,
+        "roe_ttm": 0.0235482733751029,
+        "net_profit_margin[2025]": 0.0248171010466633,
+        "der_mrq": 0.0100095703190472
+      }
+    },
+    {
+      "symbol": "SBMA.JK",
+      "company_name": "PT Surya Biru Murni Acetylene Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 106941522430,
+        "last_close_price": 115,
+        "daily_close_change": -0.0170940170940171,
+        "pe_ttm": 15.3587294873519,
+        "roe_ttm": 0.0288841341125888,
+        "net_profit_margin[2025]": 0.0859712595980853,
+        "der_mrq": 0.140744284108016
+      }
+    },
+    {
+      "symbol": "PICO.JK",
+      "company_name": "Pelangi Indah Canindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 96623750000,
+        "last_close_price": 170,
+        "daily_close_change": -0.0173410404624277,
+        "pe_ttm": 33.5292801369644,
+        "roe_ttm": 0.0135524931216843,
+        "net_profit_margin[2025]": 0.00857412951379594,
+        "der_mrq": 0.501368659017515
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 72,
+    "showing": 12,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

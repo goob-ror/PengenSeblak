@@ -20,14 +20,14 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
-import { STALE_INTRADAY } from "@/lib/query-config";
+import { STALE_INTRADAY, STALE_NEWS } from "@/lib/query-config";
 
 // ── Server-normalized response shapes ──────────────────────────────────────
 // (mirror of server/src/adapters/index.ts — kept in sync manually)
 
 export interface IHSGDailyPoint {
-  date: string;    // "YYYY-MM-DD"
-  close: number;   // canonical — adapter maps 'price' -> 'close'
+  date: string; // "YYYY-MM-DD"
+  close: number; // canonical — adapter maps 'price' -> 'close'
   volume?: number;
 }
 
@@ -39,15 +39,15 @@ export interface IdxTotalPoint {
 export interface ForeignFlowPoint {
   date: string;
   symbol: string;
-  net_foreign_inflow: number;  // IDR, positive = net buy
-  foreign_share?: number;      // 0-1
+  net_foreign_inflow: number; // IDR, positive = net buy
+  foreign_share?: number; // 0-1
 }
 
 export interface TopChangeEntry {
-  symbol: string;            // .JK stripped by adapter
+  symbol: string; // .JK stripped by adapter
   company_name: string;
-  price: number;              // from last_close_price
-  price_change_pct: number;   // decimal, e.g. 0.0124 = +1.24%
+  price: number; // from last_close_price
+  price_change_pct: number; // decimal, e.g. 0.0124 = +1.24%
   price_change: number | null;
   latest_close_date: string;
 }
@@ -88,7 +88,7 @@ export function useIHSGSeries(days = 30) {
         .sort((a, b) => a.date.localeCompare(b.date))
         .filter((p) => p.close != null)
         .map((p) => ({
-          t: p.date.slice(5),   // "MM-DD" for chart label
+          t: p.date.slice(5), // "MM-DD" for chart label
           value: p.close,
         })) as { t: string; value: number }[],
   });
@@ -110,10 +110,7 @@ export function useIdxTotal(days = 30) {
       const prev = series.at(-2);
       const mcap = latest?.market_cap ?? null;
       const prevMcap = prev?.market_cap ?? null;
-      const change =
-        mcap != null && prevMcap != null
-          ? ((mcap - prevMcap) / prevMcap) * 100
-          : null;
+      const change = mcap != null && prevMcap != null ? ((mcap - prevMcap) / prevMcap) * 100 : null;
       return { mcap, change, series };
     },
   });
@@ -138,16 +135,12 @@ export function useForeignFlow(days = 30) {
 
       // MTD cumulative foreign flow (AGENTS.md Feature #2)
       const now = new Date();
-      const monthStart = formatDate(
-        new Date(now.getFullYear(), now.getMonth(), 1),
-      );
+      const monthStart = formatDate(new Date(now.getFullYear(), now.getMonth(), 1));
       const mtdFlow = series
         .filter((p) => p.date >= monthStart)
         .reduce((sum, p) => sum + (p.net_foreign_inflow ?? 0), 0);
 
-      const last5sum = series
-        .slice(-5)
-        .reduce((s, p) => s + (p.net_foreign_inflow ?? 0), 0);
+      const last5sum = series.slice(-5).reduce((s, p) => s + (p.net_foreign_inflow ?? 0), 0);
 
       return {
         latest: latest?.net_foreign_inflow ?? null,
@@ -176,9 +169,45 @@ export function useTopChanges() {
     ...STALE_INTRADAY,
     select: (data) => {
       const gainers = (data?.top_gainers?.["1d"] ?? []).slice(0, 5);
-      const losers  = (data?.top_losers?.["1d"]  ?? []).slice(0, 5);
+      const losers = (data?.top_losers?.["1d"] ?? []).slice(0, 5);
 
       return { gainers, losers };
     },
+  });
+}
+
+// ── IDX News (real /v2/news/ data, 1 credit, cached 5 min server-side) ─────
+
+export interface NewsArticle {
+  title: string;
+  body: string;
+  source: string; // article URL
+  timestamp: string; // ISO datetime
+  sector?: string;
+  sub_sector?: string[];
+  tags?: string[];
+  symbols?: string[]; // e.g. ["TRUK.JK"]
+  dimension?: Record<string, number>;
+}
+
+interface NewsEnvelope {
+  results?: NewsArticle[];
+}
+
+/**
+ * Latest IDX news. 1 credit per call, cached 5 min server-side + STALE_NEWS
+ * client-side. Limit 10 is plenty for the dashboard feed — offset can be
+ * raised when the full Berita page migrates to this hook.
+ */
+export function useIdxNews(limit = 10) {
+  return useQuery({
+    queryKey: ["sectors", "news", "idx", limit],
+    queryFn: () =>
+      api.sectors.get<NewsEnvelope>("/news/", {
+        extension: "idx",
+        limit,
+      }),
+    ...STALE_NEWS,
+    select: (data) => data?.results ?? [],
   });
 }

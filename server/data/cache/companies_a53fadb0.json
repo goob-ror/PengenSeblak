@@ -5,7 +5,7 @@
       "company_name": "PT Bank Oke Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 9.52290942850158,
+        "pe_ttm": 9.44792588969448,
         "roe_ttm": 0.0570393274551135,
         "net_profit_margin[2025]": 0.221933317167879
       }
@@ -25,7 +25,7 @@
       "company_name": "PT Bank Mayapada Internasional Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 80.6328386233882,
+        "pe_ttm": 78.3290432341485,
         "roe_ttm": 0.00347312896180315,
         "net_profit_margin[2025]": 0.00915498076766843
       }
@@ -55,7 +55,7 @@
       "company_name": "PT Bank OCBC NISP Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 5.50359153302706,
+        "pe_ttm": 5.46008488059206,
         "roe_ttm": 0.117665948057835,
         "net_profit_margin[2025]": 0.389637655462017
       }
@@ -65,7 +65,7 @@
       "company_name": "PT Bank Nationalnobu Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 6.93467377672872,
+        "pe_ttm": 6.68250382121132,
         "roe_ttm": 0.131998176470535,
         "net_profit_margin[2025]": 0.296375477903303
       }
@@ -75,7 +75,7 @@
       "company_name": "Bank Pan Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 6.79028086350687,
+        "pe_ttm": 6.67253032830155,
         "roe_ttm": 0.0531869085999254,
         "net_profit_margin[2025]": 0.252900120212999
       }
@@ -95,7 +95,7 @@
       "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 6.65728336968481,
+        "pe_ttm": 6.59327102959168,
         "roe_ttm": 0.0407724307268729,
         "net_profit_margin[2025]": -0.579388994609868
       }
@@ -105,7 +105,7 @@
       "company_name": "PT Super Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 90.7828542029922,
+        "pe_ttm": 90.0477703632919,
         "roe_ttm": 0.0221198969446929,
         "net_profit_margin[2025]": 0.0616651139657713
       }

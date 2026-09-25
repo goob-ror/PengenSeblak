@@ -12,4 +12,16 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    server: {
+      host: true,
+      allowedHosts: ["loraine-resistible-hans.ngrok-free.dev"],
+      proxy: {
+        "/api": {
+          target: "http://localhost:3001",
+          changeOrigin: true,
+        },
+      },
+    },
+  },
 });

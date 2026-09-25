@@ -126,7 +126,7 @@ export function MethodTip({ text }: { text: string }) {
 export function MetricStrip({
   items,
 }: {
-  items: { label: string; value: ReactNode; sub?: ReactNode }[];
+  items: { label: string; value: ReactNode; sub?: ReactNode; tone?: Tone | undefined }[];
 }) {
   return (
     <div className="grid border border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
@@ -140,7 +140,13 @@ export function MetricStrip({
         >
           <div className="absolute left-0 top-0 h-0.5 w-full bg-primary/30" />
           <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{x.label}</div>
-          <div className="mt-1.5 text-xl font-semibold text-data text-foreground">{x.value}</div>
+          <div className={cn(
+            "mt-1.5 text-xl font-semibold text-data",
+            x.tone === "positive" && "text-positive",
+            x.tone === "negative" && "text-negative",
+            x.tone === "warning" && "text-warning",
+            !x.tone && "text-foreground",
+          )}>{x.value}</div>
           {x.sub && <div className="mt-1 text-[11px] text-muted-foreground">{x.sub}</div>}
         </div>
       ))}

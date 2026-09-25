@@ -50,9 +50,20 @@ import {
   th,
 } from "./primitives";
 import { IHSGChart, SectorChart, ForeignFlowChart, GrowthHistoryChart } from "./charts";
-import { useIHSGSeries, useIdxTotal, useForeignFlow, useTopChanges } from "@/hooks/useMarketOverview";
+import {
+  useIHSGSeries,
+  useIdxTotal,
+  useForeignFlow,
+  useTopChanges,
+  useIdxNews,
+  type NewsArticle,
+} from "@/hooks/useMarketOverview";
 import { useSectorHealthScores } from "@/hooks/useSubsectorReport";
-import { useSubsectorList, useSectorUniverse, useSectorGrowthHistory } from "@/hooks/useSectorUniverse";
+import {
+  useSubsectorList,
+  useSectorUniverse,
+  useSectorGrowthHistory,
+} from "@/hooks/useSectorUniverse";
 import { useAnomalies } from "@/hooks/useAnomalies";
 import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
 import type { AnomalyResult } from "@/lib/algorithms/divergence";
@@ -129,9 +140,20 @@ function formatIDRCompact(v: number | null | undefined): string {
   const g = (n: number, d = 2) =>
     n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   if (abs >= 1e12) return `${sign}Rp. ${g(abs / 1e12)} T`;
-  if (abs >= 1e9)  return `${sign}Rp. ${g(abs / 1e9)} M`;
-  if (abs >= 1e6)  return `${sign}Rp. ${g(abs / 1e6)} Jt`;
+  if (abs >= 1e9) return `${sign}Rp. ${g(abs / 1e9)} M`;
+  if (abs >= 1e6) return `${sign}Rp. ${g(abs / 1e6)} Jt`;
   return `${sign}Rp. ${g(abs, 0)}`;
+}
+
+/** Market-cap values are magnitudes, so do not add a misleading +/- sign. */
+function formatMarketCap(v: number | null | undefined): string {
+  if (v == null || !Number.isFinite(v)) return "—";
+  const abs = Math.abs(v);
+  const g = (n: number) =>
+    n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  if (abs >= 1e12) return `Rp. ${g(v / 1e12)} T`;
+  if (abs >= 1e9) return `Rp. ${g(v / 1e9)} B`;
+  return `Rp. ${g(v / 1e6)} Jt`;
 }
 
 /**
@@ -149,9 +171,7 @@ function shiComponentTip(
   const parts = [name, `${score.toFixed(1)} / ${max} (${pct}%)`, `Bobot ${weightPct}%`];
   if (!entry.complete) {
     parts.push(
-      entry.missing.length > 0
-        ? `Data parsial: ${entry.missing.join(", ")}`
-        : "Data parsial",
+      entry.missing.length > 0 ? `Data parsial: ${entry.missing.join(", ")}` : "Data parsial",
     );
   }
   return parts.join(" · ");
@@ -163,12 +183,14 @@ export function MarketOverview() {
 
   // ── Lapis 2: TanStack Query (in-memory client cache) ──────────────────────
   const days = period === "1W" ? 7 : period === "1M" ? 30 : 90;
-  const ihsg      = useIHSGSeries(days); // 1W=7, 1M=30, 3M=90 (API max range = 90 days)
-  const idxTotal  = useIdxTotal(30);
+  const ihsg = useIHSGSeries(days); // 1W=7, 1M=30, 3M=90 (API max range = 90 days)
+  const idxTotal = useIdxTotal(30);
   const foreignFl = useForeignFlow(30);
-  const topMov    = useTopChanges();
-  const shi       = useSectorHealthScores();
-  const anom      = useAnomalies();
+  const topMov = useTopChanges();
+  const shi = useSectorHealthScores();
+  const anom = useAnomalies();
+  const newsFeed = useIdxNews(8);
+  const [newsDetail, setNewsDetail] = useState<NewsArticle | null>(null);
 
   // ── Derived values from live data ─────────────────────────────────────────
 
@@ -183,11 +205,10 @@ export function MarketOverview() {
   }, [ihsg.data, periodPoints]);
 
   const latestIHSG = ihsgChartData.at(-1);
-  const prevIHSG   = ihsgChartData.at(-2);
-  const ihsgLevel  = latestIHSG?.value ?? null;
-  const ihsgChange = ihsgLevel && prevIHSG?.value
-    ? ((ihsgLevel - prevIHSG.value) / prevIHSG.value) * 100
-    : null;
+  const prevIHSG = ihsgChartData.at(-2);
+  const ihsgLevel = latestIHSG?.value ?? null;
+  const ihsgChange =
+    ihsgLevel && prevIHSG?.value ? ((ihsgLevel - prevIHSG.value) / prevIHSG.value) * 100 : null;
 
   // Market cap — Indonesian units (Triliun / Miliar)
   // Requested format: "Rp. xx,xxx.xx T" — grouped thousands, 2 decimals.
@@ -231,9 +252,7 @@ export function MarketOverview() {
   const marketOpen = session.isOpen;
 
   // Last updated label — value date + time
-  const updatedAt = latestIHSG
-    ? `${ latestIHSG.t }${marketOpen ? "" : " · sesi tutup"}`
-    : "Memuat…";
+  const updatedAt = latestIHSG ? `${latestIHSG.t}${marketOpen ? "" : " · sesi tutup"}` : "Memuat…";
 
   // SHI list — LIVE ONLY. No mock fallback (user directive: no dummy data
   // anywhere on Ringkasan Pasar). When the API hasn't answered yet the list
@@ -261,65 +280,96 @@ export function MarketOverview() {
         items={[
           {
             label: "IHSG",
-            value: ihsg.isPending
-              ? <Skeleton className="h-5 w-20" />
-              : ihsgLevel != null
-                ? ihsgLevel.toLocaleString("id-ID", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                : "—",
-            sub: ihsgChange != null
-              ? <Change value={ihsgChange} />
-              : ihsg.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+            value: ihsg.isPending ? (
+              <Skeleton className="h-5 w-20" />
+            ) : ihsgLevel != null ? (
+              ihsgLevel.toLocaleString("id-ID", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })
+            ) : (
+              "—"
+            ),
+            sub:
+              ihsgChange != null ? (
+                <Change value={ihsgChange} />
+              ) : ihsg.isPending ? (
+                <Skeleton className="h-3 w-12" />
+              ) : (
+                "—"
+              ),
           },
           {
             label: "Market status",
-            value: marketOpen
-              ? <span className="text-positive">BUKA</span>
-              : <span className="text-muted-foreground">TUTUP</span>,
+            value: marketOpen ? (
+              <span className="text-positive">BUKA</span>
+            ) : (
+              <span className="text-muted-foreground">TUTUP</span>
+            ),
             sub: <span className="tabular-nums">{session.label}</span>,
           },
           {
             label: "Mkt Cap IDX",
-            value: idxTotal.isPending
-              ? <Skeleton className="h-5 w-20" />
-              : mcapFormatted ?? "—",
-            sub: idxTotal.data?.change != null
-              ? <Change value={idxTotal.data.change} />
-              : idxTotal.isPending ? <Skeleton className="h-3 w-14" /> : "—",
+            value: idxTotal.isPending ? <Skeleton className="h-5 w-20" /> : (mcapFormatted ?? "—"),
+            sub:
+              idxTotal.data?.change != null ? (
+                <Change value={idxTotal.data.change} />
+              ) : idxTotal.isPending ? (
+                <Skeleton className="h-3 w-14" />
+              ) : (
+                "—"
+              ),
           },
           {
             label: "Vol Asing (sesi)",
-            value: foreignFl.isPending
-              ? <Skeleton className="h-5 w-20" />
-              : ffFormatted != null ? (
-                  <span className={ffPositive ? "text-positive" : "text-negative"}>
-                    {ffFormatted}
-                  </span>
-                ) : "—",
-            sub: foreignFl.isPending
-              ? <Skeleton className="h-3 w-16" />
-              : ffFormatted != null
-                ? <span className={ffPositive ? "text-positive" : "text-negative"}>
-                    {ffPositive ? "Net beli asing" : "Net jual asing"}
-                  </span>
-                : foreignFl.isError ? "Gagal memuat" : "—",
+            value: foreignFl.isPending ? (
+              <Skeleton className="h-5 w-20" />
+            ) : ffFormatted != null ? (
+              <span className={ffPositive ? "text-positive" : "text-negative"}>{ffFormatted}</span>
+            ) : (
+              "—"
+            ),
+            sub: foreignFl.isPending ? (
+              <Skeleton className="h-3 w-16" />
+            ) : ffFormatted != null ? (
+              <span className={ffPositive ? "text-positive" : "text-negative"}>
+                {ffPositive ? "Net beli asing" : "Net jual asing"}
+              </span>
+            ) : foreignFl.isError ? (
+              "Gagal memuat"
+            ) : (
+              "—"
+            ),
           },
           {
             label: "Top Gainer",
-            value: topMov.isPending
-              ? <Skeleton className="h-5 w-14" />
-              : topMov.data?.gainers[0]?.symbol ?? "—",
-            sub: topMov.data?.gainers[0]
-              ? <Change value={topMov.data.gainers[0].price_change_pct * 100} />
-              : topMov.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+            value: topMov.isPending ? (
+              <Skeleton className="h-5 w-14" />
+            ) : (
+              (topMov.data?.gainers[0]?.symbol ?? "—")
+            ),
+            sub: topMov.data?.gainers[0] ? (
+              <Change value={topMov.data.gainers[0].price_change_pct * 100} />
+            ) : topMov.isPending ? (
+              <Skeleton className="h-3 w-12" />
+            ) : (
+              "—"
+            ),
           },
           {
             label: "Top Loser",
-            value: topMov.isPending
-              ? <Skeleton className="h-5 w-14" />
-              : topMov.data?.losers[0]?.symbol ?? "—",
-            sub: topMov.data?.losers[0]
-              ? <Change value={topMov.data.losers[0].price_change_pct * 100} />
-              : topMov.isPending ? <Skeleton className="h-3 w-12" /> : "—",
+            value: topMov.isPending ? (
+              <Skeleton className="h-5 w-14" />
+            ) : (
+              (topMov.data?.losers[0]?.symbol ?? "—")
+            ),
+            sub: topMov.data?.losers[0] ? (
+              <Change value={topMov.data.losers[0].price_change_pct * 100} />
+            ) : topMov.isPending ? (
+              <Skeleton className="h-3 w-12" />
+            ) : (
+              "—"
+            ),
           },
         ]}
       />
@@ -330,7 +380,9 @@ export function MarketOverview() {
           kicker="Data live Sectors API"
           action={
             <div className="flex items-center gap-2">
-              {ihsg.isFetching && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+              {ihsg.isFetching && (
+                <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+              )}
               <div className="flex">
                 {(["1W", "1M", "3M"] as const).map((x) => (
                   <Button
@@ -358,16 +410,32 @@ export function MarketOverview() {
             <div className="flex h-72 items-center justify-center">
               <div className="text-center text-xs text-muted-foreground">
                 <span className="text-negative">Gagal memuat data IHSG.</span>
-                <br />Periksa koneksi atau kuota API.
+                <br />
+                Periksa koneksi atau kuota API.
               </div>
             </div>
           ) : (
             <IHSGChart data={ihsgChartData} />
           )}
           <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
-            <span><i className="mr-1 inline-block size-1.5 bg-primary" />IHSG</span>
-            {ihsgLevel && <span className="tabular-nums">{ihsgLevel.toLocaleString("id-ID", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>}
-            {ihsgChange != null && <span className={ihsgChange >= 0 ? "text-positive" : "text-negative"}>{ihsgChange >= 0 ? "+" : ""}{ihsgChange.toFixed(2)}%</span>}
+            <span>
+              <i className="mr-1 inline-block size-1.5 bg-primary" />
+              IHSG
+            </span>
+            {ihsgLevel && (
+              <span className="tabular-nums">
+                {ihsgLevel.toLocaleString("id-ID", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </span>
+            )}
+            {ihsgChange != null && (
+              <span className={ihsgChange >= 0 ? "text-positive" : "text-negative"}>
+                {ihsgChange >= 0 ? "+" : ""}
+                {ihsgChange.toFixed(2)}%
+              </span>
+            )}
             <span className="ml-auto tabular-nums">
               {ihsgChartData.length
                 ? `${ihsgChartData[0]?.t} → ${ihsgChartData.at(-1)?.t} · ${period} · ${ihsgChartData.length} sesi`
@@ -381,7 +449,10 @@ export function MarketOverview() {
           <div className="divide-y divide-border">
             {shi.isLoading
               ? Array.from({ length: 8 }, (_, i) => (
-                  <div key={i} className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5">
+                  <div
+                    key={i}
+                    className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5"
+                  >
                     <Skeleton className="h-3 w-5" />
                     <Skeleton className="h-3 w-14" />
                     <div>
@@ -403,25 +474,39 @@ export function MarketOverview() {
                       className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
                       title={`SHI: ${s.score}`}
                     >
-                      <span className="text-[10px] tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="text-[10px] tabular-nums text-muted-foreground">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                       <span className="text-[10px] text-muted-foreground truncate">{s.code}</span>
                       <div className="min-w-0">
                         <div className="mb-1.5 flex items-center justify-between">
                           <span className="text-xs font-medium truncate">{s.name}</span>
                           <span className="ml-2 shrink-0 text-[10px] text-muted-foreground tabular-nums">
-                            {isPos ? "+" : ""}{perfProxy.toFixed(1)}%
+                            {isPos ? "+" : ""}
+                            {perfProxy.toFixed(1)}%
                           </span>
                         </div>
                         <div className="h-1 w-full rounded-full bg-secondary overflow-hidden">
                           <div
-                            className={cn("h-full rounded-full transition-all", isPos ? "bg-positive/70" : "bg-negative/60")}
+                            className={cn(
+                              "h-full rounded-full transition-all",
+                              isPos ? "bg-positive/70" : "bg-negative/60",
+                            )}
                             style={{ width: `${Math.max(3, barWidth)}%` }}
                           />
                         </div>
                       </div>
                       <div className="text-right">
-                        <span className={cn("text-xs font-medium tabular-nums",
-                          s.score >= 65 ? "text-positive" : s.score >= 50 ? "text-warning" : "text-negative")}>
+                        <span
+                          className={cn(
+                            "text-xs font-medium tabular-nums",
+                            s.score >= 65
+                              ? "text-positive"
+                              : s.score >= 50
+                                ? "text-warning"
+                                : "text-negative",
+                          )}
+                        >
                           {s.score}
                         </span>
                       </div>
@@ -436,7 +521,9 @@ export function MarketOverview() {
       <div className="grid gap-4 xl:grid-cols-2">
         <Panel
           title="Sector Health Index"
-          kicker={shi.results.some((s) => s.isLive) ? "Live dari Sectors API" : "Skor turunan kustom"}
+          kicker={
+            shi.results.some((s) => s.isLive) ? "Live dari Sectors API" : "Skor turunan kustom"
+          }
           action={
             <div className="flex items-center gap-2">
               {shi.isLoading && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
@@ -448,28 +535,47 @@ export function MarketOverview() {
             {shiList.slice(0, 6).map((s, i) => {
               const tone = toneFor(s.score - 64);
               const barColor =
-                tone === "positive" ? "bg-positive"
-                : tone === "accent"  ? "bg-primary"
-                : tone === "warning" ? "bg-warning"
-                : "bg-negative";
+                tone === "positive"
+                  ? "bg-positive"
+                  : tone === "accent"
+                    ? "bg-primary"
+                    : tone === "warning"
+                      ? "bg-warning"
+                      : "bg-negative";
               const scoreColor =
-                tone === "positive" ? "text-positive"
-                : tone === "accent"  ? "text-primary"
-                : tone === "warning" ? "text-warning"
-                : "text-negative";
+                tone === "positive"
+                  ? "text-positive"
+                  : tone === "accent"
+                    ? "text-primary"
+                    : tone === "warning"
+                      ? "text-warning"
+                      : "text-negative";
               return (
-                <div key={s.name} className="grid grid-cols-[28px_1fr_56px_auto] items-center gap-3 px-4 py-3 hover:bg-secondary/50 transition-colors">
-                  <span className="text-[10px] tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                <div
+                  key={s.name}
+                  className="grid grid-cols-[28px_1fr_56px_auto] items-center gap-3 px-4 py-3 hover:bg-secondary/50 transition-colors"
+                >
+                  <span className="text-[10px] tabular-nums text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <div className="min-w-0">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-xs font-medium truncate">{s.name}</span>
                       <span className="text-[10px] text-muted-foreground ml-2 shrink-0 flex items-center gap-1">
                         {s.trend}
-                        {s.isLive && <span className="inline-block size-1.5 rounded-full bg-positive" title="Live" />}
+                        {s.isLive && (
+                          <span
+                            className="inline-block size-1.5 rounded-full bg-positive"
+                            title="Live"
+                          />
+                        )}
                       </span>
                     </div>
                     <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
-                      <div className={cn("h-full rounded-full transition-all", barColor)} style={{ width: `${s.score}%` }} />
+                      <div
+                        className={cn("h-full rounded-full transition-all", barColor)}
+                        style={{ width: `${s.score}%` }}
+                      />
                     </div>
                     <div className="flex gap-2 mt-1.5 text-[9px] text-muted-foreground">
                       <span
@@ -499,10 +605,13 @@ export function MarketOverview() {
                     </div>
                   </div>
                   <div className="text-center">
-                    {shi.isLoading
-                      ? <Skeleton className="mx-auto h-6 w-8" />
-                      : <span className={cn("text-xl font-semibold tabular-nums", scoreColor)}>{s.score}</span>
-                    }
+                    {shi.isLoading ? (
+                      <Skeleton className="mx-auto h-6 w-8" />
+                    ) : (
+                      <span className={cn("text-xl font-semibold tabular-nums", scoreColor)}>
+                        {s.score}
+                      </span>
+                    )}
                   </div>
                   <Tag tone={tone}>{healthLabel(s.score)}</Tag>
                 </div>
@@ -535,194 +644,303 @@ export function MarketOverview() {
         {/* ── Net Foreign Flow MTD Kumulatif (plan item #2, Kritikal) ───────
             Zero extra credits: useForeignFlow already returns mtdFlow and
             last5sum, they just were never rendered before. */}
-          <Panel
-            title="Aliran Dana Asing"
-            kicker="Net Foreign Flow · kumulatif"
-            action={
-              <MethodTip text="Akumulasi net foreign inflow IHSG: Month-to-Date (sejak awal bulan) dan 5 sesi terakhir. Data foreign-flow Sectors API, di-cache." />
-            }
-          >
-            {foreignFl.isPending ? (
-              <div className="space-y-3 p-4">
-                <Skeleton className="h-32 w-full" />
-                <Skeleton className="h-3 w-full" />
-                <Skeleton className="h-3 w-full" />
-                <Skeleton className="h-3 w-full" />
-              </div>
-            ) : foreignFl.isError ? (
-              <div className="px-4 py-6 text-center text-xs text-muted-foreground">
-                Gagal memuat data aliran dana asing.
-              </div>
-            ) : (
-              <>
-                {/* Bar chart with grid — 20 sessions, top of panel */}
-                <ForeignFlowChart data={(foreignFl.data?.series ?? []).slice(-20)} />
-                {/* Summary stats below chart */}
-                <div className="grid grid-cols-3 divide-x divide-border border-t border-border">
-                  <div className="px-4 py-3">
-                    <div className="text-[10px] text-muted-foreground">MTD</div>
-                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
-                      foreignFl.data?.mtdPositive ? "text-positive" : "text-negative")}>
-                      {formatIDRCompact(foreignFl.data?.mtdFlow ?? null)}
-                    </div>
-                    <div className="mt-0.5 text-[9px] text-muted-foreground">
-                      {foreignFl.data?.mtdPositive ? "Net masuk" : "Net keluar"}
-                    </div>
-                  </div>
-                  <div className="px-4 py-3">
-                    <div className="text-[10px] text-muted-foreground">5 Sesi</div>
-                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
-                      foreignFl.data?.last5Positive ? "text-positive" : "text-negative")}>
-                      {formatIDRCompact(foreignFl.data?.last5sum ?? null)}
-                    </div>
-                    <div className="mt-0.5 text-[9px] text-muted-foreground">
-                      {foreignFl.data?.last5Positive ? "Net masuk" : "Net keluar"}
-                    </div>
-                  </div>
-                  <div className="px-4 py-3">
-                    <div className="text-[10px] text-muted-foreground">Sesi Terakhir</div>
-                    <div className={cn("mt-1 text-sm font-semibold tabular-nums",
-                      (foreignFl.data?.latest ?? 0) >= 0 ? "text-positive" : "text-negative")}>
-                      {formatIDRCompact(foreignFl.data?.latest ?? null)}
-                    </div>
-                    <div className="mt-0.5 text-[9px] text-muted-foreground">
-                      {(foreignFl.data?.latest ?? 0) >= 0 ? "Net beli" : "Net jual"}
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </Panel>
-
-      {/* Top Movers panel (live) + Anomali (live Z-score detection) */}
-      <Panel
-        title="Top Movers Hari Ini"
-        kicker="Live Sectors API"
-        action={
-          topMov.isFetching
-            ? <RefreshCw className="size-3 animate-spin text-muted-foreground" />
-            : <span className="text-[10px] text-muted-foreground">1D</span>
-        }
-      >
-        {topMov.isPending ? (
-          <div className="divide-y divide-border">
-            {Array.from({ length: 6 }, (_, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-2.5">
-                <Skeleton className="h-4 w-12" />
-                <Skeleton className="h-3 flex-1" />
-                <Skeleton className="h-3 w-14" />
-              </div>
-            ))}
-          </div>
-        ) : topMov.isError ? (
-          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
-            Gagal memuat top movers.
-          </div>
-        ) : (
-          <div className="divide-y divide-border">
-            {/* Gainers */}
-            <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-positive/70">
-              Top Naik
+        <Panel
+          title="Aliran Dana Asing"
+          kicker="Net Foreign Flow · kumulatif"
+          action={
+            <MethodTip text="Akumulasi net foreign inflow IHSG: Month-to-Date (sejak awal bulan) dan 5 sesi terakhir. Data foreign-flow Sectors API, di-cache." />
+          }
+        >
+          {foreignFl.isPending ? (
+            <div className="space-y-3 p-4">
+              <Skeleton className="h-48 w-full" />
+              <Skeleton className="h-3 w-full" />
+              <Skeleton className="h-3 w-full" />
+              <Skeleton className="h-3 w-full" />
             </div>
-            {(topMov.data?.gainers ?? []).map((g) => (
-              <div key={g.symbol} className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50">
-                <span className="w-14 text-xs font-semibold text-primary">{g.symbol}</span>
-                <span className="flex-1 truncate text-[10px] text-muted-foreground">{g.company_name}</span>
-                <Change value={g.price_change_pct * 100} />
-              </div>
-            ))}
-            {/* Losers */}
-            <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-negative/70">
-              Top Turun
+          ) : foreignFl.isError ? (
+            <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+              Gagal memuat data aliran dana asing.
             </div>
-            {(topMov.data?.losers ?? []).map((l) => (
-              <div key={l.symbol} className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50">
-                <span className="w-14 text-xs font-semibold text-primary">{l.symbol}</span>
-                <span className="flex-1 truncate text-[10px] text-muted-foreground">{l.company_name}</span>
-                <Change value={l.price_change_pct * 100} />
-              </div>
-            ))}
-          </div>
-        )}
-      </Panel>
-
-      {/* Anomaly monitor — REAL Z-score detection from the Companies Screener.
-          Rules: Features To Be Implemented.md Algoritma 5. No mock data. */}
-      <Panel
-        title="Monitor Anomali Pasar"
-        kicker={anom.isPending ? "Memuat…" : anom.isError ? "Gagal memuat" : "Deteksi live Sectors API"}
-        action={
-          anom.isPending ? (
-            <RefreshCw className="size-3 animate-spin text-muted-foreground" />
           ) : (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
-              {(anom.data ?? []).length} terdeteksi
-            </span>
-          )
-        }
-      >
-        {anom.isPending ? (
-          <div className="divide-y divide-border">
-            {Array.from({ length: 4 }, (_, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-3">
-                <Skeleton className="h-9 w-12" />
-                <div className="flex-1 space-y-1.5">
-                  <Skeleton className="h-3 w-2/3" />
-                  <Skeleton className="h-2.5 w-1/3" />
-                </div>
-                <Skeleton className="h-4 w-10" />
-              </div>
-            ))}
-          </div>
-        ) : anom.isError ? (
-          <div className="px-4 py-6 text-center text-xs text-muted-foreground">
-            Gagal memuat anomali. Endpoint screener mungkin tidak tersedia.
-          </div>
-        ) : (anom.data ?? []).length === 0 ? (
-          <div className="px-4 py-6 text-center">
-            <div className="text-xs text-muted-foreground">Tidak ada anomali terdeteksi.</div>
-            <div className="mt-1 text-[10px] text-muted-foreground/70">
-              Tidak ada emiten dengan deviasi |Z| &gt; 1.8 dari peer sub-sektornya.
-            </div>
-          </div>
-        ) : (
-          <div className="divide-y divide-border">
-            {(anom.data ?? []).slice(0, 6).map((a) => (
-              <button key={a.symbol + a.type} onClick={() => setDetail(a)}
-                className="w-full text-left hover:bg-secondary/50 transition-colors">
-                <div className="flex items-stretch">
-                  <div className={cn("w-1 shrink-0", a.severity === "High" ? "bg-negative" : "bg-warning")} />
-                  <div className="flex flex-1 items-center gap-3 px-3 py-3">
-                    <div className={cn("flex h-9 w-12 shrink-0 items-center justify-center border text-[11px] font-bold",
-                      a.severity === "High" ? "border-negative/30 bg-negative/10 text-negative" : "border-warning/30 bg-warning/10 text-warning")}>
-                      {a.symbol}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="truncate text-xs font-medium">{a.label}</div>
-                      <div className="mt-0.5 text-[10px] text-muted-foreground truncate">
-                        {a.company_name}
-                      </div>
-                      <div className="mt-0.5 text-[10px] text-muted-foreground">
-                        {a.metric} <span className="text-foreground">{a.value}</span> · peer {a.average}
-                      </div>
-                    </div>
-                    <div className="shrink-0 text-right">
-                      <div className={cn("text-sm font-semibold tabular-nums", a.deviation >= 0 ? "text-positive" : "text-negative")}>
-                        {a.deviation >= 0 ? "+" : ""}{a.deviation}
-                      </div>
-                      <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">{a.severity}</Tag>
-                    </div>
+            <>
+              {/* Bar chart with grid — 20 sessions, top of panel */}
+              <ForeignFlowChart data={(foreignFl.data?.series ?? []).slice(-20)} />
+              {/* Summary stats below chart */}
+              <div className="grid grid-cols-3 divide-x divide-border border-t border-border">
+                <div className="px-4 py-3">
+                  <div className="text-[10px] text-muted-foreground">MTD</div>
+                  <div
+                    className={cn(
+                      "mt-1 text-sm font-semibold tabular-nums",
+                      foreignFl.data?.mtdPositive ? "text-positive" : "text-negative",
+                    )}
+                  >
+                    {formatIDRCompact(foreignFl.data?.mtdFlow ?? null)}
+                  </div>
+                  <div className="mt-0.5 text-[9px] text-muted-foreground">
+                    {foreignFl.data?.mtdPositive ? "Net masuk" : "Net keluar"}
                   </div>
                 </div>
-              </button>
-            ))}
+                <div className="px-4 py-3">
+                  <div className="text-[10px] text-muted-foreground">5 Sesi</div>
+                  <div
+                    className={cn(
+                      "mt-1 text-sm font-semibold tabular-nums",
+                      foreignFl.data?.last5Positive ? "text-positive" : "text-negative",
+                    )}
+                  >
+                    {formatIDRCompact(foreignFl.data?.last5sum ?? null)}
+                  </div>
+                  <div className="mt-0.5 text-[9px] text-muted-foreground">
+                    {foreignFl.data?.last5Positive ? "Net masuk" : "Net keluar"}
+                  </div>
+                </div>
+                <div className="px-4 py-3">
+                  <div className="text-[10px] text-muted-foreground">Sesi Terakhir</div>
+                  <div
+                    className={cn(
+                      "mt-1 text-sm font-semibold tabular-nums",
+                      (foreignFl.data?.latest ?? 0) >= 0 ? "text-positive" : "text-negative",
+                    )}
+                  >
+                    {formatIDRCompact(foreignFl.data?.latest ?? null)}
+                  </div>
+                  <div className="mt-0.5 text-[9px] text-muted-foreground">
+                    {(foreignFl.data?.latest ?? 0) >= 0 ? "Net beli" : "Net jual"}
+                  </div>
+                </div>
+              </div>
+              {/* ── Katalis: real IDX news feed (scrollable, same card) ──
+                        Same pattern as the Anomali list: click → Sheet detail. */}
+              <div className="border-t border-border">
+                <div className="flex items-center justify-between px-4 pt-2.5">
+                  <span className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Katalis Pasar Terbaru
+                  </span>
+                  {newsFeed.isFetching ? (
+                    <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+                  ) : (
+                    <span className="text-[10px] text-muted-foreground">
+                      Sectors API · {newsFeed.data?.length ?? 0} berita
+                    </span>
+                  )}
+                </div>
+                {newsFeed.isPending ? (
+                  <div className="max-h-36 space-y-2 overflow-y-auto p-3">
+                    {Array.from({ length: 4 }, (_, i) => (
+                      <Skeleton key={i} className="h-8 w-full" />
+                    ))}
+                  </div>
+                ) : newsFeed.isError ? (
+                  <div className="px-4 py-3 text-[10px] text-muted-foreground">
+                    Berita tidak dapat dimuat.
+                  </div>
+                ) : (newsFeed.data ?? []).length === 0 ? (
+                  <div className="px-4 py-3 text-[10px] text-muted-foreground">
+                    Tidak ada berita terbaru.
+                  </div>
+                ) : (
+                  <div className="max-h-36 overflow-y-auto">
+                    <div className="divide-y divide-border">
+                      {(newsFeed.data ?? []).map((n, i) => (
+                        <button
+                          key={`${n.timestamp}-${i}`}
+                          onClick={() => setNewsDetail(n)}
+                          className="flex w-full items-start gap-2.5 px-4 py-2 text-left transition-colors hover:bg-secondary/50"
+                        >
+                          <span className="mt-0.5 shrink-0 text-[9px] tabular-nums text-muted-foreground">
+                            {n.timestamp?.slice(11, 16)}
+                          </span>
+                          <span className="line-clamp-2 text-[11px] leading-snug text-foreground">
+                            {n.title}
+                          </span>
+                          {(n.symbols ?? []).length > 0 && (
+                            <span className="ml-auto shrink-0 text-[9px] font-semibold text-primary">
+                              {n.symbols!.join(",")}
+                            </span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="px-4 pb-2 pt-1">
+                  <span className="text-[9px] text-muted-foreground">
+                    Klik berita untuk detail katalis
+                  </span>
+                </div>
+              </div>
+            </>
+          )}
+        </Panel>
+
+        {/* Top Movers panel (live) + Anomali (live Z-score detection) */}
+        <Panel
+          title="Top Movers Hari Ini"
+          kicker="Live Sectors API"
+          action={
+            topMov.isFetching ? (
+              <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+            ) : (
+              <span className="text-[10px] text-muted-foreground">1D</span>
+            )
+          }
+        >
+          {topMov.isPending ? (
+            <div className="divide-y divide-border">
+              {Array.from({ length: 6 }, (_, i) => (
+                <div key={i} className="flex items-center gap-3 px-4 py-2.5">
+                  <Skeleton className="h-4 w-12" />
+                  <Skeleton className="h-3 flex-1" />
+                  <Skeleton className="h-3 w-14" />
+                </div>
+              ))}
+            </div>
+          ) : topMov.isError ? (
+            <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+              Gagal memuat top movers.
+            </div>
+          ) : (
+            <div className="divide-y divide-border">
+              {/* Gainers */}
+              <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-positive/70">
+                Top Naik
+              </div>
+              {(topMov.data?.gainers ?? []).map((g) => (
+                <div
+                  key={g.symbol}
+                  className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50"
+                >
+                  <span className="w-14 text-xs font-semibold text-primary">{g.symbol}</span>
+                  <span className="flex-1 truncate text-[10px] text-muted-foreground">
+                    {g.company_name}
+                  </span>
+                  <Change value={g.price_change_pct * 100} />
+                </div>
+              ))}
+              {/* Losers */}
+              <div className="px-4 py-1.5 text-[9px] uppercase tracking-wider text-negative/70">
+                Top Turun
+              </div>
+              {(topMov.data?.losers ?? []).map((l) => (
+                <div
+                  key={l.symbol}
+                  className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50"
+                >
+                  <span className="w-14 text-xs font-semibold text-primary">{l.symbol}</span>
+                  <span className="flex-1 truncate text-[10px] text-muted-foreground">
+                    {l.company_name}
+                  </span>
+                  <Change value={l.price_change_pct * 100} />
+                </div>
+              ))}
+            </div>
+          )}
+        </Panel>
+
+        {/* Anomaly monitor — REAL Z-score detection from the Companies Screener.
+          Rules: Features To Be Implemented.md Algoritma 5. No mock data. */}
+        <Panel
+          title="Monitor Anomali Pasar"
+          kicker={
+            anom.isPending ? "Memuat…" : anom.isError ? "Gagal memuat" : "Deteksi live Sectors API"
+          }
+          action={
+            anom.isPending ? (
+              <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
+                {(anom.data ?? []).length} terdeteksi
+              </span>
+            )
+          }
+        >
+          {anom.isPending ? (
+            <div className="divide-y divide-border">
+              {Array.from({ length: 4 }, (_, i) => (
+                <div key={i} className="flex items-center gap-3 px-4 py-3">
+                  <Skeleton className="h-9 w-12" />
+                  <div className="flex-1 space-y-1.5">
+                    <Skeleton className="h-3 w-2/3" />
+                    <Skeleton className="h-2.5 w-1/3" />
+                  </div>
+                  <Skeleton className="h-4 w-10" />
+                </div>
+              ))}
+            </div>
+          ) : anom.isError ? (
+            <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+              Gagal memuat anomali. Endpoint screener mungkin tidak tersedia.
+            </div>
+          ) : (anom.data ?? []).length === 0 ? (
+            <div className="px-4 py-6 text-center">
+              <div className="text-xs text-muted-foreground">Tidak ada anomali terdeteksi.</div>
+              <div className="mt-1 text-[10px] text-muted-foreground/70">
+                Tidak ada emiten dengan deviasi |Z| &gt; 1.8 dari peer sub-sektornya.
+              </div>
+            </div>
+          ) : (
+            <div className="divide-y divide-border">
+              {(anom.data ?? []).slice(0, 6).map((a) => (
+                <button
+                  key={a.symbol + a.type}
+                  onClick={() => setDetail(a)}
+                  className="w-full text-left hover:bg-secondary/50 transition-colors"
+                >
+                  <div className="flex items-stretch">
+                    <div
+                      className={cn(
+                        "w-1 shrink-0",
+                        a.severity === "High" ? "bg-negative" : "bg-warning",
+                      )}
+                    />
+                    <div className="flex flex-1 items-center gap-3 px-3 py-3">
+                      <div
+                        className={cn(
+                          "flex h-9 w-12 shrink-0 items-center justify-center border text-[11px] font-bold",
+                          a.severity === "High"
+                            ? "border-negative/30 bg-negative/10 text-negative"
+                            : "border-warning/30 bg-warning/10 text-warning",
+                        )}
+                      >
+                        {a.symbol}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-xs font-medium">{a.label}</div>
+                        <div className="mt-0.5 text-[10px] text-muted-foreground truncate">
+                          {a.company_name}
+                        </div>
+                        <div className="mt-0.5 text-[10px] text-muted-foreground">
+                          {a.metric} <span className="text-foreground">{a.value}</span> · peer{" "}
+                          {a.average}
+                        </div>
+                      </div>
+                      <div className="shrink-0 text-right">
+                        <div
+                          className={cn(
+                            "text-sm font-semibold tabular-nums",
+                            a.deviation >= 0 ? "text-positive" : "text-negative",
+                          )}
+                        >
+                          {a.deviation >= 0 ? "+" : ""}
+                          {a.deviation}
+                        </div>
+                        <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">
+                          {a.severity}
+                        </Tag>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
+            <InsightLabel>Deviasi Z-score vs peer sub-sektor</InsightLabel>
+            <span className="text-[10px] text-muted-foreground">Klik baris untuk detail</span>
           </div>
-        )}
-        <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
-          <InsightLabel>Deviasi Z-score vs peer sub-sektor</InsightLabel>
-          <span className="text-[10px] text-muted-foreground">Klik baris untuk detail</span>
-        </div>
-      </Panel>
+        </Panel>
       </div>
 
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
@@ -751,7 +969,14 @@ export function MarketOverview() {
                   {(["pe", "roe", "margin", "der"] as const).map((k) => (
                     <div key={k} className="flex items-center justify-between gap-2">
                       <span className="text-[10px] text-muted-foreground">
-                        Z {k === "pe" ? "PE" : k === "roe" ? "ROE" : k === "margin" ? "Net Margin" : "DER"}
+                        Z{" "}
+                        {k === "pe"
+                          ? "PE"
+                          : k === "roe"
+                            ? "ROE"
+                            : k === "margin"
+                              ? "Net Margin"
+                              : "DER"}
                       </span>
                       <span
                         className={cn(
@@ -765,27 +990,97 @@ export function MarketOverview() {
                               : "text-foreground",
                         )}
                       >
-                        {detail.z[k] == null
-                          ? "—"
-                          : (detail.z[k] as number).toFixed(2)}
+                        {detail.z[k] == null ? "—" : (detail.z[k] as number).toFixed(2)}
                       </span>
                     </div>
                   ))}
                 </div>
                 <p className="mt-2.5 text-[10px] leading-relaxed text-muted-foreground/70">
-                  Ambang flag |Z| &gt; 1.8. Nilai "—" berarti metrik tidak tersedia
-                  untuk emiten ini (misal DER untuk perbankan bukan metrik yang
-                  bermakna).
+                  Ambang flag |Z| &gt; 1.8. Nilai "—" berarti metrik tidak tersedia untuk emiten ini
+                  (misal DER untuk perbankan bukan metrik yang bermakna).
                 </p>
               </div>
             </>
           )}
         </SheetContent>
       </Sheet>
+
+      {/* ── News detail Sheet (same pattern as anomaly detail) ────── */}
+      <Sheet open={!!newsDetail} onOpenChange={(v) => !v && setNewsDetail(null)}>
+        <SheetContent className="border-border bg-popover">
+          <SheetHeader>
+            <SheetTitle className="text-sm leading-snug">Detail Katalis Pasar</SheetTitle>
+            <SheetDescription>{newsDetail?.timestamp?.slice(0, 10) ?? ""}</SheetDescription>
+          </SheetHeader>
+          {newsDetail && (
+            <div className="flex flex-col gap-4 overflow-y-auto p-5">
+              <h3 className="text-sm font-semibold leading-relaxed text-foreground">
+                {newsDetail.title}
+              </h3>
+              {/* Meta tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {(newsDetail.symbols ?? []).map((s) => (
+                  <Tag key={s} tone="accent">
+                    {s.replace(".JK", "")}
+                  </Tag>
+                ))}
+                {newsDetail.sector && <Tag tone="neutral">{newsDetail.sector}</Tag>}
+                {(newsDetail.sub_sector ?? []).slice(0, 2).map((ss) => (
+                  <Tag key={ss} tone="neutral">
+                    {ss}
+                  </Tag>
+                ))}
+                {(newsDetail.tags ?? []).slice(0, 5).map((t) => (
+                  <Tag key={t} tone="warning">
+                    {t}
+                  </Tag>
+                ))}
+              </div>
+              {/* Dimension heatmap if present */}
+              {newsDetail.dimension && Object.keys(newsDetail.dimension).length > 0 && (
+                <div className="border border-border p-3">
+                  <div className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Dimensi Katalis
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {Object.entries(newsDetail.dimension).map(([k, v]) => (
+                      <div key={k} className="flex items-center justify-between gap-1">
+                        <span className="text-[9px] capitalize text-muted-foreground">{k}</span>
+                        <span
+                          className={cn(
+                            "text-[10px] font-semibold tabular-nums",
+                            v > 1
+                              ? "text-positive"
+                              : v > 0
+                                ? "text-warning"
+                                : "text-muted-foreground",
+                          )}
+                        >
+                          {v > 0 ? `+${v}` : v}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <p className="text-[11px] leading-relaxed text-foreground/90">{newsDetail.body}</p>
+              {newsDetail.source && (
+                <a
+                  href={newsDetail.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-primary hover:underline"
+                >
+                  Baca selengkapnya →
+                </a>
+              )}
+            </div>
+          )}
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 2. SECTOR INTELLIGENCE
@@ -806,16 +1101,23 @@ export function MarketOverview() {
 
 type SortDir = "asc" | "desc";
 /** Sort keys for the mock-based DecisionScreener (still mock — next phase). */
-type CompanyKey = keyof Pick<Company, "growth" | "margin" | "roe" | "debt" | "pe" | "safety" | "shi" | "dividend">;
+type CompanyKey = keyof Pick<
+  Company,
+  "growth" | "margin" | "roe" | "debt" | "pe" | "safety" | "shi" | "dividend"
+>;
 
 /** Renders a value or a dash — never invents data. */
 function val(v: number | null | undefined, suffix = ""): string {
-  return v == null || !Number.isFinite(v) ? "—" : `${v.toLocaleString("id-ID", { maximumFractionDigits: 2 })}${suffix}`;
+  return v == null || !Number.isFinite(v)
+    ? "—"
+    : `${v.toLocaleString("id-ID", { maximumFractionDigits: 2 })}${suffix}`;
 }
 
 export function SectorIntelligence() {
   const [selectedSlug, setSelectedSlug] = useState<string>("");
-  const [sortKey, setSortKey] = useState<"market_cap" | "pe_ttm" | "roe_ttm" | "der_mrq" | "net_profit_margin">("market_cap");
+  const [sortKey, setSortKey] = useState<
+    "market_cap" | "pe_ttm" | "roe_ttm" | "der_mrq" | "net_profit_margin"
+  >("market_cap");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [query, setQuery] = useState("");
 
@@ -833,10 +1135,10 @@ export function SectorIntelligence() {
   const selected = sectors.find((s) => s.slug === selectedSlug) ?? null;
 
   // ── Live data for the selected sector ───────────────────────────────────
-  const universe = useSectorUniverse(selected?.slug);
-  const growth   = useSectorGrowthHistory(selected?.slug);
-  const shi      = useSectorHealthScores();
-  const anom     = useAnomalies();
+  const universe = useSectorUniverse(selected?.subSector);
+  const growth = useSectorGrowthHistory(selected?.slug);
+  const shi = useSectorHealthScores();
+  const anom = useAnomalies();
 
   // SHI entry matching the selected sector (same hook Ringkasan Pasar uses)
   const shiEntry = useMemo(
@@ -868,15 +1170,13 @@ export function SectorIntelligence() {
     let list = universe.data ?? [];
     if (query) {
       const q = query.toLowerCase();
-      list = list.filter((c) =>
-        (c.symbol + c.company_name).toLowerCase().includes(q),
-      );
+      list = list.filter((c) => (c.symbol + c.company_name).toLowerCase().includes(q));
     }
     return [...list].sort((a, b) => {
       const av = a[sortKey];
       const bv = b[sortKey];
       if (av == null && bv == null) return 0;
-      if (av == null) return 1;          // nulls always last
+      if (av == null) return 1; // nulls always last
       if (bv == null) return -1;
       return sortDir === "desc" ? bv - av : av - bv;
     });
@@ -884,15 +1184,22 @@ export function SectorIntelligence() {
 
   function toggleSort(key: typeof sortKey) {
     if (sortKey === key) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
-    else { setSortKey(key); setSortDir("desc"); }
+    else {
+      setSortKey(key);
+      setSortDir("desc");
+    }
   }
 
   const SortIcon = ({ k }: { k: typeof sortKey }) =>
-    sortKey === k
-      ? sortDir === "desc"
-        ? <ChevronDown className="ml-1 inline size-3 text-primary" />
-        : <ChevronUp className="ml-1 inline size-3 text-primary" />
-      : <ArrowDownUp className="ml-1 inline size-3 opacity-30" />;
+    sortKey === k ? (
+      sortDir === "desc" ? (
+        <ChevronDown className="ml-1 inline size-3 text-primary" />
+      ) : (
+        <ChevronUp className="ml-1 inline size-3 text-primary" />
+      )
+    ) : (
+      <ArrowDownUp className="ml-1 inline size-3 opacity-30" />
+    );
 
   const unit = countLabel(universe.data?.length ?? null);
   const loading = subsectorList.isPending || (selectedSlug && universe.isPending);
@@ -947,6 +1254,13 @@ export function SectorIntelligence() {
           {
             label: "Kesehatan (SHI)",
             value: shiEntry?.score != null ? shiEntry.score : "—",
+            tone: shiEntry
+              ? shiEntry.score < 45
+                ? "negative"
+                : shiEntry.score < 60
+                  ? "warning"
+                  : "positive"
+              : undefined,
             sub: shiEntry ? healthLabel(shiEntry.score) : "tidak tersedia",
           },
           {
@@ -961,13 +1275,14 @@ export function SectorIntelligence() {
           },
           {
             label: "Market cap agregat",
-            value: loading
-              ? <Skeleton className="h-4 w-16" />
-              : universe.data?.length
-                ? formatIDRCompact(
-                    universe.data.reduce((s, c) => s + (c.market_cap ?? 0), 0),
-                  )
-                : "—",
+            value: loading ? (
+              <Skeleton className="h-4 w-16" />
+            ) : universe.data?.length ? (
+              formatIDRCompact(universe.data.reduce((s, c) => s + (c.market_cap ?? 0), 0))
+            ) : (
+              "—"
+            ),
+            tone: universe.data?.length ? "positive" : undefined,
             sub: "dari screener",
           },
           {
@@ -984,7 +1299,9 @@ export function SectorIntelligence() {
           kicker="Pendapatan vs laba per tahun"
           action={
             <div className="flex items-center gap-3">
-              {growth.isFetching && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+              {growth.isFetching && (
+                <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+              )}
               <span className="text-[10px] text-muted-foreground">
                 Bagian dari laporan subsector (0 kredit tambahan)
               </span>
@@ -992,19 +1309,25 @@ export function SectorIntelligence() {
           }
         >
           {growth.isPending ? (
-            <div className="flex h-64 items-center justify-center">
+            <div className="flex h-80 items-center justify-center">
               <RefreshCw className="size-5 animate-spin text-muted-foreground" />
             </div>
           ) : growth.isError ? (
-            <div className="flex h-64 items-center justify-center text-xs text-muted-foreground">
+            <div className="flex h-80 items-center justify-center text-xs text-muted-foreground">
               Gagal memuat data pertumbuhan.
             </div>
           ) : (
             <>
               <GrowthHistoryChart data={growth.data ?? []} />
               <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
-                <span><i className="mr-1 inline-block size-1.5 bg-primary" />Pertumbuhan Pendapatan</span>
-                <span><i className="mr-1 inline-block size-1.5 bg-accent" />Pertumbuhan Laba</span>
+                <span>
+                  <i className="mr-1 inline-block size-1.5 bg-primary" />
+                  Pertumbuhan Pendapatan
+                </span>
+                <span>
+                  <i className="mr-1 inline-block size-1.5 bg-accent" />
+                  Pertumbuhan Laba
+                </span>
                 <span className="ml-auto">Sumber: growth.weighted_avg_growth_data</span>
               </div>
             </>
@@ -1023,15 +1346,19 @@ export function SectorIntelligence() {
                   {shiEntry?.score != null ? shiEntry.score : "—"}
                 </div>
               </div>
-              {shiEntry && <Tag tone={toneFor(shiEntry.score - 64)}>{healthLabel(shiEntry.score)}</Tag>}
+              {shiEntry && (
+                <Tag tone={toneFor(shiEntry.score - 64)}>{healthLabel(shiEntry.score)}</Tag>
+              )}
             </div>
             {shiEntry ? (
-              ([
-                ["Pertumbuhan", shiEntry.growth, 30],
-                ["Stabilitas", shiEntry.stability, 25],
-                ["Valuasi", shiEntry.valuation, 25],
-                ["Momentum", shiEntry.momentum, 20],
-              ] as [string, number, number][]).map(([l, v, w]) => (
+              (
+                [
+                  ["Pertumbuhan", shiEntry.growth, 30],
+                  ["Stabilitas", shiEntry.stability, 25],
+                  ["Valuasi", shiEntry.valuation, 25],
+                  ["Momentum", shiEntry.momentum, 20],
+                ] as [string, number, number][]
+              ).map(([l, v, w]) => (
                 <div className="mt-4" key={l}>
                   <div className="mb-2 flex justify-between text-xs">
                     <span>{l}</span>
@@ -1039,13 +1366,11 @@ export function SectorIntelligence() {
                       {v.toFixed(1)} / 25 · bobot {w}%
                     </span>
                   </div>
-                  <Bar value={v} />
+                  <Bar value={v * 4} tone={v < 8 ? "negative" : v < 15 ? "warning" : "positive"} />
                 </div>
               ))
             ) : (
-              <div className="mt-4 text-[10px] text-muted-foreground">
-                Skor SHI belum tersedia.
-              </div>
+              <div className="mt-4 text-[10px] text-muted-foreground">Skor SHI belum tersedia.</div>
             )}
             <div className="mt-5 border-t border-border pt-4">
               <div className="mb-2 text-[10px] uppercase text-muted-foreground">
@@ -1060,7 +1385,9 @@ export function SectorIntelligence() {
                     onClick={() => setSelectedSlug(s.slug)}
                     className={cn(
                       "flex w-full items-center justify-between py-1.5 text-xs transition-colors hover:text-primary",
-                      s.slug === selectedSlug ? "font-medium text-primary" : "text-muted-foreground",
+                      s.slug === selectedSlug
+                        ? "font-medium text-primary"
+                        : "text-muted-foreground",
                     )}
                   >
                     <span className="flex items-center gap-2 truncate">
@@ -1110,19 +1437,34 @@ export function SectorIntelligence() {
                   <th className={th}>Emiten</th>
                   <th className={th}>Harga</th>
                   <th className={th}>Ubah</th>
-                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("market_cap")}>
+                  <th
+                    className={cn(th, "cursor-pointer hover:text-foreground")}
+                    onClick={() => toggleSort("market_cap")}
+                  >
                     Mkt Cap <SortIcon k="market_cap" />
                   </th>
-                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("pe_ttm")}>
+                  <th
+                    className={cn(th, "cursor-pointer hover:text-foreground")}
+                    onClick={() => toggleSort("pe_ttm")}
+                  >
                     P/E <SortIcon k="pe_ttm" />
                   </th>
-                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("roe_ttm")}>
+                  <th
+                    className={cn(th, "cursor-pointer hover:text-foreground")}
+                    onClick={() => toggleSort("roe_ttm")}
+                  >
                     ROE <SortIcon k="roe_ttm" />
                   </th>
-                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("der_mrq")}>
+                  <th
+                    className={cn(th, "cursor-pointer hover:text-foreground")}
+                    onClick={() => toggleSort("der_mrq")}
+                  >
                     DER <SortIcon k="der_mrq" />
                   </th>
-                  <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("net_profit_margin")}>
+                  <th
+                    className={cn(th, "cursor-pointer hover:text-foreground")}
+                    onClick={() => toggleSort("net_profit_margin")}
+                  >
                     Margin <SortIcon k="net_profit_margin" />
                   </th>
                   <th className={th}>Divergensi</th>
@@ -1133,7 +1475,9 @@ export function SectorIntelligence() {
                   <tr>
                     <td className={td} colSpan={10}>
                       <div className="py-8 text-center text-xs text-muted-foreground">
-                        {query ? "Tidak ada emiten yang cocok." : "Tidak ada emiten pada sub-sektor ini."}
+                        {query
+                          ? "Tidak ada emiten yang cocok."
+                          : "Tidak ada emiten pada sub-sektor ini."}
                       </div>
                     </td>
                   </tr>
@@ -1143,14 +1487,18 @@ export function SectorIntelligence() {
                     return (
                       <tr key={c.symbol} className="hover:bg-secondary/50">
                         <td className={cn(td, "font-semibold text-primary")}>{c.symbol}</td>
-                        <td className={cn(td, "max-w-[220px] truncate")}>{c.company_name || "—"}</td>
+                        <td className={cn(td, "max-w-[220px] truncate")}>
+                          {c.company_name || "—"}
+                        </td>
                         <td className={cn(td, "tabular-nums")}>{val(c.last_close_price)}</td>
                         <td className={td}>
-                          {c.daily_close_change != null
-                            ? <Change value={c.daily_close_change * 100} />
-                            : "—"}
+                          {c.daily_close_change != null ? (
+                            <Change value={c.daily_close_change * 100} />
+                          ) : (
+                            "—"
+                          )}
                         </td>
-                        <td className={cn(td, "tabular-nums")}>{val(c.market_cap)}</td>
+                        <td className={cn(td, "tabular-nums")}>{formatMarketCap(c.market_cap)}</td>
                         <td className={cn(td, "tabular-nums")}>{val(c.pe_ttm)}</td>
                         <td className={cn(td, "tabular-nums")}>
                           {c.roe_ttm != null ? `${(c.roe_ttm * 100).toFixed(1)}%` : "—"}
@@ -1162,9 +1510,13 @@ export function SectorIntelligence() {
                             : "—"}
                         </td>
                         <td className={td}>
-                          {a
-                            ? <Tag tone={a.severity === "High" ? "negative" : "warning"}>{a.label}</Tag>
-                            : <span className="text-muted-foreground">—</span>}
+                          {a ? (
+                            <Tag tone={a.severity === "High" ? "negative" : "warning"}>
+                              {a.label}
+                            </Tag>
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )}
                         </td>
                       </tr>
                     );
@@ -1231,20 +1583,35 @@ function CompanyRow({ c }: { c: Company }) {
       <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
       <td className={td}>{c.name}</td>
       <td className={td}>{formatIDR(c.price)}</td>
-      <td className={td}><Change value={c.change} /></td>
+      <td className={td}>
+        <Change value={c.change} />
+      </td>
       <td className={td}>Rp {c.marketCap}T</td>
       <td className={td}>{c.growth}%</td>
       <td className={td}>{c.margin}%</td>
       <td className={td}>{c.debt}%</td>
       <td className={td}>{c.pe || "NM"}x</td>
-      <td className={td}><Score value={c.safety} /></td>
       <td className={td}>
-        {c.anomaly ? <Tag tone="warning">{c.anomaly}</Tag> : <span className="text-muted-foreground">—</span>}
+        <Score value={c.safety} />
       </td>
       <td className={td}>
-        <button onClick={() => inList ? remove(c.ticker) : add(c.ticker)}
-          className={cn("rounded p-1 transition-colors", inList ? "text-primary hover:text-negative" : "text-muted-foreground hover:text-primary")}
-          title={inList ? "Hapus dari pantauan" : "Tambah ke pantauan"}>
+        {c.anomaly ? (
+          <Tag tone="warning">{c.anomaly}</Tag>
+        ) : (
+          <span className="text-muted-foreground">—</span>
+        )}
+      </td>
+      <td className={td}>
+        <button
+          onClick={() => (inList ? remove(c.ticker) : add(c.ticker))}
+          className={cn(
+            "rounded p-1 transition-colors",
+            inList
+              ? "text-primary hover:text-negative"
+              : "text-muted-foreground hover:text-primary",
+          )}
+          title={inList ? "Hapus dari pantauan" : "Tambah ke pantauan"}
+        >
           {inList ? <Star className="size-3.5 fill-current" /> : <Star className="size-3.5" />}
         </button>
       </td>
@@ -1304,7 +1671,9 @@ export function CompanyTerminal() {
   }, [universe.data, searchQ]);
 
   const toggle = (t: string) =>
-    setSelected((p) => p.includes(t) ? (p.length > 2 ? p.filter((x) => x !== t) : p) : p.length < 5 ? [...p, t] : p);
+    setSelected((p) =>
+      p.includes(t) ? (p.length > 2 ? p.filter((x) => x !== t) : p) : p.length < 5 ? [...p, t] : p,
+    );
 
   // ── Derived: Piotroski / Altman / percentile / analyst gap / free float ──
   const analyses = useMemo(
@@ -1319,7 +1688,10 @@ export function CompanyTerminal() {
         const hv = r?.valuation?.historical_valuation;
         const yearlyPe: Array<{ year: string; pe: number | null }> = Array.isArray(hv)
           ? hv
-              .map((e) => ({ year: String(e["year"] ?? ""), pe: typeof e["pe"] === "number" ? (e["pe"] as number) : null }))
+              .map((e) => ({
+                year: String(e["year"] ?? ""),
+                pe: typeof e["pe"] === "number" ? (e["pe"] as number) : null,
+              }))
               .sort((a, b) => a.year.localeCompare(b.year))
           : hv && typeof hv === "object"
             ? Object.entries(hv as Record<string, unknown>)
@@ -1327,14 +1699,18 @@ export function CompanyTerminal() {
                 .sort((a, b) => a[0].localeCompare(b[0]))
                 .map(([year, o]) => ({
                   year,
-                  pe: o && typeof o === "object" && typeof (o as Record<string, unknown>)["pe"] === "number"
-                    ? ((o as Record<string, unknown>)["pe"] as number)
-                    : null,
+                  pe:
+                    o &&
+                    typeof o === "object" &&
+                    typeof (o as Record<string, unknown>)["pe"] === "number"
+                      ? ((o as Record<string, unknown>)["pe"] as number)
+                      : null,
                 }))
             : [];
         const peTtm =
           yearlyPe.length > 0
-            ? [...yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ?? null
+            ? ([...yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ??
+              null)
             : null;
         const percentile = valuationPercentile(yearlyPe, peTtm);
 
@@ -1345,7 +1721,9 @@ export function CompanyTerminal() {
           const rows = Object.entries(heps)
             .filter(([y]) => /^\d{4}$/.test(y))
             .sort((a, b) => a[0].localeCompare(b[0]))
-            .map(([, o]) => (o && typeof o["eps_growth"] === "number" ? (o["eps_growth"] as number) : null))
+            .map(([, o]) =>
+              o && typeof o["eps_growth"] === "number" ? (o["eps_growth"] as number) : null,
+            )
             .filter((v): v is number => v != null);
           if (rows.length < 2) return null;
           return (rows[rows.length - 1]! + rows[rows.length - 2]!) / 2;
@@ -1367,7 +1745,16 @@ export function CompanyTerminal() {
         const ff = ffMap.data?.get(p.symbol) ?? null;
         const floatRisk = classifyFreeFloat(ff, null);
 
-        return { symbol: p.symbol, report: r, fScore, altman, percentile, gap, floatRisk, yearlyPe };
+        return {
+          symbol: p.symbol,
+          report: r,
+          fScore,
+          altman,
+          percentile,
+          gap,
+          floatRisk,
+          yearlyPe,
+        };
       }),
     [peers, ffMap.data],
   );
@@ -1380,7 +1767,7 @@ export function CompanyTerminal() {
       const fin = r?.financials;
       const ratios = fin?.historical_financial_ratio ?? null;
       const lastRow = Array.isArray(fin?.historical_financials)
-        ? (fin?.historical_financials as Array<Record<string, unknown>>).at(-1) ?? null
+        ? ((fin?.historical_financials as Array<Record<string, unknown>>).at(-1) ?? null)
         : null;
       const y = lastRow ? String(lastRow["year"]) : null;
 
@@ -1391,20 +1778,26 @@ export function CompanyTerminal() {
 
       const revenue = val("revenue");
       const revenuePrev = (() => {
-        const arr = (fin?.historical_financials as Array<Record<string, unknown>> | undefined) ?? null;
+        const arr =
+          (fin?.historical_financials as Array<Record<string, unknown>> | undefined) ?? null;
         if (!Array.isArray(arr) || arr.length < 2) return null;
         const p = arr[arr.length - 2];
         return p && typeof p["revenue"] === "number" ? (p["revenue"] as number) : null;
       })();
       const revGrowth =
-        revenue != null && revenuePrev != null && revenuePrev !== 0 ? (revenue - revenuePrev) / revenuePrev : null;
+        revenue != null && revenuePrev != null && revenuePrev !== 0
+          ? (revenue - revenuePrev) / revenuePrev
+          : null;
 
       const peVsPeer = (() => {
         const lastVal = Array.isArray(r?.valuation?.historical_valuation)
           ? (r?.valuation?.historical_valuation as Array<Record<string, unknown>>).at(-1)
           : null;
         const pe = lastVal && typeof lastVal["pe"] === "number" ? (lastVal["pe"] as number) : null;
-        const peer = lastVal && typeof lastVal["pe_peer_avg"] === "number" ? (lastVal["pe_peer_avg"] as number) : null;
+        const peer =
+          lastVal && typeof lastVal["pe_peer_avg"] === "number"
+            ? (lastVal["pe_peer_avg"] as number)
+            : null;
         return pe != null && peer != null && peer > 0 ? pe / peer : null;
       })();
 
@@ -1427,7 +1820,9 @@ export function CompanyTerminal() {
             .filter(([yr]) => /^\d{4}$/.test(yr))
             .sort((x, z) => x[0].localeCompare(z[0]));
           const last = rows.at(-1)?.[1];
-          return last && typeof last["eps_growth"] === "number" ? (last["eps_growth"] as number) : null;
+          return last && typeof last["eps_growth"] === "number"
+            ? (last["eps_growth"] as number)
+            : null;
         })(),
         peVsPeer,
         pb: (() => {
@@ -1456,7 +1851,11 @@ export function CompanyTerminal() {
     return y && ratios ? ratioNum(ratios, y, group, key) : null;
   };
 
-  const matrixRows: Array<{ label: string; tooltip: string; get: (a: (typeof analyses)[number]) => string }> = [
+  const matrixRows: Array<{
+    label: string;
+    tooltip: string;
+    get: (a: (typeof analyses)[number]) => string;
+  }> = [
     {
       label: "Pertumbuhan Pendapatan",
       tooltip: "Pertumbuhan revenue year-on-year (tahun fiskal terakhir)",
@@ -1500,7 +1899,8 @@ export function CompanyTerminal() {
       label: "Valuasi P/E",
       tooltip: "PE historis tahun terakhir (NM = negatif/tidak bermakna)",
       get: (a) => {
-        const pe = [...a.yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ?? null;
+        const pe =
+          [...a.yearlyPe].reverse().find((y) => y.pe != null && (y.pe as number) > 0)?.pe ?? null;
         return pe == null ? "NM" : `${pe.toFixed(1)}x`;
       },
     },
@@ -1530,12 +1930,14 @@ export function CompanyTerminal() {
     },
     {
       label: "Piotroski F-Score",
-      tooltip: "9 sinyal fundamental biner (Algoritma 2): profitabilitas 4, leverage & likuiditas 3, efisiensi 2",
+      tooltip:
+        "9 sinyal fundamental biner (Algoritma 2): profitabilitas 4, leverage & likuiditas 3, efisiensi 2",
       get: (a) => (a.fScore?.available ? `${a.fScore.total}/9` : "—"),
     },
     {
-      label: "Altman Z\"-Score",
-      tooltip: "Indikator distress (Algoritma 3): >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 bahaya. Modifikasi perbankan untuk X1/X4.",
+      label: 'Altman Z"-Score',
+      tooltip:
+        "Indikator distress (Algoritma 3): >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 bahaya. Modifikasi perbankan untuk X1/X4.",
       get: (a) => (a.altman?.score != null ? a.altman.score.toFixed(2) : "—"),
     },
     {
@@ -1550,13 +1952,22 @@ export function CompanyTerminal() {
       <PageHeader title="Terminal Emiten">
         <ExportMenu title="Peer Comparison" />
       </PageHeader>
-      <Panel title="Pemilihan Peer" kicker="2–5 emiten"
-        action={<span className="text-[10px] text-muted-foreground">{selected.length}/5 dipilih</span>}>
+      <Panel
+        title="Pemilihan Peer"
+        kicker="2–5 emiten"
+        action={
+          <span className="text-[10px] text-muted-foreground">{selected.length}/5 dipilih</span>
+        }
+      >
         <div className="border-b border-border p-3">
           <div className="relative">
             <Search className="absolute left-2.5 top-2 size-3.5 text-muted-foreground" />
-            <Input value={searchQ} onChange={(e) => setSearchQ(e.target.value)}
-              placeholder="Cari ticker atau nama emiten… (20 emiten teratas IDX)" className="h-8 pl-8 text-xs" />
+            <Input
+              value={searchQ}
+              onChange={(e) => setSearchQ(e.target.value)}
+              placeholder="Cari ticker atau nama emiten… (20 emiten teratas IDX)"
+              className="h-8 pl-8 text-xs"
+            />
           </div>
         </div>
         <div className="flex flex-wrap gap-2 p-4">
@@ -1565,23 +1976,37 @@ export function CompanyTerminal() {
             <span className="text-xs text-muted-foreground">Universe emiten gagal dimuat.</span>
           )}
           {searchResults.slice(0, 20).map((c) => (
-            <button key={c.ticker} onClick={() => toggle(c.ticker)}
-              className={cn("flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs transition-all",
+            <button
+              key={c.ticker}
+              onClick={() => toggle(c.ticker)}
+              className={cn(
+                "flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs transition-all",
                 selected.includes(c.ticker)
                   ? "border-primary/60 bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:border-border/80 hover:text-foreground")}>
+                  : "border-border text-muted-foreground hover:border-border/80 hover:text-foreground",
+              )}
+            >
               {selected.includes(c.ticker) ? <X className="size-3" /> : <Plus className="size-3" />}
               <span className="font-semibold">{c.ticker}</span>
-              <span className="hidden text-[10px] sm:inline">{c.name.split(" ").slice(0, 2).join(" ")}</span>
+              <span className="hidden text-[10px] sm:inline">
+                {c.name.split(" ").slice(0, 2).join(" ")}
+              </span>
             </button>
           ))}
         </div>
       </Panel>
       <div className="grid gap-4 2xl:grid-cols-[1.2fr_.8fr]">
-        <Panel title="Matriks Komparasi Peer" kicker="Fundamental live Sectors API"
-          action={<span className="text-[10px] text-muted-foreground">
-            {reportQueries.some((q) => q?.isPending) ? "Memuat laporan…" : "6 kredit/simbol · cache 24j"}
-          </span>}>
+        <Panel
+          title="Matriks Komparasi Peer"
+          kicker="Fundamental live Sectors API"
+          action={
+            <span className="text-[10px] text-muted-foreground">
+              {reportQueries.some((q) => q?.isPending)
+                ? "Memuat laporan…"
+                : "6 kredit/simbol · cache 24j"}
+            </span>
+          }
+        >
           <div className="overflow-x-auto">
             <table className="w-full min-w-[680px]">
               <thead>
@@ -1591,7 +2016,9 @@ export function CompanyTerminal() {
                     <th className={th} key={c.symbol}>
                       <div className="text-primary">{c.symbol}</div>
                       <div className="mt-1 normal-case text-muted-foreground">
-                        {c.isPending ? "Memuat…" : c.report?.company_name?.split(" ").slice(0, 2).join(" ") ?? "—"}
+                        {c.isPending
+                          ? "Memuat…"
+                          : (c.report?.company_name?.split(" ").slice(0, 2).join(" ") ?? "—")}
                       </div>
                     </th>
                   ))}
@@ -1609,7 +2036,14 @@ export function CompanyTerminal() {
                     {analyses.map((a, colIdx) => {
                       const val = a.report ? get(a) : "—";
                       return (
-                        <td key={a.symbol} className={cn(td, "text-base font-medium", colIdx === 0 && "bg-accent/30")}>
+                        <td
+                          key={a.symbol}
+                          className={cn(
+                            td,
+                            "text-base font-medium",
+                            colIdx === 0 && "bg-accent/30",
+                          )}
+                        >
                           {val}
                         </td>
                       );
@@ -1620,60 +2054,102 @@ export function CompanyTerminal() {
             </table>
           </div>
         </Panel>
-        <Panel title="Dominance Score" kicker="Algoritma 4 · head-to-head"
-          action={<MethodTip text="Perbandingan berbasis rank lintas peer terpilih (profitabilitas 20, keamanan 20, pertumbuhan 20, valuasi 20, pasar 20). DER, PE-vs-peer, dan PB dinilai terbalik. Bukan rekomendasi investasi." />}>
+        <Panel
+          title="Dominance Score"
+          kicker="Algoritma 4 · head-to-head"
+          action={
+            <MethodTip text="Perbandingan berbasis rank lintas peer terpilih (profitabilitas 20, keamanan 20, pertumbuhan 20, valuasi 20, pasar 20). DER, PE-vs-peer, dan PB dinilai terbalik. Bukan rekomendasi investasi." />
+          }
+        >
           <div className="p-4">
             {dominance.length === 0 && peers.length < 2 && (
-              <div className="py-6 text-center text-xs text-muted-foreground">Pilih minimal 2 emiten.</div>
+              <div className="py-6 text-center text-xs text-muted-foreground">
+                Pilih minimal 2 emiten.
+              </div>
             )}
-            {[...dominance].sort((a, b) => b.total - a.total).map((d, i) => {
-              const inList = has(d.symbol);
-              return (
-                <div key={d.symbol} className="border-b border-border py-4 first:pt-1">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="w-6 text-xs text-muted-foreground">0{i + 1}</span>
-                    <span className="w-16 text-sm font-semibold">{d.symbol}</span>
-                    <div className="flex-1"><Bar value={d.total} tone={i === 0 ? "positive" : "accent"} /></div>
-                    <span className="ml-3 text-xl font-semibold text-data">{d.total.toFixed(1)}</span>
-                    <button onClick={() => inList ? remove(d.symbol) : add(d.symbol)}
-                      className={cn("rounded p-1 transition-colors", inList ? "text-primary" : "text-muted-foreground hover:text-primary")}>
-                      <Star className={cn("size-3.5", inList && "fill-current")} />
-                    </button>
+            {[...dominance]
+              .sort((a, b) => b.total - a.total)
+              .map((d, i) => {
+                const inList = has(d.symbol);
+                return (
+                  <div key={d.symbol} className="border-b border-border py-4 first:pt-1">
+                    <div className="mb-2 flex items-center gap-2">
+                      <span className="w-6 text-xs text-muted-foreground">0{i + 1}</span>
+                      <span className="w-16 text-sm font-semibold">{d.symbol}</span>
+                      <div className="flex-1">
+                        <Bar value={d.total} tone={i === 0 ? "positive" : "accent"} />
+                      </div>
+                      <span className="ml-3 text-xl font-semibold text-data">
+                        {d.total.toFixed(1)}
+                      </span>
+                      <button
+                        onClick={() => (inList ? remove(d.symbol) : add(d.symbol))}
+                        className={cn(
+                          "rounded p-1 transition-colors",
+                          inList ? "text-primary" : "text-muted-foreground hover:text-primary",
+                        )}
+                      >
+                        <Star className={cn("size-3.5", inList && "fill-current")} />
+                      </button>
+                    </div>
+                    <div className="ml-24 flex flex-wrap gap-3 text-[9px] text-muted-foreground">
+                      <span>Profit {d.profitability.toFixed(1)}</span>
+                      <span>Keamanan {d.safety.toFixed(1)}</span>
+                      <span>Pertumbuhan {d.growth.toFixed(1)}</span>
+                      <span>Valuasi {d.value.toFixed(1)}</span>
+                      <span>Pasar {d.market.toFixed(1)}</span>
+                    </div>
                   </div>
-                  <div className="ml-24 flex flex-wrap gap-3 text-[9px] text-muted-foreground">
-                    <span>Profit {d.profitability.toFixed(1)}</span>
-                    <span>Keamanan {d.safety.toFixed(1)}</span>
-                    <span>Pertumbuhan {d.growth.toFixed(1)}</span>
-                    <span>Valuasi {d.value.toFixed(1)}</span>
-                    <span>Pasar {d.market.toFixed(1)}</span>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
             {dominance.length > 0 && (
-              <div className="mt-4"><InsightLabel>Relatif terhadap peer yang dipilih</InsightLabel></div>
+              <div className="mt-4">
+                <InsightLabel>Relatif terhadap peer yang dipilih</InsightLabel>
+              </div>
             )}
           </div>
         </Panel>
       </div>
 
       {/* ── Piotroski + Altman (Algoritma 2 & 3) ─────────────────────────── */}
-      <Panel title="Financial Safety & Distress" kicker={"Piotroski F-Score & Altman Z\"-Score"}
-        action={<MethodTip text="Piotroski (0–9): profitabilitas 4 · leverage/likuiditas 3 · efisiensi 2. Altman Z (non-manufaktur): 6.56·X1 + 3.26·X2 + 6.72·X3 + 1.05·X4; >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 distress. Bank memakai modifikasi giro+tabungan/ATMR." />}>
+      <Panel
+        title="Financial Safety & Distress"
+        kicker={'Piotroski F-Score & Altman Z"-Score'}
+        action={
+          <MethodTip text="Piotroski (0–9): profitabilitas 4 · leverage/likuiditas 3 · efisiensi 2. Altman Z (non-manufaktur): 6.56·X1 + 3.26·X2 + 6.72·X3 + 1.05·X4; >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 distress. Bank memakai modifikasi giro+tabungan/ATMR." />
+        }
+      >
         <div className="grid gap-px bg-border md:grid-cols-3">
           {analyses.map((a) => {
             const inList = has(a.symbol);
             const fs = a.fScore;
             const alt = a.altman;
             const zoneTone: Tone =
-              alt?.zone === "safe" ? "positive" : alt?.zone === "grey" ? "warning" : alt?.zone === "distress" ? "negative" : "neutral";
-            const fsTone: Tone = fs ? (fs.total >= 7 ? "positive" : fs.total >= 4 ? "warning" : "negative") : "neutral";
+              alt?.zone === "safe"
+                ? "positive"
+                : alt?.zone === "grey"
+                  ? "warning"
+                  : alt?.zone === "distress"
+                    ? "negative"
+                    : "neutral";
+            const fsTone: Tone = fs
+              ? fs.total >= 7
+                ? "positive"
+                : fs.total >= 4
+                  ? "warning"
+                  : "negative"
+              : "neutral";
             return (
               <div className="bg-card p-5" key={a.symbol}>
                 <div className="flex items-center justify-between">
                   <span className="font-semibold">{a.symbol}</span>
-                  <button onClick={() => inList ? remove(a.symbol) : add(a.symbol)}
-                    className={cn("rounded p-1 transition-colors", inList ? "text-primary" : "text-muted-foreground hover:text-primary")}>
+                  <button
+                    onClick={() => (inList ? remove(a.symbol) : add(a.symbol))}
+                    className={cn(
+                      "rounded p-1 transition-colors",
+                      inList ? "text-primary" : "text-muted-foreground hover:text-primary",
+                    )}
+                  >
                     <Star className={cn("size-3.5", inList && "fill-current")} />
                   </button>
                 </div>
@@ -1681,9 +2157,14 @@ export function CompanyTerminal() {
                 {/* Piotroski */}
                 <div className="mt-4 flex items-end justify-between">
                   <div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Piotroski F-Score</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Piotroski F-Score
+                    </div>
                     {fs?.available ? (
-                      <div className="text-4xl font-semibold">{fs.total}<span className="text-lg text-muted-foreground">/9</span></div>
+                      <div className="text-4xl font-semibold">
+                        {fs.total}
+                        <span className="text-lg text-muted-foreground">/9</span>
+                      </div>
                     ) : (
                       <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
                     )}
@@ -1700,13 +2181,33 @@ export function CompanyTerminal() {
                   <div className="mt-3 space-y-1">
                     {fs.detail.map((d) => (
                       <div key={d.id} className="flex items-center gap-2 text-[10px]">
-                        <span className={cn("w-4 font-semibold", d.point ? "text-positive" : "text-muted-foreground")}>{d.id}</span>
-                        <span className="flex-1 truncate text-muted-foreground" title={d.note}>{d.name}</span>
-                        <span className={cn("tabular-nums", d.point ? "text-positive" : "text-negative")}>{d.point}</span>
+                        <span
+                          className={cn(
+                            "w-4 font-semibold",
+                            d.point ? "text-positive" : "text-muted-foreground",
+                          )}
+                        >
+                          {d.id}
+                        </span>
+                        <span className="flex-1 truncate text-muted-foreground" title={d.note}>
+                          {d.name}
+                        </span>
+                        <span
+                          className={cn(
+                            "tabular-nums",
+                            d.point ? "text-positive" : "text-negative",
+                          )}
+                        >
+                          {d.point}
+                        </span>
                       </div>
                     ))}
                     <Tag tone={fsTone} className="mt-2">
-                      {fs.total >= 7 ? "Kualitas Fundamental Kuat" : fs.total >= 4 ? "Campuran" : "Lemah"}
+                      {fs.total >= 7
+                        ? "Kualitas Fundamental Kuat"
+                        : fs.total >= 4
+                          ? "Campuran"
+                          : "Lemah"}
                     </Tag>
                   </div>
                 )}
@@ -1715,7 +2216,9 @@ export function CompanyTerminal() {
                 <div className="mt-5 border-t border-border pt-4">
                   <div className="flex items-end justify-between">
                     <div>
-                      <div className="text-[10px] uppercase text-muted-foreground">Altman Z-Score {alt?.isBank ? "(Bank)" : ""}</div>
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Altman Z-Score {alt?.isBank ? "(Bank)" : ""}
+                      </div>
                       {alt?.score != null ? (
                         <div className="text-4xl font-semibold">{alt.score.toFixed(2)}</div>
                       ) : (
@@ -1727,7 +2230,9 @@ export function CompanyTerminal() {
                   <div className="mt-3 grid grid-cols-2 gap-2">
                     {alt?.components.map((c) => (
                       <div key={c.id} className="text-[10px]">
-                        <span className="text-muted-foreground">{c.id} = {c.ratio != null ? c.ratio.toFixed(2) : "—"}</span>
+                        <span className="text-muted-foreground">
+                          {c.id} = {c.ratio != null ? c.ratio.toFixed(2) : "—"}
+                        </span>
                         <span className="ml-1 text-foreground">× {c.coefficient}</span>
                       </div>
                     ))}
@@ -1740,19 +2245,32 @@ export function CompanyTerminal() {
       </Panel>
 
       {/* ── Gap 2 + A + B + E per-peer cards ───────────────────────────── */}
-      <Panel title="Konteks Valuasi & Risiko" kicker="Gap 2 · Free Float · Analyst Gap · HHI"
-        action={<MethodTip text="Percentile Rank 5Y membandingkan PE saat ini dengan 5 tahun riwayat. Free Float dari endpoint /free-float (klasifikasi <15% / 15–35% / ≥35%). Analyst Gap = realisasi EPS growth (rata-rata 2Y) − proyeksi analis. HHI konsentrasi pendapatan per segmen." />}>
+      <Panel
+        title="Konteks Valuasi & Risiko"
+        kicker="Gap 2 · Free Float · Analyst Gap · HHI"
+        action={
+          <MethodTip text="Percentile Rank 5Y membandingkan PE saat ini dengan 5 tahun riwayat. Free Float dari endpoint /free-float (klasifikasi <15% / 15–35% / ≥35%). Analyst Gap = realisasi EPS growth (rata-rata 2Y) − proyeksi analis. HHI konsentrasi pendapatan per segmen." />
+        }
+      >
         <div className="grid gap-px bg-border md:grid-cols-3">
           {analyses.map((a) => {
             const r = a.report;
             const pctlTone: Tone =
-              a.percentile.percentile == null ? "neutral"
-              : a.percentile.percentile >= 80 ? "negative"
-              : a.percentile.percentile <= 20 ? "positive" : "accent";
+              a.percentile.percentile == null
+                ? "neutral"
+                : a.percentile.percentile >= 80
+                  ? "negative"
+                  : a.percentile.percentile <= 20
+                    ? "positive"
+                    : "accent";
             const gapTone: Tone =
-              a.gap.gap == null ? "neutral"
-              : a.gap.gap > 0.1 ? "positive"
-              : a.gap.gap < -0.1 ? "negative" : "accent";
+              a.gap.gap == null
+                ? "neutral"
+                : a.gap.gap > 0.1
+                  ? "positive"
+                  : a.gap.gap < -0.1
+                    ? "negative"
+                    : "accent";
             return (
               <div className="bg-card p-5" key={a.symbol}>
                 <div className="text-sm font-semibold">{a.symbol}</div>
@@ -1763,7 +2281,9 @@ export function CompanyTerminal() {
                 {/* Gap 2 — Valuation Percentile Rank */}
                 <div className="mt-4 border-b border-border pb-4">
                   <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">Valuation Percentile (5Y)</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Valuation Percentile (5Y)
+                    </div>
                     <Tag tone={pctlTone}>{a.percentile.label}</Tag>
                   </div>
                   <div className="mt-1 text-3xl font-semibold">
@@ -1775,11 +2295,15 @@ export function CompanyTerminal() {
                 {/* A — Free Float & Liquidity Risk */}
                 <div className="mt-4 border-b border-border pb-4">
                   <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">Free Float & Likuiditas</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Free Float & Likuiditas
+                    </div>
                     <Tag tone={floatTone(a.floatRisk.level)}>{a.floatRisk.label}</Tag>
                   </div>
                   <div className="mt-1 text-2xl font-semibold">
-                    {a.floatRisk.freeFloat != null ? `${(a.floatRisk.freeFloat * 100).toFixed(1)}%` : "—"}
+                    {a.floatRisk.freeFloat != null
+                      ? `${(a.floatRisk.freeFloat * 100).toFixed(1)}%`
+                      : "—"}
                   </div>
                   <div className="mt-1 text-[10px] text-muted-foreground">{a.floatRisk.note}</div>
                   {a.floatRisk.liquidityCliff && (
@@ -1792,7 +2316,9 @@ export function CompanyTerminal() {
                 {/* B — Analyst Expectation Gap */}
                 <div className="mt-4 border-b border-border pb-4">
                   <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">Analyst Expectation Gap</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Analyst Expectation Gap
+                    </div>
                     <Tag tone={gapTone}>{a.gap.label}</Tag>
                   </div>
                   <div className="mt-1 text-2xl font-semibold">
@@ -1809,7 +2335,9 @@ export function CompanyTerminal() {
                 {/* E — Revenue Concentration HHI (lazy) */}
                 <div className="mt-4">
                   <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">Konsentrasi Pendapatan (HHI)</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Konsentrasi Pendapatan (HHI)
+                    </div>
                     <HHIPanel symbol={a.symbol} enabled={showSegments} />
                   </div>
                 </div>
@@ -1818,11 +2346,15 @@ export function CompanyTerminal() {
           })}
         </div>
         <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
-          <button onClick={() => setShowSegments((v) => !v)}
-            className="text-[10px] text-primary hover:underline">
+          <button
+            onClick={() => setShowSegments((v) => !v)}
+            className="text-[10px] text-primary hover:underline"
+          >
             {showSegments ? "Sembunyikan" : "Muat"} detail segmentasi pendapatan (1 kredit/simbol)
           </button>
-          <span className="text-[10px] text-muted-foreground">Algoritma 2, 3, 4 · Gap 2 · Bagian 2 A/B/E</span>
+          <span className="text-[10px] text-muted-foreground">
+            Algoritma 2, 3, 4 · Gap 2 · Bagian 2 A/B/E
+          </span>
         </div>
       </Panel>
     </div>
@@ -1853,9 +2385,14 @@ function HHIPanel({ symbol, enabled }: { symbol: string; enabled: boolean }) {
   if (q.isPending) return <Skeleton className="h-4 w-20" />;
   if (q.isError) return <span className="text-[10px] text-muted-foreground">Gagal</span>;
 
-  const tone: Tone = conc?.hhi == null ? "neutral"
-    : conc.hhi > 0.5 ? "warning"
-    : conc.hhi >= 0.25 ? "accent" : "positive";
+  const tone: Tone =
+    conc?.hhi == null
+      ? "neutral"
+      : conc.hhi > 0.5
+        ? "warning"
+        : conc.hhi >= 0.25
+          ? "accent"
+          : "positive";
   return (
     <div className="w-full">
       <div className="flex items-center justify-end">
@@ -1892,16 +2429,24 @@ export function NewsIntelligence() {
   const sentiments = ["Semua", "Positive", "Neutral", "Negative"];
   const impacts = ["Semua", "High", "Medium", "Low"];
 
-  const filtered = useMemo(() =>
-    news.filter((n) =>
-      (sentiment === "Semua" || n.sentiment === sentiment) &&
-      (catalyst === "Semua" || n.catalyst === catalyst) &&
-      (impact === "Semua" || n.impact === impact) &&
-      (!query || (n.headline + n.company + n.sector).toLowerCase().includes(query.toLowerCase()))
-    ), [sentiment, catalyst, impact, query]);
+  const filtered = useMemo(
+    () =>
+      news.filter(
+        (n) =>
+          (sentiment === "Semua" || n.sentiment === sentiment) &&
+          (catalyst === "Semua" || n.catalyst === catalyst) &&
+          (impact === "Semua" || n.impact === impact) &&
+          (!query ||
+            (n.headline + n.company + n.sector).toLowerCase().includes(query.toLowerCase())),
+      ),
+    [sentiment, catalyst, impact, query],
+  );
 
   const sentimentCounts = { Positive: 0, Neutral: 0, Negative: 0 };
-  news.forEach((n) => { if (n.sentiment in sentimentCounts) sentimentCounts[n.sentiment as keyof typeof sentimentCounts]++; });
+  news.forEach((n) => {
+    if (n.sentiment in sentimentCounts)
+      sentimentCounts[n.sentiment as keyof typeof sentimentCounts]++;
+  });
 
   const activeFilters = [
     sentiment !== "Semua" && sentiment,
@@ -1916,15 +2461,21 @@ export function NewsIntelligence() {
       </PageHeader>
       <div className="grid gap-4 xl:grid-cols-[1fr_280px]">
         <div className="space-y-4">
-          <Panel title="Feed Berita" kicker="Katalis terklasifikasi"
+          <Panel
+            title="Feed Berita"
+            kicker="Katalis terklasifikasi"
             action={
               <div className="flex items-center gap-2">
                 {activeFilters.map((f) => (
-                  <button key={f} onClick={() => {
-                    if (f === sentiment) setSentiment("Semua");
-                    else if (f === catalyst) setCatalyst("Semua");
-                    else setImpact("Semua");
-                  }} className="inline-flex items-center">
+                  <button
+                    key={f}
+                    onClick={() => {
+                      if (f === sentiment) setSentiment("Semua");
+                      else if (f === catalyst) setCatalyst("Semua");
+                      else setImpact("Semua");
+                    }}
+                    className="inline-flex items-center"
+                  >
                     <Tag tone="accent">
                       {f} <X className="ml-1 inline size-2.5" />
                     </Tag>
@@ -1932,24 +2483,44 @@ export function NewsIntelligence() {
                 ))}
                 <span className="text-[10px] text-muted-foreground">{filtered.length} sinyal</span>
               </div>
-            }>
+            }
+          >
             <div className="flex flex-wrap gap-2 border-b border-border p-3">
               <div className="relative min-w-44 flex-1">
                 <Search className="absolute left-2.5 top-2.5 size-3.5 text-muted-foreground" />
-                <Input value={query} onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Emiten, sektor, atau headline" className="h-8 pl-8 text-xs" />
+                <Input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Emiten, sektor, atau headline"
+                  className="h-8 pl-8 text-xs"
+                />
               </div>
-              <select value={sentiment} onChange={(e) => setSentiment(e.target.value)}
-                className="h-8 border border-input bg-background px-2 text-xs">
-                {sentiments.map((x) => <option key={x}>{x}</option>)}
+              <select
+                value={sentiment}
+                onChange={(e) => setSentiment(e.target.value)}
+                className="h-8 border border-input bg-background px-2 text-xs"
+              >
+                {sentiments.map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
               </select>
-              <select value={catalyst} onChange={(e) => setCatalyst(e.target.value)}
-                className="h-8 border border-input bg-background px-2 text-xs">
-                {catalysts.map((x) => <option key={x}>{x}</option>)}
+              <select
+                value={catalyst}
+                onChange={(e) => setCatalyst(e.target.value)}
+                className="h-8 border border-input bg-background px-2 text-xs"
+              >
+                {catalysts.map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
               </select>
-              <select value={impact} onChange={(e) => setImpact(e.target.value)}
-                className="h-8 border border-input bg-background px-2 text-xs">
-                {impacts.map((x) => <option key={x}>{x}</option>)}
+              <select
+                value={impact}
+                onChange={(e) => setImpact(e.target.value)}
+                className="h-8 border border-input bg-background px-2 text-xs"
+              >
+                {impacts.map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
               </select>
             </div>
             <div>
@@ -1959,22 +2530,41 @@ export function NewsIntelligence() {
                 </div>
               )}
               {filtered.map((n) => (
-                <button key={n.headline} onClick={() => setDetail(n)}
-                  className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[45px_1fr_260px]">
+                <button
+                  key={n.headline}
+                  onClick={() => setDetail(n)}
+                  className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[45px_1fr_260px]"
+                >
                   <span className="text-xs text-muted-foreground tabular-nums">{n.time}</span>
                   <div>
                     <div className="text-sm leading-5">{n.headline}</div>
                     <div className="mt-2 flex gap-2">
                       <span className="text-[10px] font-semibold text-primary">{n.company}</span>
-                      <span className="text-[10px] text-muted-foreground">{n.sector} · {n.source}</span>
+                      <span className="text-[10px] text-muted-foreground">
+                        {n.sector} · {n.source}
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-start justify-end gap-1.5 flex-wrap">
-                    <Tag tone={n.sentiment === "Positive" ? "positive" : n.sentiment === "Negative" ? "negative" : "neutral"}>
+                    <Tag
+                      tone={
+                        n.sentiment === "Positive"
+                          ? "positive"
+                          : n.sentiment === "Negative"
+                            ? "negative"
+                            : "neutral"
+                      }
+                    >
                       {n.sentiment}
                     </Tag>
                     <Tag tone="accent">{n.catalyst}</Tag>
-                    <Tag tone={n.impact === "High" ? "warning" : n.impact === "Low" ? "neutral" : "accent"}>{n.impact}</Tag>
+                    <Tag
+                      tone={
+                        n.impact === "High" ? "warning" : n.impact === "Low" ? "neutral" : "accent"
+                      }
+                    >
+                      {n.impact}
+                    </Tag>
                     <ChevronRight className="size-4 text-muted-foreground self-center" />
                   </div>
                 </button>
@@ -1985,11 +2575,19 @@ export function NewsIntelligence() {
         <div className="space-y-4">
           <Panel title="Distribusi Sinyal">
             <div className="p-4">
-              {([["Positive", sentimentCounts.Positive, "positive"], ["Neutral", sentimentCounts.Neutral, "accent"], ["Negative", sentimentCounts.Negative, "negative"]] as [string, number, Tone][]).map(([l, n, t]) => (
+              {(
+                [
+                  ["Positive", sentimentCounts.Positive, "positive"],
+                  ["Neutral", sentimentCounts.Neutral, "accent"],
+                  ["Negative", sentimentCounts.Negative, "negative"],
+                ] as [string, number, Tone][]
+              ).map(([l, n, t]) => (
                 <div className="mb-4" key={l}>
                   <div className="mb-2 flex justify-between text-xs">
                     <span>{l}</span>
-                    <span>{n} · {news.length > 0 ? Math.round((n / news.length) * 100) : 0}%</span>
+                    <span>
+                      {n} · {news.length > 0 ? Math.round((n / news.length) * 100) : 0}%
+                    </span>
                   </div>
                   <Bar value={news.length > 0 ? Math.round((n / news.length) * 100) : 0} tone={t} />
                 </div>
@@ -1998,17 +2596,24 @@ export function NewsIntelligence() {
           </Panel>
           <Panel title="Distribusi Katalis">
             <div className="p-4">
-              {catalysts.filter((c) => c !== "Semua").map((c) => {
-                const count = news.filter((n) => n.catalyst === c).length;
-                return (
-                  <button key={c} onClick={() => setCatalyst(catalyst === c ? "Semua" : c)}
-                    className={cn("mb-2 flex w-full items-center justify-between text-xs transition-colors hover:text-primary",
-                      catalyst === c ? "text-primary font-medium" : "text-muted-foreground")}>
-                    <span>{c}</span>
-                    <span className="tabular-nums">{count}</span>
-                  </button>
-                );
-              })}
+              {catalysts
+                .filter((c) => c !== "Semua")
+                .map((c) => {
+                  const count = news.filter((n) => n.catalyst === c).length;
+                  return (
+                    <button
+                      key={c}
+                      onClick={() => setCatalyst(catalyst === c ? "Semua" : c)}
+                      className={cn(
+                        "mb-2 flex w-full items-center justify-between text-xs transition-colors hover:text-primary",
+                        catalyst === c ? "text-primary font-medium" : "text-muted-foreground",
+                      )}
+                    >
+                      <span>{c}</span>
+                      <span className="tabular-nums">{count}</span>
+                    </button>
+                  );
+                })}
             </div>
           </Panel>
           <Panel title="Pemetaan Dampak" kicker="Turunan">
@@ -2023,7 +2628,8 @@ export function NewsIntelligence() {
                 <div className="border border-warning/30 bg-warning/5 p-2">Potensi dampak</div>
               </div>
               <p className="mt-4 text-[10px] leading-4 text-muted-foreground">
-                Memetakan relevansi peristiwa di konteks emiten dan sektor. Potensi dampak bukan prediksi harga.
+                Memetakan relevansi peristiwa di konteks emiten dan sektor. Potensi dampak bukan
+                prediksi harga.
               </p>
             </div>
           </Panel>
@@ -2048,15 +2654,34 @@ export function NewsIntelligence() {
               <div className="border-l-2 border-primary bg-accent/40 p-4">
                 <InsightLabel>Potensi transmisi</InsightLabel>
                 <p className="mt-2 text-xs leading-5">
-                  Peristiwa {detail.catalyst.toLowerCase()} ini dapat memengaruhi fundamental {detail.company} terlebih dahulu,
-                  dengan relevansi {detail.impact.toLowerCase()} bagi kelompok peer {detail.sector} yang lebih luas.
+                  Peristiwa {detail.catalyst.toLowerCase()} ini dapat memengaruhi fundamental{" "}
+                  {detail.company} terlebih dahulu, dengan relevansi {detail.impact.toLowerCase()}{" "}
+                  bagi kelompok peer {detail.sector} yang lebih luas.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <Tag tone={detail.sentiment === "Positive" ? "positive" : detail.sentiment === "Negative" ? "negative" : "neutral"} className="justify-center py-2 text-xs">
+                <Tag
+                  tone={
+                    detail.sentiment === "Positive"
+                      ? "positive"
+                      : detail.sentiment === "Negative"
+                        ? "negative"
+                        : "neutral"
+                  }
+                  className="justify-center py-2 text-xs"
+                >
                   Sentimen: {detail.sentiment}
                 </Tag>
-                <Tag tone={detail.impact === "High" ? "warning" : detail.impact === "Low" ? "neutral" : "accent"} className="justify-center py-2 text-xs">
+                <Tag
+                  tone={
+                    detail.impact === "High"
+                      ? "warning"
+                      : detail.impact === "Low"
+                        ? "neutral"
+                        : "accent"
+                  }
+                  className="justify-center py-2 text-xs"
+                >
                   Dampak: {detail.impact}
                 </Tag>
               </div>
@@ -2080,40 +2705,52 @@ export function DecisionScreener() {
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
   const flagDefs: [string, (c: Company) => boolean][] = [
-    ["Pertumbuhan > 8%",    (c) => c.growth > 8],
-    ["Margin > 15%",        (c) => c.margin > 15],
-    ["Utang < 50%",         (c) => c.debt < 50],
-    ["Dividen > 4%",        (c) => c.dividend > 4],
-    ["Tidak ada anomali",   (c) => !c.anomaly],
-    ["P/E < 20x",           (c) => c.pe > 0 && c.pe < 20],
+    ["Pertumbuhan > 8%", (c) => c.growth > 8],
+    ["Margin > 15%", (c) => c.margin > 15],
+    ["Utang < 50%", (c) => c.debt < 50],
+    ["Dividen > 4%", (c) => c.dividend > 4],
+    ["Tidak ada anomali", (c) => !c.anomaly],
+    ["P/E < 20x", (c) => c.pe > 0 && c.pe < 20],
   ];
 
   const toggleFlag = (f: string) =>
-    setActiveFlags((prev) => prev.includes(f) ? prev.filter((x) => x !== f) : [...prev, f]);
+    setActiveFlags((prev) => (prev.includes(f) ? prev.filter((x) => x !== f) : [...prev, f]));
 
   const result = useMemo(() => {
-    let list = companies.filter((c) =>
-      c.shi >= minShi &&
-      c.safety >= minSafety &&
-      (classification === "Semua" || classify(c) === classification) &&
-      activeFlags.every((f) => {
-        const def = flagDefs.find(([label]) => label === f);
-        return def ? def[1](c) : true;
-      })
+    let list = companies.filter(
+      (c) =>
+        c.shi >= minShi &&
+        c.safety >= minSafety &&
+        (classification === "Semua" || classify(c) === classification) &&
+        activeFlags.every((f) => {
+          const def = flagDefs.find(([label]) => label === f);
+          return def ? def[1](c) : true;
+        }),
     );
-    return [...list].sort((a, b) => sortDir === "desc" ? b[sortCol] - a[sortCol] : a[sortCol] - b[sortCol]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return [...list].sort((a, b) =>
+      sortDir === "desc" ? b[sortCol] - a[sortCol] : a[sortCol] - b[sortCol],
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minShi, minSafety, classification, activeFlags, sortCol, sortDir]);
 
   function toggleSort(k: CompanyKey) {
-    if (sortCol === k) setSortDir((d) => d === "desc" ? "asc" : "desc");
-    else { setSortCol(k); setSortDir("desc"); }
+    if (sortCol === k) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
+    else {
+      setSortCol(k);
+      setSortDir("desc");
+    }
   }
 
   const SortIcon = ({ k }: { k: CompanyKey }) =>
-    sortCol === k
-      ? sortDir === "desc" ? <ChevronDown className="ml-1 inline size-3 text-primary" /> : <ChevronUp className="ml-1 inline size-3 text-primary" />
-      : <ArrowDownUp className="ml-1 inline size-3 opacity-30" />;
+    sortCol === k ? (
+      sortDir === "desc" ? (
+        <ChevronDown className="ml-1 inline size-3 text-primary" />
+      ) : (
+        <ChevronUp className="ml-1 inline size-3 text-primary" />
+      )
+    ) : (
+      <ArrowDownUp className="ml-1 inline size-3 opacity-30" />
+    );
 
   const matrices: [string, string, Tone][] = [
     ["Undervalued Quality", "P/E ≤ 14x · margin ≥ 20% · safety ≥ 75", "positive"],
@@ -2124,9 +2761,7 @@ export function DecisionScreener() {
   return (
     <div className="space-y-4">
       <PageHeader title="Screener Keputusan">
-        <span className="text-[10px] text-muted-foreground">
-          {result.length} emiten cocok
-        </span>
+        <span className="text-[10px] text-muted-foreground">{result.length} emiten cocok</span>
         <ExportMenu title="Decision Matrix Results" />
       </PageHeader>
       <div className="grid gap-4 xl:grid-cols-[310px_1fr]">
@@ -2134,9 +2769,14 @@ export function DecisionScreener() {
           <div className="p-4">
             <Range label="SHI Minimum" value={minShi} set={setMinShi} />
             <Range label="Keamanan finansial" value={minSafety} set={setMinSafety} />
-            <label className="mt-5 block text-[10px] uppercase text-muted-foreground">Klasifikasi</label>
-            <select value={classification} onChange={(e) => setClassification(e.target.value)}
-              className="mt-2 h-9 w-full border border-input bg-background px-2 text-xs">
+            <label className="mt-5 block text-[10px] uppercase text-muted-foreground">
+              Klasifikasi
+            </label>
+            <select
+              value={classification}
+              onChange={(e) => setClassification(e.target.value)}
+              className="mt-2 h-9 w-full border border-input bg-background px-2 text-xs"
+            >
               <option>Semua</option>
               <option>Undervalued Quality</option>
               <option>Growth at Reasonable Price</option>
@@ -2144,23 +2784,41 @@ export function DecisionScreener() {
               <option>Balanced Fundamentals</option>
             </select>
             <div className="mt-5">
-              <div className="mb-2 text-[10px] uppercase text-muted-foreground">Filter tambahan</div>
+              <div className="mb-2 text-[10px] uppercase text-muted-foreground">
+                Filter tambahan
+              </div>
               <div className="grid grid-cols-2 gap-2">
                 {flagDefs.map(([label]) => (
-                  <label key={label} className={cn("flex cursor-pointer items-center gap-2 border p-2 text-[10px] transition-colors",
-                    activeFlags.includes(label) ? "border-primary/50 bg-primary/5 text-foreground" : "border-border text-muted-foreground hover:border-border/80")}>
-                    <input type="checkbox" className="accent-primary"
+                  <label
+                    key={label}
+                    className={cn(
+                      "flex cursor-pointer items-center gap-2 border p-2 text-[10px] transition-colors",
+                      activeFlags.includes(label)
+                        ? "border-primary/50 bg-primary/5 text-foreground"
+                        : "border-border text-muted-foreground hover:border-border/80",
+                    )}
+                  >
+                    <input
+                      type="checkbox"
+                      className="accent-primary"
                       checked={activeFlags.includes(label)}
-                      onChange={() => toggleFlag(label)} />
+                      onChange={() => toggleFlag(label)}
+                    />
                     {label}
                   </label>
                 ))}
               </div>
             </div>
             {(activeFlags.length > 0 || classification !== "Semua") && (
-              <button onClick={() => { setActiveFlags([]); setClassification("Semua"); }}
-                className="mt-3 flex items-center gap-1.5 text-[10px] text-muted-foreground hover:text-negative transition-colors">
-                <RefreshCw className="size-3" />Reset semua filter
+              <button
+                onClick={() => {
+                  setActiveFlags([]);
+                  setClassification("Semua");
+                }}
+                className="mt-3 flex items-center gap-1.5 text-[10px] text-muted-foreground hover:text-negative transition-colors"
+              >
+                <RefreshCw className="size-3" />
+                Reset semua filter
               </button>
             )}
             <p className="mt-3 text-[10px] leading-4 text-muted-foreground">
@@ -2172,9 +2830,14 @@ export function DecisionScreener() {
           <Panel title="Matriks Keputusan Multi-Faktor" kicker="Klasifikasi yang dapat dijelaskan">
             <div className="grid gap-px bg-border md:grid-cols-3">
               {matrices.map(([a, b, t]) => (
-                <button key={a} onClick={() => setClassification(classification === a ? "Semua" : a)}
-                  className={cn("bg-card p-4 text-left hover:bg-secondary transition-colors",
-                    classification === a && "ring-1 ring-primary/40")}>
+                <button
+                  key={a}
+                  onClick={() => setClassification(classification === a ? "Semua" : a)}
+                  className={cn(
+                    "bg-card p-4 text-left hover:bg-secondary transition-colors",
+                    classification === a && "ring-1 ring-primary/40",
+                  )}
+                >
                   <Tag tone={t}>{a}</Tag>
                   <p className="mt-3 text-[10px] leading-4 text-muted-foreground">{b}</p>
                   <div className="mt-2 text-[10px] text-muted-foreground">
@@ -2184,8 +2847,13 @@ export function DecisionScreener() {
               ))}
             </div>
           </Panel>
-          <Panel title="Hasil Screening" kicker="Dihitung dari aturan aktif"
-            action={<span className="text-[10px] text-muted-foreground">{result.length} cocok</span>}>
+          <Panel
+            title="Hasil Screening"
+            kicker="Dihitung dari aturan aktif"
+            action={
+              <span className="text-[10px] text-muted-foreground">{result.length} cocok</span>
+            }
+          >
             <div className="overflow-x-auto">
               <table className="w-full min-w-[940px]">
                 <thead>
@@ -2193,19 +2861,34 @@ export function DecisionScreener() {
                     <th className={th}>Ticker</th>
                     <th className={th}>Emiten</th>
                     <th className={th}>Sektor</th>
-                    <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("shi")}>
+                    <th
+                      className={cn(th, "cursor-pointer hover:text-foreground")}
+                      onClick={() => toggleSort("shi")}
+                    >
                       SHI <SortIcon k="shi" />
                     </th>
-                    <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("growth")}>
+                    <th
+                      className={cn(th, "cursor-pointer hover:text-foreground")}
+                      onClick={() => toggleSort("growth")}
+                    >
                       Pertumbuhan <SortIcon k="growth" />
                     </th>
-                    <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("safety")}>
+                    <th
+                      className={cn(th, "cursor-pointer hover:text-foreground")}
+                      onClick={() => toggleSort("safety")}
+                    >
                       Keamanan <SortIcon k="safety" />
                     </th>
-                    <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("pe")}>
+                    <th
+                      className={cn(th, "cursor-pointer hover:text-foreground")}
+                      onClick={() => toggleSort("pe")}
+                    >
                       P/E <SortIcon k="pe" />
                     </th>
-                    <th className={cn(th, "cursor-pointer hover:text-foreground")} onClick={() => toggleSort("dividend")}>
+                    <th
+                      className={cn(th, "cursor-pointer hover:text-foreground")}
+                      onClick={() => toggleSort("dividend")}
+                    >
                       Dividen <SortIcon k="dividend" />
                     </th>
                     <th className={th}>Klasifikasi</th>
@@ -2215,19 +2898,34 @@ export function DecisionScreener() {
                 <tbody>
                   {result.map((c) => {
                     const cl = classify(c);
-                    const tone: Tone = cl === "Dividend Trap Alert" ? "warning" : cl === "Undervalued Quality" ? "positive" : "accent";
+                    const tone: Tone =
+                      cl === "Dividend Trap Alert"
+                        ? "warning"
+                        : cl === "Undervalued Quality"
+                          ? "positive"
+                          : "accent";
                     return (
                       <tr key={c.ticker} className="hover:bg-secondary/50">
                         <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
                         <td className={td}>{c.name}</td>
                         <td className={td}>{c.sector}</td>
-                        <td className={td}><Score value={c.shi} /></td>
-                        <td className={td}><Change value={c.growth} /></td>
-                        <td className={td}><Score value={c.safety} /></td>
+                        <td className={td}>
+                          <Score value={c.shi} />
+                        </td>
+                        <td className={td}>
+                          <Change value={c.growth} />
+                        </td>
+                        <td className={td}>
+                          <Score value={c.safety} />
+                        </td>
                         <td className={td}>{c.pe || "NM"}x</td>
                         <td className={td}>{c.dividend}%</td>
-                        <td className={td}><Tag tone={tone}>{cl}</Tag></td>
-                        <td className={td}><WatchlistToggle ticker={c.ticker} /></td>
+                        <td className={td}>
+                          <Tag tone={tone}>{cl}</Tag>
+                        </td>
+                        <td className={td}>
+                          <WatchlistToggle ticker={c.ticker} />
+                        </td>
                       </tr>
                     );
                   })}
@@ -2235,7 +2933,8 @@ export function DecisionScreener() {
               </table>
               {result.length === 0 && (
                 <div className="p-10 text-center text-xs text-muted-foreground">
-                  Tidak ada emiten yang cocok dengan threshold saat ini. Coba turunkan nilai minimum.
+                  Tidak ada emiten yang cocok dengan threshold saat ini. Coba turunkan nilai
+                  minimum.
                 </div>
               )}
             </div>
@@ -2281,12 +2980,22 @@ function FreeFloatScreener() {
       <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
         <label className="flex items-center gap-2 text-[10px] uppercase text-muted-foreground">
           Tampilkan free float ≤
-          <input type="range" min={1} max={100} value={maxFloat}
-            onChange={(e) => setMaxFloat(Number(e.target.value))} className="w-40 accent-primary" />
+          <input
+            type="range"
+            min={1}
+            max={100}
+            value={maxFloat}
+            onChange={(e) => setMaxFloat(Number(e.target.value))}
+            className="w-40 accent-primary"
+          />
           <span className="w-10 text-foreground">{maxFloat}%</span>
         </label>
         <span className="ml-auto text-[10px] text-muted-foreground">
-          {ff.isPending ? "Memuat…" : ff.isError ? "Gagal memuat" : `${rows.length} dari ${ff.data?.size ?? 0} emiten`}
+          {ff.isPending
+            ? "Memuat…"
+            : ff.isError
+              ? "Gagal memuat"
+              : `${rows.length} dari ${ff.data?.size ?? 0} emiten`}
         </span>
       </div>
       <div className="max-h-96 overflow-y-auto">
@@ -2300,16 +3009,26 @@ function FreeFloatScreener() {
             </tr>
           </thead>
           <tbody>
-            {ff.isPending && <tr><td className={td} colSpan={4}><Skeleton className="h-6 w-full" /></td></tr>}
+            {ff.isPending && (
+              <tr>
+                <td className={td} colSpan={4}>
+                  <Skeleton className="h-6 w-full" />
+                </td>
+              </tr>
+            )}
             {rows.map((r) => (
               <tr key={r.symbol} className="hover:bg-secondary/50">
                 <td className={cn(td, "font-semibold text-primary")}>{r.symbol}</td>
                 <td className={cn(td, "tabular-nums")}>{(r.risk.freeFloat! * 100).toFixed(2)}%</td>
-                <td className={td}><Tag tone={floatTone(r.risk.level)}>{r.risk.label}</Tag></td>
                 <td className={td}>
-                  {r.risk.liquidityCliff
-                    ? <span className="text-[10px] text-negative">Liquidity Cliff</span>
-                    : <span className="text-[10px] text-muted-foreground">—</span>}
+                  <Tag tone={floatTone(r.risk.level)}>{r.risk.label}</Tag>
+                </td>
+                <td className={td}>
+                  {r.risk.liquidityCliff ? (
+                    <span className="text-[10px] text-negative">Liquidity Cliff</span>
+                  ) : (
+                    <span className="text-[10px] text-muted-foreground">—</span>
+                  )}
                 </td>
               </tr>
             ))}
@@ -2330,7 +3049,8 @@ function EsgScreener() {
   const esg = useEsgScores(pages, true);
 
   const rows = useMemo(
-    () => esg.data.filter((r): r is { ticker: string; name: string; score: number } => r.score != null),
+    () =>
+      esg.data.filter((r): r is { ticker: string; name: string; score: number } => r.score != null),
     [esg.data],
   );
 
@@ -2344,10 +3064,17 @@ function EsgScreener() {
     >
       <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
         <span className="text-[10px] uppercase text-muted-foreground">
-          {esg.isPending ? "Memuat…" : esg.isError ? "Gagal memuat" : `${rows.length} emiten berskor ESG`}
+          {esg.isPending
+            ? "Memuat…"
+            : esg.isError
+              ? "Gagal memuat"
+              : `${rows.length} emiten berskor ESG`}
         </span>
-        <button onClick={() => setPages((p) => p + 1)} disabled={esg.isPending}
-          className="ml-auto text-[10px] text-primary hover:underline disabled:opacity-40">
+        <button
+          onClick={() => setPages((p) => p + 1)}
+          disabled={esg.isPending}
+          className="ml-auto text-[10px] text-primary hover:underline disabled:opacity-40"
+        >
           Muat 30 berikutnya (1 kredit)
         </button>
       </div>
@@ -2362,7 +3089,13 @@ function EsgScreener() {
             </tr>
           </thead>
           <tbody>
-            {esg.isPending && <tr><td className={td} colSpan={4}><Skeleton className="h-6 w-full" /></td></tr>}
+            {esg.isPending && (
+              <tr>
+                <td className={td} colSpan={4}>
+                  <Skeleton className="h-6 w-full" />
+                </td>
+              </tr>
+            )}
             {rows.map((r) => {
               const t = classifyEsg(r.score);
               return (
@@ -2370,7 +3103,9 @@ function EsgScreener() {
                   <td className={cn(td, "font-semibold text-primary")}>{r.ticker}</td>
                   <td className={cn(td, "max-w-[280px] truncate")}>{r.name}</td>
                   <td className={cn(td, "tabular-nums")}>{r.score.toFixed(2)}</td>
-                  <td className={td}><Tag tone={esgTone(t.tier)}>{t.label}</Tag></td>
+                  <td className={td}>
+                    <Tag tone={esgTone(t.tier)}>{t.label}</Tag>
+                  </td>
                 </tr>
               );
             })}
@@ -2388,10 +3123,17 @@ function Range({ label, value, set }: { label: string; value: number; set: (v: n
         <span>{label}</span>
         <span className="text-primary font-medium">{value}</span>
       </div>
-      <input className="w-full accent-primary" type="range" min="30" max="95" value={value}
-        onChange={(e) => set(Number(e.target.value))} />
+      <input
+        className="w-full accent-primary"
+        type="range"
+        min="30"
+        max="95"
+        value={value}
+        onChange={(e) => set(Number(e.target.value))}
+      />
       <div className="mt-1 flex justify-between text-[9px] text-muted-foreground">
-        <span>30</span><span>95</span>
+        <span>30</span>
+        <span>95</span>
       </div>
     </label>
   );
@@ -2400,9 +3142,14 @@ function WatchlistToggle({ ticker }: { ticker: string }) {
   const { has, add, remove } = useWatchlistStore();
   const inList = has(ticker);
   return (
-    <button onClick={() => inList ? remove(ticker) : add(ticker)}
-      className={cn("rounded p-1 transition-colors", inList ? "text-primary" : "text-muted-foreground hover:text-primary")}
-      title={inList ? "Hapus dari pantauan" : "Tambah ke pantauan"}>
+    <button
+      onClick={() => (inList ? remove(ticker) : add(ticker))}
+      className={cn(
+        "rounded p-1 transition-colors",
+        inList ? "text-primary" : "text-muted-foreground hover:text-primary",
+      )}
+      title={inList ? "Hapus dari pantauan" : "Tambah ke pantauan"}
+    >
       <Star className={cn("size-3.5", inList && "fill-current")} />
     </button>
   );
@@ -2423,12 +3170,13 @@ export function Watchlist() {
     if (editNote) noteRef.current?.focus();
   }, [editNote]);
 
-  const list = useMemo(() =>
-    entries.map((e) => {
-      const company = companies.find((c) => c.ticker === e.ticker);
-      return { ...e, company };
-    }),
-    [entries]
+  const list = useMemo(
+    () =>
+      entries.map((e) => {
+        const company = companies.find((c) => c.ticker === e.ticker);
+        return { ...e, company };
+      }),
+    [entries],
   );
 
   function handleAdd(e: React.FormEvent) {
@@ -2436,7 +3184,10 @@ export function Watchlist() {
     const t = addTicker.trim().toUpperCase();
     if (!t) return;
     const exists = companies.find((c) => c.ticker === t);
-    if (!exists) { setAddError(`Ticker "${t}" tidak ditemukan di data.`); return; }
+    if (!exists) {
+      setAddError(`Ticker "${t}" tidak ditemukan di data.`);
+      return;
+    }
     add(t);
     setAddTicker("");
     setAddError("");
@@ -2447,16 +3198,28 @@ export function Watchlist() {
       <PageHeader title="Daftar Pantauan">
         <form onSubmit={handleAdd} className="flex gap-2">
           <div className="relative">
-            <Input value={addTicker} onChange={(e) => { setAddTicker(e.target.value.toUpperCase()); setAddError(""); }}
-              placeholder="Ticker (mis. BBCA)" className="h-8 w-36 text-xs uppercase" maxLength={8} />
+            <Input
+              value={addTicker}
+              onChange={(e) => {
+                setAddTicker(e.target.value.toUpperCase());
+                setAddError("");
+              }}
+              placeholder="Ticker (mis. BBCA)"
+              className="h-8 w-36 text-xs uppercase"
+              maxLength={8}
+            />
           </div>
-          <Button type="submit" size="sm" variant="outline"><Plus className="size-3.5" />Tambah</Button>
+          <Button type="submit" size="sm" variant="outline">
+            <Plus className="size-3.5" />
+            Tambah
+          </Button>
         </form>
         <ExportMenu title="Watchlist Insights" />
       </PageHeader>
       {addError && (
         <div className="flex items-center gap-2 rounded border border-negative/30 bg-negative/10 px-3 py-2 text-xs text-negative">
-          <CircleAlert className="size-4 shrink-0" />{addError}
+          <CircleAlert className="size-4 shrink-0" />
+          {addError}
         </div>
       )}
       {entries.length === 0 ? (
@@ -2465,7 +3228,10 @@ export function Watchlist() {
             <StarOff className="size-12 text-muted-foreground/30" />
             <div>
               <p className="text-sm font-medium text-foreground">Belum ada emiten dipantau</p>
-              <p className="mt-1 text-xs text-muted-foreground">Tambahkan ticker di atas, atau klik ikon bintang di tabel Screener / Terminal Emiten.</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Tambahkan ticker di atas, atau klik ikon bintang di tabel Screener / Terminal
+                Emiten.
+              </p>
             </div>
           </div>
         </Panel>
@@ -2476,8 +3242,20 @@ export function Watchlist() {
               <table className="w-full min-w-[860px]">
                 <thead>
                   <tr>
-                    {["Ticker", "Emiten", "Harga", "Perubahan", "SHI", "Keamanan", "Anomali", "Ditambahkan", "Aksi"].map((x) => (
-                      <th className={th} key={x}>{x}</th>
+                    {[
+                      "Ticker",
+                      "Emiten",
+                      "Harga",
+                      "Perubahan",
+                      "SHI",
+                      "Keamanan",
+                      "Anomali",
+                      "Ditambahkan",
+                      "Aksi",
+                    ].map((x) => (
+                      <th className={th} key={x}>
+                        {x}
+                      </th>
                     ))}
                   </tr>
                 </thead>
@@ -2487,23 +3265,41 @@ export function Watchlist() {
                       <td className={cn(td, "font-semibold text-primary")}>{e.ticker}</td>
                       <td className={td}>{e.company?.name ?? "—"}</td>
                       <td className={td}>{e.company ? formatIDR(e.company.price) : "—"}</td>
-                      <td className={td}>{e.company ? <Change value={e.company.change} /> : "—"}</td>
+                      <td className={td}>
+                        {e.company ? <Change value={e.company.change} /> : "—"}
+                      </td>
                       <td className={td}>{e.company?.shi ?? "—"}</td>
                       <td className={td}>{e.company ? <Score value={e.company.safety} /> : "—"}</td>
                       <td className={td}>
-                        {e.company?.anomaly ? <Tag tone="warning">{e.company.anomaly}</Tag> : <span className="text-muted-foreground">—</span>}
+                        {e.company?.anomaly ? (
+                          <Tag tone="warning">{e.company.anomaly}</Tag>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
                       </td>
                       <td className={cn(td, "text-muted-foreground text-[10px]")}>
-                        {new Date(e.addedAt).toLocaleDateString("id-ID", { day: "2-digit", month: "short" })}
+                        {new Date(e.addedAt).toLocaleDateString("id-ID", {
+                          day: "2-digit",
+                          month: "short",
+                        })}
                       </td>
                       <td className={td}>
                         <div className="flex items-center gap-1">
-                          <button onClick={() => { setEditNote(e.ticker); setNoteValue(e.note); }}
-                            className="rounded p-1 text-muted-foreground hover:text-primary transition-colors" title="Edit catatan">
+                          <button
+                            onClick={() => {
+                              setEditNote(e.ticker);
+                              setNoteValue(e.note);
+                            }}
+                            className="rounded p-1 text-muted-foreground hover:text-primary transition-colors"
+                            title="Edit catatan"
+                          >
                             <BookOpen className="size-3.5" />
                           </button>
-                          <button onClick={() => remove(e.ticker)}
-                            className="rounded p-1 text-muted-foreground hover:text-negative transition-colors" title="Hapus dari pantauan">
+                          <button
+                            onClick={() => remove(e.ticker)}
+                            className="rounded p-1 text-muted-foreground hover:text-negative transition-colors"
+                            title="Hapus dari pantauan"
+                          >
                             <Trash2 className="size-3.5" />
                           </button>
                         </div>
@@ -2521,15 +3317,23 @@ export function Watchlist() {
                 <div key={e.ticker} className="px-4 py-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-primary">{e.ticker}</span>
-                    <button onClick={() => { setEditNote(e.ticker); setNoteValue(e.note); }}
-                      className="text-[10px] text-muted-foreground hover:text-primary transition-colors">
+                    <button
+                      onClick={() => {
+                        setEditNote(e.ticker);
+                        setNoteValue(e.note);
+                      }}
+                      className="text-[10px] text-muted-foreground hover:text-primary transition-colors"
+                    >
                       {e.note ? "Edit catatan" : "+ Tambah catatan"}
                     </button>
                   </div>
-                  {e.note
-                    ? <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{e.note}</p>
-                    : <p className="mt-1.5 text-[10px] italic text-muted-foreground/50">Belum ada catatan.</p>
-                  }
+                  {e.note ? (
+                    <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{e.note}</p>
+                  ) : (
+                    <p className="mt-1.5 text-[10px] italic text-muted-foreground/50">
+                      Belum ada catatan.
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -2544,14 +3348,28 @@ export function Watchlist() {
             <SheetDescription>Tambahkan konteks riset untuk {editNote}.</SheetDescription>
           </SheetHeader>
           <div className="space-y-4 p-5">
-            <textarea ref={noteRef} value={noteValue} onChange={(e) => setNoteValue(e.target.value)}
+            <textarea
+              ref={noteRef}
+              value={noteValue}
+              onChange={(e) => setNoteValue(e.target.value)}
               placeholder="Tulis catatan riset di sini…"
-              className="min-h-36 w-full resize-y rounded border border-input bg-background p-3 text-xs outline-none focus:ring-1 focus:ring-primary/30" />
+              className="min-h-36 w-full resize-y rounded border border-input bg-background p-3 text-xs outline-none focus:ring-1 focus:ring-primary/30"
+            />
             <div className="flex gap-2">
-              <Button className="flex-1" onClick={() => { if (editNote) { updateNote(editNote, noteValue); setEditNote(null); } }}>
+              <Button
+                className="flex-1"
+                onClick={() => {
+                  if (editNote) {
+                    updateNote(editNote, noteValue);
+                    setEditNote(null);
+                  }
+                }}
+              >
                 Simpan Catatan
               </Button>
-              <Button variant="outline" onClick={() => setEditNote(null)}>Batal</Button>
+              <Button variant="outline" onClick={() => setEditNote(null)}>
+                Batal
+              </Button>
             </div>
           </div>
         </SheetContent>
@@ -2574,9 +3392,16 @@ export function Methodology() {
         <Panel title="Model Analitis">
           <div className="p-2">
             {methodology.map((m) => (
-              <button onClick={() => setOpen(m.id)} key={m.id}
-                className={cn("flex w-full items-center justify-between border-l-2 px-3 py-3 text-left text-xs",
-                  open === m.id ? "border-primary bg-accent text-accent-foreground" : "border-transparent text-muted-foreground hover:bg-secondary")}>
+              <button
+                onClick={() => setOpen(m.id)}
+                key={m.id}
+                className={cn(
+                  "flex w-full items-center justify-between border-l-2 px-3 py-3 text-left text-xs",
+                  open === m.id
+                    ? "border-primary bg-accent text-accent-foreground"
+                    : "border-transparent text-muted-foreground hover:bg-secondary",
+                )}
+              >
                 <span>{m.name}</span>
                 <ChevronRight className="size-3" />
               </button>
@@ -2584,37 +3409,43 @@ export function Methodology() {
           </div>
         </Panel>
         <div className="space-y-4">
-          {methodology.filter((m) => m.id === open).map((m) => (
-            <Panel key={m.id} title={m.name} kicker="Metodologi kustom">
-              <div className="p-5">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Yang diukur</div>
-                    <p className="mt-2 text-sm leading-6">{m.purpose}</p>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Interpretasi</div>
-                    <p className="mt-2 text-sm leading-6">{m.interpretation}</p>
-                  </div>
-                </div>
-                <div className="mt-6 border-t border-border pt-5">
-                  <div className="text-[10px] uppercase text-muted-foreground">Indikator dan bobot</div>
-                  <div className="mt-3 grid gap-px bg-border sm:grid-cols-2">
-                    {m.indicators.map((x, i) => (
-                      <div key={x} className="flex items-center bg-card p-3">
-                        <span className="mr-3 text-[10px] text-muted-foreground">0{i + 1}</span>
-                        <span className="text-xs">{x}</span>
+          {methodology
+            .filter((m) => m.id === open)
+            .map((m) => (
+              <Panel key={m.id} title={m.name} kicker="Metodologi kustom">
+                <div className="p-5">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <div className="text-[10px] uppercase text-muted-foreground">Yang diukur</div>
+                      <p className="mt-2 text-sm leading-6">{m.purpose}</p>
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Interpretasi
                       </div>
-                    ))}
+                      <p className="mt-2 text-sm leading-6">{m.interpretation}</p>
+                    </div>
+                  </div>
+                  <div className="mt-6 border-t border-border pt-5">
+                    <div className="text-[10px] uppercase text-muted-foreground">
+                      Indikator dan bobot
+                    </div>
+                    <div className="mt-3 grid gap-px bg-border sm:grid-cols-2">
+                      {m.indicators.map((x, i) => (
+                        <div key={x} className="flex items-center bg-card p-3">
+                          <span className="mr-3 text-[10px] text-muted-foreground">0{i + 1}</span>
+                          <span className="text-xs">{x}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6 border-l-2 border-primary bg-accent/30 p-4">
+                    <InsightLabel>Normalisasi dan kalkulasi</InsightLabel>
+                    <p className="mt-2 text-xs leading-5">{m.formula}</p>
                   </div>
                 </div>
-                <div className="mt-6 border-l-2 border-primary bg-accent/30 p-4">
-                  <InsightLabel>Normalisasi dan kalkulasi</InsightLabel>
-                  <p className="mt-2 text-xs leading-5">{m.formula}</p>
-                </div>
-              </div>
-            </Panel>
-          ))}
+              </Panel>
+            ))}
         </div>
       </div>
     </div>
@@ -2626,8 +3457,11 @@ export function Methodology() {
 // ─────────────────────────────────────────────────────────────────────────────
 export function SettingsPage() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
-    try { return (localStorage.getItem("theme") as "dark" | "light") || "dark"; }
-    catch { return "dark"; }
+    try {
+      return (localStorage.getItem("theme") as "dark" | "light") || "dark";
+    } catch {
+      return "dark";
+    }
   });
   const { entries, clear } = useWatchlistStore();
 
@@ -2640,13 +3474,28 @@ export function SettingsPage() {
   };
 
   // Derived stats
-  const apiKeyConfigured = !!(import.meta.env["VITE_API_URL"]);
+  const apiKeyConfigured = !!import.meta.env["VITE_API_URL"];
   const dataMode = "PROTOTYPE";
 
   const cacheStats = [
-    { label: "Redis", value: "Tidak tersambung", tone: "warning" as Tone, note: "Fallback in-memory aktif" },
-    { label: "TanStack Query", value: "Aktif", tone: "positive" as Tone, note: "staleTime: 5 mnt · gcTime: 30 mnt" },
-    { label: "Server cache", value: "Siap", tone: "positive" as Tone, note: "Menunggu koneksi Redis" },
+    {
+      label: "Redis",
+      value: "Tidak tersambung",
+      tone: "warning" as Tone,
+      note: "Fallback in-memory aktif",
+    },
+    {
+      label: "TanStack Query",
+      value: "Aktif",
+      tone: "positive" as Tone,
+      note: "staleTime: 5 mnt · gcTime: 30 mnt",
+    },
+    {
+      label: "Server cache",
+      value: "Siap",
+      tone: "positive" as Tone,
+      note: "Menunggu koneksi Redis",
+    },
   ];
 
   return (
@@ -2655,12 +3504,14 @@ export function SettingsPage() {
       <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
         <Panel title="Preferensi Workspace">
           <div className="divide-y divide-border">
-            {([
-              ["Pasar default", "Bursa Efek Indonesia (IDX)"],
-              ["Format angka", "Locale Indonesia"],
-              ["Zona waktu", "Asia/Jakarta (WIB)"],
-              ["Kepadatan tampilan", "Terminal kompak"],
-            ] as [string, string][]).map(([a, b]) => (
+            {(
+              [
+                ["Pasar default", "Bursa Efek Indonesia (IDX)"],
+                ["Format angka", "Locale Indonesia"],
+                ["Zona waktu", "Asia/Jakarta (WIB)"],
+                ["Kepadatan tampilan", "Terminal kompak"],
+              ] as [string, string][]
+            ).map(([a, b]) => (
               <div key={a} className="flex items-center justify-between px-4 py-3">
                 <span className="text-xs">{a}</span>
                 <span className="text-xs text-muted-foreground">{b}</span>
@@ -2675,7 +3526,11 @@ export function SettingsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-muted-foreground">Gelap</span>
-                <Switch checked={theme === "light"} onCheckedChange={(checked) => toggleTheme(checked ? "light" : "dark")} aria-label="Toggle light mode" />
+                <Switch
+                  checked={theme === "light"}
+                  onCheckedChange={(checked) => toggleTheme(checked ? "light" : "dark")}
+                  aria-label="Toggle light mode"
+                />
                 <span className="text-[10px] text-muted-foreground">Terang</span>
               </div>
             </div>
@@ -2732,8 +3587,14 @@ export function SettingsPage() {
               </div>
             </div>
             {entries.length > 0 && (
-              <Button variant="outline" size="sm" onClick={clear} className="text-negative hover:border-negative/40 hover:bg-negative/10">
-                <Trash2 className="size-3.5" />Hapus semua
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={clear}
+                className="text-negative hover:border-negative/40 hover:bg-negative/10"
+              >
+                <Trash2 className="size-3.5" />
+                Hapus semua
               </Button>
             )}
           </div>
@@ -2762,15 +3623,17 @@ export function SettingsPage() {
           <div className="flex gap-3 border border-warning/30 bg-warning/5 p-3">
             <CircleAlert className="mt-0.5 size-4 shrink-0 text-warning" />
             <p className="text-xs leading-5 text-muted-foreground">
-              Mode Prototype menggunakan data mock yang realistis. Skor kustom adalah model analitis independen dan bukan rating pasar resmi atau rekomendasi investasi.
+              Mode Prototype menggunakan data mock yang realistis. Skor kustom adalah model analitis
+              independen dan bukan rating pasar resmi atau rekomendasi investasi.
             </p>
           </div>
           <div className="flex gap-3 border border-primary/20 bg-primary/5 p-3">
             <Layers className="mt-0.5 size-4 shrink-0 text-primary" />
             <div className="text-xs leading-5 text-muted-foreground">
-              <span className="font-medium text-foreground">Strategi cache 6 lapis aktif:</span>
-              {" "}Redis server cache · TanStack Query in-memory · Request deduplication · Morning prefetch cron · Smart invalidation · Credit budget monitor.
-              Redis belum terhubung — menggunakan in-memory fallback.
+              <span className="font-medium text-foreground">Strategi cache 6 lapis aktif:</span>{" "}
+              Redis server cache · TanStack Query in-memory · Request deduplication · Morning
+              prefetch cron · Smart invalidation · Credit budget monitor. Redis belum terhubung —
+              menggunakan in-memory fallback.
             </div>
           </div>
         </div>

@@ -2,78 +2,78 @@
   "top_gainers": {
     "1d": [
       {
-        "name": "PT Singaraja Putra Tbk",
-        "symbol": "SINI.JK",
-        "price_change": 0.14018691588785,
-        "last_close_price": 18300,
-        "latest_close_date": "2026-09-23"
+        "name": "Bakrie Sumatera Plantations Tbk",
+        "symbol": "UNSP.JK",
+        "price_change": 0.25,
+        "last_close_price": 320,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "Perdana Karya Perkasa Tbk",
-        "symbol": "PKPK.JK",
-        "price_change": 0.125541125541126,
-        "last_close_price": 5200,
-        "latest_close_date": "2026-09-23"
+        "name": "Akasha Wira International Tbk",
+        "symbol": "ADES.JK",
+        "price_change": 0.0974842767295598,
+        "last_close_price": 34900,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "PT Golden Flower Tbk",
-        "symbol": "POLU.JK",
-        "price_change": 0.120500782472613,
-        "last_close_price": 17900,
-        "latest_close_date": "2026-09-23"
+        "name": "PT Abadi Nusantara Hijau Investama Tbk",
+        "symbol": "PACK.JK",
+        "price_change": 0.0803571428571429,
+        "last_close_price": 605,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "Indika Energy Tbk",
-        "symbol": "INDY.JK",
-        "price_change": 0.1003861003861,
-        "last_close_price": 2850,
-        "latest_close_date": "2026-09-23"
+        "name": "PT Jhonlin Agro Raya Tbk",
+        "symbol": "JARR.JK",
+        "price_change": 0.0783132530120482,
+        "last_close_price": 3580,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "Darma Henwa Tbk",
-        "symbol": "DEWA.JK",
-        "price_change": 0.0919540229885057,
-        "last_close_price": 380,
-        "latest_close_date": "2026-09-23"
+        "name": "Golden Eagle Energy Tbk",
+        "symbol": "SMMT.JK",
+        "price_change": 0.0782312925170068,
+        "last_close_price": 3170,
+        "latest_close_date": "2026-09-24"
       }
     ]
   },
   "top_losers": {
     "1d": [
       {
-        "name": "MNC Tourism Indonesia Tbk",
-        "symbol": "KPIG.JK",
-        "price_change": -0.140625,
-        "last_close_price": 55,
-        "latest_close_date": "2026-09-23"
-      },
-      {
-        "name": "PT Victoria Care Indonesia Tbk",
-        "symbol": "VICI.JK",
-        "price_change": -0.0523809523809524,
-        "last_close_price": 995,
-        "latest_close_date": "2026-09-23"
-      },
-      {
         "name": "PT MNC Digital Entertainment Tbk",
         "symbol": "MSIN.JK",
-        "price_change": -0.032,
-        "last_close_price": 242,
-        "latest_close_date": "2026-09-23"
+        "price_change": -0.148760330578512,
+        "last_close_price": 206,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "PT Famon Awal Bros Sedaya Tbk",
-        "symbol": "PRAY.JK",
-        "price_change": -0.0318471337579618,
-        "last_close_price": 760,
-        "latest_close_date": "2026-09-23"
+        "name": "PT MSIG Life Insurance Indonesia Tbk",
+        "symbol": "LIFE.JK",
+        "price_change": -0.1,
+        "last_close_price": 11250,
+        "latest_close_date": "2026-09-24"
       },
       {
-        "name": "PT Diamond Food Indonesia Tbk",
-        "symbol": "DMND.JK",
-        "price_change": -0.0298507462686567,
-        "last_close_price": 650,
-        "latest_close_date": "2026-09-23"
+        "name": "MNC Tourism Indonesia Tbk",
+        "symbol": "KPIG.JK",
+        "price_change": -0.0909090909090909,
+        "last_close_price": 50,
+        "latest_close_date": "2026-09-24"
+      },
+      {
+        "name": "PT Intermedia Capital Tbk",
+        "symbol": "MDIA.JK",
+        "price_change": -0.0789473684210526,
+        "last_close_price": 175,
+        "latest_close_date": "2026-09-24"
+      },
+      {
+        "name": "PT MD Entertainment Tbk",
+        "symbol": "FILM.JK",
+        "price_change": -0.0608108108108108,
+        "last_close_price": 695,
+        "latest_close_date": "2026-09-24"
       }
     ]
   }
