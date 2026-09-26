@@ -320,13 +320,13 @@
     "free_float": 0.5905
   },
   {
-    "symbol": "NINE.JK",
-    "company_name": "PT Techno9 Indonesia Tbk",
+    "symbol": "FIMP.JK",
+    "company_name": "PT Fimperkasa Utama Tbk",
     "free_float": 0.5898
   },
   {
-    "symbol": "FIMP.JK",
-    "company_name": "PT Fimperkasa Utama Tbk",
+    "symbol": "NINE.JK",
+    "company_name": "PT Techno9 Indonesia Tbk",
     "free_float": 0.5898
   },
   {
@@ -435,13 +435,13 @@
     "free_float": 0.5337
   },
   {
-    "symbol": "KPIG.JK",
-    "company_name": "MNC Tourism Indonesia Tbk",
+    "symbol": "PURA.JK",
+    "company_name": "PT Putra Rajawali Kencana Tbk",
     "free_float": 0.5324
   },
   {
-    "symbol": "PURA.JK",
-    "company_name": "PT Putra Rajawali Kencana Tbk",
+    "symbol": "KPIG.JK",
+    "company_name": "MNC Tourism Indonesia Tbk",
     "free_float": 0.5324
   },
   {
@@ -530,13 +530,13 @@
     "free_float": 0.4981
   },
   {
-    "symbol": "BTEL.JK",
-    "company_name": "Bakrie Telecom Tbk",
+    "symbol": "NANO.JK",
+    "company_name": "PT Nanotech Indonesia Global Tbk",
     "free_float": 0.4965
   },
   {
-    "symbol": "NANO.JK",
-    "company_name": "PT Nanotech Indonesia Global Tbk",
+    "symbol": "BTEL.JK",
+    "company_name": "Bakrie Telecom Tbk",
     "free_float": 0.4965
   },
   {
@@ -1270,8 +1270,8 @@
     "free_float": 0.3542
   },
   {
-    "symbol": "ANTM.JK",
-    "company_name": "Aneka Tambang Tbk.",
+    "symbol": "TINS.JK",
+    "company_name": "PT Timah Tbk",
     "free_float": 0.35
   },
   {
@@ -1280,18 +1280,18 @@
     "free_float": 0.35
   },
   {
-    "symbol": "TINS.JK",
-    "company_name": "PT Timah Tbk",
+    "symbol": "ANTM.JK",
+    "company_name": "Aneka Tambang Tbk.",
     "free_float": 0.35
-  },
-  {
-    "symbol": "SPTO.JK",
-    "company_name": "PT Surya Pertiwi Tbk",
-    "free_float": 0.3489
   },
   {
     "symbol": "DPUM.JK",
     "company_name": "PT Dua Putra Utama Makmur Tbk",
+    "free_float": 0.3489
+  },
+  {
+    "symbol": "SPTO.JK",
+    "company_name": "PT Surya Pertiwi Tbk",
     "free_float": 0.3489
   },
   {
@@ -1675,13 +1675,13 @@
     "free_float": 0.30066
   },
   {
-    "symbol": "PRDL.JK",
-    "company_name": "PT Prodia Diagnostic Line Tbk",
+    "symbol": "SPRE.JK",
+    "company_name": "PT Soraya Berjaya Indonesia Tbk",
     "free_float": 0.3
   },
   {
-    "symbol": "SPRE.JK",
-    "company_name": "PT Soraya Berjaya Indonesia Tbk",
+    "symbol": "PRDL.JK",
+    "company_name": "PT Prodia Diagnostic Line Tbk",
     "free_float": 0.3
   },
   {
@@ -1725,13 +1725,13 @@
     "free_float": 0.2989
   },
   {
-    "symbol": "TRUK.JK",
-    "company_name": "PT Guna Timur Raya Tbk",
+    "symbol": "CGAS.JK",
+    "company_name": "PT Citra Nusantara Gemilang Tbk.",
     "free_float": 0.2983
   },
   {
-    "symbol": "CGAS.JK",
-    "company_name": "PT Citra Nusantara Gemilang Tbk.",
+    "symbol": "TRUK.JK",
+    "company_name": "PT Guna Timur Raya Tbk",
     "free_float": 0.2983
   },
   {
@@ -2090,13 +2090,13 @@
     "free_float": 0.26118
   },
   {
-    "symbol": "DYAN.JK",
-    "company_name": "PT Dyandra Media International Tbk",
+    "symbol": "PRDA.JK",
+    "company_name": "PT Prodia Widyahusada Tbk",
     "free_float": 0.26
   },
   {
-    "symbol": "PRDA.JK",
-    "company_name": "PT Prodia Widyahusada Tbk",
+    "symbol": "DYAN.JK",
+    "company_name": "PT Dyandra Media International Tbk",
     "free_float": 0.26
   },
   {
@@ -2185,13 +2185,13 @@
     "free_float": 0.25
   },
   {
-    "symbol": "KBRI.JK",
-    "company_name": "Kertas Basuki Rachmat Indonesia Tbk",
+    "symbol": "BBSI.JK",
+    "company_name": "PT Krom Bank Indonesia Tbk",
     "free_float": 0.25
   },
   {
-    "symbol": "BBSI.JK",
-    "company_name": "PT Krom Bank Indonesia Tbk",
+    "symbol": "KBRI.JK",
+    "company_name": "Kertas Basuki Rachmat Indonesia Tbk",
     "free_float": 0.25
   },
   {
@@ -2205,13 +2205,13 @@
     "free_float": 0.249
   },
   {
-    "symbol": "ZYRX.JK",
-    "company_name": "PT Zyrexindo Mandiri Buana Tbk",
+    "symbol": "MCOR.JK",
+    "company_name": "PT Bank China Construction Bank Indonesia Tbk",
     "free_float": 0.2484
   },
   {
-    "symbol": "MCOR.JK",
-    "company_name": "PT Bank China Construction Bank Indonesia Tbk",
+    "symbol": "ZYRX.JK",
+    "company_name": "PT Zyrexindo Mandiri Buana Tbk",
     "free_float": 0.2484
   },
   {
@@ -2220,13 +2220,13 @@
     "free_float": 0.2475
   },
   {
-    "symbol": "NIRO.JK",
-    "company_name": "City Retail Developments Tbk",
+    "symbol": "KICI.JK",
+    "company_name": "Kedaung Indah Can Tbk",
     "free_float": 0.2475
   },
   {
-    "symbol": "KICI.JK",
-    "company_name": "Kedaung Indah Can Tbk",
+    "symbol": "NIRO.JK",
+    "company_name": "City Retail Developments Tbk",
     "free_float": 0.2475
   },
   {
@@ -2315,6 +2315,11 @@
     "free_float": 0.2408
   },
   {
+    "symbol": "CBMF.JK",
+    "company_name": "PT Cahaya Bintang Medan Tbk",
+    "free_float": 0.24
+  },
+  {
     "symbol": "HOMI.JK",
     "company_name": "PT Grand House Mulia Tbk",
     "free_float": 0.24
@@ -2322,11 +2327,6 @@
   {
     "symbol": "PPRI.JK",
     "company_name": "PT Paperocks Indonesia Tbk",
-    "free_float": 0.24
-  },
-  {
-    "symbol": "CBMF.JK",
-    "company_name": "PT Cahaya Bintang Medan Tbk",
     "free_float": 0.24
   },
   {
@@ -2345,13 +2345,13 @@
     "free_float": 0.2382
   },
   {
-    "symbol": "BEER.JK",
-    "company_name": "PT Jobubu Jarum Minahasa Tbk",
+    "symbol": "GRPH.JK",
+    "company_name": "PT Griptha Putra Persada Tbk",
     "free_float": 0.2381
   },
   {
-    "symbol": "GRPH.JK",
-    "company_name": "PT Griptha Putra Persada Tbk",
+    "symbol": "BEER.JK",
+    "company_name": "PT Jobubu Jarum Minahasa Tbk",
     "free_float": 0.2381
   },
   {
@@ -2420,13 +2420,13 @@
     "free_float": 0.23155
   },
   {
-    "symbol": "HBAT.JK",
-    "company_name": "PT Minahasa Membangun Hebat Tbk",
+    "symbol": "ASGR.JK",
+    "company_name": "Astra Graphia Tbk",
     "free_float": 0.2313
   },
   {
-    "symbol": "ASGR.JK",
-    "company_name": "Astra Graphia Tbk",
+    "symbol": "HBAT.JK",
+    "company_name": "PT Minahasa Membangun Hebat Tbk",
     "free_float": 0.2313
   },
   {
@@ -2480,13 +2480,13 @@
     "free_float": 0.2282
   },
   {
-    "symbol": "PTMR.JK",
-    "company_name": "PT Master Print Tbk",
+    "symbol": "DRMA.JK",
+    "company_name": "PT Dharma Polimetal Tbk",
     "free_float": 0.2281
   },
   {
-    "symbol": "DRMA.JK",
-    "company_name": "PT Dharma Polimetal Tbk",
+    "symbol": "PTMR.JK",
+    "company_name": "PT Master Print Tbk",
     "free_float": 0.2281
   },
   {
@@ -2510,6 +2510,11 @@
     "free_float": 0.2257
   },
   {
+    "symbol": "CBRE.JK",
+    "company_name": "PT Cakra Buana Resources Energi Tbk",
+    "free_float": 0.225
+  },
+  {
     "symbol": "DSSA.JK",
     "company_name": "Dian Swastatika Sentosa Tbk",
     "free_float": 0.225
@@ -2517,11 +2522,6 @@
   {
     "symbol": "MTMH.JK",
     "company_name": "PT Murni Sadar Tbk",
-    "free_float": 0.225
-  },
-  {
-    "symbol": "CBRE.JK",
-    "company_name": "PT Cakra Buana Resources Energi Tbk",
     "free_float": 0.225
   },
   {
@@ -2920,13 +2920,13 @@
     "free_float": 0.20026
   },
   {
-    "symbol": "UCID.JK",
-    "company_name": "PT Uni-Charm Indonesia Tbk",
+    "symbol": "ROCK.JK",
+    "company_name": "PT Rockfields Properti Indonesia Tbk",
     "free_float": 0.2
   },
   {
-    "symbol": "ATAP.JK",
-    "company_name": "PT Trimitra Prawara Goldland Tbk",
+    "symbol": "VISI.JK",
+    "company_name": "PT Satu Visi Putra Tbk",
     "free_float": 0.2
   },
   {
@@ -2935,53 +2935,8 @@
     "free_float": 0.2
   },
   {
-    "symbol": "MANG.JK",
-    "company_name": "PT Manggung Polahraya Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "MHKI.JK",
-    "company_name": "PT Multi Hanna Kreasindo Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "MKAP.JK",
-    "company_name": "PT Multikarya Asia Pasifik Raya Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "TCPI.JK",
-    "company_name": "PT Transcoal Pacific Tbk",
-    "free_float": 0.2
-  },
-  {
     "symbol": "PSKT.JK",
     "company_name": "PT Red Planet Indonesia Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "CBPE.JK",
-    "company_name": "PT Citra Buana Prasida Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "RCCC.JK",
-    "company_name": "PT Utama Radar Cahaya Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "ROCK.JK",
-    "company_name": "PT Rockfields Properti Indonesia Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "GTRA.JK",
-    "company_name": "PT Grahaprima Suksesmandiri Tbk",
-    "free_float": 0.2
-  },
-  {
-    "symbol": "PMUI.JK",
-    "company_name": "PT Prima Multi Usaha Indonesia Tbk",
     "free_float": 0.2
   },
   {
@@ -2990,13 +2945,33 @@
     "free_float": 0.2
   },
   {
-    "symbol": "RSCH.JK",
-    "company_name": "PT Charlie Hospital Semarang Tbk",
+    "symbol": "GTRA.JK",
+    "company_name": "PT Grahaprima Suksesmandiri Tbk",
     "free_float": 0.2
   },
   {
-    "symbol": "BLOG.JK",
-    "company_name": "PT Trimitra Trans Persada Tbk",
+    "symbol": "RCCC.JK",
+    "company_name": "PT Utama Radar Cahaya Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "MKAP.JK",
+    "company_name": "PT Multikarya Asia Pasifik Raya Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "MHKI.JK",
+    "company_name": "PT Multi Hanna Kreasindo Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "MANG.JK",
+    "company_name": "PT Manggung Polahraya Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "ATAP.JK",
+    "company_name": "PT Trimitra Prawara Goldland Tbk",
     "free_float": 0.2
   },
   {
@@ -3005,13 +2980,38 @@
     "free_float": 0.2
   },
   {
+    "symbol": "BLOG.JK",
+    "company_name": "PT Trimitra Trans Persada Tbk",
+    "free_float": 0.2
+  },
+  {
     "symbol": "TOOL.JK",
     "company_name": "PT Rohartindo Nusantara Luas Tbk",
     "free_float": 0.2
   },
   {
-    "symbol": "VISI.JK",
-    "company_name": "PT Satu Visi Putra Tbk",
+    "symbol": "RSCH.JK",
+    "company_name": "PT Charlie Hospital Semarang Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "UCID.JK",
+    "company_name": "PT Uni-Charm Indonesia Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "PMUI.JK",
+    "company_name": "PT Prima Multi Usaha Indonesia Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "TCPI.JK",
+    "company_name": "PT Transcoal Pacific Tbk",
+    "free_float": 0.2
+  },
+  {
+    "symbol": "CBPE.JK",
+    "company_name": "PT Citra Buana Prasida Tbk",
     "free_float": 0.2
   },
   {
@@ -3205,13 +3205,13 @@
     "free_float": 0.1829
   },
   {
-    "symbol": "BTON.JK",
-    "company_name": "Betonjaya Manunggal Tbk",
+    "symbol": "MDIY.JK",
+    "company_name": "PT Daya Intiguna Yasa Tbk",
     "free_float": 0.1818
   },
   {
-    "symbol": "MDIY.JK",
-    "company_name": "PT Daya Intiguna Yasa Tbk",
+    "symbol": "BTON.JK",
+    "company_name": "Betonjaya Manunggal Tbk",
     "free_float": 0.1818
   },
   {
@@ -3450,13 +3450,13 @@
     "free_float": 0.1578
   },
   {
-    "symbol": "LFLO.JK",
-    "company_name": "PT Imago Mulia Persada Tbk",
+    "symbol": "BESS.JK",
+    "company_name": "PT Batulicin Nusantara Maritim Tbk.",
     "free_float": 0.1557
   },
   {
-    "symbol": "BESS.JK",
-    "company_name": "PT Batulicin Nusantara Maritim Tbk.",
+    "symbol": "LFLO.JK",
+    "company_name": "PT Imago Mulia Persada Tbk",
     "free_float": 0.1557
   },
   {
@@ -3530,13 +3530,13 @@
     "free_float": 0.1521
   },
   {
-    "symbol": "GTSI.JK",
-    "company_name": "PT GTS Internasional Tbk",
+    "symbol": "CRAB.JK",
+    "company_name": "PT Toba Surimi Industries Tbk",
     "free_float": 0.152
   },
   {
-    "symbol": "CRAB.JK",
-    "company_name": "PT Toba Surimi Industries Tbk",
+    "symbol": "GTSI.JK",
+    "company_name": "PT GTS Internasional Tbk",
     "free_float": 0.152
   },
   {
@@ -3560,23 +3560,18 @@
     "free_float": 0.1507
   },
   {
-    "symbol": "MLPT.JK",
-    "company_name": "PT Multipolar Technology Tbk",
-    "free_float": 0.1505
-  },
-  {
     "symbol": "BSBK.JK",
     "company_name": "PT Wulandari Bangun Laksana Tbk",
     "free_float": 0.1505
   },
   {
-    "symbol": "GDYR.JK",
-    "company_name": "Goodyear Indonesia Tbk",
-    "free_float": 0.15
+    "symbol": "MLPT.JK",
+    "company_name": "PT Multipolar Technology Tbk",
+    "free_float": 0.1505
   },
   {
-    "symbol": "POLL.JK",
-    "company_name": "PT Pollux Properties Indonesia Tbk",
+    "symbol": "GDYR.JK",
+    "company_name": "Goodyear Indonesia Tbk",
     "free_float": 0.15
   },
   {
@@ -3587,6 +3582,11 @@
   {
     "symbol": "PDPP.JK",
     "company_name": "PT Primadaya Plastisindo Tbk",
+    "free_float": 0.15
+  },
+  {
+    "symbol": "POLL.JK",
+    "company_name": "PT Pollux Properties Indonesia Tbk",
     "free_float": 0.15
   },
   {
@@ -3655,23 +3655,23 @@
     "free_float": 0.14605
   },
   {
-    "symbol": "NIKL.JK",
-    "company_name": "Pelat Timah Nusantara Tbk",
-    "free_float": 0.146
-  },
-  {
     "symbol": "UFOE.JK",
     "company_name": "PT Damai Sejahtera Abadi Tbk",
     "free_float": 0.146
   },
   {
-    "symbol": "BKDP.JK",
-    "company_name": "Bukit Darmo Property Tbk",
-    "free_float": 0.1459
+    "symbol": "NIKL.JK",
+    "company_name": "Pelat Timah Nusantara Tbk",
+    "free_float": 0.146
   },
   {
     "symbol": "SIMP.JK",
     "company_name": "Salim Ivomas Pratama Tbk",
+    "free_float": 0.1459
+  },
+  {
+    "symbol": "BKDP.JK",
+    "company_name": "Bukit Darmo Property Tbk",
     "free_float": 0.1459
   },
   {
@@ -4130,13 +4130,13 @@
     "free_float": 0.1019
   },
   {
-    "symbol": "YPAS.JK",
-    "company_name": "Yanaprima Hastapersada Tbk",
+    "symbol": "KAEF.JK",
+    "company_name": "Kimia Farma Tbk",
     "free_float": 0.1018
   },
   {
-    "symbol": "KAEF.JK",
-    "company_name": "Kimia Farma Tbk",
+    "symbol": "YPAS.JK",
+    "company_name": "Yanaprima Hastapersada Tbk",
     "free_float": 0.1018
   },
   {
@@ -4165,13 +4165,13 @@
     "free_float": 0.1
   },
   {
-    "symbol": "PTSN.JK",
-    "company_name": "Sat Nusapersada Tbk",
+    "symbol": "YUPI.JK",
+    "company_name": "PT Yupi Indo Jelly Gum Tbk",
     "free_float": 0.1
   },
   {
-    "symbol": "YUPI.JK",
-    "company_name": "PT Yupi Indo Jelly Gum Tbk",
+    "symbol": "PTSN.JK",
+    "company_name": "Sat Nusapersada Tbk",
     "free_float": 0.1
   },
   {
@@ -4290,13 +4290,13 @@
     "free_float": 0.0924
   },
   {
-    "symbol": "SDRA.JK",
-    "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
+    "symbol": "JSPT.JK",
+    "company_name": "Jakarta Setiabudi Internasional Tbk",
     "free_float": 0.0923
   },
   {
-    "symbol": "JSPT.JK",
-    "company_name": "Jakarta Setiabudi Internasional Tbk",
+    "symbol": "SDRA.JK",
+    "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
     "free_float": 0.0923
   },
   {
@@ -4580,8 +4580,8 @@
     "free_float": 0.0762
   },
   {
-    "symbol": "SMAR.JK",
-    "company_name": "PT Sinar Mas Agro Resources and Technology Tbk",
+    "symbol": "PNBS.JK",
+    "company_name": "PT Bank Panin Dubai Syariah Tbk",
     "free_float": 0.076
   },
   {
@@ -4590,13 +4590,13 @@
     "free_float": 0.076
   },
   {
-    "symbol": "ROTI.JK",
-    "company_name": "PT Nippon Indosari Corpindo Tbk",
+    "symbol": "SMAR.JK",
+    "company_name": "PT Sinar Mas Agro Resources and Technology Tbk",
     "free_float": 0.076
   },
   {
-    "symbol": "PNBS.JK",
-    "company_name": "PT Bank Panin Dubai Syariah Tbk",
+    "symbol": "ROTI.JK",
+    "company_name": "PT Nippon Indosari Corpindo Tbk",
     "free_float": 0.076
   },
   {
@@ -4620,23 +4620,23 @@
     "free_float": 0.0756
   },
   {
-    "symbol": "EDGE.JK",
-    "company_name": "PT Indointernet Tbk",
-    "free_float": 0.0755
-  },
-  {
     "symbol": "AGII.JK",
     "company_name": "PT Samator Indo Gas Tbk",
     "free_float": 0.0755
   },
   {
-    "symbol": "AKSI.JK",
-    "company_name": "PT Mineral Sumberdaya Mandiri Tbk",
-    "free_float": 0.0754
+    "symbol": "EDGE.JK",
+    "company_name": "PT Indointernet Tbk",
+    "free_float": 0.0755
   },
   {
     "symbol": "LPGI.JK",
     "company_name": "Lippo General Insurance Tbk",
+    "free_float": 0.0754
+  },
+  {
+    "symbol": "AKSI.JK",
+    "company_name": "PT Mineral Sumberdaya Mandiri Tbk",
     "free_float": 0.0754
   },
   {
@@ -4650,8 +4650,8 @@
     "free_float": 0.07505
   },
   {
-    "symbol": "LIFE.JK",
-    "company_name": "PT MSIG Life Insurance Indonesia Tbk",
+    "symbol": "VRNA.JK",
+    "company_name": "PT Mizuho Leasing Indonesia Tbk",
     "free_float": 0.075
   },
   {
@@ -4660,8 +4660,8 @@
     "free_float": 0.075
   },
   {
-    "symbol": "PSAB.JK",
-    "company_name": "J Resources Asia Pasifik Tbk",
+    "symbol": "JAWA.JK",
+    "company_name": "Jaya Agra Wattie Tbk",
     "free_float": 0.075
   },
   {
@@ -4670,13 +4670,13 @@
     "free_float": 0.075
   },
   {
-    "symbol": "JAWA.JK",
-    "company_name": "Jaya Agra Wattie Tbk",
+    "symbol": "LIFE.JK",
+    "company_name": "PT MSIG Life Insurance Indonesia Tbk",
     "free_float": 0.075
   },
   {
-    "symbol": "VRNA.JK",
-    "company_name": "PT Mizuho Leasing Indonesia Tbk",
+    "symbol": "PSAB.JK",
+    "company_name": "J Resources Asia Pasifik Tbk",
     "free_float": 0.075
   },
   {

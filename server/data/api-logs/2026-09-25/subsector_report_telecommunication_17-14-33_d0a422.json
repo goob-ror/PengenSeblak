@@ -1,0 +1,153 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T09:14:33.942Z",
+    "endpoint": "/subsector/report/telecommunication/",
+    "query_params": {
+      "sections": "growth,stability,valuation,market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 4,
+    "cache_hit": false,
+    "response_time_ms": 773
+  },
+  "data": {
+    "sector": "Infrastructures",
+    "sub_sector": "Telecommunication",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.197973653119164,
+          "avg_annual_revenue_growth": -0.13781104294455
+        },
+        "2020": {
+          "avg_annual_earning_growth": -0.286368608276332,
+          "avg_annual_revenue_growth": 0.0125211219549617
+        },
+        "2021": {
+          "avg_annual_earning_growth": -0.828504831695361,
+          "avg_annual_revenue_growth": 0.142883331924821
+        },
+        "2022": {
+          "avg_annual_earning_growth": -0.139887743376884,
+          "avg_annual_revenue_growth": -0.010697777297685
+        },
+        "2023": {
+          "avg_annual_earning_growth": 94.7030757350081,
+          "avg_annual_revenue_growth": 108.242240321793
+        },
+        "2024": {
+          "avg_annual_earning_growth": -0.599254055218519,
+          "avg_annual_revenue_growth": 0.000829497810010241
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.193750844433665,
+          "avg_annual_revenue_growth": 0.0369634779096496
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.516472738491408,
+          "revenue_growth": 0.0769707761147597
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 0.621112440775213,
+          "revenue_growth": 0.120503585593555
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.415964769846943,
+      "weighted_rsd_close": 0.15346573538196737
+    },
+    "valuation": {
+      "historical_valuation": {
+        "2022": {
+          "pb": 1.43534025022452,
+          "pe": 23.4503479450525,
+          "ps": 5.37660791393898,
+          "pcf": 5.11583793872223
+        },
+        "2023": {
+          "pb": 1.42403679275764,
+          "pe": 20.8890950265123,
+          "ps": 4.73022958464141,
+          "pcf": 5.16133525082889
+        },
+        "2024": {
+          "pb": 1.55908084117257,
+          "pe": 10.7980594390592,
+          "ps": 4.79649524911481,
+          "pcf": 5.26053711578903
+        },
+        "2025": {
+          "pb": 2.44703088769422,
+          "pe": 18.2127103566376,
+          "ps": 5.89333034007944,
+          "pcf": 8.6171167625064
+        },
+        "2026": {
+          "pb": 1.98084281898474,
+          "pe": 15.6688046944104,
+          "ps": 4.29020431543176,
+          "pcf": 6.59216716397679,
+          "pb_rank": 25,
+          "pe_rank": 27,
+          "ps_rank": 29,
+          "pcf_rank": 20
+        }
+      }
+    },
+    "market_cap": {
+      "total_market_cap": 788293341989197,
+      "avg_market_cap": 35831515544963.5,
+      "quarterly_market_cap": {
+        "prev_ttm_mcap": {
+          "2024.Q4": 609355835943923,
+          "2025.Q1": 529591762887104,
+          "2025.Q2": 596801640640510,
+          "2025.Q3": 631383906549295
+        },
+        "current_ttm_mcap": {
+          "2025.Q4": 1028511450906807,
+          "2026.Q1": 723815194891896,
+          "2026.Q2": 845362948526508,
+          "2026.Q3": 840209632199065
+        },
+        "current_ttm_mcap_pavg": {
+          "2025.Q4": 463019100482884.4,
+          "2026.Q1": 365463158155729.75,
+          "2026.Q2": 282770785355889.94,
+          "2026.Q3": 333995828820688
+        }
+      },
+      "mcap_summary": {
+        "mcap_change": {
+          "1w": -0.03284498598545867,
+          "1y": 0.2578178401522353,
+          "ytd": -0.22784919804001866
+        },
+        "monthly_performance": {
+          "2025-10-31": 0.08790921375243592,
+          "2025-11-28": 0.2299553677824716,
+          "2025-12-30": 0.21740089380572872,
+          "2026-01-30": -0.048175087290507554,
+          "2026-02-27": -0.1465153084950481,
+          "2026-03-31": -0.13370509299877179,
+          "2026-04-30": 0.13753501084304964,
+          "2026-05-29": 0.13958798323404498,
+          "2026-06-30": -0.09904545586119194,
+          "2026-07-31": 0.003172656180658123,
+          "2026-08-31": -0.0012894778639791155,
+          "2026-09-23": -0.0623241356302202
+        },
+        "performance_quantile": 0.757575757575758
+      }
+    }
+  }
+}
