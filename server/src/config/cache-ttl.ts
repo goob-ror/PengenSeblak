@@ -71,28 +71,122 @@ export const CREDIT_COST: Record<string, number> = {
   "subsectors":         1,
   "tags":               1,
   "companies":          1,
+  "index-daily":        1,
+  "idx-total":          1,
+  "most-traded":        2,
 };
+
+/**
+ * Computes the ACTUAL credit cost of a request, accounting for params that
+ * change the price. Sectors bills 1 credit per section / classification /
+ * type, so a bare CREDIT_COST lookup would under-count.
+ *
+ *   /v2/company/report/BBCA/?sections=overview,valuation  → 2 (not 8)
+ *   /v2/subsector/report/banks/?sections=growth,stability → 2 (not 6)
+ *   /v2/companies/top-changes/?classifications=top_gainers&periods=1d → 1
+ *   /v2/corporate-actions/?type=dividend                  → 1 (not 7)
+ */
+export function computeCreditCost(
+  adapter: string,
+  baseCost: number,
+  query: Record<string, unknown>,
+): number {
+  if (adapter === "company-report") {
+    const sections = query["sections"] as string | undefined;
+    if (sections) {
+      const n = sections.split(",").map((s) => s.trim()).filter(Boolean).length;
+      // financials is 2 credits, rest are 1
+      const hasFinancials = sections.includes("financials");
+      return Math.min(n + (hasFinancials ? 1 : 0), 8);
+    }
+    return baseCost; // no sections param = all 8
+  }
+
+  if (adapter === "subsector-report") {
+    const sections = query["sections"] as string | undefined;
+    if (sections) {
+      const n = sections.split(",").map((s) => s.trim()).filter(Boolean).length;
+      return Math.min(n, 6);
+    }
+    return baseCost; // no sections = all 6
+  }
+
+  if (adapter === "companies-top-changes") {
+    const classifications = query["classifications"] as string | undefined;
+    const periods = query["periods"] as string | undefined;
+    const nc = classifications
+      ? classifications.split(",").map((s) => s.trim()).filter(Boolean).length
+      : 2; // default both
+    const np = periods
+      ? periods.split(",").map((s) => s.trim()).filter(Boolean).length
+      : 5; // default all 5
+    return nc * np;
+  }
+
+  if (adapter === "corporate-actions") {
+    const type = query["type"] as string | undefined;
+    if (type) {
+      return type.split(",").map((s) => s.trim()).filter(Boolean).length;
+    }
+    return 7; // default all 7 types
+  }
+
+  return baseCost;
+}
 
 /**
  * Sections supported by the company report endpoint.
  * Only request sections needed for each page — saves credits.
+ * 
+ * Full report costs 8 credits (all 8 sections).
+ * By requesting only needed sections, we save significant API credits.
+ * 
+ * Available sections:
+ *   - overview (1 credit): company name, sector, market cap, indices, tags
+ *   - valuation (1 credit): PE, PB, PS, PCF, intrinsic value
+ *   - financials (2 credits): income statement, balance sheet, cash flow
+ *   - peers (1 credit): peer comparison data
+ *   - management (1 credit): board of directors, commissioners
+ *   - future (1 credit): analyst forecasts, growth estimates
+ *   - ownership (1 credit): shareholder composition
+ *   - dividend (1 credit): dividend history, yield
  */
 export const REPORT_SECTIONS = {
   // Dashboard market overview — no company report needed
   marketOverview:   [] as string[],
 
   // Sector deep-dive: list of companies in sector, basic fundamentals
-  sectorDeepdive:   ["overview", "financials"],
+  sectorDeepdive:   ["overview", "valuation"],
 
-  // Company terminal overview card
+  // Company terminal overview card (minimal, just the basics)
   companyOverview:  ["overview", "valuation"],
 
-  // Company terminal full comparison
-  companyFull:      ["overview", "valuation", "financials", "peers"],
+  // Company terminal financial analysis (need detailed financials)
+  companyFinancials: ["overview", "financials", "valuation"],
 
-  // Screener — needs fundamentals for all filters
+  // Company terminal peer comparison
+  companyPeers:     ["overview", "valuation", "peers"],
+
+  // Company terminal full profile (comprehensive view)
+  companyFull:      ["overview", "valuation", "financials", "peers", "future"],
+
+  // Screener — needs fundamentals for filtering and decision labels
   screener:         ["overview", "valuation", "financials"],
+
+  // Dominance Score calculation (need financials + peers for ranking)
+  dominanceScore:   ["overview", "valuation", "financials", "peers"],
+
+  // Financial Safety Score (need detailed financials for Altman Z / Piotroski F)
+  financialSafety:  ["overview", "financials"],
 } as const;
+
+/**
+ * Sections parameter string builder
+ * Converts array of section names to comma-separated string for API call
+ */
+export function buildSectionsParam(sections: readonly string[]): string | undefined {
+  return sections.length > 0 ? sections.join(",") : undefined;
+}
 
 /**
  * Returns whether the Jakarta market is currently open.

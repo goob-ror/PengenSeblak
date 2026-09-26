@@ -1,0 +1,65 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T07:39:58.318Z",
+    "endpoint": "/subsector/report/software-it-services/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 783
+  },
+  "data": {
+    "sector": "Technology",
+    "sub_sector": "Software & IT Services",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.699254479429388,
+          "avg_annual_revenue_growth": 0.78455436784731
+        },
+        "2020": {
+          "avg_annual_earning_growth": 0.537238943421408,
+          "avg_annual_revenue_growth": 0.453714159983297
+        },
+        "2021": {
+          "avg_annual_earning_growth": 0.663332663544161,
+          "avg_annual_revenue_growth": 0.334314964109596
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.480507314305314,
+          "avg_annual_revenue_growth": 0.431005271064245
+        },
+        "2023": {
+          "avg_annual_earning_growth": -0.0490825878200136,
+          "avg_annual_revenue_growth": 0.18911814873132
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.576182331642709,
+          "avg_annual_revenue_growth": 0.322525229499166
+        },
+        "2025": {
+          "avg_annual_earning_growth": 1.31719781403272,
+          "avg_annual_revenue_growth": 0.369350033129643
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.517008185179962,
+          "revenue_growth": -0.0257636395239645
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 1.89463970658608,
+          "revenue_growth": 0.284786032094435
+        }
+      }
+    }
+  }
+}

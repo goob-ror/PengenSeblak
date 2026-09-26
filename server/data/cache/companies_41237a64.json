@@ -1,0 +1,201 @@
+{
+  "results": [
+    {
+      "symbol": "AREA.JK",
+      "company_name": "PT Dunia Virtual Online Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 98.4671750797878,
+        "roe_ttm": 0.0331618200985262,
+        "net_profit_margin[2025]": 0.155219628283868,
+        "der_mrq": 0.0793668716507416
+      }
+    },
+    {
+      "symbol": "ATIC.JK",
+      "company_name": "PT Anabatic Technologies Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 8.39682964736983,
+        "roe_ttm": 0.196619695805807,
+        "net_profit_margin[2025]": 0.0245780487992262,
+        "der_mrq": 2.85561792458372
+      }
+    },
+    {
+      "symbol": "BUKA.JK",
+      "company_name": "PT Bukalapak.com Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 5.77822585698875,
+        "roe_ttm": 0.0763938377922292,
+        "net_profit_margin[2025]": 0.482648245455143,
+        "der_mrq": 0.00436009931371217
+      }
+    },
+    {
+      "symbol": "CYBR.JK",
+      "company_name": "PT ITSEC Asia Tbk.",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 114.133144846512,
+        "roe_ttm": 0.196697322338555,
+        "net_profit_margin[2025]": 0.121848060534911,
+        "der_mrq": 0.138397505826083
+      }
+    },
+    {
+      "symbol": "DCII.JK",
+      "company_name": "PT DCI Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 422.574300934713,
+        "roe_ttm": 0.235731174609955,
+        "net_profit_margin[2025]": 0.394221244805175,
+        "der_mrq": 0.538540797605121
+      }
+    },
+    {
+      "symbol": "DMMX.JK",
+      "company_name": "PT Digital Mediatama Maxima Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 34.6855515669965,
+        "roe_ttm": 0.058334531950566,
+        "net_profit_margin[2025]": 0.0995563891584249,
+        "der_mrq": 0.0722602167135513
+      }
+    },
+    {
+      "symbol": "EDGE.JK",
+      "company_name": "PT Indointernet Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 159.381340997431,
+        "roe_ttm": 0.0334900386495653,
+        "net_profit_margin[2025]": 0.143523999634255,
+        "der_mrq": 3.3610984706201
+      }
+    },
+    {
+      "symbol": "ELIT.JK",
+      "company_name": "PT Data Sinergitama Jaya Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 14.8150744828199,
+        "roe_ttm": 0.19098512191682,
+        "net_profit_margin[2025]": 0.0728426107206922,
+        "der_mrq": 0.185742495065024
+      }
+    },
+    {
+      "symbol": "EMTK.JK",
+      "company_name": "Elang Mahkota Teknologi Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 11.5021935720403,
+        "roe_ttm": 0.0431532155179292,
+        "net_profit_margin[2025]": 0.355093619552249,
+        "der_mrq": 0.0579181610867938
+      }
+    },
+    {
+      "symbol": "GOTO.JK",
+      "company_name": "PT GoTo Gojek Tokopedia Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 30826.3045194595,
+        "roe_ttm": 0.0000638350496795411,
+        "net_profit_margin[2025]": -0.0647116269369964,
+        "der_mrq": 0.178993134247111
+      }
+    },
+    {
+      "symbol": "JATI.JK",
+      "company_name": "PT Informasi Teknologi Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 18.7646664923804,
+        "roe_ttm": 0.106795484736229,
+        "net_profit_margin[2025]": 0.0327742197530908,
+        "der_mrq": 1.05994413905994
+      }
+    },
+    {
+      "symbol": "MLPT.JK",
+      "company_name": "PT Multipolar Technology Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 127.45732652614,
+        "roe_ttm": 0.495586624313993,
+        "net_profit_margin[2025]": 0.0876535764942164,
+        "der_mrq": 0.287098032853268
+      }
+    },
+    {
+      "symbol": "MPIX.JK",
+      "company_name": "PT Mitra Pedagang Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 25.4445177667314,
+        "roe_ttm": 0.069804260606477,
+        "net_profit_margin[2025]": 0.00407148237916474,
+        "der_mrq": 0.0656196575116927
+      }
+    },
+    {
+      "symbol": "TOSK.JK",
+      "company_name": "PT Topindo Solusi Komunika Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 100.307049218454,
+        "roe_ttm": 0.0216676484042988,
+        "net_profit_margin[2025]": 0.00327840917264871,
+        "der_mrq": 0.190674262261782
+      }
+    },
+    {
+      "symbol": "UVCR.JK",
+      "company_name": "PT Trimegah Karya Pratama Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 31.5986461618755,
+        "roe_ttm": 0.11405713690675,
+        "net_profit_margin[2025]": 0.00557276619211892,
+        "der_mrq": 0.477610534756753
+      }
+    },
+    {
+      "symbol": "WIFI.JK",
+      "company_name": "PT Solusi Sinergi Digital Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 17.8922074737139,
+        "roe_ttm": 0.0567687984913666,
+        "net_profit_margin[2025]": 0.246204772439265,
+        "der_mrq": 1.1128040191143
+      }
+    },
+    {
+      "symbol": "WIRG.JK",
+      "company_name": "PT Wir Asia Tbk",
+      "query_values": {
+        "sub_sector": "Software & IT Services",
+        "pe_ttm": 9.45682460929333,
+        "roe_ttm": 0.0819602340616911,
+        "net_profit_margin[2025]": 0.0273584107802778,
+        "der_mrq": 0.151053708492457
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 17,
+    "showing": 17,
+    "limit": 30,
+    "offset": 0,
+    "has_next": false,
+    "has_previous": false,
+    "next_offset": null,
+    "previous_offset": null
+  }
+}

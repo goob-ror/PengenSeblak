@@ -1,0 +1,321 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T09:21:34.267Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1399
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Gabriel Rey’s PT Pukul Rata Kanan (PRK) readies expansion after voluntary tender offer to become new controlling shareholder of PT Guna Timur Raya Tbk (TRUK)",
+        "body": "PT Pukul Rata Kanan (PRK), led by Gabriel Rey, is set to become the new controlling shareholder of PT Guna Timur Raya Tbk (TRUK) through a voluntary tender offer. The VTO covers up to 65.25 million TRUK shares at Rp740 per share, potentially raising Rp48.3 billion and increasing PRK’s stake from 15% to 30%, valued at roughly Rp336.69 billion. PRK projects positive revenue, margin and asset growth for TRUK and plans both organic and inorganic expansion, while confirming no intention to go private and keeping the offer open for minority shareholders. The tender is expected to be effective on 4 Nov 2026, with the offer period from 6 Nov to 7 Dec 2026 and allocation on 10 Dec 2026; Gabriel Rey holds 99.9% of PRK.",
+        "source": "https://emitennews.com/news/tak-sekadar-ambil-kendali-truk-gabriel-rey-siapkan-ekspansi-usai-vto",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790322558.jpg?25119ab",
+        "timestamp": "2026-09-25T15:00:00",
+        "sector": "transportation-logistic",
+        "sub_sector": [
+          "logistics-deliveries"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Business Expansion",
+          "Capital & Funding",
+          "Bullish"
+        ],
+        "symbols": [
+          "TRUK.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Pukul Rata Kanan (PRK) launches Rp48.3 billion voluntary tender offer for PT Guna Timur Raya Tbk (TRUK) shares",
+        "body": "PT Pukul Rata Kanan (PRK) announced a voluntary tender offer (VTO) to purchase up to 65.25 million shares of PT Guna Timur Raya Tbk (TRUK) at Rp740 per share, representing a total value of about Rp48.3 billion. PRK already holds 65.25 million shares (15% of TRUK) and, if the full offer is subscribed, its stake would rise to 130.5 million shares (30%), making it the new controlling shareholder. The offer price exceeds the 90‑day average high of Rp735.15 per share, and the VTO is scheduled for announcement on 25 September 2026, with the effective statement expected by 4 November 2026, the offer period from 6 November to 7 December 2026, allocation on 10 December and payment on 15 December 2026. Sucor Sekuritas will act as the securities firm handling the transaction administration and verification.",
+        "source": "https://market.bisnis.com/read/20260925/192/2007263/bidik-kendali-truk-gabriel-rey-siapkan-tender-rp483-miliar",
+        "thumbnail": "https://images.bisnis.com/thumb/posts/2026/09/25/2007263/12072026-BI-HIL-21-IHSG-25_1783865476.jpg?w=368&h=208",
+        "timestamp": "2026-09-25T14:55:00",
+        "sector": "transportation-logistic",
+        "sub_sector": [
+          "logistics-deliveries"
+        ],
+        "tags": [
+          "Ownership",
+          "Capital & Funding",
+          "Bullish"
+        ],
+        "symbols": [
+          "TRUK.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Astra Otoparts Tbk (AUTO) launches ALTRO EV charger for retail while reporting 11.6% and 15.1% revenue growth in manufacturing and trading segments in H1 2026",
+        "body": "PT Astra Otoparts Tbk (AUTO) announced that its ALTRO‑branded EV charger is now being sold to the retail segment, marking the company’s entry into the electric‑vehicle market. In the first half of 2026 the company recorded net revenue of Rp5.6 trillion from its manufacturing segment, an 11.6 % increase over the same period in 2025, and revenue of Rp5.3 trillion from its trading segment, up 15.1 % YoY. The growth was attributed to stronger demand from original‑equipment‑manufacturer customers and a robust domestic aftermarket supported by a distribution network of 49 main dealers, 27 sales offices, more than 15,000 parts stores and 667 modern retail outlets. AUTO also highlighted its export reach to over 50 countries and the development of the omni‑channel platform www.astraotoshop.com to integrate online and offline sales.",
+        "source": "https://emitennews.com/news/auto-garap-pasar-ev-charger-altro-mulai-masuk-segmen-retail",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790321902.jpeg?25119ab",
+        "timestamp": "2026-09-25T14:40:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "automobiles-components"
+        ],
+        "tags": [
+          "Product Launch",
+          "Business Expansion",
+          "Export",
+          "Digital Transformation",
+          "Bullish"
+        ],
+        "symbols": [
+          "AUTO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Energi Mega Persada Tbk (ENRG) launches Phase IV rights issue of 13.28 billion new shares at Rp310 each",
+        "body": "PT Energi Mega Persada Tbk (ENRG) announced that it has received an effective notice from the Otoritas Jasa Keuangan for its Phase IV rights issue (PMHMETD IV). The company will offer 13,282,271,875 new B‑series shares at Rp310 per share, targeting total proceeds of Rp4,117,504,281,250, with the rights cumulating on 2 October 2026 and the subscription period running from 8 to 21 October 2026. Controlling shareholder PT Shima Global Kapital (Shima), which holds 4,661,422,413 shares (17.55% of paid‑up capital), will transfer its 2,330,711,205 rights to PT Bakrie Kalila Investment (BKI), an affiliate of Shima, and BKI will exercise a total of 2,804,146,712 rights worth Rp869,285,480,720. PT Bakrie Capital Indonesia (BCI), holding 1,109,560,097 shares (4.18%), will exercise its 554,780,048 rights for a total value of Rp171,981,814,880, both amounts excluding any additional shares that may be purchased as standby buyers.",
+        "source": "https://investor.id/market/455506/babak-baru-emiten-grup-bakrie",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2024/05/1714547748-650x447.webp",
+        "timestamp": "2026-09-25T14:34:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Capital & Funding",
+          "Ownership",
+          "Neutral"
+        ],
+        "symbols": [
+          "ENRG.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Pukul Rata Kanan allocates Rp48.3 bn to launch voluntary tender offer for control of PT Guna Timur Raya Tbk (TRUK)",
+        "body": "PT Pukul Rata Kanan has allocated Rp48.3 billion to purchase up to 65.25 million shares of PT Guna Timur Raya Tbk (TRUK) at Rp740 per share, representing 15% of the company's capital and aiming to increase its stake to 130.5 million shares (30%) and become the new controlling shareholder. The voluntary tender offer runs from 6 November to 7 December 2026, with allocation on 10 December and payment on 15 December 2026, and the 30% stake is valued at approximately Rp336.69 billion based on the offer price.",
+        "source": "https://investasi.kontan.co.id/news/bos-triv-siapkan-rp-483-miliar-untuk-bidik-kendali-guna-timur-raya-truk",
+        "thumbnail": "https://foto.kontan.co.id/sMxVGDxnkiECrbcFqaRsAzs8iPs=/smart/2025/11/12/625930786t.jpg",
+        "timestamp": "2026-09-25T14:03:00",
+        "sector": "transportation-logistic",
+        "sub_sector": [
+          "logistics-deliveries"
+        ],
+        "tags": [
+          "Ownership",
+          "Capital & Funding",
+          "Mergers & Acquisitions",
+          "Bullish"
+        ],
+        "symbols": [
+          "TRUK.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Rupiah heads toward largest weekly weakening since May as US Treasury yields climb",
+        "body": "Rupiah is on track for its biggest weekly depreciation since May 2026, slipping over 1% for the week and reaching 17,935 per US dollar. The slide follows a rise in US Treasury yields, with the 30‑year yield hitting its highest level since 2004, and a strong US dollar that is pressuring emerging‑market currencies. Bank Indonesia kept its policy rate at 5.75% after earlier hikes, while noting that external pressures from oil‑price‑driven inflation and fiscal concerns could further strain the currency. Regional equity markets showed mixed moves, with the Jakarta index down 0.6% while Thailand and the Philippines rose around 0.5‑0.7%.",
+        "source": "https://investasi.kontan.co.id/news/rupiah-menuju-pelemahan-mingguan-terbesar-sejak-mei-tertekan-yield-as",
+        "thumbnail": "https://foto.kontan.co.id/9_Yh0t8F46TapBodM8Uf_dRTEgA=/smart/2026/05/05/1152379622t.jpg",
+        "timestamp": "2026-09-25T13:57:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Currency & FX",
+          "Central Bank",
+          "Market Sentiment"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Pukul Rata Kanan launches voluntary tender offer for up to 15% of PT Guna Timur Raya Tbk (TRUK)",
+        "body": "PT Pukul Rata Kanan (PRK) announced a voluntary tender offer for shares of PT Guna Timur Raya Tbk (TRUK) aiming to become its controlling shareholder. The offer covers up to 65,250,000 shares, representing 15% of TRUK, at a price of Rp 740 per share, which could amount to Rp 48,285 billion, well below the regular market price of Rp 2,580 observed on 25 September 2026. PRK already purchased the same number of shares on 18 September 2026 at Rp 428 per share (Rp 27.92 billion), and together with Hakimson Growth Capital’s 21,750,000‑share purchase, the tender would raise PRK’s total holding to 130,500,000 shares or 30% of TRUK. The tender period is scheduled from 6 November to 7 December 2026, and PRK, controlled 99.9% by Gabriel Rey, commits to support TRUK’s future development.",
+        "source": "https://investor.id/market/455502/gabriel-rey-incar-jadi-pengendali",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2025/06/1750761283-1600x1066.webp",
+        "timestamp": "2026-09-25T13:56:00",
+        "sector": "transportation-logistic",
+        "sub_sector": [
+          "logistics-deliveries"
+        ],
+        "tags": [
+          "Ownership",
+          "Capital & Funding",
+          "Mergers & Acquisitions",
+          "Bearish"
+        ],
+        "symbols": [
+          "TRUK.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Today is the last day of the Rp 50 minimum price floor on the Indonesia Stock Exchange before it drops to Rp 1 on Sep 28",
+        "body": "Today (25 September 2026) marks the final day of the Rp 50 minimum price floor on the Bursa Efek Indonesia (BEI), after which the floor will be reduced to Rp 1 per share starting 28 September 2026. The BEI implemented the change through two director decisions (SK Direksi BEI No. Kep-00136/BEI/09-2026 and No. Kep-000137/BEI/09-2026) and revised the Auto Rejection limits, with transitional ARB/ARA percentages for different price ranges through 31 December 2026 and symmetric limits from 1 January 2027. The rule change directly affects all stocks still trading at the Rp 50 floor, including PT GoTo Gojek Tokopedia Tbk (GOTO) and PT Adhi Commuter Properti Tbk (ADCP), PT Armidian Karyatama Tbk (ARMY), PT Atlantis Subsea Indonesia Tbk (ATLA), PT Bank MNC Internasional Tbk (BABP), PT MNC Kapital Indonesia Tbk (BCAP), PT Borneo Olah Sarana Sukses Tbk (BOSS), PT Bakrie Telecom Tbk (BTEL), PT Cahaya Bintang Medan Tbk (CBMF), PT Cowell Development Tbk (COWL), PT Capri Nusa Satu Properti Tbk (CPRI), PT Central Proteina Prima Tbk (CPRO), PT Diamond Citra Propertindo Tbk (DADA), PT Envy Technologies Indonesia Tbk (ENVY), PT First Indo American Leasing Tbk (FINN), PT Golden Plantation Tbk (GOLL), PT Hensel Davest Indonesia Tbk (HDIT), PT HK Metals Utama Tbk (HKMU), PT Hotel Mandarine Regency Tbk (HOME), PT Saraswati Griya Lestari Tbk (HOTL), PT Inti Agri Resources Tbk (IIKP), PT Indo Komoditi Korpora Tbk (INCF), PT Kertas Basuki Rachmat Indonesia Tbk (KBRI), PT Limas Indonesia Makmur Tbk (LMAS), PT Marga Abhinaya Abadi Tbk (MABA), PT Multi Agro Gemilang Plantation Tbk (MAGP), PT Maxindo Karya Anugerah Tbk (MAXI), PT Modernland Realty Ltd Tbk (MDLN), PT MDTV Media Technologies Tbk (NETV), PT Sinergi Megah Internusa Tbk (NUSA), PT Polaris Investama Tbk (PLAS), PT Panca Mitra Multiperdana Tbk (PMMP), PT Bank Panin Dubai Syariah Tbk (PNBS), PT Pool Advista Indonesia Tbk (POOL), PT Bliss Properti Indonesia Tbk (POSA), PT Repower Asia Indonesia Tbk (REAL), PT Rimo International Lestari Tbk (RIMO), PT Siwan i Makmur Tbk (SIMA), PT SMR Utama Tbk (SMRU), PT Sugih Energy Tbk (SUGI), PT Jaya Swarasa Agung Tbk (TAYS), PT Indosterling Technomedia Tbk (TECH), PT Trada Alam Minera Tbk (TRAM), PT Triwira Insanlestari Tbk (TRIL), PT Triniti Dinamik Tbk (TRUE), and PT Dosni Roha Indonesia Tbk (ZBRA). The BEI expects the lower floor and revised AR limits to broaden price discovery, improve liquidity, and give investors greater flexibility, though actual price movements will continue to depend on market supply and demand.",
+        "source": "https://investasi.kontan.co.id/news/hari-ini-259-batas-akhir-harga-minimum-saham-rp-50-cek-daftar-saham-gocap",
+        "thumbnail": "https://foto.kontan.co.id/TyhS-hMbdsRDFtzv1SrKhRp0iTM=/smart/2024/11/14/80026271t.jpg",
+        "timestamp": "2026-09-25T13:36:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services",
+          "properties-real-estate",
+          "oil-gas-coal",
+          "banks",
+          "holding-investment-companies",
+          "telecommunication",
+          "household-goods",
+          "food-beverage",
+          "financing-service",
+          "basic-materials",
+          "consumer-services",
+          "leisure-goods",
+          "media-entertainment",
+          "industrial-services",
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Politics & Regulation"
+        ],
+        "symbols": [
+          "GOTO.JK",
+          "ADCP.JK",
+          "ARMY.JK",
+          "ATLA.JK",
+          "BABP.JK",
+          "BCAP.JK",
+          "BOSS.JK",
+          "BTEL.JK",
+          "CBMF.JK",
+          "COWL.JK",
+          "CPRI.JK",
+          "CPRO.JK",
+          "DADA.JK",
+          "ENVY.JK",
+          "FINN.JK",
+          "GOLL.JK",
+          "HDIT.JK",
+          "HKMU.JK",
+          "HOME.JK",
+          "HOTL.JK",
+          "IIKP.JK",
+          "INCF.JK",
+          "KBRI.JK",
+          "LMAS.JK",
+          "MABA.JK",
+          "MAGP.JK",
+          "MAXI.JK",
+          "MDLN.JK",
+          "NETV.JK",
+          "NUSA.JK",
+          "PLAS.JK",
+          "PMMP.JK",
+          "PNBS.JK",
+          "POOL.JK",
+          "POSA.JK",
+          "REAL.JK",
+          "RIMO.JK",
+          "SIMA.JK",
+          "SMRU.JK",
+          "SUGI.JK",
+          "TAYS.JK",
+          "TECH.JK",
+          "TRAM.JK",
+          "TRIL.JK",
+          "TRUE.JK",
+          "ZBRA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10917,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

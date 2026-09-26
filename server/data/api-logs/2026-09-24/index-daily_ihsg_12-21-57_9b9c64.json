@@ -1,0 +1,116 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:21:57.323Z",
+    "endpoint": "/index-daily/ihsg/",
+    "query_params": {
+      "start": "2026-08-25",
+      "end": "2026-09-24"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 389
+  },
+  "data": [
+    {
+      "index_code": "IHSG",
+      "date": "2026-08-26",
+      "price": 6405.685
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-08-27",
+      "price": 6521.75
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-08-28",
+      "price": 6518.121
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-08-31",
+      "price": 6525.478
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-01",
+      "price": 6599.943
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-02",
+      "price": 6595.776
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-03",
+      "price": 6667.891
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-04",
+      "price": 6636.475
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-07",
+      "price": 6619.673
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-08",
+      "price": 6686.442
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-09",
+      "price": 6678.201
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-10",
+      "price": 6589.338
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-11",
+      "price": 6541.377
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-14",
+      "price": 6534.693
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-15",
+      "price": 6461.153
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-16",
+      "price": 6436.853
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-17",
+      "price": 6462.431
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-18",
+      "price": 6441.159
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-21",
+      "price": 6384.726
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-22",
+      "price": 6277.044
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T07:39:25.544Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='retailing' and market_cap > 0 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 569
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "MAPI.JK",
+        "company_name": "Mitra Adiperkasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 25066000000000,
+          "net_profit_margin[2025]": 0.0517871371138379
+        }
+      },
+      {
+        "symbol": "MDIY.JK",
+        "company_name": "PT Daya Intiguna Yasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 24056824360000,
+          "net_profit_margin[2025]": 0.140017237535921
+        }
+      },
+      {
+        "symbol": "MAPA.JK",
+        "company_name": "PT MAP Aktif Adiperkasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 18385080000000,
+          "net_profit_margin[2025]": 0.0892583958971205
+        }
+      },
+      {
+        "symbol": "TRIO.JK",
+        "company_name": "Trikomsel Oke Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 11079192718770,
+          "net_profit_margin[2025]": -0.326320404324298
+        }
+      },
+      {
+        "symbol": "ERAA.JK",
+        "company_name": "Erajaya Swasembada Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 9729500000000,
+          "net_profit_margin[2025]": 0.0156118024519967
+        }
+      },
+      {
+        "symbol": "BOGA.JK",
+        "company_name": "PT Apollo Global Interactive Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 5914483256550,
+          "net_profit_margin[2025]": 0.00665893206448794
+        }
+      },
+      {
+        "symbol": "ACES.JK",
+        "company_name": "PT Aspirasi Hidup Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 5889414056800,
+          "net_profit_margin[2025]": 0.0774109497538464
+        }
+      },
+      {
+        "symbol": "MPMX.JK",
+        "company_name": "PT Mitra Pinasthika Mustika Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 4452767725140,
+          "net_profit_margin[2025]": 0.0284543085711795
+        }
+      },
+      {
+        "symbol": "LPPF.JK",
+        "company_name": "PT MDS Retailing Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 3519101262400,
+          "net_profit_margin[2025]": 0.125395740985127
+        }
+      },
+      {
+        "symbol": "IMAS.JK",
+        "company_name": "Indomobil Sukses Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 3435090293540,
+          "net_profit_margin[2025]": 0.00433807260157133
+        }
+      },
+      {
+        "symbol": "RALS.JK",
+        "company_name": "Ramayana Lestari Sentosa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 2724864000000,
+          "net_profit_margin[2025]": 0.112155593764784
+        }
+      },
+      {
+        "symbol": "CARS.JK",
+        "company_name": "PT Industri dan Perdagangan Bintraco Dharma Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1935000000000,
+          "net_profit_margin[2025]": 0.0313283406950719
+        }
+      },
+      {
+        "symbol": "PMJS.JK",
+        "company_name": "PT Putra Mandiri Jembar Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1912028400000,
+          "net_profit_margin[2025]": 0.0114100809553783
+        }
+      },
+      {
+        "symbol": "CSAP.JK",
+        "company_name": "Catur Sentosa Adiprana Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1659487144092,
+          "net_profit_margin[2025]": 0.00641235572547225
+        }
+      },
+      {
+        "symbol": "ERAL.JK",
+        "company_name": "PT Sinar Eka Selaras Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1639250000000,
+          "net_profit_margin[2025]": 0.0260286804325055
+        }
+      },
+      {
+        "symbol": "SONA.JK",
+        "company_name": "Sona Topas Tourism Industry Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1583136000000,
+          "net_profit_margin[2025]": 0.0989877794165629
+        }
+      },
+      {
+        "symbol": "DEPO.JK",
+        "company_name": "PT Caturkarda Depo Bangunan Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1561700000000,
+          "net_profit_margin[2025]": 0.0267880683609912
+        }
+      },
+      {
+        "symbol": "ASLC.JK",
+        "company_name": "PT Autopedia Sukses Lestari Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 904991189380,
+          "net_profit_margin[2025]": 0.0419192169014443
+        }
+      },
+      {
+        "symbol": "PMUI.JK",
+        "company_name": "PT Prima Multi Usaha Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 661200000000,
+          "net_profit_margin[2025]": 0.00958727151364293
+        }
+      },
+      {
+        "symbol": "ZONE.JK",
+        "company_name": "PT Mega Perintis Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 609120034600,
+          "net_profit_margin[2025]": 0.019216760851859
+        }
+      },
+      {
+        "symbol": "BABY.JK",
+        "company_name": "PT Multitrend Indo Tbk.",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 565255663236,
+          "net_profit_margin[2025]": -0.0152964392824762
+        }
+      },
+      {
+        "symbol": "UFOE.JK",
+        "company_name": "PT Damai Sejahtera Abadi Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 399960113634,
+          "net_profit_margin[2025]": 0.0169193907972889
+        }
+      },
+      {
+        "symbol": "ECII.JK",
+        "company_name": "PT Electronic City Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 225502277000,
+          "net_profit_margin[2025]": -0.0686400098960782
+        }
+      },
+      {
+        "symbol": "SLIS.JK",
+        "company_name": "PT Gaya Abadi Sempurna Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 201996175672,
+          "net_profit_margin[2025]": -0.117524984487729
+        }
+      },
+      {
+        "symbol": "BAUT.JK",
+        "company_name": "PT Mitra Angkasa Sejahtera Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 192007318760,
+          "net_profit_margin[2025]": -0.086865386625846
+        }
+      },
+      {
+        "symbol": "GLOB.JK",
+        "company_name": "PT Globe Kita Terang Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 172222360000,
+          "net_profit_margin[2025]": -2.13618405320142
+        }
+      },
+      {
+        "symbol": "YELO.JK",
+        "company_name": "PT Yelooo Integra Datanet Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 162585824425,
+          "net_profit_margin[2025]": -0.336605610349965
+        }
+      },
+      {
+        "symbol": "KLIN.JK",
+        "company_name": "PT Klinko Karya Imaji Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 159518700260,
+          "net_profit_margin[2025]": -0.547804972391165
+        }
+      },
+      {
+        "symbol": "TOOL.JK",
+        "company_name": "PT Rohartindo Nusantara Luas Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 145551442720,
+          "net_profit_margin[2025]": -0.117874184439415
+        }
+      },
+      {
+        "symbol": "MKNT.JK",
+        "company_name": "PT Mitra Komunikasi Nusantara Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 5500000000,
+          "net_profit_margin[2025]": -0.416209892563427
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 30,
+      "showing": 30,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

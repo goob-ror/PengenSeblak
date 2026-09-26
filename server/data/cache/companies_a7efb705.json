@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "symbol": "AGRO.JK",
+      "company_name": "PT Bank Raya Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Banks",
+        "free_float": 0.12846
+      }
+    },
+    {
+      "symbol": "AGRS.JK",
+      "company_name": "PT Bank IBK Indonesia Tbk.",
+      "query_values": {
+        "sub_sector": "Banks",
+        "free_float": 0.0851
+      }
+    },
+    {
+      "symbol": "AMAR.JK",
+      "company_name": "PT Bank Amar Indonesia Tbk.",
+      "query_values": {
+        "sub_sector": "Banks",
+        "free_float": 0.08594
+      }
+    },
+    {
+      "symbol": "ARTO.JK",
+      "company_name": "PT Bank Jago Tbk.",
+      "query_values": {
+        "sub_sector": "Banks",
+        "free_float": 0.2777
+      }
+    },
+    {
+      "symbol": "BABP.JK",
+      "company_name": "PT Bank MNC Internasional Tbk.",
+      "query_values": {
+        "sub_sector": "Banks",
+        "free_float": 0.1267
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 48,
+    "showing": 5,
+    "limit": 5,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 5,
+    "previous_offset": null
+  }
+}

@@ -28,8 +28,11 @@ export function createQueryClient(): QueryClient {
         },
         // Don't refetch when user alt-tabs back — saves API credits
         refetchOnWindowFocus: false,
-        // Don't refetch on reconnect for stable data
-        refetchOnReconnect: "always",
+        // On reconnect, refetch ONLY queries that are actually stale.
+        // "always" caused every query in the app to refetch on any network
+        // blip / VPN toggle / sleep-wake — every skeleton on the page flashed
+        // at once, which looked like a full page refresh.
+        refetchOnReconnect: true,
       },
       mutations: {
         retry: 0,
@@ -43,30 +46,30 @@ export function createQueryClient(): QueryClient {
 
 /** Annual fundamental data: company financials, valuation, peers */
 export const STALE_FUNDAMENTAL = {
-  staleTime: 60 * 60 * 1000,       // 1 hour
-  gcTime:    4  * 60 * 60 * 1000,  // 4 hours
+  staleTime: 60 * 60 * 1000, // 1 hour
+  gcTime: 4 * 60 * 60 * 1000, // 4 hours
 } as const;
 
 /** Sector aggregates: sector health, subsector reports */
 export const STALE_SECTOR = {
-  staleTime: 6  * 60 * 1000,       // 6 minutes
-  gcTime:    30 * 60 * 1000,       // 30 minutes
+  staleTime: 6 * 60 * 1000, // 6 minutes
+  gcTime: 30 * 60 * 1000, // 30 minutes
 } as const;
 
 /** Intraday data: price, foreign flow */
 export const STALE_INTRADAY = {
-  staleTime: 15 * 60 * 1000,       // 15 minutes
-  gcTime:    30 * 60 * 1000,
+  staleTime: 15 * 60 * 1000, // 15 minutes
+  gcTime: 30 * 60 * 1000,
 } as const;
 
 /** News feed */
 export const STALE_NEWS = {
-  staleTime: 5  * 60 * 1000,       // 5 minutes
-  gcTime:    15 * 60 * 1000,
+  staleTime: 5 * 60 * 1000, // 5 minutes
+  gcTime: 15 * 60 * 1000,
 } as const;
 
 /** Static reference data: list of subsectors, tags, company list */
 export const STALE_STATIC = {
-  staleTime: 7  * 24 * 60 * 60 * 1000, // 7 days
-  gcTime:    7  * 24 * 60 * 60 * 1000,
+  staleTime: 7 * 24 * 60 * 60 * 1000, // 7 days
+  gcTime: 7 * 24 * 60 * 60 * 1000,
 } as const;

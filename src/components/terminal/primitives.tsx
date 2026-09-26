@@ -71,7 +71,17 @@ export function Tag({
     </span>
   );
 }
-export function Change({ value, suffix = "%" }: { value: number; suffix?: string }) {
+export function Change({
+  value,
+  suffix = "%",
+}: {
+  value: number | null | undefined;
+  suffix?: string;
+}) {
+  // Guard against null/undefined/NaN coming from API responses
+  if (value == null || !isFinite(value)) {
+    return <span className="text-data font-medium text-muted-foreground">—</span>;
+  }
   return (
     <span className={cn("text-data font-medium", value >= 0 ? "text-positive" : "text-negative")}>
       {value >= 0 ? "+" : ""}
@@ -100,7 +110,7 @@ export function Score({ value, label }: { value: number; label?: string }) {
     </div>
   );
 }
-export function MethodTip({ text }: { text: string }) {
+export function MethodTip({ text, wide }: { text: string; wide?: boolean }) {
   return (
     <TooltipProvider>
       <Tooltip>
@@ -109,12 +119,14 @@ export function MethodTip({ text }: { text: string }) {
             aria-label="Methodology information"
             variant="ghost"
             size="icon"
-            className="size-6 text-muted-foreground"
+            className="size-6 shrink-0 text-muted-foreground"
           >
             <Info className="size-3.5" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="max-w-72 text-xs">{text}</TooltipContent>
+        <TooltipContent className={wide ? "max-w-md text-xs leading-relaxed" : "max-w-72 text-xs"}>
+          {text}
+        </TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );
@@ -122,7 +134,7 @@ export function MethodTip({ text }: { text: string }) {
 export function MetricStrip({
   items,
 }: {
-  items: { label: string; value: ReactNode; sub?: ReactNode }[];
+  items: { label: string; value: ReactNode; sub?: ReactNode; tone?: Tone | undefined }[];
 }) {
   return (
     <div className="grid border border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
@@ -136,7 +148,17 @@ export function MetricStrip({
         >
           <div className="absolute left-0 top-0 h-0.5 w-full bg-primary/30" />
           <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{x.label}</div>
-          <div className="mt-1.5 text-xl font-semibold text-data text-foreground">{x.value}</div>
+          <div
+            className={cn(
+              "mt-1.5 text-xl font-semibold text-data",
+              x.tone === "positive" && "text-positive",
+              x.tone === "negative" && "text-negative",
+              x.tone === "warning" && "text-warning",
+              !x.tone && "text-foreground",
+            )}
+          >
+            {x.value}
+          </div>
           {x.sub && <div className="mt-1 text-[11px] text-muted-foreground">{x.sub}</div>}
         </div>
       ))}

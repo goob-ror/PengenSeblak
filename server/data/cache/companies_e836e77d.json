@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "symbol": "AGRO.JK",
+      "company_name": "PT Bank Raya Indonesia Tbk",
+      "query_values": {
+        "sector": "Financials",
+        "forward_pe": 75.263158839165
+      }
+    },
+    {
+      "symbol": "AMOR.JK",
+      "company_name": "PT Ashmore Asset Management Indonesia Tbk.",
+      "query_values": {
+        "sector": "Financials",
+        "forward_pe": 7.22656239231583
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 18,
+    "showing": 2,
+    "limit": 2,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 2,
+    "previous_offset": null
+  }
+}

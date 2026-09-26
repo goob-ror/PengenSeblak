@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "symbol": "GIAA.JK",
+      "company_name": "Garuda Indonesia (Persero) Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 24018410526383,
+        "net_profit_margin[2025]": -0.100257158629267
+      }
+    },
+    {
+      "symbol": "BIRD.JK",
+      "company_name": "PT Blue Bird Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 3965828500000,
+        "net_profit_margin[2025]": 0.111446607771783
+      }
+    },
+    {
+      "symbol": "ASSA.JK",
+      "company_name": "Adi Sarana Armada Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 2196226822615,
+        "net_profit_margin[2025]": 0.0697471249672572
+      }
+    },
+    {
+      "symbol": "IMJS.JK",
+      "company_name": "PT Indomobil Multi Jasa Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 1963716512500,
+        "net_profit_margin[2025]": 0.0212362026478747
+      }
+    },
+    {
+      "symbol": "CMPP.JK",
+      "company_name": "PT AirAsia Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 737273586429,
+        "net_profit_margin[2025]": -0.164636858753875
+      }
+    },
+    {
+      "symbol": "SAFE.JK",
+      "company_name": "Steady Safe Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 599481483760,
+        "net_profit_margin[2025]": 0.188484865776079
+      }
+    },
+    {
+      "symbol": "BPTR.JK",
+      "company_name": "PT Batavia Prosperindo Trans Tbk.",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 279186000000,
+        "net_profit_margin[2025]": 0.0578695480818707
+      }
+    },
+    {
+      "symbol": "HELI.JK",
+      "company_name": "PT Jaya Trishindo Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 208215596750,
+        "net_profit_margin[2025]": 0.170803350928283
+      }
+    },
+    {
+      "symbol": "TRJA.JK",
+      "company_name": "PT Transkon Jaya Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 197836200000,
+        "net_profit_margin[2025]": 0.00638955221587599
+      }
+    },
+    {
+      "symbol": "WEHA.JK",
+      "company_name": "PT WEHA Transportasi Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 167963804185,
+        "net_profit_margin[2025]": 0.069851486488623
+      }
+    },
+    {
+      "symbol": "TAXI.JK",
+      "company_name": "Express Transindo Utama Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 153354707340,
+        "net_profit_margin[2025]": -5.58667902537837
+      }
+    },
+    {
+      "symbol": "LRNA.JK",
+      "company_name": "PT Eka Sari Lorena Transport Tbk",
+      "query_values": {
+        "sub_sector": "Transportation",
+        "market_cap": 77000004840,
+        "net_profit_margin[2025]": -0.388472392667745
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 12,
+    "showing": 12,
+    "limit": 30,
+    "offset": 0,
+    "has_next": false,
+    "has_previous": false,
+    "next_offset": null,
+    "previous_offset": null
+  }
+}

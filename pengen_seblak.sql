@@ -131,6 +131,8 @@ CREATE TABLE `users` (
 
 --
 -- Dumping data for table `users`
+-- Email: pengenseblak@nt.com
+-- Password: Password#123
 --
 
 INSERT INTO `users` (`id`, `email`, `password_hash`, `full_name`, `last_login`, `created_at`) VALUES

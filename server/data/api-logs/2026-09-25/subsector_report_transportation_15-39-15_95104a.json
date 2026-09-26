@@ -1,0 +1,60 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T07:39:15.788Z",
+    "endpoint": "/subsector/report/transportation/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 612
+  },
+  "data": {
+    "sector": "Transportation & Logistic",
+    "sub_sector": "Transportation",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -0.216103497582886,
+          "avg_annual_revenue_growth": 0.228784378981696
+        },
+        "2020": {
+          "avg_annual_earning_growth": -255.126684095421,
+          "avg_annual_revenue_growth": -0.529644572875246
+        },
+        "2021": {
+          "avg_annual_earning_growth": 0.72185676668107,
+          "avg_annual_revenue_growth": -0.0266514774201875
+        },
+        "2022": {
+          "avg_annual_earning_growth": 23.8640983823293,
+          "avg_annual_revenue_growth": 0.713079728693662
+        },
+        "2023": {
+          "avg_annual_earning_growth": -0.543171030917834,
+          "avg_annual_revenue_growth": 0.310038105821113
+        },
+        "2024": {
+          "avg_annual_earning_growth": -0.801836006064911,
+          "avg_annual_revenue_growth": 0.125283589669091
+        },
+        "2025": {
+          "avg_annual_earning_growth": 110238.656466792,
+          "avg_annual_revenue_growth": 60812.7723841586
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": -0.011443823290973,
+          "revenue_growth": -0.0172189036144872
+        }
+      }
+    }
+  }
+}

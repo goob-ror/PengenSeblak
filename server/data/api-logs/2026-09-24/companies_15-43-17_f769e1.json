@@ -1,0 +1,47 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:43:17.358Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sector='Financials' and pe_ttm > 0 and roe_ttm > 0.1",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 135
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "ADMF.JK",
+        "company_name": "Adira Dinamika Multi Finance Tbk",
+        "query_values": {
+          "sector": "Financials",
+          "pe_ttm": 5.2160895450306,
+          "roe_ttm": 0.133609630932576
+        }
+      },
+      {
+        "symbol": "AMAG.JK",
+        "company_name": "Asuransi Multi Artha Guna Tbk",
+        "query_values": {
+          "sector": "Financials",
+          "pe_ttm": 7.7869992287004,
+          "roe_ttm": 0.114725170740021
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 25,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}

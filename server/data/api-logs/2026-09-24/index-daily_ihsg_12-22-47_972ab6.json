@@ -1,0 +1,26 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:22:47.309Z",
+    "endpoint": "/index-daily/ihsg/",
+    "query_params": {
+      "start": "2026-09-20",
+      "end": "2026-09-24"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 979
+  },
+  "data": [
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-21",
+      "price": 6384.726
+    },
+    {
+      "index_code": "IHSG",
+      "date": "2026-09-22",
+      "price": 6277.044
+    }
+  ]
+}

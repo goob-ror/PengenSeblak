@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T04:21:57.888Z",
+    "endpoint": "/subsector/report/banks/",
+    "query_params": {
+      "sections": "growth,stability"
+    },
+    "http_status": 200,
+    "credits_used": 2,
+    "cache_hit": false,
+    "response_time_ms": 339
+  },
+  "data": {
+    "sector": "Financials",
+    "sub_sector": "Banks",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.0756767777540064,
+          "avg_annual_revenue_growth": 0.0863249732587265
+        },
+        "2020": {
+          "avg_annual_earning_growth": -0.111585848544461,
+          "avg_annual_revenue_growth": 0.44625822910559
+        },
+        "2021": {
+          "avg_annual_earning_growth": -4.71368463125438,
+          "avg_annual_revenue_growth": 0.209395053980902
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.404267573113316,
+          "avg_annual_revenue_growth": 0.391275734059079
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.224725020075416,
+          "avg_annual_revenue_growth": 0.129506218656901
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.0687996014320358,
+          "avg_annual_revenue_growth": 0.362558825950645
+        },
+        "2025": {
+          "avg_annual_earning_growth": -0.1911010433206,
+          "avg_annual_revenue_growth": 0.0178264560129412
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.165836940981666,
+          "revenue_growth": 0.198833185530262
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 0.254516051634381,
+          "revenue_growth": 0.287615412686681
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.404861033627792,
+      "weighted_rsd_close": 0.12851353595604623
+    }
+  }
+}

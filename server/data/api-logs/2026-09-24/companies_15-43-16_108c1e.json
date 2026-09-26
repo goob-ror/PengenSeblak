@@ -1,0 +1,45 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:43:16.929Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sector='Financials' and forecast_eps_growth[2026] > 0",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 273
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "ARTO.JK",
+        "company_name": "PT Bank Jago Tbk.",
+        "query_values": {
+          "sector": "Financials",
+          "forecast_eps_growth[2026]": 1.30655220211797
+        }
+      },
+      {
+        "symbol": "BBCA.JK",
+        "company_name": "PT Bank Central Asia Tbk.",
+        "query_values": {
+          "sector": "Financials",
+          "forecast_eps_growth[2026]": 0.099789989937308
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 9,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}

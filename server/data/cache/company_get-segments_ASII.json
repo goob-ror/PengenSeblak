@@ -1,0 +1,51 @@
+{
+  "symbol": "ASII.JK",
+  "financial_year": 2024,
+  "revenue_breakdown": [
+    {
+      "value": 219694000000000,
+      "source": "Sales of Goods",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 78353000000000,
+      "source": "Services and Rental",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 32873000000000,
+      "source": "Financial Services",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 257363000000000,
+      "source": "Total Revenue",
+      "target": "Cost of Revenue"
+    },
+    {
+      "value": 73557000000000,
+      "source": "Total Revenue",
+      "target": "Gross Profit"
+    },
+    {
+      "value": 42202000000000,
+      "source": "Gross Profit",
+      "target": "Operating Income"
+    },
+    {
+      "value": 31355000000000,
+      "source": "Gross Profit",
+      "target": "Operating Expense"
+    },
+    {
+      "value": 11349000000000,
+      "source": "Operating Expense",
+      "target": "Selling"
+    },
+    {
+      "value": 20006000000000,
+      "source": "Operating Expense",
+      "target": "General and administration"
+    }
+  ]
+}

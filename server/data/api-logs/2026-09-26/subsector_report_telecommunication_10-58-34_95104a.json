@@ -1,0 +1,65 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T02:58:34.587Z",
+    "endpoint": "/subsector/report/telecommunication/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 582
+  },
+  "data": {
+    "sector": "Infrastructures",
+    "sub_sector": "Telecommunication",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.197016264260519,
+          "avg_annual_revenue_growth": -0.135959823179357
+        },
+        "2020": {
+          "avg_annual_earning_growth": -0.262130310666647,
+          "avg_annual_revenue_growth": 0.0130908749632994
+        },
+        "2021": {
+          "avg_annual_earning_growth": -0.727733732131985,
+          "avg_annual_revenue_growth": 0.143296744922618
+        },
+        "2022": {
+          "avg_annual_earning_growth": -0.141310592429624,
+          "avg_annual_revenue_growth": -0.0121439916199641
+        },
+        "2023": {
+          "avg_annual_earning_growth": 94.592991490209,
+          "avg_annual_revenue_growth": 108.109547396751
+        },
+        "2024": {
+          "avg_annual_earning_growth": -0.603492420190486,
+          "avg_annual_revenue_growth": 0.00135899591855067
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.178734032164643,
+          "avg_annual_revenue_growth": 0.0357184491241846
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.514972665119392,
+          "revenue_growth": 0.0773516690340939
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 0.616570483977229,
+          "revenue_growth": 0.120553622935182
+        }
+      }
+    }
+  }
+}

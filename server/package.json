@@ -25,6 +25,7 @@
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.12.1",
     "mysql2": "^3.24.4",
+    "node-cron": "^4.6.0",
     "rate-limit-redis": "^6.0.1"
   },
   "devDependencies": {

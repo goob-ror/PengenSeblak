@@ -1,5 +1,7 @@
 // Central API client for server communication
-const BASE_URL = (import.meta.env["VITE_API_URL"] as string | undefined) ?? "http://localhost:3001";
+// Use a relative path so the same code works behind any proxy (ngrok, etc.).
+// In dev, Vite's server.proxy forwards /api/* to the Express server on :3001.
+const BASE_URL = (import.meta.env["VITE_API_URL"] as string | undefined) ?? "";
 
 export interface ApiResponse<T = unknown> {
   success: boolean;
@@ -60,10 +62,7 @@ async function ensureCsrfToken(): Promise<void> {
 }
 
 // ── Core request function ────────────────────────────────────────────────────
-async function request<T>(
-  path: string,
-  options: RequestInit = {},
-): Promise<T> {
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const method = (options.method ?? "GET").toUpperCase();
   const isStateMutating = !["GET", "HEAD", "OPTIONS"].includes(method);
 
@@ -99,7 +98,13 @@ async function request<T>(
     const err = (await res.json().catch(() => ({ message: "Terjadi kesalahan." }))) as {
       message?: string;
     };
-    throw new Error(err.message ?? `Request gagal: ${res.status}`);
+    // Attach the HTTP status so callers can distinguish auth rejection (401)
+    // from transient failures (429 rate-limit, 5xx) without string matching.
+    const error = new Error(err.message ?? `Request gagal: ${res.status}`) as Error & {
+      status?: number;
+    };
+    error.status = res.status;
+    throw error;
   }
 
   return res.json() as Promise<T>;
@@ -113,9 +118,18 @@ export const api = {
         body: JSON.stringify({ email, password, rememberMe }),
       }),
 
-    logout: () =>
-      request<ApiResponse>("/api/auth/logout", { method: "POST" }),
+    logout: () => request<ApiResponse>("/api/auth/logout", { method: "POST" }),
 
     me: () => request<MeResponse>("/api/auth/me"),
+  },
+  sectors: {
+    get: <T = unknown>(endpoint: string, query?: Record<string, string | number | boolean>) => {
+      const queryString = query
+        ? "?" + new URLSearchParams(query as Record<string, string>).toString()
+        : "";
+      // Ensure endpoint starts with a slash
+      const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+      return request<T>(`/api/sectors${cleanEndpoint}${queryString}`);
+    },
   },
 };

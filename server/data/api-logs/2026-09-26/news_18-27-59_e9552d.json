@@ -1,0 +1,251 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T10:27:59.622Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 345
+  },
+  "data": {
+    "results": [
+      {
+        "title": "PT Merdeka Battery Materials Tbk (MBMA) reports net profit of US$54 million in H1 2026, up 830% YoY",
+        "body": "The issuer PT Merdeka Battery Materials Tbk (MBMA) posted net profit of US$54 million in the first half of 2026, an 830% increase from the same period in 2025. Revenue rose 67% to US$1.05 billion and EBITDA climbed 306% to US$311 million, driven by higher nickel ore production (15.2 million wet metric tonnes, up 121%) and sales (12.4 million wet metric tonnes, up 60%), as well as growth in Nickel Pig Iron and High‑Grade Nickel Matte output. The company attributed the performance to expanded mining volume, improved processing, and a new pricing formula for nickel ore, while noting ongoing ramp‑up of related assets such as PT Merdeka Tsingshan Indonesia’s acid operations, PT ESG New Energy Material’s MHP production, and the commissioning of PT Sulawesi Nickel Cobalt.",
+        "source": "https://investasi.kontan.co.id/news/laba-bersih-merdeka-battery-mbma-melonjak-830-jadi-us-54-juta-di-semester-i-2026",
+        "thumbnail": "https://foto.kontan.co.id/7G8oR7PcfpHMc75xYlPy_klnhfg=/smart/2026/05/01/886842996t.jpg",
+        "timestamp": "2026-09-26T13:23:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Annual Report",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "MBMA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Antam (Persero) Tbk (Antam) absorbs 9 tons of gold from PT Freeport Indonesia through August 2026",
+        "body": "PT Antam (Persero) Tbk (Antam) has purchased nine tons of gold from PT Freeport Indonesia (PTFI) between January and August 2026 as part of its effort to strengthen the domestic gold supply chain. The transaction builds on an existing gold trade agreement of up to 30 tons per year and complements Antam’s collaborations with several Indonesian gold producers such as PT Amman Mineral Nusa Tenggara (AMNT), PT Citra Palu Minerals (CPM), PT Agincourt Resources, PT Sumbawa Jutaraya (SJR), PT J Resources Bolaang Mongondow (JRBM) and PT Indo Muro Kencana (IMK). In the first half of 2026 Antam reported gold sales of 18,080 kg (18.08 tons) worth Rp50.39 trillion, a 1 % increase YoY, contributing roughly 80 % of its total net sales of Rp62.71 trillion, while its own mine production amounted to 433 kg.",
+        "source": "https://www.cnnindonesia.com/ekonomi/20260926125030-85-1408470/antam-serap-sembilan-ton-emas-freeport-hingga-agustus",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2019/12/23/730115ba-37dd-4737-bc6a-5027688c7c17_169.jpeg?w=280&q=90",
+        "timestamp": "2026-09-26T13:17:01",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Partnerships & Agreements",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Merdeka Copper Gold Tbk (MDKA) posts H1 2026 net profit of US$102 million",
+        "body": "PT Merdeka Copper Gold Tbk (MDKA) posted a net profit attributable to owners of the parent of US$102 million for the first half of 2026, reversing a US$16 million loss a year earlier, as nickel and gold businesses strengthened. Consolidated revenue grew 64% year‑on‑year to US$1.40 billion and EBITDA surged 191% to US$512 million. The nickel segment, operating through PT Merdeka Battery Materials Tbk (MBMA), lifted production 121% to 15.2 million wet metric tonnes and sales 60% to 12.4 million wmt, while gold output rose 32% to 66,814 ounces, driven by Tambang Emas Tujuh Bukit and the newly commissioned Tambang Emas Pani. PT ESG New Energy Material expanded Mixed Hydroxide Precipitate output and PT Sulawesi Nickel Cobalt progressed its High Pressure Acid Leach project, as MDKA pursues further growth projects and monitors commodity prices, energy costs, exchange rates and regulatory developments.",
+        "source": "https://investasi.kontan.co.id/news/kinerja-emas-nikel-menguat-merdeka-copper-mdka-kembali-cetak-laba-us-102-juta",
+        "thumbnail": "https://foto.kontan.co.id/ENycMmRGcjTeBhQVSd8ZE5f7Q1M=/smart/2026/07/14/1449177126t.jpg",
+        "timestamp": "2026-09-26T12:56:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Annual Report",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "MDKA.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Asuransi Harta Aman Pratama (AHAP) launches Rp175 billion right issue, with PT Asuransi Central Asia subscribing Rp109.51 billion",
+        "body": "AHAP announced a right issue of Rp175 billion, issuing 3.5 billion new shares at a nominal price of Rp50 each. PT Asuransi Central Asia, the main shareholder of AHAP owned by Anthoni Salim, will subscribe to 2.19 billion shares (62.58% of the new issue) representing a nominal value of Rp109.51 billion, funded by a Rp30 billion subordinated loan conversion and Rp79.51 billion cash. The proceeds will be used to satisfy POJK No.23/2023 equity requirements of at least Rp250 billion by 31 December 2026 and for working‑capital investments, with non‑exercising shareholders facing up to 41.67% dilution. The right‑issue timeline sets cum‑right from 6‑8 October 2026, ex‑right on 7‑9 October, recording on 8 October, distribution on 9 October, and listing on the Indonesia Stock Exchange on 12 October 2026.",
+        "source": "https://emitennews.com/news/ahap-right-issue-anthoni-salim-setor-rp10951-miliar",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790362755.jpeg?25119ab",
+        "timestamp": "2026-09-26T12:30:00",
+        "sector": "financials",
+        "sub_sector": [
+          "insurance"
+        ],
+        "tags": [
+          "Rights Issue",
+          "Capital & Funding",
+          "Ownership",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Merdeka Battery (MBMA) reports 830% profit surge to USD54.43 million in H1 2026",
+        "body": "Merdeka Battery (MBMA) posted a net profit of USD54.43 million for the first half of 2026, an increase of 830.42% compared with USD5.85 million a year earlier. Revenue rose 66.66% to USD1.05 billion, while cost of goods sold grew to USD773.63 million, resulting in gross profit of USD274.13 million and operating profit of USD251.48 million. Earnings per share on a basic and diluted basis increased to USD0,00050 from USD0,00005, and profit for the period reached USD149.42 million, up from USD28.51 million. The company’s balance sheet expanded, with total assets reaching USD4.24 billion, equity USD2.47 billion, and liabilities USD1.77 billion at the end of the period.",
+        "source": "https://emitennews.com/news/melejit-830-persen-mbma-raup-laba-usd5443-juta",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790362341.png?25119ab",
+        "timestamp": "2026-09-26T11:45:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Bank Central Asia (PT Bank Central Asia Tbk (BBCA)) stock again draws investor focus",
+        "body": "PT Bank Central Asia Tbk (BBCA) saw a foreign net buy of Rp 103.17 billion on 25 September 2026, lifting the share price 0.40% to Rp 6,250 with a volume of 89.45 million shares. UOB Kay Hian Sekuritas maintained a buy rating, setting a target price of Rp 8,150 (≈30% upside) and citing solid funding, capital and liquidity, while reporting August 2026 net profit of Rp 4.92 trillion (+13.1% YoY) and forecasting 2026‑2027 profits of Rp 60 trillion and Rp 65 trillion with dividend yields of 5.7% and 6.1%. The bank also refuted social‑media rumors of an acquisition by Andi Syamsuddin Arsyad (Haji Isam), confirming no corporate action plans.",
+        "source": "https://investor.id/market/455612/saham-bank-central-asia-bbca-kembali-disorot",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/02/1770911213-776x557.webp",
+        "timestamp": "2026-09-26T11:41:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Bullish"
+        ],
+        "symbols": [
+          "BBCA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "BEI removes Rp 50 floor price, opening trading range for PT GoTo Gojek Tokopedia Tbk (GOTO)",
+        "body": "The Indonesia Stock Exchange will eliminate the Rp 50 minimum price floor for all listed securities, effective 28 September 2026, directly affecting PT GoTo Gojek Tokopedia Tbk (GOTO) which has been stuck at that level since 5 May 2026. The sell‑order queue at the Rp 50 price reached 394,120,672 lots, valued at roughly Rp 1.97 trillion as of 25 September 2026. MNC Sekuritas analyst Christian noted that the removal may allow GOTO’s price to fall below Rp 50 in the short term but should reduce trading barriers and improve liquidity and price discovery. BEI Director‑General Jeffrey Hendrik said the change is expected to boost liquidity and provide better price discovery for previously stagnant stocks such as GOTO.",
+        "source": "https://investor.id/market/455602/perubahan-nasib-goto",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2025/10/1761743804-1178x658.webp",
+        "timestamp": "2026-09-26T10:15:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Neutral"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Merdeka (MDKA) reports USD101.8 million net profit in 2026, a 743% surge from last year’s loss",
+        "body": "Merdeka (MDKA), the \"emiten asuhan Boy Thohir\" mentioned in the article, posted a net profit of USD101.8 million for 2026, reversing a USD15.8 million loss from the prior year. Basic earnings per share rose to USD0,0042 from a negative USD0,0006. Revenue climbed 64.7% to USD1.4 billion, with gross profit increasing to USD433.94 million and operating profit to USD397.29 million. Total equity reached USD3.09 billion, assets USD6.46 billion, and the shares rose 0.33% to Rp3,070, lifting the market capitalization to Rp75.13 trillion.",
+        "source": "https://emitennews.com/news/usai-rugi-emiten-boy-thohir-tabulasi-laba-melonjak-ratusan-persen",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790361661.jpg?25119ab",
+        "timestamp": "2026-09-26T10:15:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Annual Report",
+          "Bullish"
+        ],
+        "symbols": [
+          "MDKA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10930,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

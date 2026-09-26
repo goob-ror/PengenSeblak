@@ -1,0 +1,80 @@
+{
+  "top_gainers": {
+    "1d": [
+      {
+        "name": "PT Abadi Nusantara Hijau Investama Tbk",
+        "symbol": "PACK.JK",
+        "price_change": 0.0661157024793388,
+        "last_close_price": 645,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "Bakrie Sumatera Plantations Tbk",
+        "symbol": "UNSP.JK",
+        "price_change": 0.05,
+        "last_close_price": 336,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT ITSEC Asia Tbk.",
+        "symbol": "CYBR.JK",
+        "price_change": 0.04,
+        "last_close_price": 520,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Prima Andalan Mandiri Tbk",
+        "symbol": "MCOL.JK",
+        "price_change": 0.030812324929972,
+        "last_close_price": 3680,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Victoria Care Indonesia Tbk",
+        "symbol": "VICI.JK",
+        "price_change": 0.0265957446808511,
+        "last_close_price": 965,
+        "latest_close_date": "2026-09-25"
+      }
+    ]
+  },
+  "top_losers": {
+    "1d": [
+      {
+        "name": "PT Olympus Strategic Indonesia Tbk",
+        "symbol": "NATO.JK",
+        "price_change": -0.149193548387097,
+        "last_close_price": 1055,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT MSIG Life Insurance Indonesia Tbk",
+        "symbol": "LIFE.JK",
+        "price_change": -0.1,
+        "last_close_price": 10125,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Sinergi Inti Andalan Prima Tbk",
+        "symbol": "INET.JK",
+        "price_change": -0.0822784810126582,
+        "last_close_price": 290,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Indokripto Koin Semesta Tbk",
+        "symbol": "COIN.JK",
+        "price_change": -0.0742857142857143,
+        "last_close_price": 810,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "Bakrie & Brothers Tbk",
+        "symbol": "BNBR.JK",
+        "price_change": -0.0740740740740741,
+        "last_close_price": 75,
+        "latest_close_date": "2026-09-25"
+      }
+    ]
+  }
+}

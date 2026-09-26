@@ -1,0 +1,45 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:43:17.064Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sector='Financials' and forward_pe > 0",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 119
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AGRO.JK",
+        "company_name": "PT Bank Raya Indonesia Tbk",
+        "query_values": {
+          "sector": "Financials",
+          "forward_pe": 75.263158839165
+        }
+      },
+      {
+        "symbol": "AMOR.JK",
+        "company_name": "PT Ashmore Asset Management Indonesia Tbk.",
+        "query_values": {
+          "sector": "Financials",
+          "forward_pe": 7.22656239231583
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 18,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}

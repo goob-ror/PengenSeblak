@@ -1,0 +1,60 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T02:58:40.418Z",
+    "endpoint": "/subsector/report/oil-gas-coal/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 595
+  },
+  "data": {
+    "sector": "Energy",
+    "sub_sector": "Oil, Gas & Coal",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -0.36633479456126,
+          "avg_annual_revenue_growth": 0.856606262857003
+        },
+        "2020": {
+          "avg_annual_earning_growth": 71.9811628241875,
+          "avg_annual_revenue_growth": 126.332180935214
+        },
+        "2021": {
+          "avg_annual_earning_growth": 2.33361844991686,
+          "avg_annual_revenue_growth": 2.09409906971681
+        },
+        "2022": {
+          "avg_annual_earning_growth": 3.59955649131903,
+          "avg_annual_revenue_growth": 1.14968101795244
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.0641153100668046,
+          "avg_annual_revenue_growth": -0.0463049639165978
+        },
+        "2024": {
+          "avg_annual_earning_growth": 37.6343538546437,
+          "avg_annual_revenue_growth": 61.011443958836
+        },
+        "2025": {
+          "avg_annual_earning_growth": 2.28416768518899,
+          "avg_annual_revenue_growth": 0.0559976482439909
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 1.00149733784215,
+          "revenue_growth": 0.387249867596692
+        }
+      }
+    }
+  }
+}

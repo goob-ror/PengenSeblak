@@ -1,0 +1,330 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T06:06:04.131Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='oil-gas-coal' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 177
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AADI.JK",
+        "company_name": "PT Adaro Andalan Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 6.32336172481555,
+          "roe_ttm": 0.197169048021721,
+          "net_profit_margin[2025]": 0.154814518081822
+        }
+      },
+      {
+        "symbol": "ABMM.JK",
+        "company_name": "ABM Investama Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 5.39652397122981,
+          "roe_ttm": 0.087928831966434,
+          "net_profit_margin[2025]": 0.0680199771934615
+        }
+      },
+      {
+        "symbol": "ADMR.JK",
+        "company_name": "PT Alamtri Minerals Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 12.2166039958436,
+          "roe_ttm": 0.163167615576958,
+          "net_profit_margin[2025]": 0.278752821322414
+        }
+      },
+      {
+        "symbol": "ADRO.JK",
+        "company_name": "Alamtri Resources Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 7.50673429174899,
+          "roe_ttm": 0.108691525501839,
+          "net_profit_margin[2025]": 0.238957731082749
+        }
+      },
+      {
+        "symbol": "AKRA.JK",
+        "company_name": "PT AKR Corporindo Tbk.",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 10.7615226634677,
+          "roe_ttm": 0.166397117834574,
+          "net_profit_margin[2025]": 0.0537309514982413
+        }
+      },
+      {
+        "symbol": "ALII.JK",
+        "company_name": "PT Ancara Logistics Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 26.4108753958554,
+          "roe_ttm": 0.190247358881504,
+          "net_profit_margin[2025]": 0.385770589477839
+        }
+      },
+      {
+        "symbol": "APEX.JK",
+        "company_name": "Apexindo Pratama Duta Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 6.54079599335734,
+          "roe_ttm": 0.0780553276814875,
+          "net_profit_margin[2025]": 0.0481782071331387
+        }
+      },
+      {
+        "symbol": "ARII.JK",
+        "company_name": "Atlas Resources Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 16.271683465679,
+          "roe_ttm": 0.0471667677740382,
+          "net_profit_margin[2025]": 0.00355260299661513
+        }
+      },
+      {
+        "symbol": "ARTI.JK",
+        "company_name": "Ratu Prabu Energi Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 2.88138158771832,
+          "roe_ttm": -0.02606669590851,
+          "net_profit_margin[2025]": -0.234422104515326
+        }
+      },
+      {
+        "symbol": "ATLA.JK",
+        "company_name": "PT Atlantis Subsea Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 166.932365692897,
+          "roe_ttm": 0.0111605838417033,
+          "net_profit_margin[2025]": 0.0453824379857185
+        }
+      },
+      {
+        "symbol": "BBRM.JK",
+        "company_name": "Pelayaran Nasional Bina Buana Raya Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 8.7840241946152,
+          "roe_ttm": 0.132322073098368,
+          "net_profit_margin[2025]": 0.453705634769779
+        }
+      },
+      {
+        "symbol": "BESS.JK",
+        "company_name": "PT Batulicin Nusantara Maritim Tbk.",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 271.006696575619,
+          "roe_ttm": 0.0174689053190447,
+          "net_profit_margin[2025]": 0.179821732616305
+        }
+      },
+      {
+        "symbol": "BIPI.JK",
+        "company_name": "PT Astrindo Nusantara Infrastruktur Tbk.",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 36.3391113105916,
+          "roe_ttm": 0.0245646264088085,
+          "net_profit_margin[2025]": 0.00463327012359533
+        }
+      },
+      {
+        "symbol": "BOAT.JK",
+        "company_name": "PT Newport Marine Services Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 13.9799949341824,
+          "roe_ttm": 0.082173037510741,
+          "net_profit_margin[2025]": 0.11502435047342
+        }
+      },
+      {
+        "symbol": "BSSR.JK",
+        "company_name": "Baramulti Suksessarana Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 8.57570415169926,
+          "roe_ttm": 0.351986541396275,
+          "net_profit_margin[2025]": 0.119335429992947
+        }
+      },
+      {
+        "symbol": "BULL.JK",
+        "company_name": "PT Buana Lintas Lautan Tbk.",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 4.70616591350114,
+          "roe_ttm": 0.278175121596683,
+          "net_profit_margin[2025]": 0.167739167875073
+        }
+      },
+      {
+        "symbol": "BUMI.JK",
+        "company_name": "Bumi Resources Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 35.0434325181518,
+          "roe_ttm": 0.0387208790031215,
+          "net_profit_margin[2025]": 0.0568596792913765
+        }
+      },
+      {
+        "symbol": "BYAN.JK",
+        "company_name": "Bayan Resources Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 28.9497611365627,
+          "roe_ttm": 0.306196661312144,
+          "net_profit_margin[2025]": 0.224040372945894
+        }
+      },
+      {
+        "symbol": "CGAS.JK",
+        "company_name": "PT Citra Nusantara Gemilang Tbk.",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 11.5352099077436,
+          "roe_ttm": 0.0819854009219182,
+          "net_profit_margin[2025]": 0.0232307088457699
+        }
+      },
+      {
+        "symbol": "CNKO.JK",
+        "company_name": "Exploitasi Energi Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 1.72810555546123,
+          "roe_ttm": -0.203680982934839,
+          "net_profit_margin[2025]": 0.104417172628475
+        }
+      },
+      {
+        "symbol": "CUAN.JK",
+        "company_name": "PT Petrindo Jaya Kreasi Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 42.0378510761426,
+          "roe_ttm": 0.224681926782255,
+          "net_profit_margin[2025]": 0.110698426643896
+        }
+      },
+      {
+        "symbol": "DEWA.JK",
+        "company_name": "Darma Henwa Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 3.44116650649881,
+          "roe_ttm": 0.553929741989065,
+          "net_profit_margin[2025]": 0.673689864220162
+        }
+      },
+      {
+        "symbol": "DSSA.JK",
+        "company_name": "Dian Swastatika Sentosa Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 52.9391119125703,
+          "roe_ttm": 0.0967208523240126,
+          "net_profit_margin[2025]": 0.0825945014426975
+        }
+      },
+      {
+        "symbol": "DWGL.JK",
+        "company_name": "PT Dwi Guna Laksana Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 9.13275382794514,
+          "roe_ttm": 0.389775671582563,
+          "net_profit_margin[2025]": 0.0642514241763133
+        }
+      },
+      {
+        "symbol": "ELSA.JK",
+        "company_name": "Elnusa Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 6.07739122981032,
+          "roe_ttm": 0.150513729495884,
+          "net_profit_margin[2025]": 0.0495516010710064
+        }
+      },
+      {
+        "symbol": "ENRG.JK",
+        "company_name": "Energi Mega Persada Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 19.3999092325322,
+          "roe_ttm": 0.108606454490799,
+          "net_profit_margin[2025]": 0.183754353712988
+        }
+      },
+      {
+        "symbol": "FIRE.JK",
+        "company_name": "PT Alfa Energi Investama Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 24.5810923763141,
+          "roe_ttm": 0.030535633157266,
+          "net_profit_margin[2025]": 0.000187666243825657
+        }
+      },
+      {
+        "symbol": "GEMS.JK",
+        "company_name": "Golden Energy Mines Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 11.5279861753448,
+          "roe_ttm": 0.280099095434745,
+          "net_profit_margin[2025]": 0.106971327331497
+        }
+      },
+      {
+        "symbol": "HRUM.JK",
+        "company_name": "Harum Energy Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 15.4797009024167,
+          "roe_ttm": 0.0221689951781213,
+          "net_profit_margin[2025]": 0.0279591641342567
+        }
+      },
+      {
+        "symbol": "HUMI.JK",
+        "company_name": "PT Humpuss Maritim Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "pe_ttm": 239.310178095891,
+          "roe_ttm": 0.00319136409564752,
+          "net_profit_margin[2025]": 0.0239288717071672
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 67,
+      "showing": 30,
+      "limit": 30,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 30,
+      "previous_offset": null
+    }
+  }
+}

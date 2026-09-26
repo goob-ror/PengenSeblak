@@ -1,0 +1,284 @@
+{
+  "results": [
+    {
+      "symbol": "AMMN.JK",
+      "company_name": "PT Amman Mineral Internasional Tbk.",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 343011169512880,
+        "net_profit_margin[2025]": 0.134836809329545
+      }
+    },
+    {
+      "symbol": "TPIA.JK",
+      "company_name": "PT Chandra Asri Pacific Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 157451012067440,
+        "net_profit_margin[2025]": 0.155283463392558
+      }
+    },
+    {
+      "symbol": "BRPT.JK",
+      "company_name": "Barito Pacific Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 146245660148640,
+        "net_profit_margin[2025]": 0.0641893193539433
+      }
+    },
+    {
+      "symbol": "BRMS.JK",
+      "company_name": "Bumi Resources Minerals Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 96413147429840,
+        "net_profit_margin[2025]": 0.200557065071693
+      }
+    },
+    {
+      "symbol": "ANTM.JK",
+      "company_name": "Aneka Tambang Tbk.",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 78580600650750,
+        "net_profit_margin[2025]": 0.0851680798092314
+      }
+    },
+    {
+      "symbol": "MDKA.JK",
+      "company_name": "PT Merdeka Copper Gold Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 74887330339260,
+        "net_profit_margin[2025]": -0.0327542623421634
+      }
+    },
+    {
+      "symbol": "NCKL.JK",
+      "company_name": "PT Trimegah Bangun Persada Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 57735219000000,
+        "net_profit_margin[2025]": 0.302081352490529
+      }
+    },
+    {
+      "symbol": "MBMA.JK",
+      "company_name": "PT Merdeka Battery Materials Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 54537687049500,
+        "net_profit_margin[2025]": 0.0206091754049278
+      }
+    },
+    {
+      "symbol": "INCO.JK",
+      "company_name": "Vale Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 49747783000480,
+        "net_profit_margin[2025]": 0.07681618267109
+      }
+    },
+    {
+      "symbol": "INKP.JK",
+      "company_name": "Indah Kiat Pulp & Paper Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 44588510969150,
+        "net_profit_margin[2025]": 0.142954444835454
+      }
+    },
+    {
+      "symbol": "TINS.JK",
+      "company_name": "PT Timah Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 36121604251900,
+        "net_profit_margin[2025]": 0.113707293330505
+      }
+    },
+    {
+      "symbol": "ARCI.JK",
+      "company_name": "PT Archi Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 32931675000000,
+        "net_profit_margin[2025]": 0.205189237487668
+      }
+    },
+    {
+      "symbol": "TKIM.JK",
+      "company_name": "Pabrik Kertas Tjiwi Kimia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 22415209704000,
+        "net_profit_margin[2025]": 0.280080672105061
+      }
+    },
+    {
+      "symbol": "AVIA.JK",
+      "company_name": "PT Avia Avian Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 21064208904000,
+        "net_profit_margin[2025]": 0.215107060404238
+      }
+    },
+    {
+      "symbol": "PACK.JK",
+      "company_name": "PT Abadi Nusantara Hijau Investama Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 20639257853555,
+        "net_profit_margin[2025]": 0.144330939035152
+      }
+    },
+    {
+      "symbol": "INTP.JK",
+      "company_name": "Indocement Tunggal Prakarsa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 17670028004850,
+        "net_profit_margin[2025]": 0.126826301768387
+      }
+    },
+    {
+      "symbol": "FASW.JK",
+      "company_name": "Fajar Surya Wisesa Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 16992122356325,
+        "net_profit_margin[2025]": -0.140200074595384
+      }
+    },
+    {
+      "symbol": "PSAB.JK",
+      "company_name": "J Resources Asia Pasifik Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 14156100000000,
+        "net_profit_margin[2025]": 0.12569677539275
+      }
+    },
+    {
+      "symbol": "CITA.JK",
+      "company_name": "Cita Mineral Investindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 13702849925000,
+        "net_profit_margin[2025]": 0.892805553744938
+      }
+    },
+    {
+      "symbol": "CMNT.JK",
+      "company_name": "PT Cemindo Gemilang Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 12844128000000,
+        "net_profit_margin[2025]": -0.0167400114459522
+      }
+    },
+    {
+      "symbol": "AGII.JK",
+      "company_name": "PT Samator Indo Gas Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 10702643400000,
+        "net_profit_margin[2025]": 0.0194027325816944
+      }
+    },
+    {
+      "symbol": "SMGR.JK",
+      "company_name": "Semen Indonesia (Persero) Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 10599917939730,
+        "net_profit_margin[2025]": 0.0054150876278748
+      }
+    },
+    {
+      "symbol": "ESSA.JK",
+      "company_name": "ESSA Industries Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 10250050541500,
+        "net_profit_margin[2025]": 0.136572861368626
+      }
+    },
+    {
+      "symbol": "SMCB.JK",
+      "company_name": "PT Solusi Bangun Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 6990021029075,
+        "net_profit_margin[2025]": 0.0613510908286572
+      }
+    },
+    {
+      "symbol": "UNIC.JK",
+      "company_name": "Unggul Indah Cahaya Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 5807470149450,
+        "net_profit_margin[2025]": 0.0923251947745242
+      }
+    },
+    {
+      "symbol": "NICL.JK",
+      "company_name": "PT PAM Mineral Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 4615869889638,
+        "net_profit_margin[2025]": 0.233832755010105
+      }
+    },
+    {
+      "symbol": "KRAS.JK",
+      "company_name": "Krakatau Steel (Persero) Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 4333592905600,
+        "net_profit_margin[2025]": 0.463371461255481
+      }
+    },
+    {
+      "symbol": "GGRP.JK",
+      "company_name": "PT Gunung Raja Paksi Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 4190536150322,
+        "net_profit_margin[2025]": -0.196614794166918
+      }
+    },
+    {
+      "symbol": "PBID.JK",
+      "company_name": "PT Panca Budi Idaman Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 3975000000000,
+        "net_profit_margin[2025]": 0.077153714213089
+      }
+    },
+    {
+      "symbol": "ALKA.JK",
+      "company_name": "Alakasa Industrindo Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 3756721407000,
+        "net_profit_margin[2025]": 0.114004131310832
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 99,
+    "showing": 30,
+    "limit": 30,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 30,
+    "previous_offset": null
+  }
+}

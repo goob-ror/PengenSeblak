@@ -1,0 +1,43 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:44:17.626Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "eps[2025] > 0",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 3650
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AADI.JK",
+        "company_name": "PT Adaro Andalan Indonesia Tbk",
+        "query_values": {
+          "eps[2025]": 1633.86400568126
+        }
+      },
+      {
+        "symbol": "AALI.JK",
+        "company_name": "Astra Agro Lestari Tbk",
+        "query_values": {
+          "eps[2025]": 764.650553945037
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 628,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}

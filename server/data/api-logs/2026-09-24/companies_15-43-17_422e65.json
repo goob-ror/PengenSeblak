@@ -1,0 +1,43 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:43:17.193Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "forward_pe > 0",
+      "limit": "2",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 101
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "AALI.JK",
+        "company_name": "Astra Agro Lestari Tbk",
+        "query_values": {
+          "forward_pe": 12.8836372185639
+        }
+      },
+      {
+        "symbol": "ACES.JK",
+        "company_name": "PT Aspirasi Hidup Indonesia Tbk",
+        "query_values": {
+          "forward_pe": 6.05744117282052
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 133,
+      "showing": 2,
+      "limit": 2,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 2,
+      "previous_offset": null
+    }
+  }
+}

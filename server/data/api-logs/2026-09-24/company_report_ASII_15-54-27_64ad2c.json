@@ -1,0 +1,573 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T07:54:27.957Z",
+    "endpoint": "/company/report/ASII/",
+    "query_params": {
+      "sections": "peers"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 5194
+  },
+  "data": {
+    "symbol": "ASII.JK",
+    "company_name": "Astra International Tbk",
+    "peers": [
+      {
+        "peers_data": {
+          "companies": [
+            {
+              "year": 2025,
+              "group": [
+                "self"
+              ],
+              "pb_mrq": 0.841105168946572,
+              "pe_ttm": 6.49650464998825,
+              "symbol": "ASII.JK",
+              "market_cap": 193511384009200,
+              "net_income": 32769000000000,
+              "company_name": "Astra International Tbk",
+              "employee_num": 144284,
+              "total_assets": 507366000000000,
+              "total_equity": 290812000000000,
+              "pretax_income": 49288000000000,
+              "total_revenue": 323392000000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 14,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 13.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 9,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.990Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.122935779816514,
+              "operating_expense": 32779000000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 216554000000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 5.89121658550628,
+              "pe_ttm": 102.533406554053,
+              "symbol": "BNBR.JK",
+              "market_cap": 21856943741721,
+              "net_income": 493852000000,
+              "company_name": "Bakrie & Brothers Tbk",
+              "employee_num": 1648,
+              "total_assets": 23567563000000,
+              "total_equity": 4671664000000,
+              "pretax_income": 518832000000,
+              "total_revenue": 3742973000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 15.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.871Z"
+                }
+              ],
+              "yearly_mcap_chg": 2.60105820104807,
+              "operating_expense": 627521000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 18895899000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 0.125459693213359,
+              "pe_ttm": 5.47585733995006,
+              "symbol": "BHIT.JK",
+              "market_cap": 2065635760920,
+              "net_income": 478540000000,
+              "company_name": "PT MNC Asia Holding Tbk",
+              "employee_num": 6140,
+              "total_assets": 73732536000000,
+              "total_equity": 40414928000000,
+              "pretax_income": 1659312000000,
+              "total_revenue": 14490421000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 14.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 3,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.692Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.314285714285714,
+              "operating_expense": 3221662000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 33317608000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 6.9791635600624,
+              "pe_ttm": -86.7503681841115,
+              "symbol": "FOLK.JK",
+              "market_cap": 949194950208,
+              "net_income": -13735179341,
+              "company_name": "PT Multi Garam Utama Tbk",
+              "employee_num": 353,
+              "total_assets": 76205022804,
+              "total_equity": 66116045500,
+              "pretax_income": -20185238296,
+              "total_revenue": 18756716139,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 6,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 1.5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.734Z"
+                }
+              ],
+              "yearly_mcap_chg": 2.12228101702043,
+              "operating_expense": 22185706260,
+              "revenue_breakdown": null,
+              "total_liabilities": 10088977304,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": null,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": null,
+              "pe_ttm": null,
+              "symbol": "ZBRA.JK",
+              "market_cap": 125535313150,
+              "net_income": null,
+              "company_name": "PT Dosni Roha Indonesia Tbk",
+              "employee_num": 1308,
+              "total_assets": null,
+              "total_equity": null,
+              "pretax_income": null,
+              "total_revenue": null,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 9.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 0,
+                  "maxpoint": 15
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.790Z"
+                }
+              ],
+              "yearly_mcap_chg": 0,
+              "operating_expense": null,
+              "revenue_breakdown": null,
+              "total_liabilities": null,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sector"
+              ],
+              "pb_mrq": 0.939548406049801,
+              "pe_ttm": 11.8815766246439,
+              "symbol": "UNTR.JK",
+              "market_cap": 90735537183200,
+              "net_income": 14810434000000,
+              "company_name": "United Tractors Tbk",
+              "employee_num": 27125,
+              "total_assets": 177637299000000,
+              "total_equity": 103136323000000,
+              "pretax_income": 20182167000000,
+              "total_revenue": 131300810000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 10.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 22,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 6,
+                  "maxpoint": 9
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.670Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.00612870275791624,
+              "operating_expense": 7638206000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 74500976000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sector"
+              ],
+              "pb_mrq": 26.9669513744389,
+              "pe_ttm": 110.396248891273,
+              "symbol": "IMPC.JK",
+              "market_cap": 85105850000000,
+              "net_income": 620044943361,
+              "company_name": "PT Impack Pratama Industri Tbk",
+              "employee_num": 1919,
+              "total_assets": 5309672233571,
+              "total_equity": 3398015506369,
+              "pretax_income": 801846841246,
+              "total_revenue": 4271459779365,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 23.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.788Z"
+                }
+              ],
+              "yearly_mcap_chg": 0.19712720473062,
+              "operating_expense": 840428267843,
+              "revenue_breakdown": null,
+              "total_liabilities": 1911656727202,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sector"
+              ],
+              "pb_mrq": -154.07526445194,
+              "pe_ttm": 31.1225210766343,
+              "symbol": "SINI.JK",
+              "market_cap": 19300125000000,
+              "net_income": -43087994671,
+              "company_name": "PT Singaraja Putra Tbk",
+              "employee_num": 308,
+              "total_assets": 1569197460365,
+              "total_equity": -687415966517,
+              "pretax_income": -41360631234,
+              "total_revenue": 534021405626,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 10,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 21,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 0,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.947Z"
+                }
+              ],
+              "yearly_mcap_chg": 10.1458333333333,
+              "operating_expense": 90169697608,
+              "revenue_breakdown": null,
+              "total_liabilities": 2256613426882,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sector"
+              ],
+              "pb_mrq": 4.85784680431738,
+              "pe_ttm": 12.8733933510644,
+              "symbol": "MARK.JK",
+              "market_cap": 4332000353400,
+              "net_income": 283878978712,
+              "company_name": "PT Mark Dynamics Indonesia Tbk",
+              "employee_num": 495,
+              "total_assets": 1022751968456,
+              "total_equity": 902633228625,
+              "pretax_income": 363324946323,
+              "total_revenue": 837311837328,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 7,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 15.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 6
+                },
+                {
+                  "name": "financials",
+                  "point": 3,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 6,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:12.108Z"
+                }
+              ],
+              "yearly_mcap_chg": 0.824,
+              "operating_expense": 72591397379,
+              "revenue_breakdown": null,
+              "total_liabilities": 120118739831,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sector"
+              ],
+              "pb_mrq": 3.31033263932232,
+              "pe_ttm": 11.6426274736999,
+              "symbol": "JTPE.JK",
+              "market_cap": 4076969750000,
+              "net_income": 351445310726,
+              "company_name": "Jasuindo Tiga Perkasa Tbk",
+              "employee_num": null,
+              "total_assets": 2759004639606,
+              "total_equity": 1514313006303,
+              "pretax_income": 486364973549,
+              "total_revenue": 2782642802655,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 9,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 20.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 0,
+                  "maxpoint": 0
+                },
+                {
+                  "name": "financials",
+                  "point": 4.5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 9.5,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.750Z"
+                }
+              ],
+              "yearly_mcap_chg": 0.871069182389937,
+              "operating_expense": 165932222552,
+              "revenue_breakdown": null,
+              "total_liabilities": 1244691633303,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            }
+          ],
+          "group_name": {
+            "sector": "Industrials",
+            "industry": "Multi-sector Holdings",
+            "sub_sector": "Multi-sector Holdings",
+            "sub_industry": "Multi-sector Holdings"
+          }
+        }
+      }
+    ]
+  }
+}

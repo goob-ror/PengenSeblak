@@ -1,0 +1,330 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-24T06:06:03.231Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='basic-materials' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 716
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "ADMG.JK",
+        "company_name": "Polychem Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 20.4979462969085,
+          "roe_ttm": 0.0222132442927667,
+          "net_profit_margin[2025]": -0.0184796219941726
+        }
+      },
+      {
+        "symbol": "AGII.JK",
+        "company_name": "PT Samator Indo Gas Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 107.214192474918,
+          "roe_ttm": 0.0260660007899649,
+          "net_profit_margin[2025]": 0.0194027325816944
+        }
+      },
+      {
+        "symbol": "AKPI.JK",
+        "company_name": "Argha Karya Prima Ind. Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 3.60176196144213,
+          "roe_ttm": 0.0447829623536158,
+          "net_profit_margin[2025]": 0.00430900107185539
+        }
+      },
+      {
+        "symbol": "ALDO.JK",
+        "company_name": "Alkindo Naratama Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 28.6272978288378,
+          "roe_ttm": 0.0806839538601686,
+          "net_profit_margin[2025]": 0.016571111512052
+        }
+      },
+      {
+        "symbol": "ALKA.JK",
+        "company_name": "Alakasa Industrindo Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 190.784492046993,
+          "roe_ttm": 0.0836794216673809,
+          "net_profit_margin[2025]": 0.114004131310832
+        }
+      },
+      {
+        "symbol": "AMMN.JK",
+        "company_name": "PT Amman Mineral Internasional Tbk.",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 38.3050550077613,
+          "roe_ttm": 0.0971825700701001,
+          "net_profit_margin[2025]": 0.134836809329545
+        }
+      },
+      {
+        "symbol": "ANTM.JK",
+        "company_name": "Aneka Tambang Tbk.",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 8.8552371122508,
+          "roe_ttm": 0.231006978183056,
+          "net_profit_margin[2025]": 0.0851680798092314
+        }
+      },
+      {
+        "symbol": "APLI.JK",
+        "company_name": "Asiaplast Industries Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 26.1686993424421,
+          "roe_ttm": 0.0496945994386252,
+          "net_profit_margin[2025]": 0.0187543726612767
+        }
+      },
+      {
+        "symbol": "ARCI.JK",
+        "company_name": "PT Archi Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 13.4823633200025,
+          "roe_ttm": 0.341288120145456,
+          "net_profit_margin[2025]": 0.205189237487668
+        }
+      },
+      {
+        "symbol": "ASPR.JK",
+        "company_name": "PT Asia Pramulia Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 50.8298740410415,
+          "roe_ttm": 0.0432970037146961,
+          "net_profit_margin[2025]": 0.0349970569345628
+        }
+      },
+      {
+        "symbol": "AVIA.JK",
+        "company_name": "PT Avia Avian Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 11.1971296491917,
+          "roe_ttm": 0.198003864896726,
+          "net_profit_margin[2025]": 0.215107060404238
+        }
+      },
+      {
+        "symbol": "BAJA.JK",
+        "company_name": "Saranacentral Bajatama Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 542.92160448003,
+          "roe_ttm": 0.0338688857205716,
+          "net_profit_margin[2025]": -0.0441833918643232
+        }
+      },
+      {
+        "symbol": "BATR.JK",
+        "company_name": "PT Benteng Api Technic Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 18.6937140170837,
+          "roe_ttm": 0.0934409779705128,
+          "net_profit_margin[2025]": 0.0904078064410647
+        }
+      },
+      {
+        "symbol": "BLES.JK",
+        "company_name": "PT Superior Prima Sukses Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 7.81607670700036,
+          "roe_ttm": 0.178195104759771,
+          "net_profit_margin[2025]": 0.0558384524438398
+        }
+      },
+      {
+        "symbol": "BMSR.JK",
+        "company_name": "Bintang Mitra Semestaraya Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 3.31155360748139,
+          "roe_ttm": 0.132967493768512,
+          "net_profit_margin[2025]": 0.0128866040584025
+        }
+      },
+      {
+        "symbol": "BRMS.JK",
+        "company_name": "Bumi Resources Minerals Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 147.823752476977,
+          "roe_ttm": 0.0355157365816908,
+          "net_profit_margin[2025]": 0.200557065071693
+        }
+      },
+      {
+        "symbol": "BRPT.JK",
+        "company_name": "Barito Pacific Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 61.0660894108135,
+          "roe_ttm": 0.0213968922692664,
+          "net_profit_margin[2025]": 0.0641893193539433
+        }
+      },
+      {
+        "symbol": "BTON.JK",
+        "company_name": "Betonjaya Manunggal Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 5.23647188532744,
+          "roe_ttm": 0.147906359253744,
+          "net_profit_margin[2025]": 0.186411443417
+        }
+      },
+      {
+        "symbol": "CITA.JK",
+        "company_name": "Cita Mineral Investindo Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 10.0437992210257,
+          "roe_ttm": 0.169355000402443,
+          "net_profit_margin[2025]": 0.892805553744938
+        }
+      },
+      {
+        "symbol": "CLPI.JK",
+        "company_name": "Colorpak Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 6.55393183918097,
+          "roe_ttm": 0.127663667401794,
+          "net_profit_margin[2025]": 0.0696274192305495
+        }
+      },
+      {
+        "symbol": "CTBN.JK",
+        "company_name": "Citra Tubindo Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 29.7799636306908,
+          "roe_ttm": 0.0441314100053547,
+          "net_profit_margin[2025]": 0.0816068078393247
+        }
+      },
+      {
+        "symbol": "DAAZ.JK",
+        "company_name": "PT Daaz Bara Lestari Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 11.6270716122563,
+          "roe_ttm": 0.122061541976617,
+          "net_profit_margin[2025]": 0.0196629887383189
+        }
+      },
+      {
+        "symbol": "DGWG.JK",
+        "company_name": "PT Delta Giri Wacana Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 7.1539445666454,
+          "roe_ttm": 0.230373980477749,
+          "net_profit_margin[2025]": 0.0527685978510532
+        }
+      },
+      {
+        "symbol": "DKFT.JK",
+        "company_name": "Central Omega Resources Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 5.72579299464072,
+          "roe_ttm": 0.437027178442899,
+          "net_profit_margin[2025]": 0.363845646752401
+        }
+      },
+      {
+        "symbol": "EKAD.JK",
+        "company_name": "Ekadharma International Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 23.2825790037117,
+          "roe_ttm": 0.0471225175136011,
+          "net_profit_margin[2025]": 0.100135530924846
+        }
+      },
+      {
+        "symbol": "ESIP.JK",
+        "company_name": "PT Sinergi Inti Plastindo Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 53.7742011143408,
+          "roe_ttm": 0.0235482733751029,
+          "net_profit_margin[2025]": 0.0248171010466633
+        }
+      },
+      {
+        "symbol": "ESSA.JK",
+        "company_name": "ESSA Industries Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 11.0792390210395,
+          "roe_ttm": 0.0956170691067519,
+          "net_profit_margin[2025]": 0.136572861368626
+        }
+      },
+      {
+        "symbol": "FPNI.JK",
+        "company_name": "PT Lotte Chemical Titan Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 10.4615284485181,
+          "roe_ttm": 0.143183497077621,
+          "net_profit_margin[2025]": 0.0132597374247669
+        }
+      },
+      {
+        "symbol": "GDST.JK",
+        "company_name": "Gunawan Dianjaya Steel Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 11.1249564914252,
+          "roe_ttm": 0.068934342626207,
+          "net_profit_margin[2025]": 0.031264108647066
+        }
+      },
+      {
+        "symbol": "IFII.JK",
+        "company_name": "PT Indonesia Fibreboard Industry Tbk",
+        "query_values": {
+          "sub_sector": "Basic Materials",
+          "pe_ttm": 13.2011930548952,
+          "roe_ttm": 0.108462366559006,
+          "net_profit_margin[2025]": 0.142996166342477
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 78,
+      "showing": 30,
+      "limit": 30,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 30,
+      "previous_offset": null
+    }
+  }
+}

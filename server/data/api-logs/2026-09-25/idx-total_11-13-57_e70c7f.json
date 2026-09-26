@@ -1,0 +1,104 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-25T03:13:57.838Z",
+    "endpoint": "/idx-total/",
+    "query_params": {
+      "start": "2026-08-26",
+      "end": "2026-09-25"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 97
+  },
+  "data": [
+    {
+      "date": "2026-08-26",
+      "idx_total_market_cap": 11226539253653372
+    },
+    {
+      "date": "2026-08-27",
+      "idx_total_market_cap": 11444254799160096
+    },
+    {
+      "date": "2026-08-28",
+      "idx_total_market_cap": 11427514258790208
+    },
+    {
+      "date": "2026-08-31",
+      "idx_total_market_cap": 11420266337232824
+    },
+    {
+      "date": "2026-09-01",
+      "idx_total_market_cap": 11528076154461080
+    },
+    {
+      "date": "2026-09-02",
+      "idx_total_market_cap": 11521577604064942
+    },
+    {
+      "date": "2026-09-03",
+      "idx_total_market_cap": 11637538684241800
+    },
+    {
+      "date": "2026-09-04",
+      "idx_total_market_cap": 11595660058206448
+    },
+    {
+      "date": "2026-09-07",
+      "idx_total_market_cap": 11571807924987264
+    },
+    {
+      "date": "2026-09-08",
+      "idx_total_market_cap": 11668902562815872
+    },
+    {
+      "date": "2026-09-09",
+      "idx_total_market_cap": 11671538636715858
+    },
+    {
+      "date": "2026-09-10",
+      "idx_total_market_cap": 11526136904331476
+    },
+    {
+      "date": "2026-09-11",
+      "idx_total_market_cap": 11442963914395062
+    },
+    {
+      "date": "2026-09-14",
+      "idx_total_market_cap": 11368110758085182
+    },
+    {
+      "date": "2026-09-15",
+      "idx_total_market_cap": 11257912210981978
+    },
+    {
+      "date": "2026-09-16",
+      "idx_total_market_cap": 11225219420982876
+    },
+    {
+      "date": "2026-09-17",
+      "idx_total_market_cap": 11270346560839988
+    },
+    {
+      "date": "2026-09-18",
+      "idx_total_market_cap": 11262605698050558
+    },
+    {
+      "date": "2026-09-21",
+      "idx_total_market_cap": 11161910095429388
+    },
+    {
+      "date": "2026-09-22",
+      "idx_total_market_cap": 10971287923179804
+    },
+    {
+      "date": "2026-09-23",
+      "idx_total_market_cap": 11141915820582292
+    },
+    {
+      "date": "2026-09-24",
+      "idx_total_market_cap": 11021365748586840
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "results": [
+    {
+      "symbol": "BAIK.JK",
+      "company_name": "PT Bersama Mencapai Puncak Tbk.",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 78.6108878280527,
+        "roe_ttm": 0.026137626467246,
+        "net_profit_margin[2025]": 0.0230110768802083,
+        "der_mrq": 0.0101504904137017
+      }
+    },
+    {
+      "symbol": "BUVA.JK",
+      "company_name": "PT Bukit Uluwatu Villa Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 582.411596728111,
+        "roe_ttm": 0.0121520426108877,
+        "net_profit_margin[2025]": 0.264100871868531,
+        "der_mrq": 0.211050654049064
+      }
+    },
+    {
+      "symbol": "CLAY.JK",
+      "company_name": "PT Citra Putra Realty Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 269.942820995827,
+        "roe_ttm": 0.917948611408219,
+        "net_profit_margin[2025]": 0.0342154642383072,
+        "der_mrq": 11.1263989591659
+      }
+    },
+    {
+      "symbol": "EAST.JK",
+      "company_name": "PT Eastparc Hotel Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 11.082529608669,
+        "roe_ttm": 0.0722371560805692,
+        "net_profit_margin[2025]": 0.304421582740928,
+        "der_mrq": 0.0142825397043672
+      }
+    },
+    {
+      "symbol": "GOLF.JK",
+      "company_name": "PT Intra GolfLink Resorts Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 62.8790994324657,
+        "roe_ttm": 0.00664573140259198,
+        "net_profit_margin[2025]": 0.240393149335069,
+        "der_mrq": 0.0603524602495052
+      }
+    },
+    {
+      "symbol": "GRPH.JK",
+      "company_name": "PT Griptha Putra Persada Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 39.1346820254097,
+        "roe_ttm": 0.040555997341132,
+        "net_profit_margin[2025]": 0.0911213199239924,
+        "der_mrq": 0.200327649871446
+      }
+    },
+    {
+      "symbol": "GWSA.JK",
+      "company_name": "PT Greenwood Sejahtera Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 9.20309234600132,
+        "roe_ttm": 0.0182114752582866,
+        "net_profit_margin[2025]": 1.59004802469849,
+        "der_mrq": 0.00198479643045095
+      }
+    },
+    {
+      "symbol": "HAJJ.JK",
+      "company_name": "PT Arsy Buana Travelindo Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 138.967743311634,
+        "roe_ttm": 0.00867956625888328,
+        "net_profit_margin[2025]": 0.00639328598461092,
+        "der_mrq": 0.611409874886837
+      }
+    },
+    {
+      "symbol": "JSPT.JK",
+      "company_name": "Jakarta Setiabudi Internasional Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 7.12599069044973,
+        "roe_ttm": 0.131718257791797,
+        "net_profit_margin[2025]": 0.123346108368675,
+        "der_mrq": 0.605889244036119
+      }
+    },
+    {
+      "symbol": "KDTN.JK",
+      "company_name": "PT Puri Sentul Permai Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 128.52110777414,
+        "roe_ttm": 0.0522146609993848,
+        "net_profit_margin[2025]": 0.0610284225532856,
+        "der_mrq": 0.0535503422259709
+      }
+    },
+    {
+      "symbol": "KOTA.JK",
+      "company_name": "PT DMS Propertindo Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 24.970781538324,
+        "roe_ttm": 0.057274029326261,
+        "net_profit_margin[2025]": 0.339620520469792,
+        "der_mrq": 0.342054333033929
+      }
+    },
+    {
+      "symbol": "KPIG.JK",
+      "company_name": "MNC Tourism Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 8.50139230106083,
+        "roe_ttm": 0.0210853394103541,
+        "net_profit_margin[2025]": 0.274242586607715,
+        "der_mrq": 0.161235539452008
+      }
+    },
+    {
+      "symbol": "MERI.JK",
+      "company_name": "PT Merry Riana Edukasi Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 192.346268582234,
+        "roe_ttm": 0.012926525594326,
+        "net_profit_margin[2025]": 0.120792831543474,
+        "der_mrq": 0.013088391234187
+      }
+    },
+    {
+      "symbol": "PANR.JK",
+      "company_name": "Panorama Sentrawisata Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 6.89332989584737,
+        "roe_ttm": 0.0663575344421599,
+        "net_profit_margin[2025]": 0.0234605553045918,
+        "der_mrq": 0.0840879280300906
+      }
+    },
+    {
+      "symbol": "PDES.JK",
+      "company_name": "Destinasi Tirta Nusantara Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 9.2131578437299,
+        "roe_ttm": 0.224970940005653,
+        "net_profit_margin[2025]": 0.0490324704871938,
+        "der_mrq": 1.10346922908917
+      }
+    },
+    {
+      "symbol": "PJAA.JK",
+      "company_name": "Pembangunan Jaya Ancol Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 4.58426908913926,
+        "roe_ttm": 0.0878424791152172,
+        "net_profit_margin[2025]": 0.160714014960636,
+        "der_mrq": 0.375704631305688
+      }
+    },
+    {
+      "symbol": "PTSP.JK",
+      "company_name": "Pioneerindo Gourmet International Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 9.45765098158375,
+        "roe_ttm": 0.134010867346097,
+        "net_profit_margin[2025]": 0.0275581391107802,
+        "der_mrq": 0.320334561822003
+      }
+    },
+    {
+      "symbol": "PZZA.JK",
+      "company_name": "PT Sarimelati Kencana Tbk",
+      "query_values": {
+        "sub_sector": "Consumer Services",
+        "pe_ttm": 30.7511800859951,
+        "roe_ttm": 0.0167746349699067,
+        "net_profit_margin[2025]": 0.00810785325601506,
+        "der_mrq": 0.235978655170002
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 18,
+    "showing": 18,
+    "limit": 30,
+    "offset": 0,
+    "has_next": false,
+    "has_previous": false,
+    "next_offset": null,
+    "previous_offset": null
+  }
+}
