@@ -756,25 +756,36 @@ export function MarketOverview() {
                 ) : (
                   <div className="max-h-36 overflow-y-auto">
                     <div className="divide-y divide-border">
-                      {(newsFeed.data ?? []).map((n, i) => (
-                        <button
-                          key={`${n.timestamp}-${i}`}
-                          onClick={() => setNewsDetail(n)}
-                          className="flex w-full items-start gap-2.5 px-4 py-2 text-left transition-colors hover:bg-secondary/50"
-                        >
-                          <span className="mt-0.5 shrink-0 text-[9px] tabular-nums text-muted-foreground">
-                            {n.timestamp?.slice(11, 16)}
-                          </span>
-                          <span className="line-clamp-2 text-[11px] leading-snug text-foreground">
-                            {n.title}
-                          </span>
-                          {(n.symbols ?? []).length > 0 && (
-                            <span className="ml-auto shrink-0 text-[9px] font-semibold text-primary">
-                              {n.symbols!.join(",")}
+                      {(newsFeed.data ?? []).map((n, i) => {
+                        const tags = (n.tags ?? []).map((t) => t.toLowerCase());
+                        const sentiment = tags.includes("bullish")
+                          ? { label: "Positive", cls: "text-positive" }
+                          : tags.includes("bearish") || tags.includes("negative")
+                            ? { label: "Negative", cls: "text-negative" }
+                            : { label: "Neutral", cls: "text-muted-foreground" };
+                        return (
+                          <button
+                            key={`${n.timestamp}-${i}`}
+                            onClick={() => setNewsDetail(n)}
+                            className="flex w-full items-start gap-2.5 px-4 py-2 text-left transition-colors hover:bg-secondary/50"
+                          >
+                            <span className="mt-0.5 shrink-0 text-[9px] tabular-nums text-muted-foreground">
+                              {n.timestamp?.slice(11, 16)}
                             </span>
-                          )}
-                        </button>
-                      ))}
+                            <span className="line-clamp-2 flex-1 text-[11px] leading-snug text-foreground">
+                              {n.title}
+                            </span>
+                            <span
+                              className={cn(
+                                "ml-auto shrink-0 text-[9px] font-semibold",
+                                sentiment.cls,
+                              )}
+                            >
+                              {sentiment.label}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -2732,6 +2743,20 @@ export function NewsIntelligence() {
       .slice(0, 10);
   }, [articles]);
 
+  // Signal distribution derived from tags (Bullish → positive, Bearish/negative tags → negative, else neutral)
+  const sentimentCounts = useMemo(() => {
+    let positive = 0,
+      neutral = 0,
+      negative = 0;
+    articles.forEach((n) => {
+      const tags = (n.tags ?? []).map((t) => t.toLowerCase());
+      if (tags.includes("bullish")) positive++;
+      else if (tags.includes("bearish") || tags.includes("negative")) negative++;
+      else neutral++;
+    });
+    return { positive, neutral, negative, total: articles.length };
+  }, [articles]);
+
   const activeFilters = [
     sectorFilter !== "Semua" && sectorFilter,
     tagFilter !== "Semua" && tagFilter,
@@ -2846,6 +2871,14 @@ export function NewsIntelligence() {
                           {t}
                         </Tag>
                       ))}
+                      {/* Sentiment label derived from tags */}
+                      {(() => {
+                        const tags = (n.tags ?? []).map((t) => t.toLowerCase());
+                        if (tags.includes("bullish")) return <Tag tone="positive">Positive</Tag>;
+                        if (tags.includes("bearish") || tags.includes("negative"))
+                          return <Tag tone="negative">Negative</Tag>;
+                        return <Tag tone="neutral">Neutral</Tag>;
+                      })()}
                       <ChevronRight className="size-4 text-muted-foreground self-center" />
                     </div>
                   </button>
@@ -2903,6 +2936,63 @@ export function NewsIntelligence() {
                         <Bar value={pct} tone={isActive ? "positive" : "accent"} />
                       </div>
                     </button>
+                  );
+                })
+              )}
+            </div>
+          </Panel>
+
+          {/* ── Distribusi Sinyal: positive / neutral / negative ── */}
+          <Panel title="Distribusi Sinyal" kicker="(Berdasarkan sentimen berita)">
+            <div className="divide-y divide-border">
+              {newsFeed.isPending ? (
+                <div className="space-y-3 p-4">
+                  {Array.from({ length: 3 }, (_, i) => (
+                    <div key={i} className="h-4 animate-pulse rounded bg-secondary/50" />
+                  ))}
+                </div>
+              ) : sentimentCounts.total === 0 ? (
+                <p className="p-4 text-[10px] text-muted-foreground">Tidak ada data.</p>
+              ) : (
+                [
+                  {
+                    label: "Positive",
+                    count: sentimentCounts.positive,
+                    bar: "bg-positive",
+                    text: "text-positive",
+                  },
+                  {
+                    label: "Neutral",
+                    count: sentimentCounts.neutral,
+                    bar: "bg-accent-foreground/40",
+                    text: "text-muted-foreground",
+                  },
+                  {
+                    label: "Negative",
+                    count: sentimentCounts.negative,
+                    bar: "bg-negative",
+                    text: "text-negative",
+                  },
+                ].map(({ label, count, bar, text }) => {
+                  const pct =
+                    sentimentCounts.total > 0
+                      ? Math.round((count / sentimentCounts.total) * 100)
+                      : 0;
+                  return (
+                    <div key={label} className="px-4 py-3">
+                      <div className="mb-1.5 flex justify-between text-xs">
+                        <span className={cn("font-medium", text)}>{label}</span>
+                        <span className="tabular-nums text-muted-foreground">
+                          {count} · {pct}%
+                        </span>
+                      </div>
+                      <div className="h-1 w-full overflow-hidden rounded-full bg-secondary">
+                        <div
+                          className={cn("h-full rounded-full transition-all", bar)}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                    </div>
                   );
                 })
               )}
