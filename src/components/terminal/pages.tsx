@@ -953,7 +953,7 @@ export function MarketOverview() {
                           }
                         >
                           {a.deviation >= 0 ? "+" : ""}
-                          {a.deviation}
+                          {a.deviation.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           {a.metric !== "Net Margin" && "x"}
                         </div>
                         <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">
@@ -2694,9 +2694,11 @@ export function NewsIntelligence() {
   const [query, setQuery] = useState("");
   const [detail, setDetail] = useState<NewsArticle | null>(null);
 
-  // Use limit=8 to share the exact same TanStack Query cache key as the
-  // dashboard (MarketOverview) — zero extra API credits when navigating here.
-  const newsFeed = useIdxNews(8);
+  // Use limit=50 for the full Berita page — gives plenty of articles to
+  // filter across sector/sentiment/tags. Costs the same 1 credit as limit=8
+  // (news endpoint is flat-rate), but uses a different TanStack Query key
+  // than the dashboard's useIdxNews(8) so both coexist in cache independently.
+  const newsFeed = useIdxNews(50);
   const articles = useMemo(() => newsFeed.data ?? [], [newsFeed.data]);
 
   // Derive unique sectors from live data for the sector filter
@@ -2818,9 +2820,10 @@ export function NewsIntelligence() {
                 ))}
               </select>
             </div>
+            <div className="max-h-[990px] overflow-y-auto">
             {newsFeed.isPending ? (
               <div className="space-y-2 p-4">
-                {Array.from({ length: 6 }, (_, i) => (
+                {Array.from({ length: 10 }, (_, i) => (
                   <div key={i} className="h-16 animate-pulse rounded bg-secondary/50" />
                 ))}
               </div>
@@ -2842,7 +2845,8 @@ export function NewsIntelligence() {
                     className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[60px_1fr_auto]"
                   >
                     <span className="text-xs text-muted-foreground tabular-nums">
-                      {n.timestamp?.slice(11, 16)}
+                      <span className="block">{n.timestamp?.slice(0, 10)}</span>
+                      <span className="block">{n.timestamp?.slice(11, 16)}</span>
                     </span>
                     <div>
                       <div className="text-sm leading-5">{n.title}</div>
@@ -2857,11 +2861,6 @@ export function NewsIntelligence() {
                         )}
                         {n.sector && (
                           <span className="text-[10px] text-muted-foreground">{n.sector}</span>
-                        )}
-                        {n.timestamp && (
-                          <span className="text-[10px] text-muted-foreground">
-                            {n.timestamp.slice(0, 10)}
-                          </span>
                         )}
                       </div>
                     </div>
@@ -2885,6 +2884,7 @@ export function NewsIntelligence() {
                 ))}
               </div>
             )}
+            </div>
           </Panel>
         </div>
         <div className="space-y-4">

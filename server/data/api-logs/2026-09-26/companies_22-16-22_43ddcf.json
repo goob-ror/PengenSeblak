@@ -1,0 +1,45 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T14:16:22.820Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Oil, Gas & Coal' and market_cap > 0 and last_close_price > 0 and daily_close_change > -100 and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "60",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 276
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "SICO.JK",
+        "company_name": "PT Sigma Energy Compressindo Tbk",
+        "query_values": {
+          "sub_sector": "Oil, Gas & Coal",
+          "market_cap": 100108554040,
+          "last_close_price": 110,
+          "daily_close_change": -0.0434782608695652,
+          "pe_ttm": 7.9231079968384,
+          "roe_ttm": 0.09041312123608,
+          "net_profit_margin[2025]": 0.083691116883978,
+          "der_mrq": 0.28618337455141
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 61,
+      "showing": 1,
+      "limit": 30,
+      "offset": 60,
+      "has_next": false,
+      "has_previous": true,
+      "next_offset": null,
+      "previous_offset": 30
+    }
+  }
+}

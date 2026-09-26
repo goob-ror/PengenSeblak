@@ -1,0 +1,174 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T14:16:33.442Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Banks' and market_cap > 0 and last_close_price > 0 and daily_close_change > -100 and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "30",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 268
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "BNBA.JK",
+        "company_name": "Bank Bumi Arta Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2851002000000,
+          "last_close_price": 850,
+          "daily_close_change": -0.00584795321637427,
+          "pe_ttm": 155.018913738913,
+          "roe_ttm": 0.00564832009292514,
+          "net_profit_margin[2025]": 0.0282712689530289
+        }
+      },
+      {
+        "symbol": "BGTG.JK",
+        "company_name": "PT Bank Ganesha Tbk.",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2729098020180,
+          "last_close_price": 115,
+          "daily_close_change": 0.0176991150442478,
+          "pe_ttm": 11.6916414414175,
+          "roe_ttm": 0.0620467234371029,
+          "net_profit_margin[2025]": 0.493073890085458
+        }
+      },
+      {
+        "symbol": "BBYB.JK",
+        "company_name": "PT Bank Neo Commerce Tbk.",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2722697369738,
+          "last_close_price": 206,
+          "daily_close_change": -0.0373831775700935,
+          "pe_ttm": 4.65822863227897,
+          "roe_ttm": 0.132253149342436,
+          "net_profit_margin[2025]": 0.204727601076314
+        }
+      },
+      {
+        "symbol": "AGRS.JK",
+        "company_name": "PT Bank IBK Indonesia Tbk.",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2699922298818,
+          "last_close_price": 57,
+          "daily_close_change": -0.0172413793103448,
+          "pe_ttm": 16.4687651658391,
+          "roe_ttm": 0.0276952726026921,
+          "net_profit_margin[2025]": 0.295198179393171
+        }
+      },
+      {
+        "symbol": "MCOR.JK",
+        "company_name": "PT Bank China Construction Bank Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2477675191794,
+          "last_close_price": 66,
+          "daily_close_change": -0.0149253731343284,
+          "pe_ttm": 8.17593160023759,
+          "roe_ttm": 0.0416526184404634,
+          "net_profit_margin[2025]": 0.283308563021678
+        }
+      },
+      {
+        "symbol": "BACA.JK",
+        "company_name": "PT Bank Capital Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2232144893868,
+          "last_close_price": 113,
+          "daily_close_change": -0.0258620689655172,
+          "pe_ttm": 15.65626416034,
+          "roe_ttm": 0.0209345546282601,
+          "net_profit_margin[2025]": 0.104433307249529
+        }
+      },
+      {
+        "symbol": "BABP.JK",
+        "company_name": "PT Bank MNC Internasional Tbk.",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2200716656300,
+          "last_close_price": 50,
+          "daily_close_change": 0,
+          "pe_ttm": 26.858971103056,
+          "roe_ttm": 0.0216144178423411,
+          "net_profit_margin[2025]": 0.112948114999206
+        }
+      },
+      {
+        "symbol": "DNAR.JK",
+        "company_name": "PT Bank Oke Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 2056792615755,
+          "last_close_price": 123,
+          "daily_close_change": -0.0238095238095238,
+          "pe_ttm": 9.22297527327319,
+          "roe_ttm": 0.0570393274551135,
+          "net_profit_margin[2025]": 0.221933317167879
+        }
+      },
+      {
+        "symbol": "PNBS.JK",
+        "company_name": "PT Bank Panin Dubai Syariah Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 1921275245300,
+          "last_close_price": 50,
+          "daily_close_change": 0,
+          "pe_ttm": 25.7325620309327,
+          "roe_ttm": 0.0248122881626423,
+          "net_profit_margin[2025]": 0.0415602556892446
+        }
+      },
+      {
+        "symbol": "BVIC.JK",
+        "company_name": "Bank Victoria International Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 1641174007860,
+          "last_close_price": 90,
+          "daily_close_change": -0.0217391304347826,
+          "pe_ttm": 23.5095344097324,
+          "roe_ttm": 0.0161264550841804,
+          "net_profit_margin[2025]": 0.120646187731515
+        }
+      },
+      {
+        "symbol": "BEKS.JK",
+        "company_name": "PT Bank Pembangunan Daerah Banten Tbk.",
+        "query_values": {
+          "sub_sector": "Banks",
+          "market_cap": 1129738145426,
+          "last_close_price": 22,
+          "daily_close_change": -0.0434782608695652,
+          "pe_ttm": 16.7160592067057,
+          "roe_ttm": 0.0353998431771862,
+          "net_profit_margin[2025]": 0.184336875798459
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 41,
+      "showing": 11,
+      "limit": 30,
+      "offset": 30,
+      "has_next": false,
+      "has_previous": true,
+      "next_offset": null,
+      "previous_offset": 0
+    }
+  }
+}

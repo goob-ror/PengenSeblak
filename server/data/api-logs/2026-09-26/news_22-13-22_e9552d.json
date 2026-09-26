@@ -1,0 +1,269 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T14:13:22.766Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 654
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Second Liner Stocks Remain Prospective Through End‑2026, Catalysts Highlighted",
+        "body": "The article discusses that second‑liner equities are still viewed as having upside potential up to the end of 2026, supported by specific catalysts. Index data as of 25 September 2026 show the IDX SMC Composite down 21.80 % YTD and IDX SMC Liquid down 16.29 % YTD, outperforming the broader IHSG which fell 27.81 % YTD. Analysts point to sector exposure and company‑specific drivers for PT Bumi Resources Minerals Tbk (BRMS), PT Darma Henwa Tbk (DEWA) and PT Sawit Sumbermas Sarana Tbk (SSMS) as examples of second‑liner stocks with growth catalysts such as increased mining production, operating‑earnings inflection and high CPO prices. Additional buy recommendations include AKRA, DSNG, SSMS and TAPG with target prices of Rp 1,800, Rp 1,760, Rp 2,000 and Rp 2,050 respectively. Risks noted are high interest rates, rupiah and oil volatility, foreign outflows and execution risk.",
+        "source": "https://investasi.kontan.co.id/news/saham-second-liner-masih-prospektif-hingga-akhir-2026-ini-katalisnya",
+        "thumbnail": "https://foto.kontan.co.id/c-JISPbUJbkMf2NxZLhoW96DuOo=/smart/2026/03/03/1624793042t.jpg",
+        "timestamp": "2026-09-26T17:30:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "BRMS.JK",
+          "DEWA.JK",
+          "SSMS.JK",
+          "AKRA.JK",
+          "DSNG.JK",
+          "TAPG.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Sinar Mas Agro Resources and Technology Tbk (SMAR) prepares Rp958 billion to repay maturing 2021 Sustainable Bond",
+        "body": "PT Sinar Mas Agro Resources and Technology Tbk (SMAR) has set aside Rp958 billion to settle the principal of its Sustainable Bond III SMART Phase II 2021 Series C that matures on 19 Oct 2026. The company says its healthy liquidity position, confirmed by consolidated financial statements as of 30 June 2026, enables the scheduled repayment, with the funds to be transferred to the account of PT Kustodian Sentral Efek Indonesia (KSEI). SMAR’s latest financial results show net sales of Rp43.73 trillion (up 1.08% YoY), net profit of Rp2.34 trillion (up 185.36% YoY), and gross profit of Rp6.93 trillion (up 58.94% YoY), while cost of goods sold fell to Rp36.8 trillion. PEFINDO maintained SMAR’s credit rating at idAA- with a stable outlook, and the company still has additional sustainable bonds due in 2027, 2031 and 2033.",
+        "source": "https://www.idnfinancials.com/id/news/69480/smar-menyiapkan-rp958-miliar-untuk-melunasi-obligasi-yang-jatuh-tempo",
+        "thumbnail": "https://photo2.idnfinancials.com/fly/idn/test/arif/Jimmy-Pramono-SMAR-26092026.jpg",
+        "timestamp": "2026-09-26T17:00:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Bonds",
+          "ESG",
+          "Credit",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "SMAR.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "PT Golden Plantation Tbk (GOLL) placed under special monitoring by BEI due to revenue shortfall and subsidiary legal issues",
+        "body": "PT Golden Plantation Tbk (GOLL) has been moved to the Indonesia Stock Exchange’s Special Monitoring List. The status became effective on 26 September 2026, as announced by PT Bursa Efek Indonesia (BEI). BEI cited criteria number 3, indicating no revenue or no change in revenue in the latest financial statements, and criteria number 9, relating to a material‑revenue‑contributing subsidiary of GOLL that is under PKPU or bankruptcy proceedings. The special monitoring aims to provide greater investor protection and transparency while urging stakeholders to watch GOLL’s operational and financial developments.",
+        "source": "https://emitennews.com/news/saham-goll-masuk-pemantauan-khusus-bei-akibat-masalah-pendapatan",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790407268.jpg?25119ab",
+        "timestamp": "2026-09-26T16:15:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Risk & Compliance",
+          "Bearish"
+        ],
+        "symbols": [
+          "GOLL.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Sarimelati Kencana Tbk (PZZA) reports lower H1 2026 revenue and profit despite modest store expansion",
+        "body": "PT Sarimelati Kencana Tbk (PZZA), the operator of Pizza Hut in Indonesia, posted a decline in first‑half 2026 revenue to Rp 1.47 trillion from Rp 1.54 trillion a year earlier. Operating profit fell to Rp 24.44 billion and net profit to Rp 8.27 billion, compared with Rp 40.61 billion and Rp 15.56 billion respectively in the same period of 2025. The company increased its store base to 579 outlets and reduced its workforce to 4,085 employees as of 30 June 2026, and paid a dividend of Rp 5 billion (Rp 1.66 per share) on 3 June 2026. PT Sarimelati Kencana Tbk (PZZA) remains controlled by PT Sriboga Raturaya, which holds 64.79 % of the shares.",
+        "source": "https://investor.id/market/455625/gerai-pizza-hut-di-indonesia-nasibnyasekarang",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/09/1790411322-1366x910.webp",
+        "timestamp": "2026-09-26T15:32:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "consumer-services"
+        ],
+        "tags": [
+          "Annual Report",
+          "Financial Metrics",
+          "Business Expansion",
+          "Dividend Announcement",
+          "Bearish"
+        ],
+        "symbols": [
+          "PZZA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Asuransi Harta Aman Pratama Tbk (AHAP) Receives OJK Approval for Rights Issue",
+        "body": "PT Asuransi Harta Aman Pratama Tbk (AHAP) obtained an effective approval from OJK on 28 September 2026 for its Rights Issue (PMHMETD V). The issue allows up to 3.5 billion new shares at a nominal price of Rp50 per share, potentially raising Rp175 billion, with each holder of seven existing shares entitled to five rights. PT Asuransi Central Asia (ACA), the principal shareholder of AHAP, will subscribe to the full allocation of 2,190,245,006 new shares (62.58% of the issue), converting a Rp30 billion subordinated loan into capital and paying the remaining Rp79.51 billion in cash. The new shares will be listed on the Indonesia Stock Exchange on 12 October 2026, with trading, subscription, and payment periods running from 12 to 16 October and related cum‑/ex‑HMETD dates set in early October.",
+        "source": "https://investasi.kontan.co.id/news/asuransi-harta-aman-ahap-kantongi-restu-ojk-untuk-rights-issue",
+        "thumbnail": "https://foto.kontan.co.id/RWk1ykEabO7g9sBvU2BxQ342aWc=/smart/2011/12/01/550935101t.jpg",
+        "timestamp": "2026-09-26T15:23:00",
+        "sector": "financials",
+        "sub_sector": [
+          "insurance"
+        ],
+        "tags": [
+          "Capital & Funding",
+          "Ownership",
+          "Neutral"
+        ],
+        "symbols": [
+          "AHAP.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Merdeka Battery Materials Tbk (MBMA) reports net profit of US$54 million in H1 2026, up 830% YoY",
+        "body": "The issuer PT Merdeka Battery Materials Tbk (MBMA) posted net profit of US$54 million in the first half of 2026, an 830% increase from the same period in 2025. Revenue rose 67% to US$1.05 billion and EBITDA climbed 306% to US$311 million, driven by higher nickel ore production (15.2 million wet metric tonnes, up 121%) and sales (12.4 million wet metric tonnes, up 60%), as well as growth in Nickel Pig Iron and High‑Grade Nickel Matte output. The company attributed the performance to expanded mining volume, improved processing, and a new pricing formula for nickel ore, while noting ongoing ramp‑up of related assets such as PT Merdeka Tsingshan Indonesia’s acid operations, PT ESG New Energy Material’s MHP production, and the commissioning of PT Sulawesi Nickel Cobalt.",
+        "source": "https://investasi.kontan.co.id/news/laba-bersih-merdeka-battery-mbma-melonjak-830-jadi-us-54-juta-di-semester-i-2026",
+        "thumbnail": "https://foto.kontan.co.id/7G8oR7PcfpHMc75xYlPy_klnhfg=/smart/2026/05/01/886842996t.jpg",
+        "timestamp": "2026-09-26T13:23:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Annual Report",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "MBMA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Antam (Persero) Tbk (Antam) absorbs 9 tons of gold from PT Freeport Indonesia through August 2026",
+        "body": "PT Antam (Persero) Tbk (Antam) has purchased nine tons of gold from PT Freeport Indonesia (PTFI) between January and August 2026 as part of its effort to strengthen the domestic gold supply chain. The transaction builds on an existing gold trade agreement of up to 30 tons per year and complements Antam’s collaborations with several Indonesian gold producers such as PT Amman Mineral Nusa Tenggara (AMNT), PT Citra Palu Minerals (CPM), PT Agincourt Resources, PT Sumbawa Jutaraya (SJR), PT J Resources Bolaang Mongondow (JRBM) and PT Indo Muro Kencana (IMK). In the first half of 2026 Antam reported gold sales of 18,080 kg (18.08 tons) worth Rp50.39 trillion, a 1 % increase YoY, contributing roughly 80 % of its total net sales of Rp62.71 trillion, while its own mine production amounted to 433 kg.",
+        "source": "https://www.cnnindonesia.com/ekonomi/20260926125030-85-1408470/antam-serap-sembilan-ton-emas-freeport-hingga-agustus",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2019/12/23/730115ba-37dd-4737-bc6a-5027688c7c17_169.jpeg?w=280&q=90",
+        "timestamp": "2026-09-26T13:17:01",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Partnerships & Agreements",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Merdeka Copper Gold Tbk (MDKA) posts H1 2026 net profit of US$102 million",
+        "body": "PT Merdeka Copper Gold Tbk (MDKA) posted a net profit attributable to owners of the parent of US$102 million for the first half of 2026, reversing a US$16 million loss a year earlier, as nickel and gold businesses strengthened. Consolidated revenue grew 64% year‑on‑year to US$1.40 billion and EBITDA surged 191% to US$512 million. The nickel segment, operating through PT Merdeka Battery Materials Tbk (MBMA), lifted production 121% to 15.2 million wet metric tonnes and sales 60% to 12.4 million wmt, while gold output rose 32% to 66,814 ounces, driven by Tambang Emas Tujuh Bukit and the newly commissioned Tambang Emas Pani. PT ESG New Energy Material expanded Mixed Hydroxide Precipitate output and PT Sulawesi Nickel Cobalt progressed its High Pressure Acid Leach project, as MDKA pursues further growth projects and monitors commodity prices, energy costs, exchange rates and regulatory developments.",
+        "source": "https://investasi.kontan.co.id/news/kinerja-emas-nikel-menguat-merdeka-copper-mdka-kembali-cetak-laba-us-102-juta",
+        "thumbnail": "https://foto.kontan.co.id/ENycMmRGcjTeBhQVSd8ZE5f7Q1M=/smart/2026/07/14/1449177126t.jpg",
+        "timestamp": "2026-09-26T12:56:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Annual Report",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "MDKA.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10870,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}
