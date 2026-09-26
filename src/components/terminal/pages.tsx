@@ -1148,7 +1148,7 @@ export function SectorIntelligence() {
 
   // ── Dynamic sector list from the API ────────────────────────────────────
   const subsectorList = useSubsectorList();
-  const sectors = subsectorList.data ?? [];
+  const sectors = useMemo(() => subsectorList.data ?? [], [subsectorList.data]);
 
   // Restore from localStorage — default only if no saved value and list arrived
   useEffect(() => {
@@ -2020,7 +2020,7 @@ export function CompanyTerminal() {
       };
     });
     return dominanceScore(rows);
-  }, [analyses]);
+  }, [analyses, peers]);
 
   // ── Comparison matrix rows (live values, "—" while loading) ─────────────
   const lastRatios = (a: (typeof analyses)[number], group: string, key: string): number | null => {
@@ -2678,39 +2678,63 @@ function HHIPanel({ symbol, enabled }: { symbol: string; enabled: boolean }) {
 // 4. NEWS INTELLIGENCE
 // ─────────────────────────────────────────────────────────────────────────────
 export function NewsIntelligence() {
-  const [sentiment, setSentiment] = useState("Semua");
-  const [catalyst, setCatalyst] = useState("Semua");
-  const [impact, setImpact] = useState("Semua");
+  const [sectorFilter, setSectorFilter] = useState("Semua");
+  const [tagFilter, setTagFilter] = useState("Semua");
   const [query, setQuery] = useState("");
-  const [detail, setDetail] = useState<(typeof news)[number] | null>(null);
+  const [detail, setDetail] = useState<NewsArticle | null>(null);
 
-  const catalysts = ["Semua", ...Array.from(new Set(news.map((n) => n.catalyst)))];
-  const sentiments = ["Semua", "Positive", "Neutral", "Negative"];
-  const impacts = ["Semua", "High", "Medium", "Low"];
+  // Use limit=8 to share the exact same TanStack Query cache key as the
+  // dashboard (MarketOverview) — zero extra API credits when navigating here.
+  const newsFeed = useIdxNews(8);
+  const articles = useMemo(() => newsFeed.data ?? [], [newsFeed.data]);
+
+  // Derive unique sectors from live data for the sector filter
+  const sectors = useMemo(
+    () => [
+      "Semua",
+      ...Array.from(new Set(articles.map((n) => n.sector).filter(Boolean) as string[])),
+    ],
+    [articles],
+  );
 
   const filtered = useMemo(
     () =>
-      news.filter(
+      articles.filter(
         (n) =>
-          (sentiment === "Semua" || n.sentiment === sentiment) &&
-          (catalyst === "Semua" || n.catalyst === catalyst) &&
-          (impact === "Semua" || n.impact === impact) &&
-          (!query ||
-            (n.headline + n.company + n.sector).toLowerCase().includes(query.toLowerCase())),
+          (sectorFilter === "Semua" || n.sector === sectorFilter) &&
+          (tagFilter === "Semua" || (n.tags ?? []).includes(tagFilter)) &&
+          (!query || n.title.toLowerCase().includes(query.toLowerCase())),
       ),
-    [sentiment, catalyst, impact, query],
+    [articles, sectorFilter, tagFilter, query],
   );
 
-  const sentimentCounts = { Positive: 0, Neutral: 0, Negative: 0 };
-  news.forEach((n) => {
-    if (n.sentiment in sentimentCounts)
-      sentimentCounts[n.sentiment as keyof typeof sentimentCounts]++;
-  });
+  // Sector distribution for sidebar
+  const sectorCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    articles.forEach((n) => {
+      if (n.sector) counts[n.sector] = (counts[n.sector] ?? 0) + 1;
+    });
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8);
+  }, [articles]);
+
+  // Tag distribution for sidebar — top tags across all articles
+  const tagCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    articles.forEach((n) => {
+      (n.tags ?? []).forEach((t) => {
+        counts[t] = (counts[t] ?? 0) + 1;
+      });
+    });
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+  }, [articles]);
 
   const activeFilters = [
-    sentiment !== "Semua" && sentiment,
-    catalyst !== "Semua" && catalyst,
-    impact !== "Semua" && impact,
+    sectorFilter !== "Semua" && sectorFilter,
+    tagFilter !== "Semua" && tagFilter,
   ].filter(Boolean) as string[];
 
   return (
@@ -2722,16 +2746,15 @@ export function NewsIntelligence() {
         <div className="space-y-4">
           <Panel
             title="Feed Berita"
-            kicker="Katalis terklasifikasi"
+            kicker="Berita pasar IDX terbaru"
             action={
               <div className="flex items-center gap-2">
                 {activeFilters.map((f) => (
                   <button
                     key={f}
                     onClick={() => {
-                      if (f === sentiment) setSentiment("Semua");
-                      else if (f === catalyst) setCatalyst("Semua");
-                      else setImpact("Semua");
+                      if (f === sectorFilter) setSectorFilter("Semua");
+                      else setTagFilter("Semua");
                     }}
                     className="inline-flex items-center"
                   >
@@ -2740,7 +2763,13 @@ export function NewsIntelligence() {
                     </Tag>
                   </button>
                 ))}
-                <span className="text-[10px] text-muted-foreground">{filtered.length} sinyal</span>
+                {newsFeed.isFetching ? (
+                  <RefreshCw className="size-3 animate-spin text-muted-foreground" />
+                ) : (
+                  <span className="text-[10px] text-muted-foreground">
+                    {filtered.length} berita
+                  </span>
+                )}
               </div>
             }
           >
@@ -2750,146 +2779,176 @@ export function NewsIntelligence() {
                 <Input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Emiten, sektor, atau headline"
+                  placeholder="Cari judul berita…"
                   className="h-8 pl-8 text-xs"
                 />
               </div>
               <select
-                value={sentiment}
-                onChange={(e) => setSentiment(e.target.value)}
+                value={sectorFilter}
+                onChange={(e) => setSectorFilter(e.target.value)}
                 className="h-8 border border-input bg-background px-2 text-xs"
               >
-                {sentiments.map((x) => (
-                  <option key={x}>{x}</option>
-                ))}
-              </select>
-              <select
-                value={catalyst}
-                onChange={(e) => setCatalyst(e.target.value)}
-                className="h-8 border border-input bg-background px-2 text-xs"
-              >
-                {catalysts.map((x) => (
-                  <option key={x}>{x}</option>
-                ))}
-              </select>
-              <select
-                value={impact}
-                onChange={(e) => setImpact(e.target.value)}
-                className="h-8 border border-input bg-background px-2 text-xs"
-              >
-                {impacts.map((x) => (
+                {sectors.map((x) => (
                   <option key={x}>{x}</option>
                 ))}
               </select>
             </div>
-            <div>
-              {filtered.length === 0 && (
-                <div className="p-10 text-center text-xs text-muted-foreground">
-                  Tidak ada berita yang cocok dengan filter aktif.
-                </div>
-              )}
-              {filtered.map((n) => (
-                <button
-                  key={n.headline}
-                  onClick={() => setDetail(n)}
-                  className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[45px_1fr_260px]"
-                >
-                  <span className="text-xs text-muted-foreground tabular-nums">{n.time}</span>
-                  <div>
-                    <div className="text-sm leading-5">{n.headline}</div>
-                    <div className="mt-2 flex gap-2">
-                      <span className="text-[10px] font-semibold text-primary">{n.company}</span>
-                      <span className="text-[10px] text-muted-foreground">
-                        {n.sector} · {n.source}
-                      </span>
+            {newsFeed.isPending ? (
+              <div className="space-y-2 p-4">
+                {Array.from({ length: 6 }, (_, i) => (
+                  <div key={i} className="h-16 animate-pulse rounded bg-secondary/50" />
+                ))}
+              </div>
+            ) : newsFeed.isError ? (
+              <div className="p-10 text-center text-xs text-muted-foreground">
+                Berita tidak dapat dimuat.
+              </div>
+            ) : (
+              <div>
+                {filtered.length === 0 && (
+                  <div className="p-10 text-center text-xs text-muted-foreground">
+                    Tidak ada berita yang cocok dengan filter aktif.
+                  </div>
+                )}
+                {filtered.map((n, i) => (
+                  <button
+                    key={`${n.timestamp}-${i}`}
+                    onClick={() => setDetail(n)}
+                    className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[60px_1fr_auto]"
+                  >
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      {n.timestamp?.slice(11, 16)}
+                    </span>
+                    <div>
+                      <div className="text-sm leading-5">{n.title}</div>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {(n.symbols ?? []).length > 0 && (
+                          <span className="text-[10px] font-semibold text-primary">
+                            {n
+                              .symbols!.slice(0, 3)
+                              .map((s) => s.replace(".JK", ""))
+                              .join(", ")}
+                          </span>
+                        )}
+                        {n.sector && (
+                          <span className="text-[10px] text-muted-foreground">{n.sector}</span>
+                        )}
+                        {n.timestamp && (
+                          <span className="text-[10px] text-muted-foreground">
+                            {n.timestamp.slice(0, 10)}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start justify-end gap-1.5 flex-wrap">
-                    <Tag
-                      tone={
-                        n.sentiment === "Positive"
-                          ? "positive"
-                          : n.sentiment === "Negative"
-                            ? "negative"
-                            : "neutral"
-                      }
-                    >
-                      {n.sentiment}
-                    </Tag>
-                    <Tag tone="accent">{n.catalyst}</Tag>
-                    <Tag
-                      tone={
-                        n.impact === "High" ? "warning" : n.impact === "Low" ? "neutral" : "accent"
-                      }
-                    >
-                      {n.impact}
-                    </Tag>
-                    <ChevronRight className="size-4 text-muted-foreground self-center" />
-                  </div>
-                </button>
-              ))}
-            </div>
+                    <div className="flex items-start gap-1.5 flex-wrap justify-end">
+                      {(n.tags ?? []).slice(0, 2).map((t) => (
+                        <Tag key={t} tone="accent">
+                          {t}
+                        </Tag>
+                      ))}
+                      <ChevronRight className="size-4 text-muted-foreground self-center" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </Panel>
         </div>
         <div className="space-y-4">
-          <Panel title="Distribusi Sinyal">
-            <div className="p-4">
-              {(
-                [
-                  ["Positive", sentimentCounts.Positive, "positive"],
-                  ["Neutral", sentimentCounts.Neutral, "accent"],
-                  ["Negative", sentimentCounts.Negative, "negative"],
-                ] as [string, number, Tone][]
-              ).map(([l, n, t]) => (
-                <div className="mb-4" key={l}>
-                  <div className="mb-2 flex justify-between text-xs">
-                    <span>{l}</span>
-                    <span>
-                      {n} · {news.length > 0 ? Math.round((n / news.length) * 100) : 0}%
-                    </span>
-                  </div>
-                  <Bar value={news.length > 0 ? Math.round((n / news.length) * 100) : 0} tone={t} />
+          {/* ── Distribusi Sektor: clickable filter ── */}
+          <Panel title="Distribusi Sektor" kicker="(Klik untuk filter)">
+            <div className="divide-y divide-border">
+              {newsFeed.isPending ? (
+                <div className="space-y-3 p-4">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <div key={i} className="h-4 animate-pulse rounded bg-secondary/50" />
+                  ))}
                 </div>
-              ))}
-            </div>
-          </Panel>
-          <Panel title="Distribusi Katalis">
-            <div className="p-4">
-              {catalysts
-                .filter((c) => c !== "Semua")
-                .map((c) => {
-                  const count = news.filter((n) => n.catalyst === c).length;
+              ) : sectorCounts.length === 0 ? (
+                <p className="p-4 text-[10px] text-muted-foreground">Tidak ada data.</p>
+              ) : (
+                sectorCounts.map(([sector, count]) => {
+                  const pct = articles.length > 0 ? Math.round((count / articles.length) * 100) : 0;
+                  const isActive = sectorFilter === sector;
                   return (
                     <button
-                      key={c}
-                      onClick={() => setCatalyst(catalyst === c ? "Semua" : c)}
+                      key={sector}
+                      onClick={() => setSectorFilter(isActive ? "Semua" : sector)}
                       className={cn(
-                        "mb-2 flex w-full items-center justify-between text-xs transition-colors hover:text-primary",
-                        catalyst === c ? "text-primary font-medium" : "text-muted-foreground",
+                        "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
+                        isActive
+                          ? "border-l-2 border-primary bg-primary/8 text-primary"
+                          : "border-l-2 border-transparent hover:bg-secondary/70 hover:border-border hover:text-primary",
                       )}
                     >
-                      <span>{c}</span>
-                      <span className="tabular-nums">{count}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-1 flex justify-between text-xs">
+                          <span
+                            className={cn(
+                              "truncate max-w-[130px]",
+                              isActive ? "font-semibold" : "text-foreground",
+                            )}
+                          >
+                            {sector}
+                          </span>
+                          <span
+                            className={cn(
+                              "tabular-nums shrink-0 ml-2",
+                              isActive ? "text-primary" : "text-muted-foreground",
+                            )}
+                          >
+                            {count} · {pct}%
+                          </span>
+                        </div>
+                        <Bar value={pct} tone={isActive ? "positive" : "accent"} />
+                      </div>
                     </button>
                   );
-                })}
+                })
+              )}
             </div>
           </Panel>
-          <Panel title="Pemetaan Dampak" kicker="Turunan">
-            <div className="p-4 text-xs">
-              <div className="grid grid-cols-[1fr_auto] items-center gap-2">
-                <div className="border border-border p-2">Peristiwa berita</div>
-                <ChevronRight className="size-3" />
-                <div className="border border-primary/30 bg-primary/5 p-2">Katalis emiten</div>
-                <ChevronRight className="size-3" />
-                <div className="border border-border p-2">Transmisi sektor</div>
-                <ChevronRight className="size-3" />
-                <div className="border border-warning/30 bg-warning/5 p-2">Potensi dampak</div>
-              </div>
-              <p className="mt-4 text-[10px] leading-4 text-muted-foreground">
-                Memetakan relevansi peristiwa di konteks emiten dan sektor. Potensi dampak bukan
-                prediksi harga.
-              </p>
+
+          {/* ── Distribusi Tags: top tags, clickable filter ── */}
+          <Panel title="Distribusi Tags" kicker="(Klik untuk filter)">
+            <div className="divide-y divide-border">
+              {newsFeed.isPending ? (
+                <div className="space-y-3 p-4">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <div key={i} className="h-4 animate-pulse rounded bg-secondary/50" />
+                  ))}
+                </div>
+              ) : tagCounts.length === 0 ? (
+                <p className="p-4 text-[10px] text-muted-foreground">Tidak ada data.</p>
+              ) : (
+                tagCounts.map(([tag, count]) => {
+                  const isActive = tagFilter === tag;
+                  return (
+                    <button
+                      key={tag}
+                      onClick={() => setTagFilter(isActive ? "Semua" : tag)}
+                      className={cn(
+                        "flex w-full items-center justify-between px-4 py-2.5 text-xs transition-colors",
+                        isActive
+                          ? "border-l-2 border-primary bg-primary/8 text-primary font-semibold"
+                          : "border-l-2 border-transparent text-foreground hover:bg-secondary/70 hover:border-border hover:text-primary",
+                      )}
+                    >
+                      <span className="truncate max-w-[170px] text-left">{tag}</span>
+                      <span
+                        className={cn(
+                          "ml-2 shrink-0 tabular-nums rounded-sm px-1.5 py-0.5 text-[10px] font-medium",
+                          isActive
+                            ? "bg-primary/15 text-primary"
+                            : "bg-secondary text-muted-foreground",
+                        )}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })
+              )}
             </div>
           </Panel>
         </div>
@@ -2897,53 +2956,44 @@ export function NewsIntelligence() {
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
         <SheetContent className="border-border bg-popover">
           <SheetHeader>
-            <SheetTitle>Analisis dampak berita</SheetTitle>
-            <SheetDescription>{detail?.headline}</SheetDescription>
+            <SheetTitle>Detail Berita</SheetTitle>
+            <SheetDescription>{detail?.title}</SheetDescription>
           </SheetHeader>
           {detail && (
             <div className="space-y-5 p-5">
               <div className="grid grid-cols-2 gap-4">
-                {meta("Emiten", detail.company)}
-                {meta("Sektor", detail.sector)}
-                {meta("Sentimen", detail.sentiment)}
-                {meta("Katalis", detail.catalyst)}
-                {meta("Dampak", detail.impact)}
-                {meta("Sumber", detail.source)}
+                {detail.sector && meta("Sektor", detail.sector)}
+                {(detail.sub_sector ?? []).length > 0 &&
+                  meta("Sub-sektor", detail.sub_sector!.join(", "))}
+                {(detail.symbols ?? []).length > 0 &&
+                  meta("Emiten", detail.symbols!.map((s) => s.replace(".JK", "")).join(", "))}
+                {detail.timestamp && meta("Waktu", detail.timestamp.replace("T", " ").slice(0, 16))}
               </div>
-              <div className="border-l-2 border-primary bg-accent/40 p-4">
-                <InsightLabel>Potensi transmisi</InsightLabel>
-                <p className="mt-2 text-xs leading-5">
-                  Peristiwa {detail.catalyst.toLowerCase()} ini dapat memengaruhi fundamental{" "}
-                  {detail.company} terlebih dahulu, dengan relevansi {detail.impact.toLowerCase()}{" "}
-                  bagi kelompok peer {detail.sector} yang lebih luas.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <Tag
-                  tone={
-                    detail.sentiment === "Positive"
-                      ? "positive"
-                      : detail.sentiment === "Negative"
-                        ? "negative"
-                        : "neutral"
-                  }
-                  className="justify-center py-2 text-xs"
+              {detail.body && (
+                <div className="border-l-2 border-primary bg-accent/40 p-4">
+                  <InsightLabel>Ringkasan</InsightLabel>
+                  <p className="mt-2 text-xs leading-5">{detail.body}</p>
+                </div>
+              )}
+              {(detail.tags ?? []).length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {detail.tags!.map((t) => (
+                    <Tag key={t} tone="accent">
+                      {t}
+                    </Tag>
+                  ))}
+                </div>
+              )}
+              {detail.source && (
+                <a
+                  href={detail.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] text-primary hover:underline"
                 >
-                  Sentimen: {detail.sentiment}
-                </Tag>
-                <Tag
-                  tone={
-                    detail.impact === "High"
-                      ? "warning"
-                      : detail.impact === "Low"
-                        ? "neutral"
-                        : "accent"
-                  }
-                  className="justify-center py-2 text-xs"
-                >
-                  Dampak: {detail.impact}
-                </Tag>
-              </div>
+                  Baca artikel lengkap <ChevronRight className="size-3" />
+                </a>
+              )}
             </div>
           )}
         </SheetContent>
@@ -2976,7 +3026,7 @@ export function DecisionScreener() {
     setActiveFlags((prev) => (prev.includes(f) ? prev.filter((x) => x !== f) : [...prev, f]));
 
   const result = useMemo(() => {
-    let list = companies.filter(
+    const list = companies.filter(
       (c) =>
         c.shi >= minShi &&
         c.safety >= minSafety &&
