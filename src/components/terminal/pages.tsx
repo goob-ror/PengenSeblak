@@ -18,6 +18,7 @@ import {
   RefreshCw,
   Scale,
   Search,
+  MousePointerClick,
   Shield,
   ShieldCheck,
   Sparkles,
@@ -679,7 +680,7 @@ export function MarketOverview() {
               {/* Bar chart with grid — 20 sessions, top of panel */}
               <ForeignFlowChart data={(foreignFl.data?.series ?? []).slice(-20)} />
               {/* Summary stats below chart */}
-              <div className="grid grid-cols-3 divide-x divide-border border-t border-border">
+              <div className="grid grid-cols-3 divide-x divide-border border-t">
                 <div className="px-4 py-3">
                   <div className="text-[10px] text-muted-foreground">MTD</div>
                   <div
@@ -893,8 +894,8 @@ export function MarketOverview() {
               </div>
             </div>
           ) : (
-            <div className="divide-y divide-border">
-              {(anom.data ?? []).slice(0, 6).map((a) => (
+            <div className="max-h-105 divide-y divide-border overflow-y-auto">
+              {(anom.data ?? []).map((a) => (
                 <button
                   key={a.symbol + a.type}
                   onClick={() => setDetail(a)}
@@ -934,9 +935,15 @@ export function MarketOverview() {
                             "text-sm font-semibold tabular-nums",
                             a.deviation >= 0 ? "text-positive" : "text-negative",
                           )}
+                          title={
+                            a.metric === "Net Margin"
+                              ? `Selisih ${a.value} vs rata-rata peer ${a.average} (poin persentase)`
+                              : `Selisih ${a.value} vs rata-rata peer ${a.average} (x)`
+                          }
                         >
                           {a.deviation >= 0 ? "+" : ""}
                           {a.deviation}
+                          {a.metric !== "Net Margin" && "x"}
                         </div>
                         <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">
                           {a.severity}
@@ -1251,7 +1258,7 @@ export function SectorIntelligence() {
           value={selectedSlug}
           onChange={(e) => selectSector(e.target.value)}
           disabled={subsectorList.isPending}
-          className="h-8 max-w-[220px] border border-input bg-background px-3 text-xs"
+          className="h-8 max-w-55 border border-input bg-background px-3 text-xs"
         >
           {subsectorList.isPending && <option>Memuat sektor…</option>}
           {!subsectorList.isPending && sectors.length === 0 && (
@@ -1564,7 +1571,7 @@ export function SectorIntelligence() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[900px]">
+            <table className="w-full min-w-225">
               <thead>
                 <tr>
                   <th className={th}>Ticker</th>
@@ -1621,9 +1628,7 @@ export function SectorIntelligence() {
                     return (
                       <tr key={c.symbol} className="hover:bg-secondary/50">
                         <td className={cn(td, "font-semibold text-primary")}>{c.symbol}</td>
-                        <td className={cn(td, "max-w-[220px] truncate")}>
-                          {c.company_name || "—"}
-                        </td>
+                        <td className={cn(td, "max-w-55 truncate")}>{c.company_name || "—"}</td>
                         <td className={cn(td, "tabular-nums")}>{val(c.last_close_price)}</td>
                         <td className={td}>
                           {c.daily_close_change != null ? (
@@ -1701,7 +1706,10 @@ export function SectorIntelligence() {
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {meta("Emiten", a.value)}
                   {meta("Rata-rata peer", a.average)}
-                  {meta("Deviasi", `${a.deviation >= 0 ? "+" : ""}${a.deviation}`)}
+                  {meta(
+                    a.metric === "Net Margin" ? "Deviasi (pp)" : "Deviasi (x)",
+                    `${a.deviation >= 0 ? "+" : ""}${a.deviation}${a.metric !== "Net Margin" ? "x" : ""}`,
+                  )}
                 </div>
                 <div className="mt-4 border-l-2 border-primary pl-3 text-xs">{a.label}</div>
               </div>
@@ -1789,13 +1797,36 @@ interface PeerView {
 }
 
 export function CompanyTerminal() {
-  const [selected, setSelected] = useState<string[]>(["BBCA", "BBRI", "BMRI"]);
+  // Default peer set (large-cap banks) used ONLY on first visit — no stored
+  // selection yet. After that the user's choice persists in localStorage
+  // (same pattern as `sector.selectedSlug`) and the picker is authoritative.
+  const DEFAULT_PEERS = ["BBCA", "BBRI", "BMRI"];
+  const [selected, setSelected] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem("terminal.peers");
+      const arr = raw ? JSON.parse(raw) : null;
+      if (Array.isArray(arr)) {
+        return arr.filter((x): x is string => typeof x === "string").slice(0, 5);
+      }
+    } catch {
+      // corrupted entry — fall through to defaults
+    }
+    return DEFAULT_PEERS;
+  });
   const [searchQ, setSearchQ] = useState("");
   const [showSegments, setShowSegments] = useState(false);
   const { has, add, remove } = useWatchlistStore();
 
+  useEffect(() => {
+    try {
+      localStorage.setItem("terminal.peers", JSON.stringify(selected));
+    } catch {
+      // non-fatal
+    }
+  }, [selected]);
+
   // ── Data hooks ──────────────────────────────────────────────────────────
-  const universe = useTopCompanies(20);
+  const universe = useTopCompanies(50);
   const reportQueries = useCompanyReports(selected);
   const ffMap = useFreeFloatMap();
 
@@ -1818,7 +1849,13 @@ export function CompanyTerminal() {
 
   const toggle = (t: string) =>
     setSelected((p) =>
-      p.includes(t) ? (p.length > 2 ? p.filter((x) => x !== t) : p) : p.length < 5 ? [...p, t] : p,
+      p.includes(t)
+        ? // Always allow deselect — the panels show their own empty/minimum
+          // states, so a 0/1-peer selection is legal UI.
+          p.filter((x) => x !== t)
+        : p.length < 5
+          ? [...p, t]
+          : p,
     );
 
   // ── Derived: Piotroski / Altman / percentile / analyst gap / free float ──
@@ -2111,7 +2148,7 @@ export function CompanyTerminal() {
             <Input
               value={searchQ}
               onChange={(e) => setSearchQ(e.target.value)}
-              placeholder="Cari ticker atau nama emiten… (20 emiten teratas IDX)"
+              placeholder="Cari ticker atau nama emiten… (50 emiten teratas IDX)"
               className="h-8 pl-8 text-xs"
             />
           </div>
@@ -2120,6 +2157,11 @@ export function CompanyTerminal() {
           {universe.isPending && <Skeleton className="h-7 w-40" />}
           {universe.isError && (
             <span className="text-xs text-muted-foreground">Universe emiten gagal dimuat.</span>
+          )}
+          {!universe.isPending && searchResults.length === 0 && (
+            <span className="text-xs text-muted-foreground">
+              Tidak ada emiten yang cocok dengan &ldquo;{searchQ}&rdquo;.
+            </span>
           )}
           {searchResults.slice(0, 20).map((c) => (
             <button
@@ -2147,58 +2189,66 @@ export function CompanyTerminal() {
           kicker="Fundamental live Sectors API"
           action={
             <span className="text-[10px] text-muted-foreground">
-              {reportQueries.some((q) => q?.isPending)
-                ? "Memuat laporan…"
-                : "6 kredit/simbol · cache 24j"}
+              {peers.length === 0
+                ? "0 emiten dipilih"
+                : reportQueries.some((q) => q?.isPending)
+                  ? "Memuat laporan…"
+                  : "6 kredit/simbol · cache 24j"}
             </span>
           }
         >
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[680px]">
-              <thead>
-                <tr>
-                  <th className={th}>Indikator</th>
-                  {peers.map((c) => (
-                    <th className={th} key={c.symbol}>
-                      <div className="text-primary">{c.symbol}</div>
-                      <div className="mt-1 normal-case text-muted-foreground">
-                        {c.isPending
-                          ? "Memuat…"
-                          : (c.report?.company_name?.split(" ").slice(0, 2).join(" ") ?? "—")}
-                      </div>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {matrixRows.map(({ label, tooltip, get }) => (
-                  <tr key={label}>
-                    <td className={cn(td, "text-muted-foreground")}>
-                      <span className="flex items-center gap-1">
-                        {label}
-                        <MethodTip text={tooltip} />
-                      </span>
-                    </td>
-                    {analyses.map((a, colIdx) => {
-                      const val = a.report ? get(a) : "—";
-                      return (
-                        <td
-                          key={a.symbol}
-                          className={cn(
-                            td,
-                            "text-base font-medium",
-                            colIdx === 0 && "bg-accent/30",
-                          )}
-                        >
-                          {val}
-                        </td>
-                      );
-                    })}
+          {peers.length === 0 ? (
+            <div className="flex h-40 items-center justify-center text-xs text-muted-foreground">
+              Pilih emiten dari panel di atas untuk membandingkan.
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-170">
+                <thead>
+                  <tr>
+                    <th className={th}>Indikator</th>
+                    {peers.map((c) => (
+                      <th className={th} key={c.symbol}>
+                        <div className="text-primary">{c.symbol}</div>
+                        <div className="mt-1 normal-case text-muted-foreground">
+                          {c.isPending
+                            ? "Memuat…"
+                            : (c.report?.company_name?.split(" ").slice(0, 2).join(" ") ?? "—")}
+                        </div>
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {matrixRows.map(({ label, tooltip, get }) => (
+                    <tr key={label}>
+                      <td className={cn(td, "text-muted-foreground")}>
+                        <span className="flex items-center gap-1">
+                          {label}
+                          <MethodTip text={tooltip} />
+                        </span>
+                      </td>
+                      {analyses.map((a, colIdx) => {
+                        const val = a.report ? get(a) : "—";
+                        return (
+                          <td
+                            key={a.symbol}
+                            className={cn(
+                              td,
+                              "text-base font-medium",
+                              colIdx === 0 && "bg-accent/30",
+                            )}
+                          >
+                            {val}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </Panel>
         <Panel
           title="Dominance Score"
@@ -2208,11 +2258,15 @@ export function CompanyTerminal() {
           }
         >
           <div className="p-4">
-            {dominance.length === 0 && peers.length < 2 && (
+            {peers.length === 0 ? (
+              <div className="py-6 text-center text-xs text-muted-foreground">
+                Pilih minimal 2 emiten untuk melihat Dominance Score.
+              </div>
+            ) : dominance.length === 0 && peers.length < 2 ? (
               <div className="py-6 text-center text-xs text-muted-foreground">
                 Pilih minimal 2 emiten.
               </div>
-            )}
+            ) : null}
             {[...dominance]
               .sort((a, b) => b.total - a.total)
               .map((d, i) => {
@@ -2265,129 +2319,144 @@ export function CompanyTerminal() {
           <MethodTip text="Piotroski (0–9): profitabilitas 4 · leverage/likuiditas 3 · efisiensi 2. Altman Z (non-manufaktur): 6.56·X1 + 3.26·X2 + 6.72·X3 + 1.05·X4; >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 distress. Bank memakai modifikasi giro+tabungan/ATMR." />
         }
       >
-        <div className="grid gap-px bg-border md:grid-cols-3">
-          {analyses.map((a) => {
-            const inList = has(a.symbol);
-            const fs = a.fScore;
-            const alt = a.altman;
-            const zoneTone: Tone =
-              alt?.zone === "safe"
-                ? "positive"
-                : alt?.zone === "grey"
-                  ? "warning"
-                  : alt?.zone === "distress"
-                    ? "negative"
-                    : "neutral";
-            const fsTone: Tone = fs
-              ? fs.total >= 7
-                ? "positive"
-                : fs.total >= 4
-                  ? "warning"
-                  : "negative"
-              : "neutral";
-            return (
-              <div className="bg-card p-5" key={a.symbol}>
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold">{a.symbol}</span>
-                  <button
-                    onClick={() => (inList ? remove(a.symbol) : add(a.symbol))}
-                    className={cn(
-                      "rounded p-1 transition-colors",
-                      inList ? "text-primary" : "text-muted-foreground hover:text-primary",
-                    )}
-                  >
-                    <Star className={cn("size-3.5", inList && "fill-current")} />
-                  </button>
-                </div>
-
-                {/* Piotroski */}
-                <div className="mt-4 flex items-end justify-between">
-                  <div>
-                    <div className="text-[10px] uppercase text-muted-foreground">
-                      Piotroski F-Score
-                    </div>
-                    {fs?.available ? (
-                      <div className="text-4xl font-semibold">
-                        {fs.total}
-                        <span className="text-lg text-muted-foreground">/9</span>
-                      </div>
-                    ) : (
-                      <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
-                    )}
+        {analyses.length === 0 ? (
+          <div className="flex items-center justify-center gap-1.5 p-8 text-xs text-muted-foreground">
+            <MousePointerClick className="size-3.5" />
+            Pilih emiten untuk menghitung Piotroski F-Score dan Altman Z-Score.
+          </div>
+        ) : (
+          <div className="grid gap-px bg-border md:grid-cols-3">
+            {analyses.map((a) => {
+              const inList = has(a.symbol);
+              const fs = a.fScore;
+              const alt = a.altman;
+              const zoneTone: Tone =
+                alt?.zone === "safe"
+                  ? "positive"
+                  : alt?.zone === "grey"
+                    ? "warning"
+                    : alt?.zone === "distress"
+                      ? "negative"
+                      : "neutral";
+              const fsTone: Tone = fs
+                ? fs.total >= 7
+                  ? "positive"
+                  : fs.total >= 4
+                    ? "warning"
+                    : "negative"
+                : "neutral";
+              return (
+                <div className="bg-card p-5" key={a.symbol}>
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold">{a.symbol}</span>
+                    <button
+                      onClick={() => (inList ? remove(a.symbol) : add(a.symbol))}
+                      className={cn(
+                        "rounded p-1 transition-colors",
+                        inList ? "text-primary" : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
+                      <Star className={cn("size-3.5", inList && "fill-current")} />
+                    </button>
                   </div>
-                  {fs?.available && (
-                    <div className="flex flex-col items-end gap-1 text-[9px] text-muted-foreground">
-                      <span>Profit {fs.profitability}/4</span>
-                      <span>Leverage {fs.leverage}/3</span>
-                      <span>Efisiensi {fs.efficiency}/2</span>
-                    </div>
-                  )}
-                </div>
-                {fs?.available && (
-                  <div className="mt-3 space-y-1">
-                    {fs.detail.map((d) => (
-                      <div key={d.id} className="flex items-center gap-2 text-[10px]">
-                        <span
-                          className={cn(
-                            "w-4 font-semibold",
-                            d.point ? "text-positive" : "text-muted-foreground",
-                          )}
-                        >
-                          {d.id}
-                        </span>
-                        <span className="flex-1 truncate text-muted-foreground" title={d.note}>
-                          {d.name}
-                        </span>
-                        <span
-                          className={cn(
-                            "tabular-nums",
-                            d.point ? "text-positive" : "text-negative",
-                          )}
-                        >
-                          {d.point}
-                        </span>
-                      </div>
-                    ))}
-                    <Tag tone={fsTone} className="mt-2">
-                      {fs.total >= 7
-                        ? "Kualitas Fundamental Kuat"
-                        : fs.total >= 4
-                          ? "Campuran"
-                          : "Lemah"}
-                    </Tag>
-                  </div>
-                )}
 
-                {/* Altman */}
-                <div className="mt-5 border-t border-border pt-4">
-                  <div className="flex items-end justify-between">
+                  {/* Piotroski */}
+                  <div className="mt-4 flex items-end justify-between">
                     <div>
                       <div className="text-[10px] uppercase text-muted-foreground">
-                        Altman Z-Score {alt?.isBank ? "(Bank)" : ""}
+                        Piotroski F-Score
                       </div>
-                      {alt?.score != null ? (
-                        <div className="text-4xl font-semibold">{alt.score.toFixed(2)}</div>
+                      {fs?.available ? (
+                        <div className="text-4xl font-semibold">
+                          {fs.total}
+                          <span className="text-lg text-muted-foreground">/9</span>
+                        </div>
                       ) : (
                         <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
                       )}
                     </div>
-                    {alt?.zone && <Tag tone={zoneTone}>{altmanZoneLabel(alt.zone)}</Tag>}
-                  </div>
-                  <div className="mt-3 grid grid-cols-2 gap-2">
-                    {alt?.components.map((c) => (
-                      <div key={c.id} className="text-[10px]">
-                        <span className="text-muted-foreground">
-                          {c.id} = {c.ratio != null ? c.ratio.toFixed(2) : "—"}
-                        </span>
-                        <span className="ml-1 text-foreground">× {c.coefficient}</span>
+                    {fs?.available && (
+                      <div className="flex flex-col items-end gap-1 text-[9px] text-muted-foreground">
+                        <span>Profit {fs.profitability}/4</span>
+                        <span>Leverage {fs.leverage}/3</span>
+                        <span>Efisiensi {fs.efficiency}/2</span>
                       </div>
-                    ))}
+                    )}
+                  </div>
+                  {fs?.available && (
+                    <div className="mt-3 space-y-1">
+                      {fs.detail.map((d) => (
+                        <div key={d.id} className="flex items-center gap-1.5 text-[10px]">
+                          <MethodTip wide text={METRIC_TIP(d.id, d.note)} />
+                          <span
+                            className={cn(
+                              "w-4 font-semibold",
+                              d.point ? "text-positive" : "text-muted-foreground",
+                            )}
+                          >
+                            {d.id}
+                          </span>
+                          <span className="flex-1 truncate text-muted-foreground">{d.name}</span>
+                          <span
+                            className={cn(
+                              "tabular-nums",
+                              d.point ? "text-positive" : "text-negative",
+                            )}
+                          >
+                            {d.point}
+                          </span>
+                        </div>
+                      ))}
+                      <Tag tone={fsTone} className="mt-2">
+                        {fs.total >= 7
+                          ? "Kualitas Fundamental Kuat"
+                          : fs.total >= 4
+                            ? "Campuran"
+                            : "Lemah"}
+                      </Tag>
+                    </div>
+                  )}
+
+                  {/* Altman */}
+                  <div className="mt-5 border-t border-border pt-4">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground">
+                          Altman Z-Score {alt?.isBank ? "(Bank)" : ""}
+                        </div>
+                        {alt?.score != null ? (
+                          <div className="text-4xl font-semibold">{alt.score.toFixed(2)}</div>
+                        ) : (
+                          <div className="text-lg text-muted-foreground">Data tidak lengkap</div>
+                        )}
+                      </div>
+                      {alt?.zone && <Tag tone={zoneTone}>{altmanZoneLabel(alt.zone)}</Tag>}
+                    </div>
+                    <div className="mt-3 grid grid-cols-2 gap-2">
+                      {alt?.components.map((c) => (
+                        <div key={c.id} className="flex items-center gap-1.5 text-[10px]">
+                          <MethodTip
+                            wide
+                            text={METRIC_TIP(
+                              c.id,
+                              c.ratio != null
+                                ? `${c.ratio.toFixed(2)} → kontribusi ${(c.ratio * c.coefficient).toFixed(2)}`
+                                : "—",
+                            )}
+                          />
+                          <span className="text-muted-foreground">
+                            {c.id} = {c.ratio != null ? c.ratio.toFixed(2) : "—"}
+                          </span>
+                          <span className="ml-auto text-foreground">× {c.coefficient}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </Panel>
 
       {/* ── Gap 2 + A + B + E per-peer cards ───────────────────────────── */}
@@ -2398,103 +2467,113 @@ export function CompanyTerminal() {
           <MethodTip text="Percentile Rank 5Y membandingkan PE saat ini dengan 5 tahun riwayat. Free Float dari endpoint /free-float (klasifikasi <15% / 15–35% / ≥35%). Analyst Gap = realisasi EPS growth (rata-rata 2Y) − proyeksi analis. HHI konsentrasi pendapatan per segmen." />
         }
       >
-        <div className="grid gap-px bg-border md:grid-cols-3">
-          {analyses.map((a) => {
-            const r = a.report;
-            const pctlTone: Tone =
-              a.percentile.percentile == null
-                ? "neutral"
-                : a.percentile.percentile >= 80
-                  ? "negative"
-                  : a.percentile.percentile <= 20
-                    ? "positive"
-                    : "accent";
-            const gapTone: Tone =
-              a.gap.gap == null
-                ? "neutral"
-                : a.gap.gap > 0.1
-                  ? "positive"
-                  : a.gap.gap < -0.1
+        {analyses.length === 0 ? (
+          <div className="flex items-center justify-center gap-1.5 p-8 text-xs text-muted-foreground">
+            <MousePointerClick className="size-3.5" />
+            Pilih emiten untuk melihat valuasi, free float, analyst gap, dan HHI.
+          </div>
+        ) : (
+          <div className="grid gap-px bg-border md:grid-cols-3">
+            {analyses.map((a) => {
+              const r = a.report;
+              const pctlTone: Tone =
+                a.percentile.percentile == null
+                  ? "neutral"
+                  : a.percentile.percentile >= 80
                     ? "negative"
-                    : "accent";
-            return (
-              <div className="bg-card p-5" key={a.symbol}>
-                <div className="text-sm font-semibold">{a.symbol}</div>
-                <div className="text-[10px] text-muted-foreground">
-                  {r?.overview?.sub_sector ?? "—"} · {r?.overview?.sector ?? ""}
-                </div>
+                    : a.percentile.percentile <= 20
+                      ? "positive"
+                      : "accent";
+              const gapTone: Tone =
+                a.gap.gap == null
+                  ? "neutral"
+                  : a.gap.gap > 0.1
+                    ? "positive"
+                    : a.gap.gap < -0.1
+                      ? "negative"
+                      : "accent";
+              return (
+                <div className="bg-card p-5" key={a.symbol}>
+                  <div className="text-sm font-semibold">{a.symbol}</div>
+                  <div className="text-[10px] text-muted-foreground">
+                    {r?.overview?.sub_sector ?? "—"} · {r?.overview?.sector ?? ""}
+                  </div>
 
-                {/* Gap 2 — Valuation Percentile Rank */}
-                <div className="mt-4 border-b border-border pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">
-                      Valuation Percentile (5Y)
+                  {/* Gap 2 — Valuation Percentile Rank */}
+                  <div className="mt-4 border-b border-border pb-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Valuation Percentile (5Y)
+                      </div>
+                      <Tag tone={pctlTone}>{a.percentile.label}</Tag>
                     </div>
-                    <Tag tone={pctlTone}>{a.percentile.label}</Tag>
+                    <div className="mt-1 text-3xl font-semibold">
+                      {a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"}
+                    </div>
+                    <div className="mt-1 text-[10px] text-muted-foreground">
+                      {a.percentile.note}
+                    </div>
                   </div>
-                  <div className="mt-1 text-3xl font-semibold">
-                    {a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"}
-                  </div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">{a.percentile.note}</div>
-                </div>
 
-                {/* A — Free Float & Liquidity Risk */}
-                <div className="mt-4 border-b border-border pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">
-                      Free Float & Likuiditas
+                  {/* A — Free Float & Liquidity Risk */}
+                  <div className="mt-4 border-b border-border pb-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Free Float & Likuiditas
+                      </div>
+                      <Tag tone={floatTone(a.floatRisk.level)}>{a.floatRisk.label}</Tag>
                     </div>
-                    <Tag tone={floatTone(a.floatRisk.level)}>{a.floatRisk.label}</Tag>
-                  </div>
-                  <div className="mt-1 text-2xl font-semibold">
-                    {a.floatRisk.freeFloat != null
-                      ? `${(a.floatRisk.freeFloat * 100).toFixed(1)}%`
-                      : "—"}
-                  </div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">{a.floatRisk.note}</div>
-                  {a.floatRisk.liquidityCliff && (
-                    <div className="mt-2 rounded border border-negative/30 bg-negative/10 p-2 text-[10px] text-negative">
-                      Liquidity Cliff — sulit exit saat market stress.
+                    <div className="mt-1 text-2xl font-semibold">
+                      {a.floatRisk.freeFloat != null
+                        ? `${(a.floatRisk.freeFloat * 100).toFixed(1)}%`
+                        : "—"}
                     </div>
-                  )}
-                </div>
+                    <div className="mt-1 text-[10px] text-muted-foreground">{a.floatRisk.note}</div>
+                    {a.floatRisk.liquidityCliff && (
+                      <div className="mt-2 rounded border border-negative/30 bg-negative/10 p-2 text-[10px] text-negative">
+                        Liquidity Cliff — sulit exit saat market stress.
+                      </div>
+                    )}
+                  </div>
 
-                {/* B — Analyst Expectation Gap */}
-                <div className="mt-4 border-b border-border pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">
-                      Analyst Expectation Gap
+                  {/* B — Analyst Expectation Gap */}
+                  <div className="mt-4 border-b border-border pb-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Analyst Expectation Gap
+                      </div>
+                      <Tag tone={gapTone}>{a.gap.label}</Tag>
                     </div>
-                    <Tag tone={gapTone}>{a.gap.label}</Tag>
-                  </div>
-                  <div className="mt-1 text-2xl font-semibold">
-                    {a.gap.gap != null ? `${(a.gap.gap * 100).toFixed(1)}pp` : "—"}
-                  </div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">{a.gap.note}</div>
-                  {a.gap.acceleration && (
-                    <div className="mt-2 rounded border border-primary/30 bg-primary/10 p-2 text-[10px] text-primary">
-                      Earnings Acceleration Expected — Forward PE lebih rendah dari PE TTM × 0.85.
+                    <div className="mt-1 text-2xl font-semibold">
+                      {a.gap.gap != null ? `${(a.gap.gap * 100).toFixed(1)}pp` : "—"}
                     </div>
-                  )}
-                </div>
+                    <div className="mt-1 text-[10px] text-muted-foreground">{a.gap.note}</div>
+                    {a.gap.acceleration && (
+                      <div className="mt-2 rounded border border-primary/30 bg-primary/10 p-2 text-[10px] text-primary">
+                        Earnings Acceleration Expected — Forward PE lebih rendah dari PE TTM × 0.85.
+                      </div>
+                    )}
+                  </div>
 
-                {/* E — Revenue Concentration HHI (lazy) */}
-                <div className="mt-4">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[10px] uppercase text-muted-foreground">
-                      Konsentrasi Pendapatan (HHI)
+                  {/* E — Revenue Concentration HHI (lazy) */}
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[10px] uppercase text-muted-foreground">
+                        Konsentrasi Pendapatan (HHI)
+                      </div>
+                      <HHIPanel symbol={a.symbol} enabled={showSegments} />
                     </div>
-                    <HHIPanel symbol={a.symbol} enabled={showSegments} />
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
         <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
           <button
             onClick={() => setShowSegments((v) => !v)}
-            className="text-[10px] text-primary hover:underline"
+            disabled={peers.length === 0}
+            className="text-[10px] text-primary hover:underline disabled:cursor-not-allowed disabled:opacity-50"
           >
             {showSegments ? "Sembunyikan" : "Muat"} detail segmentasi pendapatan (1 kredit/simbol)
           </button>
@@ -2507,7 +2586,41 @@ export function CompanyTerminal() {
   );
 }
 
-/** Reads a nested ratio off historical_financial_ratio for a given year string. */
+/**
+ * Plain-language explanations for every Piotroski (F1–F9) and Altman (X1–X4)
+ * component. The algorithm hands us the raw value (e.g. "ROA 2.1%") but nothing
+ * explaining WHAT the metric is or WHY it matters, which made the Financial
+ * Safety card unreadable for non-accountants.
+ *
+ * Each entry = what it measures + how to read it. Rendered on hover via
+ * MethodTip so the table itself stays compact.
+ */
+const METRIC_EXPLAIN: Record<string, string> = {
+  // ── Piotroski F-Score components ────────────────────────────────────────
+  F1: "ROA (Return on Assets) = laba bersih ÷ total aset. Mengukur seberapa efisien perusahaan mengubah seluruh asetnya (pabrik, tanah, kas, piutang) menjadi laba. Poin 1 jika positif — perusahaan untung. Semakin tinggi semakin baik.",
+  F2: "Arus Kas Operasi (CFO) = uang tunai yang benar-benar masuk dari kegiatan utama bisnis (jualan), bukan dari utang atau jual aset. Poin 1 jika positif. Ini penting karena laba bisa 'dimanipulasi' secara akuntansi, tapi uang kas tidak —CFO positif berarti perusahaan benar-benar menghasilkan uang.",
+  F3: "ROA naik dibanding tahun lalu. Poin 1 jika membaik. Menandakan efisiensi perusahaan sedang meningkat, bukan sekadar untung sesaat karena satu kejadian.",
+  F4: "Akrual = selisih antara laba akuntansi dan uang kas yang benar-benar masuk. Poin 1 jika NEGATIF (kas lebih besar dari laba yang dicatat). Ini kualitas laba: perusahaan yang labanya tinggi tapi uang kasnya seret sedang memberi sinyal bahaya.",
+  F5: "Leverage (DER = utang ÷ ekuitas) turun dibanding tahun lalu. Poin 1 jika utang berkurang relatif terhadap modal sendiri. Utang yang menurun = perusahaan makin aman dari risiko gagal bayar.",
+  F6: "Current ratio = aset lancar ÷ utang lancar. Mengukur sanggup tidaknya perusahaan bayar tagihan jangka pendek (≤1 tahun) dengan harta yang bisa jadi uang cepat (kas, piutang, persediaan). Naik = likuiditas membaik.",
+  F7: "Poin 1 jika jumlah saham beredar tidak bertambah (tidak ada dilusi). Kalau perusahaan menerbitkan saham baru, kepemilikanmu sebagai pemegang saham lama akan 'tercairkan' nilainya.",
+  F8: "Margin kotor = (pendapatan − harga pokok penjualan) ÷ pendapatan. Menunjukkan berapa persen pendapatan yang tersisa setelah biaya produksi barang/jasa. Naik = perusahaan makinUntung di level operasi inti atau sedang bisa menaikkan harga.",
+  F9: "Perputaran aset = pendapatan ÷ total aset. Mengukur berapa rupiah penjualan yang dihasilkan dari tiap 1 rupiah aset. Naik = aset digunakan lebih produktif (misal pabrik atau toko makin laris).",
+
+  // ── Altman Z-Score components ──────────────────────────────────────────
+  X1: "Modal kerja / total aset. Modal kerja = aset lancar − utang lancar, alias 'napas' keuangan jangka pendek. Semakin besar porsinya terhadap total aset, perusahaan makin punya ruang bernapas untuk operasi sehari-hari. Bobot terbesar di Altman (×6.56).",
+  X2: "Laba ditahan / total aset. Laba ditahan adalah akumulasi laba yang tidak dibagikan sebagai dividen dan dipakai lagi untuk mengembangkan usaha. Ini ukuran usia & kematangan: perusahaan muda biasanya nilainya kecil, yang sudah mapan besar.",
+  X3: "EBIT / total aset. EBIT = laba sebelum bunga dan pajak — murni kemampuan operasi mencetak laba, tanpa distorsi cara perusahaan berutang atau aturan pajak. Ini prediktor terkuat kebangkrutan (bobot ×6.72).",
+  X4: "Ekuitas / total liabilitas (atau / ATMR untuk bank). Semacam 'bantalan' modal: kalau perusahaan rugi, berapa besar porsi modal pemilik dibanding kewajiban. Untuk bank memakai ATMR (aset tertimbang menurut risiko) karena neraka bank berbeda dari perusahaan biasa.",
+};
+
+/** Tooltip text: plain-language explanation, then the computed value. */
+const METRIC_TIP = (id: string, value: string): string => {
+  const base = METRIC_EXPLAIN[id];
+  const suffix = value && value !== "—" ? `\n\nNilai saat ini: ${value}` : "";
+  return (base ?? "Tidak ada penjelasan tersedia.") + suffix;
+};
+
 function ratioNum(
   ratios: Array<Record<string, unknown>>,
   year: string,
@@ -3001,7 +3114,7 @@ export function DecisionScreener() {
             }
           >
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[940px]">
+              <table className="w-full min-w-235">
                 <thead>
                   <tr>
                     <th className={th}>Ticker</th>
@@ -3247,7 +3360,7 @@ function EsgScreener() {
               return (
                 <tr key={r.ticker} className="hover:bg-secondary/50">
                   <td className={cn(td, "font-semibold text-primary")}>{r.ticker}</td>
-                  <td className={cn(td, "max-w-[280px] truncate")}>{r.name}</td>
+                  <td className={cn(td, "max-w-70 truncate")}>{r.name}</td>
                   <td className={cn(td, "tabular-nums")}>{r.score.toFixed(2)}</td>
                   <td className={td}>
                     <Tag tone={esgTone(t.tier)}>{t.label}</Tag>
@@ -3385,7 +3498,7 @@ export function Watchlist() {
         <>
           <Panel title="Ringkasan Pantauan" kicker="Kondisi dipantau">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[860px]">
+              <table className="w-full min-w-215">
                 <thead>
                   <tr>
                     {[

@@ -7,7 +7,7 @@
     "sub_industry": "Banks",
     "sector": "Financials",
     "sub_sector": "Banks",
-    "market_cap": 478638482962530,
+    "market_cap": 472636746499050,
     "market_cap_rank": 2,
     "address": "Gedung BRI I Jl. Jenderal Sudirman Kav.44-46, Jakarta Pusat 10210",
     "employee_num": 27937,
@@ -16,9 +16,9 @@
     "website": "www.bri.co.id",
     "phone": "021 - 575 1966",
     "email": "humas@bri.co.id; corsec@bri.co.id",
-    "last_close_price": 3190,
-    "latest_close_date": "2026-09-23",
-    "daily_close_change": 0.00314465408805031,
+    "last_close_price": 3150,
+    "latest_close_date": "2026-09-25",
+    "daily_close_change": 0.00318471337579618,
     "all_time_price": {
       "ytd_low": {
         "2026-06-09": 2540
@@ -33,7 +33,7 @@
         "2026-02-25": 3980
       },
       "52_w_high": {
-        "2025-09-25": 4170
+        "2025-11-03": 4050
       },
       "90_d_high": {
         "2026-09-04": 3440
@@ -50,7 +50,6 @@
       "dividend-yield-ttm-above-5-percent",
       "esg-under-25",
       "invested-by-danantara",
-      "last-volume-above-10d-volume-average",
       "top-20-institution-selling",
       "top-30-yoy-earning-growth",
       "top-90d-transaction-value",
@@ -73,10 +72,10 @@
     "affiliates": null
   },
   "valuation": {
-    "last_close_price": 3190,
-    "latest_close_date": "2026-09-23",
-    "daily_close_change": 0.00314465408805031,
-    "forward_pe": 7.24687062929064,
+    "last_close_price": 3150,
+    "latest_close_date": "2026-09-25",
+    "daily_close_change": 0.00318471337579618,
+    "forward_pe": 7.15600077813966,
     "intrinsic_value": 289,
     "historical_valuation": [
       {
@@ -132,17 +131,17 @@
         "enterprise_to_revenue": null
       },
       {
-        "pb": 1.48680959399961,
-        "pe": 7.6800241697938,
-        "ps": 2.25269074164199,
-        "pcf": 0.343989380834515,
-        "peg": 34.004863523830515,
+        "pb": 1.46816621351059,
+        "pe": 7.58372292628541,
+        "ps": 2.22444383579068,
+        "pcf": 33.5784702508044,
+        "peg": null,
         "year": 2026,
-        "pb_peer_avg": 0.785811101651629,
-        "pe_peer_avg": 9.381448790111,
-        "ps_peer_avg": 2.6405125053603,
+        "pb_peer_avg": 0.777812553493197,
+        "pe_peer_avg": 8.93111058062973,
+        "ps_peer_avg": 2.51219650633488,
         "enterprise_to_ebitda": null,
-        "enterprise_to_revenue": null
+        "enterprise_to_revenue": 0.339676034366371
       }
     ]
   },
@@ -150,11 +149,11 @@
     "eps": 377.5732862962205,
     "historical_eps": {
       "2020": {
-        "eps": 138.88240118142903
+        "eps": 149.03023160351162
       },
       "2021": {
         "eps": 207.05083223395118,
-        "eps_growth": 0.4908
+        "eps_growth": 0.3893
       },
       "2022": {
         "eps": 341.0369222385107,
@@ -1542,15 +1541,15 @@
           {
             "date": "2026-04-21",
             "total": 209,
-            "yield": 0.0655172413793104
+            "yield": 0.0663492063492064
           }
         ],
-        "total_yield": 0.0655172413793104,
+        "total_yield": 0.0663492063492064,
         "total_dividend": 209
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.10846394984326,
+    "yield_ttm": 0.10984126984127,
     "dividend_yield_avg": {
       "period": 5,
       "avg_yield": 0.0675521474331617

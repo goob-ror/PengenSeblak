@@ -50,14 +50,14 @@ function BackgroundEffect() {
       />
       {/* Radial glow top-right */}
       <div
-        className="absolute -right-40 -top-40 size-[600px] rounded-full opacity-20"
+        className="absolute -right-40 -top-40 size-150 rounded-full opacity-20"
         style={{
           background: "radial-gradient(circle, oklch(0.72 0.095 185) 0%, transparent 65%)",
         }}
       />
       {/* Radial glow bottom-left */}
       <div
-        className="absolute -bottom-60 -left-40 size-[500px] rounded-full opacity-10"
+        className="absolute -bottom-60 -left-40 size-125 rounded-full opacity-10"
         style={{
           background: "radial-gradient(circle, oklch(0.65 0.14 240) 0%, transparent 65%)",
         }}
@@ -132,7 +132,7 @@ export function LoginPage() {
         <div className="w-full max-w-md">
           {/* Logo + Title */}
           <div className="mb-8 text-center">
-            <div className="mb-5 inline-flex size-16 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_32px_oklch(0.72_0.095_185_/_0.25)]">
+            <div className="mb-5 inline-flex size-16 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 shadow-[0_0_32px_oklch(0.72_0.095_185/0.25)]">
               <img
                 src="/Nusantara Terminal Icon Transparent.png"
                 alt="Nusantara Terminal"
@@ -153,7 +153,7 @@ export function LoginPage() {
           </div>
 
           {/* Card */}
-          <div className="rounded-xl border border-white/10 bg-white/[0.04] p-8 shadow-2xl backdrop-blur-xl">
+          <div className="rounded-xl border border-white/10 bg-white/4 p-8 shadow-2xl backdrop-blur-xl">
             <div className="mb-6">
               <h2 className="text-base font-semibold text-white/90">Masuk ke Terminal</h2>
               <p className="mt-1 text-xs text-white/35">
@@ -186,7 +186,7 @@ export function LoginPage() {
                     disabled={isLoading}
                     className={cn(
                       "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-4 text-sm text-white placeholder:text-white/20 outline-none transition-all",
-                      "focus:border-primary/60 focus:bg-white/[0.07] focus:ring-1 focus:ring-primary/30",
+                      "focus:border-primary/60 focus:bg-white/7 focus:ring-1 focus:ring-primary/30",
                       error ? "border-rose-500/60" : "border-white/10",
                       isLoading && "opacity-60 cursor-not-allowed",
                     )}
@@ -217,7 +217,7 @@ export function LoginPage() {
                     disabled={isLoading}
                     className={cn(
                       "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-10 text-sm text-white placeholder:text-white/20 outline-none transition-all",
-                      "focus:border-primary/60 focus:bg-white/[0.07] focus:ring-1 focus:ring-primary/30",
+                      "focus:border-primary/60 focus:bg-white/7 focus:ring-1 focus:ring-primary/30",
                       error ? "border-rose-500/60" : "border-white/10",
                       isLoading && "opacity-60 cursor-not-allowed",
                     )}
@@ -301,8 +301,8 @@ export function LoginPage() {
                 disabled={isLoading}
                 className={cn(
                   "mt-2 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all",
-                  "bg-primary text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.095_185_/_0.35)]",
-                  "hover:bg-primary/90 hover:shadow-[0_0_32px_oklch(0.72_0.095_185_/_0.55)]",
+                  "bg-primary text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.095_185/0.35)]",
+                  "hover:bg-primary/90 hover:shadow-[0_0_32px_oklch(0.72_0.095_185/0.55)]",
                   "active:scale-[0.98]",
                   isLoading && "cursor-not-allowed opacity-70",
                 )}

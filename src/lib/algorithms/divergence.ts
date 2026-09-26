@@ -98,7 +98,9 @@ function pickMetric(
 
 /** Strips the ".JK" suffix the screener includes on every symbol. */
 export function cleanSymbol(symbol: string): string {
-  return String(symbol ?? "").replace(/\.JK$/i, "").toUpperCase();
+  return String(symbol ?? "")
+    .replace(/\.JK$/i, "")
+    .toUpperCase();
 }
 
 /**
@@ -106,10 +108,7 @@ export function cleanSymbol(symbol: string): string {
  * `marginYear` lets callers target a specific fiscal year; it falls back to
  * any available year when the requested one is missing.
  */
-export function normalizeScreenerRow(
-  row: ScreenerApiRow,
-  marginYear?: number,
-): ScreenerRow {
+export function normalizeScreenerRow(row: ScreenerApiRow, marginYear?: number): ScreenerRow {
   const qv = row.query_values;
   const margin =
     pickMetric(qv, ...(marginYear != null ? [`net_profit_margin[${marginYear}]`] : [])) ??
@@ -161,11 +160,7 @@ export function zScore(value: number | null | undefined, sample: number[]): numb
 
 // ── Anomaly classification ────────────────────────────────────────────────
 export type AnomalyType =
-  | "value_dislocation"
-  | "overvalued_weak"
-  | "margin_deterioration"
-  | "value_trap"
-  | "none";
+  "value_dislocation" | "overvalued_weak" | "margin_deterioration" | "value_trap" | "none";
 
 export interface AnomalyResult {
   symbol: string;
@@ -195,10 +190,22 @@ const FLAG_THRESHOLD = 1.8;
  * and leaving the subject in only slightly shrinks its own deviation.
  */
 export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyResult | null {
-  const zPe = zScore(row.pe_ttm, peers.map((p) => p.pe_ttm ?? NaN));
-  const zRoe = zScore(row.roe_ttm, peers.map((p) => p.roe_ttm ?? NaN));
-  const zMargin = zScore(row.net_margin, peers.map((p) => p.net_margin ?? NaN));
-  const zDer = zScore(row.der_mrq, peers.map((p) => p.der_mrq ?? NaN));
+  const zPe = zScore(
+    row.pe_ttm,
+    peers.map((p) => p.pe_ttm ?? NaN),
+  );
+  const zRoe = zScore(
+    row.roe_ttm,
+    peers.map((p) => p.roe_ttm ?? NaN),
+  );
+  const zMargin = zScore(
+    row.net_margin,
+    peers.map((p) => p.net_margin ?? NaN),
+  );
+  const zDer = zScore(
+    row.der_mrq,
+    peers.map((p) => p.der_mrq ?? NaN),
+  );
 
   const z = { pe: zPe, roe: zRoe, margin: zMargin, der: zDer };
 
@@ -216,7 +223,13 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
   const derAvailable = row.der_mrq != null;
 
   // Value Trap takes precedence: it's the most actionable warning.
-  if (derAvailable && zPe != null && zPe < -FLAG_THRESHOLD && zDer != null && zDer > FLAG_THRESHOLD) {
+  if (
+    derAvailable &&
+    zPe != null &&
+    zPe < -FLAG_THRESHOLD &&
+    zDer != null &&
+    zDer > FLAG_THRESHOLD
+  ) {
     type = "value_trap";
     label = "Value Trap Alert";
     explanation =
@@ -251,13 +264,19 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
   if (type === "none") return null;
 
   const peersForMetric =
-    metric === "PE" ? peers.map((p) => p.pe_ttm)
-    : metric === "Net Margin" ? peers.map((p) => p.net_margin)
-    : peers.map((p) => p.der_mrq);
+    metric === "PE"
+      ? peers.map((p) => p.pe_ttm)
+      : metric === "Net Margin"
+        ? peers.map((p) => p.net_margin)
+        : peers.map((p) => p.der_mrq);
   const avg = mean(peersForMetric.filter((v): v is number => v != null && Number.isFinite(v)));
 
   const pct = (v: number | null) =>
-    v == null ? "—" : metric === "PE" || metric === "DER" ? v.toFixed(2) + "x" : (v * 100).toFixed(1) + "%";
+    v == null
+      ? "—"
+      : metric === "PE" || metric === "DER"
+        ? v.toFixed(2) + "x"
+        : (v * 100).toFixed(1) + "%";
 
   return {
     symbol: row.symbol,
@@ -271,7 +290,17 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
     metric,
     value: pct(valueNum),
     average: pct(Number.isFinite(avg) ? avg : null),
-    deviation: Math.round(((valueNum ?? 0) - (Number.isFinite(avg) ? avg : 0)) * 100) / 100,
+    // Deviation semantics depend on the metric:
+    //  - PE / DER are in absolute "turns" (e.g. 289x) → raw difference.
+    //  - Net margin is a decimal (0.05 = 5%) → ×100 for percentage points.
+    // The old code did (diff × 100) for ALL metrics, which turned a PE gap of
+    // ~289x into a meaningless "+28942".
+    deviation:
+      Math.round(
+        (metric === "PE" || metric === "DER"
+          ? (valueNum ?? 0) - (Number.isFinite(avg) ? avg : 0)
+          : ((valueNum ?? 0) - (Number.isFinite(avg) ? avg : 0)) * 100) * 100,
+      ) / 100,
   };
 }
 

@@ -1,0 +1,140 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T08:40:48.946Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Banks' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100",
+      "limit": "30",
+      "offset": "30",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 505
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "DNAR.JK",
+        "company_name": "PT Bank Oke Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 9.22297527327319,
+          "roe_ttm": 0.0570393274551135,
+          "net_profit_margin[2025]": 0.221933317167879
+        }
+      },
+      {
+        "symbol": "MASB.JK",
+        "company_name": "PT Bank Multiarta Sentosa Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 21.4336877993173,
+          "roe_ttm": 0.0517009742663315,
+          "net_profit_margin[2025]": 0.20629895777272
+        }
+      },
+      {
+        "symbol": "MAYA.JK",
+        "company_name": "PT Bank Mayapada Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 79.8649068269749,
+          "roe_ttm": 0.00347312896180315,
+          "net_profit_margin[2025]": 0.00915498076766843
+        }
+      },
+      {
+        "symbol": "MCOR.JK",
+        "company_name": "PT Bank China Construction Bank Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 8.17593160023759,
+          "roe_ttm": 0.0416526184404634,
+          "net_profit_margin[2025]": 0.283308563021678
+        }
+      },
+      {
+        "symbol": "MEGA.JK",
+        "company_name": "Bank Mega Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 13.7509992750204,
+          "roe_ttm": 0.146635969907065,
+          "net_profit_margin[2025]": 0.436159950181815
+        }
+      },
+      {
+        "symbol": "NISP.JK",
+        "company_name": "PT Bank OCBC NISP Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 5.46008488059206,
+          "roe_ttm": 0.117665948057835,
+          "net_profit_margin[2025]": 0.389637655462017
+        }
+      },
+      {
+        "symbol": "NOBU.JK",
+        "company_name": "PT Bank Nationalnobu Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.74554631009067,
+          "roe_ttm": 0.131998176470535,
+          "net_profit_margin[2025]": 0.296375477903303
+        }
+      },
+      {
+        "symbol": "PNBN.JK",
+        "company_name": "Bank Pan Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.67253032830155,
+          "roe_ttm": 0.0531869085999254,
+          "net_profit_margin[2025]": 0.252900120212999
+        }
+      },
+      {
+        "symbol": "PNBS.JK",
+        "company_name": "PT Bank Panin Dubai Syariah Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 25.7325620309327,
+          "roe_ttm": 0.0248122881626423,
+          "net_profit_margin[2025]": 0.0415602556892446
+        }
+      },
+      {
+        "symbol": "SDRA.JK",
+        "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.59327102959168,
+          "roe_ttm": 0.0407724307268729,
+          "net_profit_margin[2025]": -0.579388994609868
+        }
+      },
+      {
+        "symbol": "SUPA.JK",
+        "company_name": "PT Super Bank Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 91.8854799625427,
+          "roe_ttm": 0.0221198969446929,
+          "net_profit_margin[2025]": 0.0616651139657713
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 41,
+      "showing": 11,
+      "limit": 30,
+      "offset": 30,
+      "has_next": false,
+      "has_previous": true,
+      "next_offset": null,
+      "previous_offset": 0
+    }
+  }
+}

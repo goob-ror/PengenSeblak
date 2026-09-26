@@ -44,7 +44,8 @@ export interface CompanyReportRaw {
   valuation?: {
     forward_pe?: number | null;
     last_close_price?: number | null;
-    historical_valuation?: Array<Record<string, unknown>> | Record<string, Record<string, unknown>> | null;
+    historical_valuation?:
+      Array<Record<string, unknown>> | Record<string, Record<string, unknown>> | null;
   } | null;
   financials?: {
     eps?: number | null;
@@ -106,9 +107,9 @@ export function toCompanyFinancialsInput(r: CompanyReportRaw): CompanyFinancials
 
 // ── Free Float (Bagian 2 A) — one call covers the whole IDX ───────────────
 export interface FreeFloatRow {
-  symbol: string;      // keeps .JK
+  symbol: string; // keeps .JK
   company_name: string;
-  free_float: number;  // 0..1
+  free_float: number; // 0..1
 }
 
 export function useFreeFloatMap() {
@@ -143,21 +144,27 @@ export interface ScreenerCompany {
   query_values?: Record<string, unknown>;
 }
 
-export function useTopCompanies(limit = 20) {
+export function useTopCompanies(limit = 50) {
   return useQuery({
     queryKey: ["sectors", "companies", "top-mcap", limit],
     queryFn: () =>
       api.sectors.get<{ results?: ScreenerCompany[] }>("/companies/", {
-        order_by: "market_cap desc",
+        // Screener syntax is "-market_cap" (field with minus prefix), NOT
+        // "market_cap desc" — the space form 400s and leaves the picker empty.
+        order_by: "-market_cap",
         limit,
       }),
     ...STALE_STATIC,
     retry: false,
     select: (data) =>
-      (data?.results ?? []).map((r) => ({
-        ticker: String(r.symbol ?? "").replace(/\.JK$/i, "").toUpperCase(),
-        name: r.company_name ?? "",
-      })).filter((c) => c.ticker !== ""),
+      (data?.results ?? [])
+        .map((r) => ({
+          ticker: String(r.symbol ?? "")
+            .replace(/\.JK$/i, "")
+            .toUpperCase(),
+          name: r.company_name ?? "",
+        }))
+        .filter((c) => c.ticker !== ""),
   });
 }
 
@@ -172,9 +179,11 @@ export function useRevenueSegments(symbol: string | null, enabled = true) {
   return useQuery({
     queryKey: ["sectors", "get-segments", symbol],
     queryFn: () =>
-      api.sectors.get<{ symbol?: string; financial_year?: number; revenue_breakdown?: SegmentRow[] }>(
-        `/company/get-segments/${symbol}/`,
-      ),
+      api.sectors.get<{
+        symbol?: string;
+        financial_year?: number;
+        revenue_breakdown?: SegmentRow[];
+      }>(`/company/get-segments/${symbol}/`),
     enabled: !!symbol && enabled,
     ...STALE_FUNDAMENTAL,
     retry: false,
@@ -187,9 +196,11 @@ export function useRevenueSegmentsBatch(symbols: string[], enabled = false) {
     queries: symbols.map((symbol) => ({
       queryKey: ["sectors", "get-segments", symbol],
       queryFn: () =>
-        api.sectors.get<{ symbol?: string; financial_year?: number; revenue_breakdown?: SegmentRow[] }>(
-          `/company/get-segments/${symbol}/`,
-        ),
+        api.sectors.get<{
+          symbol?: string;
+          financial_year?: number;
+          revenue_breakdown?: SegmentRow[];
+        }>(`/company/get-segments/${symbol}/`),
       enabled: enabled && !!symbol,
       ...STALE_FUNDAMENTAL,
       retry: false,
@@ -214,16 +225,19 @@ export function useEsgScores(pages = 1, enabled = true) {
     queries: Array.from({ length: pages }, (_, i) => ({
       queryKey: ["sectors", "companies", "esg", i + 1],
       queryFn: () =>
-        api.sectors.get<{ results?: Array<{ symbol: string; company_name: string; query_values?: Record<string, unknown> }> }>(
-          "/companies/",
-          {
-            where: "esg_score > 0",
-            order_by: "esg_score desc",
-            limit: 30,
-            page: i + 1,
-            include_query_values: "true",
-          },
-        ),
+        api.sectors.get<{
+          results?: Array<{
+            symbol: string;
+            company_name: string;
+            query_values?: Record<string, unknown>;
+          }>;
+        }>("/companies/", {
+          where: "esg_score > 0",
+          order_by: "esg_score desc",
+          limit: 30,
+          page: i + 1,
+          include_query_values: "true",
+        }),
       enabled,
       ...STALE_STATIC,
       retry: false,
@@ -232,14 +246,18 @@ export function useEsgScores(pages = 1, enabled = true) {
   return {
     data: queries
       .flatMap((q) => (q.data?.results ?? []) as EsgRow[])
-      .map((r: { symbol: string; company_name: string; query_values?: Record<string, unknown> }) => ({
-        ticker: String(r.symbol ?? "").replace(/\.JK$/i, "").toUpperCase(),
-        name: r.company_name ?? "",
-        score:
-          typeof r.query_values?.["esg_score"] === "number"
-            ? (r.query_values["esg_score"] as number)
-            : null,
-      })),
+      .map(
+        (r: { symbol: string; company_name: string; query_values?: Record<string, unknown> }) => ({
+          ticker: String(r.symbol ?? "")
+            .replace(/\.JK$/i, "")
+            .toUpperCase(),
+          name: r.company_name ?? "",
+          score:
+            typeof r.query_values?.["esg_score"] === "number"
+              ? (r.query_values["esg_score"] as number)
+              : null,
+        }),
+      ),
     isPending: queries.some((q) => q.isPending),
     isError: queries.some((q) => q.isError),
   };

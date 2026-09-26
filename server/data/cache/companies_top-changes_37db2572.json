@@ -2,78 +2,78 @@
   "top_gainers": {
     "1d": [
       {
-        "name": "Bakrie Sumatera Plantations Tbk",
-        "symbol": "UNSP.JK",
-        "price_change": 0.25,
-        "last_close_price": 320,
-        "latest_close_date": "2026-09-24"
-      },
-      {
-        "name": "Akasha Wira International Tbk",
-        "symbol": "ADES.JK",
-        "price_change": 0.0974842767295598,
-        "last_close_price": 34900,
-        "latest_close_date": "2026-09-24"
-      },
-      {
         "name": "PT Abadi Nusantara Hijau Investama Tbk",
         "symbol": "PACK.JK",
-        "price_change": 0.0803571428571429,
-        "last_close_price": 605,
-        "latest_close_date": "2026-09-24"
+        "price_change": 0.0661157024793388,
+        "last_close_price": 645,
+        "latest_close_date": "2026-09-25"
       },
       {
-        "name": "PT Jhonlin Agro Raya Tbk",
-        "symbol": "JARR.JK",
-        "price_change": 0.0783132530120482,
-        "last_close_price": 3580,
-        "latest_close_date": "2026-09-24"
+        "name": "Bakrie Sumatera Plantations Tbk",
+        "symbol": "UNSP.JK",
+        "price_change": 0.05,
+        "last_close_price": 336,
+        "latest_close_date": "2026-09-25"
       },
       {
-        "name": "Golden Eagle Energy Tbk",
-        "symbol": "SMMT.JK",
-        "price_change": 0.0782312925170068,
-        "last_close_price": 3170,
-        "latest_close_date": "2026-09-24"
+        "name": "PT ITSEC Asia Tbk.",
+        "symbol": "CYBR.JK",
+        "price_change": 0.04,
+        "last_close_price": 520,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Prima Andalan Mandiri Tbk",
+        "symbol": "MCOL.JK",
+        "price_change": 0.030812324929972,
+        "last_close_price": 3680,
+        "latest_close_date": "2026-09-25"
+      },
+      {
+        "name": "PT Victoria Care Indonesia Tbk",
+        "symbol": "VICI.JK",
+        "price_change": 0.0265957446808511,
+        "last_close_price": 965,
+        "latest_close_date": "2026-09-25"
       }
     ]
   },
   "top_losers": {
     "1d": [
       {
-        "name": "PT MNC Digital Entertainment Tbk",
-        "symbol": "MSIN.JK",
-        "price_change": -0.148760330578512,
-        "last_close_price": 206,
-        "latest_close_date": "2026-09-24"
+        "name": "PT Olympus Strategic Indonesia Tbk",
+        "symbol": "NATO.JK",
+        "price_change": -0.149193548387097,
+        "last_close_price": 1055,
+        "latest_close_date": "2026-09-25"
       },
       {
         "name": "PT MSIG Life Insurance Indonesia Tbk",
         "symbol": "LIFE.JK",
         "price_change": -0.1,
-        "last_close_price": 11250,
-        "latest_close_date": "2026-09-24"
+        "last_close_price": 10125,
+        "latest_close_date": "2026-09-25"
       },
       {
-        "name": "MNC Tourism Indonesia Tbk",
-        "symbol": "KPIG.JK",
-        "price_change": -0.0909090909090909,
-        "last_close_price": 50,
-        "latest_close_date": "2026-09-24"
+        "name": "PT Sinergi Inti Andalan Prima Tbk",
+        "symbol": "INET.JK",
+        "price_change": -0.0822784810126582,
+        "last_close_price": 290,
+        "latest_close_date": "2026-09-25"
       },
       {
-        "name": "PT Intermedia Capital Tbk",
-        "symbol": "MDIA.JK",
-        "price_change": -0.0789473684210526,
-        "last_close_price": 175,
-        "latest_close_date": "2026-09-24"
+        "name": "PT Indokripto Koin Semesta Tbk",
+        "symbol": "COIN.JK",
+        "price_change": -0.0742857142857143,
+        "last_close_price": 810,
+        "latest_close_date": "2026-09-25"
       },
       {
-        "name": "PT MD Entertainment Tbk",
-        "symbol": "FILM.JK",
-        "price_change": -0.0608108108108108,
-        "last_close_price": 695,
-        "latest_close_date": "2026-09-24"
+        "name": "Bakrie & Brothers Tbk",
+        "symbol": "BNBR.JK",
+        "price_change": -0.0740740740740741,
+        "last_close_price": 75,
+        "latest_close_date": "2026-09-25"
       }
     ]
   }
