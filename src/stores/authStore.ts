@@ -13,6 +13,8 @@ interface AuthState {
   token: string | null;
   /** True while the session is being validated on app startup */
   isInitializing: boolean;
+  /** Guard flag: initialize() must only run once per module lifetime */
+  hasInitialized: boolean;
   /** True while the login API call is in-flight */
   isLoading: boolean;
   /** Whether the user opted into a long-lived session */
@@ -33,6 +35,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isInitializing: true,
+      hasInitialized: false,
       isLoading: false,
       rememberMe: false,
 
@@ -50,6 +53,7 @@ export const useAuthStore = create<AuthState>()(
             token: res.token,
             rememberMe: res.rememberMe,
             isInitializing: false,
+            hasInitialized: true,
             isLoading: false,
           });
         } catch (err) {
@@ -65,10 +69,26 @@ export const useAuthStore = create<AuthState>()(
           // Ignore network errors — clear local state regardless
         }
         localStorage.removeItem("auth_token");
-        set({ user: null, token: null, rememberMe: false, isInitializing: false });
+        // Reset so a subsequent login re-runs validation from a clean slate
+        set({
+          user: null,
+          token: null,
+          rememberMe: false,
+          isInitializing: false,
+          hasInitialized: false,
+        });
       },
 
       initialize: async () => {
+        // IDEMPOTENT GUARD — RootComponent's effect relies on `initialize` being
+        // a stable reference (dep array [initialize]), so React may invoke it
+        // more than once per mount (StrictMode, route re-render, key change).
+        // Running twice raced two /api/auth/me calls; one could resolve while
+        // the other was in-flight and clobber state. Never start a second
+        // validation while one is running, and never run twice overall.
+        if (get().hasInitialized) return;
+        set({ hasInitialized: true });
+
         const { token } = get();
 
         if (!token) {
@@ -80,10 +100,20 @@ export const useAuthStore = create<AuthState>()(
         try {
           const res = await api.auth.me();
           set({ user: res.user, isInitializing: false });
-        } catch {
-          // Token invalid or expired — clear everything and send to login
-          localStorage.removeItem("auth_token");
-          set({ user: null, token: null, rememberMe: false, isInitializing: false });
+        } catch (err) {
+          const status = (err as { status?: number }).status;
+          // TRANSIENT failure (network hiccup, 429 rate-limit, 5xx) must NOT
+          // destroy the session. Persisted token stays; keep `user` if we have
+          // it so the shell isn't torn down and refetched — the perceived
+          // "page refresh on its own". Only a genuine auth rejection (401)
+          // clears credentials.
+          const isAuthRejection = status === 401;
+          set(
+            isAuthRejection
+              ? { user: null, token: null, rememberMe: false, isInitializing: false }
+              : { isInitializing: false },
+          );
+          if (isAuthRejection) localStorage.removeItem("auth_token");
         }
       },
     }),

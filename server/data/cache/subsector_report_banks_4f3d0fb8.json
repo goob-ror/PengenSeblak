@@ -8,50 +8,50 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 0.076136879524618,
-        "avg_annual_revenue_growth": 0.0865600365458273
+        "avg_annual_earning_growth": 0.0763873459633514,
+        "avg_annual_revenue_growth": 0.0866357928605946
       },
       "2020": {
-        "avg_annual_earning_growth": -0.113847309766812,
-        "avg_annual_revenue_growth": 0.447881462840316
+        "avg_annual_earning_growth": -0.121734513195501,
+        "avg_annual_revenue_growth": 0.44588470600754
       },
       "2021": {
-        "avg_annual_earning_growth": -4.8034819134614,
-        "avg_annual_revenue_growth": 0.203633233749799
+        "avg_annual_earning_growth": -4.81643550016476,
+        "avg_annual_revenue_growth": 0.197265438071487
       },
       "2022": {
-        "avg_annual_earning_growth": 0.403116481159236,
-        "avg_annual_revenue_growth": 0.388002994326736
+        "avg_annual_earning_growth": 0.404664168053925,
+        "avg_annual_revenue_growth": 0.381419490164553
       },
       "2023": {
-        "avg_annual_earning_growth": 0.223945527535278,
-        "avg_annual_revenue_growth": 0.129743349557206
+        "avg_annual_earning_growth": 0.22367973627226,
+        "avg_annual_revenue_growth": 0.129792757463817
       },
       "2024": {
-        "avg_annual_earning_growth": 0.0688989261338619,
-        "avg_annual_revenue_growth": 0.361743210427605
+        "avg_annual_earning_growth": 0.0679611513665499,
+        "avg_annual_revenue_growth": 0.364243519906654
       },
       "2025": {
-        "avg_annual_earning_growth": -0.190618374879704,
-        "avg_annual_revenue_growth": 0.0181882903814185
+        "avg_annual_earning_growth": -0.190304093678469,
+        "avg_annual_revenue_growth": 0.0179721499685567
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.165598669826748,
-        "revenue_growth": 0.198491864770723
+        "eps_growth": 0.165319351018699,
+        "revenue_growth": 0.198500921395249
       },
       "2027": {
         "base_year": 2025,
-        "eps_growth": 0.254193352851936,
-        "revenue_growth": 0.286965276428034
+        "eps_growth": 0.253444100442712,
+        "revenue_growth": 0.2868777358931
       }
     }
   },
   "stability": {
-    "weighted_max_drawdown": -0.401796401320864,
-    "weighted_rsd_close": 0.12860918907889587
+    "weighted_max_drawdown": -0.396202337852701,
+    "weighted_rsd_close": 0.1261115514325825
   },
   "valuation": {
     "historical_valuation": {
@@ -80,20 +80,20 @@
         "pcf": 2.76312177274512
       },
       "2026": {
-        "pb": 0.77980423772773,
-        "pe": 9.18661976115803,
-        "ps": 2.58445461784756,
-        "pcf": 2.50854076018286,
+        "pb": 0.777812553493197,
+        "pe": 8.93111058062973,
+        "ps": 2.51219650633488,
+        "pcf": 2.46343562306943,
         "pb_rank": 2,
         "pe_rank": 17,
-        "ps_rank": 25,
-        "pcf_rank": 7
+        "ps_rank": 26,
+        "pcf_rank": 8
       }
     }
   },
   "market_cap": {
-    "total_market_cap": 2337381186778715,
-    "avg_market_cap": 48695441391223.23,
+    "total_market_cap": 2335603482461025,
+    "avg_market_cap": 48658405884604.69,
     "quarterly_market_cap": {
       "prev_ttm_mcap": {
         "2024.Q4": 3127779808736190,
@@ -116,9 +116,9 @@
     },
     "mcap_summary": {
       "mcap_change": {
-        "1w": -0.01764205857786895,
-        "1y": -0.1776370430613566,
-        "ytd": -0.19953024046766132
+        "1w": -0.037828421615625045,
+        "1y": -0.19076849516402997,
+        "ytd": -0.21231210304822698
       },
       "monthly_performance": {
         "2025-10-31": 0.046062449327964876,
@@ -132,7 +132,7 @@
         "2026-06-30": -0.07265115178117373,
         "2026-07-31": 0.09692623787842058,
         "2026-08-31": 0.027082326759486144,
-        "2026-09-23": -0.023589569810706822
+        "2026-09-24": -0.0391808445494327
       },
       "performance_quantile": 0.272727272727273
     }

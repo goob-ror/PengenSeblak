@@ -1,0 +1,63 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T03:49:23.264Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Household Goods' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 918
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "CINT.JK",
+        "company_name": "PT Chitose Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 5.01566887432837,
+          "roe_ttm": 0.121837325222987,
+          "net_profit_margin[2025]": 0.0585893181560702,
+          "der_mrq": 0.226257988184881
+        }
+      },
+      {
+        "symbol": "SCNP.JK",
+        "company_name": "PT Selaras Citra Nusantara Perkasa Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 22.2462995393165,
+          "roe_ttm": 0.0526106412542347,
+          "net_profit_margin[2025]": 0.0649772709099314,
+          "der_mrq": 0.0710799095097585
+        }
+      },
+      {
+        "symbol": "WOOD.JK",
+        "company_name": "PT Integra Indocabinet Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 21.9642624941433,
+          "roe_ttm": 0.0120561988534141,
+          "net_profit_margin[2025]": 0.0295351179481114,
+          "der_mrq": 0.618712897686257
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 3,
+      "showing": 3,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

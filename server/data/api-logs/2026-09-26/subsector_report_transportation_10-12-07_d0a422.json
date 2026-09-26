@@ -1,0 +1,148 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T02:12:07.665Z",
+    "endpoint": "/subsector/report/transportation/",
+    "query_params": {
+      "sections": "growth,stability,valuation,market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 4,
+    "cache_hit": false,
+    "response_time_ms": 301
+  },
+  "data": {
+    "sector": "Transportation & Logistic",
+    "sub_sector": "Transportation",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -0.208283380584692,
+          "avg_annual_revenue_growth": 0.228684457750699
+        },
+        "2020": {
+          "avg_annual_earning_growth": -253.374960425263,
+          "avg_annual_revenue_growth": -0.527515777644263
+        },
+        "2021": {
+          "avg_annual_earning_growth": 0.708223063377838,
+          "avg_annual_revenue_growth": -0.0251941162751117
+        },
+        "2022": {
+          "avg_annual_earning_growth": 24.1625563615944,
+          "avg_annual_revenue_growth": 0.715618317790348
+        },
+        "2023": {
+          "avg_annual_earning_growth": -0.538582072745476,
+          "avg_annual_revenue_growth": 0.308862545252095
+        },
+        "2024": {
+          "avg_annual_earning_growth": -0.792147524557219,
+          "avg_annual_revenue_growth": 0.124567072710321
+        },
+        "2025": {
+          "avg_annual_earning_growth": 109630.172333572,
+          "avg_annual_revenue_growth": 61460.9815503167
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": -0.0114513757408867,
+          "revenue_growth": -0.0172530567741399
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.539112107022776,
+      "weighted_rsd_close": 0.21777854313375186
+    },
+    "valuation": {
+      "historical_valuation": {
+        "2022": {
+          "pb": 0.738867601138034,
+          "pe": 8.75962902675118,
+          "ps": 0.710553127403602,
+          "pcf": 3.77995632343716
+        },
+        "2023": {
+          "pb": 0.708071118125167,
+          "pe": 8.78821813529798,
+          "ps": 0.691090644879401,
+          "pcf": 3.57201400927632
+        },
+        "2024": {
+          "pb": 0.632134948538359,
+          "pe": 5.53032964823391,
+          "ps": 0.534707779539022,
+          "pcf": 2.09696384491164
+        },
+        "2025": {
+          "pb": 0.719836025292692,
+          "pe": 7.63365268748404,
+          "ps": 0.717184745206254,
+          "pcf": 2.21092011343588
+        },
+        "2026": {
+          "pb": 0.534977368782845,
+          "pe": 6.39537109098191,
+          "ps": 0.558848886120821,
+          "pcf": 1.75352649378994,
+          "pb_rank": 1,
+          "pe_rank": 9,
+          "ps_rank": 8,
+          "pcf_rank": 6
+        }
+      }
+    },
+    "market_cap": {
+      "total_market_cap": 33066178617505,
+      "avg_market_cap": 2755514884792.0835,
+      "quarterly_market_cap": {
+        "prev_ttm_mcap": {
+          "2024.Q4": 15014355380868,
+          "2025.Q1": 12938519514465,
+          "2025.Q2": 18039651864537,
+          "2025.Q3": 19596092540211
+        },
+        "current_ttm_mcap": {
+          "2025.Q4": 53910126363213,
+          "2026.Q1": 39112971846913,
+          "2026.Q2": 30322783477590,
+          "2026.Q3": 37614367686534
+        },
+        "current_ttm_mcap_pavg": {
+          "2025.Q4": 493475391874871.7,
+          "2026.Q1": 386860102625885.44,
+          "2026.Q2": 308240790513668.6,
+          "2026.Q3": 359076930836704.56
+        }
+      },
+      "mcap_summary": {
+        "mcap_change": {
+          "1w": -0.05742100381667868,
+          "1y": 0.7638462195397363,
+          "ytd": -0.358849698998517
+        },
+        "monthly_performance": {
+          "2025-10-31": 0.17899577530058103,
+          "2025-11-28": -0.022551756918657094,
+          "2025-12-30": 1e-16,
+          "2026-01-30": -0.07432200552722287,
+          "2026-02-27": -0.04637671369851877,
+          "2026-03-31": -0.17811003391348476,
+          "2026-04-30": -0.00753156761391042,
+          "2026-05-29": -0.13619640501972372,
+          "2026-06-30": -0.09569165135892142,
+          "2026-07-31": 0.05417025102880002,
+          "2026-08-31": 0.15757227138452964,
+          "2026-09-24": -0.06588087416482657
+        },
+        "performance_quantile": 0.939393939393939
+      }
+    }
+  }
+}

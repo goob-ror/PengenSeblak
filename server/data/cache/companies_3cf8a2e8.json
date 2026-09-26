@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "symbol": "SICO.JK",
+      "company_name": "PT Sigma Energy Compressindo Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 100108554040,
+        "last_close_price": 110,
+        "daily_close_change": -0.0434782608695652,
+        "pe_ttm": 7.9231079968384,
+        "roe_ttm": 0.09041312123608,
+        "net_profit_margin[2025]": 0.083691116883978,
+        "der_mrq": 0.28618337455141
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 61,
+    "showing": 1,
+    "limit": 30,
+    "offset": 60,
+    "has_next": false,
+    "has_previous": true,
+    "next_offset": null,
+    "previous_offset": 30
+  }
+}

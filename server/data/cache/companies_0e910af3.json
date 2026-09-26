@@ -5,10 +5,10 @@
       "company_name": "PT Amman Mineral Internasional Tbk.",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 343011169512880,
-        "last_close_price": 4730,
-        "daily_close_change": -0.0287474332648871,
-        "pe_ttm": 37.2038829952179,
+        "market_cap": 342285987336320,
+        "last_close_price": 4720,
+        "daily_close_change": -0.00211416490486258,
+        "pe_ttm": 37.1252278514648,
         "roe_ttm": 0.0971825700701001,
         "net_profit_margin[2025]": 0.134836809329545,
         "der_mrq": 1.16775978900822
@@ -19,10 +19,10 @@
       "company_name": "PT Chandra Asri Pacific Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 157451012067440,
-        "last_close_price": 1820,
-        "daily_close_change": -0.0267379679144385,
-        "pe_ttm": 75.7846692699858,
+        "market_cap": 155720781165600,
+        "last_close_price": 1800,
+        "daily_close_change": -0.010989010989011,
+        "pe_ttm": 74.9518707065794,
         "roe_ttm": 0.0233816953669967,
         "net_profit_margin[2025]": 0.155283463392558,
         "der_mrq": 1.19068532113695
@@ -33,10 +33,10 @@
       "company_name": "Barito Pacific Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 146245660148640,
-        "last_close_price": 1560,
-        "daily_close_change": -0.037037037037037,
-        "pe_ttm": 58.8043823955982,
+        "market_cap": 141558299246440,
+        "last_close_price": 1510,
+        "daily_close_change": -0.032051282051282,
+        "pe_ttm": 56.9196265495854,
         "roe_ttm": 0.0213968922692664,
         "net_profit_margin[2025]": 0.0641893193539433,
         "der_mrq": 1.32002977028281
@@ -47,10 +47,10 @@
       "company_name": "Bumi Resources Minerals Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 96413147429840,
-        "last_close_price": 680,
-        "daily_close_change": -0.0215827338129496,
-        "pe_ttm": 144.633311776035,
+        "market_cap": 93577466623080,
+        "last_close_price": 660,
+        "daily_close_change": -0.0294117647058824,
+        "pe_ttm": 140.379390841446,
         "roe_ttm": 0.0355157365816908,
         "net_profit_margin[2025]": 0.200557065071693,
         "der_mrq": 0.278571754312321
@@ -61,10 +61,10 @@
       "company_name": "Aneka Tambang Tbk.",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 78580600650750,
-        "last_close_price": 3270,
-        "daily_close_change": -0.00304878048780488,
-        "pe_ttm": 8.82823943812809,
+        "market_cap": 77619370061750,
+        "last_close_price": 3230,
+        "daily_close_change": -0.0122324159021407,
+        "pe_ttm": 8.72024874163722,
         "roe_ttm": 0.231006978183056,
         "net_profit_margin[2025]": 0.0851680798092314,
         "der_mrq": 0.151180929275565
@@ -75,10 +75,10 @@
       "company_name": "PT Merdeka Copper Gold Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 74887330339260,
-        "last_close_price": 3060,
-        "daily_close_change": -0.00649350649350649,
-        "pe_ttm": 8994.69733219372,
+        "market_cap": 75132060176970,
+        "last_close_price": 3070,
+        "daily_close_change": 0.00326797385620915,
+        "pe_ttm": 9024.09176791984,
         "roe_ttm": 0.000160335284398099,
         "net_profit_margin[2025]": -0.0327542623421634,
         "der_mrq": 0.751177147410364
@@ -89,10 +89,10 @@
       "company_name": "PT Trimegah Bangun Persada Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 57735219000000,
-        "last_close_price": 915,
-        "daily_close_change": -0.0368421052631579,
-        "pe_ttm": 5.41429074748251,
+        "market_cap": 57104233000000,
+        "last_close_price": 905,
+        "daily_close_change": -0.0109289617486339,
+        "pe_ttm": 5.35511817100729,
         "roe_ttm": 0.201794368269693,
         "net_profit_margin[2025]": 0.302081352490529,
         "der_mrq": 0.168720432528357
@@ -103,10 +103,10 @@
       "company_name": "PT Merdeka Battery Materials Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 54537687049500,
-        "last_close_price": 505,
-        "daily_close_change": -0.0380952380952381,
-        "pe_ttm": 51.6831694514793,
+        "market_cap": 53997709950000,
+        "last_close_price": 500,
+        "daily_close_change": -0.0099009900990099,
+        "pe_ttm": 51.1714549024548,
         "roe_ttm": 0.0254349845099593,
         "net_profit_margin[2025]": 0.0206091754049278,
         "der_mrq": 0.455141288557296
@@ -117,10 +117,10 @@
       "company_name": "Vale Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 49747783000480,
-        "last_close_price": 4720,
-        "daily_close_change": -0.0146137787056367,
-        "pe_ttm": 18.5839701009014,
+        "market_cap": 49326191619120,
+        "last_close_price": 4680,
+        "daily_close_change": -0.00847457627118644,
+        "pe_ttm": 18.4264788288599,
         "roe_ttm": 0.0528218020703384,
         "net_profit_margin[2025]": 0.07681618267109,
         "der_mrq": 0.000558744456704015
@@ -131,10 +131,10 @@
       "company_name": "Indah Kiat Pulp & Paper Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 44588510969150,
-        "last_close_price": 8150,
-        "daily_close_change": -0.0355029585798817,
-        "pe_ttm": 3.92633071116865,
+        "market_cap": 44998834689725,
+        "last_close_price": 8225,
+        "daily_close_change": 0.00920245398773006,
+        "pe_ttm": 3.96246258887879,
         "roe_ttm": 0.0882102025360866,
         "net_profit_margin[2025]": 0.142954444835454,
         "der_mrq": 0.721198313332109
@@ -145,10 +145,10 @@
       "company_name": "PT Timah Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 36121604251900,
-        "last_close_price": 4850,
-        "daily_close_change": 0.0104166666666667,
-        "pe_ttm": 9.68864519538839,
+        "market_cap": 35153396302880,
+        "last_close_price": 4720,
+        "daily_close_change": -0.0268041237113402,
+        "pe_ttm": 9.42894955097592,
         "roe_ttm": 0.353468014776814,
         "net_profit_margin[2025]": 0.113707293330505,
         "der_mrq": 0.102166131553087
@@ -159,10 +159,10 @@
       "company_name": "PT Archi Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 32931675000000,
-        "last_close_price": 1305,
-        "daily_close_change": -0.0333333333333333,
-        "pe_ttm": 13.0329512093357,
+        "market_cap": 32805500000000,
+        "last_close_price": 1300,
+        "daily_close_change": -0.00383141762452107,
+        "pe_ttm": 12.9830165303727,
         "roe_ttm": 0.341288120145456,
         "net_profit_margin[2025]": 0.205189237487668,
         "der_mrq": 1.18826481519558
@@ -173,10 +173,10 @@
       "company_name": "Pabrik Kertas Tjiwi Kimia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 22415209704000,
-        "last_close_price": 7200,
-        "daily_close_change": -0.0335570469798658,
-        "pe_ttm": 2.95567551682077,
+        "market_cap": 22181717936250,
+        "last_close_price": 7125,
+        "daily_close_change": -0.0104166666666667,
+        "pe_ttm": 2.92488723018722,
         "roe_ttm": 0.132064668172144,
         "net_profit_margin[2025]": 0.280080672105061,
         "der_mrq": 0.233305634067977
@@ -187,10 +187,10 @@
       "company_name": "PT Avia Avian Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 21064208904000,
-        "last_close_price": 340,
-        "daily_close_change": -0.0116279069767442,
-        "pe_ttm": 11.0669304672243,
+        "market_cap": 21312023126400,
+        "last_close_price": 344,
+        "daily_close_change": 0.0117647058823529,
+        "pe_ttm": 11.1971296491917,
         "roe_ttm": 0.198003864896726,
         "net_profit_margin[2025]": 0.215107060404238,
         "der_mrq": 0.00241722492259179
@@ -201,10 +201,10 @@
       "company_name": "Indocement Tunggal Prakarsa Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 17670028004850,
-        "last_close_price": 5150,
-        "daily_close_change": -0.019047619047619,
-        "pe_ttm": 7.53948216377675,
+        "market_cap": 17412697499925,
+        "last_close_price": 5075,
+        "daily_close_change": -0.0145631067961165,
+        "pe_ttm": 7.42968387983825,
         "roe_ttm": 0.106006672044649,
         "net_profit_margin[2025]": 0.126826301768387,
         "der_mrq": 0.0317181973674123
@@ -217,7 +217,7 @@
         "sub_sector": "Basic Materials",
         "market_cap": 14156100000000,
         "last_close_price": 535,
-        "daily_close_change": -0.0272727272727273,
+        "daily_close_change": 0,
         "pe_ttm": 4.53749117299112,
         "roe_ttm": 0.400222624084858,
         "net_profit_margin[2025]": 0.12569677539275,
@@ -225,31 +225,31 @@
       }
     },
     {
-      "symbol": "AGII.JK",
-      "company_name": "PT Samator Indo Gas Tbk",
-      "query_values": {
-        "sub_sector": "Basic Materials",
-        "market_cap": 10702643400000,
-        "last_close_price": 3490,
-        "daily_close_change": -0.0113314447592068,
-        "pe_ttm": 105.999300775486,
-        "roe_ttm": 0.0260660007899649,
-        "net_profit_margin[2025]": 0.0194027325816944,
-        "der_mrq": 1.01356932458004
-      }
-    },
-    {
       "symbol": "SMGR.JK",
       "company_name": "Semen Indonesia (Persero) Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 10599917939730,
-        "last_close_price": 1570,
-        "daily_close_change": -0.0278637770897833,
-        "pe_ttm": 27.9588261942731,
+        "market_cap": 10667433340620,
+        "last_close_price": 1580,
+        "daily_close_change": 0.00636942675159236,
+        "pe_ttm": 28.1369078897781,
         "roe_ttm": 0.00791836014175462,
         "net_profit_margin[2025]": 0.0054150876278748,
         "der_mrq": 0.168489769641439
+      }
+    },
+    {
+      "symbol": "AGII.JK",
+      "company_name": "PT Samator Indo Gas Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 10579977000000,
+        "last_close_price": 3450,
+        "daily_close_change": -0.0114613180515759,
+        "pe_ttm": 104.784409076053,
+        "roe_ttm": 0.0260660007899649,
+        "net_profit_margin[2025]": 0.0194027325816944,
+        "der_mrq": 1.01356932458004
       }
     },
     {
@@ -257,10 +257,10 @@
       "company_name": "ESSA Industries Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 10250050541500,
-        "last_close_price": 595,
-        "daily_close_change": -0.0245901639344262,
-        "pe_ttm": 10.8067987172435,
+        "market_cap": 9991645906000,
+        "last_close_price": 580,
+        "daily_close_change": -0.0252100840336134,
+        "pe_ttm": 10.5343584134474,
         "roe_ttm": 0.0956170691067519,
         "net_profit_margin[2025]": 0.136572861368626,
         "der_mrq": 0.00019146956532688
@@ -285,10 +285,10 @@
       "company_name": "Unggul Indah Cahaya Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 5807470149450,
-        "last_close_price": 15150,
-        "daily_close_change": 0,
-        "pe_ttm": 6.01902057294264,
+        "market_cap": 5826636717600,
+        "last_close_price": 15200,
+        "daily_close_change": 0.0033003300330033,
+        "pe_ttm": 6.03888532730879,
         "roe_ttm": 0.167714912023886,
         "net_profit_margin[2025]": 0.0923251947745242,
         "der_mrq": 0.0175744959455057
@@ -301,7 +301,7 @@
         "sub_sector": "Basic Materials",
         "market_cap": 4333592905600,
         "last_close_price": 224,
-        "daily_close_change": -0.0260869565217391,
+        "daily_close_change": 0,
         "pe_ttm": 0.586431639894654,
         "roe_ttm": 0.564153233982114,
         "net_profit_margin[2025]": 0.463371461255481,
@@ -313,10 +313,10 @@
       "company_name": "PT Panca Budi Idaman Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 3975000000000,
-        "last_close_price": 530,
-        "daily_close_change": 0.00952380952380952,
-        "pe_ttm": 6.43682442643219,
+        "market_cap": 3937500000000,
+        "last_close_price": 525,
+        "daily_close_change": -0.00943396226415094,
+        "pe_ttm": 6.37609966769226,
         "roe_ttm": 0.20857630674028,
         "net_profit_margin[2025]": 0.077153714213089,
         "der_mrq": 0.0708981950557881
@@ -329,7 +329,7 @@
         "sub_sector": "Basic Materials",
         "market_cap": 3664860290000,
         "last_close_price": 650,
-        "daily_close_change": -0.0441176470588235,
+        "daily_close_change": 0,
         "pe_ttm": 5.47318448017127,
         "roe_ttm": 0.437027178442899,
         "net_profit_margin[2025]": 0.363845646752401,
@@ -341,10 +341,10 @@
       "company_name": "PT Daaz Bara Lestari Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 3295050000000,
-        "last_close_price": 1650,
-        "daily_close_change": 0.0377358490566038,
-        "pe_ttm": 12.0658290315867,
+        "market_cap": 3574630000000,
+        "last_close_price": 1790,
+        "daily_close_change": 0.0848484848484849,
+        "pe_ttm": 13.0895963433577,
         "roe_ttm": 0.122061541976617,
         "net_profit_margin[2025]": 0.0196629887383189,
         "der_mrq": 1.38605346404701
@@ -357,7 +357,7 @@
         "sub_sector": "Basic Materials",
         "market_cap": 3239000000000,
         "last_close_price": 316,
-        "daily_close_change": 0.0193548387096774,
+        "daily_close_change": 0,
         "pe_ttm": 11.8126841166461,
         "roe_ttm": 0.144044968481432,
         "net_profit_margin[2025]": 0.0626804238550877,
@@ -365,31 +365,31 @@
       }
     },
     {
-      "symbol": "FPNI.JK",
-      "company_name": "PT Lotte Chemical Titan Tbk",
-      "query_values": {
-        "sub_sector": "Basic Materials",
-        "market_cap": 2922367350000,
-        "last_close_price": 525,
-        "daily_close_change": -0.0186915887850467,
-        "pe_ttm": 10.2659858606953,
-        "roe_ttm": 0.143183497077621,
-        "net_profit_margin[2025]": 0.0132597374247669,
-        "der_mrq": 0.0013234420296379
-      }
-    },
-    {
       "symbol": "ISSP.JK",
       "company_name": "PT Steel Pipe Industry of Indonesia Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 2917512766210,
-        "last_close_price": 406,
-        "daily_close_change": 0.015,
-        "pe_ttm": 5.19660216948953,
+        "market_cap": 2860024829930,
+        "last_close_price": 398,
+        "daily_close_change": -0.0197044334975369,
+        "pe_ttm": 5.09420606762767,
         "roe_ttm": 0.0973591685156909,
         "net_profit_margin[2025]": 0.0900497691055332,
         "der_mrq": 0.62009119829777
+      }
+    },
+    {
+      "symbol": "FPNI.JK",
+      "company_name": "PT Lotte Chemical Titan Tbk",
+      "query_values": {
+        "sub_sector": "Basic Materials",
+        "market_cap": 2783207000000,
+        "last_close_price": 500,
+        "daily_close_change": -0.0476190476190476,
+        "pe_ttm": 9.77712939113838,
+        "roe_ttm": 0.143183497077621,
+        "net_profit_margin[2025]": 0.0132597374247669,
+        "der_mrq": 0.0013234420296379
       }
     },
     {
@@ -397,10 +397,10 @@
       "company_name": "PT Pinago Utama Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 2796875000000,
-        "last_close_price": 3580,
-        "daily_close_change": 0.0376811594202899,
-        "pe_ttm": 8.4780369366268,
+        "market_cap": 2656250000000,
+        "last_close_price": 3400,
+        "daily_close_change": -0.0502793296089385,
+        "pe_ttm": 8.05176692305339,
         "roe_ttm": 0.260280119972434,
         "net_profit_margin[2025]": 0.139601284451294,
         "der_mrq": 0.186963969802537
@@ -411,10 +411,10 @@
       "company_name": "Alkindo Naratama Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "market_cap": 2579181625520,
-        "last_close_price": 955,
-        "daily_close_change": 0,
-        "pe_ttm": 28.6272978288378,
+        "market_cap": 2592685194240,
+        "last_close_price": 960,
+        "daily_close_change": 0.00523560209424084,
+        "pe_ttm": 28.7771789693029,
         "roe_ttm": 0.0806839538601686,
         "net_profit_margin[2025]": 0.016571111512052,
         "der_mrq": 0.575055608125124

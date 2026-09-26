@@ -39,10 +39,7 @@ export interface SubsectorEntry {
 }
 
 /** Pulls whichever known spelling is present, or null if none. */
-function pickField(
-  row: Record<string, unknown>,
-  keys: string[],
-): string | null {
+function pickField(row: Record<string, unknown>, keys: string[]): string | null {
   for (const k of keys) {
     const v = row[k];
     if (typeof v === "string" && v.trim()) return v.trim();
@@ -52,10 +49,10 @@ function pickField(
 
 /** A company row from the screener, normalized for display. */
 export interface UniverseRow {
-  symbol: string;          // "BBCA" (.JK stripped)
+  symbol: string; // "BBCA" (.JK stripped)
   company_name: string;
   last_close_price: number | null;
-  daily_close_change: number | null;   // decimal, 0.0124 = +1.24%
+  daily_close_change: number | null; // decimal, 0.0124 = +1.24%
   market_cap: number | null;
   pe_ttm: number | null;
   roe_ttm: number | null;
@@ -64,28 +61,57 @@ export interface UniverseRow {
 }
 
 export interface UniverseSector {
-  subSector: string;   // display name used in the screener `where`
-  slug: string;        // report slug
-  sectorName: string;  // parent sector display name
+  subSector: string; // display name used in the screener `where`
+  slug: string; // report slug
+  sectorName: string; // parent sector display name
 }
 
-// The subsectors endpoint returns slugs, while the screener expects the
-// display label in `sub_sector`. Keep this translation local and deterministic.
+/**
+ * Slug -> **display name** used by the screener's `sub_sector` filter.
+ *
+ * ONLY entries verified against live screener rows are listed here. Each was
+ * read off cached responses where `query_values.sub_sector` carried the same
+ * string the API matched against. Anything NOT verified falls through to the
+ * heuristic below, which is KNOWN TO BE WRONG for several subsectors (e.g.
+ * "Technology Hardware Equipment" instead of "Technology, Hardware & Equipment")
+ * and returns 0 rows — so the UI tells the user instead of showing an empty table.
+ *
+ * Why this is a whitelist: guessing a display name costs a CREDIT on
+ * miss — a wrong guess returns 200 with 0 rows, not an error — so a bad guess
+ * is indistinguishable from "this sector genuinely has no companies".
+ */
 const SUBSECTOR_DISPLAY: Record<string, string> = {
-  "basic-materials": "Basic Materials",
-  "oil-gas-coal": "Oil, Gas & Coal",
-  "software-it-services": "Software & IT Services",
-  "telecommunication": "Telecommunication",
-  "transportation": "Transportation",
   banks: "Banks",
+  "basic-materials": "Basic Materials",
+  "consumer-services": "Consumer Services",
+  "household-goods": "Household Goods",
+  "oil-gas-coal": "Oil, Gas & Coal",
   retailing: "Retailing",
+  "software-it-services": "Software & IT Services",
+  telecommunication: "Telecommunication",
+  transportation: "Transportation",
 };
 
+export const VERIFIED_SUBSECTORS: ReadonlyArray<string> = Object.keys(SUBSECTOR_DISPLAY);
+
+/** True when we have a confirmed screener display name for this slug. */
+export function isSubsectorVerified(slug: string): boolean {
+  return Object.prototype.hasOwnProperty.call(SUBSECTOR_DISPLAY, slug);
+}
+
+/**
+ * Best-effort display name. Unverified slugs get a title-cased guess, which
+ * may or may not match upstream — callers should check isSubsectorVerified()
+ * before relying on the output.
+ */
 function displaySubsector(slug: string): string {
-  return SUBSECTOR_DISPLAY[slug] ?? slug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  return (
+    SUBSECTOR_DISPLAY[slug] ??
+    slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  );
 }
 
 // ── 1. The authoritative sector list ───────────────────────────────────────
@@ -117,8 +143,10 @@ export function useSubsectorList() {
           seen.add(r.slug);
           return true;
         })
-        .sort((a, b) => a.sectorName.localeCompare(b.sectorName) ||
-                        a.subSector.localeCompare(b.subSector));
+        .sort(
+          (a, b) =>
+            a.sectorName.localeCompare(b.sectorName) || a.subSector.localeCompare(b.subSector),
+        );
     },
   });
 }
@@ -238,7 +266,7 @@ export function useSectorUniverse(displayName: string | undefined) {
 
 export interface GrowthYear {
   year: string;
-  revenue: number | null;   // percent, e.g. 12.4
+  revenue: number | null; // percent, e.g. 12.4
   earnings: number | null;
 }
 
@@ -259,32 +287,31 @@ export function useSectorGrowthHistory(slug: string | undefined) {
     ...STALE_SECTOR,
     placeholderData: keepPreviousData,
     queryFn: async () => {
-      const raw = await api.sectors.get<Record<string, unknown>>(
-        `/subsector/report/${slug}/`,
-        { sections: "growth" },
-      );
-      const growthSection = raw["growth"] as
-        | { weighted_avg_growth_data?: Record<string, {
-            avg_annual_revenue_growth?: number | null;
-            avg_annual_earning_growth?: number | null;
-          }> }
-        | undefined;
-      const growthMap = growthSection?.weighted_avg_growth_data;
+      // The server adapter (subsector-report) FLATTENS growth.weighted_avg_growth_data
+      // into growth.yearly: [{ year, revenue, earnings }] (decimals, sorted).
+      // The raw map shape no longer exists client-side — read the normalized one.
+      const raw = await api.sectors.get<{
+        growth?: {
+          yearly?: Array<{
+            year: string;
+            revenue: number | null;
+            earnings: number | null;
+          }>;
+        };
+      }>(`/subsector/report/${slug}/`, {
+        sections: "growth",
+      });
 
-      const out: GrowthYear[] = [];
-      for (const [year, v] of Object.entries(growthMap ?? {})) {
-        let rev = v?.avg_annual_revenue_growth;
-        let earn = v?.avg_annual_earning_growth;
-        // guard: implausible upstream artefacts
-        if (rev != null && Math.abs(rev) > 5) rev = null;
-        if (earn != null && Math.abs(earn) > 5) earn = null;
-        out.push({
-          year,
-          revenue: rev == null ? null : rev * 100,
-          earnings: earn == null ? null : earn * 100,
-        });
-      }
-      return out.sort((a, b) => a.year.localeCompare(b.year));
+      const yearly = raw?.growth?.yearly ?? [];
+      return yearly
+        .map((y) => {
+          // guard: implausible upstream artefacts (e.g. transportation 2025
+          // reported revenue growth of 61399 = 6.1 million percent)
+          const rev = y.revenue != null && Math.abs(y.revenue) <= 5 ? y.revenue * 100 : null;
+          const earn = y.earnings != null && Math.abs(y.earnings) <= 5 ? y.earnings * 100 : null;
+          return { year: y.year, revenue: rev, earnings: earn };
+        })
+        .filter((y) => y.revenue != null || y.earnings != null);
     },
   });
 }

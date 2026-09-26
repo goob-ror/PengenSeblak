@@ -12,7 +12,7 @@
  * /v2/subsectors/.
  */
 
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { STALE_SECTOR } from "@/lib/query-config";
 import {
@@ -24,14 +24,41 @@ import {
 } from "@/lib/algorithms/shi";
 
 export const SECTOR_SUBSECTOR_MAP: Record<string, { slug: string; code: string }> = {
-  Financials:           { slug: "banks",                code: "IDXFINANCE" },
-  Technology:           { slug: "software-it-services", code: "IDXTECHNO"  },
-  Infrastructure:       { slug: "telecommunication",    code: "IDXINFRA"   },
-  "Basic Materials":    { slug: "basic-materials",       code: "IDXBASIC"   },
-  Energy:               { slug: "oil-gas-coal",         code: "IDXENERGY"  },
-  "Consumer Cyclicals": { slug: "retailing",             code: "IDXCYCLIC"  },
-  Transportation:       { slug: "transportation",       code: "IDXTRANS"   },
+  Financials: { slug: "banks", code: "IDXFINANCE" },
+  Technology: { slug: "software-it-services", code: "IDXTECHNO" },
+  Infrastructure: { slug: "telecommunication", code: "IDXINFRA" },
+  "Basic Materials": { slug: "basic-materials", code: "IDXBASIC" },
+  Energy: { slug: "oil-gas-coal", code: "IDXENERGY" },
+  "Consumer Cyclicals": { slug: "retailing", code: "IDXCYCLIC" },
+  Transportation: { slug: "transportation", code: "IDXTRANS" },
 };
+
+const REPORT_SECTIONS = "growth,stability,valuation,market_cap";
+
+/**
+ * Raw normalized report for ONE subsector.
+ *
+ * Deliberately reuses the EXACT same queryKey as useSectorHealthScores so
+ * React Query serves it from that already-cached entry — this costs
+ * ZERO extra credits and issues no second network request.
+ * Returns null when the report hasn't loaded yet.
+ */
+export function useSubsectorReportDetail(
+  slug: string | null | undefined,
+): SubsectorReportNormalized | null {
+  const { data } = useQuery({
+    queryKey: ["sectors", "subsector-report", slug, REPORT_SECTIONS],
+    queryFn: () =>
+      api.sectors.get<SubsectorReportNormalized>(`/subsector/report/${slug}/`, {
+        sections: REPORT_SECTIONS,
+      }),
+    enabled: Boolean(slug),
+    ...STALE_SECTOR,
+    throwOnError: false,
+    retry: false,
+  });
+  return data ?? null;
+}
 
 export interface SHIEntry {
   name: string;
@@ -57,10 +84,9 @@ export function useSectorHealthScores() {
     queries: sectors.map(([sectorName, { slug }]) => ({
       queryKey: ["sectors", "subsector-report", slug, "growth,stability,valuation,market_cap"],
       queryFn: () =>
-        api.sectors.get<SubsectorReportNormalized>(
-          `/subsector/report/${slug}/`,
-          { sections: "growth,stability,valuation,market_cap" },
-        ),
+        api.sectors.get<SubsectorReportNormalized>(`/subsector/report/${slug}/`, {
+          sections: "growth,stability,valuation,market_cap",
+        }),
       ...STALE_SECTOR,
       throwOnError: false,
       retry: false,

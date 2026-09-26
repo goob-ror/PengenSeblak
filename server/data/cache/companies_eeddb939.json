@@ -1,0 +1,434 @@
+{
+  "results": [
+    {
+      "symbol": "BULL.JK",
+      "company_name": "PT Buana Lintas Lautan Tbk.",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 5516019427108,
+        "last_close_price": 356,
+        "daily_close_change": -0.0631578947368421,
+        "pe_ttm": 4.2307956192081,
+        "roe_ttm": 0.278175121596683,
+        "net_profit_margin[2025]": 0.167739167875073,
+        "der_mrq": 0.596477584590502
+      }
+    },
+    {
+      "symbol": "MBSS.JK",
+      "company_name": "Mitrabahtera Segara Sejati Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 5057576986710,
+        "last_close_price": 2890,
+        "daily_close_change": -0.00687285223367698,
+        "pe_ttm": 13.631873882574,
+        "roe_ttm": 0.0899163092602334,
+        "net_profit_margin[2025]": 0.439765023624031,
+        "der_mrq": 0.130071227024229
+      }
+    },
+    {
+      "symbol": "ELSA.JK",
+      "company_name": "Elnusa Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 4853502500000,
+        "last_close_price": 665,
+        "daily_close_change": -0.0291970802919708,
+        "pe_ttm": 5.94333112915274,
+        "roe_ttm": 0.150513729495884,
+        "net_profit_margin[2025]": 0.0495516010710064,
+        "der_mrq": 0.0815040793509606
+      }
+    },
+    {
+      "symbol": "SURE.JK",
+      "company_name": "PT Super Energy Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 4642487990100,
+        "last_close_price": 3100,
+        "daily_close_change": -0.00321543408360129,
+        "pe_ttm": 1910.60041434493,
+        "roe_ttm": 0.0111657249507414,
+        "net_profit_margin[2025]": -0.0761901950500287,
+        "der_mrq": 5.48770179796943
+      }
+    },
+    {
+      "symbol": "SOCI.JK",
+      "company_name": "PT Soechi Lines Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 4588350000000,
+        "last_close_price": 650,
+        "daily_close_change": -0.0151515151515152,
+        "pe_ttm": 12.4340113637428,
+        "roe_ttm": 0.0483664759790529,
+        "net_profit_margin[2025]": 0.0493192060297806,
+        "der_mrq": 0.462482336763688
+      }
+    },
+    {
+      "symbol": "MKAP.JK",
+      "company_name": "PT Multikarya Asia Pasifik Raya Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 3656250000000,
+        "last_close_price": 1125,
+        "daily_close_change": 0.0180995475113122,
+        "pe_ttm": 86.378431754865,
+        "roe_ttm": 0.124530637732715,
+        "net_profit_margin[2025]": 0.136437925154946,
+        "der_mrq": 0.363675690520573
+      }
+    },
+    {
+      "symbol": "BESS.JK",
+      "company_name": "PT Batulicin Nusantara Maritim Tbk.",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2855578088240,
+        "last_close_price": 830,
+        "daily_close_change": 0,
+        "pe_ttm": 255.60858881564,
+        "roe_ttm": 0.0174689053190447,
+        "net_profit_margin[2025]": 0.179821732616305,
+        "der_mrq": 0.0157262999350977
+      }
+    },
+    {
+      "symbol": "IATA.JK",
+      "company_name": "PT MNC Energy Investments Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2846100528271,
+        "last_close_price": 91,
+        "daily_close_change": -0.116504854368932,
+        "pe_ttm": 54.2528047801279,
+        "roe_ttm": 0.0223126642515176,
+        "net_profit_margin[2025]": 0.0955670074394067,
+        "der_mrq": 0.376111261166302
+      }
+    },
+    {
+      "symbol": "WINS.JK",
+      "company_name": "Wintermar Offshore Marine Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2555532229545,
+        "last_close_price": 565,
+        "daily_close_change": -0.0087719298245614,
+        "pe_ttm": 6.94497057801423,
+        "roe_ttm": 0.0879742174453881,
+        "net_profit_margin[2025]": 0.246344312712322,
+        "der_mrq": 0.293071104035366
+      }
+    },
+    {
+      "symbol": "MAHA.JK",
+      "company_name": "PT Mandiri Herindo Adiperkasa Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2333240000000,
+        "last_close_price": 140,
+        "daily_close_change": -0.00709219858156028,
+        "pe_ttm": 6.27620751528965,
+        "roe_ttm": 0.201397823116628,
+        "net_profit_margin[2025]": 0.0829914200373975,
+        "der_mrq": 0.303773851186253
+      }
+    },
+    {
+      "symbol": "MYOH.JK",
+      "company_name": "Samindo Resources Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2261470312500,
+        "last_close_price": 1025,
+        "daily_close_change": -0.00966183574879227,
+        "pe_ttm": 9.27126746714958,
+        "roe_ttm": 0.0767644088465536,
+        "net_profit_margin[2025]": 0.0911176446608718,
+        "der_mrq": 0.0837099983019996
+      }
+    },
+    {
+      "symbol": "HUMI.JK",
+      "company_name": "PT Humpuss Maritim Internasional Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2167652589480,
+        "last_close_price": 120,
+        "daily_close_change": -0.0697674418604651,
+        "pe_ttm": 219.215430316847,
+        "roe_ttm": 0.00319136409564752,
+        "net_profit_margin[2025]": 0.0239288717071672,
+        "der_mrq": 0.59883202322288
+      }
+    },
+    {
+      "symbol": "MBAP.JK",
+      "company_name": "PT Mitrabara Adiperdana Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 2086362318400,
+        "last_close_price": 1700,
+        "daily_close_change": -0.0087463556851312,
+        "pe_ttm": 29.8237596645332,
+        "roe_ttm": 0.0208413371081171,
+        "net_profit_margin[2025]": 0.00939227489450672,
+        "der_mrq": 0.213267577295647
+      }
+    },
+    {
+      "symbol": "DWGL.JK",
+      "company_name": "PT Dwi Guna Laksana Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1998609334056,
+        "last_close_price": 216,
+        "daily_close_change": -0.0526315789473684,
+        "pe_ttm": 8.57684707320065,
+        "roe_ttm": 0.389775671582563,
+        "net_profit_margin[2025]": 0.0642514241763133,
+        "der_mrq": 0.502652692196111
+      }
+    },
+    {
+      "symbol": "SUNI.JK",
+      "company_name": "PT Sunindo Pratama Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1687500000000,
+        "last_close_price": 675,
+        "daily_close_change": 0,
+        "pe_ttm": 10.4621295306074,
+        "roe_ttm": 0.180017388903989,
+        "net_profit_margin[2025]": 0.1970509341472,
+        "der_mrq": 0.188215772900421
+      }
+    },
+    {
+      "symbol": "TPMA.JK",
+      "company_name": "Trans Power Marine Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1606398375572,
+        "last_close_price": 458,
+        "daily_close_change": -0.00865800865800866,
+        "pe_ttm": 8.2362292961717,
+        "roe_ttm": 0.0759619152950868,
+        "net_profit_margin[2025]": 0.157495745050833,
+        "der_mrq": 0.810209508174661
+      }
+    },
+    {
+      "symbol": "KKGI.JK",
+      "company_name": "Resource Alam Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1500000000000,
+        "last_close_price": 300,
+        "daily_close_change": -0.0131578947368421,
+        "pe_ttm": 24.6128966046509,
+        "roe_ttm": 0.0235087799147856,
+        "net_profit_margin[2025]": 0.0158149448225651,
+        "der_mrq": 0.0177864248128523
+      }
+    },
+    {
+      "symbol": "ITMA.JK",
+      "company_name": "Sumber Energi Andalan Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1353717041285,
+        "last_close_price": 1355,
+        "daily_close_change": -0.0251798561151079,
+        "pe_ttm": 47.3339657919013,
+        "roe_ttm": 0.00733471333060271,
+        "net_profit_margin[2025]": 0.830078957465354,
+        "der_mrq": 0.0732240514418796
+      }
+    },
+    {
+      "symbol": "ARII.JK",
+      "company_name": "Atlas Resources Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 1222500000000,
+        "last_close_price": 326,
+        "daily_close_change": -0.0239520958083832,
+        "pe_ttm": 15.9776168970222,
+        "roe_ttm": 0.0471667677740382,
+        "net_profit_margin[2025]": 0.00355260299661513,
+        "der_mrq": 0.798852477104711
+      }
+    },
+    {
+      "symbol": "BBRM.JK",
+      "company_name": "Pelayaran Nasional Bina Buana Raya Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 907305465096,
+        "last_close_price": 107,
+        "daily_close_change": -0.0614035087719298,
+        "pe_ttm": 8.10250507606747,
+        "roe_ttm": 0.132322073098368,
+        "net_profit_margin[2025]": 0.453705634769779,
+        "der_mrq": 0.149429573432731
+      }
+    },
+    {
+      "symbol": "APEX.JK",
+      "company_name": "Apexindo Pratama Duta Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 609992265692,
+        "last_close_price": 172,
+        "daily_close_change": -0.0444444444444444,
+        "pe_ttm": 6.08117249112142,
+        "roe_ttm": 0.0780553276814875,
+        "net_profit_margin[2025]": 0.0481782071331387,
+        "der_mrq": 1.45998499183091
+      }
+    },
+    {
+      "symbol": "LEAD.JK",
+      "company_name": "PT Logindo Samudramakmur Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 579961632800,
+        "last_close_price": 100,
+        "daily_close_change": -0.0384615384615385,
+        "pe_ttm": 3.62006602771056,
+        "roe_ttm": 0.16411502915714,
+        "net_profit_margin[2025]": 0.31294909063424,
+        "der_mrq": 0.658357409308296
+      }
+    },
+    {
+      "symbol": "BOAT.JK",
+      "company_name": "PT Newport Marine Services Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 483231840000,
+        "last_close_price": 138,
+        "daily_close_change": -0.0212765957446809,
+        "pe_ttm": 13.780280720837,
+        "roe_ttm": 0.082173037510741,
+        "net_profit_margin[2025]": 0.11502435047342,
+        "der_mrq": 0.357152336285765
+      }
+    },
+    {
+      "symbol": "UNIQ.JK",
+      "company_name": "PT Ulima Nitra Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 342149147000,
+        "last_close_price": 109,
+        "daily_close_change": -0.0916666666666667,
+        "pe_ttm": 12.6902868800183,
+        "roe_ttm": 0.0551679413148035,
+        "net_profit_margin[2025]": 0.0657919202844105,
+        "der_mrq": 0.25498586858627
+      }
+    },
+    {
+      "symbol": "CGAS.JK",
+      "company_name": "PT Citra Nusantara Gemilang Tbk.",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 256867360655,
+        "last_close_price": 145,
+        "daily_close_change": -0.0333333333333333,
+        "pe_ttm": 11.0768571961776,
+        "roe_ttm": 0.0819854009219182,
+        "net_profit_margin[2025]": 0.0232307088457699,
+        "der_mrq": 0.234404181404354
+      }
+    },
+    {
+      "symbol": "FIRE.JK",
+      "company_name": "PT Alfa Energi Investama Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 159339223332,
+        "last_close_price": 108,
+        "daily_close_change": -0.1,
+        "pe_ttm": 21.5833981840807,
+        "roe_ttm": 0.030535633157266,
+        "net_profit_margin[2025]": 0.000187666243825657,
+        "der_mrq": 0.0615543585559093
+      }
+    },
+    {
+      "symbol": "RUIS.JK",
+      "company_name": "Radiant Utama Interinsco Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 150920000000,
+        "last_close_price": 196,
+        "daily_close_change": -0.02,
+        "pe_ttm": 11.2935450538834,
+        "roe_ttm": 0.023661463504157,
+        "net_profit_margin[2025]": 0.00670365508099387,
+        "der_mrq": 0.869371740204067
+      }
+    },
+    {
+      "symbol": "RGAS.JK",
+      "company_name": "PT Kian Santang Muliatama Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 138627240450,
+        "last_close_price": 95,
+        "daily_close_change": -0.0865384615384615,
+        "pe_ttm": 8.38340135231629,
+        "roe_ttm": 0.155946448703512,
+        "net_profit_margin[2025]": 0.0584433403097498,
+        "der_mrq": 0.0304897490186479
+      }
+    },
+    {
+      "symbol": "KOPI.JK",
+      "company_name": "PT Mitra Energi Persada Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 137361533596,
+        "last_close_price": 197,
+        "daily_close_change": 0,
+        "pe_ttm": 15.665271796381,
+        "roe_ttm": 0.117484883947124,
+        "net_profit_margin[2025]": 0.0105901503308312,
+        "der_mrq": 1.25620221423783
+      }
+    },
+    {
+      "symbol": "WOWS.JK",
+      "company_name": "PT Ginting Jaya Energi Tbk",
+      "query_values": {
+        "sub_sector": "Oil, Gas & Coal",
+        "market_cap": 123786000000,
+        "last_close_price": 50,
+        "daily_close_change": -0.0384615384615385,
+        "pe_ttm": 8.47084055735336,
+        "roe_ttm": 0.026992747904969,
+        "net_profit_margin[2025]": 0.0656021981803024,
+        "der_mrq": 0.103665172583583
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 61,
+    "showing": 30,
+    "limit": 30,
+    "offset": 30,
+    "has_next": true,
+    "has_previous": true,
+    "next_offset": 60,
+    "previous_offset": 0
+  }
+}

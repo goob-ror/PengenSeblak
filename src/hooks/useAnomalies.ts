@@ -33,6 +33,15 @@ import {
  * der_mrq is absent for banks, so the Value Trap rule cannot fire for them;
  * they can still produce Value Dislocation / Margin Deterioration signals.
  */
+/**
+ * Subsectors scanned for divergence anomalies.
+ *
+ * This list MUST stay in sync with the VERIFIED display names in
+ * useSectorUniverse's SUBSECTOR_DISPLAY map. Adding a subsector whose display
+ * name isn't confirmed there costs a credit and returns 0 rows (a wrong guess
+ * yields HTTP 200 + empty results, indistinguishable from "no companies"),
+ * silently disabling anomaly detection for it while looking like it works.
+ */
 export const ANOMALY_SUBSECTORS = [
   "Basic Materials",
   "Oil, Gas & Coal",
@@ -41,6 +50,8 @@ export const ANOMALY_SUBSECTORS = [
   "Telecommunication",
   "Transportation",
   "Banks",
+  "Consumer Services",
+  "Household Goods",
 ] as const;
 
 interface ScreenerApiEnvelope {

@@ -1,0 +1,47 @@
+{
+  "sector": "Financials",
+  "sub_sector": "Financing Service",
+  "growth": {
+    "weighted_avg_growth_data": {
+      "2018": {
+        "avg_annual_earning_growth": null,
+        "avg_annual_revenue_growth": null
+      },
+      "2019": {
+        "avg_annual_earning_growth": 0.183581809807249,
+        "avg_annual_revenue_growth": 0.125184234571499
+      },
+      "2020": {
+        "avg_annual_earning_growth": -0.277943802635843,
+        "avg_annual_revenue_growth": -0.367913468817372
+      },
+      "2021": {
+        "avg_annual_earning_growth": 0.38143178283961,
+        "avg_annual_revenue_growth": -0.151136275790419
+      },
+      "2022": {
+        "avg_annual_earning_growth": 0.779718757063808,
+        "avg_annual_revenue_growth": 0.0594818313746503
+      },
+      "2023": {
+        "avg_annual_earning_growth": -0.174669685943481,
+        "avg_annual_revenue_growth": 0.950170718974748
+      },
+      "2024": {
+        "avg_annual_earning_growth": 0.700892974279577,
+        "avg_annual_revenue_growth": -0.189417728403305
+      },
+      "2025": {
+        "avg_annual_earning_growth": -0.0134283010759994,
+        "avg_annual_revenue_growth": 0.109070836685059
+      }
+    },
+    "growth_forecasts": {
+      "2026": {
+        "base_year": 2025,
+        "eps_growth": 0.23691755092042,
+        "revenue_growth": 0.738872823993869
+      }
+    }
+  }
+}

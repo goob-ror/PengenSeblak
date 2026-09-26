@@ -1,0 +1,30 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T03:22:49.055Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Logistics Deliveries' and market_cap > 0 and last_close_price > 0 and daily_close_change > -100 and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 740
+  },
+  "data": {
+    "results": [],
+    "pagination": {
+      "total_count": 0,
+      "showing": 0,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

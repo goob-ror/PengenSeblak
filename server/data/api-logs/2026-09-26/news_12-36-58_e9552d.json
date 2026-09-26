@@ -1,0 +1,258 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-26T04:36:58.435Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1141
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Indonesia’s capital market raises Rp147 trillion, with EBUS contributing Rp128.81 trillion",
+        "body": "The article reports that Indonesia’s capital market has raised about Rp147 trillion up to 25 September 2026. Bursa Efek Indonesia (BEI) records that the bulk of the funds, Rp128.81 trillion, came from debt and sukuk issuances (EBUS). Rights issues contributed Rp16.23 trillion and initial public offerings added Rp2.16 trillion, with seven companies already listed and six more in the IPO pipeline. BEI also notes 132 EBUS issuances from 62 issuers and 22 pending issuances from 16 issuers, with the financial sector leading the pipeline.",
+        "source": "https://investasi.kontan.co.id/news/dana-pasar-modal-tembus-rp-147-triliun-ebus-sumbang-rp-12881-triliun",
+        "thumbnail": "https://foto.kontan.co.id/WRWObEh3hlsX8LtzSL9LrWWXRJA=/smart/2026/05/04/650229050t.jpg",
+        "timestamp": "2026-09-26T06:10:00",
+        "sector": "financials",
+        "sub_sector": [
+          "financing-service"
+        ],
+        "tags": [
+          "Capital & Funding",
+          "Debt Issuance",
+          "Bonds",
+          "IPO"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Popular news roundup highlights PT Pioneerindo Gourmet International Tbk (PTSP) CFC revenue growth, PT Pukul Rata Kanan tender for PT Guna Timur Raya Tbk (TRUK), PT Energi Mega Persada Tbk (ENRG) rights issue and PT Bank Central Asia Tbk (BBCA) strong August performance",
+        "body": "The article presents the most popular financial news items of the week, covering performance and corporate actions of several Indonesian listed companies. PT Pioneerindo Gourmet International Tbk (PTSP) reported net revenue of Rp 385.83 billion for the first half of 2026, up from Rp 368.81 billion a year earlier, with CFC franchise sales reaching Rp 361 billion versus Rp 343.08 billion previously. PT Pukul Rata Kanan announced a voluntary tender offer for 65,250,000 shares (15 %) of PT Guna Timur Raya Tbk (TRUK) at Rp 740 per share, potentially valuing the transaction at up to Rp 48,285 billion, well below TRUK’s market price of Rp 2,580 per share on 25 September 2026. PT Energi Mega Persada Tbk (ENRG) launched a rights issue of 13,282,271,875 new B‑series shares at Rp 310 each, and PT Bank Central Asia Tbk (BBCA) saw its net interest margin rise to 5.7 % in August 2026, supporting a buy recommendation with a target upside of about 30 %. The piece also notes the growing relevance of the JOMO mindset versus FOMO in investment decisions.",
+        "source": "https://investor.id/market/455580/berita-populer-ratusan-gerai-cfc-disorot-hingga-gabriel-ray-berburu-kendali-truk",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2023/11/1700093420-877x534.webp",
+        "timestamp": "2026-09-26T06:00:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "consumer-services",
+          "logistics-deliveries",
+          "oil-gas-coal",
+          "banks"
+        ],
+        "tags": [
+          "Annual Report",
+          "Ownership",
+          "Capital & Funding",
+          "Analyst Ratings",
+          "Financial Metrics"
+        ],
+        "symbols": [
+          "PTSP.JK",
+          "TRUK.JK",
+          "ENRG.JK",
+          "BBCA.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "BBCA and AMRT lead foreign net buying as IHSG falls on Friday (25/6/2026)",
+        "body": "The article reports that PT Bank Central Asia Tbk (BBCA) and PT Sumber Alfaria Trijaya Tbk (AMRT) were the top stocks bought by foreign investors on a day when the Jakarta Composite Index (IHSG) declined. IHSG closed down 0.9% at 6,241.89 points, a 56‑point drop, marking a 3.09% weekly correction, while foreign investors recorded a net sell of Rp 559.07 billion on the day and Rp 4.39 trillion over the week. The ten stocks with the largest foreign net purchases were PT Bank Central Asia Tbk (BBCA) Rp 99.03 billion, PT Sumber Alfaria Trijaya Tbk (AMRT) Rp 25.73 billion, PT Intermedia Capital Tbk (MDIA) Rp 13.94 billion, PT Karya Pacific Energy Tbk (IATA) Rp 12.87 billion, PT Merdeka Gold Resources Tbk (EMAS) Rp 11.39 billion, PT Bukit Asam Tbk (PTBA) Rp 10.03 billion, PT Bakrie & Brohters Tbk (BNBR) Rp 8.02 billion, PT Adaro Andalan Indonesia Tbk (AADI) Rp 8.02 billion, PT Alamtri Resources Indonesia Tbk (ADRO) Rp 7.55 billion, and PT Wahana Interfood Nusantara Tbk (COCO) Rp 6.72 billion. These net buying figures show that foreign demand concentrated on these companies despite the broader market’s selling pressure.",
+        "source": "https://investasi.kontan.co.id/news/bbca-amrt-teratas-cek-saham-yang-banyak-diburu-asing-saat-ihsg-turun-jumat-259",
+        "thumbnail": "https://foto.kontan.co.id/4ZnWvZF-StjsYsSfy-G58j10gbo=/smart/2026/09/15/888696368t.jpg",
+        "timestamp": "2026-09-26T05:50:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks",
+          "food-staples-retailing"
+        ],
+        "tags": [
+          "Bullish"
+        ],
+        "symbols": [
+          "BBCA.JK",
+          "AMRT.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Indosat Tbk (ISAT) records Rp1.64 trillion profit from fiber asset divestiture to Hashim‑linked group",
+        "body": "PT Indosat Tbk (ISAT) reported a one‑time profit of Rp1.64 trillion after completing the deconsolidation of its fiber‑optic infrastructure business. The profit arises from the sale of 84.9% of PT Infra Fiber Teknologi (IFT) to PT Nusantara Fiber Teknologi (NFT) for a total transaction value of Rp11.71 trillion, with the remaining 15.1% transferred via inbreng, while ISAT and PT Aplikanusa Lintasarta retain a 49.9% stake in NFT, which is majority‑owned (50.1%) by PT Ainfrastruktur Indonesia Raya (AIR), an entity affiliated with Hashim Djojohadikusumo. ISAT will assume lease‑back expenses for the fiber network under standard accounting and indicated no further corporate actions are planned for the next year.",
+        "source": "https://www.idnfinancials.com/id/news/69459/hasil-lepas-aset-fiber-ke-grup-hashim-isat-untung-rp1-64-triliun",
+        "thumbnail": "https://photo2.idnfinancials.com/fly/idn/test/arif/HASHIM-ISAT-03072026.jpg",
+        "timestamp": "2026-09-25T22:45:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "telecommunication"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Executive Changes",
+          "Capital & Funding",
+          "Bullish"
+        ],
+        "symbols": [
+          "ISAT.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 2,
+          "management": 2,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Aneka Tambang Tbk (ANTM) reports 9‑ton gold purchase from Freeport and semester‑I sales of Rp50.39 trillion",
+        "body": "PT Aneka Tambang Tbk (ANTM) bought 9 tonnes of gold from PT Freeport Indonesia between January and August 2026 to strengthen domestic supply. In the first half of 2026, ANTAM sold 18.08 tonnes of gold generating Rp50.39 trillion, about 80% of its Rp62.71 trillion net sales, a 1% year‑on‑year increase, while its own gold production was 433 kg.",
+        "source": "https://www.bloombergtechnoz.com/detail-news/122766/antam-serap-9-ton-emas-freeport-semester-i-catat-sales-rp50-t",
+        "thumbnail": "https://images.bloombergtechnoz.com/data/2024/02/image-20240202154255.jpg",
+        "timestamp": "2026-09-25T22:16:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Asset Purchase",
+          "Commodities",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "ANTM.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Pukul Rata Kanan (PRK) launches voluntary tender offer to increase stake in PT Guna Timur Raya Tbk (TRUK) to about 30%",
+        "body": "PT Pukul Rata Kanan (PRK) has announced a voluntary tender offer (VTO) to raise its ownership in PT Guna Timur Raya Tbk (TRUK). PRK, which already holds 65.25 million shares (15% of TRUK’s paid‑up capital), seeks to acquire an additional 65.25 million shares at Rp740 per share, amounting to roughly Rp48.3 billion and bringing its total stake to about 30%. The offer price is slightly above the 90‑day average high of Rp735.15; the VTO was announced on 25 Sep 2026, with OJK effectiveness expected on 4 Nov 2026 and the offer period scheduled from 6 Nov to 7 Dec 2026, allocation on 10 Dec and payment on 15 Dec. PRK affirmed it has no plan to delist TRUK and has engaged Sucor Sekuritas to handle the transaction administration.",
+        "source": "https://emitennews.com/news/pengusaha-muda-gabriel-rey-bidik-lagi-saham-guna-timur-raya-truk",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790348502.jpeg?25119ab",
+        "timestamp": "2026-09-25T22:05:00",
+        "sector": "transportation-logistic",
+        "sub_sector": [
+          "logistics-deliveries"
+        ],
+        "tags": [
+          "Ownership",
+          "Capital & Funding",
+          "Bullish"
+        ],
+        "symbols": [
+          "TRUK.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "Pemenang Nusantara Internasional Sell Shares of Winner Nusantara Jaya",
+        "body": "Pemenang Nusantara Internasional sold 10,560,300 Winner Nusantara Jaya shares at IDR 25 per share on 22 Sep 2026, generating IDR 264,007,500. The transaction lowered its holding to 2,414,104,100 shares, cutting its ownership from 46.31% to 46.11%, a 0.20 percentage‑point decline. The sale, reported as a move to increase the company’s free‑float, follows a steady stream of disposals by the insider since April, which have trimmed its stake from more than 60% to below 50% over the past six months.",
+        "source": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_KSEI/LK-25092026-8338-00.pdf-0.pdf",
+        "thumbnail": null,
+        "timestamp": "2026-09-25T22:02:15",
+        "sector": "properties-real-estate",
+        "sub_sector": [
+          "properties-real-estate"
+        ],
+        "tags": [
+          "Insider Trading"
+        ],
+        "symbols": [
+          "WINR.JK"
+        ],
+        "dimension": null
+      },
+      {
+        "title": "Rising oil prices boost PT Elnusa Tbk (ELSA) outlook with revenue and profit projected to rise through 2027",
+        "body": "The article projects that PT Elnusa Tbk (ELSA) will see stronger performance as oil prices stay high, with forecasts extending to 2027. In the first half of 2026, ELSA recorded revenue of Rp7.58 trillion (up 8.9% YoY), EBITDA of Rp862 billion (up 16.2%) and net profit of Rp435 billion (up 29.2%); it secured new contracts worth Rp11.6 trillion and carry‑forward contracts of Rp18.8 trillion, and analysts forecast 2026 revenue of Rp15.42 trillion and net profit of Rp803 billion, rising to Rp17.67 trillion and Rp1.06 trillion respectively in 2027. As part of Pertamina’s upstream subholding ecosystem, ELSA’s growth hinges on asset utilization, contract wins and drilling activity, while risks such as oil‑price declines and project delays lead the analyst to recommend a “wait and see” stance.",
+        "source": "https://investasi.kontan.co.id/news/harga-minyak-naik-kinerja-elnusa-elsa-diproyeksi-makin-kinclong-hingga-2027",
+        "thumbnail": "https://foto.kontan.co.id/YEzmzp-73o6a7vC5cAP0ewjYP3A=/smart/2026/05/12/2074128826t.jpg",
+        "timestamp": "2026-09-25T21:32:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Business Expansion",
+          "Neutral"
+        ],
+        "symbols": [
+          "ELSA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10933,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

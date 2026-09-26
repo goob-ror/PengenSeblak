@@ -8,39 +8,39 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 4.92307057678342,
-        "avg_annual_revenue_growth": 0.0775673009477334
+        "avg_annual_earning_growth": 4.9695610095472,
+        "avg_annual_revenue_growth": 0.0753780805438349
       },
       "2020": {
-        "avg_annual_earning_growth": -0.983117682209492,
-        "avg_annual_revenue_growth": -0.31015329942805
+        "avg_annual_earning_growth": -0.982964060483988,
+        "avg_annual_revenue_growth": -0.311416416417721
       },
       "2021": {
-        "avg_annual_earning_growth": 43.3662558727403,
-        "avg_annual_revenue_growth": 0.509149509380599
+        "avg_annual_earning_growth": 43.9679852589214,
+        "avg_annual_revenue_growth": 0.466126766463517
       },
       "2022": {
-        "avg_annual_earning_growth": 1.94899050022727,
-        "avg_annual_revenue_growth": 0.394796702499904
+        "avg_annual_earning_growth": 1.96503255292351,
+        "avg_annual_revenue_growth": 0.394332000032906
       },
       "2023": {
-        "avg_annual_earning_growth": 0.229075299242962,
-        "avg_annual_revenue_growth": 0.233259148845589
+        "avg_annual_earning_growth": 0.172010385803785,
+        "avg_annual_revenue_growth": 0.233777629942499
       },
       "2024": {
-        "avg_annual_earning_growth": 0.233520035673067,
-        "avg_annual_revenue_growth": 0.223810848406996
+        "avg_annual_earning_growth": 0.234659339202054,
+        "avg_annual_revenue_growth": 0.224818706764991
       },
       "2025": {
-        "avg_annual_earning_growth": 0.031546867694702,
-        "avg_annual_revenue_growth": 0.0289907695348717
+        "avg_annual_earning_growth": 0.0392836735781543,
+        "avg_annual_revenue_growth": 0.0293191301725414
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.215449351715425,
-        "revenue_growth": 0.137222222240261
+        "eps_growth": 0.2154576998335,
+        "revenue_growth": 0.137724113636323
       }
     }
   }

@@ -18,14 +18,14 @@ import { ihsgSeries, sectorSeries } from "@/lib/market-data";
 
 // ── Shared types ──────────────────────────────────────────────────────────────
 export interface IHSGChartPoint {
-  t:     string;   // axis label ("MM-DD" or "HH:MM")
-  value: number;   // IHSG level
+  t: string; // axis label ("MM-DD" or "HH:MM")
+  value: number; // IHSG level
 }
 
 export interface SectorChartPoint {
-  t:      string;
-  sector: number;  // indexed to 100
-  ihsg:   number;
+  t: string;
+  sector: number; // indexed to 100
+  ihsg: number;
 }
 
 // ── IHSGChart ─────────────────────────────────────────────────────────────────
@@ -49,8 +49,8 @@ export function IHSGChart({ data }: { data?: IHSGChartPoint[] }) {
         <AreaChart data={series} margin={{ top: 16, right: 12, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="ihsgFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stopColor="var(--color-primary)" stopOpacity={0.28} />
-              <stop offset="100%" stopColor="var(--color-primary)" stopOpacity={0}    />
+              <stop offset="0%" stopColor="var(--color-primary)" stopOpacity={0.28} />
+              <stop offset="100%" stopColor="var(--color-primary)" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid stroke="var(--color-grid)" vertical={false} />
@@ -73,10 +73,10 @@ export function IHSGChart({ data }: { data?: IHSGChartPoint[] }) {
           />
           <Tooltip
             contentStyle={{
-              background:  "var(--color-popover)",
-              border:      "1px solid var(--color-border)",
+              background: "var(--color-popover)",
+              border: "1px solid var(--color-border)",
               borderRadius: 2,
-              fontSize:    11,
+              fontSize: 11,
             }}
             labelStyle={{ color: "var(--color-muted-foreground)" }}
             formatter={(v: number) => [v.toLocaleString("id-ID"), "IHSG"]}
@@ -113,7 +113,7 @@ export interface ForeignFlowChartPoint {
 export function ForeignFlowChart({ data }: { data: ForeignFlowChartPoint[] }) {
   const series = (data ?? [])
     .map((p) => ({
-      date: p.date?.slice(5) ?? "",   // "MM-DD"
+      date: p.date?.slice(5) ?? "", // "MM-DD"
       value: Number(p.net_foreign_inflow ?? 0),
     }))
     .filter((p) => p.date);
@@ -245,16 +245,31 @@ export interface GrowthChartPoint {
   earnings: number | null;
 }
 
-export function GrowthHistoryChart({ data }: { data: GrowthChartPoint[] }) {
-  const series = (data ?? []).filter((d) => d.revenue != null || d.earnings != null);
+export function GrowthHistoryChart({
+  data,
+  years,
+}: {
+  data: GrowthChartPoint[];
+  /** Show only the last N years (undefined = all). */
+  years?: number;
+}) {
+  const all = (data ?? []).filter((d) => d.revenue != null || d.earnings != null);
+  const series = years && years > 0 ? all.slice(-years) : all;
 
   if (series.length === 0) {
     return (
-      <div className="flex h-64 items-center justify-center text-[10px] text-muted-foreground">
+      <div className="flex h-80 items-center justify-center text-[10px] text-muted-foreground">
         Data pertumbuhan historis tidak tersedia untuk sub-sektor ini.
       </div>
     );
   }
+
+  // Literal colors: earnings previously used var(--color-accent) — a dark
+  // BACKGROUND teal, invisible on the dark chart. Revenue keeps its working
+  // primary color; earnings gets a bright amber. Literals because var() does
+  // not resolve in SVG attributes (see ForeignFlowChart).
+  const REV = "oklch(0.72 0.095 185)"; // --primary (teal)
+  const EARN = "oklch(0.75 0.12 75)"; // --warning (amber)
 
   return (
     <div className="h-80 w-full px-2 pt-3">
@@ -295,7 +310,7 @@ export function GrowthHistoryChart({ data }: { data: GrowthChartPoint[] }) {
             isAnimationActive={false}
             type="monotone"
             dataKey="revenue"
-            stroke="var(--color-primary)"
+            stroke={REV}
             strokeWidth={2}
             dot={false}
           />
@@ -303,9 +318,8 @@ export function GrowthHistoryChart({ data }: { data: GrowthChartPoint[] }) {
             isAnimationActive={false}
             type="monotone"
             dataKey="earnings"
-            stroke="var(--color-accent)"
-            strokeWidth={1.5}
-            strokeDasharray="4 4"
+            stroke={EARN}
+            strokeWidth={2}
             dot={false}
           />
         </LineChart>
@@ -344,10 +358,10 @@ export function SectorChart({ data }: { data?: SectorChartPoint[] }) {
           />
           <Tooltip
             contentStyle={{
-              background:  "var(--color-popover)",
-              border:      "1px solid var(--color-border)",
+              background: "var(--color-popover)",
+              border: "1px solid var(--color-border)",
               borderRadius: 2,
-              fontSize:    11,
+              fontSize: 11,
             }}
           />
           <Line

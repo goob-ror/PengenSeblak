@@ -8,45 +8,45 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": 4.92307057678342,
-        "avg_annual_revenue_growth": 0.0775673009477334
+        "avg_annual_earning_growth": 4.9695610095472,
+        "avg_annual_revenue_growth": 0.0753780805438349
       },
       "2020": {
-        "avg_annual_earning_growth": -0.983117682209492,
-        "avg_annual_revenue_growth": -0.31015329942805
+        "avg_annual_earning_growth": -0.982964060483988,
+        "avg_annual_revenue_growth": -0.311416416417721
       },
       "2021": {
-        "avg_annual_earning_growth": 43.3662558727403,
-        "avg_annual_revenue_growth": 0.509149509380599
+        "avg_annual_earning_growth": 43.9679852589214,
+        "avg_annual_revenue_growth": 0.466126766463517
       },
       "2022": {
-        "avg_annual_earning_growth": 1.94899050022727,
-        "avg_annual_revenue_growth": 0.394796702499904
+        "avg_annual_earning_growth": 1.96503255292351,
+        "avg_annual_revenue_growth": 0.394332000032906
       },
       "2023": {
-        "avg_annual_earning_growth": 0.229075299242962,
-        "avg_annual_revenue_growth": 0.233259148845589
+        "avg_annual_earning_growth": 0.172010385803785,
+        "avg_annual_revenue_growth": 0.233777629942499
       },
       "2024": {
-        "avg_annual_earning_growth": 0.233520035673067,
-        "avg_annual_revenue_growth": 0.223810848406996
+        "avg_annual_earning_growth": 0.234659339202054,
+        "avg_annual_revenue_growth": 0.224818706764991
       },
       "2025": {
-        "avg_annual_earning_growth": 0.031546867694702,
-        "avg_annual_revenue_growth": 0.0289907695348717
+        "avg_annual_earning_growth": 0.0392836735781543,
+        "avg_annual_revenue_growth": 0.0293191301725414
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 0.215449351715425,
-        "revenue_growth": 0.137222222240261
+        "eps_growth": 0.2154576998335,
+        "revenue_growth": 0.137724113636323
       }
     }
   },
   "stability": {
-    "weighted_max_drawdown": -0.313685159217957,
-    "weighted_rsd_close": 0.10325482306117194
+    "weighted_max_drawdown": -0.313665971047033,
+    "weighted_rsd_close": 0.10304899344169516
   },
   "valuation": {
     "historical_valuation": {
@@ -75,20 +75,20 @@
         "pcf": 11.6574554233721
       },
       "2026": {
-        "pb": 0.981992429992283,
-        "pe": 9.31634038676177,
-        "ps": 0.62963360013092,
-        "pcf": 4.54331769200884,
-        "pb_rank": 10,
-        "pe_rank": 18,
+        "pb": 0.964765861274067,
+        "pe": 9.2720490045843,
+        "ps": 0.628658249740105,
+        "pcf": 4.5430769146179,
+        "pb_rank": 9,
+        "pe_rank": 20,
         "ps_rank": 9,
-        "pcf_rank": 9
+        "pcf_rank": 10
       }
     }
   },
   "market_cap": {
-    "total_market_cap": 129532384681480,
-    "avg_market_cap": 4047887021296.25,
+    "total_market_cap": 128922315530907,
+    "avg_market_cap": 4028822360340.8438,
     "quarterly_market_cap": {
       "prev_ttm_mcap": {
         "2024.Q4": 162117282724733,
@@ -111,9 +111,9 @@
     },
     "mcap_summary": {
       "mcap_change": {
-        "1w": 0.02795123258074099,
-        "1y": 0.06684403393109314,
-        "ytd": 0.055525647008980814
+        "1w": 0.002992357524236598,
+        "1y": 0.057411152012579285,
+        "ytd": 0.04619284064410804
       },
       "monthly_performance": {
         "2025-10-31": 0.052830322325827746,
@@ -127,9 +127,9 @@
         "2026-06-30": -0.01922645467259844,
         "2026-07-31": 0.05418560168543249,
         "2026-08-31": 0.021798518496404292,
-        "2026-09-23": 0.016553856853452686
+        "2026-09-24": 0.0075656334669704835
       },
-      "performance_quantile": 0.696969696969697
+      "performance_quantile": 0.666666666666667
     }
   }
 }

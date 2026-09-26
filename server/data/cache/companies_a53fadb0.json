@@ -5,7 +5,7 @@
       "company_name": "PT Bank Oke Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 9.44792588969448,
+        "pe_ttm": 9.22297527327319,
         "roe_ttm": 0.0570393274551135,
         "net_profit_margin[2025]": 0.221933317167879
       }
@@ -25,7 +25,7 @@
       "company_name": "PT Bank Mayapada Internasional Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 78.3290432341485,
+        "pe_ttm": 79.8649068269749,
         "roe_ttm": 0.00347312896180315,
         "net_profit_margin[2025]": 0.00915498076766843
       }
@@ -35,7 +35,7 @@
       "company_name": "PT Bank China Construction Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 8.29980935175634,
+        "pe_ttm": 8.17593160023759,
         "roe_ttm": 0.0416526184404634,
         "net_profit_margin[2025]": 0.283308563021678
       }
@@ -45,7 +45,7 @@
       "company_name": "Bank Mega Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 13.7864399948014,
+        "pe_ttm": 13.7509992750204,
         "roe_ttm": 0.146635969907065,
         "net_profit_margin[2025]": 0.436159950181815
       }
@@ -65,7 +65,7 @@
       "company_name": "PT Bank Nationalnobu Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 6.68250382121132,
+        "pe_ttm": 6.74554631009067,
         "roe_ttm": 0.131998176470535,
         "net_profit_margin[2025]": 0.296375477903303
       }
@@ -105,7 +105,7 @@
       "company_name": "PT Super Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 90.0477703632919,
+        "pe_ttm": 91.8854799625427,
         "roe_ttm": 0.0221198969446929,
         "net_profit_margin[2025]": 0.0616651139657713
       }

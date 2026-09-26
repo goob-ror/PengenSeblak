@@ -1,6 +1,7 @@
 "use client";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect, useCallback } from "react";
 import {
+  Activity,
   ArrowDownUp,
   Bell,
   BellOff,
@@ -15,7 +16,9 @@ import {
   Layers,
   Plus,
   RefreshCw,
+  Scale,
   Search,
+  Shield,
   ShieldCheck,
   Sparkles,
   Star,
@@ -58,11 +61,12 @@ import {
   useIdxNews,
   type NewsArticle,
 } from "@/hooks/useMarketOverview";
-import { useSectorHealthScores } from "@/hooks/useSubsectorReport";
+import { useSectorHealthScores, useSubsectorReportDetail } from "@/hooks/useSubsectorReport";
 import {
   useSubsectorList,
   useSectorUniverse,
   useSectorGrowthHistory,
+  isSubsectorVerified,
 } from "@/hooks/useSectorUniverse";
 import { useAnomalies } from "@/hooks/useAnomalies";
 import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
@@ -111,6 +115,14 @@ import {
 
 // ── Small helpers ─────────────────────────────────────────────────────────────
 const toneFor = (v: number): Tone => (v > 0 ? "positive" : v < 0 ? "negative" : "neutral");
+
+/** Decimal (already-scaled) → percent text. `signed` forces an explicit +/-. */
+const fmtPct = (v: number | null | undefined, signed = false): string => {
+  if (v == null || !Number.isFinite(v)) return "—";
+  const pct = v * 100;
+  const s = `${pct >= 0 && signed ? "+" : ""}${pct.toFixed(1)}%`;
+  return s;
+};
 const meta = (label: string, value: string) => (
   <div>
     <div className="text-[9px] uppercase text-muted-foreground">{label}</div>
@@ -1114,7 +1126,13 @@ function val(v: number | null | undefined, suffix = ""): string {
 }
 
 export function SectorIntelligence() {
-  const [selectedSlug, setSelectedSlug] = useState<string>("");
+  // ── Growth chart year-range filter (mirrors the IHSG 1W/1M/3M toggle) ──
+  const [growthYears, setGrowthYears] = useState<number>(5);
+  // Read synchronously on first render so there's no flash of the default
+  // sector before the restore effect runs.
+  const [selectedSlug, setSelectedSlug] = useState<string>(
+    () => localStorage.getItem("sector.selectedSlug") ?? "",
+  );
   const [sortKey, setSortKey] = useState<
     "market_cap" | "pe_ttm" | "roe_ttm" | "der_mrq" | "net_profit_margin"
   >("market_cap");
@@ -1125,12 +1143,23 @@ export function SectorIntelligence() {
   const subsectorList = useSubsectorList();
   const sectors = subsectorList.data ?? [];
 
-  // Default to the first real sector once the list arrives (not hardcoded).
+  // Restore from localStorage — default only if no saved value and list arrived
   useEffect(() => {
     if (!selectedSlug && sectors.length > 0 && sectors[0]?.slug) {
       setSelectedSlug(sectors[0].slug);
     }
   }, [sectors, selectedSlug]);
+
+  // Persist choice whenever it changes
+  useEffect(() => {
+    if (selectedSlug) localStorage.setItem("sector.selectedSlug", selectedSlug);
+  }, [selectedSlug]);
+
+  // Centralized setter so persistence is never forgotten
+  const selectSector = useCallback((slug: string) => {
+    setSelectedSlug(slug);
+    localStorage.setItem("sector.selectedSlug", slug);
+  }, []);
 
   const selected = sectors.find((s) => s.slug === selectedSlug) ?? null;
 
@@ -1139,6 +1168,8 @@ export function SectorIntelligence() {
   const growth = useSectorGrowthHistory(selected?.slug);
   const shi = useSectorHealthScores();
   const anom = useAnomalies();
+  // Shares the useSectorHealthScores cache — 0 extra credits.
+  const reportDetail = useSubsectorReportDetail(selected?.slug);
 
   // SHI entry matching the selected sector (same hook Ringkasan Pasar uses)
   const shiEntry = useMemo(
@@ -1218,7 +1249,7 @@ export function SectorIntelligence() {
         </div>
         <select
           value={selectedSlug}
-          onChange={(e) => setSelectedSlug(e.target.value)}
+          onChange={(e) => selectSector(e.target.value)}
           disabled={subsectorList.isPending}
           className="h-8 max-w-[220px] border border-input bg-background px-3 text-xs"
         >
@@ -1232,6 +1263,11 @@ export function SectorIntelligence() {
             </option>
           ))}
         </select>
+        {!subsectorList.isPending && selected && !isSubsectorVerified(selected.slug) && (
+          <span className="text-[10px] text-warning">
+            Nama tampilan sektor ini belum terverifikasi — data emiten mungkin kosong
+          </span>
+        )}
         <ExportMenu title={`${selected?.subSector ?? "Sector"} Research`} />
       </PageHeader>
 
@@ -1298,13 +1334,23 @@ export function SectorIntelligence() {
           title={`Pertumbuhan Historis — ${selected?.subSector ?? "—"}`}
           kicker="Pendapatan vs laba per tahun"
           action={
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {growth.isFetching && (
                 <RefreshCw className="size-3 animate-spin text-muted-foreground" />
               )}
-              <span className="text-[10px] text-muted-foreground">
-                Bagian dari laporan subsector (0 kredit tambahan)
-              </span>
+              <div className="flex">
+                {[3, 5, 8].map((y) => (
+                  <Button
+                    key={y}
+                    size="sm"
+                    variant={growthYears === y ? "secondary" : "ghost"}
+                    className="h-6 px-2 text-[10px]"
+                    onClick={() => setGrowthYears(y)}
+                  >
+                    {y}T
+                  </Button>
+                ))}
+              </div>
             </div>
           }
         >
@@ -1318,18 +1364,105 @@ export function SectorIntelligence() {
             </div>
           ) : (
             <>
-              <GrowthHistoryChart data={growth.data ?? []} />
+              <GrowthHistoryChart data={growth.data ?? []} years={growthYears} />
               <div className="flex gap-5 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
                 <span>
                   <i className="mr-1 inline-block size-1.5 bg-primary" />
                   Pertumbuhan Pendapatan
                 </span>
                 <span>
-                  <i className="mr-1 inline-block size-1.5 bg-accent" />
+                  <i className="mr-1 inline-block size-1.5 bg-warning" />
                   Pertumbuhan Laba
                 </span>
                 <span className="ml-auto">Sumber: growth.weighted_avg_growth_data</span>
               </div>
+              {/* ── Why each component scored what it did (raw report inputs) ── */}
+              {reportDetail && (
+                <div className="mt-5 border-t border-border pt-4">
+                  <div className="mb-3 flex items-center gap-2 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                    <span className="h-px flex-1 bg-border" />
+                    Mengapa skor ini — input laporan sub-sector
+                    <span className="h-px flex-1 bg-border" />
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {[
+                      {
+                        label: "Pertumbuhan",
+                        Icon: TrendingUp,
+                        detail:
+                          reportDetail.growth.revenue_growth != null
+                            ? `Pertumbuhan pendapatan rata-rata ${fmtPct(reportDetail.growth.revenue_growth)}${reportDetail.growth.earnings_growth != null ? `, laba ${fmtPct(reportDetail.growth.earnings_growth)}` : ""}.`
+                            : "Data pertumbuhan tidak tersedia → skor 0.",
+                        note: "Dinormalisasi -10%…+10% → 0…25",
+                        available: reportDetail.growth.revenue_growth != null,
+                      },
+                      {
+                        label: "Stabilitas",
+                        Icon: Shield,
+                        detail:
+                          reportDetail.stability.max_drawdown != null
+                            ? `Drawdown maksimum ${fmtPct(reportDetail.stability.max_drawdown)} (lebih dangkal = lebih stabil).`
+                            : "Data stabilitas tidak tersedia → skor 0.",
+                        note: "Dinormalisasi 0…-60% → 0…25",
+                        available: reportDetail.stability.max_drawdown != null,
+                      },
+                      {
+                        label: "Valuasi",
+                        Icon: Scale,
+                        detail:
+                          reportDetail.valuation?.pe != null && reportDetail.valuation.pe > 0
+                            ? `P/E ${reportDetail.valuation.pe.toFixed(1)} → earnings yield ${(100 / reportDetail.valuation.pe).toFixed(1)}%.`
+                            : "P/E tidak tersedia atau negatif → skor 0 (per spesifikasi).",
+                        note: "Yield 0…15% → 0…25; P/E negatif = 0",
+                        available:
+                          reportDetail.valuation?.pe != null && reportDetail.valuation.pe > 0,
+                      },
+                      {
+                        label: "Momentum",
+                        Icon: Activity,
+                        detail:
+                          reportDetail.market_cap?.mcap_change_1w != null ||
+                          reportDetail.market_cap?.mcap_change_ytd != null
+                            ? `1M ${fmtPct(reportDetail.market_cap?.mcap_change_1w, true)} · YTD ${fmtPct(reportDetail.market_cap?.mcap_change_ytd, true)}.`
+                            : "Data market cap tidak tersedia → skor 0.",
+                        note: "Bobot 30% 1M + 70% YTD, dipetakan -30%…+30% → 0…25",
+                        available:
+                          reportDetail.market_cap?.mcap_change_1w != null ||
+                          reportDetail.market_cap?.mcap_change_ytd != null,
+                      },
+                    ].map((row) => {
+                      const Icon = row.Icon;
+                      return (
+                        <div
+                          key={row.label}
+                          className="rounded-md border border-border/60 bg-muted/20 p-3"
+                        >
+                          <div className="mb-1.5 flex items-center gap-1.5">
+                            <Icon
+                              className={`size-3 ${row.available ? "text-primary" : "text-muted-foreground/50"}`}
+                            />
+                            <span className="text-[10px] font-medium text-foreground">
+                              {row.label}
+                            </span>
+                            {!row.available && (
+                              <span className="ml-auto rounded-sm bg-muted px-1 py-0.5 text-[9px] text-muted-foreground">
+                                N/A
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[10px] leading-relaxed text-muted-foreground">
+                            {row.detail}
+                          </p>
+                          <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground/60">
+                            {row.note}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </>
           )}
         </Panel>
@@ -1372,6 +1505,7 @@ export function SectorIntelligence() {
             ) : (
               <div className="mt-4 text-[10px] text-muted-foreground">Skor SHI belum tersedia.</div>
             )}
+
             <div className="mt-5 border-t border-border pt-4">
               <div className="mb-2 text-[10px] uppercase text-muted-foreground">
                 Peringkat sektor (live)
@@ -1382,7 +1516,7 @@ export function SectorIntelligence() {
                 ranked.slice(0, 12).map((s, i) => (
                   <button
                     key={s.slug}
-                    onClick={() => setSelectedSlug(s.slug)}
+                    onClick={() => selectSector(s.slug)}
                     className={cn(
                       "flex w-full items-center justify-between py-1.5 text-xs transition-colors hover:text-primary",
                       s.slug === selectedSlug
@@ -1514,8 +1648,20 @@ export function SectorIntelligence() {
                             <Tag tone={a.severity === "High" ? "negative" : "warning"}>
                               {a.label}
                             </Tag>
+                          ) : !isSubsectorVerified(selected?.slug ?? "") ? (
+                            <span
+                              className="text-muted-foreground/50"
+                              title="Detector belum dijalankan untuk sub-sektor ini"
+                            >
+                              n/a
+                            </span>
                           ) : (
-                            <span className="text-muted-foreground">—</span>
+                            <span
+                              className="text-muted-foreground"
+                              title="Tidak ada anomali — emiten dalam batas normal peer"
+                            >
+                              —
+                            </span>
                           )}
                         </td>
                       </tr>

@@ -116,29 +116,28 @@ function RootComponent() {
     );
   }
 
-  // Show a minimal loading state while validating the session.
-  // This prevents the flash-to-login on hard refresh for authenticated users.
-  if (isInitializing) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <div className="flex flex-col items-center gap-3">
-          <div className="size-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">
-            Memuat sesi…
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  // Not authenticated after initialization — redirect is in progress
-  if (!user) return null;
-
   return (
     <QueryClientProvider client={queryClient}>
-      <TerminalShell>
-        <Outlet />
-      </TerminalShell>
+      {/* Show a minimal loading overlay while validating the session.
+          The shell and Outlet REMAIN MOUNTED underneath — this prevents the
+          full app unmount/remount (which wiped scroll, filters, and every
+          component's inline state, and refetched every query — perceived as
+          "the page refreshing on its own"). */}
+      {isInitializing && !user ? (
+        <div className="flex min-h-screen items-center justify-center bg-background">
+          <div className="flex flex-col items-center gap-3">
+            <div className="size-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">
+              Memuat sesi…
+            </span>
+          </div>
+        </div>
+      ) : !user ? // Not authenticated after initialization — redirect is in progress
+      null : (
+        <TerminalShell>
+          <Outlet />
+        </TerminalShell>
+      )}
     </QueryClientProvider>
   );
 }
