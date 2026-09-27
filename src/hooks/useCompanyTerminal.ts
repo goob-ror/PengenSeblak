@@ -130,6 +130,39 @@ export function useFreeFloatMap() {
   });
 }
 
+// ── Full IDX universe (search + watchlist validation) ────────────────────
+/**
+ * Every IDX ticker with its company name, in ONE 1-credit call.
+ * `/v2/free-float/` returns the whole exchange (~961 rows) so this is the
+ * cheapest possible "all tickers" source — no pagination, no per-page cost.
+ * Cached 7 days server-side (TTL.subsectorList) + STALE_STATIC client-side.
+ */
+export interface UniverseRow {
+  symbol: string; // keeps .JK
+  company_name: string;
+  free_float: number; // 0..1
+}
+
+export function useFullUniverse(enabled = true) {
+  return useQuery({
+    queryKey: ["sectors", "free-float", "universe"],
+    queryFn: () => api.sectors.get<UniverseRow[]>("/free-float/"),
+    enabled,
+    ...STALE_STATIC,
+    retry: false,
+    select: (rows) =>
+      (Array.isArray(rows) ? rows : [])
+        .map((r) => ({
+          ticker: String(r?.symbol ?? "")
+            .replace(/\.JK$/i, "")
+            .toUpperCase(),
+          name: r?.company_name ?? "",
+          freeFloat: typeof r?.free_float === "number" ? r.free_float : null,
+        }))
+        .filter((c) => c.ticker !== ""),
+  });
+}
+
 // ── Peer-picking universe ────────────────────────────────────────────────
 /**
  * Top IDX companies by market cap — used as the peer-picker universe on

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Activity,
@@ -19,7 +19,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { companies, news, sectors } from "@/lib/market-data";
+import { useFullUniverse } from "@/hooks/useCompanyTerminal";
+import { useWatchlistStore } from "@/stores/watchlistStore";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/authStore";
 import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
@@ -63,10 +64,7 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
     <>
       <div className="flex h-16 items-center border-b border-border px-4">
         <div className="flex size-12 items-center justify-center text-primary">
-          <img
-            src="Nusantara Terminal Icon Transparent.png"
-            alt="Web Icons"
-          />
+          <img src="Nusantara Terminal Icon Transparent.png" alt="Web Icons" />
         </div>
         <div className="ml-3">
           <div className="text-sm font-semibold">Nusantara</div>
@@ -120,7 +118,9 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
               <User className="size-3.5" />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="truncate text-[11px] font-medium text-foreground">{user.fullName}</div>
+              <div className="truncate text-[11px] font-medium text-foreground">
+                {user.fullName}
+              </div>
               <div className="truncate text-[9px] text-muted-foreground">{user.email}</div>
             </div>
             <button
@@ -167,7 +167,9 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
             <Menu />
           </Button>
           <div className="flex items-center gap-2 text-[10px] uppercase">
-            <span className={cn("size-1.5", session.isOpen ? "bg-positive" : "bg-muted-foreground")} />
+            <span
+              className={cn("size-1.5", session.isOpen ? "bg-positive" : "bg-muted-foreground")}
+            />
             <span className={session.isOpen ? "text-positive" : "text-muted-foreground"}>
               {session.isOpen ? "IDX" : "IDX"}
             </span>
@@ -187,7 +189,7 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
           <div className="ml-3 hidden text-right text-[10px] sm:block">
             <div>{clock.dateISO}</div>
             <div className="text-muted-foreground tabular-nums">{clock.timeHHMMSS} WIB</div>
-            </div>
+          </div>
         </header>
         <main className="p-4 md:p-6">{children}</main>
       </div>
@@ -203,11 +205,36 @@ function SearchDialog({
   onOpenChange: (v: boolean) => void;
 }) {
   const [q, setQ] = useState("");
-  const matches = q
-    ? companies
-        .filter((c) => (c.ticker + c.name + c.sector).toLowerCase().includes(q.toLowerCase()))
-        .slice(0, 4)
-    : companies.slice(0, 3);
+  const navigate = useNavigate();
+  // Full IDX universe (~960 tickers, 1 credit, 7d cache) — loads when opened
+  const universe = useFullUniverse(open);
+  // Live watchlist — so users can jump straight to their monitored tickers
+  const watchlist = useWatchlistStore((s) => s.entries);
+  const has = useWatchlistStore((s) => s.has);
+
+  const ql = q.trim().toLowerCase();
+
+  // Watchlist matches — shown FIRST (user's own monitored names)
+  const watchMatches = useMemo(() => {
+    if (!ql) return watchlist.slice(0, 3);
+    return watchlist.filter((w) => w.ticker.toLowerCase().includes(ql)).slice(0, 3);
+  }, [ql, watchlist]);
+
+  // Emiten matches from the full universe — brief details from top50 data
+  const matches = useMemo(() => {
+    const list = universe.data ?? [];
+    if (!ql) return list.slice(0, 5);
+    return list.filter((c) => (c.ticker + " " + c.name).toLowerCase().includes(ql)).slice(0, 8);
+  }, [ql, universe.data]);
+
+  // Navigate to the DEDICATED emiten detail page (not Terminal Emiten).
+  // Terminal Emiten keeps its own persistent peer selection — dumping a
+  // searched ticker in there permanently polluted that list.
+  function goCompany(ticker: string) {
+    onOpenChange(false);
+    void navigate({ to: "/emiten/$symbol", params: { symbol: ticker.toUpperCase() } });
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="top-[18%] max-w-2xl translate-y-0 border-border bg-popover p-0">
@@ -220,7 +247,7 @@ function SearchDialog({
             autoFocus
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Cari emiten, ticker, sektor, atau berita…"
+            placeholder="Cari emiten, ticker, atau watchlist…"
             className="h-14 flex-1 bg-transparent px-3 text-sm outline-none placeholder:text-muted-foreground"
           />
           <kbd className="border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground">
@@ -228,59 +255,86 @@ function SearchDialog({
           </kbd>
         </div>
         <div className="max-h-[55vh] overflow-auto p-2">
-          <div className="px-2 py-2 text-[9px] uppercase text-muted-foreground">Emiten</div>
-          {matches.map((c) => (
-            <Link
-              key={c.ticker}
-              to="/companies"
-              onClick={() => onOpenChange(false)}
-              className="flex items-center border border-transparent px-3 py-2 hover:border-border hover:bg-secondary"
-            >
-              <span className="w-16 text-xs font-semibold text-primary">{c.ticker}</span>
-              <span className="text-xs">{c.name}</span>
-              <span className="ml-auto text-[10px] text-muted-foreground">
-                {c.sector} · Safety {c.safety}
-              </span>
-            </Link>
-          ))}
-          <div className="mt-2 px-2 py-2 text-[9px] uppercase text-muted-foreground">
-            Hasil lintas-terminal
-          </div>
-          {sectors
-            .filter((s) => !q || s.name.toLowerCase().includes(q.toLowerCase()))
-            .slice(0, 2)
-            .map((s) => (
-              <Link
-                key={s.name}
-                to="/sectors"
-                onClick={() => onOpenChange(false)}
-                className="flex px-3 py-2 text-xs hover:bg-secondary"
-              >
-                <span className="text-muted-foreground">Sektor</span>
-                <span className="ml-4">{s.name}</span>
-                <span className="ml-auto text-primary">
-                  SHI {Math.round(s.growth * 0.4 + s.margin * 0.35 + s.debt * 0.25)}
-                </span>
-              </Link>
-            ))}
-          {news
-            .filter((n) => !q || (n.headline + n.company).toLowerCase().includes(q.toLowerCase()))
-            .slice(0, 2)
-            .map((n) => (
-              <Link
-                key={n.headline}
-                to="/news"
-                onClick={() => onOpenChange(false)}
-                className="flex gap-4 px-3 py-2 text-xs hover:bg-secondary"
-              >
-                <span className="text-muted-foreground">{n.time}</span>
-                <span>{n.headline}</span>
-              </Link>
-            ))}
+          {universe.isPending && (
+            <div className="px-3 py-6 text-center text-xs text-muted-foreground">
+              Memuat daftar emiten IDX…
+            </div>
+          )}
+
+          {/* Watchlist group — user's monitored tickers first */}
+          {watchMatches.length > 0 && (
+            <>
+              <div className="px-2 py-2 text-[9px] uppercase text-muted-foreground">
+                Pantauan Saya
+              </div>
+              {watchMatches.map((w) => {
+                const meta = (universe.data ?? []).find((c) => c.ticker === w.ticker);
+                return (
+                  <button
+                    key={w.ticker}
+                    onClick={() => goCompany(w.ticker)}
+                    className="flex w-full items-center gap-2 border border-transparent px-3 py-2 text-left hover:border-border hover:bg-secondary"
+                  >
+                    <Star className="size-3.5 shrink-0 text-primary" />
+                    <span className="w-16 text-xs font-semibold text-primary">{w.ticker}</span>
+                    <span className="truncate text-xs">{meta?.name ?? "—"}</span>
+                    <span className="ml-auto text-[10px] text-muted-foreground">
+                      {meta?.freeFloat != null
+                        ? `Float ${(meta.freeFloat * 100).toFixed(0)}%`
+                        : meta
+                          ? "—"
+                          : ""}
+                    </span>
+                  </button>
+                );
+              })}
+            </>
+          )}
+
+          {/* Emiten group — full universe search */}
+          {matches.length > 0 && (
+            <>
+              <div className="mt-2 px-2 py-2 text-[9px] uppercase text-muted-foreground">
+                Emiten IDX
+              </div>
+              {matches.map((c) => {
+                const inList = has(c.ticker);
+                return (
+                  <button
+                    key={c.ticker}
+                    onClick={() => goCompany(c.ticker)}
+                    className="flex w-full items-center gap-2 border border-transparent px-3 py-2 text-left hover:border-border hover:bg-secondary"
+                  >
+                    <span className="w-16 shrink-0 text-xs font-semibold text-primary">
+                      {c.ticker}
+                    </span>
+                    <span className="truncate text-xs">{c.name}</span>
+                    {c.freeFloat != null && (
+                      <span className="ml-auto shrink-0 text-[10px] text-muted-foreground">
+                        Float {(c.freeFloat * 100).toFixed(0)}%{inList ? " · dipantau" : ""}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </>
+          )}
+
+          {/* Empty state — only after load with a query */}
+          {!universe.isPending && ql && watchMatches.length === 0 && matches.length === 0 && (
+            <div className="px-3 py-6 text-center text-xs text-muted-foreground">
+              Tidak ada emiten cocok dengan “{q}”.
+            </div>
+          )}
+          {!universe.isPending && !ql && watchMatches.length === 0 && matches.length === 0 && (
+            <div className="px-3 py-6 text-center text-xs text-muted-foreground">
+              Universe emiten belum termuat. Coba buka pencarian lagi.
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-2 border-t border-border px-4 py-2 text-[10px] text-muted-foreground">
           <Command className="size-3" />
-          Type a symbol for a consolidated intelligence view
+          Klik emiten untuk membuka detail di Terminal Emiten
         </div>
       </DialogContent>
     </Dialog>

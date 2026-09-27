@@ -1,0 +1,117 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-27T08:35:39.419Z",
+    "endpoint": "/company/get-segments/BBCA/",
+    "query_params": {},
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 240
+  },
+  "data": {
+    "symbol": "BBCA.JK",
+    "financial_year": 2025,
+    "revenue_breakdown": [
+      {
+        "value": 67446394000000,
+        "source": "Loans",
+        "target": "Interest Income"
+      },
+      {
+        "value": 24163987000000,
+        "source": "Investment securities",
+        "target": "Interest Income"
+      },
+      {
+        "value": 727466000000,
+        "source": "Securities purchased under agreements to resell",
+        "target": "Interest Income"
+      },
+      {
+        "value": 3625497000000,
+        "source": "Consumer financing receivables and finance lease receivables",
+        "target": "Interest Income"
+      },
+      {
+        "value": 633824000000,
+        "source": "Placements with Bank Indonesia and other banks",
+        "target": "Interest Income"
+      },
+      {
+        "value": 525723000000,
+        "source": "Bill receivable",
+        "target": "Interest Income"
+      },
+      {
+        "value": 948274000000,
+        "source": "Sharia Income",
+        "target": "Interest Income"
+      },
+      {
+        "value": 841487000000,
+        "source": "Others",
+        "target": "Interest Income"
+      },
+      {
+        "value": 85548157000000,
+        "source": "Interest Income",
+        "target": "Net Interest Income"
+      },
+      {
+        "value": 13364495000000,
+        "source": "Interest Income",
+        "target": "Interest Expense"
+      },
+      {
+        "value": 85548157000000,
+        "source": "Net Interest Income",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 144938000000,
+        "source": "Net Premium Income",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 26313231000000,
+        "source": "Non Interest Income",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 71260876000000,
+        "source": "Total Revenue",
+        "target": "Operating Income"
+      },
+      {
+        "value": 40745450000000,
+        "source": "Total Revenue",
+        "target": "Operating and Credit-Related Expenses"
+      },
+      {
+        "value": 36734403000000,
+        "source": "Operating and Credit-Related Expenses",
+        "target": "Operating Expense"
+      },
+      {
+        "value": 4011047000000,
+        "source": "Operating and Credit-Related Expenses",
+        "target": "Provision for Impairment"
+      },
+      {
+        "value": 17780770000000,
+        "source": "Operating Expense",
+        "target": "Personnel expenses"
+      },
+      {
+        "value": 16780115000000,
+        "source": "Operating Expense",
+        "target": "General and administrative"
+      },
+      {
+        "value": 2173518000000,
+        "source": "Operating Expense",
+        "target": "Others (expense)"
+      }
+    ]
+  }
+}

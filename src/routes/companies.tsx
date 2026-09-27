@@ -1,6 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CompanyTerminal } from "@/components/terminal/pages";
+
+export interface CompaniesSearch {
+  symbol?: string | undefined;
+}
+
 export const Route = createFileRoute("/companies")({
+  validateSearch: (search: Record<string, unknown>): CompaniesSearch => ({
+    symbol: typeof search["symbol"] === "string" ? search["symbol"].toUpperCase() : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Company Terminal — Sectors Terminal" },

@@ -19,6 +19,7 @@ import { Route as ScreenerRouteImport } from './routes/screener'
 import { Route as SectorsRouteImport } from './routes/sectors'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as WatchlistRouteImport } from './routes/watchlist'
+import { Route as EmitenSymbolRouteImport } from './routes/emiten.$symbol'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const WatchlistRoute = WatchlistRouteImport.update({
   path: '/watchlist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmitenSymbolRoute = EmitenSymbolRouteImport.update({
+  id: '/emiten/$symbol',
+  path: '/emiten/$symbol',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/sectors': typeof SectorsRoute
   '/settings': typeof SettingsRoute
   '/watchlist': typeof WatchlistRoute
+  '/emiten/$symbol': typeof EmitenSymbolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/sectors': typeof SectorsRoute
   '/settings': typeof SettingsRoute
   '/watchlist': typeof WatchlistRoute
+  '/emiten/$symbol': typeof EmitenSymbolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/sectors': typeof SectorsRoute
   '/settings': typeof SettingsRoute
   '/watchlist': typeof WatchlistRoute
+  '/emiten/$symbol': typeof EmitenSymbolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/sectors'
     | '/settings'
     | '/watchlist'
+    | '/emiten/$symbol'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/sectors'
     | '/settings'
     | '/watchlist'
+    | '/emiten/$symbol'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/sectors'
     | '/settings'
     | '/watchlist'
+    | '/emiten/$symbol'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   SectorsRoute: typeof SectorsRoute
   SettingsRoute: typeof SettingsRoute
   WatchlistRoute: typeof WatchlistRoute
+  EmitenSymbolRoute: typeof EmitenSymbolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WatchlistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/emiten/$symbol': {
+      id: '/emiten/$symbol'
+      path: '/emiten/$symbol'
+      fullPath: '/emiten/$symbol'
+      preLoaderRoute: typeof EmitenSymbolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   SectorsRoute: SectorsRoute,
   SettingsRoute: SettingsRoute,
   WatchlistRoute: WatchlistRoute,
+  EmitenSymbolRoute: EmitenSymbolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

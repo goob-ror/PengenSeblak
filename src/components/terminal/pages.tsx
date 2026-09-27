@@ -1,5 +1,6 @@
 "use client";
 import { useMemo, useState, useRef, useEffect, useCallback } from "react";
+import { getRouteApi, Link } from "@tanstack/react-router";
 import {
   Activity,
   ArrowDownUp,
@@ -94,6 +95,7 @@ import {
   useCompanyReports,
   useFreeFloatMap,
   useTopCompanies,
+  useFullUniverse,
   useRevenueSegments,
   useEsgScores,
   toCompanyFinancialsInput,
@@ -1255,6 +1257,15 @@ export function MarketOverview() {
                 {meta("Interpretasi", detail.explanation)}
               </div>
               <div className="border-t border-border px-5 py-4">
+                <Link
+                  to="/emiten/$symbol"
+                  params={{ symbol: detail.symbol }}
+                  className="inline-flex h-7 items-center gap-1.5 rounded border border-border px-2.5 text-[10px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                >
+                  Buka halaman analitik {detail.symbol}
+                </Link>
+              </div>
+              <div className="border-t border-border px-5 py-4">
                 <div className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                   Deviasi Z-score vs peer sub-sektor
                 </div>
@@ -1902,7 +1913,15 @@ export function SectorIntelligence() {
                     const a = sectorAnomalies.find((x) => x.symbol === c.symbol);
                     return (
                       <tr key={c.symbol} className="hover:bg-secondary/50">
-                        <td className={cn(td, "font-semibold text-primary")}>{c.symbol}</td>
+                        <td className={cn(td, "font-semibold text-primary")}>
+                          <Link
+                            to="/emiten/$symbol"
+                            params={{ symbol: c.symbol }}
+                            className="hover:underline"
+                          >
+                            {c.symbol}
+                          </Link>
+                        </td>
                         <td className={cn(td, "max-w-55 truncate")}>{c.company_name || "—"}</td>
                         <td className={cn(td, "tabular-nums")}>{val(c.last_close_price)}</td>
                         <td className={td}>
@@ -2071,11 +2090,19 @@ interface PeerView {
   isError: boolean;
 }
 
+// Route API for /companies — lets us read ?symbol= search param
+const companiesRoute = getRouteApi("/companies");
+
 export function CompanyTerminal() {
   // Default peer set (large-cap banks) used ONLY on first visit — no stored
   // selection yet. After that the user's choice persists in localStorage
   // (same pattern as `sector.selectedSlug`) and the picker is authoritative.
   const DEFAULT_PEERS = ["BBCA", "BBRI", "BMRI"];
+
+  // ?symbol= from the global search dialog: pre-select that single ticker.
+  // Only applied if it isn't already in the stored/default peer list.
+  const { symbol: querySymbol } = companiesRoute.useSearch();
+
   const [selected, setSelected] = useState<string[]>(() => {
     try {
       const raw = localStorage.getItem("terminal.peers");
@@ -2091,6 +2118,16 @@ export function CompanyTerminal() {
   const [searchQ, setSearchQ] = useState("");
   const [showSegments, setShowSegments] = useState(false);
   const { has, add, remove } = useWatchlistStore();
+
+  // If the user searched for a ticker (via navbar / search dialog), open it.
+  useEffect(() => {
+    if (querySymbol && !selected.includes(querySymbol)) {
+      setSelected((prev) => [querySymbol, ...prev].slice(0, 5));
+    }
+    // Intentionally only depends on querySymbol — the `selected` check avoids
+    // fighting the user's manual toggles.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [querySymbol]);
 
   useEffect(() => {
     try {
@@ -4054,6 +4091,9 @@ export function Watchlist() {
   // Real screener rows (shared with Ringkasan Pasar's anomaly scan — the
   // query already runs there, so this costs ZERO extra credits).
   const anom = useAnomalies();
+  // Full IDX universe — validates ANY listed ticker when adding to the
+  // watchlist (the anomaly scan only covers 9 sub-sectors).
+  const universe = useFullUniverse();
   const rows = useMemo(() => {
     const views = buildScreenerRows(anom.data?.rows ?? []);
     // Attach the anomaly label (if any) detected for this symbol.
@@ -4082,11 +4122,12 @@ export function Watchlist() {
     e.preventDefault();
     const t = addTicker.trim().toUpperCase();
     if (!t) return;
-    const exists = rows.find((c) => c.ticker === t);
-    if (!exists) {
+    // Accept if the ticker is in the full IDX universe (all listed emiten).
+    const inUniverse = (universe.data ?? []).some((c) => c.ticker === t);
+    if (!inUniverse) {
       setAddError(
-        rows.length > 0
-          ? `Ticker "${t}" tidak ditemukan di universe emiten yang dipindai (9 sub-sektor).`
+        (universe.data?.length ?? 0) > 0
+          ? `Ticker "${t}" tidak terdaftar di IDX.`
           : `Universe emiten masih dimuat — coba lagi beberapa detik.`,
       );
       return;
