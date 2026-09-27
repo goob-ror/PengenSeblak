@@ -72,9 +72,13 @@ async function fetchScreenerPage(
   // der_mrq is absent entirely, so `der_mrq >= 0` filters them out entirely
   // — only include it for non-bank subsectors.
   const isBank = subsector.toLowerCase().includes("bank");
+  // `last_close_price` + `daily_close_change` are ALSO requested here so the
+  // Decision Screener and Watchlist get live price/change from this same
+  // query — no separate per-symbol call, no extra credits.
   const where =
     `sub_sector='${subsector}' and pe_ttm > 0 and roe_ttm > -100 ` +
-    `and net_profit_margin[${marginYear}] > -100` +
+    `and net_profit_margin[${marginYear}] > -100 ` +
+    `and last_close_price > 0 and daily_close_change > -100` +
     (isBank ? "" : ` and der_mrq >= 0`);
   const rows = await api.sectors.get<ScreenerApiEnvelope>("/companies/", {
     where,
@@ -121,10 +125,11 @@ export function useAnomalies() {
           best.set(a.symbol, a);
         }
       }
-      return Array.from(best.values()).sort((x, y) => {
+      const anomalies = Array.from(best.values()).sort((x, y) => {
         if (x.severity !== y.severity) return x.severity === "High" ? -1 : 1;
         return Math.abs(y.deviation) - Math.abs(x.deviation);
       });
+      return { anomalies, rows: allRows };
     },
     ...STALE_SECTOR,
     // Don't retry on failure — anomalies are a secondary signal, and we

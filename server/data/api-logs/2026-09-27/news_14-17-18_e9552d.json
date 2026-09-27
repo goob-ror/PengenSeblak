@@ -1,0 +1,281 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-27T06:17:18.134Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 283
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Foreign investors' net selling makes ten stocks, including PT Bank Rakyat Indonesia (Persero) Tbk (BBRI), PT Bank Negara Indonesia (Persero) Tbk (BBNI) and PT Bumi Resources Tbk (BUMI), top losers as the IHSG falls",
+        "body": "Foreign investors recorded a net sell of Rp559 billion on Friday, 25 September 2026, making ten stocks the largest foreign outflow victims while the IHSG weakened by 56.7 points (0.9%) to 6,241.8 at market close. Net sell in the regular market amounted to Rp440.3 billion and Rp118.7 billion in the negotiation and cash markets, with total transaction value reaching Rp9.3 trillion. The biggest foreign sell-offs were PT Bank Rakyat Indonesia (Persero) Tbk (BBRI) with Rp62.8 billion, PT Bank Negara Indonesia (Persero) Tbk (BBNI) with Rp37.8 billion, PT Bumi Resources Tbk (BUMI) with Rp29.2 billion, TLKM with Rp112.7 billion and PT Bank Mandiri (Persero) Tbk with Rp71 billion. Overall, 122 stocks rose, 587 fell and 254 remained unchanged during the session.",
+        "source": "https://investor.id/market/455659/tombol-jual-ditekan-10-saham-jadi-korban",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/04/1776829587-3000x2000.webp",
+        "timestamp": "2026-09-27T11:00:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks",
+          "oil-gas-coal",
+          "telecommunication"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Bearish"
+        ],
+        "symbols": [
+          "BBRI.JK",
+          "BBNI.JK",
+          "BUMI.JK",
+          "TLKM.JK",
+          "BMRI.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "BMRI and BBNI flagged as cheap stocks by BRI Danareksa",
+        "body": "PT Bank Mandiri Tbk (BMRI) and PT Bank Negara Indonesia Tbk (BBNI) are highlighted as cheap big‑cap stocks, with trailing‑twelve‑months PE ratios of 6.1× and 6.3× respectively, closing at Rp 4,080 (+0.25%) and Rp 3,500 (‑0.5%) on 25 Sep 2026 and having slipped about 4 % over the prior week. BRI Danareksa Sekuritas also maintains an overweight view on the banking sector, recommends PT Bank Central Asia Tbk (BBCA) as the top pick due to a solid net interest margin and a roughly 50 % savings‑account share, and projects aggregate bank net‑profit growth of 4 % annually in 2026, down from 11 % in H1 2026.",
+        "source": "https://investor.id/market/455662/bmri-dan-bbni-kompak-jadi-saham-murah",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/09/1788354455-3535x1990.webp",
+        "timestamp": "2026-09-27T10:41:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Bullish"
+        ],
+        "symbols": [
+          "BMRI.JK",
+          "BBNI.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Merdeka Copper Gold Tbk (MDKA) records largest foreign net buy as market sells intensify",
+        "body": "PT Merdeka Copper Gold Tbk (MDKA), an issuer owned by Edwin Soeryadjaya and Winato Kartono, recorded the largest foreign net purchase of Rp 76.8 billion during 21‑25 September 2026 while the Indonesian market posted a total foreign net sell of Rp 3.1 trillion. The net buying made MDKA the top‑ranked stock, ahead of PT Triputra Agro Persada Tbk (TAPG), which attracted a foreign net buy of Rp 70.1 billion and is owned by TP Rachmat LR Imanto and Meity Subianto. In the first half of 2026 MDKA reported a net profit of US$102 million, reversing a US$16 million loss from the same period a year earlier, with consolidated revenue rising 64 % year‑on‑year to US$1.4 billion. EBITDA increased 191 % to US$512 million, driven by stronger nickel and gold operations.",
+        "source": "https://investor.id/market/455660/saham-emiten-edwin-soeryadjaya-menembus-badai",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2023/01/1674723704-750x458.webp",
+        "timestamp": "2026-09-27T09:17:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "MDKA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Bursa Efek Indonesia lowers minimum stock price to Rp 1, analysts warn of heightened volatility",
+        "body": "PT Bursa Efek Indonesia (BEI) announced that the minimum price for listed shares will be reduced from Rp 50 to Rp 1 per share, effective 28 September 2026, as part of a revised Full Call Auction (FCA) trading scheme. The amendment also adjusts the Auto Rejection (AR) rules, keeping a 15 % Auto Rejection Bottom (ARB) for stocks above Rp 10 until 31 December 2026 and setting both Auto Rejection Top (ARA) and ARB at Rp 1 for stocks priced between Rp 1 and Rp 10. From 1 January 2027 the ARB will operate symmetrically across the new price range, providing broader price movement flexibility. Analysts from Indo Premier Sekuritas and BRI Danareksa Sekuritas noted that while the change may improve price discovery and liquidity, it could also increase volatility for low‑priced, thinly traded stocks.",
+        "source": "https://investasi.kontan.co.id/news/bei-turunkan-batas-harga-saham-jadi-rp-1-analis-soroti-risiko-volatilitas",
+        "thumbnail": "https://foto.kontan.co.id/4ZnWvZF-StjsYsSfy-G58j10gbo=/smart/2026/09/15/888696368t.jpg",
+        "timestamp": "2026-09-27T09:16:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Alamtri Resources Indonesia Tbk (ADRO) highlighted as a cheap big‑cap stock linked to Boy Thohir",
+        "body": "The article spotlights PT Alamtri Resources Indonesia Tbk (ADRO) as a low‑priced big‑cap stock associated with Garibaldi “Boy” Thohir. It notes a trailing‑twelve‑months PE of 7.6× and a closing price of Rp 2,600 on 25 September 2026, with the share up 1.5% that day but down 1.5% over the prior week and 1.1% over the month, while YTD performance rose 43.6%. Financially, ADRO reported H1‑2026 revenue of US$999 million (+16.5% YoY), EBITDA of US$491 million (+56.8% YoY) and net profit of US$309 million (+76.9% YoY). The article also records a foreign net‑sell of Rp 78.3 billion during the week of 21‑25 September 2026 and identifies Garibaldi Thohir, Christian Ariano Rachmat, Michael WP Soeryadjaya and Arini Saraswaty Subianto as the individual beneficial owners of ADRO.",
+        "source": "https://investor.id/market/455653/saham-murah-emiten-boy-thohir",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2024/06/1719507440-4824x3215.webp",
+        "timestamp": "2026-09-27T06:01:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Ownership",
+          "Bullish"
+        ],
+        "symbols": [
+          "ADRO.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 1,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Popular news roundup: Fore Coffee expansion, GOTO price‑floor removal, FCA board changes, MBMA profit surge and CDIA IPO fund use",
+        "body": "PT Fore Kopi Indonesia Tbk (FORE) reported that its Fore Coffee brand now operates over 360 stores in Indonesia and Singapore, while PT GoTo Gojek Tokopedia Tbk (GOTO) saw the Bursa Efek Indonesia lift the Rp50 price floor to Rp1 effective 28 September 2026, ending its prolonged “gocap” status. In the same roundup, PT Merdeka Battery Materials Tbk (MBMA) posted a net profit of US$54 million for H1‑2026, an 830% year‑on‑year increase, and PT Chandra Daya Investasi Tbk (CDIA) disclosed that 78.45% (Rp1.8 trillion) of its IPO proceeds had been utilized, leaving Rp511 billion unspent.",
+        "source": "https://investor.id/market/455655/berita-populer-strategi-ekspansi-fore-coffee-hingga-nasib-goto",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/04/1774977014-684x453.webp",
+        "timestamp": "2026-09-27T05:01:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage",
+          "software-it-services",
+          "basic-materials",
+          "utilities"
+        ],
+        "tags": [
+          "Business Expansion",
+          "Politics & Regulation",
+          "Financial Metrics",
+          "Capital & Funding",
+          "Bullish"
+        ],
+        "symbols": [
+          "FORE.JK",
+          "GOTO.JK",
+          "MBMA.JK",
+          "CDIA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT GMF Aero Asia Tbk (GMFI) posts 23% net profit rise in H1 2026 as quasi‑reorganization fuels 57% stock upside outlook",
+        "body": "The article reports that PT GMF Aero Asia Tbk (GMFI) delivered solid H1 2026 results, with net profit up 23% to US$10.8 million. Revenue rose 51% to US$270.3 million, driven by an engine segment jump of 180% to US$89.5 million and operating profit increasing 81% to US$27.8 million, though net profit was moderated by higher pre‑EBIT expenses. BRI Danareksa Sekuritas estimates the quasi‑reorganization could lift GMFI’s share price by about 57%, noting that H1 revenue already represents half of its full‑year projection and that global MRO spending of US$140 billion in 2026, growing 3.3% annually, offers a favorable backdrop, especially as engine maintenance accounts for 48% of domestic demand. The outlook assumes seasonal factors will keep net profit in line with expectations.",
+        "source": "https://investor.id/market/455656/restu-kuasi-reorganisasi-dipegang-saham-gocapan-siap-ngacir-57",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/09/1790133432-800x533.webp",
+        "timestamp": "2026-09-27T02:25:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "transportation-infrastructure"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Business Expansion",
+          "Analyst Ratings",
+          "Bullish"
+        ],
+        "symbols": [
+          "GMFI.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Foreign investors dump these stocks over the week as the IDX Composite falls 3.09% to 6,241.89",
+        "body": "The article reports that foreign investors sold large amounts of shares in ten listed companies during the week when the IDX Composite (IHSG) fell 3.09% to 6,241.89 points. Over the week, foreign investors recorded a net sell of Rp 4.39 trillion across the market, with a further Rp 559.07 billion sold on Friday alone. The ten most heavily net‑sold stocks were PT Merdeka Copper Gold Tbk (MDKA) (Rp 149.63 billion), PT Bumi Resources Minerals Tbk (BRMS) (Rp 82.11 billion), PT Adaro Andalan Indonesia Tbk (AADI) (Rp 79.98 billion), PT Triputra Agro Persada Tbk (TAPG) (Rp 67.23 billion), PT Indokripto Koin Semesta Tbk (COIN) (Rp 48.70 billion), PT VKTR Teknologi Mobilitas Tbk (VKTR) (Rp 44.98 billion), PT Erajaya Swasembada Tbk (ERAA) (Rp 35.61 billion), PT Vale Indonesia Tbk (INCO) (Rp 29.44 billion), PT Singaraja Putra Tbk (SINI) (Rp 28.42 billion) and PT Barito Renewables Energy Tbk (BREN) (Rp 18.91 billion). These companies, representing large‑cap and sector‑diverse issuers, were the primary targets of the foreign sell‑off, while other large‑cap stocks, including banks, saw mixed activity with some foreign accumulation. The concentration of foreign selling on these ten issuers contributed to the overall downward pressure on the IHSG during the week.",
+        "source": "https://investasi.kontan.co.id/news/asing-banyak-tadah-saham-saham-ini-sepekan-saat-ihsg-ambruk-309-ke-6241",
+        "thumbnail": "https://foto.kontan.co.id/4ZnWvZF-StjsYsSfy-G58j10gbo=/smart/2026/09/15/888696368t.jpg",
+        "timestamp": "2026-09-26T22:46:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage",
+          "holding-investment-companies",
+          "automobiles-components",
+          "retailing",
+          "industrial-goods",
+          "utilities"
+        ],
+        "tags": [],
+        "symbols": [
+          "MDKA.JK",
+          "BRMS.JK",
+          "AADI.JK",
+          "TAPG.JK",
+          "COIN.JK",
+          "VKTR.JK",
+          "ERAA.JK",
+          "INCO.JK",
+          "SINI.JK",
+          "BREN.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10862,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

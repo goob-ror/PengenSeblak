@@ -1,0 +1,224 @@
+{
+  "results": [
+    {
+      "symbol": "SGER.JK",
+      "company_name": "PT Sumber Global Energy Tbk",
+      "query_values": {
+        "esg_score": 57.31
+      }
+    },
+    {
+      "symbol": "MCOL.JK",
+      "company_name": "PT Prima Andalan Mandiri Tbk",
+      "query_values": {
+        "esg_score": 56.63
+      }
+    },
+    {
+      "symbol": "FIRE.JK",
+      "company_name": "PT Alfa Energi Investama Tbk",
+      "query_values": {
+        "esg_score": 54.71
+      }
+    },
+    {
+      "symbol": "CUAN.JK",
+      "company_name": "PT Petrindo Jaya Kreasi Tbk",
+      "query_values": {
+        "esg_score": 54.64
+      }
+    },
+    {
+      "symbol": "HRUM.JK",
+      "company_name": "Harum Energy Tbk",
+      "query_values": {
+        "esg_score": 52.96
+      }
+    },
+    {
+      "symbol": "BYAN.JK",
+      "company_name": "Bayan Resources Tbk",
+      "query_values": {
+        "esg_score": 52.73
+      }
+    },
+    {
+      "symbol": "SMMT.JK",
+      "company_name": "Golden Eagle Energy Tbk",
+      "query_values": {
+        "esg_score": 52.64
+      }
+    },
+    {
+      "symbol": "RATU.JK",
+      "company_name": "PT Raharja Energi Cepu Tbk",
+      "query_values": {
+        "esg_score": 51.76
+      }
+    },
+    {
+      "symbol": "DSSA.JK",
+      "company_name": "Dian Swastatika Sentosa Tbk",
+      "query_values": {
+        "esg_score": 51.33
+      }
+    },
+    {
+      "symbol": "RMKE.JK",
+      "company_name": "PT RMK Energy Tbk",
+      "query_values": {
+        "esg_score": 50.94
+      }
+    },
+    {
+      "symbol": "GEMS.JK",
+      "company_name": "Golden Energy Mines Tbk",
+      "query_values": {
+        "esg_score": 50.21
+      }
+    },
+    {
+      "symbol": "GGRM.JK",
+      "company_name": "Gudang Garam Tbk",
+      "query_values": {
+        "esg_score": 49.46
+      }
+    },
+    {
+      "symbol": "INDY.JK",
+      "company_name": "Indika Energy Tbk",
+      "query_values": {
+        "esg_score": 49.1
+      }
+    },
+    {
+      "symbol": "BRMS.JK",
+      "company_name": "Bumi Resources Minerals Tbk",
+      "query_values": {
+        "esg_score": 48.63
+      }
+    },
+    {
+      "symbol": "MAIN.JK",
+      "company_name": "Malindo Feedmill Tbk",
+      "query_values": {
+        "esg_score": 48.4
+      }
+    },
+    {
+      "symbol": "PSAB.JK",
+      "company_name": "J Resources Asia Pasifik Tbk",
+      "query_values": {
+        "esg_score": 47.27
+      }
+    },
+    {
+      "symbol": "UNTR.JK",
+      "company_name": "United Tractors Tbk",
+      "query_values": {
+        "esg_score": 46.24
+      }
+    },
+    {
+      "symbol": "ADRO.JK",
+      "company_name": "Alamtri Resources Indonesia Tbk",
+      "query_values": {
+        "esg_score": 45.93
+      }
+    },
+    {
+      "symbol": "HOKI.JK",
+      "company_name": "PT Buyung Poetra Sembada Tbk",
+      "query_values": {
+        "esg_score": 45.89
+      }
+    },
+    {
+      "symbol": "ARKO.JK",
+      "company_name": "PT Arkora Hydro Tbk.",
+      "query_values": {
+        "esg_score": 45.54
+      }
+    },
+    {
+      "symbol": "STAA.JK",
+      "company_name": "PT Sumber Tani Agung Resources Tbk",
+      "query_values": {
+        "esg_score": 45.1
+      }
+    },
+    {
+      "symbol": "TBLA.JK",
+      "company_name": "Tunas Baru Lampung Tbk",
+      "query_values": {
+        "esg_score": 44.99
+      }
+    },
+    {
+      "symbol": "PTBA.JK",
+      "company_name": "Bukit Asam Tbk",
+      "query_values": {
+        "esg_score": 44.49
+      }
+    },
+    {
+      "symbol": "DOID.JK",
+      "company_name": "PT BUMA Internasional Grup Tbk",
+      "query_values": {
+        "esg_score": 44.49
+      }
+    },
+    {
+      "symbol": "ESSA.JK",
+      "company_name": "ESSA Industries Indonesia Tbk",
+      "query_values": {
+        "esg_score": 42.83
+      }
+    },
+    {
+      "symbol": "JPFA.JK",
+      "company_name": "JAPFA Comfeed Indonesia Tbk",
+      "query_values": {
+        "esg_score": 42.61
+      }
+    },
+    {
+      "symbol": "ABMM.JK",
+      "company_name": "ABM Investama Tbk",
+      "query_values": {
+        "esg_score": 42.56
+      }
+    },
+    {
+      "symbol": "SSIA.JK",
+      "company_name": "PT Surya Semesta Internusa Tbk",
+      "query_values": {
+        "esg_score": 42.48
+      }
+    },
+    {
+      "symbol": "WSKT.JK",
+      "company_name": "PT Waskita Karya (Persero) Tbk",
+      "query_values": {
+        "esg_score": 42.39
+      }
+    },
+    {
+      "symbol": "BEBS.JK",
+      "company_name": "PT Berkah Beton Sadaya Tbk",
+      "query_values": {
+        "esg_score": 41.56
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 174,
+    "showing": 30,
+    "limit": 30,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 30,
+    "previous_offset": null
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-27T06:09:19.337Z",
+    "endpoint": "/listing-performance/RANS.JK/",
+    "query_params": {},
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 280
+  },
+  "data": {
+    "symbol": "RANS.JK",
+    "chg_7d": 0.470588,
+    "chg_30d": 0.247059,
+    "chg_90d": null,
+    "chg_365d": null,
+    "company_name": "PT Rans Entertainmen Indonesia Tbk",
+    "listing_date": "2026-07-10",
+    "shares_offered": 2525000000,
+    "percent_total_shares": 0.2002,
+    "book_building_start_date": "2026-06-23",
+    "book_building_end_date": "2026-06-25",
+    "book_building_lower_bound": 135,
+    "book_building_upper_bound": 170,
+    "offering_start_date": "2026-07-02",
+    "offering_end_date": "2026-07-08",
+    "offering_price": 170,
+    "distribution_date": "2026-07-09",
+    "prospectus_url": "https://e-ipo.co.id/en/pipeline/get-propectus-file?id=354&type=",
+    "additional_info_url": "https://e-ipo.co.id/en/pipeline/get-additional-info?id=354"
+  }
+}

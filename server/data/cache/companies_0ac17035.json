@@ -1,0 +1,554 @@
+{
+  "results": [
+    {
+      "symbol": "BBCA.JK",
+      "company_name": "PT Bank Central Asia Tbk.",
+      "query_values": {
+        "market_cap": 762764371875000,
+        "pe_ttm": 13.1248215212768,
+        "roe_ttm": 0.214714061275701,
+        "der_mrq": null,
+        "yield_ttm": 0.06096,
+        "payout_ratio": 0.801491566752531,
+        "yoy_quarter_revenue_growth": 0.00305775623420816,
+        "free_cash_flow[2024]": 49520229000000,
+        "peg[2024]": 1.68999172543405,
+        "pe_peer_avg[2024]": 16.1927341107751,
+        "forward_pe": 12.9539045301031,
+        "esg_score": 21.71
+      }
+    },
+    {
+      "symbol": "BBRI.JK",
+      "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk",
+      "query_values": {
+        "market_cap": 472636746499050,
+        "pe_ttm": 7.58372292628541,
+        "roe_ttm": 0.189617543571432,
+        "der_mrq": null,
+        "yield_ttm": 0.10984126984127,
+        "payout_ratio": 0.832220112593675,
+        "yoy_quarter_revenue_growth": 0.0844156574078394,
+        "free_cash_flow[2024]": 20278838000000,
+        "peg[2024]": 111.154615723675,
+        "pe_peer_avg[2024]": 16.1927341107751,
+        "forward_pe": 7.15600077813966,
+        "esg_score": 18.47
+      }
+    },
+    {
+      "symbol": "DCII.JK",
+      "company_name": "PT DCI Indonesia Tbk",
+      "query_values": {
+        "market_cap": 471981688200000,
+        "pe_ttm": 422.574300934713,
+        "roe_ttm": 0.235731174609955,
+        "der_mrq": 0.538540797605121,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.639985300571208,
+        "free_cash_flow[2024]": -312547000000,
+        "peg[2024]": 2.29560673098393,
+        "pe_peer_avg[2024]": 4.18421675461469,
+        "forward_pe": null,
+        "esg_score": 28.88
+      }
+    },
+    {
+      "symbol": "BREN.JK",
+      "company_name": "PT Barito Renewables Energy Tbk.",
+      "query_values": {
+        "market_cap": 408047971000000,
+        "pe_ttm": 154.906049343425,
+        "roe_ttm": 0.155735722700249,
+        "der_mrq": 2.23117672518246,
+        "yield_ttm": 0.00134206552974513,
+        "payout_ratio": 0.207891303695095,
+        "yoy_quarter_revenue_growth": 0.247864831013639,
+        "free_cash_flow[2024]": 658607791000,
+        "peg[2024]": 53.3964715000523,
+        "pe_peer_avg[2024]": 9.18441095156049,
+        "forward_pe": null,
+        "esg_score": 19.87
+      }
+    },
+    {
+      "symbol": "BYAN.JK",
+      "company_name": "Bayan Resources Tbk",
+      "query_values": {
+        "market_cap": 403333353500000,
+        "pe_ttm": 28.4790333132039,
+        "roe_ttm": 0.306196661312144,
+        "der_mrq": 0,
+        "yield_ttm": 0.0220896697241413,
+        "payout_ratio": 0.629092439951492,
+        "yoy_quarter_revenue_growth": 0.384303648887109,
+        "free_cash_flow[2024]": 14527463532968,
+        "peg[2024]": -2.05409624792992,
+        "pe_peer_avg[2024]": 8.67162536782097,
+        "forward_pe": null,
+        "esg_score": 52.73
+      }
+    },
+    {
+      "symbol": "BMRI.JK",
+      "company_name": "PT Bank Mandiri (Persero) Tbk",
+      "query_values": {
+        "market_cap": 376991999983680,
+        "pe_ttm": 5.38602511103455,
+        "roe_ttm": 0.238870046621558,
+        "der_mrq": null,
+        "yield_ttm": 0.133077673818551,
+        "payout_ratio": 0.718339126185197,
+        "yoy_quarter_revenue_growth": -0.04598684754587,
+        "free_cash_flow[2024]": -90707718000000,
+        "peg[2024]": 7.19340619682194,
+        "pe_peer_avg[2024]": 16.1927341107751,
+        "forward_pe": 6.14939428483957,
+        "esg_score": 9.47
+      }
+    },
+    {
+      "symbol": "AMMN.JK",
+      "company_name": "PT Amman Mineral Internasional Tbk.",
+      "query_values": {
+        "market_cap": 342285987336320,
+        "pe_ttm": 37.1252278514648,
+        "roe_ttm": 0.0971825700701001,
+        "der_mrq": 1.16775978900822,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 388.586507861566,
+        "free_cash_flow[2024]": -26502375571000,
+        "peg[2024]": 0.363428015001802,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": null,
+        "esg_score": 38.79
+      }
+    },
+    {
+      "symbol": "TLKM.JK",
+      "company_name": "PT Telkom Indonesia (Persero) Tbk",
+      "query_values": {
+        "market_cap": 238739942006000,
+        "pe_ttm": 13.6719701068606,
+        "roe_ttm": 0.129493948742288,
+        "der_mrq": 0.422067809682012,
+        "yield_ttm": 0.0925999495003728,
+        "payout_ratio": 1.265697869291,
+        "yoy_quarter_revenue_growth": 0.0639076034648701,
+        "free_cash_flow[2024]": 37151000000000,
+        "peg[2024]": -3.06037423163388,
+        "pe_peer_avg[2024]": 10.7980594390592,
+        "forward_pe": 9.22982702769922,
+        "esg_score": 24.57
+      }
+    },
+    {
+      "symbol": "MORA.JK",
+      "company_name": "PT Ekamas Mora Republik Tbk",
+      "query_values": {
+        "market_cap": 228838383205440,
+        "pe_ttm": 387.874354899521,
+        "roe_ttm": 0.0315501359631357,
+        "der_mrq": 0.941388266126534,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.955046544880644,
+        "free_cash_flow[2024]": 1291282988759,
+        "peg[2024]": -0.801437207326244,
+        "pe_peer_avg[2024]": 10.7980594390592,
+        "forward_pe": null,
+        "esg_score": null
+      }
+    },
+    {
+      "symbol": "DSSA.JK",
+      "company_name": "Dian Swastatika Sentosa Tbk",
+      "query_values": {
+        "market_cap": 203233174400000,
+        "pe_ttm": 52.1969748296838,
+        "roe_ttm": 0.0967208523240126,
+        "der_mrq": 0.674040866709566,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": -0.0373179495340921,
+        "free_cash_flow[2024]": 3975514383424,
+        "peg[2024]": -2.36865483189176,
+        "pe_peer_avg[2024]": 8.67162536782097,
+        "forward_pe": null,
+        "esg_score": 51.33
+      }
+    },
+    {
+      "symbol": "ASII.JK",
+      "company_name": "Astra International Tbk",
+      "query_values": {
+        "market_cap": 189867864226600,
+        "pe_ttm": 6.37418552477927,
+        "roe_ttm": 0.102769075778695,
+        "der_mrq": 0.410876195470667,
+        "yield_ttm": 0.0831556503198294,
+        "payout_ratio": 0.528977336785893,
+        "yoy_quarter_revenue_growth": -0.00315739156687129,
+        "free_cash_flow[2024]": 26665000000000,
+        "peg[2024]": 9.29879110032489,
+        "pe_peer_avg[2024]": 10.4692947566984,
+        "forward_pe": 6.10788436625291,
+        "esg_score": 36.72
+      }
+    },
+    {
+      "symbol": "TPIA.JK",
+      "company_name": "PT Chandra Asri Pacific Tbk",
+      "query_values": {
+        "market_cap": 155720781165600,
+        "pe_ttm": 74.9518707065794,
+        "roe_ttm": 0.0233816953669967,
+        "der_mrq": 1.19068532113695,
+        "yield_ttm": 0.00550895002153185,
+        "payout_ratio": 0.412836656068309,
+        "yoy_quarter_revenue_growth": 0.409653384357966,
+        "free_cash_flow[2024]": -9125974467000,
+        "peg[2024]": -5.02411081345676,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": 110.97411073982,
+        "esg_score": 16.27
+      }
+    },
+    {
+      "symbol": "BRPT.JK",
+      "company_name": "Barito Pacific Tbk",
+      "query_values": {
+        "market_cap": 141558299246440,
+        "pe_ttm": 56.9196265495854,
+        "roe_ttm": 0.0213968922692664,
+        "der_mrq": 1.32002977028281,
+        "yield_ttm": 0.00107947019551763,
+        "payout_ratio": 0.0614281978185535,
+        "yoy_quarter_revenue_growth": 0.399694478961319,
+        "free_cash_flow[2024]": -6601006978000,
+        "peg[2024]": 0.748033264310075,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": null,
+        "esg_score": 27.37
+      }
+    },
+    {
+      "symbol": "DNET.JK",
+      "company_name": "PT Indoritel Makmur Internasional Tbk",
+      "query_values": {
+        "market_cap": 137939400000000,
+        "pe_ttm": 123.880899950067,
+        "roe_ttm": 0.070041757061251,
+        "der_mrq": 0.44303485261235,
+        "yield_ttm": 0,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.0588620044078963,
+        "free_cash_flow[2024]": -410345000000,
+        "peg[2024]": 2.44585986448092,
+        "pe_peer_avg[2024]": 34.0425102587162,
+        "forward_pe": null,
+        "esg_score": null
+      }
+    },
+    {
+      "symbol": "BBNI.JK",
+      "company_name": "PT Bank Negara Indonesia (Persero) Tbk",
+      "query_values": {
+        "market_cap": 129235189251000,
+        "pe_ttm": 6.21123310211601,
+        "roe_ttm": 0.123679520615341,
+        "der_mrq": null,
+        "yield_ttm": 0,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.165570167197083,
+        "free_cash_flow[2024]": -67111913000000,
+        "peg[2024]": 2.82381618034224,
+        "pe_peer_avg[2024]": 16.1927341107751,
+        "forward_pe": 5.18864437526936,
+        "esg_score": 21.46
+      }
+    },
+    {
+      "symbol": "SMMA.JK",
+      "company_name": "PT Sinar Mas Multiartha Tbk",
+      "query_values": {
+        "market_cap": 127512485957925,
+        "pe_ttm": 41.6866997004164,
+        "roe_ttm": 0.107410940501898,
+        "der_mrq": null,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": -0.355575551611164,
+        "free_cash_flow[2024]": 4698900000000,
+        "peg[2024]": -10.1888311760376,
+        "pe_peer_avg[2024]": 34.0425102587162,
+        "forward_pe": null,
+        "esg_score": null
+      }
+    },
+    {
+      "symbol": "CUAN.JK",
+      "company_name": "PT Petrindo Jaya Kreasi Tbk",
+      "query_values": {
+        "market_cap": 105111671500000,
+        "pe_ttm": 40.9431153710348,
+        "roe_ttm": 0.224681926782255,
+        "der_mrq": 2.234623753272,
+        "yield_ttm": 0,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.62089232298605,
+        "free_cash_flow[2024]": -4643037090000,
+        "peg[2024]": 0.0492685270281113,
+        "pe_peer_avg[2024]": 8.67162536782097,
+        "forward_pe": null,
+        "esg_score": 54.64
+      }
+    },
+    {
+      "symbol": "CASA.JK",
+      "company_name": "PT Capital Financial Indonesia Tbk",
+      "query_values": {
+        "market_cap": 98057285645400,
+        "pe_ttm": 325.102067652676,
+        "roe_ttm": 0.0285858261424119,
+        "der_mrq": null,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.508986445773966,
+        "free_cash_flow[2024]": -3283592000000,
+        "peg[2024]": 8.17932533491952,
+        "pe_peer_avg[2024]": 34.0425102587162,
+        "forward_pe": null,
+        "esg_score": 35.36
+      }
+    },
+    {
+      "symbol": "BRMS.JK",
+      "company_name": "Bumi Resources Minerals Tbk",
+      "query_values": {
+        "market_cap": 93577466623080,
+        "pe_ttm": 140.379390841446,
+        "roe_ttm": 0.0355157365816908,
+        "der_mrq": 0.278571754312321,
+        "yield_ttm": null,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": -0.495491786424562,
+        "free_cash_flow[2024]": -423763210880,
+        "peg[2024]": 1.48978632303207,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": null,
+        "esg_score": 48.63
+      }
+    },
+    {
+      "symbol": "UNTR.JK",
+      "company_name": "United Tractors Tbk",
+      "query_values": {
+        "market_cap": 90362523669600,
+        "pe_ttm": 11.8327314997739,
+        "roe_ttm": 0.0750524011971773,
+        "der_mrq": 0.275932343279327,
+        "yield_ttm": 0.0686480908152735,
+        "payout_ratio": 0.808771349291851,
+        "yoy_quarter_revenue_growth": -0.132182743173015,
+        "free_cash_flow[2024]": 15242633000000,
+        "peg[2024]": -0.975410651772304,
+        "pe_peer_avg[2024]": 6.08568391571865,
+        "forward_pe": 4.87461806511478,
+        "esg_score": 46.24
+      }
+    },
+    {
+      "symbol": "PANI.JK",
+      "company_name": "PT Pantai Indah Kapuk Dua Tbk.",
+      "query_values": {
+        "market_cap": 88037190638320,
+        "pe_ttm": 34.7935483052864,
+        "roe_ttm": 0.0749783473612457,
+        "der_mrq": 0.0133994146889422,
+        "yield_ttm": 0.00103305785123967,
+        "payout_ratio": 0.035387807803495,
+        "yoy_quarter_revenue_growth": 0.753015761712675,
+        "free_cash_flow[2024]": -4583350852000,
+        "peg[2024]": 3.30402507020565,
+        "pe_peer_avg[2024]": 7.86245969770761,
+        "forward_pe": null,
+        "esg_score": 28.36
+      }
+    },
+    {
+      "symbol": "AADI.JK",
+      "company_name": "PT Adaro Andalan Indonesia Tbk",
+      "query_values": {
+        "market_cap": 87602532300000,
+        "pe_ttm": 6.30934096711086,
+        "roe_ttm": 0.197169048021721,
+        "der_mrq": 0.178660181446207,
+        "yield_ttm": 0.0478293348524306,
+        "payout_ratio": 0.301771583442813,
+        "yoy_quarter_revenue_growth": 0.341476005926851,
+        "free_cash_flow[2024]": 13386316855000,
+        "peg[2024]": 0.3129571624872,
+        "pe_peer_avg[2024]": 8.67162536782097,
+        "forward_pe": null,
+        "esg_score": null
+      }
+    },
+    {
+      "symbol": "IMPC.JK",
+      "company_name": "PT Impack Pratama Industri Tbk",
+      "query_values": {
+        "market_cap": 77693405000000,
+        "pe_ttm": 100.781091729775,
+        "roe_ttm": 0.225874927393876,
+        "der_mrq": 0.310851805688601,
+        "yield_ttm": 0,
+        "payout_ratio": null,
+        "yoy_quarter_revenue_growth": 0.339049816294679,
+        "free_cash_flow[2024]": 220484138433,
+        "peg[2024]": 1.81993370506805,
+        "pe_peer_avg[2024]": 6.08568391571865,
+        "forward_pe": null,
+        "esg_score": 23.01
+      }
+    },
+    {
+      "symbol": "ANTM.JK",
+      "company_name": "Aneka Tambang Tbk.",
+      "query_values": {
+        "market_cap": 77619370061750,
+        "pe_ttm": 8.72024874163722,
+        "roe_ttm": 0.231006978183056,
+        "der_mrq": 0.151180929275565,
+        "yield_ttm": 0.0650119698822683,
+        "payout_ratio": 0.566920551040285,
+        "yoy_quarter_revenue_growth": 0.0159096269371107,
+        "free_cash_flow[2024]": 2717046000000,
+        "peg[2024]": 0.542941199849044,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": 22.7930269350832,
+        "esg_score": 33.68
+      }
+    },
+    {
+      "symbol": "ICBP.JK",
+      "company_name": "Indofood CBP Sukses Makmur Tbk",
+      "query_values": {
+        "market_cap": 77551688200000,
+        "pe_ttm": 10.4922181635757,
+        "roe_ttm": 0.0981944222067632,
+        "der_mrq": 0.663213800563594,
+        "yield_ttm": 0.0398496240601504,
+        "payout_ratio": 0.418110949375574,
+        "yoy_quarter_revenue_growth": 0.156905216599489,
+        "free_cash_flow[2024]": 12452823053000,
+        "peg[2024]": 14.7516597330721,
+        "pe_peer_avg[2024]": 11.1988371708896,
+        "forward_pe": 7.34352226017991,
+        "esg_score": 31.86
+      }
+    },
+    {
+      "symbol": "ISAT.JK",
+      "company_name": "PT Indosat Tbk",
+      "query_values": {
+        "market_cap": 75789405748950,
+        "pe_ttm": 10.1277336173972,
+        "roe_ttm": 0.186638333296297,
+        "der_mrq": 0.461562410144167,
+        "yield_ttm": 0.0472340425531915,
+        "payout_ratio": 0.478373800651526,
+        "yoy_quarter_revenue_growth": 0.140467034390225,
+        "free_cash_flow[2024]": 6423483000000,
+        "peg[2024]": 1.81474980260673,
+        "pe_peer_avg[2024]": 10.7980594390592,
+        "forward_pe": 11.7918615041848,
+        "esg_score": 29.82
+      }
+    },
+    {
+      "symbol": "CDIA.JK",
+      "company_name": "PT Chandra Daya Investasi Tbk",
+      "query_values": {
+        "market_cap": 75521771693500,
+        "pe_ttm": 63.3833288531218,
+        "roe_ttm": 0.0601263169570247,
+        "der_mrq": 0.693664387342509,
+        "yield_ttm": 0.0114106351679022,
+        "payout_ratio": 0.723242145203706,
+        "yoy_quarter_revenue_growth": null,
+        "free_cash_flow[2024]": -1137486258138,
+        "peg[2024]": null,
+        "pe_peer_avg[2024]": null,
+        "forward_pe": null,
+        "esg_score": null
+      }
+    },
+    {
+      "symbol": "MDKA.JK",
+      "company_name": "PT Merdeka Copper Gold Tbk",
+      "query_values": {
+        "market_cap": 75132060176970,
+        "pe_ttm": 9024.09176791984,
+        "roe_ttm": 0.000160335284398099,
+        "der_mrq": 0.751177147410364,
+        "yield_ttm": 0.00400169105405528,
+        "payout_ratio": -104.031455606712,
+        "yoy_quarter_revenue_growth": 0.265128642329353,
+        "free_cash_flow[2024]": -5801614488906,
+        "peg[2024]": -0.24039472061715,
+        "pe_peer_avg[2024]": 9.0788179679636,
+        "forward_pe": 65.4026435836571,
+        "esg_score": 27.38
+      }
+    },
+    {
+      "symbol": "ADRO.JK",
+      "company_name": "Alamtri Resources Indonesia Tbk",
+      "query_values": {
+        "market_cap": 74881284920000,
+        "pe_ttm": 7.50673429174899,
+        "roe_ttm": 0.108691525501839,
+        "der_mrq": 0.378239527308833,
+        "yield_ttm": 0.0558230766883263,
+        "payout_ratio": 0.424955950698624,
+        "yoy_quarter_revenue_growth": 0.223894343665909,
+        "free_cash_flow[2024]": 24270172922000,
+        "peg[2024]": -0.278963009890746,
+        "pe_peer_avg[2024]": 8.67162536782097,
+        "forward_pe": 5.0352468699328,
+        "esg_score": 45.93
+      }
+    },
+    {
+      "symbol": "HMSP.JK",
+      "company_name": "HM Sampoerna Tbk",
+      "query_values": {
+        "market_cap": 73861978831500,
+        "pe_ttm": 8.51406256198639,
+        "roe_ttm": 0.333189564155095,
+        "der_mrq": 0.0122108808866853,
+        "yield_ttm": 0.0886614161213552,
+        "payout_ratio": 0.754868843691526,
+        "yoy_quarter_revenue_growth": 0.11017229235274,
+        "free_cash_flow[2024]": 3364072000000,
+        "peg[2024]": -0.620170187906969,
+        "pe_peer_avg[2024]": 11.0487043362144,
+        "forward_pe": 9.51310861423221,
+        "esg_score": 32.89
+      }
+    }
+  ],
+  "pagination": {
+    "total_count": 615,
+    "showing": 30,
+    "limit": 30,
+    "offset": 0,
+    "has_next": true,
+    "has_previous": false,
+    "next_offset": 30,
+    "previous_offset": null
+  }
+}

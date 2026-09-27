@@ -169,7 +169,7 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-2 text-[10px] uppercase">
             <span className={cn("size-1.5", session.isOpen ? "bg-positive" : "bg-muted-foreground")} />
             <span className={session.isOpen ? "text-positive" : "text-muted-foreground"}>
-              {session.isOpen ? "IDX Buka" : "IDX Tutup"}
+              {session.isOpen ? "IDX" : "IDX"}
             </span>
             <span className="hidden text-muted-foreground sm:inline">
               {session.label} · Jakarta {clock.timeHHMM} WIB

@@ -83,14 +83,39 @@ export function useIHSGSeries(days = 30) {
       }),
     ...STALE_INTRADAY,
     // The adapter already normalizes, so select is simpler now
-    select: (data) =>
-      (Array.isArray(data) ? data : [])
+    select: (data) => {
+      const sorted = (Array.isArray(data) ? data : [])
         .sort((a, b) => a.date.localeCompare(b.date))
-        .filter((p) => p.close != null)
-        .map((p) => ({
+        .filter((p) => p.close != null);
+
+      // ── Fear Index: rolling 20-session stdev of daily returns ──────────
+      // (Features To Be Implemented.md Bagian 3 Gap 1: "/v2/daily/IHSG/"
+      //  Rolling 20-day Volatility Return). No extra credit — derived from
+      //  the same IHSG daily series we already fetched.
+      let fearIndex: number | null = null;
+      if (sorted.length >= 2) {
+        const returns: number[] = [];
+        for (let i = 1; i < sorted.length; i++) {
+          const prev = sorted[i - 1]?.close;
+          const curr = sorted[i]?.close;
+          if (prev && curr != null && prev > 0) returns.push((curr - prev) / prev);
+        }
+        const window = returns.slice(-20);
+        if (window.length >= 2) {
+          const mean = window.reduce((s, r) => s + r, 0) / window.length;
+          const variance = window.reduce((s, r) => s + (r - mean) ** 2, 0) / window.length;
+          fearIndex = Math.sqrt(variance) * 100; // as percent
+        }
+      }
+
+      return {
+        chart: sorted.map((p) => ({
           t: p.date.slice(5), // "MM-DD" for chart label
           value: p.close,
         })) as { t: string; value: number }[],
+        fearIndex,
+      };
+    },
   });
 }
 

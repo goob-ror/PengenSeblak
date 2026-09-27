@@ -15,11 +15,13 @@ import {
   Info,
   Layers,
   Plus,
+  Play,
   RefreshCw,
   Scale,
   Search,
   MousePointerClick,
   Shield,
+  ShieldAlert,
   ShieldCheck,
   Sparkles,
   Star,
@@ -70,17 +72,18 @@ import {
   isSubsectorVerified,
 } from "@/hooks/useSectorUniverse";
 import { useAnomalies } from "@/hooks/useAnomalies";
+import { useUsdIdr } from "@/hooks/useUsdIdr";
+import { useRebalancing, rebalanceSeason } from "@/hooks/useRebalancing";
+import { useIpoCohort, useListingPerformance } from "@/hooks/useIpo";
+import { IpoTracker } from "@/components/terminal/IpoTracker";
 import { useJakartaClock, idxSession } from "@/hooks/useJakartaClock";
-import type { AnomalyResult } from "@/lib/algorithms/divergence";
+import type { AnomalyResult, ScreenerRow } from "@/lib/algorithms/divergence";
 import {
   anomalies,
   classify,
-  companies,
   formatIDR,
   healthLabel,
   methodology,
-  news,
-  sectorHealth,
   sectors,
   type Company,
   type Tone,
@@ -190,6 +193,239 @@ function shiComponentTip(
   return parts.join(" · ");
 }
 
+/**
+ * Index Rebalancing Radar — seasonal panel (Dec–Feb, Jun–Aug).
+ *
+ * Sits between the metric strip and the IHSG chart. In season it lists LQ45
+ * members at risk of dropping out and members meeting the inclusion test;
+ * off-season it renders a single muted "next review" line and fetches nothing
+ * (see useRebalancing — `enabled: false`).
+ *
+ * The volume half of the upstream rule is deliberately not computed; the
+ * caveat row below states that explicitly rather than substituting a proxy.
+ */
+function RebalancingRadar() {
+  const [force, setForce] = useState(false);
+  const rb = useRebalancing(undefined, force);
+  const season = rebalanceSeason();
+
+  // ── Off-season: one muted line, zero API calls (unless forced) ──────────
+  if (!season.isSeason && !force) {
+    const next = season.nextSeasonStart;
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Mei",
+      "Jun",
+      "Jul",
+      "Agu",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Des",
+    ];
+    return (
+      <Panel
+        title="Radar Rebalancing LQ45"
+        kicker="Di luar musim review"
+        action={
+          <button
+            onClick={() => setForce(true)}
+            disabled={rb.isPending}
+            className="inline-flex h-6 items-center gap-1.5 rounded border border-border px-2 text-[10px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-50"
+          >
+            {rb.isPending ? (
+              <RefreshCw className="size-3 animate-spin" />
+            ) : (
+              <Play className="size-3" />
+            )}
+            Muat data sekarang
+          </button>
+        }
+      >
+        <div className="flex items-center gap-2.5 px-4 py-3">
+          <Info className="size-3.5 shrink-0 text-muted-foreground/50" />
+          <span className="text-[10px] text-muted-foreground/70">
+            Di luar musim review. Panel aktif kembali{" "}
+            <span className="text-foreground/80">
+              {months[next.getUTCMonth()]} {next.getUTCFullYear()}
+            </span>
+            · atau muat data live dengan tombol di atas.
+          </span>
+        </div>
+      </Panel>
+    );
+  }
+
+  const data = rb.data;
+  const rows = data?.rows ?? [];
+  const risk = data?.exclusionRisk ?? [];
+  const candidates = data?.inclusionCandidates ?? [];
+
+  return (
+    <Panel
+      title="Radar Rebalancing LQ45"
+      kicker={force && !season.isSeason ? "Data langsung · di luar musim" : season.label}
+      action={
+        <div className="flex items-center gap-2">
+          {rb.isFetching && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
+          <MethodTip text="Prediksi pergerakan anggota LQ45: eksklusi bila market_cap_rank > 80; inclusion bila rank <= 60 dan tidak ada suspensi 6 bulan. Kaki volume tidak dihitung — tidak ada endpoint median volume. Data live Sectors API, hanya dimuat saat musim review (Des–Feb, Jun–Agu)." />
+        </div>
+      }
+    >
+      {rb.isPending ? (
+        <div className="space-y-2 p-4">
+          {Array.from({ length: 5 }, (_, i) => (
+            <Skeleton key={i} className="h-8 w-full" />
+          ))}
+        </div>
+      ) : rb.isError ? (
+        <div className="px-4 py-6 text-center">
+          <div className="text-xs text-muted-foreground">Gagal memuat radar rebalancing.</div>
+          <div className="mt-1 text-[10px] text-muted-foreground/70">
+            Endpoint screener atau suspensi tidak tersedia.
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* ── Stat strip ────────────────────────────────────────────── */}
+          <div className="grid grid-cols-3 divide-x divide-border border-b border-border">
+            <div className="px-4 py-3">
+              <div className="text-[10px] text-muted-foreground">Anggota LQ45</div>
+              <div className="mt-1 text-sm font-semibold tabular-nums">{rows.length}</div>
+              <div className="mt-0.5 text-[9px] text-muted-foreground">Screener live</div>
+            </div>
+            <div className="px-4 py-3">
+              <div className="text-[10px] text-muted-foreground">Risiko eksklusi</div>
+              <div
+                className={cn(
+                  "mt-1 text-sm font-semibold tabular-nums",
+                  risk.length > 0 ? "text-negative" : "text-positive",
+                )}
+              >
+                {risk.length}
+              </div>
+              <div className="mt-0.5 text-[9px] text-muted-foreground">Rank &gt; 80</div>
+            </div>
+            <div className="px-4 py-3">
+              <div className="text-[10px] text-muted-foreground">Kandidat inklusi</div>
+              <div
+                className={cn(
+                  "mt-1 text-sm font-semibold tabular-nums",
+                  candidates.length > 0 ? "text-positive" : "text-muted-foreground",
+                )}
+              >
+                {candidates.length}
+              </div>
+              <div className="mt-0.5 text-[9px] text-muted-foreground">
+                Rank ≤ 60 · bebas suspensi
+              </div>
+            </div>
+          </div>
+
+          {/* ── Exclusion risk ────────────────────────────────────────── */}
+          <div className="border-b border-border">
+            <div className="flex items-center gap-1.5 px-4 pt-2.5">
+              <ShieldAlert className="size-3 shrink-0 text-negative/70" />
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-negative/70">
+                Risiko Eksklusi
+              </span>
+              <span className="ml-auto text-[9px] text-muted-foreground">{risk.length} emiten</span>
+            </div>
+            {risk.length === 0 ? (
+              <div className="px-4 py-3 text-[10px] text-muted-foreground">
+                Tidak ada anggota dengan rank market cap di atas 80.
+              </div>
+            ) : (
+              <div className="mt-1 divide-y divide-border">
+                {risk.map((r) => (
+                  <div
+                    key={r.symbol}
+                    className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50 transition-colors"
+                  >
+                    <span className="w-14 text-xs font-semibold text-primary">{r.symbol}</span>
+                    <span className="flex-1 truncate text-[10px] text-muted-foreground">
+                      {r.companyName}
+                    </span>
+                    {r.suspended && <Tag tone="warning">Suspensi</Tag>}
+                    <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
+                      Rank
+                    </span>
+                    <span className="w-8 shrink-0 text-right text-[11px] font-semibold tabular-nums text-negative">
+                      {r.marketCapRank ?? "—"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* ── Inclusion candidates ──────────────────────────────────── */}
+          <div>
+            <div className="flex items-center gap-1.5 px-4 pt-2.5">
+              <Shield className="size-3 shrink-0 text-positive/70" />
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-positive/70">
+                Kandidat Inklusi
+              </span>
+              <span className="ml-auto text-[9px] text-muted-foreground">
+                {candidates.length} emiten
+              </span>
+            </div>
+            {candidates.length === 0 ? (
+              <div className="px-4 py-3 text-[10px] text-muted-foreground">
+                Tidak ada kandidat yang memenuhi kriteria (rank ≤ 60 dan tanpa suspensi 6 bulan).
+              </div>
+            ) : (
+              // Cap the list so the panel stays compact — full detail is the
+              // same data, so we show the strongest names first by rank.
+              <div className="mt-1 max-h-40 divide-y divide-border overflow-y-auto">
+                {candidates.slice(0, 10).map((r) => (
+                  <div
+                    key={r.symbol}
+                    className="flex items-center gap-3 px-4 py-2 hover:bg-secondary/50 transition-colors"
+                  >
+                    <span className="w-14 text-xs font-semibold text-primary">{r.symbol}</span>
+                    <span className="flex-1 truncate text-[10px] text-muted-foreground">
+                      {r.companyName}
+                    </span>
+                    <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
+                      Rank
+                    </span>
+                    <span className="w-8 shrink-0 text-right text-[11px] font-semibold tabular-nums text-positive">
+                      {r.marketCapRank ?? "—"}
+                    </span>
+                  </div>
+                ))}
+                {candidates.length > 10 && (
+                  <div className="px-4 py-1.5 text-[9px] text-muted-foreground/70">
+                    +{candidates.length - 10} kandidat lainnya
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* ── Footer caveats ────────────────────────────────────────── */}
+          <div className="flex items-start gap-2 border-t border-border px-4 py-2.5">
+            <Info className="mt-0.5 size-3 shrink-0 text-muted-foreground/60" />
+            <div className="min-w-0 text-[9px] leading-relaxed text-muted-foreground/70">
+              <span className="font-semibold uppercase tracking-wide text-muted-foreground">
+                Kaki volume tidak dihitung
+              </span>{" "}
+              — tidak ada endpoint Sectors API yang menyediakan median volume per emiten, sehingga
+              syarat volume pada aturan inklusi maupun eksklusi tidak dievaluasi. Suspensi{" "}
+              {data?.windowStart} s.d. {data?.windowEnd}.
+              {data?.unknownRankCount ? ` ${data.unknownRankCount} emiten tanpa data rank.` : ""}
+            </div>
+          </div>
+        </>
+      )}
+    </Panel>
+  );
+}
+
 export function MarketOverview() {
   const [period, setPeriod] = useState<"1W" | "1M" | "3M">("1M");
   const [detail, setDetail] = useState<AnomalyResult | null>(null);
@@ -203,6 +439,7 @@ export function MarketOverview() {
   const shi = useSectorHealthScores();
   const anom = useAnomalies();
   const newsFeed = useIdxNews(8);
+  const fx = useUsdIdr();
   const [newsDetail, setNewsDetail] = useState<NewsArticle | null>(null);
 
   // ── Derived values from live data ─────────────────────────────────────────
@@ -213,7 +450,7 @@ export function MarketOverview() {
   // 1W / 1M / 3M session views instead of faking intraday resolution.
   const periodPoints = period === "1W" ? 7 : period === "1M" ? 30 : 90;
   const ihsgChartData = useMemo(() => {
-    const full = ihsg.data ?? [];
+    const full = ihsg.data?.chart ?? [];
     return full.length > periodPoints ? full.slice(-periodPoints) : full;
   }, [ihsg.data, periodPoints]);
 
@@ -313,13 +550,33 @@ export function MarketOverview() {
               ),
           },
           {
-            label: "Market status",
-            value: marketOpen ? (
-              <span className="text-positive">BUKA</span>
+            label: "USD / IDR",
+            value: fx.isPending ? (
+              <Skeleton className="h-5 w-20" />
+            ) : fx.data?.current != null ? (
+              <span className="tabular-nums">
+                {fx.data.current.toLocaleString("id-ID", {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}
+              </span>
             ) : (
-              <span className="text-muted-foreground">TUTUP</span>
+              "—"
             ),
-            sub: <span className="tabular-nums">{session.label}</span>,
+            sub: fx.isPending ? (
+              <Skeleton className="h-3 w-16" />
+            ) : fx.data?.changePct7d != null ? (
+              <span className={fx.data.usdStronger ? "text-negative" : "text-positive"}>
+                <Change value={fx.data.changePct7d} />{" "}
+                <span className="text-[9px] text-muted-foreground">
+                  {fx.data.usdStronger ? "IDR melemah" : "IDR menguat"} · 7d
+                </span>
+              </span>
+            ) : fx.isError ? (
+              " Gagal memuat"
+            ) : (
+              "—"
+            ),
           },
           {
             label: "Mkt Cap IDX",
@@ -386,6 +643,9 @@ export function MarketOverview() {
           },
         ]}
       />
+      {/* ── Index Rebalancing Radar (seasonal: Dec–Feb, Jun–Aug) ────────── */}
+      <RebalancingRadar />
+
       {/* ── IHSG Chart + Sector Heatmap ──────────────────────────────────── */}
       <div className="grid gap-4 xl:grid-cols-[1.3fr_1fr]">
         <Panel
@@ -875,7 +1135,7 @@ export function MarketOverview() {
               <RefreshCw className="size-3 animate-spin text-muted-foreground" />
             ) : (
               <span className="inline-flex items-center gap-1.5 rounded-full border border-negative/30 bg-negative/10 px-2 py-0.5 text-[10px] font-medium text-negative">
-                {(anom.data ?? []).length} terdeteksi
+                {(anom.data?.anomalies ?? []).length} terdeteksi
               </span>
             )
           }
@@ -897,7 +1157,7 @@ export function MarketOverview() {
             <div className="px-4 py-6 text-center text-xs text-muted-foreground">
               Gagal memuat anomali. Endpoint screener mungkin tidak tersedia.
             </div>
-          ) : (anom.data ?? []).length === 0 ? (
+          ) : (anom.data?.anomalies ?? []).length === 0 ? (
             <div className="px-4 py-6 text-center">
               <div className="text-xs text-muted-foreground">Tidak ada anomali terdeteksi.</div>
               <div className="mt-1 text-[10px] text-muted-foreground/70">
@@ -906,7 +1166,7 @@ export function MarketOverview() {
             </div>
           ) : (
             <div className="max-h-105 divide-y divide-border overflow-y-auto">
-              {(anom.data ?? []).map((a) => (
+              {(anom.data?.anomalies ?? []).map((a) => (
                 <button
                   key={a.symbol + a.type}
                   onClick={() => setDetail(a)}
@@ -953,7 +1213,10 @@ export function MarketOverview() {
                           }
                         >
                           {a.deviation >= 0 ? "+" : ""}
-                          {a.deviation.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          {a.deviation.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
                           {a.metric !== "Net Margin" && "x"}
                         </div>
                         <Tag tone={a.severity === "High" ? "negative" : "warning"} className="mt-1">
@@ -1130,10 +1393,11 @@ export function MarketOverview() {
  */
 
 type SortDir = "asc" | "desc";
-/** Sort keys for the mock-based DecisionScreener (still mock — next phase). */
-type CompanyKey = keyof Pick<
-  Company,
-  "growth" | "margin" | "roe" | "debt" | "pe" | "safety" | "shi" | "dividend"
+/** Sort keys for the ScreenerKeputusan table (real screener rows). */
+type SortKey = "market_cap" | "roe" | "growth" | "margin" | "pe" | "dividend" | "sector";
+
+/**
+ * Company universe : /companies/ screener, ordered by market cap
 >;
 
 /** Renders a value or a dash — never invents data. */
@@ -1212,8 +1476,8 @@ export function SectorIntelligence() {
   // Anomalies for just this sector (shared hook, no extra credits)
   const sectorAnomalies = useMemo(() => {
     const syms = new Set((universe.data ?? []).map((c) => c.symbol));
-    return (anom.data ?? []).filter((a) => syms.has(a.symbol));
-  }, [anom.data, universe.data]);
+    return (anom.data?.anomalies ?? []).filter((a) => syms.has(a.symbol));
+  }, [anom.data?.anomalies, universe.data]);
 
   const sorted = useMemo(() => {
     let list = universe.data ?? [];
@@ -1691,7 +1955,7 @@ export function SectorIntelligence() {
       </Panel>
 
       <Panel title="Divergensi Sektor" kicker="Deteksi live Z-score">
-        {!anom.data ? (
+        {!anom.data?.anomalies ? (
           <div className="flex items-center justify-center gap-2 p-8 text-xs text-muted-foreground">
             <RefreshCw className="size-3 animate-spin" /> Memuat anomali…
           </div>
@@ -2701,6 +2965,14 @@ export function NewsIntelligence() {
   const newsFeed = useIdxNews(50);
   const articles = useMemo(() => newsFeed.data ?? [], [newsFeed.data]);
 
+  // ── Fear Index (Bagian 3 Gap 1): rolling 20-session stdev of IHSG returns.
+  // Reuses the SAME queryKey as Ringkasan Pasar's useIHSGSeries(30) — the
+  // series is already cached, so this card costs ZERO extra credits.
+  const ihsgFear = useIHSGSeries(30);
+  const fear = ihsgFear.data?.fearIndex ?? null;
+  const fearTone: "low" | "mid" | "high" =
+    fear == null ? "low" : fear >= 1.5 ? "high" : fear >= 0.75 ? "mid" : "low";
+
   // Derive unique sectors from live data for the sector filter
   const sectors = useMemo(
     () => [
@@ -2820,74 +3092,198 @@ export function NewsIntelligence() {
                 ))}
               </select>
             </div>
-            <div className="max-h-[990px] overflow-y-auto">
-            {newsFeed.isPending ? (
-              <div className="space-y-2 p-4">
-                {Array.from({ length: 10 }, (_, i) => (
-                  <div key={i} className="h-16 animate-pulse rounded bg-secondary/50" />
-                ))}
-              </div>
-            ) : newsFeed.isError ? (
-              <div className="p-10 text-center text-xs text-muted-foreground">
-                Berita tidak dapat dimuat.
-              </div>
-            ) : (
-              <div>
-                {filtered.length === 0 && (
-                  <div className="p-10 text-center text-xs text-muted-foreground">
-                    Tidak ada berita yang cocok dengan filter aktif.
-                  </div>
-                )}
-                {filtered.map((n, i) => (
-                  <button
-                    key={`${n.timestamp}-${i}`}
-                    onClick={() => setDetail(n)}
-                    className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[60px_1fr_auto]"
-                  >
-                    <span className="text-xs text-muted-foreground tabular-nums">
-                      <span className="block">{n.timestamp?.slice(0, 10)}</span>
-                      <span className="block">{n.timestamp?.slice(11, 16)}</span>
-                    </span>
-                    <div>
-                      <div className="text-sm leading-5">{n.title}</div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {(n.symbols ?? []).length > 0 && (
-                          <span className="text-[10px] font-semibold text-primary">
-                            {n
-                              .symbols!.slice(0, 3)
-                              .map((s) => s.replace(".JK", ""))
-                              .join(", ")}
-                          </span>
-                        )}
-                        {n.sector && (
-                          <span className="text-[10px] text-muted-foreground">{n.sector}</span>
-                        )}
+            <div className="max-h-[1140px] overflow-y-auto">
+              {newsFeed.isPending ? (
+                <div className="space-y-2 p-4">
+                  {Array.from({ length: 10 }, (_, i) => (
+                    <div key={i} className="h-16 animate-pulse rounded bg-secondary/50" />
+                  ))}
+                </div>
+              ) : newsFeed.isError ? (
+                <div className="p-10 text-center text-xs text-muted-foreground">
+                  Berita tidak dapat dimuat.
+                </div>
+              ) : (
+                <div>
+                  {filtered.length === 0 && (
+                    <div className="p-10 text-center text-xs text-muted-foreground">
+                      Tidak ada berita yang cocok dengan filter aktif.
+                    </div>
+                  )}
+                  {filtered.map((n, i) => (
+                    <button
+                      key={`${n.timestamp}-${i}`}
+                      onClick={() => setDetail(n)}
+                      className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[60px_1fr_auto]"
+                    >
+                      <span className="text-xs text-muted-foreground tabular-nums">
+                        <span className="block">{n.timestamp?.slice(0, 10)}</span>
+                        <span className="block">{n.timestamp?.slice(11, 16)}</span>
+                      </span>
+                      <div>
+                        <div className="text-sm leading-5">{n.title}</div>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {(n.symbols ?? []).length > 0 && (
+                            <span className="text-[10px] font-semibold text-primary">
+                              {n
+                                .symbols!.slice(0, 3)
+                                .map((s) => s.replace(".JK", ""))
+                                .join(", ")}
+                            </span>
+                          )}
+                          {n.sector && (
+                            <span className="text-[10px] text-muted-foreground">{n.sector}</span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-start gap-1.5 flex-wrap justify-end">
-                      {(n.tags ?? []).slice(0, 2).map((t) => (
-                        <Tag key={t} tone="accent">
-                          {t}
-                        </Tag>
-                      ))}
-                      {/* Sentiment label derived from tags */}
-                      {(() => {
-                        const tags = (n.tags ?? []).map((t) => t.toLowerCase());
-                        if (tags.includes("bullish")) return <Tag tone="positive">Positive</Tag>;
-                        if (tags.includes("bearish") || tags.includes("negative"))
-                          return <Tag tone="negative">Negative</Tag>;
-                        return <Tag tone="neutral">Neutral</Tag>;
-                      })()}
-                      <ChevronRight className="size-4 text-muted-foreground self-center" />
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+                      <div className="flex items-start gap-1.5 flex-wrap justify-end">
+                        {(n.tags ?? []).slice(0, 2).map((t) => (
+                          <Tag key={t} tone="accent">
+                            {t}
+                          </Tag>
+                        ))}
+                        {/* Sentiment label derived from tags */}
+                        {(() => {
+                          const tags = (n.tags ?? []).map((t) => t.toLowerCase());
+                          if (tags.includes("bullish")) return <Tag tone="positive">Positive</Tag>;
+                          if (tags.includes("bearish") || tags.includes("negative"))
+                            return <Tag tone="negative">Negative</Tag>;
+                          return <Tag tone="neutral">Neutral</Tag>;
+                        })()}
+                        <ChevronRight className="size-4 text-muted-foreground self-center" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </Panel>
         </div>
         <div className="space-y-4">
+          {/* ── Fear Index: real volatility + news sentiment as proof ── */}
+          <Panel
+            title="Fear Index"
+            kicker="volatilitas IHSG"
+            action={
+              <MethodTip text="Standar deviasi return harian IHSG selama 20 sesi terakhir, dikalikan 100. Dihitung dari /index-daily/ihsg/ yang sudah di-cache — tanpa kredit tambahan. Faktor di bawahnya adalah sentimen berita REAL dari /v2/news/, menjadi bukti konteks di balik angka." />
+            }
+          >
+            <div className="px-4 py-4">
+              {ihsgFear.isPending ? (
+                <Skeleton className="h-20 w-full" />
+              ) : fear == null ? (
+                <div className="text-xs text-muted-foreground">
+                  Data volatilitas belum tersedia.
+                </div>
+              ) : (
+                <>
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <div
+                        className={cn(
+                          "text-2xl font-semibold tabular-nums",
+                          fearTone === "high"
+                            ? "text-negative"
+                            : fearTone === "mid"
+                              ? "text-warning"
+                              : "text-positive",
+                        )}
+                      >
+                        {fear.toFixed(2)}
+                      </div>
+                      <div className="mt-0.5 text-[10px] text-muted-foreground">
+                        {fearTone === "high"
+                          ? "Volatilitas tinggi — pasar gelisah"
+                          : fearTone === "mid"
+                            ? "Volatilitas sedang — waspada"
+                            : "Volatilitas rendah — pasar tenang"}
+                      </div>
+                    </div>
+                    <Tag
+                      tone={
+                        fearTone === "high"
+                          ? "negative"
+                          : fearTone === "mid"
+                            ? "warning"
+                            : "positive"
+                      }
+                    >
+                      {fearTone === "high" ? "Fear" : fearTone === "mid" ? "Netral" : "Greed"}
+                    </Tag>
+                  </div>
+                  {/* Visual scale 0-3% map */}
+                  <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+                    <div
+                      className={cn(
+                        "h-full rounded-full transition-all",
+                        fearTone === "high"
+                          ? "bg-negative"
+                          : fearTone === "mid"
+                            ? "bg-warning"
+                            : "bg-positive",
+                      )}
+                      style={{ width: `${Math.min(100, (fear / 3) * 100)}%` }}
+                    />
+                  </div>
+                  <div className="mt-1 flex justify-between text-[9px] text-muted-foreground">
+                    <span>0%</span>
+                    <span>1.5%</span>
+                    <span>3%+</span>
+                  </div>
+                </>
+              )}
+
+              {/* ── Proof factors: REAL news sentiment distribution ── */}
+              <div className="mt-4 space-y-2 border-t border-border pt-3">
+                <div className="text-[10px] uppercase text-muted-foreground">
+                  Faktor pembuktian (sentimen berita real)
+                </div>
+                {newsFeed.isPending ? (
+                  <Skeleton className="h-14 w-full" />
+                ) : (
+                  <>
+                    {(
+                      [
+                        ["Positif", sentimentCounts.positive, "bg-positive"],
+                        ["Netral", sentimentCounts.neutral, "bg-muted-foreground"],
+                        ["Negatif", sentimentCounts.negative, "bg-negative"],
+                      ] as [string, number, string][]
+                    ).map(([label, val, cls]) => {
+                      const pct =
+                        sentimentCounts.total > 0
+                          ? Math.round((val / sentimentCounts.total) * 100)
+                          : 0;
+                      return (
+                        <div key={label} className="space-y-1">
+                          <div className="flex items-center justify-between text-[10px]">
+                            <span className="text-muted-foreground">{label}</span>
+                            <span className="tabular-nums text-muted-foreground">
+                              {val} · {pct}%
+                            </span>
+                          </div>
+                          <div className="h-1 w-full overflow-hidden rounded-full bg-secondary">
+                            <div
+                              className={cn("h-full rounded-full", cls)}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                    <p className="pt-1 text-[9px] leading-3 text-muted-foreground/70">
+                      Dari {sentimentCounts.total} berita IDX terbaru. Sentimen tinggi{" "}
+                      {fear != null && fearTone === "high"
+                        ? "mengonfirmasi"
+                        : "tidak selalu sejalan"}{" "}
+                      dengan volatilitas — bandingkan keduanya sebagai konteks, bukan sinyal
+                      tunggal.
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
+          </Panel>
+
           {/* ── Distribusi Sektor: clickable filter ── */}
           <Panel title="Distribusi Sektor" kicker="(Klik untuk filter)">
             <div className="divide-y divide-border">
@@ -2942,63 +3338,6 @@ export function NewsIntelligence() {
             </div>
           </Panel>
 
-          {/* ── Distribusi Sinyal: positive / neutral / negative ── */}
-          <Panel title="Distribusi Sinyal" kicker="(Berdasarkan sentimen berita)">
-            <div className="divide-y divide-border">
-              {newsFeed.isPending ? (
-                <div className="space-y-3 p-4">
-                  {Array.from({ length: 3 }, (_, i) => (
-                    <div key={i} className="h-4 animate-pulse rounded bg-secondary/50" />
-                  ))}
-                </div>
-              ) : sentimentCounts.total === 0 ? (
-                <p className="p-4 text-[10px] text-muted-foreground">Tidak ada data.</p>
-              ) : (
-                [
-                  {
-                    label: "Positive",
-                    count: sentimentCounts.positive,
-                    bar: "bg-positive",
-                    text: "text-positive",
-                  },
-                  {
-                    label: "Neutral",
-                    count: sentimentCounts.neutral,
-                    bar: "bg-accent-foreground/40",
-                    text: "text-muted-foreground",
-                  },
-                  {
-                    label: "Negative",
-                    count: sentimentCounts.negative,
-                    bar: "bg-negative",
-                    text: "text-negative",
-                  },
-                ].map(({ label, count, bar, text }) => {
-                  const pct =
-                    sentimentCounts.total > 0
-                      ? Math.round((count / sentimentCounts.total) * 100)
-                      : 0;
-                  return (
-                    <div key={label} className="px-4 py-3">
-                      <div className="mb-1.5 flex justify-between text-xs">
-                        <span className={cn("font-medium", text)}>{label}</span>
-                        <span className="tabular-nums text-muted-foreground">
-                          {count} · {pct}%
-                        </span>
-                      </div>
-                      <div className="h-1 w-full overflow-hidden rounded-full bg-secondary">
-                        <div
-                          className={cn("h-full rounded-full transition-all", bar)}
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-          </Panel>
-
           {/* ── Distribusi Tags: top tags, clickable filter ── */}
           <Panel title="Distribusi Tags" kicker="(Klik untuk filter)">
             <div className="divide-y divide-border">
@@ -3043,6 +3382,13 @@ export function NewsIntelligence() {
           </Panel>
         </div>
       </div>
+
+      {/* ── IPO Alpha Tracker (Features To Be Implemented.md §F) ───────────
+          Placed below the news grid. The cohort list is 1 eager credit from
+          /v2/companies/; per-symbol performance (1 credit each) stays lazy
+          inside this component's own Sheet. */}
+      <IpoTracker />
+
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
         <SheetContent className="border-border bg-popover">
           <SheetHeader>
@@ -3095,21 +3441,130 @@ export function NewsIntelligence() {
 // ─────────────────────────────────────────────────────────────────────────────
 // 5. DECISION SCREENER
 // ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Screener row view-model + deterministic classification (Decision Screener)
+//
+// These replace the old mock `Company[]` from market-data.ts with REAL data
+// taken from the anomaly scan's ScreenerRow output (zero extra credits — the
+// rows are already fetched by Ringkasan Pasar's Monitor Anomali).
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface ScreenerCompanyView {
+  ticker: string;
+  name: string;
+  sector: string;
+  /** Sub-sector from the screener (display name), fallback "—". */
+  subSector: string;
+  pe: number | null;
+  pb: number | null;
+  roe: number | null;
+  roa: number | null;
+  der: number | null;
+  /** Net margin in PERCENT (API returns a decimal). */
+  margin: number | null;
+  /** Dividend yield in PERCENT. */
+  dividend: number | null;
+  market_cap: number | null;
+  free_float: number | null;
+  /** Live price from screener query_values. */
+  price: number | null;
+  /** Daily change in PERCENT (decimal × 100). */
+  change: number | null;
+  /** Derived composite 0-100 used for the "Keamanan" threshold slider. */
+  shi: number | null;
+  /** alias for sorting display */
+  growth: number | null;
+  anomaly?: string | undefined;
+}
+
+/** Dedupe (the screener may repeat a symbol across pages) and map to the view. */
+export function buildScreenerRows(rows: ScreenerRow[]): ScreenerCompanyView[] {
+  const bySymbol = new Map<string, ScreenerCompanyView>();
+  for (const r of rows) {
+    if (!r.symbol) continue;
+    const margin = r.net_margin != null ? r.net_margin * 100 : null;
+    const div = r.yield_ttm != null ? r.yield_ttm * 100 : null;
+    // Composite quality proxy 0-100 from what the screener actually gives us:
+    // profitability (ROE, net margin) + balance-sheet safety (inverse DER).
+    // Documented as a heuristic — NOT the SHI algorithm (that needs subsector
+    // reports we don't fetch here).
+    const parts: number[] = [];
+    if (r.roe_ttm != null) parts.push(Math.min(1, Math.max(0, (r.roe_ttm + 10) / 40)));
+    if (r.net_margin != null) parts.push(Math.min(1, Math.max(0, (r.net_margin + 0.1) / 0.4)));
+    if (r.der_mrq != null) parts.push(Math.min(1, Math.max(0, 1 - r.der_mrq / 3)));
+    const shi = parts.length > 0 ? (parts.reduce((s, p) => s + p, 0) / parts.length) * 100 : null;
+
+    const existing = bySymbol.get(r.symbol);
+    const view: ScreenerCompanyView = {
+      ticker: r.symbol,
+      name: r.company_name,
+      sector: r.sector ?? r.sub_sector ?? "—",
+      subSector: r.sub_sector ?? "—",
+      pe: r.pe_ttm ?? null,
+      pb: r.pb_mrq ?? null,
+      roe: r.roe_ttm != null ? r.roe_ttm * 100 : null,
+      roa: r.roa_ttm != null ? r.roa_ttm * 100 : null,
+      der: r.der_mrq ?? null,
+      margin,
+      dividend: div,
+      market_cap: r.market_cap ?? null,
+      free_float: r.free_float ?? null,
+      price: r.last_close_price ?? null,
+      change: r.daily_close_change != null ? r.daily_close_change * 100 : null,
+      shi,
+      growth: null,
+      anomaly: existing?.anomaly,
+    };
+    // Prefer whichever duplicate has more non-null fields.
+    if (!existing || countFields(view) > countFields(existing)) bySymbol.set(r.symbol, view);
+  }
+  return [...bySymbol.values()];
+}
+
+const countFields = (c: ScreenerCompanyView): number =>
+  [c.pe, c.roe, c.margin, c.dividend, c.market_cap, c.der].filter((v) => v != null).length;
+
+/** Deterministic classification (spec § decision labels) on REAL fields. */
+export function classifyView(c: ScreenerCompanyView): string {
+  const pe = c.pe;
+  const margin = c.margin;
+  const roe = c.roe;
+  const div = c.dividend;
+
+  const undervaluedQuality =
+    pe != null && pe > 0 && pe <= 14 && margin != null && margin >= 20 && roe != null && roe >= 12;
+  const growthAtReasonable = c.growth != null && c.growth >= 12 && pe != null && pe > 0 && pe <= 22;
+  const dividendTrap = div != null && div >= 7 && roe != null && roe < 8;
+
+  if (dividendTrap) return "Dividend Trap Alert";
+  if (undervaluedQuality) return "Undervalued Quality";
+  if (growthAtReasonable) return "Growth at Reasonable Price";
+  return "Balanced Fundamentals";
+}
+
 export function DecisionScreener() {
-  const [minShi, setMinShi] = useState(60);
+  const [minRoe, setMinRoe] = useState(0);
   const [minSafety, setMinSafety] = useState(60);
   const [classification, setClassification] = useState("Semua");
   const [activeFlags, setActiveFlags] = useState<string[]>([]);
-  const [sortCol, setSortCol] = useState<CompanyKey>("safety");
+  const [sortKey, setSortKey] = useState<SortKey>("market_cap");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
-  const flagDefs: [string, (c: Company) => boolean][] = [
-    ["Pertumbuhan > 8%", (c) => c.growth > 8],
-    ["Margin > 15%", (c) => c.margin > 15],
-    ["Utang < 50%", (c) => c.debt < 50],
-    ["Dividen > 4%", (c) => c.dividend > 4],
+  // REAL screener rows — same queries the anomaly monitor already runs, so
+  // this page costs ZERO extra credits (useAnomalies now returns raw rows).
+  const anom = useAnomalies();
+  const rows = useMemo(() => anom.data?.rows ?? [], [anom.data]);
+
+  // Merge duplicate rows (the screener can repeat a symbol across pages).
+  const companies = useMemo(() => buildScreenerRows(rows), [rows]);
+
+  const flagDefs: [string, (c: ScreenerCompanyView) => boolean][] = [
+    ["Pertumbuhan > 8%", (c) => (c.growth ?? -Infinity) > 8],
+    ["Margin > 15%", (c) => (c.margin ?? -Infinity) > 15],
+    ["ROE > 12%", (c) => (c.roe ?? -Infinity) > 12],
+    ["Dividen > 4%", (c) => (c.dividend ?? -Infinity) > 4],
     ["Tidak ada anomali", (c) => !c.anomaly],
-    ["P/E < 20x", (c) => c.pe > 0 && c.pe < 20],
+    ["P/E < 20x", (c) => c.pe != null && c.pe > 0 && c.pe < 20],
   ];
 
   const toggleFlag = (f: string) =>
@@ -3118,30 +3573,46 @@ export function DecisionScreener() {
   const result = useMemo(() => {
     const list = companies.filter(
       (c) =>
-        c.shi >= minShi &&
-        c.safety >= minSafety &&
-        (classification === "Semua" || classify(c) === classification) &&
+        (c.shi ?? 0) >= minSafety &&
+        (c.roe ?? -Infinity) >= minRoe &&
+        (classification === "Semua" || classifyView(c) === classification) &&
         activeFlags.every((f) => {
           const def = flagDefs.find(([label]) => label === f);
           return def ? def[1](c) : true;
         }),
     );
-    return [...list].sort((a, b) =>
-      sortDir === "desc" ? b[sortCol] - a[sortCol] : a[sortCol] - b[sortCol],
-    );
+    const get = (c: ScreenerCompanyView): number => {
+      switch (sortKey) {
+        case "roe":
+          return c.roe ?? -Infinity;
+        case "growth":
+          return c.growth ?? -Infinity;
+        case "margin":
+          return c.margin ?? -Infinity;
+        case "pe":
+          return c.pe ?? Infinity;
+        case "dividend":
+          return c.dividend ?? -Infinity;
+        case "sector":
+          return 0;
+        default:
+          return c.market_cap ?? -Infinity;
+      }
+    };
+    return [...list].sort((a, b) => (sortDir === "desc" ? get(b) - get(a) : get(a) - get(b)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minShi, minSafety, classification, activeFlags, sortCol, sortDir]);
+  }, [companies, minSafety, classification, activeFlags, sortKey, sortDir]);
 
-  function toggleSort(k: CompanyKey) {
-    if (sortCol === k) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
+  function toggleSort(k: SortKey) {
+    if (sortKey === k) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
     else {
-      setSortCol(k);
+      setSortKey(k);
       setSortDir("desc");
     }
   }
 
-  const SortIcon = ({ k }: { k: CompanyKey }) =>
-    sortCol === k ? (
+  const SortIcon = ({ k }: { k: SortKey }) =>
+    sortKey === k ? (
       sortDir === "desc" ? (
         <ChevronDown className="ml-1 inline size-3 text-primary" />
       ) : (
@@ -3152,9 +3623,9 @@ export function DecisionScreener() {
     );
 
   const matrices: [string, string, Tone][] = [
-    ["Undervalued Quality", "P/E ≤ 14x · margin ≥ 20% · safety ≥ 75", "positive"],
+    ["Undervalued Quality", "P/E ≤ 14x · margin ≥ 20% · ROE ≥ 12%", "positive"],
     ["Growth at Reasonable Price", "Pertumbuhan ≥ 12% · P/E ≤ 22x", "accent"],
-    ["Dividend Trap Alert", "Yield ≥ 7% · safety < 65", "warning"],
+    ["Dividend Trap Alert", "Yield ≥ 7% · ROE < 8%", "warning"],
   ];
 
   return (
@@ -3166,8 +3637,8 @@ export function DecisionScreener() {
       <div className="grid gap-4 xl:grid-cols-[310px_1fr]">
         <Panel title="Faktor Screening" kicker="Konfigurasi aturan">
           <div className="p-4">
-            <Range label="SHI Minimum" value={minShi} set={setMinShi} />
-            <Range label="Keamanan finansial" value={minSafety} set={setMinSafety} />
+            <Range label="Kualitas minimum" value={minSafety} set={setMinSafety} />
+            <Range label="ROE minimum" value={minRoe} set={setMinRoe} />
             <label className="mt-5 block text-[10px] uppercase text-muted-foreground">
               Klasifikasi
             </label>
@@ -3240,7 +3711,7 @@ export function DecisionScreener() {
                   <Tag tone={t}>{a}</Tag>
                   <p className="mt-3 text-[10px] leading-4 text-muted-foreground">{b}</p>
                   <div className="mt-2 text-[10px] text-muted-foreground">
-                    {companies.filter((c) => classify(c) === a).length} emiten cocok
+                    {companies.filter((c) => classifyView(c) === a).length} emiten cocok
                   </div>
                 </button>
               ))}
@@ -3259,24 +3730,24 @@ export function DecisionScreener() {
                   <tr>
                     <th className={th}>Ticker</th>
                     <th className={th}>Emiten</th>
-                    <th className={th}>Sektor</th>
+                    <th className={th}>Sub-sektor</th>
                     <th
                       className={cn(th, "cursor-pointer hover:text-foreground")}
-                      onClick={() => toggleSort("shi")}
+                      onClick={() => toggleSort("market_cap")}
                     >
-                      SHI <SortIcon k="shi" />
+                      Market Cap <SortIcon k="market_cap" />
                     </th>
                     <th
                       className={cn(th, "cursor-pointer hover:text-foreground")}
-                      onClick={() => toggleSort("growth")}
+                      onClick={() => toggleSort("roe")}
                     >
-                      Pertumbuhan <SortIcon k="growth" />
+                      ROE <SortIcon k="roe" />
                     </th>
                     <th
                       className={cn(th, "cursor-pointer hover:text-foreground")}
-                      onClick={() => toggleSort("safety")}
+                      onClick={() => toggleSort("margin")}
                     >
-                      Keamanan <SortIcon k="safety" />
+                      Margin <SortIcon k="margin" />
                     </th>
                     <th
                       className={cn(th, "cursor-pointer hover:text-foreground")}
@@ -3296,7 +3767,7 @@ export function DecisionScreener() {
                 </thead>
                 <tbody>
                   {result.map((c) => {
-                    const cl = classify(c);
+                    const cl = classifyView(c);
                     const tone: Tone =
                       cl === "Dividend Trap Alert"
                         ? "warning"
@@ -3307,18 +3778,22 @@ export function DecisionScreener() {
                       <tr key={c.ticker} className="hover:bg-secondary/50">
                         <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
                         <td className={td}>{c.name}</td>
-                        <td className={td}>{c.sector}</td>
-                        <td className={td}>
-                          <Score value={c.shi} />
+                        <td className={cn(td, "text-muted-foreground text-[10px]")}>
+                          {c.subSector}
                         </td>
-                        <td className={td}>
-                          <Change value={c.growth} />
+                        <td className={cn(td, "tabular-nums")}>{formatMarketCap(c.market_cap)}</td>
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.roe != null ? `${c.roe.toFixed(1)}%` : "—"}
                         </td>
-                        <td className={td}>
-                          <Score value={c.safety} />
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.margin != null ? `${c.margin.toFixed(1)}%` : "—"}
                         </td>
-                        <td className={td}>{c.pe || "NM"}x</td>
-                        <td className={td}>{c.dividend}%</td>
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.pe != null && c.pe > 0 ? `${c.pe.toFixed(1)}x` : "NM"}
+                        </td>
+                        <td className={cn(td, "tabular-nums")}>
+                          {c.dividend != null ? `${c.dividend.toFixed(2)}%` : "—"}
+                        </td>
                         <td className={td}>
                           <Tag tone={tone}>{cl}</Tag>
                         </td>
@@ -3330,11 +3805,22 @@ export function DecisionScreener() {
                   })}
                 </tbody>
               </table>
-              {result.length === 0 && (
-                <div className="p-10 text-center text-xs text-muted-foreground">
-                  Tidak ada emiten yang cocok dengan threshold saat ini. Coba turunkan nilai
-                  minimum.
+              {anom.isPending ? (
+                <div className="flex items-center justify-center gap-2 p-10 text-xs text-muted-foreground">
+                  <RefreshCw className="size-3.5 animate-spin" />
+                  Memuat universe emiten…
                 </div>
+              ) : anom.isError ? (
+                <div className="p-10 text-center text-xs text-muted-foreground">
+                  Gagal memuat data screener.
+                </div>
+              ) : (
+                result.length === 0 && (
+                  <div className="p-10 text-center text-xs text-muted-foreground">
+                    Tidak ada emiten yang cocok dengan threshold saat ini. Coba turunkan nilai
+                    minimum.
+                  </div>
+                )
               )}
             </div>
           </Panel>
@@ -3565,6 +4051,20 @@ export function Watchlist() {
   const [addError, setAddError] = useState("");
   const noteRef = useRef<HTMLTextAreaElement>(null);
 
+  // Real screener rows (shared with Ringkasan Pasar's anomaly scan — the
+  // query already runs there, so this costs ZERO extra credits).
+  const anom = useAnomalies();
+  const rows = useMemo(() => {
+    const views = buildScreenerRows(anom.data?.rows ?? []);
+    // Attach the anomaly label (if any) detected for this symbol.
+    const labels = new Map((anom.data?.anomalies ?? []).map((a) => [a.symbol, a.label] as const));
+    for (const v of views) {
+      const label = labels.get(v.ticker);
+      if (label) v.anomaly = label;
+    }
+    return views;
+  }, [anom.data]);
+
   useEffect(() => {
     if (editNote) noteRef.current?.focus();
   }, [editNote]);
@@ -3572,19 +4072,23 @@ export function Watchlist() {
   const list = useMemo(
     () =>
       entries.map((e) => {
-        const company = companies.find((c) => c.ticker === e.ticker);
+        const company = rows.find((c) => c.ticker === e.ticker);
         return { ...e, company };
       }),
-    [entries],
+    [entries, rows],
   );
 
   function handleAdd(e: React.FormEvent) {
     e.preventDefault();
     const t = addTicker.trim().toUpperCase();
     if (!t) return;
-    const exists = companies.find((c) => c.ticker === t);
+    const exists = rows.find((c) => c.ticker === t);
     if (!exists) {
-      setAddError(`Ticker "${t}" tidak ditemukan di data.`);
+      setAddError(
+        rows.length > 0
+          ? `Ticker "${t}" tidak ditemukan di universe emiten yang dipindai (9 sub-sektor).`
+          : `Universe emiten masih dimuat — coba lagi beberapa detik.`,
+      );
       return;
     }
     add(t);
@@ -3646,8 +4150,8 @@ export function Watchlist() {
                       "Emiten",
                       "Harga",
                       "Perubahan",
-                      "SHI",
-                      "Keamanan",
+                      "P/E",
+                      "ROE",
                       "Anomali",
                       "Ditambahkan",
                       "Aksi",
@@ -3663,12 +4167,20 @@ export function Watchlist() {
                     <tr key={e.ticker} className="hover:bg-secondary/50">
                       <td className={cn(td, "font-semibold text-primary")}>{e.ticker}</td>
                       <td className={td}>{e.company?.name ?? "—"}</td>
-                      <td className={td}>{e.company ? formatIDR(e.company.price) : "—"}</td>
-                      <td className={td}>
-                        {e.company ? <Change value={e.company.change} /> : "—"}
+                      <td className={cn(td, "tabular-nums")}>
+                        {e.company?.price != null ? formatIDR(e.company.price) : "—"}
                       </td>
-                      <td className={td}>{e.company?.shi ?? "—"}</td>
-                      <td className={td}>{e.company ? <Score value={e.company.safety} /> : "—"}</td>
+                      <td className={td}>
+                        {e.company?.change != null ? <Change value={e.company.change} /> : "—"}
+                      </td>
+                      <td className={cn(td, "tabular-nums")}>
+                        {e.company?.pe != null && e.company.pe > 0
+                          ? `${e.company.pe.toFixed(1)}x`
+                          : "NM"}
+                      </td>
+                      <td className={cn(td, "tabular-nums")}>
+                        {e.company?.roe != null ? `${e.company.roe.toFixed(1)}%` : "—"}
+                      </td>
                       <td className={td}>
                         {e.company?.anomaly ? (
                           <Tag tone="warning">{e.company.anomaly}</Tag>

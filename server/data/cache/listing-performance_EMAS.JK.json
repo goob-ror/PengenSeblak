@@ -1,0 +1,21 @@
+{
+  "symbol": "EMAS.JK",
+  "chg_7d": 0.263889,
+  "chg_30d": 0.493056,
+  "chg_90d": 0.944444,
+  "chg_365d": 1.70833,
+  "company_name": "PT Merdeka Gold Resources Tbk",
+  "listing_date": "2025-09-23",
+  "shares_offered": 1618023300,
+  "percent_total_shares": 0.1,
+  "book_building_start_date": "2025-09-08",
+  "book_building_end_date": "2025-09-10",
+  "book_building_lower_bound": 1800,
+  "book_building_upper_bound": 3020,
+  "offering_start_date": "2025-09-17",
+  "offering_end_date": "2025-09-19",
+  "offering_price": 2880,
+  "distribution_date": "2025-09-22",
+  "prospectus_url": "https://e-ipo.co.id/en/pipeline/get-propectus-file?id=344&type=",
+  "additional_info_url": "https://e-ipo.co.id/en/pipeline/get-additional-info?id=344"
+}

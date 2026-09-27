@@ -60,6 +60,10 @@ export interface ScreenerRow {
   payout_ratio?: number | null;
   market_cap?: number | null;
   free_float?: number | null;
+  /** Live price from screener query_values (same query, 0 extra credits). */
+  last_close_price?: number | null;
+  /** Daily change as decimal (0.0124 = +1.24%). */
+  daily_close_change?: number | null;
 }
 
 /**
@@ -128,6 +132,8 @@ export function normalizeScreenerRow(row: ScreenerApiRow, marginYear?: number): 
     payout_ratio: pickMetric(qv, "payout_ratio"),
     market_cap: pickMetric(qv, "market_cap"),
     free_float: pickMetric(qv, "free_float"),
+    last_close_price: pickMetric(qv, "last_close_price"),
+    daily_close_change: pickMetric(qv, "daily_close_change"),
   };
 }
 

@@ -20,6 +20,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import authRouter from "./routes/auth";
 import healthRouter from "./routes/health";
 import sectorsRouter from "./routes/sectors";
+import fxRouter from "./routes/fx";
 import { startPrefetchSchedule } from "./jobs/prefetch";
 
 // ─── Validation guard ────────────────────────────────────────────────────────
@@ -31,6 +32,9 @@ if (process.env.NODE_ENV === "production" && !process.env.JWT_SECRET) {
 const app = express();
 const PORT = Number(process.env.PORT ?? 3001);
 const isProduction = process.env.NODE_ENV === "production";
+
+// ─── Trust proxy (reverse proxies / load balancers) ─────────────────────────
+app.set("trust proxy", 1);
 
 // ─── Security headers ────────────────────────────────────────────────────────
 app.use(
@@ -182,9 +186,12 @@ async function bootstrap() {
   app.use(generalLimiter);
   app.use("/api/auth", loginLimiter);
   app.use("/api/auth", authRouter);
-  
+
   // Sectors API Proxy
   app.use("/api/sectors", sectorsRouter);
+
+  // External FX (USD/IDR) — frankfurter.app, cached 1h
+  app.use("/api/fx", fxRouter);
 
   // 4. 404 catch-all (after all routes are registered)
   app.use((_req, res) => {
@@ -206,8 +213,8 @@ async function bootstrap() {
   // 7. Start morning prefetch scheduler (Lapis 4 - AGENTS.md)
   // Warms up cache before market opens at 09:00 WIB
   startPrefetchSchedule();
-  
-  // 8. Start server
+
+  // 8. Start Express server
   app.listen(PORT, () => {
     console.log(`🚀  Pengen Seblak API berjalan di http://localhost:${PORT}`);
     console.log(`    NODE_ENV  : ${process.env.NODE_ENV ?? "development"}`);
