@@ -1,0 +1,273 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T02:47:27.449Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "listing_date > '2025-03-29' and market_cap >= 0 and market_cap_rank >= 1 and sector != '' and sub_sector != ''",
+      "order_by": "-listing_date",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 306
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "RANS.JK",
+        "company_name": "PT Rans Entertainmen Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2026-07-10",
+          "market_cap": 2433585250000,
+          "market_cap_rank": 342,
+          "sector": "Consumer Cyclicals",
+          "sub_sector": "Media & Entertainment"
+        }
+      },
+      {
+        "symbol": "PRDL.JK",
+        "company_name": "PT Prodia Diagnostic Line Tbk",
+        "query_values": {
+          "listing_date": "2026-07-09",
+          "market_cap": 331151000000,
+          "market_cap_rank": 699,
+          "sector": "Healthcare",
+          "sub_sector": "Healthcare Equipment & Providers"
+        }
+      },
+      {
+        "symbol": "EMMI.JK",
+        "company_name": "PT Esa Medika Mandiri Tbk",
+        "query_values": {
+          "listing_date": "2026-07-08",
+          "market_cap": 777314222000,
+          "market_cap_rank": 534,
+          "sector": "Healthcare",
+          "sub_sector": "Healthcare Equipment & Providers"
+        }
+      },
+      {
+        "symbol": "BACH.JK",
+        "company_name": "PT Bach Multi Global Tbk",
+        "query_values": {
+          "listing_date": "2026-07-08",
+          "market_cap": 1413212780000,
+          "market_cap_rank": 431,
+          "sector": "Industrials",
+          "sub_sector": "Industrial Services"
+        }
+      },
+      {
+        "symbol": "JELI.JK",
+        "company_name": "PT Niramas Utama Tbk",
+        "query_values": {
+          "listing_date": "2026-07-07",
+          "market_cap": 519060000000,
+          "market_cap_rank": 597,
+          "sector": "Consumer Non-Cyclicals",
+          "sub_sector": "Food & Beverage"
+        }
+      },
+      {
+        "symbol": "JECX.JK",
+        "company_name": "PT Nitrasanata Dharma Tbk",
+        "query_values": {
+          "listing_date": "2026-07-07",
+          "market_cap": 4587043443000,
+          "market_cap_rank": 236,
+          "sector": "Healthcare",
+          "sub_sector": "Healthcare Equipment & Providers"
+        }
+      },
+      {
+        "symbol": "WBSA.JK",
+        "company_name": "PT BSA Logistics Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2026-04-10",
+          "market_cap": 5335125000000,
+          "market_cap_rank": 224,
+          "sector": "Transportation & Logistic",
+          "sub_sector": "Logistics & Deliveries"
+        }
+      },
+      {
+        "symbol": "SUPA.JK",
+        "company_name": "PT Super Bank Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2025-12-17",
+          "market_cap": 16309211060700,
+          "market_cap_rank": 109,
+          "sector": "Financials",
+          "sub_sector": "Banks"
+        }
+      },
+      {
+        "symbol": "RLCO.JK",
+        "company_name": "PT Abadi Lestari Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2025-12-08",
+          "market_cap": 12500000000000,
+          "market_cap_rank": 130,
+          "sector": "Consumer Non-Cyclicals",
+          "sub_sector": "Food & Beverage"
+        }
+      },
+      {
+        "symbol": "PJHB.JK",
+        "company_name": "PT Pelayaran Jaya Hidup Baru Tbk",
+        "query_values": {
+          "listing_date": "2025-11-06",
+          "market_cap": 299688289056,
+          "market_cap_rank": 716,
+          "sector": "Transportation & Logistic",
+          "sub_sector": "Logistics & Deliveries"
+        }
+      },
+      {
+        "symbol": "EMAS.JK",
+        "company_name": "PT Merdeka Gold Resources Tbk",
+        "query_values": {
+          "listing_date": "2025-09-23",
+          "market_cap": 110485245450000,
+          "market_cap_rank": 19,
+          "sector": "Basic Materials",
+          "sub_sector": "Basic Materials"
+        }
+      },
+      {
+        "symbol": "PMUI.JK",
+        "company_name": "PT Prima Multi Usaha Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2025-07-10",
+          "market_cap": 568400000000,
+          "market_cap_rank": 579,
+          "sector": "Consumer Cyclicals",
+          "sub_sector": "Retailing"
+        }
+      },
+      {
+        "symbol": "CHEK.JK",
+        "company_name": "PT Diastika Biotekindo Tbk",
+        "query_values": {
+          "listing_date": "2025-07-10",
+          "market_cap": 514166435625,
+          "market_cap_rank": 598,
+          "sector": "Healthcare",
+          "sub_sector": "Healthcare Equipment & Providers"
+        }
+      },
+      {
+        "symbol": "MERI.JK",
+        "company_name": "PT Merry Riana Edukasi Tbk",
+        "query_values": {
+          "listing_date": "2025-07-10",
+          "market_cap": 107653780000,
+          "market_cap_rank": 876,
+          "sector": "Consumer Cyclicals",
+          "sub_sector": "Consumer Services"
+        }
+      },
+      {
+        "symbol": "BLOG.JK",
+        "company_name": "PT Trimitra Trans Persada Tbk",
+        "query_values": {
+          "listing_date": "2025-07-10",
+          "market_cap": 1203097443200,
+          "market_cap_rank": 460,
+          "sector": "Transportation & Logistic",
+          "sub_sector": "Logistics & Deliveries"
+        }
+      },
+      {
+        "symbol": "CDIA.JK",
+        "company_name": "PT Chandra Daya Investasi Tbk",
+        "query_values": {
+          "listing_date": "2025-07-09",
+          "market_cap": 71776890452500,
+          "market_cap_rank": 32,
+          "sector": "Infrastructures",
+          "sub_sector": "Utilities"
+        }
+      },
+      {
+        "symbol": "COIN.JK",
+        "company_name": "PT Indokripto Koin Semesta Tbk",
+        "query_values": {
+          "listing_date": "2025-07-09",
+          "market_cap": 11029411800000,
+          "market_cap_rank": 145,
+          "sector": "Financials",
+          "sub_sector": "Holding & Investment Companies"
+        }
+      },
+      {
+        "symbol": "PSAT.JK",
+        "company_name": "PT Pancaran Samudera Transport Tbk",
+        "query_values": {
+          "listing_date": "2025-07-08",
+          "market_cap": 1237764755000,
+          "market_cap_rank": 456,
+          "sector": "Energy",
+          "sub_sector": "Oil, Gas & Coal"
+        }
+      },
+      {
+        "symbol": "ASPR.JK",
+        "company_name": "PT Asia Pramulia Tbk",
+        "query_values": {
+          "listing_date": "2025-07-08",
+          "market_cap": 347136000000,
+          "market_cap_rank": 689,
+          "sector": "Basic Materials",
+          "sub_sector": "Basic Materials"
+        }
+      },
+      {
+        "symbol": "DKHH.JK",
+        "company_name": "PT Cipta Sarana Medika Tbk",
+        "query_values": {
+          "listing_date": "2025-05-08",
+          "market_cap": 186172821552,
+          "market_cap_rank": 789,
+          "sector": "Healthcare",
+          "sub_sector": "Healthcare Equipment & Providers"
+        }
+      },
+      {
+        "symbol": "MDLA.JK",
+        "company_name": "PT Medela Potentia Tbk",
+        "query_values": {
+          "listing_date": "2025-04-15",
+          "market_cap": 2858616300000,
+          "market_cap_rank": 306,
+          "sector": "Healthcare",
+          "sub_sector": "Pharmaceuticals & Health Care Research"
+        }
+      },
+      {
+        "symbol": "FORE.JK",
+        "company_name": "PT Fore Kopi Indonesia Tbk",
+        "query_values": {
+          "listing_date": "2025-04-14",
+          "market_cap": 7134687416000,
+          "market_cap_rank": 194,
+          "sector": "Consumer Non-Cyclicals",
+          "sub_sector": "Food & Beverage"
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 22,
+      "showing": 22,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

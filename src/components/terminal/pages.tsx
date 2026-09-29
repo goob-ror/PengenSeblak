@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { getRouteApi, Link } from "@tanstack/react-router";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   Activity,
   ArrowDownUp,
@@ -99,6 +100,7 @@ import {
   useRevenueSegments,
   useEsgScores,
   toCompanyFinancialsInput,
+  SECTIONS,
   type CompanyReportRaw,
 } from "@/hooks/useCompanyTerminal";
 import {
@@ -2118,6 +2120,7 @@ export function CompanyTerminal() {
   const [searchQ, setSearchQ] = useState("");
   const [showSegments, setShowSegments] = useState(false);
   const { has, add, remove } = useWatchlistStore();
+  const queryClient = useQueryClient();
 
   // If the user searched for a ticker (via navbar / search dialog), open it.
   useEffect(() => {
@@ -2160,15 +2163,38 @@ export function CompanyTerminal() {
   }, [universe.data, searchQ]);
 
   const toggle = (t: string) =>
-    setSelected((p) =>
-      p.includes(t)
-        ? // Always allow deselect — the panels show their own empty/minimum
-          // states, so a 0/1-peer selection is legal UI.
-          p.filter((x) => x !== t)
-        : p.length < 5
-          ? [...p, t]
-          : p,
-    );
+    setSelected((p) => {
+      if (p.includes(t)) {
+        // Deselect — also drop this symbol's report query from the client
+        // cache so it disappears from the UI immediately (see removeEmiten).
+        void queryClient.removeQueries({
+          queryKey: ["sectors", "company-report", t, SECTIONS],
+        });
+        return p.filter((x) => x !== t);
+      }
+      return p.length < 5 ? [...p, t] : p;
+    });
+
+  // ── Remove a peer from the comparison set ─────────────────────────────────
+  // Also drops its report query from the TanStack cache so the emiten
+  // disappears from the UI immediately and doesn't linger as stale data.
+  // (Server-side Redis/file cache is untouched — that's credit protection,
+  // not UI state; removing it there would just burn credits on re-add.)
+  const removeEmiten = (t: string) => {
+    setSelected((p) => p.filter((x) => x !== t));
+    void queryClient.removeQueries({
+      queryKey: ["sectors", "company-report", t, SECTIONS],
+    });
+  };
+
+  const clearAllPeers = () => {
+    setSelected([]);
+    for (const t of selected) {
+      void queryClient.removeQueries({
+        queryKey: ["sectors", "company-report", t, SECTIONS],
+      });
+    }
+  };
 
   // ── Derived: Piotroski / Altman / percentile / analyst gap / free float ──
   const analyses = useMemo(
@@ -2566,7 +2592,19 @@ export function CompanyTerminal() {
           title="Dominance Score"
           kicker="Algoritma 4 · head-to-head"
           action={
-            <MethodTip text="Perbandingan berbasis rank lintas peer terpilih (profitabilitas 20, keamanan 20, pertumbuhan 20, valuasi 20, pasar 20). DER, PE-vs-peer, dan PB dinilai terbalik. Bukan rekomendasi investasi." />
+            <div className="flex items-center gap-2">
+              {selected.length > 0 && (
+                <button
+                  onClick={clearAllPeers}
+                  className="inline-flex h-6 items-center gap-1 rounded border border-border px-2 text-[10px] text-muted-foreground transition-colors hover:border-negative/40 hover:text-negative"
+                  title="Keluarkan semua emiten dari perbandingan dan bersihkan cache klien"
+                >
+                  <Trash2 className="size-3" />
+                  Hapus semua
+                </button>
+              )}
+              <MethodTip text="Perbandingan berbasis rank lintas peer terpilih (profitabilitas 20, keamanan 20, pertumbuhan 20, valuasi 20, pasar 20). DER, PE-vs-peer, dan PB dinilai terbalik. Bukan rekomendasi investasi." />
+            </div>
           }
         >
           <div className="p-4">
@@ -2600,8 +2638,17 @@ export function CompanyTerminal() {
                           "rounded p-1 transition-colors",
                           inList ? "text-primary" : "text-muted-foreground hover:text-primary",
                         )}
+                        title={inList ? "Hapus dari pantauan" : "Tambah ke pantauan"}
                       >
                         <Star className={cn("size-3.5", inList && "fill-current")} />
+                      </button>
+                      {/* ── Remove from the peer comparison set (and its cache) ── */}
+                      <button
+                        onClick={() => removeEmiten(d.symbol)}
+                        className="rounded p-1 text-muted-foreground transition-colors hover:text-negative"
+                        title={`Keluarkan ${d.symbol} dari perbandingan`}
+                      >
+                        <X className="size-3.5" />
                       </button>
                     </div>
                     <div className="ml-24 flex flex-wrap gap-3 text-[9px] text-muted-foreground">

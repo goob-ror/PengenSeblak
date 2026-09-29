@@ -5,12 +5,12 @@
       "company_name": "PT Bank Central Asia Tbk."
     },
     {
-      "symbol": "BBRI.JK",
-      "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk"
-    },
-    {
       "symbol": "DCII.JK",
       "company_name": "PT DCI Indonesia Tbk"
+    },
+    {
+      "symbol": "BBRI.JK",
+      "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk"
     },
     {
       "symbol": "BREN.JK",
@@ -53,12 +53,12 @@
       "company_name": "PT Chandra Asri Pacific Tbk"
     },
     {
-      "symbol": "BRPT.JK",
-      "company_name": "Barito Pacific Tbk"
-    },
-    {
       "symbol": "DNET.JK",
       "company_name": "PT Indoritel Makmur Internasional Tbk"
+    },
+    {
+      "symbol": "BRPT.JK",
+      "company_name": "Barito Pacific Tbk"
     },
     {
       "symbol": "BBNI.JK",
@@ -85,32 +85,40 @@
       "company_name": "PT Capital Financial Indonesia Tbk"
     },
     {
-      "symbol": "BRMS.JK",
-      "company_name": "Bumi Resources Minerals Tbk"
-    },
-    {
       "symbol": "UNTR.JK",
       "company_name": "United Tractors Tbk"
-    },
-    {
-      "symbol": "PANI.JK",
-      "company_name": "PT Pantai Indah Kapuk Dua Tbk."
     },
     {
       "symbol": "AADI.JK",
       "company_name": "PT Adaro Andalan Indonesia Tbk"
     },
     {
+      "symbol": "BRMS.JK",
+      "company_name": "Bumi Resources Minerals Tbk"
+    },
+    {
+      "symbol": "PANI.JK",
+      "company_name": "PT Pantai Indah Kapuk Dua Tbk."
+    },
+    {
       "symbol": "IMPC.JK",
       "company_name": "PT Impack Pratama Industri Tbk"
+    },
+    {
+      "symbol": "ICBP.JK",
+      "company_name": "Indofood CBP Sukses Makmur Tbk"
+    },
+    {
+      "symbol": "ADRO.JK",
+      "company_name": "Alamtri Resources Indonesia Tbk"
     },
     {
       "symbol": "ANTM.JK",
       "company_name": "Aneka Tambang Tbk."
     },
     {
-      "symbol": "ICBP.JK",
-      "company_name": "Indofood CBP Sukses Makmur Tbk"
+      "symbol": "HMSP.JK",
+      "company_name": "HM Sampoerna Tbk"
     },
     {
       "symbol": "ISAT.JK",
@@ -125,14 +133,6 @@
       "company_name": "PT Merdeka Copper Gold Tbk"
     },
     {
-      "symbol": "ADRO.JK",
-      "company_name": "Alamtri Resources Indonesia Tbk"
-    },
-    {
-      "symbol": "HMSP.JK",
-      "company_name": "HM Sampoerna Tbk"
-    },
-    {
       "symbol": "BNLI.JK",
       "company_name": "Bank Permata Tbk"
     },
@@ -145,12 +145,12 @@
       "company_name": "Bumi Resources Tbk"
     },
     {
-      "symbol": "ADMR.JK",
-      "company_name": "PT Alamtri Minerals Indonesia Tbk"
-    },
-    {
       "symbol": "UNVR.JK",
       "company_name": "Unilever Indonesia Tbk"
+    },
+    {
+      "symbol": "ADMR.JK",
+      "company_name": "PT Alamtri Minerals Indonesia Tbk"
     },
     {
       "symbol": "INDF.JK",
@@ -159,14 +159,6 @@
     {
       "symbol": "NCKL.JK",
       "company_name": "PT Trimegah Bangun Persada Tbk"
-    },
-    {
-      "symbol": "GOTO.JK",
-      "company_name": "PT GoTo Gojek Tokopedia Tbk"
-    },
-    {
-      "symbol": "PGUN.JK",
-      "company_name": "PT Pradiksi Gunatama Tbk"
     },
     {
       "symbol": "AMRT.JK",
@@ -181,8 +173,16 @@
       "company_name": "Petrosea Tbk"
     },
     {
+      "symbol": "PGUN.JK",
+      "company_name": "PT Pradiksi Gunatama Tbk"
+    },
+    {
       "symbol": "SUPR.JK",
       "company_name": "Solusi Tunas Pratama Tbk"
+    },
+    {
+      "symbol": "GOTO.JK",
+      "company_name": "PT GoTo Gojek Tokopedia Tbk"
     },
     {
       "symbol": "CPIN.JK",

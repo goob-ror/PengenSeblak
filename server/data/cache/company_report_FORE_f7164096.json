@@ -7,8 +7,8 @@
     "sub_industry": "Soft Drinks",
     "sector": "Consumer Non-Cyclicals",
     "sub_sector": "Food & Beverage",
-    "market_cap": 6956320230600,
-    "market_cap_rank": 201,
+    "market_cap": 7134687416000,
+    "market_cap_rank": 194,
     "address": "Gedung Graha Ganesha, Lantai 1 Suite 120 & 130 Jl. Hayam Wuruk Nomor 28, Jakarta Pusat 10120",
     "employee_num": 252,
     "employee_num_rank": 547,
@@ -16,9 +16,9 @@
     "website": "www.fore.coffee",
     "phone": "(021) 3506373",
     "email": "investor.relations@fore.coffee",
-    "last_close_price": 780,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.031055900621118,
+    "last_close_price": 800,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": 0.0256410256410256,
     "all_time_price": {
       "ytd_low": {
         "2026-01-29": 382
@@ -48,7 +48,6 @@
     "esg_score": null,
     "tags": [
       "insider-1-month-buy",
-      "last-volume-above-10d-volume-average",
       "public-float-under-25",
       "single-entity-holding-70"
     ],
@@ -56,9 +55,9 @@
     "affiliates": null
   },
   "valuation": {
-    "last_close_price": 780,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.031055900621118,
+    "last_close_price": 800,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": 0.0256410256410256,
     "forward_pe": null,
     "intrinsic_value": 210,
     "historical_valuation": [
@@ -76,17 +75,17 @@
         "enterprise_to_revenue": 3.14365199997753
       },
       {
-        "pb": 9.42982493719075,
-        "pe": 66.5098874124584,
-        "ps": 3.7812319068248,
-        "pcf": 20.3060890098743,
-        "peg": 3.7711306732897154,
+        "pb": 9.67161532019564,
+        "pe": 68.215269140983,
+        "ps": 3.87818657110236,
+        "pcf": null,
+        "peg": 20.82675795884543,
         "year": 2026,
         "pb_peer_avg": 1.78602082852821,
-        "pe_peer_avg": 9.18454033406467,
-        "ps_peer_avg": 1.04886901546464,
-        "enterprise_to_ebitda": 28.368914201779145,
-        "enterprise_to_revenue": null
+        "pe_peer_avg": 8.91163373800836,
+        "ps_peer_avg": 1.00295801376937,
+        "enterprise_to_ebitda": 29.098270670870416,
+        "enterprise_to_revenue": 3.86808533756727
       }
     ]
   },

@@ -7,7 +7,7 @@
     "sub_industry": "Coal Production",
     "sector": "Energy",
     "sub_sector": "Oil, Gas & Coal",
-    "market_cap": 403333353500000,
+    "market_cap": 398333353250000,
     "market_cap_rank": 5,
     "address": "Gedung Office 8, Lantai 37 Unit A-H Jl. Senopati No. 8B, Senayan, Kebayoran Baru, Jakarta Selatan 12950 - Indonesia",
     "employee_num": 3384,
@@ -16,9 +16,9 @@
     "website": "www.bayan.com.sg",
     "phone": "021-2935 6888",
     "email": "corporate.secretary@bayan.com.sg",
-    "last_close_price": 12100,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.0222222222222222,
+    "last_close_price": 11950,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.012396694214876,
     "all_time_price": {
       "ytd_low": {
         "2026-06-17": 8950
@@ -57,9 +57,9 @@
     ]
   },
   "valuation": {
-    "last_close_price": 12100,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.0222222222222222,
+    "last_close_price": 11950,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.012396694214876,
     "forward_pe": null,
     "intrinsic_value": 10292,
     "historical_valuation": [
@@ -116,17 +116,17 @@
         "enterprise_to_revenue": 8.95515922832967
       },
       {
-        "pb": 9.07993359625951,
-        "pe": 28.4790333132039,
-        "ps": 6.66089875204424,
-        "pcf": 0.337899371437116,
-        "peg": 26.62358653544148,
+        "pb": 8.9673724359753,
+        "pe": 28.1259874456849,
+        "ps": 6.5783256270189,
+        "pcf": 26.2935420742583,
+        "peg": 6.302324243707897,
         "year": 2026,
-        "pb_peer_avg": 1.20577321194198,
-        "pe_peer_avg": 10.7983771931371,
-        "ps_peer_avg": 1.56586755901547,
-        "enterprise_to_ebitda": 18.403450102185516,
-        "enterprise_to_revenue": 6.38489736873324
+        "pb_peer_avg": 1.23138394470431,
+        "pe_peer_avg": 10.7615226634677,
+        "ps_peer_avg": 1.46426943284923,
+        "enterprise_to_ebitda": 18.16544621607342,
+        "enterprise_to_revenue": 0.333710536254011
       }
     ]
   },
@@ -719,15 +719,15 @@
           {
             "date": "2026-06-22",
             "total": 267.285,
-            "yield": 0.0220896697241413
+            "yield": 0.0223669459131472
           }
         ],
-        "total_yield": 0.0220896697241413,
+        "total_yield": 0.0223669459131472,
         "total_dividend": 267.285
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.0220896697241413,
+    "yield_ttm": 0.0223669459131472,
     "dividend_yield_avg": {
       "period": 5,
       "avg_yield": 0.057669722661376

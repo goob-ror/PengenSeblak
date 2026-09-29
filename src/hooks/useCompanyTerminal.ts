@@ -66,7 +66,7 @@ export interface CompanyReportRaw {
 }
 
 /** Sections actually needed — keeps a symbol to 6 credits instead of 8. */
-const SECTIONS = "overview,valuation,financials,dividend,future";
+export const SECTIONS = "overview,valuation,financials,dividend,future";
 
 export function useCompanyReport(symbol: string | null) {
   return useQuery({

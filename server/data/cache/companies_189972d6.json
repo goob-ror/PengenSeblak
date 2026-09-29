@@ -5,11 +5,11 @@
       "company_name": "Adi Sarana Armada Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 5.2676916397785,
+        "pe_ttm": 5.22305018520411,
         "roe_ttm": 0.121763616342546,
         "net_profit_margin[2025]": 0.0697471249672572,
-        "last_close_price": 590,
-        "daily_close_change": -0.00840336134453781,
+        "last_close_price": 585,
+        "daily_close_change": -0.00847457627118644,
         "der_mrq": 1.27897753165977
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "PT Blue Bird Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 6.32625923784646,
+        "pe_ttm": 6.34640656025999,
         "roe_ttm": 0.099683091915866,
         "net_profit_margin[2025]": 0.111446607771783,
-        "last_close_price": 1570,
-        "daily_close_change": -0.00946372239747634,
+        "last_close_price": 1575,
+        "daily_close_change": 0.00318471337579618,
         "der_mrq": 0.34886682203045
       }
     },
@@ -31,11 +31,11 @@
       "company_name": "PT Batavia Prosperindo Trans Tbk.",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 6.46448294411735,
+        "pe_ttm": 6.1913357774645,
         "roe_ttm": 0.0612552038554015,
         "net_profit_margin[2025]": 0.0578695480818707,
-        "last_close_price": 71,
-        "daily_close_change": -0.10126582278481,
+        "last_close_price": 68,
+        "daily_close_change": -0.0422535211267606,
         "der_mrq": 2.25417172453743
       }
     },
@@ -44,11 +44,11 @@
       "company_name": "PT Jaya Trishindo Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 7.66737302876269,
+        "pe_ttm": 7.98684690496114,
         "roe_ttm": 0.284187604669139,
         "net_profit_margin[2025]": 0.170803350928283,
-        "last_close_price": 240,
-        "daily_close_change": -0.04,
+        "last_close_price": 250,
+        "daily_close_change": 0.0416666666666667,
         "der_mrq": 0.793101042007476
       }
     },
@@ -57,11 +57,11 @@
       "company_name": "PT Indomobil Multi Jasa Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 9.82011450036206,
+        "pe_ttm": 9.42730992034757,
         "roe_ttm": 0.0348713283335585,
         "net_profit_margin[2025]": 0.0212362026478747,
-        "last_close_price": 175,
-        "daily_close_change": -0.0331491712707182,
+        "last_close_price": 168,
+        "daily_close_change": -0.04,
         "der_mrq": 4.8437604328561
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "Steady Safe Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 15.9944925063632,
+        "pe_ttm": 13.6912855854469,
         "roe_ttm": 0.415593315129338,
         "net_profit_margin[2025]": 0.188484865776079,
-        "last_close_price": 625,
-        "daily_close_change": -0.143835616438356,
+        "last_close_price": 535,
+        "daily_close_change": -0.144,
         "der_mrq": 0
       }
     },
@@ -83,11 +83,11 @@
       "company_name": "PT Transkon Jaya Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 623.39786089284,
+        "pe_ttm": 628.385043779983,
         "roe_ttm": 0.000770769533210527,
         "net_profit_margin[2025]": 0.00638955221587599,
-        "last_close_price": 125,
-        "daily_close_change": -0.0458015267175573,
+        "last_close_price": 126,
+        "daily_close_change": 0.008,
         "der_mrq": 0.619629096632435
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT WEHA Transportasi Indonesia Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 7.63686604165835,
+        "pe_ttm": 7.27663651139145,
         "roe_ttm": 0.0770907085710264,
         "net_profit_margin[2025]": 0.069851486488623,
-        "last_close_price": 106,
-        "daily_close_change": -0.0782608695652174,
+        "last_close_price": 101,
+        "daily_close_change": -0.0471698113207547,
         "der_mrq": 0.424261839396527
       }
     }

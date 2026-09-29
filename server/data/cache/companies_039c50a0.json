@@ -5,11 +5,11 @@
       "company_name": "PT Xolare RCR Energy Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 7.56125968417715,
+        "pe_ttm": 7.25052298482741,
         "roe_ttm": 0.166876655818665,
         "net_profit_margin[2025]": 0.133672518224353,
-        "last_close_price": 73,
-        "daily_close_change": -0.130952380952381,
+        "last_close_price": 70,
+        "daily_close_change": -0.0410958904109589,
         "der_mrq": 0.168555907437269
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "Suparma Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 9.7651591432068,
+        "pe_ttm": 9.5284280124624,
         "roe_ttm": 0.0356506384547541,
         "net_profit_margin[2025]": 0.0387597784049156,
-        "last_close_price": 165,
-        "daily_close_change": -0.0178571428571429,
+        "last_close_price": 161,
+        "daily_close_change": -0.0242424242424242,
         "der_mrq": 0.330092601252825
       }
     },
@@ -31,11 +31,11 @@
       "company_name": "Indo Acidatama Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 5.94081368688505,
+        "pe_ttm": 5.60271859901355,
         "roe_ttm": 0.142402067748604,
         "net_profit_margin[2025]": 0.0615682518504672,
-        "last_close_price": 123,
-        "daily_close_change": -0.075187969924812,
+        "last_close_price": 116,
+        "daily_close_change": -0.0569105691056911,
         "der_mrq": 0.0106395731827031
       }
     },
@@ -44,11 +44,11 @@
       "company_name": "PT Tunas Alfin Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 14.6604467930753,
+        "pe_ttm": 13.9058649728435,
         "roe_ttm": 0.046468989634285,
         "net_profit_margin[2025]": 0.0361776981140425,
-        "last_close_price": 680,
-        "daily_close_change": -0.0072992700729927,
+        "last_close_price": 645,
+        "daily_close_change": -0.0514705882352941,
         "der_mrq": 0.196486678583168
       }
     },
@@ -57,11 +57,11 @@
       "company_name": "Tembaga Mulia Semanan Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 12.5629316065378,
+        "pe_ttm": 12.3586562958624,
         "roe_ttm": 0.0521834356906652,
         "net_profit_margin[2025]": 0.00441444063489156,
-        "last_close_price": 1230,
-        "daily_close_change": 0.025,
+        "last_close_price": 1210,
+        "daily_close_change": -0.016260162601626,
         "der_mrq": 0.809580955594607
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "PT Timah Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 9.42894955097592,
+        "pe_ttm": 9.00944120230962,
         "roe_ttm": 0.353468014776814,
         "net_profit_margin[2025]": 0.113707293330505,
-        "last_close_price": 4720,
-        "daily_close_change": -0.0268041237113402,
+        "last_close_price": 4510,
+        "daily_close_change": -0.0444915254237288,
         "der_mrq": 0.102166131553087
       }
     },
@@ -87,7 +87,7 @@
         "roe_ttm": 0.132064668172144,
         "net_profit_margin[2025]": 0.280080672105061,
         "last_close_price": 7125,
-        "daily_close_change": -0.0104166666666667,
+        "daily_close_change": 0,
         "der_mrq": 0.233305634067977
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT Chandra Asri Pacific Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 74.9518707065794,
+        "pe_ttm": 71.8288760938052,
         "roe_ttm": 0.0233816953669967,
         "net_profit_margin[2025]": 0.155283463392558,
-        "last_close_price": 1800,
-        "daily_close_change": -0.010989010989011,
+        "last_close_price": 1725,
+        "daily_close_change": -0.0416666666666667,
         "der_mrq": 1.19068532113695
       }
     },
@@ -122,11 +122,11 @@
       "company_name": "Unggul Indah Cahaya Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 6.03888532730879,
+        "pe_ttm": 5.94949393266112,
         "roe_ttm": 0.167714912023886,
         "net_profit_margin[2025]": 0.0923251947745242,
-        "last_close_price": 15200,
-        "daily_close_change": 0.0033003300330033,
+        "last_close_price": 14975,
+        "daily_close_change": -0.0148026315789474,
         "der_mrq": 0.0175744959455057
       }
     },
@@ -135,11 +135,11 @@
       "company_name": "Wijaya Karya Beton",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 15.5259888978267,
+        "pe_ttm": 14.8790726937506,
         "roe_ttm": 0.0109738387320183,
         "net_profit_margin[2025]": 0.0111603566600171,
-        "last_close_price": 72,
-        "daily_close_change": -0.027027027027027,
+        "last_close_price": 69,
+        "daily_close_change": -0.0416666666666667,
         "der_mrq": 0.0453175742251614
       }
     },
@@ -148,11 +148,11 @@
       "company_name": "Yanaprima Hastapersada Tbk",
       "query_values": {
         "sub_sector": "Basic Materials",
-        "pe_ttm": 28.1690844677808,
+        "pe_ttm": 30.6067937005695,
         "roe_ttm": 0.169319883257831,
         "net_profit_margin[2025]": 0.0151797841961712,
-        "last_close_price": 1040,
-        "daily_close_change": -0.1440329218107,
+        "last_close_price": 1130,
+        "daily_close_change": 0.0865384615384615,
         "der_mrq": 0.49156828477612
       }
     }

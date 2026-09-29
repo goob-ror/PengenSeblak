@@ -5,11 +5,11 @@
       "company_name": "PT Dunia Virtual Online Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 98.4671750797878,
+        "pe_ttm": 99.7215339980017,
         "roe_ttm": 0.0331618200985262,
         "net_profit_margin[2025]": 0.155219628283868,
-        "last_close_price": 314,
-        "daily_close_change": -0.0125786163522013,
+        "last_close_price": 318,
+        "daily_close_change": 0.0127388535031847,
         "der_mrq": 0.0793668716507416
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "PT Anabatic Technologies Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 8.39682964736983,
+        "pe_ttm": 8.4353472145596,
         "roe_ttm": 0.196619695805807,
         "net_profit_margin[2025]": 0.0245780487992262,
-        "last_close_price": 436,
-        "daily_close_change": -0.018018018018018,
+        "last_close_price": 438,
+        "daily_close_change": 0.00458715596330275,
         "der_mrq": 2.85561792458372
       }
     },
@@ -31,11 +31,11 @@
       "company_name": "PT Bukalapak.com Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 5.77822585698875,
+        "pe_ttm": 5.72266599297925,
         "roe_ttm": 0.0763938377922292,
         "net_profit_margin[2025]": 0.482648245455143,
-        "last_close_price": 104,
-        "daily_close_change": -0.00952380952380952,
+        "last_close_price": 103,
+        "daily_close_change": -0.00961538461538462,
         "der_mrq": 0.00436009931371217
       }
     },
@@ -44,11 +44,11 @@
       "company_name": "PT ITSEC Asia Tbk.",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 114.133144846512,
+        "pe_ttm": 110.840846700214,
         "roe_ttm": 0.196697322338555,
         "net_profit_margin[2025]": 0.121848060534911,
-        "last_close_price": 520,
-        "daily_close_change": 0.04,
+        "last_close_price": 505,
+        "daily_close_change": -0.0288461538461538,
         "der_mrq": 0.138397505826083
       }
     },
@@ -61,7 +61,7 @@
         "roe_ttm": 0.235731174609955,
         "net_profit_margin[2025]": 0.394221244805175,
         "last_close_price": 198000,
-        "daily_close_change": -0.0149253731343284,
+        "daily_close_change": 0,
         "der_mrq": 0.538540797605121
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "PT Digital Mediatama Maxima Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 34.6855515669965,
+        "pe_ttm": 32.5540372248905,
         "roe_ttm": 0.058334531950566,
         "net_profit_margin[2025]": 0.0995563891584249,
-        "last_close_price": 179,
-        "daily_close_change": -0.0324324324324324,
+        "last_close_price": 168,
+        "daily_close_change": -0.0614525139664804,
         "der_mrq": 0.0722602167135513
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT Data Sinergitama Jaya Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 14.8150744828199,
+        "pe_ttm": 14.9355222428428,
         "roe_ttm": 0.19098512191682,
         "net_profit_margin[2025]": 0.0728426107206922,
-        "last_close_price": 246,
-        "daily_close_change": -0.075187969924812,
+        "last_close_price": 248,
+        "daily_close_change": 0.00813008130081301,
         "der_mrq": 0.185742495065024
       }
     },
@@ -109,11 +109,11 @@
       "company_name": "Elang Mahkota Teknologi Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 11.5021935720403,
+        "pe_ttm": 11.173559469982,
         "roe_ttm": 0.0431532155179292,
         "net_profit_margin[2025]": 0.355093619552249,
-        "last_close_price": 420,
-        "daily_close_change": -0.0232558139534884,
+        "last_close_price": 408,
+        "daily_close_change": -0.0285714285714286,
         "der_mrq": 0.0579181610867938
       }
     },
@@ -122,11 +122,11 @@
       "company_name": "PT GoTo Gojek Tokopedia Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 30826.3045194595,
+        "pe_ttm": 26510.6218867351,
         "roe_ttm": 0.0000638350496795411,
         "net_profit_margin[2025]": -0.0647116269369964,
-        "last_close_price": 50,
-        "daily_close_change": 0,
+        "last_close_price": 43,
+        "daily_close_change": -0.14,
         "der_mrq": 0.178993134247111
       }
     },
@@ -135,11 +135,11 @@
       "company_name": "PT Informasi Teknologi Indonesia Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 18.7646664923804,
+        "pe_ttm": 18.5971248272699,
         "roe_ttm": 0.106795484736229,
         "net_profit_margin[2025]": 0.0327742197530908,
-        "last_close_price": 112,
-        "daily_close_change": -0.0427350427350427,
+        "last_close_price": 111,
+        "daily_close_change": -0.00892857142857143,
         "der_mrq": 1.05994413905994
       }
     },
@@ -148,11 +148,11 @@
       "company_name": "PT Multipolar Technology Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 127.45732652614,
+        "pe_ttm": 122.384398107189,
         "roe_ttm": 0.495586624313993,
         "net_profit_margin[2025]": 0.0876535764942164,
-        "last_close_price": 1005,
-        "daily_close_change": -0.0242718446601942,
+        "last_close_price": 965,
+        "daily_close_change": -0.0398009950248756,
         "der_mrq": 0.287098032853268
       }
     },
@@ -161,11 +161,11 @@
       "company_name": "PT Mitra Pedagang Indonesia Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 25.4445177667314,
+        "pe_ttm": 27.8212034921953,
         "roe_ttm": 0.069804260606477,
         "net_profit_margin[2025]": 0.00407148237916474,
-        "last_close_price": 182,
-        "daily_close_change": -0.116504854368932,
+        "last_close_price": 199,
+        "daily_close_change": 0.0934065934065934,
         "der_mrq": 0.0656196575116927
       }
     },
@@ -174,11 +174,11 @@
       "company_name": "PT Topindo Solusi Komunika Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 100.307049218454,
+        "pe_ttm": 94.0378586423003,
         "roe_ttm": 0.0216676484042988,
         "net_profit_margin[2025]": 0.00327840917264871,
-        "last_close_price": 80,
-        "daily_close_change": -0.0697674418604651,
+        "last_close_price": 75,
+        "daily_close_change": -0.0625,
         "der_mrq": 0.190674262261782
       }
     },
@@ -187,11 +187,11 @@
       "company_name": "PT Trimegah Karya Pratama Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 31.5986461618755,
+        "pe_ttm": 36.9704160093944,
         "roe_ttm": 0.11405713690675,
         "net_profit_margin[2025]": 0.00557276619211892,
-        "last_close_price": 200,
-        "daily_close_change": 0.129943502824859,
+        "last_close_price": 234,
+        "daily_close_change": 0.17,
         "der_mrq": 0.477610534756753
       }
     },
@@ -200,11 +200,11 @@
       "company_name": "PT Solusi Sinergi Digital Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 17.8922074737139,
+        "pe_ttm": 17.5810386480841,
         "roe_ttm": 0.0567687984913666,
         "net_profit_margin[2025]": 0.246204772439265,
-        "last_close_price": 1725,
-        "daily_close_change": -0.0443213296398892,
+        "last_close_price": 1695,
+        "daily_close_change": -0.0173913043478261,
         "der_mrq": 1.1128040191143
       }
     },
@@ -213,11 +213,11 @@
       "company_name": "PT Wir Asia Tbk",
       "query_values": {
         "sub_sector": "Software & IT Services",
-        "pe_ttm": 9.45682460929333,
+        "pe_ttm": 8.99173487441005,
         "roe_ttm": 0.0819602340616911,
         "net_profit_margin[2025]": 0.0273584107802778,
-        "last_close_price": 61,
-        "daily_close_change": -0.0757575757575758,
+        "last_close_price": 58,
+        "daily_close_change": -0.0491803278688525,
         "der_mrq": 0.151053708492457
       }
     }

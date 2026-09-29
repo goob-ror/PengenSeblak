@@ -7,8 +7,8 @@
     "sub_industry": "Online Applications & Services",
     "sector": "Technology",
     "sub_sector": "Software & IT Services",
-    "market_cap": 57028663361000,
-    "market_cap_rank": 41,
+    "market_cap": 49044650490460,
+    "market_cap_rank": 46,
     "address": "Gedung Pasaraya Blok M, lantai 6-7\nJl. Iskandarsyah II No. 2, Jakarta 12160",
     "employee_num": 3352,
     "employee_num_rank": 163,
@@ -16,18 +16,18 @@
     "website": "www.gotocompany.com",
     "phone": "(021) 2910 1072",
     "email": "corpsecretary@gotocompany.com dan ir@gotocompany.com",
-    "last_close_price": 50,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": 0,
+    "last_close_price": 43,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.14,
     "all_time_price": {
       "ytd_low": {
-        "2026-03-25": 50
+        "2026-09-28": 43
       },
       "52_w_low": {
-        "2026-03-25": 50
+        "2026-09-28": 43
       },
       "90_d_low": {
-        "2026-06-29": 50
+        "2026-09-28": 43
       },
       "ytd_high": {
         "2026-01-14": 73
@@ -36,10 +36,10 @@
         "2025-12-09": 73
       },
       "90_d_high": {
-        "2026-06-29": 50
+        "2026-07-01": 50
       },
       "all_time_low": {
-        "2024-06-10": 50
+        "2026-09-28": 43
       },
       "all_time_high": {
         "2022-04-12": 442
@@ -47,11 +47,16 @@
     },
     "esg_score": 18.99,
     "tags": [
+      "52-w-low",
+      "90-d-low",
+      "all-time-low",
       "esg-under-25",
       "insider-1-month-buy",
       "insider-1-month-sell",
+      "last-volume-above-10d-volume-average",
       "public-float-over-50",
-      "top-20-institution-buying"
+      "top-20-institution-buying",
+      "ytd-low"
     ],
     "indices": [
       "LQ45",
@@ -65,10 +70,10 @@
     ]
   },
   "valuation": {
-    "last_close_price": 50,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": 0,
-    "forward_pe": -9.39849593733858,
+    "last_close_price": 43,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.14,
+    "forward_pe": -8.08270650611118,
     "intrinsic_value": -91,
     "historical_valuation": [
       {
@@ -124,17 +129,17 @@
         "enterprise_to_revenue": 3.06720703192104
       },
       {
-        "pb": 1.76026992058475,
-        "pe": 30826.3045194595,
-        "ps": 2.74740792443666,
-        "pcf": 21.5732717282135,
-        "peg": 1.86684381725508,
+        "pb": 1.51383213170288,
+        "pe": 26510.6218867351,
+        "ps": 2.36277081501553,
+        "pcf": 121.710031126018,
+        "peg": 18.553013686263636,
         "year": 2026,
-        "pb_peer_avg": 2.01398792846493,
-        "pe_peer_avg": 16.3536409782669,
-        "ps_peer_avg": 1.39480704236969,
-        "enterprise_to_ebitda": 46.80132897050653,
-        "enterprise_to_revenue": 141.523292006998
+        "pb_peer_avg": 1.96406374979174,
+        "pe_peer_avg": 16.2582804454634,
+        "ps_peer_avg": 1.3779051468657,
+        "enterprise_to_ebitda": 37.158568432160195,
+        "enterprise_to_revenue": 1.48220670783395
       }
     ]
   },

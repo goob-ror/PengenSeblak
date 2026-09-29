@@ -8,7 +8,7 @@
     "sector": "Technology",
     "sub_sector": "Software & IT Services",
     "market_cap": 471981688200000,
-    "market_cap_rank": 3,
+    "market_cap_rank": 2,
     "address": "Equity Tower, Lantai 17 Unit F SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52 – 53, Jakarta 12190",
     "employee_num": 108,
     "employee_num_rank": 652,
@@ -17,8 +17,8 @@
     "phone": "+62 21 2903 7500",
     "email": "corpsec@dci-indonesia.com",
     "last_close_price": 198000,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.0149253731343284,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": 0,
     "all_time_price": {
       "ytd_low": {
         "2026-06-08": 170000
@@ -47,7 +47,6 @@
     },
     "esg_score": 28.88,
     "tags": [
-      "last-volume-above-10d-volume-average",
       "public-float-under-25",
       "top-3-nipe-per-sectors"
     ],
@@ -58,8 +57,8 @@
   },
   "valuation": {
     "last_close_price": 198000,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.0149253731343284,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": 0,
     "forward_pe": null,
     "intrinsic_value": -559,
     "historical_valuation": [
@@ -119,14 +118,14 @@
         "pb": 101.952925341642,
         "pe": 422.574300934713,
         "ps": 158.206276206026,
-        "pcf": 317.690735051802,
-        "peg": 158.9534775725523,
+        "pcf": 5.34299173391549,
+        "peg": 317.69073505180177,
         "year": 2026,
-        "pb_peer_avg": 2.01398792846493,
-        "pe_peer_avg": 16.3536409782669,
-        "ps_peer_avg": 1.39480704236969,
+        "pb_peer_avg": 1.96406374979174,
+        "pe_peer_avg": 16.2582804454634,
+        "ps_peer_avg": 1.3779051468657,
         "enterprise_to_ebitda": 275.832590079793,
-        "enterprise_to_revenue": 5.34299173391549
+        "enterprise_to_revenue": 158.953477572552
       }
     ]
   },
