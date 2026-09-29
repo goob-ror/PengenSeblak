@@ -1,8 +1,40 @@
-# PengenSeblak — Indonesian Market Terminal
+<p align="center">
+  <img src="public/Nusantara Terminal Icon Transparent.png" width="140" alt="PengenSeblak logo" />
+</p>
 
-A high-density, credit-aware market intelligence terminal for the **Indonesian Stock Exchange (IDX)**, built on the [Sectors REST API v2](https://docs.sectors.app/get-started/v2/overview). It turns raw market data into **derived, explainable insights** — sector health scores, anomaly detection, financial distress models, and a rule-based decision screener.
+<h1 align="center">PengenSeblak — Indonesian Market Terminal</h1>
+
+<p align="center">
+  A high-density, credit-aware market intelligence terminal for the <strong>Indonesian Stock Exchange (IDX)</strong>,<br/>
+  built on the <a href="https://docs.sectors.app/get-started/v2/overview">Sectors REST API v2</a>.<br/>
+  It turns raw market data into <strong>derived, explainable insights</strong> — sector health scores,<br/>
+  anomaly detection, financial distress models, and a rule-based decision screener.
+</p>
+
+<p align="center">
+  <img src="public/Nusantara_Terminal_Screenshot.png" alt="PengenSeblak screenshot — Ringkasan Pasar dashboard" width="720" />
+</p>
 
 > **Bahasa Indonesia** is the primary UI language, with standard English financial terms (P/E, ROE, free float, …) preserved where they aid professional use.
+
+---
+
+## Tech Stack
+
+<!-- Centralized badge style: flat, no extra labels -->
+
+| | Technology |
+|---|---|
+| **Language** | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=flat) |
+| **Framework** | ![React 19](https://img.shields.io/badge/React_19-61DAFB?logo=react&logoColor=black&style=flat) ![TanStack Start](https://img.shields.io/badge/TanStack_Start-FF7849?logo=reacttable&logoColor=white&style=flat) |
+| **Build** | ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat) |
+| **Styling** | ![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?logo=tailwindcss&logoColor=1A1A1A&style=flat) ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-1A1A1A?logo=shadcnui&logoColor=white&style=flat) ![Radix UI](https://img.shields.io/badge/Radix_UI-161618?logo=radixui&logoColor=white&style=flat) |
+| **State / Data** | ![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?logo=reactquery&logoColor=white&style=flat) ![Zustand](https://img.shields.io/badge/Zustand-000000?logo=zustand&logoColor=white&style=flat) |
+| **Icons** | ![Lucide](https://img.shields.io/badge/Lucide-F57009?logo=lucide&logoColor=white&style=flat) |
+| **Server** | ![Express 5](https://img.shields.io/badge/Express_5-000000?logo=express&logoColor=white&style=flat) |
+| **Database** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white&style=flat) |
+| **Cache** | ![Redis](https://img.shields.io/badge/Redis-FF4438?logo=redis&logoColor=white&style=flat) |
+| **Tunnel** | ![ngrok](https://img.shields.io/badge/ngrok-1F1E37?logo=ngrok&logoColor=white&style=flat) |
 
 ---
 
@@ -150,6 +182,17 @@ server/
   migrations/            # SQL migrations
 pengen_seblak.sql        # full database schema
 ```
+
+---
+
+## Credits
+
+Built by:
+
+- **Anatasya Dwi Rima Rechiyono** — Frontend Developer & Designer
+- **Rio Septianto** — Backend Developer
+
+Market data by [Sectors API](https://sectors.app).
 
 ---
 
