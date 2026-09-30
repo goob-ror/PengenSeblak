@@ -1,6 +1,10 @@
 import mysql from "mysql2/promise";
 import path from "path";
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load from root .env (one level above server/)
 dotenv.config({ path: path.join(__dirname, "../../../.env") });

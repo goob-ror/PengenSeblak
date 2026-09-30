@@ -292,7 +292,7 @@ function RebalancingRadar() {
       ) : (
         <>
           {/* ── Stat strip ────────────────────────────────────────────── */}
-          <div className="grid grid-cols-3 divide-x divide-border border-b border-border">
+          <div className="grid grid-cols-3 divide-x divide-border border-b">
             <div className="px-4 py-3">
               <div className="text-[10px] text-muted-foreground">Anggota LQ45</div>
               <div className="mt-1 text-sm font-semibold tabular-nums">{rows.length}</div>
@@ -3191,7 +3191,7 @@ export function NewsIntelligence() {
                 ))}
               </select>
             </div>
-            <div className="max-h-[1140px] overflow-y-auto">
+            <div className="max-h-285 overflow-y-auto">
               {newsFeed.isPending ? (
                 <div className="space-y-2 p-4">
                   {Array.from({ length: 10 }, (_, i) => (
@@ -3413,7 +3413,7 @@ export function NewsIntelligence() {
                         <div className="mb-1 flex justify-between text-xs">
                           <span
                             className={cn(
-                              "truncate max-w-[130px]",
+                              "truncate max-w-32.5",
                               isActive ? "font-semibold" : "text-foreground",
                             )}
                           >
@@ -3462,7 +3462,7 @@ export function NewsIntelligence() {
                           : "border-l-2 border-transparent text-foreground hover:bg-secondary/70 hover:border-border hover:text-primary",
                       )}
                     >
-                      <span className="truncate max-w-[170px] text-left">{tag}</span>
+                      <span className="truncate max-w-42.5 text-left">{tag}</span>
                       <span
                         className={cn(
                           "ml-2 shrink-0 tabular-nums rounded-sm px-1.5 py-0.5 text-[10px] font-medium",

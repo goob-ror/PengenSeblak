@@ -21,7 +21,8 @@ dist-ssr
 .dev.vars
 
 # Editor directories and files
-.vscode/*
+.vscode
+.tanstack
 AGENTS.md
 Sectors API Documentation.md
 Features To Be Implemented.md

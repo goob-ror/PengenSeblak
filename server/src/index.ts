@@ -1,7 +1,9 @@
 import path from "path";
-
-// Single .env at project root (one level above server/)
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../../../.env") });
 
 import express, { Request, Response, NextFunction } from "express";
@@ -64,7 +66,7 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN ?? "http://localhost:5173")
 
 app.use(
   cors({
-    origin: (origin, callback) => {
+    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -84,14 +86,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET ?? process.env.JWT_SECRET ?? "dev-cookie-secret"));
 
 // ─── CSRF double-submit cookie protection ────────────────────────────────────
-// The server sets a non-httpOnly csrf_token cookie. Every state-changing
-// request must echo that value as X-CSRF-Token. Cross-origin JS cannot read
-// cookies from this domain, so only legitimate same-origin code can do this.
 app.use((req: Request, res: Response, next: NextFunction) => {
   if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
 
   if (!req.cookies["csrf_token"]) {
-    // Issue the cookie and let the request through — client will have it on retry
     const token = crypto.randomBytes(32).toString("hex");
     res.cookie("csrf_token", token, {
       httpOnly: false, // must be readable by JS to echo in the header
@@ -122,7 +120,6 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 // ─── CSRF provisioning endpoint ───────────────────────────────────────────────
-// GET /api/csrf-token — client calls this once on load to receive the csrf_token cookie
 app.get("/api/csrf-token", (req: Request, res: Response) => {
   let token = req.cookies["csrf_token"] as string | undefined;
   if (!token) {
@@ -149,7 +146,6 @@ async function bootstrap() {
   function buildStore(prefix: string) {
     if (redisClient) {
       return new RedisStore({
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         sendCommand: (...args: string[]) => (redisClient as any).call(args[0], ...args.slice(1)) as Promise<any>,
         prefix: `rl:${prefix}:`,
       });
@@ -194,7 +190,7 @@ async function bootstrap() {
   app.use("/api/fx", fxRouter);
 
   // 4. 404 catch-all (after all routes are registered)
-  app.use((_req, res) => {
+  app.use((_req: Request, res: Response) => {
     res.status(404).json({ success: false, message: "Endpoint tidak ditemukan." });
   });
 

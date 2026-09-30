@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 22, 2026 at 12:51 PM
+-- Generation Time: Sep 30, 2026 at 01:44 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.31
 
@@ -50,6 +50,8 @@ CREATE TABLE `api_credit_log` (
   `params` json DEFAULT NULL,
   `credits_used` smallint DEFAULT NULL,
   `cache_hit` tinyint(1) DEFAULT NULL,
+  `http_status` smallint DEFAULT NULL,
+  `error_message` varchar(500) DEFAULT NULL,
   `called_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -131,12 +133,12 @@ CREATE TABLE `users` (
 
 --
 -- Dumping data for table `users`
--- Email: pengenseblak@nt.com
--- Password: Password#123
+-- Email : pengenseblak@nt.com
+-- Password : Password#123
 --
 
 INSERT INTO `users` (`id`, `email`, `password_hash`, `full_name`, `last_login`, `created_at`) VALUES
-(1, 'pengenseblak@nt.com', '$2b$12$sGy154rNeVFb18AHf2MChe9kqnpR4F.ogoNcNtbuPmNbci14O94Pm', 'Pengen Seblak', '2026-09-22 11:40:40', '2026-09-22 08:58:41');
+(1, 'pengenseblak@nt.com', '$2b$12$sGy154rNeVFb18AHf2MChe9kqnpR4F.ogoNcNtbuPmNbci14O94Pm', 'Pengen Seblak', '2026-09-29 07:19:29', '2026-09-22 08:58:41');
 
 -- --------------------------------------------------------
 
@@ -184,6 +186,51 @@ CREATE TABLE `user_watchlists` (
   `added_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_credit_by_endpoint`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_credit_by_endpoint` (
+`calls` bigint
+,`credits_used` decimal(27,0)
+,`endpoint` varchar(255)
+,`upstream_calls` decimal(23,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_credit_daily`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_credit_daily` (
+`cache_hits` decimal(23,0)
+,`credits_used` decimal(27,0)
+,`day` date
+,`total_calls` bigint
+,`upstream_calls` decimal(23,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_credit_by_endpoint`
+--
+DROP TABLE IF EXISTS `v_credit_by_endpoint`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_credit_by_endpoint`  AS SELECT `api_credit_log`.`endpoint` AS `endpoint`, count(0) AS `calls`, sum((case when (`api_credit_log`.`cache_hit` = 0) then 1 else 0 end)) AS `upstream_calls`, sum(`api_credit_log`.`credits_used`) AS `credits_used` FROM `api_credit_log` WHERE (`api_credit_log`.`called_at` >= (now() - interval 7 day)) GROUP BY `api_credit_log`.`endpoint` ORDER BY `credits_used` AS `DESCdesc` ASC  ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_credit_daily`
+--
+DROP TABLE IF EXISTS `v_credit_daily`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_credit_daily`  AS SELECT cast(`api_credit_log`.`called_at` as date) AS `day`, count(0) AS `total_calls`, sum((case when (`api_credit_log`.`cache_hit` = 1) then 1 else 0 end)) AS `cache_hits`, sum((case when (`api_credit_log`.`cache_hit` = 0) then 1 else 0 end)) AS `upstream_calls`, sum(`api_credit_log`.`credits_used`) AS `credits_used` FROM `api_credit_log` GROUP BY cast(`api_credit_log`.`called_at` as date) ORDER BY `day` AS `DESCdesc` ASC  ;
+
 --
 -- Indexes for dumped tables
 --
@@ -198,7 +245,8 @@ ALTER TABLE `api_cache`
 -- Indexes for table `api_credit_log`
 --
 ALTER TABLE `api_credit_log`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_acl_billing` (`called_at`,`cache_hit`,`credits_used`);
 
 --
 -- Indexes for table `derived_scores`

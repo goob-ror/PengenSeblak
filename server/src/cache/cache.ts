@@ -24,6 +24,10 @@ import crypto from "crypto";
 import pool from "../config/db";
 import { getRedis } from "../config/redis";
 import { getLoggedResponse } from "../utils/api-logger";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ── File cache paths ──────────────────────────────────────────────────────
 // __dirname = server/src/cache (dev) or server/dist/cache (prod)

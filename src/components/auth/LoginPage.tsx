@@ -185,7 +185,7 @@ export function LoginPage() {
                     placeholder="pengenseblak@nt.com"
                     disabled={isLoading}
                     className={cn(
-                      "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-4 text-sm text-white placeholder:text-white/20 outline-none transition-all",
+                      "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-4 text-sm text-white placeholder:opacity-20 outline-none transition-all",
                       "focus:border-primary/60 focus:bg-white/7 focus:ring-1 focus:ring-primary/30",
                       error ? "border-rose-500/60" : "border-white/10",
                       isLoading && "opacity-60 cursor-not-allowed",
@@ -216,7 +216,7 @@ export function LoginPage() {
                     placeholder="••••••••••"
                     disabled={isLoading}
                     className={cn(
-                      "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-10 text-sm text-white placeholder:text-white/20 outline-none transition-all",
+                      "w-full rounded-lg border bg-white/5 py-2.5 pl-9 pr-10 text-sm text-white placeholder:opacity-20 outline-none transition-all",
                       "focus:border-primary/60 focus:bg-white/7 focus:ring-1 focus:ring-primary/30",
                       error ? "border-rose-500/60" : "border-white/10",
                       isLoading && "opacity-60 cursor-not-allowed",

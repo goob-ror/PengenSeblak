@@ -203,6 +203,58 @@ pengen_seblak.sql        # full database schema
 
 ---
 
+## Roadmap
+
+The current version is a working hackathon prototype. The following improvements are planned for post-hackathon development.
+
+### 1. Centralized data warehouse
+
+Migrate from on-demand API proxying to a **scheduled ETL pipeline** that pulls Sectors API data into MySQL on a fixed cadence, making the database the primary read path instead of the API:
+
+- **Nightly batch** (02:00 WIB) — full company reports, sector reports, financial statements, and corporate actions for all ~960 IDX tickers, stored in normalized tables (`companies`, `financials_yearly`, `ratios_yearly`, `valuations_history`, `corporate_actions`).
+- **Intraday polling** (every 15 min during market hours) — prices, foreign flow, and broker summary into `daily_prices`, `foreign_flow`, `broker_activity` tables.
+- **News ingestion** (every 5 min) — IDX news stored with full-text search indexes, sentiment pre-computed and cached.
+- **Benefit:** eliminates per-page API credit consumption; all client reads hit MySQL (free); the Sectors API budget covers only the nightly + intraday batch calls regardless of how many users browse.
+- **Historical depth:** once the warehouse accumulates 1–5 years of data, time-series analytics (drawdown, Sharpe ratio, beta vs IHSG, seasonality) become pure SQL — no API needed.
+
+### 2. PE Price Band visualization
+
+Replace the plain-text valuation percentile with a **visual PE Price Band** (à la Stockbit) — a horizontal range showing the 5-year low / average / high PE with a marker for the current PE, so users instantly see where the stock sits relative to its own history. The data already exists in `historical_valuation`; only the chart rendering is needed.
+
+### 3. Portfolio tracker
+
+Extend the watchlist into a full portfolio with:
+- Holdings (shares, buy price, buy date) per ticker.
+- Unrealized P&L computed from live prices.
+- Sector exposure breakdown and concentration risk alert.
+- Dividend calendar from corporate actions data.
+
+### 4. Technical analysis layer
+
+Add a lightweight technical overlay (not a full charting platform):
+- **RSI (14)** and **MACD** computed from the IHSG daily series already cached.
+- **Support/resistance** from 52-week high/low.
+- **Foreign flow trend** — 5-day moving average of net buy/sell per ticker.
+- These are synthesized signals, not raw indicators — the app tells you "RSI 72 → overheated short-term" rather than just showing the number.
+
+### 5. Alerting system
+
+- **Price alerts** — push notification / email when a watchlist ticker crosses the user's threshold (already stored in the watchlist; just needs a background checker).
+- **Anomaly alerts** — notify when a new divergence anomaly is detected for a watched ticker.
+- **SHI change alerts** — notify when a sector's SHI score moves by more than ±10 points week-over-week.
+
+### 6. Multi-market support
+
+The Sectors API also covers **SGX** (Singapore) and **KLSE** (Malaysia). The architecture (endpoint registry, adapters, algorithms) is already market-agnostic — extending to these markets is primarily a routing + universe-expansion task.
+
+### 7. Export & reporting
+
+- **PDF research report** per emiten — one-page summary with all scores, valuation band, and synthesis text.
+- **CSV export** of screener results with all columns.
+- **Portfolio summary PDF** — holdings, P&L, sector allocation.
+
+---
+
 ## Credits
 
 Built by:
