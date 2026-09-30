@@ -7,8 +7,8 @@
     "sub_industry": "Banks",
     "sector": "Financials",
     "sub_sector": "Banks",
-    "market_cap": 471136312383180,
-    "market_cap_rank": 3,
+    "market_cap": 475637614730790,
+    "market_cap_rank": 2,
     "address": "Gedung BRI I Jl. Jenderal Sudirman Kav.44-46, Jakarta Pusat 10210",
     "employee_num": 27937,
     "employee_num_rank": 15,
@@ -16,9 +16,9 @@
     "website": "www.bri.co.id",
     "phone": "021 - 575 1966",
     "email": "humas@bri.co.id; corsec@bri.co.id",
-    "last_close_price": 3140,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.00317460317460317,
+    "last_close_price": 3170,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": 0.00955414012738853,
     "all_time_price": {
       "ytd_low": {
         "2026-06-09": 2540
@@ -72,10 +72,10 @@
     "affiliates": null
   },
   "valuation": {
-    "last_close_price": 3140,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.00317460317460317,
-    "forward_pe": 7.13328331535191,
+    "last_close_price": 3170,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": 0.00955414012738853,
+    "forward_pe": 7.20143570371515,
     "intrinsic_value": 289,
     "historical_valuation": [
       {
@@ -131,15 +131,15 @@
         "enterprise_to_revenue": null
       },
       {
-        "pb": 1.46350536838833,
-        "pe": 7.55964761540832,
-        "ps": 2.21738210932786,
-        "pcf": 0.338597697749334,
-        "peg": 33.471871932547906,
+        "pb": 1.4774879037551,
+        "pe": 7.63187354803961,
+        "ps": 2.23856728871634,
+        "pcf": 0.341832707600443,
+        "peg": 33.79166688731747,
         "year": 2026,
-        "pb_peer_avg": 0.773544124364016,
-        "pe_peer_avg": 8.81863527241908,
-        "ps_peer_avg": 2.48164080831156,
+        "pb_peer_avg": 0.765797521007612,
+        "pe_peer_avg": 8.8704304290544,
+        "ps_peer_avg": 2.45541218014609,
         "enterprise_to_ebitda": null,
         "enterprise_to_revenue": null
       }
@@ -1541,15 +1541,15 @@
           {
             "date": "2026-04-21",
             "total": 209,
-            "yield": 0.0665605095541401
+            "yield": 0.0659305993690852
           }
         ],
-        "total_yield": 0.0665605095541401,
+        "total_yield": 0.0659305993690852,
         "total_dividend": 209
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.110191082802548,
+    "yield_ttm": 0.109148264984227,
     "dividend_yield_avg": {
       "period": 5,
       "avg_yield": 0.0675521474331617

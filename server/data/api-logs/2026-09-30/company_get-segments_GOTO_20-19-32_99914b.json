@@ -1,0 +1,92 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T12:19:32.261Z",
+    "endpoint": "/company/get-segments/GOTO/",
+    "query_params": {},
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 583
+  },
+  "data": {
+    "symbol": "GOTO.JK",
+    "financial_year": 2024,
+    "revenue_breakdown": [
+      {
+        "value": 5801835000000,
+        "source": "Service fee",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 5344984000000,
+        "source": "Delivery service",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 1935389000000,
+        "source": "Lending",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 621871000000,
+        "source": "E-commerce service fee",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 554997000000,
+        "source": "Advertising fee",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 1635386000000,
+        "source": "Others",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 7413392000000,
+        "source": "Total Revenue",
+        "target": "Cost of Revenue"
+      },
+      {
+        "value": 8481070000000,
+        "source": "Total Revenue",
+        "target": "Gross Profit"
+      },
+      {
+        "value": 2240874000000,
+        "source": "Operating Income",
+        "target": "Operating Expense"
+      },
+      {
+        "value": 8481070000000,
+        "source": "Gross Profit",
+        "target": "Operating Expense"
+      },
+      {
+        "value": 2849934000000,
+        "source": "Operating Expense",
+        "target": "Selling and marketing"
+      },
+      {
+        "value": 4396253000000,
+        "source": "Operating Expense",
+        "target": "General and administrative"
+      },
+      {
+        "value": 1756068000000,
+        "source": "Operating Expense",
+        "target": "Product development"
+      },
+      {
+        "value": 975514000000,
+        "source": "Operating Expense",
+        "target": "Depreciation and amortization"
+      },
+      {
+        "value": 744175000000,
+        "source": "Operating Expense",
+        "target": "Operational and support"
+      }
+    ]
+  }
+}

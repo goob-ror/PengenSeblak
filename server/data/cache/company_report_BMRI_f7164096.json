@@ -7,7 +7,7 @@
     "sub_industry": "Banks",
     "sector": "Financials",
     "sub_sector": "Banks",
-    "market_cap": 371447999983920,
+    "market_cap": 372371999983880,
     "market_cap_rank": 6,
     "address": "Menara Mandiri 1, Jl. Jend. Sudirman Kav. 54-55, Jakarta 12190",
     "employee_num": 38751,
@@ -16,9 +16,9 @@
     "website": "www.bankmandiri.co.id",
     "phone": "5265045; 5265095 (Hunting)",
     "email": "cma@bankmandiri.co.id",
-    "last_close_price": 4020,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.0147058823529412,
+    "last_close_price": 4030,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": 0.00248756218905473,
     "all_time_price": {
       "ytd_low": {
         "2026-06-09": 3650
@@ -27,7 +27,7 @@
         "2026-06-09": 3650
       },
       "90_d_low": {
-        "2026-07-01": 3800
+        "2026-07-02": 3810
       },
       "ytd_high": {
         "2026-02-24": 5375
@@ -73,10 +73,10 @@
     "affiliates": null
   },
   "valuation": {
-    "last_close_price": 4020,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.0147058823529412,
-    "forward_pe": 6.05896201594487,
+    "last_close_price": 4030,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": 0.00248756218905473,
+    "forward_pe": 6.07403406076065,
     "intrinsic_value": 1181,
     "historical_valuation": [
       {
@@ -132,17 +132,17 @@
         "enterprise_to_revenue": null
       },
       {
-        "pb": 1.30518837990878,
-        "pe": 5.30681885940169,
-        "ps": 2.43992857900034,
-        "pcf": 0.293874399975876,
-        "peg": 8.597243353751654,
+        "pb": 1.30843511717224,
+        "pe": 5.3200199013405,
+        "ps": 2.44599805307746,
+        "pcf": 8.61862953124855,
+        "peg": null,
         "year": 2026,
-        "pb_peer_avg": 0.773544124364016,
-        "pe_peer_avg": 8.81863527241908,
-        "ps_peer_avg": 2.48164080831156,
+        "pb_peer_avg": 0.765797521007612,
+        "pe_peer_avg": 8.8704304290544,
+        "ps_peer_avg": 2.45541218014609,
         "enterprise_to_ebitda": null,
-        "enterprise_to_revenue": null
+        "enterprise_to_revenue": 0.294605430821587
       }
     ]
   },
@@ -1497,25 +1497,25 @@
           {
             "date": "2026-09-16",
             "total": 66,
-            "yield": 0.0164179104477612
+            "yield": 0.0163771712158809
           },
           {
             "date": "2026-05-11",
             "total": 376.957,
-            "yield": 0.0937703830092701
+            "yield": 0.0935377021581304
           },
           {
             "date": "2026-01-06",
             "total": 100,
-            "yield": 0.0248756218905473
+            "yield": 0.0248138957816377
           }
         ],
-        "total_yield": 0.135063915347579,
+        "total_yield": 0.134728769155649,
         "total_dividend": 542.957
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.135063907756141,
+    "yield_ttm": 0.134728761583049,
     "dividend_yield_avg": {
       "period": 5,
       "avg_yield": 0.0666762799024582

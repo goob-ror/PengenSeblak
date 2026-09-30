@@ -1,0 +1,94 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T02:59:42.871Z",
+    "endpoint": "/companies/top-changes/",
+    "query_params": {
+      "classifications": "top_gainers,top_losers",
+      "periods": "1d"
+    },
+    "http_status": 200,
+    "credits_used": 2,
+    "cache_hit": false,
+    "response_time_ms": 567
+  },
+  "data": {
+    "top_gainers": {
+      "1d": [
+        {
+          "name": "Bank of India Indonesia Tbk",
+          "symbol": "BSWD.JK",
+          "price_change": 0.245283018867925,
+          "last_close_price": 2310,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "PT MNC Digital Entertainment Tbk",
+          "symbol": "MSIN.JK",
+          "price_change": 0.170454545454545,
+          "last_close_price": 206,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "PT Sinar Mas Agro Resources and Technology Tbk",
+          "symbol": "SMAR.JK",
+          "price_change": 0.150627615062762,
+          "last_close_price": 6875,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "MNC Tourism Indonesia Tbk",
+          "symbol": "KPIG.JK",
+          "price_change": 0.116279069767442,
+          "last_close_price": 48,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "Metropolitan Land Tbk",
+          "symbol": "MTLA.JK",
+          "price_change": 0.0894308943089431,
+          "last_close_price": 670,
+          "latest_close_date": "2026-09-29"
+        }
+      ]
+    },
+    "top_losers": {
+      "1d": [
+        {
+          "name": "PT Jaya Sukses Makmur Sentosa Tbk",
+          "symbol": "RISE.JK",
+          "price_change": -0.147887323943662,
+          "last_close_price": 605,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "Fortune Indonesia Tbk",
+          "symbol": "FORU.JK",
+          "price_change": -0.143790849673203,
+          "last_close_price": 262,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "PT GoTo Gojek Tokopedia Tbk",
+          "symbol": "GOTO.JK",
+          "price_change": -0.13953488372093,
+          "last_close_price": 37,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "PT Abadi Nusantara Hijau Investama Tbk",
+          "symbol": "PACK.JK",
+          "price_change": -0.094017094017094,
+          "last_close_price": 530,
+          "latest_close_date": "2026-09-29"
+        },
+        {
+          "name": "PT Arkora Hydro Tbk.",
+          "symbol": "ARKO.JK",
+          "price_change": -0.0782608695652174,
+          "last_close_price": 3180,
+          "latest_close_date": "2026-09-29"
+        }
+      ]
+    }
+  }
+}

@@ -182,7 +182,8 @@ export function computeSHIBreakdown(r: SubsectorReportNormalized): SHIBreakdown 
   // 1 when some components are missing and then scaled back up by 4 —
   // `weightedSum` returns a weighted AVERAGE (still 0-25), so without the
   // *4 the composite could never exceed 25 and every sector would read
-  // "Rentan" (see healthLabel thresholds at 45/60/75).
+  // "Rentan". Interpretation thresholds: ≥75 Sehat, ≥60 Stabil, ≥45 Waspada,
+  // <45 Rentan — defined in scoring.ts healthLabel().
   const parts = [
     { key: "growth" as const, score: growth, weight: gMissing ? 0 : SHI_WEIGHTS.growth },
     { key: "stability" as const, score: stability, weight: sMissing ? 0 : SHI_WEIGHTS.stability },

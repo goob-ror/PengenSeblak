@@ -1,0 +1,256 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T12:02:29.194Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 650
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Indonesia Stock Exchange to Launch Short Selling Mechanism on October 1",
+        "body": "Bursa Efek Indonesia (BEI) will implement a short selling trading mechanism starting Thursday, October 1, allowing investors to sell borrowed shares and buy them back at lower prices for profit. Under BEI announcement No.Peng-00178/BEI.POP/09-2026, five stocks are eligible: PT Astra International Tbk (ASII), PT Bank Central Asia Tbk (BBCA), PT Barito Pacific Tbk (BRPT), PT Bumi Resources Tbk (BUMI), and PT Indofood Sukses Makmur Tbk (INDF). Two exchange members, Semesta Indovest Sekuritas and Ajaib Sekuritas, are authorized to provide short selling services. Under POJK Number 6 of 2024, eligible investors must have a minimum initial capital of Rp 50 million and have held a regular securities account for at least six months, as BEI Director Jeffrey Hendrik cautioned that the mechanism carries high risk and is intended for experienced investors.",
+        "source": "https://finance.detik.com/bursa-dan-valas/d-8686209/short-selling-mulai-berlaku-besok",
+        "thumbnail": "https://awsimages.detik.net.id/api/wm/2026/01/30/ihsg-rebound-usai-dua-hari-anjlok-seiring-pengunduran-diri-dirut-bei-1769748663323_169.jpeg?wid=54&w=1200&v=1&t=jpeg",
+        "timestamp": "2026-09-30T15:57:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings",
+          "banks",
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Politics & Regulation",
+          "Risk & Compliance"
+        ],
+        "symbols": [
+          "ASII.JK",
+          "BBCA.JK",
+          "BRPT.JK",
+          "BUMI.JK",
+          "INDF.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Indonesia Kendaraan Terminal Tbk (IPCC) to sell vehicle terminal management rights to PT Maspion Industrial Estate for Rp13.78 billion",
+        "body": "PT Indonesia Kendaraan Terminal Tbk (IPCC) has ended its joint operation (KSO) with Grup Maspion over the management of a vehicle terminal in Gresik. IPCC and PT Maspion Industrial Estate signed a cooperation termination agreement and a sale and purchase binding agreement (PPJB) on Wednesday (30/9), under which IPCC will sell its management rights in the entity Manajemen Kerja Sama Maspion Terminal Kendaraan Indonesia (MKO MTKI), in which it holds a 45% stake since 2015. The agreed transaction value is Rp13.78 billion, subject to conditions to be met by both parties; MKO MTKI had assets of Rp3.46 billion as of the end of the first half of 2026. Maspion Industrial Estate, the developer of the Maspion Industrial Estate and owned by Grup Maspion of Alim Markus, holds a landbank of 1,143 hectares, about one-third of the landbank of Grup AKR's Java Integrated Industrial & Port Estate (JIIPE).",
+        "source": "https://www.idnfinancials.com/id/news/69665/ipcc-lepas-terminal-kendaraan-ke-grup-maspion-milik-alim-markus",
+        "thumbnail": "https://photos.idnfinancials.com/_idn/_DESIGN%20GRAFIS/ARTIKEL%20IMAGE%20%28ARIF%29/IPCC%20-%20PT.%20Indonesia%20Kendaraan%20Terminal%20Tbk%20-%20DIVIDEN-min.jpg",
+        "timestamp": "2026-09-30T15:30:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "transportation-infrastructure"
+        ],
+        "tags": [
+          "Asset Purchase",
+          "Mergers & Acquisitions",
+          "Partnerships & Agreements",
+          "Subsidiaries",
+          "Neutral"
+        ],
+        "symbols": [
+          "IPCC.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Astra Graphia Tbk (ASGR) to Pay Interim Dividend of Rp297 per Share",
+        "body": "PT Astra Graphia Tbk (ASGR), an art graphic group company of Astra, will distribute an interim dividend of Rp297 per share from fiscal year 2026 profit and part of retained earnings, approved by its Board of Commissioners on 25 September 2026. Cum dividend in the regular and negotiation markets falls on 7 October 2026, ex dividend on 8 October 2026, cum dividend in the cash market on 9 October 2026, ex dividend on 12 October 2026, with the recording date on 9 October 2026 and payment on 26 October 2026. The dividend announcement follows Astra Graphia posting consolidated net profit of Rp138.45 billion in the first half of 2026, up 30.37% year-on-year from Rp106.20 billion in the same period of 2025.",
+        "source": "https://www.cnbcindonesia.com/market/20260930140213-17-772152/catat-jadwalnya-anak-usaha-astra--asgr--mau-tebar-dividen-rp297-saham",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/06/30/layar-menampilkan-pergerakan-indeks-harga-saham-gabungan-ihsg-di-bursa-efek-indonesia-bei-jakarta-selasa-3062026-1782797019719_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-30T15:17:18",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASGR.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Astra Graphia Tbk (ASGR) Announces Jumbo Interim Dividend of Rp297 Per Share, Yielding Nearly 4x Deposit Rates",
+        "body": "PT Astra Graphia Tbk (ASGR), a subsidiary of Astra Group, will distribute an interim dividend for fiscal year 2026 totaling Rp400.05 billion, or Rp297 per share, with payment scheduled for 26 October 2026 and ex-dividend dates of 8 October 2026 (regular and negotiation markets) and 12 October 2026 (cash market). The dividend implies a yield of about 13.38% based on the 29 September 2026 close of Rp2,220, or 11.74% at Rp2,530 after the stock rose 13.96% on 30 September 2026, nearly 4x Bank BCA's deposit rate of 2.7%-3%. The payout is supported by first-half 2026 net profit of Rp138.45 billion, up 30.37% year-on-year, net revenue of Rp1.56 trillion, cash of Rp1.68 trillion, and unrestricted retained earnings of Rp1.72 trillion as of 30 June 2026. PT Astra International Tbk (ASII), ASGR's main shareholder with about 76.87% ownership, stands to receive approximately Rp307.52 billion of the interim dividend.",
+        "source": "https://investasi.kontan.co.id/news/dividen-jumbo-yield-4x-bunga-deposito-harga-saham-anak-usaha-astra-melambung-13",
+        "thumbnail": "https://foto.kontan.co.id/A9y2PTLbaWmMF_g-G6J7dvI0sM4=/smart/filters:format(webp)/2025/01/13/1156015888.jpg",
+        "timestamp": "2026-09-30T14:57:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services",
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Financial Metrics",
+          "Ownership",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASGR.JK",
+          "ASII.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Djarum Group Issuer PT Sarana Menara Nusantara Tbk (TOWR) Seen Near Turning Point with Up to 50% Upside",
+        "body": "BRI Danareksa Sekuritas analysts recommend PT Sarana Menara Nusantara Tbk (TOWR), a Djarum Group issuer, with potential share price upside of up to 50% as most site churn risk from the merger of PT XL Smart Telecom Sejahtera Tbk (EXCL) has been contained. Under the agreement with EXCL, TOWR retains the operator's leased tower locations without churn, contract tenor was extended to 12 years from about seven years, and effective monthly lease rates fell 7.5% versus 2025. Net collocation declined only 552 between Q2-2025 and Q2-2026, less than 10% of estimated overlapping EXCL locations in TOWR's portfolio. BRI Danareksa also sees the 5G investment cycle as a next catalyst, noting TOWR's tower fiberization reached 67% in H1-2026, above the Indonesian peer average of 50%-60% but below Thailand's 90% and Malaysia's 80%.",
+        "source": "https://investor.id/market/456110/emiten-grup-djarum-di-ambang-titik-balik-saham-bisa-naik-50",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/08/1787243616-674x433.webp",
+        "timestamp": "2026-09-30T14:56:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "telecommunication"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "TOWR.JK",
+          "EXCL.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Nusantara Sawit Sejahtera Insider Samuel International Reports Shareholding Change",
+        "body": "On 2026-09-22, Samuel International, an insider of Nusantara Sawit Sejahtera (NSSS.JK), transferred 534,176,500 shares to the company under a share‑loan arrangement. The transaction, recorded at IDR 0, increased the insider’s holding from 3,071,055,500 shares (12.90%) to 3,605,232,000 shares, raising ownership to 15.14%, an increase of 2.24 percentage points.",
+        "source": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_KSEI/LK-30092026-8059-00.pdf-0.pdf",
+        "thumbnail": null,
+        "timestamp": "2026-09-30T14:34:54",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Insider Trading"
+        ],
+        "symbols": [
+          "NSSS.JK"
+        ],
+        "dimension": null
+      },
+      {
+        "title": "Nusantara Sawit Sejahtera Insider Samuel International Reports Shareholding Change",
+        "body": "On 18 September 2026, Samuel International, an insider of Nusantara Sawit Sejahtera (NSSS.JK), returned 534,176,500 shares to the company as repayment of a share loan, reducing its stake from 3,605,232,000 shares (15.14% of outstanding) to 3,071,055,500 shares (12.90%). The transaction was recorded at no monetary consideration.",
+        "source": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_KSEI/LK-30092026-7379-00.pdf-0.pdf",
+        "thumbnail": null,
+        "timestamp": "2026-09-30T14:31:09",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Insider Trading"
+        ],
+        "symbols": [
+          "NSSS.JK"
+        ],
+        "dimension": null
+      },
+      {
+        "title": "Telkom (TLKM) Nears Completion of Rp49.9 Trillion InfraCo Spin-Off to InfraNexia",
+        "body": "PT Telekomunikasi Indonesia (Persero) Tbk (TLKM) is one step away from completing the Rp49.9 trillion spin-off of its fiber network business, pending shareholder approval at an Extraordinary General Meeting on Wednesday (30/9/2026). The InfraCo Phase 2 transaction will transfer part of TLKM's wholesale fiber connectivity segment to its subsidiary, PT Telkom Infrastruktur Indonesia (InfraNexia), following the first phase that took effect in January 2026. After the spin-off, InfraNexia, which is more than 99% owned by Telkom, will manage over 90% of Telkom's network infrastructure assets, including customer access networks, core backbone, and more than 112,000 kilometers of fiber optic network including 26,000 kilometers of domestic submarine cable systems. The move supports TLKM's transformation as a strategic holding company, unlocking value in assets such as data centers, telecom towers, and fiber optic networks, while InfraNexia will operate independently and neutrally to serve wholesale customers, ISPs, and mobile operators.",
+        "source": "https://market.bisnis.com/read/20260930/192/2008515/telkom-tlkm-kian-dekat-tuntaskan-spin-off-infraco-rp499-triliun-ke-infranexia",
+        "thumbnail": "https://images.bisnis.com/thumb/posts/2026/09/30/2008515/gedung_telkom_yang_terletak_di_jakarta_1755139890.jpg?w=368&h=208",
+        "timestamp": "2026-09-30T14:30:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "telecommunication"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Subsidiaries",
+          "Business Expansion",
+          "Shareholders General Meeting",
+          "Asset Management",
+          "Bullish"
+        ],
+        "symbols": [
+          "TLKM.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10945,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

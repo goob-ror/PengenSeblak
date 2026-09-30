@@ -16,10 +16,11 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { STALE_SECTOR } from "@/lib/query-config";
 import {
-  detectAnomalies,
+  detectAnomaliesWithDq,
   normalizeScreenerRow,
   type ScreenerRow,
   type AnomalyResult,
+  type DqNotice,
 } from "@/lib/algorithms/divergence";
 
 /**
@@ -117,7 +118,7 @@ export function useAnomalies() {
       // Pages overlap when the screener re-lists a company across offsets,
       // so the same flag can surface more than once. Keep the strongest
       // instance per symbol rather than showing duplicates.
-      const detected = detectAnomalies(allRows);
+      const { anomalies: detected, dqNotices } = detectAnomaliesWithDq(allRows);
       const best = new Map<string, AnomalyResult>();
       for (const a of detected) {
         const prev = best.get(a.symbol);
@@ -129,7 +130,15 @@ export function useAnomalies() {
         if (x.severity !== y.severity) return x.severity === "High" ? -1 : 1;
         return Math.abs(y.deviation) - Math.abs(x.deviation);
       });
-      return { anomalies, rows: allRows };
+      // Dedupe DQ notices by symbol (a firm appears in exactly one peer
+      // group, but the sort above may surface it more than once).
+      const seenDq = new Set<string>();
+      const dq = dqNotices.filter((n) => {
+        if (seenDq.has(n.symbol)) return false;
+        seenDq.add(n.symbol);
+        return true;
+      });
+      return { anomalies, dqNotices: dq, rows: allRows };
     },
     ...STALE_SECTOR,
     // Don't retry on failure — anomalies are a secondary signal, and we

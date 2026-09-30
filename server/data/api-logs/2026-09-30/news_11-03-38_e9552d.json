@@ -1,0 +1,271 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T03:03:38.380Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 815
+  },
+  "data": {
+    "results": [
+      {
+        "title": "BRI Danareksa Sekuritas Recommends VKTR, RATU, and AMRT for Trading on Wednesday, September 30, 2026",
+        "body": "BRI Danareksa Sekuritas recommends VKTR, RATU, and AMRT for trading on Wednesday, September 30, 2026. VKTR rose 7.79% to 830, moving above MA20 (815) and MA200 (802), with potential resistance targets at 855 and 915, supported by its operation of 27 electric buses in Semarang on September 24, 2026. RATU rebounded 4.27% to 4,150 after testing the 3,925-3,605 support area but remains below MA20 at 4,339 with a bearish medium-term trend; its acquisition of SMS Development Ltd. provides an indirect 20% stake in HCML, the operator of the Madura Strait Block. AMRT gained 1.92% to 1,330, rebounding above MA20 (1,306), with H1-2026 net profit of Rp 2.02 trillion (up 7.5% YoY) and revenue growing 6.49% YoY to Rp 67.95 trillion.",
+        "source": "https://investor.id/market/456052/rekomendasi-saham-hari-ini-rabu-30-september-2026-vktr-ratu-amrt",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/04/1776583511-4546x3031.webp",
+        "timestamp": "2026-09-30T07:57:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "automobiles-components",
+          "oil-gas-coal",
+          "food-staples-retailing"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Mergers & Acquisitions",
+          "Business Expansion",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "VKTR.JK",
+          "RATU.JK",
+          "AMRT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "IMPC Controller Tunggal Jaya Investama Buys 11.89 Million Shares as Stock Slumps 63% YTD",
+        "body": "Tunggal Jaya Investama, a majority shareholder of PT Impack Pratama Industri Tbk (IMPC), reported to Otoritas Jasa Keuangan (OJK) the purchase of 11,894,600 IMPC shares between September 24-28, 2026, for investment purposes. The purchases were made in three stages: 4.6 million shares at Rp1,506 on September 24, 2 million shares at Rp1,431 on September 25, and 5,294,600 shares at Rp1,445 on September 28, totaling about Rp17.36 billion. Its stake rose from 21,115,805,494 to 21,127,700,094 shares, increasing ownership from 38.46% to 38.48% of voting rights. IMPC shares closed at Rp1,420 on September 29, 2026, down 2.41%, and have fallen Rp2,510 or 63.87% year to date. Earlier, Tunggal Jaya bought 6.6 million shares at an average Rp1,465 (Rp9.6 billion) during September 4-7, and IMPC director Haryanto Tjiptodihardjo bought 2.5 million shares at Rp3,500 (Rp8.75 billion) on January 26, 2026.",
+        "source": "https://investasi.kontan.co.id/news/harga-saham-melorot-63-pengendali-tak-ragu-borong-saham-impc",
+        "thumbnail": "https://foto.kontan.co.id/WFWJ5HV43cfPwe2rBKvBmbY9xWI=/smart/filters:format(webp)/2025/11/06/1407998537.jpg",
+        "timestamp": "2026-09-30T07:27:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-goods"
+        ],
+        "tags": [
+          "Ownership",
+          "Insider Trading",
+          "Neutral"
+        ],
+        "symbols": [
+          "IMPC.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Indonesia Stock Exchange to Launch Short Selling on October 1, Requiring Minimum Capital of Rp 50 Million",
+        "body": "Bursa Efek Indonesia (BEI) will implement a short selling scheme starting October 1, 2026, requiring investors to have a minimum initial capital of Rp 50 million, register with a participating securities firm, and hold a regular securities account for at least six months, in line with OJK Regulation Number 6 of 2024. BEI Director General Jeffrey Hendrik said the scheme carries high risk and is intended for experienced investors. Five stocks are eligible for short selling: PT Astra International Tbk (ASII), PT Bank Central Asia Tbk (BBCA), PT Barito Pacific Tbk (BRPT), PT Bumi Resources Tbk (BUMI), and PT Indofood Sukses Makmur Tbk (INDF), all drawn from LQ45 index constituents. Only two securities firms, Semesta Indovest Sekuritas and Ajaib Sekuritas, currently provide the service, and BEI targets a market liquidity increase of up to 17% depending on the number of approved stocks and exchange members.",
+        "source": "https://www.cnbcindonesia.com/market/20260930054416-17-771955/bei-buka-short-seling-1-oktober-investor-harus-punya-modal-rp-50-juta",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2019/08/08/f5254668-0a88-46be-bb5f-1c90c60f263f_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-30T07:16:35",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings",
+          "banks",
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage"
+        ],
+        "tags": [
+          "Government Policy",
+          "Market Sentiment",
+          "Neutral"
+        ],
+        "symbols": [
+          "ASII.JK",
+          "BBCA.JK",
+          "BRPT.JK",
+          "BUMI.JK",
+          "INDF.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Golden Mines (GEMS) Posts USD219.96 Million Net Profit, Up 45 Percent",
+        "body": "Golden Mines (GEMS), a mining issuer of the Sinar Mas Group, reported a net profit of USD219.96 million for the period ended June 30, 2026, up 45 percent from USD151.67 million a year earlier, with basic earnings per share rising to USD0,037 from USD0,026. Revenue grew 30.70 percent to USD1.49 billion from USD1.14 billion, while cost of goods sold increased to USD982.06 million from USD743.33 million, lifting gross profit to USD513.22 million from USD401.08 million. Operating profit jumped to USD298.64 million from USD199.9 million, as selling expenses rose to USD145.59 million and general and administrative expenses fell to USD68.81 million. Total assets reached USD1.43 billion, up from USD1.19 billion at the end of 2025, with equity at USD852.7 million and total liabilities at USD580.42 million.",
+        "source": "https://emitennews.com/news/melejit-45-persen-emiten-grup-sinarmas-raup-laba-segini",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790727300.jpg?25119ab",
+        "timestamp": "2026-09-30T07:15:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "GEMS.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Indonesia Stock Exchange Reinstates Short Selling: Mechanics, Requirements, and Risks Explained",
+        "body": "The Indonesia Stock Exchange (BEI) officially reinstates short selling trading, with the initial phase effective 1 October 2026. BEI has designated five stocks eligible for short selling, all constituents of the LQ45 Index, though only two brokers are permitted to serve short sell transactions in this initial phase. Brokers must qualify as exchange members (AB), open short selling securities accounts, and provide collateral of at least 50% of the transaction value or IDR 50 million, whichever is higher. The transaction flow involves selling securities not yet owned (labeled 'short'), holding the position for several days, then repurchasing the securities to close the position, subject to regulator-set price rules. Risks include large gains if prices fall, but losses, margin calls, or forced buys if prices rise.",
+        "source": "https://www.bloombergtechnoz.com/detail-news/123086/serba-serbi-short-selling-alur-hingga-risiko-di-belakangnya",
+        "thumbnail": "https://images.bloombergtechnoz.com/data/2026/08/image-20260814105708.jpeg",
+        "timestamp": "2026-09-30T07:10:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Risk & Compliance",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Low Tuck Kwong to Remain Main Shareholder and Controlling Party of PT Bayan Resources Tbk (BYAN) After PT Jhonlin Baratama's 30% Stake Acquisition",
+        "body": "Following PT Jhonlin Baratama's acquisition of a 30% stake in PT Bayan Resources Tbk (BYAN), Low Tuck Kwong will remain the main shareholder and controlling party of the company, holding 6,951,170,541 shares, equivalent to 20.853%, while Elaine Low will hold 3,799,584,529 shares, or about 11.399%. BYAN Director Alexander Ery Wibowo confirmed in a disclosure dated Tuesday (29/9/2026) that Dato' Low Tuck Kwong will remain the main shareholder and controller. The company has no plans to change its Board of Directors or Board of Commissioners and has not received any request for a General Meeting of Shareholders to discuss such changes. Low Tuck Kwong and Elaine Low signed a conditional sale and purchase agreement with PT Jhonlin Baratama as buyer on 16 September 2026 covering 10,000,000,500 BYAN common shares.",
+        "source": "https://finance.detik.com/bursa-dan-valas/d-8685128/siapa-nakhoda-bayan-haji-isam-atau-low-tuck-kwong",
+        "thumbnail": "https://awsimages.detik.net.id/api/wm/2023/10/17/low-tuck-kwong_169.png?wid=54&w=1200&v=1&t=jpeg",
+        "timestamp": "2026-09-30T06:55:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Shareholders General Meeting",
+          "Neutral"
+        ],
+        "symbols": [
+          "BYAN.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Personel Alih Daya Tbk (PADA) Posts 1,240% Net Profit Surge in 1H-2026",
+        "body": "PT Personel Alih Daya Tbk (PADA), an outsourcing services company, reported audited 1H-2026 results as of June 30, 2026, with net profit surging 1,240% to Rp 1.81 billion from Rp 135 million in 1H-2025. Revenue rose 81.6% year-on-year to Rp 916.0 billion from Rp 504.4 billion, driven by Courier Services, FTTH and PMO projects, Technical Services, and Call Center services, with Courier Services contributing the largest share. Cost of revenue increased 81.9% year-on-year to Rp 882.0 billion from Rp 484.8 billion, in line with higher business volume and workforce. However, per Stockbit Sekuritas data, PADA recorded a net loss of Rp 970 million in Q2-2026 alone, reversing from a profit of around Rp 3 billion in Q1-2026.",
+        "source": "https://investor.id/market/456046/laba-emiten-terbang-1240",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/1668650397.png",
+        "timestamp": "2026-09-30T06:42:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Production & Operations",
+          "Neutral"
+        ],
+        "symbols": [
+          "PADA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Supra Boga Lestari (RANC) Narrows Net Loss as Revenue Jumps 10.34%",
+        "body": "PT Supra Boga Lestari Tbk (RANC), an issuer of the Djarum Group, reported a narrowed net loss of Rp15.28 billion for the first half of 2026, down 57.42% from Rp35.89 billion a year earlier, with basic loss per share shrinking to Rp10 from Rp23. Revenue rose 10.34% to Rp1.6 trillion from Rp1.45 trillion, while gross profit jumped to Rp398.94 billion from Rp355.21 billion and operating profit swung to Rp2.87 billion from an operating loss of Rp21.98 billion. Total equity fell to Rp249.77 billion from Rp265.29 billion, liabilities rose to Rp962.29 billion, and total assets grew to Rp1.21 trillion. RANC shares fell 4.46% to Rp535 in the latest trading session and are down 39.89% year-to-date, with a market capitalization of Rp837 billion.",
+        "source": "https://emitennews.com/news/rugi-menipis-pendapatan-emiten-grup-djarum-melonjak-signifikan",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790725069.jpg?25119ab",
+        "timestamp": "2026-09-30T06:39:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-staples-retailing"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [
+          "RANC.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10971,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

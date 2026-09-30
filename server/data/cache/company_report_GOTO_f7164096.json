@@ -7,8 +7,8 @@
     "sub_industry": "Online Applications & Services",
     "sector": "Technology",
     "sub_sector": "Software & IT Services",
-    "market_cap": 49044650490460,
-    "market_cap_rank": 46,
+    "market_cap": 42201210887140,
+    "market_cap_rank": 55,
     "address": "Gedung Pasaraya Blok M, lantai 6-7\nJl. Iskandarsyah II No. 2, Jakarta 12160",
     "employee_num": 3352,
     "employee_num_rank": 163,
@@ -16,18 +16,18 @@
     "website": "www.gotocompany.com",
     "phone": "(021) 2910 1072",
     "email": "corpsecretary@gotocompany.com dan ir@gotocompany.com",
-    "last_close_price": 43,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.14,
+    "last_close_price": 37,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": -0.13953488372093,
     "all_time_price": {
       "ytd_low": {
-        "2026-09-28": 43
+        "2026-09-29": 37
       },
       "52_w_low": {
-        "2026-09-28": 43
+        "2026-09-29": 37
       },
       "90_d_low": {
-        "2026-09-28": 43
+        "2026-09-29": 37
       },
       "ytd_high": {
         "2026-01-14": 73
@@ -36,10 +36,10 @@
         "2025-12-09": 73
       },
       "90_d_high": {
-        "2026-07-01": 50
+        "2026-07-02": 50
       },
       "all_time_low": {
-        "2026-09-28": 43
+        "2026-09-29": 37
       },
       "all_time_high": {
         "2022-04-12": 442
@@ -70,10 +70,10 @@
     ]
   },
   "valuation": {
-    "last_close_price": 43,
-    "latest_close_date": "2026-09-28",
-    "daily_close_change": -0.14,
-    "forward_pe": -8.08270650611118,
+    "last_close_price": 37,
+    "latest_close_date": "2026-09-29",
+    "daily_close_change": -0.13953488372093,
+    "forward_pe": -6.95488699363055,
     "intrinsic_value": -91,
     "historical_valuation": [
       {
@@ -129,17 +129,17 @@
         "enterprise_to_revenue": 3.06720703192104
       },
       {
-        "pb": 1.51383213170288,
-        "pe": 26510.6218867351,
-        "ps": 2.36277081501553,
-        "pcf": 121.710031126018,
-        "peg": 18.553013686263636,
+        "pb": 1.30259974123271,
+        "pe": 22811.4653444,
+        "ps": 2.03308186408313,
+        "pcf": 15.964221078878,
+        "peg": 1.1525177569015488,
         "year": 2026,
-        "pb_peer_avg": 1.96406374979174,
-        "pe_peer_avg": 16.2582804454634,
-        "ps_peer_avg": 1.3779051468657,
-        "enterprise_to_ebitda": 37.158568432160195,
-        "enterprise_to_revenue": 1.48220670783395
+        "pb_peer_avg": 1.90413668042644,
+        "pe_peer_avg": 16.0859712145022,
+        "ps_peer_avg": 1.36994470743511,
+        "enterprise_to_ebitda": 28.893345113577624,
+        "enterprise_to_revenue": 104.727236085178
       }
     ]
   },

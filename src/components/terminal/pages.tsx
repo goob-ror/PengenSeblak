@@ -801,7 +801,7 @@ export function MarketOverview() {
           action={
             <div className="flex items-center gap-2">
               {shi.isLoading && <RefreshCw className="size-3 animate-spin text-muted-foreground" />}
-              <MethodTip text="SHI menimbang pertumbuhan (40%), stabilitas margin (35%), dan kondisi utang (25%) dari laporan subsector Sectors API. Data live di-cache 6 jam." />
+              <MethodTip text="SHI: 4 pilar — Pertumbuhan rev. ±50% → 30%, Stabilitas drawdown 0–60% → 25%, Valuasi earnings yield 0–15% → 25%, Momentum 1W+YTD ±30% → 20%. Tiap pilar 0–25, total 0–100. Pilar yang datanya kosong di-renormalisasi. Data live di-cache 6 jam." />
             </div>
           }
         >
@@ -1230,6 +1230,32 @@ export function MarketOverview() {
               ))}
             </div>
           )}
+          {/* ── Data-quality notices: unreliable valuation ratios (RPAD gate) ── */}
+          {!anom.isPending && !anom.isError && (anom.data?.dqNotices ?? []).length > 0 && (
+            <div className="border-t border-border px-4 py-2.5">
+              <details className="group">
+                <summary className="flex cursor-pointer items-center gap-1.5 text-[10px] text-muted-foreground hover:text-foreground">
+                  <Info className="size-3" />
+                  {(anom.data?.dqNotices ?? []).length} emiten dengan rasio valuasi tidak reliabel
+                  (P/E &gt; 100 atau &lt; 1)
+                </summary>
+                <div className="mt-2 max-h-40 space-y-1.5 overflow-y-auto">
+                  {(anom.data?.dqNotices ?? []).map((n) => (
+                    <div key={n.symbol} className="flex items-start gap-2 text-[10px]">
+                      <span className="w-12 shrink-0 font-semibold text-muted-foreground">
+                        {n.symbol}
+                      </span>
+                      <span className="text-muted-foreground/80">{n.explanation}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-2 text-[9px] leading-3 text-muted-foreground/60">
+                  Firm dengan rasio tidak reliabel tetap dihitung dalam statistik peer dan aturan
+                  margin, tetapi tidak menerima flag valuasi.
+                </p>
+              </details>
+            </div>
+          )}
           <div className="flex items-center justify-between border-t border-border px-4 py-2.5">
             <InsightLabel>Deviasi Z-score vs peer sub-sektor</InsightLabel>
             <span className="text-[10px] text-muted-foreground">Klik baris untuk detail</span>
@@ -1489,6 +1515,16 @@ export function SectorIntelligence() {
     return (anom.data?.anomalies ?? []).filter((a) => syms.has(a.symbol));
   }, [anom.data?.anomalies, universe.data]);
 
+  // Data-quality notices for this sector (firms with unreliable P/E ratios)
+  const sectorDqSet = useMemo(() => {
+    const syms = new Set((universe.data ?? []).map((c) => c.symbol));
+    return new Set(
+      (anom.data?.dqNotices ?? [])
+        .filter((n) => syms.has(n.symbol))
+        .map((n) => n.symbol),
+    );
+  }, [anom.data?.dqNotices, universe.data]);
+
   const sorted = useMemo(() => {
     let list = universe.data ?? [];
     if (query) {
@@ -1686,7 +1722,7 @@ export function SectorIntelligence() {
                           reportDetail.growth.revenue_growth != null
                             ? `Pertumbuhan pendapatan rata-rata ${fmtPct(reportDetail.growth.revenue_growth)}${reportDetail.growth.earnings_growth != null ? `, laba ${fmtPct(reportDetail.growth.earnings_growth)}` : ""}.`
                             : "Data pertumbuhan tidak tersedia → skor 0.",
-                        note: "Dinormalisasi -10%…+10% → 0…25",
+                        note: "Dinormalisasi -50%…+50% → 0…25",
                         available: reportDetail.growth.revenue_growth != null,
                       },
                       {
@@ -1716,9 +1752,9 @@ export function SectorIntelligence() {
                         detail:
                           reportDetail.market_cap?.mcap_change_1w != null ||
                           reportDetail.market_cap?.mcap_change_ytd != null
-                            ? `1M ${fmtPct(reportDetail.market_cap?.mcap_change_1w, true)} · YTD ${fmtPct(reportDetail.market_cap?.mcap_change_ytd, true)}.`
+                            ? `1W ${fmtPct(reportDetail.market_cap?.mcap_change_1w, true)} · YTD ${fmtPct(reportDetail.market_cap?.mcap_change_ytd, true)}.`
                             : "Data market cap tidak tersedia → skor 0.",
-                        note: "Bobot 30% 1M + 70% YTD, dipetakan -30%…+30% → 0…25",
+                        note: "Bobot 30% 1W + 70% YTD, dipetakan -30%…+30% → 0…25",
                         available:
                           reportDetail.market_cap?.mcap_change_1w != null ||
                           reportDetail.market_cap?.mcap_change_ytd != null,
@@ -1946,6 +1982,13 @@ export function SectorIntelligence() {
                             <Tag tone={a.severity === "High" ? "negative" : "warning"}>
                               {a.label}
                             </Tag>
+                          ) : sectorDqSet.has(c.symbol) ? (
+                            <span
+                              className="text-muted-foreground/50"
+                              title="Rasio tidak reliabel (P/E > 100 atau < 1) — tidak dinilai untuk anomali valuasi"
+                            >
+                              P/E ?
+                            </span>
                           ) : !isSubsectorVerified(selected?.slug ?? "") ? (
                             <span
                               className="text-muted-foreground/50"
@@ -2028,11 +2071,7 @@ function CompanyRow({ c }: { c: Company }) {
   return (
     <tr className="hover:bg-secondary/50">
       <td className={cn(td, "font-semibold text-primary")}>
-        <Link
-          to="/emiten/$symbol"
-          params={{ symbol: c.ticker }}
-          className="hover:underline"
-        >
+        <Link to="/emiten/$symbol" params={{ symbol: c.ticker }} className="hover:underline">
           {c.ticker}
         </Link>
       </td>

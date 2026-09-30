@@ -101,8 +101,11 @@ export const sectors = [
   },
 ];
 
+// NOTE: sectorHealth is derived from static MOCK sector data only, not the
+// live SHI algorithm. The real SHI uses 4 pillars (computeSHIBreakdown in
+// shi.ts). This table is retained for the static market-overview mock display.
 export const sectorHealth = sectors
-  .map((s) => ({ ...s, score: Math.round(s.growth * 0.4 + s.margin * 0.35 + s.debt * 0.25) }))
+  .map((s) => ({ ...s, score: Math.round(s.growth * 0.3 + s.margin * 0.25 + s.debt * 0.25 + 50 * 0.2) }))
   .sort((a, b) => b.score - a.score);
 
 export const companies: Company[] = [
@@ -406,13 +409,14 @@ export const methodology = [
     name: "Sector Health Index",
     purpose: "Measures the fundamental resilience and operating direction of a sector.",
     indicators: [
-      "Revenue & earnings growth · 40%",
-      "Margin stability · 35%",
-      "Debt condition · 25%",
+      "Growth (weighted revenue growth) · 30%",
+      "Stability (weighted max drawdown) · 25%",
+      "Valuation (earnings yield from P/E) · 25%",
+      "Momentum (30% 1W + 70% YTD market cap change) · 20%",
     ],
     formula:
-      "Weighted percentile score across sector constituents, winsorized at the 5th and 95th percentiles.",
-    interpretation: "80–100 strong · 65–79 healthy · 50–64 moderate · below 50 fragile",
+      "Fixed linear ramps: growth ±50%, drawdown 0–60%, earnings yield 0–15%, momentum ±30%. Pillars 0–25 each; missing pillars re-normalize the weights.",
+    interpretation: "75–100 sehat · 60–74 stabil · 45–59 waspada · di bawah 45 rentan",
   },
   {
     id: "dominance",
@@ -444,13 +448,13 @@ export const methodology = [
     name: "Anomaly Detection",
     purpose: "Flags observations that differ materially from relevant peer baselines.",
     indicators: [
-      "Peer median",
-      "Median absolute deviation",
-      "Historical range",
-      "Data quality confidence",
+      "Earnings yield robust z (median/MAD)",
+      "ROE robust z",
+      "Net margin robust z",
+      "DER robust z (non-bank)",
     ],
     formula:
-      "Deviation is measured against sector median and flagged when robust z-score or percentage thresholds are exceeded.",
+      "RPAD — robust z = (x − median) / (1.4826·MAD) within each sub-sector. Valuation uses earnings yield (1/P/E); a data-quality gate excludes P/E > 100 or < 1 from valuation flags. Flag threshold |z| > 1.8.",
     interpretation: "An anomaly is a research prompt, not proof of mispricing.",
   },
   {
@@ -483,8 +487,11 @@ export const methodology = [
 
 export const formatIDR = (n: number) =>
   n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : n.toLocaleString("id-ID");
+// NOTE: healthLabel in market-data.ts is kept for backward compatibility but
+// should not be used for the live SHI display. Use healthLabel from scoring.ts
+// (imported via shi.ts → shiHealthLabel) which uses the canonical 75/60/45 thresholds.
 export const healthLabel = (score: number) =>
-  score >= 80 ? "Strong" : score >= 65 ? "Healthy" : score >= 50 ? "Moderate" : "Fragile";
+  score >= 75 ? "Sehat" : score >= 60 ? "Stabil" : score >= 45 ? "Waspada" : "Rentan";
 export const classify = (c: Company) =>
   c.dividend >= 7 && c.safety < 65
     ? "Dividend Trap Alert"

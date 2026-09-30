@@ -1,0 +1,958 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T03:06:02.754Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "50"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 842
+  },
+  "data": {
+    "results": [
+      {
+        "title": "BRI Danareksa Sekuritas Recommends VKTR, RATU, and AMRT for Trading on Wednesday, September 30, 2026",
+        "body": "BRI Danareksa Sekuritas recommends VKTR, RATU, and AMRT for trading on Wednesday, September 30, 2026. VKTR rose 7.79% to 830, moving above MA20 (815) and MA200 (802), with potential resistance targets at 855 and 915, supported by its operation of 27 electric buses in Semarang on September 24, 2026. RATU rebounded 4.27% to 4,150 after testing the 3,925-3,605 support area but remains below MA20 at 4,339 with a bearish medium-term trend; its acquisition of SMS Development Ltd. provides an indirect 20% stake in HCML, the operator of the Madura Strait Block. AMRT gained 1.92% to 1,330, rebounding above MA20 (1,306), with H1-2026 net profit of Rp 2.02 trillion (up 7.5% YoY) and revenue growing 6.49% YoY to Rp 67.95 trillion.",
+        "source": "https://investor.id/market/456052/rekomendasi-saham-hari-ini-rabu-30-september-2026-vktr-ratu-amrt",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/04/1776583511-4546x3031.webp",
+        "timestamp": "2026-09-30T07:57:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "automobiles-components",
+          "oil-gas-coal",
+          "food-staples-retailing"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Mergers & Acquisitions",
+          "Business Expansion",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "VKTR.JK",
+          "RATU.JK",
+          "AMRT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "IMPC Controller Tunggal Jaya Investama Buys 11.89 Million Shares as Stock Slumps 63% YTD",
+        "body": "Tunggal Jaya Investama, a majority shareholder of PT Impack Pratama Industri Tbk (IMPC), reported to Otoritas Jasa Keuangan (OJK) the purchase of 11,894,600 IMPC shares between September 24-28, 2026, for investment purposes. The purchases were made in three stages: 4.6 million shares at Rp1,506 on September 24, 2 million shares at Rp1,431 on September 25, and 5,294,600 shares at Rp1,445 on September 28, totaling about Rp17.36 billion. Its stake rose from 21,115,805,494 to 21,127,700,094 shares, increasing ownership from 38.46% to 38.48% of voting rights. IMPC shares closed at Rp1,420 on September 29, 2026, down 2.41%, and have fallen Rp2,510 or 63.87% year to date. Earlier, Tunggal Jaya bought 6.6 million shares at an average Rp1,465 (Rp9.6 billion) during September 4-7, and IMPC director Haryanto Tjiptodihardjo bought 2.5 million shares at Rp3,500 (Rp8.75 billion) on January 26, 2026.",
+        "source": "https://investasi.kontan.co.id/news/harga-saham-melorot-63-pengendali-tak-ragu-borong-saham-impc",
+        "thumbnail": "https://foto.kontan.co.id/WFWJ5HV43cfPwe2rBKvBmbY9xWI=/smart/filters:format(webp)/2025/11/06/1407998537.jpg",
+        "timestamp": "2026-09-30T07:27:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-goods"
+        ],
+        "tags": [
+          "Ownership",
+          "Insider Trading",
+          "Neutral"
+        ],
+        "symbols": [
+          "IMPC.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Indonesia Stock Exchange to Launch Short Selling on October 1, Requiring Minimum Capital of Rp 50 Million",
+        "body": "Bursa Efek Indonesia (BEI) will implement a short selling scheme starting October 1, 2026, requiring investors to have a minimum initial capital of Rp 50 million, register with a participating securities firm, and hold a regular securities account for at least six months, in line with OJK Regulation Number 6 of 2024. BEI Director General Jeffrey Hendrik said the scheme carries high risk and is intended for experienced investors. Five stocks are eligible for short selling: PT Astra International Tbk (ASII), PT Bank Central Asia Tbk (BBCA), PT Barito Pacific Tbk (BRPT), PT Bumi Resources Tbk (BUMI), and PT Indofood Sukses Makmur Tbk (INDF), all drawn from LQ45 index constituents. Only two securities firms, Semesta Indovest Sekuritas and Ajaib Sekuritas, currently provide the service, and BEI targets a market liquidity increase of up to 17% depending on the number of approved stocks and exchange members.",
+        "source": "https://www.cnbcindonesia.com/market/20260930054416-17-771955/bei-buka-short-seling-1-oktober-investor-harus-punya-modal-rp-50-juta",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2019/08/08/f5254668-0a88-46be-bb5f-1c90c60f263f_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-30T07:16:35",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings",
+          "banks",
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage"
+        ],
+        "tags": [
+          "Government Policy",
+          "Market Sentiment",
+          "Neutral"
+        ],
+        "symbols": [
+          "ASII.JK",
+          "BBCA.JK",
+          "BRPT.JK",
+          "BUMI.JK",
+          "INDF.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Golden Mines (GEMS) Posts USD219.96 Million Net Profit, Up 45 Percent",
+        "body": "Golden Mines (GEMS), a mining issuer of the Sinar Mas Group, reported a net profit of USD219.96 million for the period ended June 30, 2026, up 45 percent from USD151.67 million a year earlier, with basic earnings per share rising to USD0,037 from USD0,026. Revenue grew 30.70 percent to USD1.49 billion from USD1.14 billion, while cost of goods sold increased to USD982.06 million from USD743.33 million, lifting gross profit to USD513.22 million from USD401.08 million. Operating profit jumped to USD298.64 million from USD199.9 million, as selling expenses rose to USD145.59 million and general and administrative expenses fell to USD68.81 million. Total assets reached USD1.43 billion, up from USD1.19 billion at the end of 2025, with equity at USD852.7 million and total liabilities at USD580.42 million.",
+        "source": "https://emitennews.com/news/melejit-45-persen-emiten-grup-sinarmas-raup-laba-segini",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790727300.jpg?25119ab",
+        "timestamp": "2026-09-30T07:15:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "GEMS.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Indonesia Stock Exchange Reinstates Short Selling: Mechanics, Requirements, and Risks Explained",
+        "body": "The Indonesia Stock Exchange (BEI) officially reinstates short selling trading, with the initial phase effective 1 October 2026. BEI has designated five stocks eligible for short selling, all constituents of the LQ45 Index, though only two brokers are permitted to serve short sell transactions in this initial phase. Brokers must qualify as exchange members (AB), open short selling securities accounts, and provide collateral of at least 50% of the transaction value or IDR 50 million, whichever is higher. The transaction flow involves selling securities not yet owned (labeled 'short'), holding the position for several days, then repurchasing the securities to close the position, subject to regulator-set price rules. Risks include large gains if prices fall, but losses, margin calls, or forced buys if prices rise.",
+        "source": "https://www.bloombergtechnoz.com/detail-news/123086/serba-serbi-short-selling-alur-hingga-risiko-di-belakangnya",
+        "thumbnail": "https://images.bloombergtechnoz.com/data/2026/08/image-20260814105708.jpeg",
+        "timestamp": "2026-09-30T07:10:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Risk & Compliance",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Low Tuck Kwong to Remain Main Shareholder and Controlling Party of PT Bayan Resources Tbk (BYAN) After PT Jhonlin Baratama's 30% Stake Acquisition",
+        "body": "Following PT Jhonlin Baratama's acquisition of a 30% stake in PT Bayan Resources Tbk (BYAN), Low Tuck Kwong will remain the main shareholder and controlling party of the company, holding 6,951,170,541 shares, equivalent to 20.853%, while Elaine Low will hold 3,799,584,529 shares, or about 11.399%. BYAN Director Alexander Ery Wibowo confirmed in a disclosure dated Tuesday (29/9/2026) that Dato' Low Tuck Kwong will remain the main shareholder and controller. The company has no plans to change its Board of Directors or Board of Commissioners and has not received any request for a General Meeting of Shareholders to discuss such changes. Low Tuck Kwong and Elaine Low signed a conditional sale and purchase agreement with PT Jhonlin Baratama as buyer on 16 September 2026 covering 10,000,000,500 BYAN common shares.",
+        "source": "https://finance.detik.com/bursa-dan-valas/d-8685128/siapa-nakhoda-bayan-haji-isam-atau-low-tuck-kwong",
+        "thumbnail": "https://awsimages.detik.net.id/api/wm/2023/10/17/low-tuck-kwong_169.png?wid=54&w=1200&v=1&t=jpeg",
+        "timestamp": "2026-09-30T06:55:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Shareholders General Meeting",
+          "Neutral"
+        ],
+        "symbols": [
+          "BYAN.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Personel Alih Daya Tbk (PADA) Posts 1,240% Net Profit Surge in 1H-2026",
+        "body": "PT Personel Alih Daya Tbk (PADA), an outsourcing services company, reported audited 1H-2026 results as of June 30, 2026, with net profit surging 1,240% to Rp 1.81 billion from Rp 135 million in 1H-2025. Revenue rose 81.6% year-on-year to Rp 916.0 billion from Rp 504.4 billion, driven by Courier Services, FTTH and PMO projects, Technical Services, and Call Center services, with Courier Services contributing the largest share. Cost of revenue increased 81.9% year-on-year to Rp 882.0 billion from Rp 484.8 billion, in line with higher business volume and workforce. However, per Stockbit Sekuritas data, PADA recorded a net loss of Rp 970 million in Q2-2026 alone, reversing from a profit of around Rp 3 billion in Q1-2026.",
+        "source": "https://investor.id/market/456046/laba-emiten-terbang-1240",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/1668650397.png",
+        "timestamp": "2026-09-30T06:42:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Production & Operations",
+          "Neutral"
+        ],
+        "symbols": [
+          "PADA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Supra Boga Lestari (RANC) Narrows Net Loss as Revenue Jumps 10.34%",
+        "body": "PT Supra Boga Lestari Tbk (RANC), an issuer of the Djarum Group, reported a narrowed net loss of Rp15.28 billion for the first half of 2026, down 57.42% from Rp35.89 billion a year earlier, with basic loss per share shrinking to Rp10 from Rp23. Revenue rose 10.34% to Rp1.6 trillion from Rp1.45 trillion, while gross profit jumped to Rp398.94 billion from Rp355.21 billion and operating profit swung to Rp2.87 billion from an operating loss of Rp21.98 billion. Total equity fell to Rp249.77 billion from Rp265.29 billion, liabilities rose to Rp962.29 billion, and total assets grew to Rp1.21 trillion. RANC shares fell 4.46% to Rp535 in the latest trading session and are down 39.89% year-to-date, with a market capitalization of Rp837 billion.",
+        "source": "https://emitennews.com/news/rugi-menipis-pendapatan-emiten-grup-djarum-melonjak-signifikan",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790725069.jpg?25119ab",
+        "timestamp": "2026-09-30T06:39:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-staples-retailing"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [
+          "RANC.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Pefindo Raises PT Waskita Karya (Persero) Tbk (WSKT) Rating to idB After Government Confirms Bond Payment Guarantee",
+        "body": "PT Pemeringkat Efek Indonesia (Pefindo) raised the corporate rating of PT Waskita Karya (Persero) Tbk (WSKT) from idCCC/CreditWatch with Negative implication to idB with a Negative outlook, and lifted the ratings of its Obligasi Berkelanjutan III Tahap II, Tahap III, Tahap IV, and PUB IV Tahap I bonds to idB from idCCC on Tuesday (29/9). The upgrade followed confirmation of payment guarantee by the Government of Indonesia on the principal of WSKT's Obligasi III Tahun 2021 Seri A, which had previously been delayed at its Thursday (24/9) maturity. Pefindo affirmed WSKT's Obligasi III and IV at idAAA(gg) and Sukuk Mudharabah I at idAAA(sy)(gg), reflecting a full, unconditional, and irrevocable guarantee from the Government of Indonesia, while cautioning that the rating remains constrained by WSKT's very weak financial profile and could be downgraded again if future principal or coupon obligations are missed. WSKT is a state-owned construction company in which construction work contributes about 80 percent of revenue over the last three years, with other lines including precast concrete, toll roads, property, hotels, and other infrastructure. As of June 30, 2026, the Government of Indonesia owns 75.35 percent of WSKT shares (0.75 percent directly and 74.6 percent through Danantara), with the remainder held by the public.",
+        "source": "https://emitennews.com/news/utang-dibayar-negara-pefindo-kembali-kerek-rating-waskita-wskt",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790724927.jpg?25119ab",
+        "timestamp": "2026-09-30T06:36:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "heavy-constructions-civil-engineering"
+        ],
+        "tags": [
+          "Credit",
+          "Bonds",
+          "Analyst Ratings",
+          "Government Policy",
+          "Bullish"
+        ],
+        "symbols": [
+          "WSKT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Intermedia (MDIA) Net Loss Widens 184 Percent to Rp32.22 Billion",
+        "body": "Intermedia (MDIA), an issuer in the Bakrie group, posted a net loss of Rp32.22 billion as of June 30, 2026, swelling 183.87 percent from Rp11.35 billion in the same period a year earlier, with loss per share rising to Rp0.82 from Rp0.29. Net revenue fell 8.55 percent to Rp281.82 billion from Rp308.17 billion, while operating profit shrank to Rp36.2 billion from Rp60.83 billion. Total assets declined to Rp2.9 trillion from Rp3.33 trillion at the end of the previous year, and total equity fell to Rp916.15 billion. Despite the widening loss, MDIA shares rose 1.27 percent to Rp160 in the previous session and have surged 196.30 percent over the past six months, with a market capitalization of Rp6.27 trillion.",
+        "source": "https://emitennews.com/news/jauhi-klub-gocap-emiten-grup-bakrie-boncos-184-persen",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790723838.jpg?25119ab",
+        "timestamp": "2026-09-30T06:18:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "media-entertainment"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Bearish"
+        ],
+        "symbols": [
+          "MDIA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "IHSG Prone to Further Weakness on Wednesday (30/9), Check Stock Recommendations from VKTR to AMRT",
+        "body": "BRI Danareksa Sekuritas expects the IHSG to move limitedly with a weakening bias on Wednesday (30/9/2026), pressured by the rupiah breaching Rp18,000 per US dollar, 10-year US Treasury yields above 5.2%, and Brent oil above US$107 per barrel. The index closed down 0.43% at 6,121.70 on Tuesday (29/9) after touching 6,013, with support seen at 6,000 and 5,854 and resistance at 6,200 and 6,375. Recommended stocks include PT VKTR Teknologi Mobilitas Tbk (VKTR), up 7.79% to 830 with a buy area of 800–830 and resistance at 855; PT Raharja Energi Cepu Tbk (RATU), up 4.27% to 4,150 with a buy area of 4,000–4,150; and PT Sumber Alfaria Trijaya Tbk (AMRT), up 1.92% to 1,330 with a buy area of 1,310–1,330. Conversely, PT Medialoka Hermina Tbk (HEAL) fell to 615, breaking support at 640, prompting a sell strategy with next support at 593–563.",
+        "source": "https://investasi.kontan.co.id/news/ihsg-rawan-lanjut-melemah-rabu-309-simak-rekomendasi-saham-vktr-hingga-amrt",
+        "thumbnail": "https://foto.kontan.co.id/vhoRlLYxlbESLzPbcoA12mChjj8=/smart/filters:format(webp)/2026/09/29/394586090.jpg",
+        "timestamp": "2026-09-30T06:12:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "automobiles-components",
+          "oil-gas-coal",
+          "food-staples-retailing",
+          "healthcare-equipment-providers"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Analyst Ratings",
+          "Neutral"
+        ],
+        "symbols": [
+          "VKTR.JK",
+          "RATU.JK",
+          "AMRT.JK",
+          "HEAL.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Foreign Investors Suddenly Turn to Net Sell on PT Bank Central Asia Tbk (BBCA) Shares",
+        "body": "Foreign investors abruptly shifted to a net sell of Rp 138.73 billion in PT Bank Central Asia Tbk (BBCA) shares on Tuesday (29/9/2026), after recording net buys from 24-28 September 2026. The stock closed down 1.20% at Rp 6,150, following a 0.40% decline the previous day, amid false social media rumors that BCA would be acquired by Haji Isam; BCA management, responding to an Indonesia Stock Exchange (BEI) request for clarification, confirmed the information was untrue. UOB Kay Hian Sekuritas maintained its buy recommendation on BBCA with a target price of Rp 8,150, citing solid funding, adequate capital and liquidity. BBCA posted bank-only net profit of Rp 4.92 trillion in August 2026, up 13.1% annually, with UOB forecasting net profit of Rp 60 trillion in 2026 and Rp 65 trillion in 2027, and estimated dividend yields of 5.7% in 2026 rising to 6.1% in 2027.",
+        "source": "https://investor.id/market/456034/reaksitibatiba-saham-bank-central-asia-bbca",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/05/1778982378-569x383.webp",
+        "timestamp": "2026-09-30T06:00:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Foreign Investment",
+          "Market Sentiment",
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [
+          "BBCA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 1,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Dana Brata Luhur Tbk (TEBE) Records 3.1 Million Tons of Hauling Volume as Net Profit Reaches Rp 27.2 Billion",
+        "body": "PT Dana Brata Luhur Tbk (TEBE), a company owned by Samsudin Andi Arsyad alias Haji Isam, reported record operational performance with hauling volume reaching 3.10 million tons and loading volume of 2.98 million tons through August 2026, including a monthly record of 585,000 tons hauled in August. Revenue through August 2026 reached Rp 256.06 billion, with net profit of Rp 47.23 billion, of which Rp 27.2 billion was booked in July–August, exceeding the Rp 20.08 billion net profit recorded in the first half of 2026. In the first half of 2026, revenue grew 3.5% year-on-year to Rp 176.89 billion, while net profit fell 27.6% to Rp 20.08 billion due to higher fuel prices and cost of revenue, with the Coal Loading & Port Services segment contributing Rp 82.63 billion or 46.7% of revenue. The company is diversifying into coal trading, completing a first shipment of 7,405.41 metric tons in Q3-2026, and its shares rose 7.34% to Rp 2,340 on September 29, 2026, up 39.7% in a month.",
+        "source": "https://investasi.kontan.co.id/news/emiten-milik-haji-isam-cetak-volume-hauling-31-juta-ton-laba-tembus-rp-272-miliar",
+        "thumbnail": "https://foto.kontan.co.id/bIlekdcF7LRrfYJEiKvSKDA-Rdc=/smart/filters:format(webp)/2020/08/02/1728945493.jpg",
+        "timestamp": "2026-09-30T05:55:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Business Expansion",
+          "Production & Operations",
+          "Commodities",
+          "Subsidiaries",
+          "Bullish"
+        ],
+        "symbols": [
+          "TEBE.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 1,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT GoTo Gojek Tokopedia Tbk (GOTO) Shares Fall Below Rp 50 for Two Days After IDX Lowers Minimum Price to Rp 1",
+        "body": "Shares of PT GoTo Gojek Tokopedia Tbk (GOTO), a member of the LQ45 index, fell for two consecutive days after the Indonesia Stock Exchange (IDX) implemented a minimum share price of Rp 1 starting Monday (28/9/2026), replacing the previous Rp 50 floor. GOTO closed at Rp 43 on Monday, down 7 points, and at Rp 36 on Tuesday (29/9/2026), which Kiwoom Sekuritas analyst Abdul Azis described as part of a price discovery process rather than a reason for panic. The company posted net profit of Rp 171 billion in Q1-2026 and Rp 252 billion in Q2-2026, with Q2 net revenue up 31% year-on-year to Rp 5.7 trillion and adjusted EBITDA up 137% to above Rp 1 trillion; management maintained its 2026 adjusted EBITDA target of Rp 3.2-3.4 trillion while raising the fintech EBITDA guidance to Rp 1.7-1.8 trillion and lowering on-demand services guidance to Rp 1.4-1.5 trillion. Investors are also watching GOTO's authorized buyback of up to Rp 3.5 trillion and its plan, subject to shareholder approval at an extraordinary general meeting on 14 October 2026, to cancel more than 32 billion treasury shares, about 2.7% of total issued shares.",
+        "source": "https://investasi.kontan.co.id/news/harga-saham-lq45-ini-rontok-2-hari-usai-berlaku-harga-dasar-rp-1-kapan-balik-arah",
+        "thumbnail": "https://foto.kontan.co.id/qd2o54wZ1zfkHstyWrQLDgn08So=/smart/filters:format(webp)/2024/04/23/1486571454.jpg",
+        "timestamp": "2026-09-30T05:48:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Market Sentiment",
+          "Financial Metrics",
+          "Shareholders General Meeting",
+          "Neutral"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Astra Graphia raises interim dividend nearly tenfold to Rp297 per share, yielding 13.4%",
+        "body": "PT Astra Graphia Tbk (ASGR), the digital solutions arm of the Astra Group, has set an interim dividend for fiscal year 2026 of Rp400.05 billion, or Rp297 per share, nearly 10 times higher than the fiscal 2025 interim dividend of Rp30 per share. At the closing price of Rp2,220 on Tuesday (29/9), the dividend yield reaches 13.4%. Per the Board of Commissioners' decision on Friday (25/9), the dividend will be paid from the company's fiscal 2026 net profit—Rp138.45 billion as of June 2026—plus part of its Rp1.72 trillion undesignated retained earnings. Cum and ex dates are 7–8 October 2026 for the regular and negotiation markets and 9–12 October 2026 for the cash market. Astra (ASII), which controls 76.87% of ASGR shares, will receive up to Rp307.52 billion of the interim dividend by the end of October.",
+        "source": "https://www.idnfinancials.com/id/news/69626/astra-graphia-naikkan-dividen-interim-10-kali-lipat-yield-capai-13-4",
+        "thumbnail": "https://photo2.idnfinancials.com/fly/idn/test/arif/DIVIDEN-ASGR-30092026.jpg",
+        "timestamp": "2026-09-30T05:30:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services",
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Financial Metrics",
+          "Ownership",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASGR.JK",
+          "ASII.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT VKTR Teknologi Mobilitas Tbk (VKTR) to Hold Rp 3 Trillion Rights Issue, Here Is the Schedule",
+        "body": "PT VKTR Teknologi Mobilitas Tbk (VKTR), an electric vehicle company owned by the Bakrie Group, has received an effective statement from OJK for its PMHMETD I rights issue, planning to issue 15 billion new shares at a nominal value of Rp 10 and an exercise price of Rp 200 per share to raise up to Rp 3 trillion. PT Bakrie & Brothers Tbk (BNBR), the main shareholder, will transfer all its pre-emptive rights (HMETD) to PT Bakrie Capital Indonesia (BCI), which will exercise 3,660,631,994 HMETD worth about Rp 732.13 billion, while BCI and PT Biofuel Indo Sumatra (BIS) act as standby buyers for up to 11,339,368,006 shares worth about Rp 2.27 trillion, with BCI taking up to 3,089,368,006 shares (about Rp 617.87 billion) and BIS up to 8.25 billion shares (up to Rp 1.65 trillion). Shareholders recorded as of October 8, 2026 will receive 12 HMETD per 35 shares, with HMETD tradable from October 12-16 and 19-23, 2026 and final exercise on October 23, 2026; the new shares represent about 25.53% of VKTR's enlarged paid-in capital, implying potential dilution of up to 25.53%. Of the net proceeds, about 66.86% will be injected as capital into PT Sarana Ekomobilitas Indonesia (SEI) to support purchases of VKTR electric vehicles in 2026-2027 and the development of its Electric Mobility-as-a-Service (e-MaaS) concept, with the remainder allocated to working capital including inventory of electric buses, trucks, transporters, and forklifts.",
+        "source": "https://investasi.kontan.co.id/news/perusahaan-kendaraan-listrik-grup-bakrie-ini-akan-right-issue-rp-3-t-ini-jadwalnya",
+        "thumbnail": "https://foto.kontan.co.id/ozfkoVgQ3x5iVMKBOLcCI_FxxLo=/smart/filters:format(webp)/2026/04/09/435585211.jpg",
+        "timestamp": "2026-09-30T05:18:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "automobiles-components",
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Rights Issue",
+          "Capital & Funding",
+          "OJK",
+          "Business Expansion",
+          "Ownership",
+          "Neutral"
+        ],
+        "symbols": [
+          "VKTR.JK",
+          "BNBR.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "PT Mayora Indah Tbk (MYOR) Shares Fall 34% in 2026 as Analysts Issue Mixed Recommendations",
+        "body": "Shares of PT Mayora Indah Tbk (MYOR) fell 1.07% to Rp 1,390 on Tuesday (29/9/2026), bringing the year-to-date decline to 34.74%, accompanied by net foreign sell of Rp 500 billion. BRI Danareksa Sekuritas analyst Abida Massi Armand attributed the drop to global sentiment and foreign outflows rather than deteriorating business performance, noting MYOR posted higher revenue and net profit in semester I-2026, with core profit up 34.9% YoY in Q2-2026 on lower cocoa, coffee, and sugar costs and domestic sales up about 12%. Kiwoom Sekuritas Indonesia analyst Abdul Azis Setyo Wibowo flagged concerns over margin sustainability, citing rupiah weakness, rising plastic prices, and exposure to global commodity costs. Abida recommends buying MYOR with a target price of Rp 2,000, while Azis advises a wait-and-see stance given ongoing selling pressure and the downtrend.",
+        "source": "https://investasi.kontan.co.id/news/saham-mayora-indah-myor-anjlok-34-sepanjang-tahun-2026-simak-rekomendasi-analis",
+        "thumbnail": "https://foto.kontan.co.id/oPmXjQJ6GEBk7sBzM9Nmte2JR78=/smart/filters:format(webp)/2024/11/05/1437924429.jpg",
+        "timestamp": "2026-09-30T05:00:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Market Sentiment",
+          "Financial Metrics",
+          "Foreign Investment",
+          "Neutral"
+        ],
+        "symbols": [
+          "MYOR.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Astra Graphia (ASGR) Schedules Interim Dividend of Rp297 per Share, Yielding 13.38 Percent",
+        "body": "Astra Graphia (ASGR), a subsidiary of Astra International, will distribute an interim dividend totaling Rp400.05 billion, or Rp297 per share, approved at an extraordinary general meeting of shareholders on 25 September 2026. Based on the closing price of Rp2,220 on 29 September 2026, the dividend yield is approximately 13.38 percent. The dividend schedule sets the regular and negotiation market cum date on 7 October 2026 and ex date on 8 October 2026, the cash market cum date on 9 October 2026 and ex date on 12 October 2026, with the recording date on 9 October 2026 at 16:00 WIB and payment on 22 October 2026. The dividend exceeds the company's first-half 2026 net profit of Rp138.45 billion, which rose 30.37 percent from Rp106.20 billion in the same period of 2025, while revenue of Rp1.56 trillion grew 1.99 percent year on year.",
+        "source": "https://emitennews.com/news/asgr-jadwal-dividen-rp297-per-helai-yield-1338-persen",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790717194.jpg?25119ab",
+        "timestamp": "2026-09-30T04:27:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-services"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Financial Metrics",
+          "Shareholders General Meeting",
+          "Subsidiaries",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASGR.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "ARKO secures Rp696.5 billion loan from SMI for its largest hydropower plant, the 20 MW Pongbembe project",
+        "body": "ARKO, through its subsidiary PT Nosu Hydro, signed a financing agreement worth US$38.79 million (Rp696.5 billion at Rp17,995 per US dollar) with state-owned financing institution PT Sarana Multi Infrastruktur (Persero) on Friday, September 25. The facility will fund the ongoing 20 MW Pongbembe run-of-river hydropower plant project in Tana Toraja, South Sulawesi, ARKO's largest project to date, compared with its other plants ranging from 5.4 to 10 MW. The financing exceeds 20% of ARKO's equity of Rp552.84 billion as of June 30, making it a material transaction. Earlier, on September 24, ARKO also obtained a US$9.8 million (Rp174.57 billion) credit facility from SMI for solar power projects in Batam and Riau owned by PT Endorshine Energy Solutions; as of end-June, ARKO recorded liabilities of Rp1.19 trillion, total assets of Rp1.74 trillion, and cash and equivalents of Rp67.23 billion.",
+        "source": "https://www.idnfinancials.com/id/news/69621/arko-kembali-raih-pinjaman-rp696-5-miliar-kini-untuk-plta-terbesarnya",
+        "thumbnail": "https://photos.idnfinancials.com/_idn/_DESIGN%20GRAFIS/ARTIKEL%20IMAGE%20%28ARIF%29/ARKO-01112025.jpg",
+        "timestamp": "2026-09-29T21:15:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "utilities"
+        ],
+        "tags": [
+          "Capital & Funding",
+          "Business Expansion",
+          "Credit",
+          "Bullish"
+        ],
+        "symbols": [
+          "ARKO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "BNI Extends Up to Rp 10.75 Trillion in Credit to PT NexAI Digital Infrastruktur Tbk (MGLV) for Data Center Development",
+        "body": "PT Bank Negara Indonesia Tbk (BBNI) has added PT NexAI Digital Infrastruktur Tbk (MGLV) to its list of jumbo credit exposures, providing up to Rp 10.75 trillion through two of NexAI's subsidiaries, PT Nextier Askara Center (NAC) and PT Nextier GenAi Center (NGC), each 99.9% owned by NexAI. BNI extended a maximum of Rp 4.13 trillion to NAC with a six-year tenor and Rp 6.63 trillion to NGC with a seven-year tenor, both at floating rates based on 90-day compounded IndONIA plus 1.9%, to fund data center expansion reaching a combined capacity of 102 MW, including the Jababeka facility and BatangDC. BNI also acted as coordinating bank, mandated lead arranger and bookrunner, agent, and security agent, with the loans secured by collateral including land and building mortgages, fiducia, share pledges, and corporate guarantees from NexAI. The facility represents about 6.89% of BNI's core capital and joins other jumbo exposures including Rp 55 trillion to PT Agrinas Pangan, Rp 38.4 trillion to the Ministry of Finance, Rp 21.07 trillion to Perum BULOG, Rp 20.71 trillion to PT Bank Rakyat Indonesia Tbk (BRI), and Rp 16.21 trillion to PT Perusahaan Listrik Negara (PLN). Analysts noted the nonsyndicated commercial data center loan carries higher concentration risk than government-assignment-linked credits, citing thin sponsor equity, construction risk, floating rates, and the absence of syndication as key concerns.",
+        "source": "https://keuangan.kontan.co.id/news/bni-kucurkan-kredit-rp-1075-triliun-ke-nexai-tambah-daftar-debitur-jumbo",
+        "thumbnail": "https://foto.kontan.co.id/F42x7VO6JUQQOnCNLZHSM6GEnJI=/smart/2025/05/23/1164680376t.jpg",
+        "timestamp": "2026-09-29T20:33:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks",
+          "household-goods"
+        ],
+        "tags": [
+          "Credit",
+          "Capital & Funding",
+          "Risk & Compliance",
+          "Business Expansion",
+          "Neutral"
+        ],
+        "symbols": [
+          "BBNI.JK",
+          "MGLV.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Foreign Investors Exit Rp 105 Trillion from Indonesian Stocks; Analysts Weigh Q4 2026 Outflow Potential",
+        "body": "Foreign investors have pulled Rp 105.09 trillion year to date from Indonesian stocks in the regular market, including Rp 6.66 trillion in the past month and Rp 536.7 billion on Tuesday (29/9/2026), as the IHSG fell 0.43% to 6,121. Analysts from Pilarmas Investindo Sekuritas, PT Indo Premier Sekuritas (IPOT), and PT Samuel Sekuritas Indonesia attribute the outflows to new Indonesia Stock Exchange (IDX) policies, including short selling rules and a minimum share price cut to Rp 1, alongside global pressures such as high US Treasury yields, a stronger US dollar, geopolitical risks, and Rupiah volatility. The MSCI November Review is seen as the biggest concern for foreign investors, with potential passive volatility before the announcement and possible inflows after rebalancing. Analysts expect continued outflows to hit high foreign-ownership, large-weight stocks in banking, consumer, and telco sectors, while recommending stocks including BBCA, BMRI, ASII, ITMG, ADRO, INDF, ICBP, AMRT, JPFA, EXCL, and ANTM, with Nico's targets of Rp 8,500 for INDF, Rp 9,635 for ICBP, Rp 2,340 for AMRT, Rp 3,140 for JPFA, Rp 3,260 for EXCL, and Rp 4,585 for ANTM.",
+        "source": "https://investasi.kontan.co.id/news/asing-kabur-rp-105-triliun-dari-saham-begini-potensi-outflow-di-kuartal-iv-2026",
+        "thumbnail": "https://foto.kontan.co.id/slK7xNfRnlO3EUagrUzwI6DqYwA=/smart/filters:format(webp)/2015/04/15/1341476742.jpg",
+        "timestamp": "2026-09-29T19:54:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Foreign Investment",
+          "Market Sentiment",
+          "Analyst Ratings",
+          "Politics & Regulation",
+          "Bearish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PermataBank divests entire stake in credit card start-up Honest for Rp77.56 billion",
+        "body": "PermataBank has sold its entire shareholding in PT Honest Financial Technologies, the issuer of the Honest credit card, on Tuesday, 29 September 2026. The divestment involved the sale of 57,379 shares, equivalent to 15.07% of Honest's placed and paid-up capital, to individual buyer Tay Yao Nan, with a transaction value of Rp77.56 billion. PermataBank stated the divestment has no material impact on its operations, legal condition, financial condition, or business continuity. PermataBank was previously one of three investors in Honest, alongside California-based venture capital firm Village Global and Orico, a leading Japanese credit card company under Mizuho Financial Group, which led Honest's last equity funding round of US$100 million completed in October 2025.",
+        "source": "https://www.idnfinancials.com/id/news/69617/permatabank-cabut-investasi-di-kartu-kredit-honest-raup-rp77-6-miliar",
+        "thumbnail": "https://photos.idnfinancials.com/d/500x300/black-friday-buy-credit-card-34577.jpg",
+        "timestamp": "2026-09-29T19:45:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "New Mining Services Regulation Could Raise Costs for Mineral and Coal Issuers",
+        "body": "A new ESDM Ministry regulation (Kepmen ESDM No. 365.K/MB.01/MEM.B/2026) tightens the use of subsidiaries and affiliates as mining service providers, requiring IUP or IUPK holders to prioritize local contractors and obtain ministerial approval to use affiliates. BRI Danareksa Sekuritas analyst Chory Agung Ramdhani said the impact is a potential cost increase and operational risk rather than an automatic significant cost rise, with effects varying by issuer. Issuers to watch include PT Bukit Asam (Persero) Tbk (PTBA), which owns mining services subsidiary SBS, and PT Adaro Andalan Indonesia Tbk (AADI), which has significant mining services transactions with related party SIS. Independent mining contractors may gain new opportunities, though local contractor availability and competence remain key challenges.",
+        "source": "https://investasi.kontan.co.id/news/aturan-baru-jasa-tambang-berpotensi-tekan-biaya-emiten-minerba",
+        "thumbnail": "https://foto.kontan.co.id/ut8wbYH2qrPzCeXXXLUX2GrSuWs=/smart/filters:format(webp)/2023/08/22/326576934.jpg",
+        "timestamp": "2026-09-29T19:11:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Commodities",
+          "Analyst Ratings",
+          "Neutral"
+        ],
+        "symbols": [
+          "PTBA.JK",
+          "AADI.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Sports Direct Malaysia Acquisition Seen as Catalyst for PT MAP Aktif Adiperkasa Tbk (MAPA) Amid Positive Outlook to End-2026",
+        "body": "PT MAP Aktif Adiperkasa Tbk (MAPA) is the primary subject, with analysts viewing its acquisition of Sports Direct Malaysia Sdn. Bhd. via subsidiary Athletica International Holdings Pte. Ltd. (AIH) for around Rp 2.5 trillion as a medium-term growth catalyst strengthening its ASEAN exposure. MAPA's H1-2026 revenue rose 15.1% YoY to about Rp 10.12 trillion with net profit up 30.5% YoY to Rp 864.4 billion, driven by domestic operations contributing Rp 7.7 trillion (76% of consolidated revenue, +17.0% YoY) and overseas markets including the Philippines (Rp 1.2 trillion, +9%), Thailand (+23% YoY), Vietnam (Rp 165 billion, +58% YoY), and Singapore (Rp 207 billion, -23% YoY). CGS International projects 2026 revenue of Rp 20.87 trillion (+8.25% YoY) and net profit of Rp 1.87 trillion (+9.70% YoY), recommending add with a lowered target price of Rp 750 per share, while Sinarmas Sekuritas recommends buy with a Rp 800 target and Mirae Asset Sekuritas advises wait and see. Key risks include rupiah weakness, rising operating costs, integration and funding needs from the acquisition, and a shrinking Indonesian middle class.",
+        "source": "https://investasi.kontan.co.id/news/akuisisi-sports-direct-jadi-katalis-mapa-cek-prospek-dan-rekomendasinya",
+        "thumbnail": "https://foto.kontan.co.id/P2GSPEQ5bQXVUHYjK8SuYgjf1wE=/smart/filters:format(webp)/2024/04/25/2087853240.jpg",
+        "timestamp": "2026-09-29T18:44:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "retailing"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Business Expansion",
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "MAPA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "IHSG Forecast and Stock Recommendations for Wednesday, 30 September 2026",
+        "body": "Phintraco Sekuritas predicts the Jakarta Composite Index (IHSG) will consolidate in the 6,050-6,200 range on Wednesday (30/9/2026), after closing weaker at 6,121.7 (down 0.43%) on Tuesday (29/9/2026), with the technology sector posting the largest decline at 3.37%. MNC Sekuritas sees a short-term chance of strengthening to test 6,152-6,196, while warning of further correction toward 5,850-5,946. MNC Sekuritas recommends BBCA, ICBP, MBMA, and UNTR for Wednesday's trading. The DPR officially enacted the 2027 State Budget (RUU APBN 2027) with a fiscal deficit of Rp671.16 trillion (2.4% of GDP), revised state revenue of Rp3,435.1 trillion, and state spending of Rp4,106.2 trillion, while the rupiah closed slightly weaker at Rp17,981 per US dollar in the spot market.",
+        "source": "https://investor.id/market/455982/prediksi-ihsg-dan-rekomendasi-saham-rabu-30-september-2026",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/02/1770652393-2000x1333.webp",
+        "timestamp": "2026-09-29T18:30:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Government Policy",
+          "Currency & FX",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Waskita Karya (Persero) Tbk (WSKT) Fulfills Rp 722 Billion Bond Principal Obligation via Government Guarantee Scheme",
+        "body": "PT Waskita Karya (Persero) Tbk (WSKT) has fulfilled the principal obligation of its Obligasi III Year 2021 Series A bonds worth Rp 722 billion, which fell due on 24 September 2026. The fulfillment was carried out through a guarantee mechanism under which claim payments were made by the Government and PT Penjaminan Infrastruktur Indonesia (Persero)/PII according to their respective guarantee portions, part of the Government's guarantee scheme under the National Economic Recovery Program for state-owned enterprises affected by the COVID-19 pandemic. The company had previously notified the Guarantors and the Trustee of its inability to meet the obligation, after which the Trustee filed claims with the Guarantors. The guarantee claim payment does not extinguish Waskita Karya's obligation, which will be settled through the right of regression mechanism. Corporate Secretary Steven Subiantoro said the company remains focused on recovering its core contractor business and strengthening its financial condition.",
+        "source": "https://www.cnbcindonesia.com/market/20260929180441-17-771921/waskita-penuhi-pokok-obligasi-rp-722-miliar",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/09/29/waskita-1790680162776_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T18:17:14",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "heavy-constructions-civil-engineering"
+        ],
+        "tags": [
+          "Bonds",
+          "Credit",
+          "Government Policy",
+          "Capital & Funding",
+          "Bearish"
+        ],
+        "symbols": [
+          "WSKT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Toba Surimi Industries Tbk (CRAB) Appoints New President Director and Sets Rp2 Per Share Dividend Payable October 29, 2026",
+        "body": "PT Toba Surimi Industries Tbk (CRAB), a marine and fisheries processing issuer based in Deli Serdang, North Sumatra, approved a cash dividend for fiscal year 2025 at its annual general meeting held September 25, 2026 in Medan. The dividend equals 17.08% of 2025 net profit of Rp22.83 billion, totaling Rp3.9 billion, or Rp2 per share, payable on October 29, 2026, with cum and ex-dividend dates on October 5-6, 2026 for the regular and negotiation markets and October 7-8, 2026 for the cash market. The remaining Rp18.93 billion, or 82.92% of net profit, will be retained as earnings to strengthen working capital. Shareholders also approved Beston Barto Siboro as President Director, replacing Gindra Tardy, who now serves as Commissioner, and appointed Pontas Pane as Independent Commissioner.",
+        "source": "https://emitennews.com/news/rups-toba-surimi-crab-pilih-dirut-baru-lalu-bayar-dividen-29-oktober",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790676212.jpeg?25119ab",
+        "timestamp": "2026-09-29T18:01:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Shareholders General Meeting",
+          "Executive Changes",
+          "Annual Report",
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [
+          "CRAB.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 1,
+          "management": 2,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "New Mining Services Rules Seen Having Varied Impacts on Mineral and Coal Issuers",
+        "body": "A new Energy and Mineral Resources Ministry rule tightening the use of subsidiaries and affiliates in mineral and coal (minerba) mining services is expected to have differing impacts on issuers, requiring ministerial approval rather than banning such use outright. Analysts said impacts are generally negative but limited to directly affected issuers, with RMKE seen as highly impacted due to its heavy upstream dependence on RMKO, NCKL facing high impact from its integrated upstream-downstream ecosystem, HRUM facing moderate-to-high impact amid its asset transformation, and Prajogo Pangestu's CUAN and PTRO facing moderate impact, with PTRO potentially gaining if work shifts to independent contractors. Independent contractors such as UNTR and DOID-owned BUMA may see opportunities if affiliated contractors fail to obtain approval, though local contractor shortages could raise costs and quality risks. Kiwoom Sekuritas maintained a buy recommendation on PT Aneka Tambang Tbk (ANTM) with a target price of Rp 4,100 per share, while noting sector prospects remain driven more by commodity prices and demand than by the new rule.",
+        "source": "https://investasi.kontan.co.id/news/aturan-baru-jasa-tambang-dampaknya-akan-berbeda-ke-emiten-minerba",
+        "thumbnail": "https://foto.kontan.co.id/VeHMrm9xPkGJ0U2_J1J2yZLVAXM=/smart/filters:format(webp)/2021/11/19/1445906526.jpg",
+        "timestamp": "2026-09-29T17:54:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials",
+          "oil-gas-coal",
+          "industrial-goods"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Analyst Ratings",
+          "Commodities",
+          "Production & Operations",
+          "Neutral"
+        ],
+        "symbols": [
+          "ANTM.JK",
+          "CUAN.JK",
+          "PTRO.JK",
+          "RMKE.JK",
+          "HRUM.JK",
+          "NCKL.JK",
+          "UNTR.JK",
+          "DOID.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "BCA (BBCA) Negotiated Market Transactions Reach Rp1.35 Trillion Amid Rumors of Acquisition by Haji Isam",
+        "body": "Negotiated market transactions of PT Bank Central Asia Tbk (BBCA) on the Indonesia Stock Exchange totaled approximately Rp1.35 trillion across about 2.18 million shares between September 24 and September 29, 2025, amid social media rumors that businessman Andi Syamsudin Arsyad, known as Haji Isam, would acquire the BBCA stake long associated with the Hartono family's Djarum Group. The transactions included Rp485.9 billion on September 24, Rp111.1 billion on September 26, Rp710.4 billion on September 29, and Rp77 billion recorded by 11:30 AM WIB on September 29, at prices ranging from Rp6,100 to the Rp6,200s per share. The parties and purpose of the transactions remain unknown. BCA has denied the rumored corporate action, with EVP Corporate Communication & Social Responsibility Hera F. Haryn stating the information was untrue and urging the public to rely on official sources.",
+        "source": "https://www.cnnindonesia.com/ekonomi/20260929155252-92-1409569/ada-transaksi-saham-bca-rp135-t-di-tengah-rumor-akuisisi-haji-isam",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2024/03/04/ilustrasi-foto-logo-bank-bca_169.jpeg?w=1200",
+        "timestamp": "2026-09-29T17:17:16",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Market Sentiment",
+          "Neutral"
+        ],
+        "symbols": [
+          "BBCA.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Indonesia's Energy Ministry Bans Mining Permit Holders from Using Subsidiary and Affiliate Contractors Without Government Approval",
+        "body": "Energy and Mineral Resources (ESDM) Minister Bahlil Lahadalia issued Ministerial Decree Number 365.K/MB.01/MEM.B/2026, set on 18 September 2026, prohibiting holders of mining business permits (IUP and IUPK) from using mining services from subsidiaries and affiliated entities without government approval. The rule also limits appointing affiliates as contractors in a working area, requiring permit holders to prioritize local contractors near their mining sites. Exceptions apply for National Strategic Project assignments, smelter construction, and domestic supply needs, with applications reviewed within a maximum of 14 working days and approvals valid for the duration of the related service permit. For permits under regional government authority, approval can be granted by the governor. The decree also applies to Kontrak Karya and PKP2B holders and revokes the 2010 Directorate General of Minerals and Coal Regulation Number 376.",
+        "source": "https://www.idnfinancials.com/id/news/69608/bahlil-buat-aturan-baru-larang-perusahaan-tambang-pakai-afiliasi",
+        "thumbnail": "https://photo2.idnfinancials.com/fly/idn/test/arif/bahlil-26062026.jpg",
+        "timestamp": "2026-09-29T17:10:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Government Policy",
+          "Commodities",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10971,
+      "showing": 30,
+      "limit": 30,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 30,
+      "previous_offset": null
+    }
+  }
+}

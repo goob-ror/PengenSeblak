@@ -1,14 +1,26 @@
 /**
- * divergence.ts — Sector Divergence Z-Score (Algoritma 5)
+ * divergence.ts — Sector Divergence Anomaly Detection (Algoritma 5)
  * ==========================================================================
- * Z = (M_company - mean_M) / std_M    over the peer group
- * Flag when |Z| > 1.8
+ * RPAD — Robust Peer-Relative Anomaly Detection (IJEEI manuscript §2.6).
  *
- * Anomaly matrix from Features To Be Implemented.md:
- *   Z_PE < -1.8 AND Z_ROE > 0            → 💎 Value Dislocation
- *   Z_PE > +1.8 AND Z_ROE < 0            → ⚠️  Overvalued & Weak
- *   Z_Margin < -1.8                      → 📉 Margin Deterioration
- *   Z_PE < -1.8 AND Z_DER > +1.8         → 🪤 Value Trap Alert
+ * Replaces the deployed classical mean/SD z-score on raw P/E, which had a
+ * proven structural blindness: with positive-only P/E the most negative
+ * attainable z-score in an IDX peer group is ≈ −0.14…−0.58 (one near-zero-
+ * earnings firm inflates the SD), so the value-trap and value-dislocation
+ * rules could NEVER fire, and every flag was a near-zero-earnings artefact.
+ *
+ * RPAD changes exactly three things and keeps the rule matrix (Table 2):
+ *   1. Valuation enters as earnings yield EY = 1/PE (bounded near zero
+ *      earnings) — cheap = HIGH EY, so the valuation conditions flip sign.
+ *   2. Location/scale are median and 1.4826·MAD (scaled-MAD ×1.2533
+ *      fallback when MAD = 0) instead of mean and SD.
+ *   3. A two-sided data-quality gate: EY < 1% (P/E > 100) or EY > 100%
+ *      (P/E < 1) → "ratio unreliable". Such firms stay in the peer
+ *      statistics and can fire the margin rule, but can never receive a
+ *      valuation flag — the UI shows a data-quality notice instead.
+ *
+ * Threshold t = 1.8 and the rule precedence are unchanged from the
+ * published specification; the min valuation peer group is 5 firms.
  *
  * DATA NOTE (decided with the user): the screener route is used because it
  * exposes `der_mrq`, `free_float` and TTM snapshots the subsector "companies"
@@ -151,10 +163,36 @@ export function std(xs: number[]): number {
   return Math.sqrt(variance);
 }
 
+/** Median — the robust location estimator used by RPAD. */
+export function median(xs: number[]): number {
+  const s = [...xs].sort((a, b) => a - b);
+  const n = s.length;
+  if (n === 0) return NaN;
+  return n % 2 === 1 ? s[(n - 1) / 2]! : (s[n / 2 - 1]! + s[n / 2]!) / 2;
+}
+
 /**
- * Z-score of `value` against the sample. Returns null when undefined —
- * either the peer group is too small, dispersion is zero, or the value is
- * missing. Callers must treat null as "no signal", never as 0.
+ * Normal-consistent robust scale: 1.4826 × MAD (median absolute deviation).
+ * Falls back to 1.2533 × mean absolute deviation when the MAD is 0
+ * (e.g. more than half the sample shares one value) — the classic RPAD
+ * fallback so a degenerate group degrades instead of silently returning
+ * no signal. Returns null only when even the fallback is 0.
+ */
+export function robustScale(xs: number[]): number | null {
+  const clean = xs.filter((v) => Number.isFinite(v));
+  if (clean.length < 2) return null;
+  const med = median(clean);
+  const absDev = clean.map((v) => Math.abs(v - med));
+  const mad = median(absDev);
+  if (mad > 0) return 1.4826 * mad;
+  const meanAbsDev = absDev.reduce((a, b) => a + b, 0) / absDev.length;
+  if (meanAbsDev > 0) return 1.2533 * meanAbsDev;
+  return null;
+}
+
+/**
+ * Classical (mean/SD) z-score. Retained for backward compatibility and as
+ * the reference detector in tests — RPAD itself uses robustZ below.
  */
 export function zScore(value: number | null | undefined, sample: number[]): number | null {
   const clean = sample.filter((v) => Number.isFinite(v));
@@ -162,6 +200,47 @@ export function zScore(value: number | null | undefined, sample: number[]): numb
   const s = std(clean);
   if (s === 0) return null; // every peer identical → no dispersion to measure
   return (value - mean(clean)) / s;
+}
+
+/**
+ * RPAD robust z-score: (x − median) / (1.4826·MAD).
+ * Returns null when undefined — peer group too small, dispersion degenerate,
+ * or the value missing. Callers must treat null as "no signal", never as 0.
+ */
+export function robustZ(value: number | null | undefined, sample: number[]): number | null {
+  const clean = sample.filter((v) => Number.isFinite(v));
+  if (clean.length < 3 || value == null || !Number.isFinite(value)) return null;
+  const scale = robustScale(clean);
+  if (scale == null || scale === 0) return null;
+  return (value - median(clean)) / scale;
+}
+
+// ── Earnings yield & data-quality gate (RPAD core) ───────────────────────
+/**
+ * Earnings yield EY = 1/PE. Monotone in P/E but BOUNDED near zero earnings —
+ * this is what breaks the equation-8 bound that made cheap firms unflaggable
+ * under classical z on raw P/E (see IJEEI manuscript §2.6).
+ * Returns null for non-positive or missing P/E.
+ */
+export function earningsYield(peTtm: number | null | undefined): number | null {
+  if (peTtm == null || !Number.isFinite(peTtm) || peTtm <= 0) return null;
+  return 1 / peTtm;
+}
+
+/**
+ * Two-sided data-quality gate. Firms with EY < 1% (P/E > 100 — near-zero
+ * earnings) or EY > 100% (P/E < 1 — earnings above market value, almost
+ * always a one-off gain) are marked "ratio unreliable": they REMAIN in the
+ * peer statistics and can still fire the margin rule, but can never receive
+ * a valuation flag. The interface shows a data-quality notice instead.
+ */
+export const EY_MIN = 0.01; // 1%
+export const EY_MAX = 1.0; // 100%
+
+export function isRatioUnreliable(peTtm: number | null | undefined): boolean {
+  const ey = earningsYield(peTtm);
+  if (ey == null) return false; // missing P/E is "no valuation signal", not an artefact
+  return ey < EY_MIN || ey > EY_MAX;
 }
 
 // ── Anomaly classification ────────────────────────────────────────────────
@@ -186,34 +265,61 @@ export interface AnomalyResult {
   value: string;
   average: string;
   deviation: number;
+  /**
+   * True when the flagged firm ALSO fails the data-quality gate (its own
+   * P/E is unreliable). Only margin-deterioration flags can carry this —
+   * valuation flags are unreachable for DQ firms by construction.
+   */
+  dataQualityNotice?: boolean;
+}
+
+/** A firm the data-quality gate excluded from valuation scoring. */
+export interface DqNotice {
+  symbol: string;
+  company_name: string;
+  sub_sector: string;
+  pe_ttm: number | null;
+  reason: "near_zero_earnings" | "earnings_above_market_cap";
+  explanation: string;
 }
 
 const FLAG_THRESHOLD = 1.8;
+/** Valuation rules need a sturdier peer sample than the margin rule. */
+const MIN_VALUATION_PEERS = 5;
 
 /**
- * Evaluates one company against its peer group.
- * Pass peers WITHOUT the subject excluded — Z is computed vs the group mean,
- * and leaving the subject in only slightly shrinks its own deviation.
+ * Evaluates one company against its peer group (RPAD).
+ * Pass peers WITHOUT the subject excluded — the reference statistics are
+ * computed over the whole group, matching the published evaluation.
  */
 export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyResult | null {
-  const zPe = zScore(
-    row.pe_ttm,
-    peers.map((p) => p.pe_ttm ?? NaN),
-  );
-  const zRoe = zScore(
+  // Valuation signal: robust z on EARNINGS YIELD (sign reversed vs P/E —
+  // cheap = high EY = positive z). This is the change that makes cheap
+  // firms reachable: EY is bounded near zero earnings, so one GOTO cannot
+  // stretch the scale past −1.8 the way raw P/E dispersion did.
+  const eySamples = peers.map((p) => earningsYield(p.pe_ttm) ?? NaN);
+  const zEy = robustZ(earningsYield(row.pe_ttm), eySamples);
+  const zRoe = robustZ(
     row.roe_ttm,
     peers.map((p) => p.roe_ttm ?? NaN),
   );
-  const zMargin = zScore(
+  const zMargin = robustZ(
     row.net_margin,
     peers.map((p) => p.net_margin ?? NaN),
   );
-  const zDer = zScore(
+  const zDer = robustZ(
     row.der_mrq,
     peers.map((p) => p.der_mrq ?? NaN),
   );
 
-  const z = { pe: zPe, roe: zRoe, margin: zMargin, der: zDer };
+  // Data-quality gate for the SUBJECT: unreliable-ratio firms remain in the
+  // peer statistics above and can still fire the margin rule, but the two
+  // cheap-valuation rules and the overvaluation rule are gated off — the
+  // caller surfaces a DQ notice for them instead of a valuation flag.
+  const dq = isRatioUnreliable(row.pe_ttm);
+  const zPeForDisplay = zEy; // kept under the legacy "pe" key for the UI
+
+  const z = { pe: zPeForDisplay, roe: zRoe, margin: zMargin, der: zDer };
 
   let type: AnomalyType = "none";
   let label = "";
@@ -222,17 +328,15 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
   let metric = "PE";
   let valueNum = row.pe_ttm ?? null;
 
-  // Value Trap requires BOTH low Z_PE and high Z_DER. When DER data is
-  // unavailable (the documented bank case) the rule does NOT fire — we fall
-  // through to Margin Deterioration / Value Dislocation instead of silently
-  // inventing a Z_DER from missing data.
-  const derAvailable = row.der_mrq != null;
-
   // Value Trap takes precedence: it's the most actionable warning.
+  // Cheap on EY (z > +t) AND leverage far above peers — and the firm's own
+  // P/E must be reliable for a valuation flag to be admissible at all.
   if (
-    derAvailable &&
-    zPe != null &&
-    zPe < -FLAG_THRESHOLD &&
+    !dq &&
+    row.der_mrq != null &&
+    peers.length >= MIN_VALUATION_PEERS &&
+    zEy != null &&
+    zEy > FLAG_THRESHOLD &&
     zDer != null &&
     zDer > FLAG_THRESHOLD
   ) {
@@ -243,7 +347,14 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
     severity = "High";
     metric = "DER";
     valueNum = row.der_mrq ?? null;
-  } else if (zPe != null && zPe > FLAG_THRESHOLD && zRoe != null && zRoe < 0) {
+  } else if (
+    !dq &&
+    peers.length >= MIN_VALUATION_PEERS &&
+    zEy != null &&
+    zEy < -FLAG_THRESHOLD &&
+    zRoe != null &&
+    zRoe < 0
+  ) {
     type = "overvalued_weak";
     label = "Overvalued & Weak";
     explanation =
@@ -258,7 +369,14 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
       "Margin laba bersih tertinggal jauh dari peer — tekanan biaya atau daya pricing melemah.";
     metric = "Net Margin";
     valueNum = row.net_margin ?? null;
-  } else if (zPe != null && zPe < -FLAG_THRESHOLD && zRoe != null && zRoe > 0) {
+  } else if (
+    !dq &&
+    peers.length >= MIN_VALUATION_PEERS &&
+    zEy != null &&
+    zEy > FLAG_THRESHOLD &&
+    zRoe != null &&
+    zRoe > 0
+  ) {
     type = "value_dislocation";
     label = "Value Dislocation";
     explanation =
@@ -275,7 +393,9 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
       : metric === "Net Margin"
         ? peers.map((p) => p.net_margin)
         : peers.map((p) => p.der_mrq);
-  const avg = mean(peersForMetric.filter((v): v is number => v != null && Number.isFinite(v)));
+  const peerMedian = median(
+    peersForMetric.filter((v): v is number => v != null && Number.isFinite(v)),
+  );
 
   const pct = (v: number | null) =>
     v == null
@@ -295,27 +415,65 @@ export function detectAnomaly(row: ScreenerRow, peers: ScreenerRow[]): AnomalyRe
     z,
     metric,
     value: pct(valueNum),
-    average: pct(Number.isFinite(avg) ? avg : null),
+    average: pct(Number.isFinite(peerMedian) ? peerMedian : null),
+    dataQualityNotice: dq,
     // Deviation semantics depend on the metric:
-    //  - PE / DER are in absolute "turns" (e.g. 289x) → raw difference.
+    //  - PE / DER are in absolute "turns" → raw difference from the peer
+    //    MEDIAN (robust location, not the outlier-inflated mean).
     //  - Net margin is a decimal (0.05 = 5%) → ×100 for percentage points.
-    // The old code did (diff × 100) for ALL metrics, which turned a PE gap of
-    // ~289x into a meaningless "+28942".
     deviation:
       Math.round(
         (metric === "PE" || metric === "DER"
-          ? (valueNum ?? 0) - (Number.isFinite(avg) ? avg : 0)
-          : ((valueNum ?? 0) - (Number.isFinite(avg) ? avg : 0)) * 100) * 100,
+          ? (valueNum ?? 0) - (Number.isFinite(peerMedian) ? peerMedian : 0)
+          : ((valueNum ?? 0) - (Number.isFinite(peerMedian) ? peerMedian : 0)) * 100) * 100,
       ) / 100,
   };
 }
 
 /**
- * Runs detection across every company in a peer group.
- * Groups are per sub_sector — comparing a bank to a retailer produces
- * meaningless Z-scores, which is exactly the trap this avoids.
+ * Data-quality notices: every firm whose P/E fails the two-sided gate.
+ * These render as "ratio unreliable" rows in the UI — information, not flags.
  */
+export function detectDqNotices(rows: ScreenerRow[]): DqNotice[] {
+  const out: DqNotice[] = [];
+  for (const row of rows) {
+    if (!isRatioUnreliable(row.pe_ttm)) continue;
+    const ey = earningsYield(row.pe_ttm)!;
+    const nearZero = ey < EY_MIN;
+    out.push({
+      symbol: row.symbol,
+      company_name: row.company_name,
+      sub_sector: row.sub_sector ?? row.sector ?? "—",
+      pe_ttm: row.pe_ttm ?? null,
+      reason: nearZero ? "near_zero_earnings" : "earnings_above_market_cap",
+      explanation: nearZero
+        ? `P/E ${row.pe_ttm!.toFixed(0)}x — laba mendekati nol, rasio valuasi tidak reliabel. Dikeluarkan dari penilaian anomali valuasi.`
+        : `P/E ${row.pe_ttm!.toFixed(2)}x — laba melebihi kapitalisasi pasar (kemungkinan one-off gain), rasio tidak reliabel.`,
+    });
+  }
+  // Most extreme artefacts first (lowest earnings yield).
+  return out.sort((a, b) => (a.pe_ttm ?? Infinity) - (b.pe_ttm ?? Infinity)).reverse();
+}
+
+/**
+ * Runs RPAD across every company in a peer group.
+ * Groups are per sub_sector — comparing a bank to a retailer produces
+ * meaningless scores, which is exactly the trap this avoids.
+ *
+ * Returns both real flags and data-quality notices. The `useAnomalies`
+ * query data shape gains `dqNotices`; every consumer that previously read
+ * `anomalies` keeps working unchanged.
+ */
+export interface DetectionOutput {
+  anomalies: AnomalyResult[];
+  dqNotices: DqNotice[];
+}
+
 export function detectAnomalies(rows: ScreenerRow[]): AnomalyResult[] {
+  return detectAnomaliesWithDq(rows).anomalies;
+}
+
+export function detectAnomaliesWithDq(rows: ScreenerRow[]): DetectionOutput {
   const bySector = new Map<string, ScreenerRow[]>();
   for (const r of rows) {
     const key = r.sub_sector ?? r.sector ?? "unknown";
@@ -326,7 +484,7 @@ export function detectAnomalies(rows: ScreenerRow[]): AnomalyResult[] {
 
   const out: AnomalyResult[] = [];
   for (const [, peers] of bySector) {
-    if (peers.length < 3) continue; // Z needs a real sample
+    if (peers.length < 3) continue; // robust scale needs a real sample
     for (const row of peers) {
       const res = detectAnomaly(row, peers);
       if (res) out.push(res);
@@ -334,10 +492,12 @@ export function detectAnomalies(rows: ScreenerRow[]): AnomalyResult[] {
   }
 
   // High severity first, then biggest absolute deviation
-  return out.sort((a, b) => {
+  const anomalies = out.sort((a, b) => {
     if (a.severity !== b.severity) return a.severity === "High" ? -1 : 1;
     return Math.abs(b.deviation) - Math.abs(a.deviation);
   });
+
+  return { anomalies, dqNotices: detectDqNotices(rows) };
 }
 
 // Re-export so consumers can document the SHI weights alongside anomalies

@@ -83,6 +83,11 @@ export function EmitenDetail() {
     return list.filter((a) => a.symbol === ticker);
   }, [anomalies.data, ticker]);
 
+  const companyDqNotice = useMemo(() => {
+    const list = anomalies.data?.dqNotices ?? [];
+    return list.find((n) => n.symbol === ticker) ?? null;
+  }, [anomalies.data, ticker]);
+
   const companyNews = useMemo(() => {
     const list = newsFeed.data ?? [];
     return list.filter((n) => (n.symbols ?? []).some((s) => s.replace(".JK", "") === ticker));
@@ -362,11 +367,7 @@ export function EmitenDetail() {
           >
             {anomalies.isPending ? (
               <Skeleton className="m-4 h-16" />
-            ) : companyAnomaly.length === 0 ? (
-              <div className="p-6 text-center text-xs text-muted-foreground">
-                Tidak ada anomali terdeteksi (atau sub-sektor belum dipindai).
-              </div>
-            ) : (
+            ) : companyAnomaly.length > 0 ? (
               <div className="divide-y divide-border">
                 {companyAnomaly.map((a) => (
                   <div key={a.symbol + a.type} className="px-4 py-3">
@@ -378,8 +379,27 @@ export function EmitenDetail() {
                       {a.metric} · emiten {a.value} vs peer {a.average} (deviasi{" "}
                       {fmtNum(a.deviation)})
                     </div>
+                    {a.dataQualityNotice && (
+                      <div className="mt-1 text-[9px] text-muted-foreground/60 italic">
+                        Catatan: P/E emiten ini juga tidak reliabel — hanya margin yang terflag.
+                      </div>
+                    )}
                   </div>
                 ))}
+              </div>
+            ) : companyDqNotice ? (
+              <div className="px-4 py-3">
+                <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted-foreground/40" />
+                  Rasio tidak reliabel (P/E &gt; 100 atau &lt; 1) — tidak dinilai untuk anomali valuasi
+                </div>
+                <div className="mt-1 text-[9px] leading-relaxed text-muted-foreground/60">
+                  {companyDqNotice.explanation}
+                </div>
+              </div>
+            ) : (
+              <div className="p-6 text-center text-xs text-muted-foreground">
+                Tidak ada anomali terdeteksi (atau sub-sektor belum dipindai).
               </div>
             )}
           </Panel>
