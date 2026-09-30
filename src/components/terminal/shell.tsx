@@ -111,6 +111,9 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
         ))}
       </div>
       <div className="mt-auto border-t border-border p-4">
+        <p className="mb-3 text-[9px] leading-3 text-muted-foreground/60">
+          Alat analisis dan informasi pasar. Bukan rekomendasi investasi.
+        </p>
         {/* User info */}
         {user && (
           <div className="mb-3 flex items-center gap-2.5">

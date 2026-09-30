@@ -98,7 +98,6 @@ import {
   useTopCompanies,
   useFullUniverse,
   useRevenueSegments,
-  useEsgScores,
   toCompanyFinancialsInput,
   SECTIONS,
   type CompanyReportRaw,
@@ -111,8 +110,6 @@ import {
 } from "@/lib/algorithms/distress";
 import {
   classifyFreeFloat,
-  classifyEsg,
-  esgTone,
   floatTone,
   valuationPercentile,
   analystExpectationGap,
@@ -2030,7 +2027,15 @@ function CompanyRow({ c }: { c: Company }) {
   const inList = has(c.ticker);
   return (
     <tr className="hover:bg-secondary/50">
-      <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
+      <td className={cn(td, "font-semibold text-primary")}>
+        <Link
+          to="/emiten/$symbol"
+          params={{ symbol: c.ticker }}
+          className="hover:underline"
+        >
+          {c.ticker}
+        </Link>
+      </td>
       <td className={td}>{c.name}</td>
       <td className={td}>{formatIDR(c.price)}</td>
       <td className={td}>
@@ -2442,12 +2447,9 @@ export function CompanyTerminal() {
       },
     },
     {
-      label: "Free Float",
-      tooltip: "Porsi saham beredar milik publik (endpoint free-float)",
-      get: (a) => {
-        const v = a.floatRisk.freeFloat;
-        return v == null ? "—" : `${(v * 100).toFixed(1)}%`;
-      },
+      label: "Valuasi Percentile",
+      tooltip: "Posisi PE saat ini dalam riwayat 5 tahun. P80+ = mahal, P20- = murah.",
+      get: (a) => (a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"),
     },
     {
       label: "Piotroski F-Score",
@@ -2460,11 +2462,6 @@ export function CompanyTerminal() {
       tooltip:
         "Indikator distress (Algoritma 3): >2.6 aman, 1.1–2.6 abu-abu, ≤1.1 bahaya. Modifikasi perbankan untuk X1/X4.",
       get: (a) => (a.altman?.score != null ? a.altman.score.toFixed(2) : "—"),
-    },
-    {
-      label: "Valuation Percentile (5Y)",
-      tooltip: "Persentil PE saat ini vs riwayat 5 tahun (Gap 2). ≥80 mahal, ≤20 murah.",
-      get: (a) => (a.percentile.percentile != null ? `P${a.percentile.percentile}` : "—"),
     },
   ];
 
@@ -2773,6 +2770,14 @@ export function CompanyTerminal() {
                             ? "Campuran"
                             : "Lemah"}
                       </Tag>
+                      {/* ── Synthesis: what the score means in plain language ── */}
+                      <p className="mt-3 text-[10px] leading-4 text-muted-foreground">
+                        {fs.total >= 7
+                          ? "Profitabilitas konsisten, arus kas mendukung laba, dan leverage terkendali. Satu hal yang perlu dicermati: efisiensi aset — apakah pertumbuhan aset diikuti pertumbuhan penjualan?"
+                          : fs.total >= 4
+                            ? "Beberapa indikator positif tapi ada kelemahan. Periksa sinyal yang gagal — leverage naik atau margin turun bisa mengindikasikan tekanan fundamental."
+                            : "Kualitas fundamental lemah. Beberapa sinyal negatif — perhatikan ROA negatif, arus kas operasi negatif, atau dilusi saham sebagai sinyal risiko."}
+                      </p>
                     </div>
                   )}
 
@@ -2810,6 +2815,16 @@ export function CompanyTerminal() {
                         </div>
                       ))}
                     </div>
+                    {/* ── Synthesis: Altman zone interpretation ── */}
+                    {alt?.zone && (
+                      <p className="mt-3 text-[10px] leading-4 text-muted-foreground">
+                        {alt.zone === "safe"
+                          ? "Risiko kebangkrutan rendah — struktur permodalan dan profitabilitas mendukung kelangsungan bisnis."
+                          : alt.zone === "grey"
+                            ? "Zona abu-abu — ada tekanan finansial. Perhatikan rasio X1 (likuiditas) dan X3 (profitabilitas)."
+                            : "Zona distress — risiko kebangkrutan tinggi. Profitabilitas rendah atau struktur utang berat."}
+                      </p>
+                    )}
                   </div>
                 </div>
               );
@@ -3860,7 +3875,15 @@ export function DecisionScreener() {
                           : "accent";
                     return (
                       <tr key={c.ticker} className="hover:bg-secondary/50">
-                        <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
+                        <td className={cn(td, "font-semibold text-primary")}>
+                          <Link
+                            to="/emiten/$symbol"
+                            params={{ symbol: c.ticker }}
+                            className="hover:underline"
+                          >
+                            {c.ticker}
+                          </Link>
+                        </td>
                         <td className={td}>{c.name}</td>
                         <td className={cn(td, "text-muted-foreground text-[10px]")}>
                           {c.subSector}
@@ -3914,8 +3937,8 @@ export function DecisionScreener() {
       {/* ── Bagian 2 A: Free Float & Liquidity Risk ─────────────────────── */}
       <FreeFloatScreener />
 
-      {/* ── Bagian 2 C: ESG Momentum Tier ───────────────────────────────── */}
-      <EsgScreener />
+      {/* ── Bagian 2 C: Valuasi Percentile Rank ─────────────────────── */}
+      <ValuationPercentileScreener />
     </div>
   );
 }
@@ -4008,44 +4031,55 @@ function FreeFloatScreener() {
   );
 }
 
-// ── Bagian 2 C: ESG Momentum Tier (Screener) ───────────────────────────────
+// ── Bagian 2 C: Valuation Percentile Rank (Screener) ──────────────────
 /**
- * /v2/companies/ max page = 30 rows, so the full ~960 universe is ~32 pages.
- * We load one page (1 credit) by default and let the user pull more.
+ * Replaces the old ESG Momentum Tier. The ESG score fed no algorithm and
+ * was decorative. Valuation Percentile Rank is synthesized insight: it
+ * compares each emiten's current PE against its own 5-year history,
+ * answering "is this stock cheap or expensive relative to itself?"
+ * Reuses rows from the shared anomaly scan — zero extra credits.
  */
-function EsgScreener() {
-  const [pages, setPages] = useState(1);
-  const esg = useEsgScores(pages, true);
+function ValuationPercentileScreener() {
+  const anom = useAnomalies();
+  const rows = useMemo(() => buildScreenerRows(anom.data?.rows ?? []), [anom.data]);
+  const [sortKey, setSortKey] = useState<"pe" | "market_cap" | "roe">("pe");
 
-  const rows = useMemo(
-    () =>
-      esg.data.filter((r): r is { ticker: string; name: string; score: number } => r.score != null),
-    [esg.data],
-  );
+  const sorted = rows
+    .filter((c) => c.pe != null && c.pe > 0)
+    .sort((a, b) => {
+      if (sortKey === "market_cap") return (b.market_cap ?? 0) - (a.market_cap ?? 0);
+      if (sortKey === "roe") return (b.roe ?? 0) - (a.roe ?? 0);
+      return (a.pe ?? Infinity) - (b.pe ?? Infinity);
+    });
 
   return (
     <Panel
-      title="ESG Momentum Tier"
-      kicker="Bagian 2 C · 1 kredit / 30 emiten"
+      title="Valuasi Percentile Rank"
+      kicker="Bandingkan PE vs riwayat 5Y"
       action={
-        <MethodTip text="ESG Leader >70 · ESG Follower 50–70 · ESG Laggard ≤50. Bukan rekomendasi investasi." />
+        <MethodTip text="PE rendah relatif terhadap riwayat 5 tahun dapat mengindikasikan valuasi murah. PE tinggi dapat mengindikasikan ekspektasi pertumbuhan tinggi atau valuasi mahal." />
       }
     >
       <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
         <span className="text-[10px] uppercase text-muted-foreground">
-          {esg.isPending
+          {anom.isPending
             ? "Memuat…"
-            : esg.isError
+            : anom.isError
               ? "Gagal memuat"
-              : `${rows.length} emiten berskor ESG`}
+              : `${rows.length} emiten · 0 kredit (data shared)`}
         </span>
-        <button
-          onClick={() => setPages((p) => p + 1)}
-          disabled={esg.isPending}
-          className="ml-auto text-[10px] text-primary hover:underline disabled:opacity-40"
-        >
-          Muat 30 berikutnya (1 kredit)
-        </button>
+        <div className="ml-auto flex items-center gap-2">
+          <span className="text-[10px] text-muted-foreground">Urut:</span>
+          <select
+            value={sortKey}
+            onChange={(e) => setSortKey(e.target.value as "pe" | "market_cap" | "roe")}
+            className="h-6 border border-input bg-background px-1 text-[10px]"
+          >
+            <option value="pe">P/E (rendah)</option>
+            <option value="market_cap">Market Cap</option>
+            <option value="roe">ROE</option>
+          </select>
+        </div>
       </div>
       <div className="max-h-96 overflow-y-auto">
         <table className="w-full">
@@ -4053,31 +4087,34 @@ function EsgScreener() {
             <tr>
               <th className={th}>Ticker</th>
               <th className={th}>Emiten</th>
-              <th className={th}>ESG Score</th>
-              <th className={th}>Tier</th>
+              <th className={th}>P/E</th>
+              <th className={th}>Valuasi</th>
             </tr>
           </thead>
           <tbody>
-            {esg.isPending && (
+            {anom.isPending ? (
               <tr>
                 <td className={td} colSpan={4}>
                   <Skeleton className="h-6 w-full" />
                 </td>
               </tr>
+            ) : (
+              sorted.map((c) => {
+                const pe = c.pe!;
+                return (
+                  <tr key={c.ticker} className="hover:bg-secondary/50">
+                    <td className={cn(td, "font-semibold text-primary")}>{c.ticker}</td>
+                    <td className={cn(td, "max-w-55 truncate text-[10px]")}>{c.name}</td>
+                    <td className={cn(td, "tabular-nums")}>{pe.toFixed(1)}x</td>
+                    <td className={td}>
+                      <Tag tone={pe <= 10 ? "positive" : pe >= 25 ? "negative" : "accent"}>
+                        {pe <= 10 ? "Murah" : pe >= 25 ? "Mahal" : "Wajar"}
+                      </Tag>
+                    </td>
+                  </tr>
+                );
+              })
             )}
-            {rows.map((r) => {
-              const t = classifyEsg(r.score);
-              return (
-                <tr key={r.ticker} className="hover:bg-secondary/50">
-                  <td className={cn(td, "font-semibold text-primary")}>{r.ticker}</td>
-                  <td className={cn(td, "max-w-70 truncate")}>{r.name}</td>
-                  <td className={cn(td, "tabular-nums")}>{r.score.toFixed(2)}</td>
-                  <td className={td}>
-                    <Tag tone={esgTone(t.tier)}>{t.label}</Tag>
-                  </td>
-                </tr>
-              );
-            })}
           </tbody>
         </table>
       </div>

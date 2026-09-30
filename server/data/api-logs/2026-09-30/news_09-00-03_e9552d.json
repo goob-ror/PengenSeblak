@@ -1,0 +1,269 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T01:00:03.981Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 822
+  },
+  "data": {
+    "results": [
+      {
+        "title": "ARKO secures Rp696.5 billion loan from SMI for its largest hydropower plant, the 20 MW Pongbembe project",
+        "body": "ARKO, through its subsidiary PT Nosu Hydro, signed a financing agreement worth US$38.79 million (Rp696.5 billion at Rp17,995 per US dollar) with state-owned financing institution PT Sarana Multi Infrastruktur (Persero) on Friday, September 25. The facility will fund the ongoing 20 MW Pongbembe run-of-river hydropower plant project in Tana Toraja, South Sulawesi, ARKO's largest project to date, compared with its other plants ranging from 5.4 to 10 MW. The financing exceeds 20% of ARKO's equity of Rp552.84 billion as of June 30, making it a material transaction. Earlier, on September 24, ARKO also obtained a US$9.8 million (Rp174.57 billion) credit facility from SMI for solar power projects in Batam and Riau owned by PT Endorshine Energy Solutions; as of end-June, ARKO recorded liabilities of Rp1.19 trillion, total assets of Rp1.74 trillion, and cash and equivalents of Rp67.23 billion.",
+        "source": "https://www.idnfinancials.com/id/news/69621/arko-kembali-raih-pinjaman-rp696-5-miliar-kini-untuk-plta-terbesarnya",
+        "thumbnail": "https://photos.idnfinancials.com/_idn/_DESIGN%20GRAFIS/ARTIKEL%20IMAGE%20%28ARIF%29/ARKO-01112025.jpg",
+        "timestamp": "2026-09-29T21:15:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "utilities"
+        ],
+        "tags": [
+          "Capital & Funding",
+          "Business Expansion",
+          "Credit",
+          "Bullish"
+        ],
+        "symbols": [
+          "ARKO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 1
+        }
+      },
+      {
+        "title": "BNI Extends Up to Rp 10.75 Trillion in Credit to PT NexAI Digital Infrastruktur Tbk (MGLV) for Data Center Development",
+        "body": "PT Bank Negara Indonesia Tbk (BBNI) has added PT NexAI Digital Infrastruktur Tbk (MGLV) to its list of jumbo credit exposures, providing up to Rp 10.75 trillion through two of NexAI's subsidiaries, PT Nextier Askara Center (NAC) and PT Nextier GenAi Center (NGC), each 99.9% owned by NexAI. BNI extended a maximum of Rp 4.13 trillion to NAC with a six-year tenor and Rp 6.63 trillion to NGC with a seven-year tenor, both at floating rates based on 90-day compounded IndONIA plus 1.9%, to fund data center expansion reaching a combined capacity of 102 MW, including the Jababeka facility and BatangDC. BNI also acted as coordinating bank, mandated lead arranger and bookrunner, agent, and security agent, with the loans secured by collateral including land and building mortgages, fiducia, share pledges, and corporate guarantees from NexAI. The facility represents about 6.89% of BNI's core capital and joins other jumbo exposures including Rp 55 trillion to PT Agrinas Pangan, Rp 38.4 trillion to the Ministry of Finance, Rp 21.07 trillion to Perum BULOG, Rp 20.71 trillion to PT Bank Rakyat Indonesia Tbk (BRI), and Rp 16.21 trillion to PT Perusahaan Listrik Negara (PLN). Analysts noted the nonsyndicated commercial data center loan carries higher concentration risk than government-assignment-linked credits, citing thin sponsor equity, construction risk, floating rates, and the absence of syndication as key concerns.",
+        "source": "https://keuangan.kontan.co.id/news/bni-kucurkan-kredit-rp-1075-triliun-ke-nexai-tambah-daftar-debitur-jumbo",
+        "thumbnail": "https://foto.kontan.co.id/F42x7VO6JUQQOnCNLZHSM6GEnJI=/smart/2025/05/23/1164680376t.jpg",
+        "timestamp": "2026-09-29T20:33:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks",
+          "household-goods"
+        ],
+        "tags": [
+          "Credit",
+          "Capital & Funding",
+          "Risk & Compliance",
+          "Business Expansion",
+          "Neutral"
+        ],
+        "symbols": [
+          "BBNI.JK",
+          "MGLV.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Foreign Investors Exit Rp 105 Trillion from Indonesian Stocks; Analysts Weigh Q4 2026 Outflow Potential",
+        "body": "Foreign investors have pulled Rp 105.09 trillion year to date from Indonesian stocks in the regular market, including Rp 6.66 trillion in the past month and Rp 536.7 billion on Tuesday (29/9/2026), as the IHSG fell 0.43% to 6,121. Analysts from Pilarmas Investindo Sekuritas, PT Indo Premier Sekuritas (IPOT), and PT Samuel Sekuritas Indonesia attribute the outflows to new Indonesia Stock Exchange (IDX) policies, including short selling rules and a minimum share price cut to Rp 1, alongside global pressures such as high US Treasury yields, a stronger US dollar, geopolitical risks, and Rupiah volatility. The MSCI November Review is seen as the biggest concern for foreign investors, with potential passive volatility before the announcement and possible inflows after rebalancing. Analysts expect continued outflows to hit high foreign-ownership, large-weight stocks in banking, consumer, and telco sectors, while recommending stocks including BBCA, BMRI, ASII, ITMG, ADRO, INDF, ICBP, AMRT, JPFA, EXCL, and ANTM, with Nico's targets of Rp 8,500 for INDF, Rp 9,635 for ICBP, Rp 2,340 for AMRT, Rp 3,140 for JPFA, Rp 3,260 for EXCL, and Rp 4,585 for ANTM.",
+        "source": "https://investasi.kontan.co.id/news/asing-kabur-rp-105-triliun-dari-saham-begini-potensi-outflow-di-kuartal-iv-2026",
+        "thumbnail": "https://foto.kontan.co.id/slK7xNfRnlO3EUagrUzwI6DqYwA=/smart/filters:format(webp)/2015/04/15/1341476742.jpg",
+        "timestamp": "2026-09-29T19:54:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Foreign Investment",
+          "Market Sentiment",
+          "Analyst Ratings",
+          "Politics & Regulation",
+          "Bearish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PermataBank divests entire stake in credit card start-up Honest for Rp77.56 billion",
+        "body": "PermataBank has sold its entire shareholding in PT Honest Financial Technologies, the issuer of the Honest credit card, on Tuesday, 29 September 2026. The divestment involved the sale of 57,379 shares, equivalent to 15.07% of Honest's placed and paid-up capital, to individual buyer Tay Yao Nan, with a transaction value of Rp77.56 billion. PermataBank stated the divestment has no material impact on its operations, legal condition, financial condition, or business continuity. PermataBank was previously one of three investors in Honest, alongside California-based venture capital firm Village Global and Orico, a leading Japanese credit card company under Mizuho Financial Group, which led Honest's last equity funding round of US$100 million completed in October 2025.",
+        "source": "https://www.idnfinancials.com/id/news/69617/permatabank-cabut-investasi-di-kartu-kredit-honest-raup-rp77-6-miliar",
+        "thumbnail": "https://photos.idnfinancials.com/d/500x300/black-friday-buy-credit-card-34577.jpg",
+        "timestamp": "2026-09-29T19:45:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Financial Metrics",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "New Mining Services Regulation Could Raise Costs for Mineral and Coal Issuers",
+        "body": "A new ESDM Ministry regulation (Kepmen ESDM No. 365.K/MB.01/MEM.B/2026) tightens the use of subsidiaries and affiliates as mining service providers, requiring IUP or IUPK holders to prioritize local contractors and obtain ministerial approval to use affiliates. BRI Danareksa Sekuritas analyst Chory Agung Ramdhani said the impact is a potential cost increase and operational risk rather than an automatic significant cost rise, with effects varying by issuer. Issuers to watch include PT Bukit Asam (Persero) Tbk (PTBA), which owns mining services subsidiary SBS, and PT Adaro Andalan Indonesia Tbk (AADI), which has significant mining services transactions with related party SIS. Independent mining contractors may gain new opportunities, though local contractor availability and competence remain key challenges.",
+        "source": "https://investasi.kontan.co.id/news/aturan-baru-jasa-tambang-berpotensi-tekan-biaya-emiten-minerba",
+        "thumbnail": "https://foto.kontan.co.id/ut8wbYH2qrPzCeXXXLUX2GrSuWs=/smart/filters:format(webp)/2023/08/22/326576934.jpg",
+        "timestamp": "2026-09-29T19:11:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Commodities",
+          "Analyst Ratings",
+          "Neutral"
+        ],
+        "symbols": [
+          "PTBA.JK",
+          "AADI.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Sports Direct Malaysia Acquisition Seen as Catalyst for PT MAP Aktif Adiperkasa Tbk (MAPA) Amid Positive Outlook to End-2026",
+        "body": "PT MAP Aktif Adiperkasa Tbk (MAPA) is the primary subject, with analysts viewing its acquisition of Sports Direct Malaysia Sdn. Bhd. via subsidiary Athletica International Holdings Pte. Ltd. (AIH) for around Rp 2.5 trillion as a medium-term growth catalyst strengthening its ASEAN exposure. MAPA's H1-2026 revenue rose 15.1% YoY to about Rp 10.12 trillion with net profit up 30.5% YoY to Rp 864.4 billion, driven by domestic operations contributing Rp 7.7 trillion (76% of consolidated revenue, +17.0% YoY) and overseas markets including the Philippines (Rp 1.2 trillion, +9%), Thailand (+23% YoY), Vietnam (Rp 165 billion, +58% YoY), and Singapore (Rp 207 billion, -23% YoY). CGS International projects 2026 revenue of Rp 20.87 trillion (+8.25% YoY) and net profit of Rp 1.87 trillion (+9.70% YoY), recommending add with a lowered target price of Rp 750 per share, while Sinarmas Sekuritas recommends buy with a Rp 800 target and Mirae Asset Sekuritas advises wait and see. Key risks include rupiah weakness, rising operating costs, integration and funding needs from the acquisition, and a shrinking Indonesian middle class.",
+        "source": "https://investasi.kontan.co.id/news/akuisisi-sports-direct-jadi-katalis-mapa-cek-prospek-dan-rekomendasinya",
+        "thumbnail": "https://foto.kontan.co.id/P2GSPEQ5bQXVUHYjK8SuYgjf1wE=/smart/filters:format(webp)/2024/04/25/2087853240.jpg",
+        "timestamp": "2026-09-29T18:44:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "retailing"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Business Expansion",
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "MAPA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "IHSG Forecast and Stock Recommendations for Wednesday, 30 September 2026",
+        "body": "Phintraco Sekuritas predicts the Jakarta Composite Index (IHSG) will consolidate in the 6,050-6,200 range on Wednesday (30/9/2026), after closing weaker at 6,121.7 (down 0.43%) on Tuesday (29/9/2026), with the technology sector posting the largest decline at 3.37%. MNC Sekuritas sees a short-term chance of strengthening to test 6,152-6,196, while warning of further correction toward 5,850-5,946. MNC Sekuritas recommends BBCA, ICBP, MBMA, and UNTR for Wednesday's trading. The DPR officially enacted the 2027 State Budget (RUU APBN 2027) with a fiscal deficit of Rp671.16 trillion (2.4% of GDP), revised state revenue of Rp3,435.1 trillion, and state spending of Rp4,106.2 trillion, while the rupiah closed slightly weaker at Rp17,981 per US dollar in the spot market.",
+        "source": "https://investor.id/market/455982/prediksi-ihsg-dan-rekomendasi-saham-rabu-30-september-2026",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/02/1770652393-2000x1333.webp",
+        "timestamp": "2026-09-29T18:30:00",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Government Policy",
+          "Currency & FX",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Waskita Karya (Persero) Tbk (WSKT) Fulfills Rp 722 Billion Bond Principal Obligation via Government Guarantee Scheme",
+        "body": "PT Waskita Karya (Persero) Tbk (WSKT) has fulfilled the principal obligation of its Obligasi III Year 2021 Series A bonds worth Rp 722 billion, which fell due on 24 September 2026. The fulfillment was carried out through a guarantee mechanism under which claim payments were made by the Government and PT Penjaminan Infrastruktur Indonesia (Persero)/PII according to their respective guarantee portions, part of the Government's guarantee scheme under the National Economic Recovery Program for state-owned enterprises affected by the COVID-19 pandemic. The company had previously notified the Guarantors and the Trustee of its inability to meet the obligation, after which the Trustee filed claims with the Guarantors. The guarantee claim payment does not extinguish Waskita Karya's obligation, which will be settled through the right of regression mechanism. Corporate Secretary Steven Subiantoro said the company remains focused on recovering its core contractor business and strengthening its financial condition.",
+        "source": "https://www.cnbcindonesia.com/market/20260929180441-17-771921/waskita-penuhi-pokok-obligasi-rp-722-miliar",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/09/29/waskita-1790680162776_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T18:17:14",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "heavy-constructions-civil-engineering"
+        ],
+        "tags": [
+          "Bonds",
+          "Credit",
+          "Government Policy",
+          "Capital & Funding",
+          "Bearish"
+        ],
+        "symbols": [
+          "WSKT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10954,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

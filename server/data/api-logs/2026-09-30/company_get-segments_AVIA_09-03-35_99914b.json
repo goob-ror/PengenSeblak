@@ -1,0 +1,57 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T01:03:35.148Z",
+    "endpoint": "/company/get-segments/AVIA/",
+    "query_params": {},
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 489
+  },
+  "data": {
+    "symbol": "AVIA.JK",
+    "financial_year": 2024,
+    "revenue_breakdown": [
+      {
+        "value": 5847703000000,
+        "source": "Architecural Solution",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 1623653000000,
+        "source": "Trading Goods",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 4130606000000,
+        "source": "Total Revenue",
+        "target": "Cost of Revenue"
+      },
+      {
+        "value": 3340750000000,
+        "source": "Total Revenue",
+        "target": "Gross Profit"
+      },
+      {
+        "value": 1769090000000,
+        "source": "Gross Profit",
+        "target": "Operating Income"
+      },
+      {
+        "value": 1571660000000,
+        "source": "Gross Profit",
+        "target": "Operating Expense"
+      },
+      {
+        "value": 1318417000000,
+        "source": "Operating Expense",
+        "target": "Selling"
+      },
+      {
+        "value": 253243000000,
+        "source": "Operating Expense",
+        "target": "General and administrative"
+      }
+    ]
+  }
+}

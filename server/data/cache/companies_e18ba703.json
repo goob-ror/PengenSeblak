@@ -5,20 +5,20 @@
       "company_name": "PT Bank Central Asia Tbk."
     },
     {
-      "symbol": "DCII.JK",
-      "company_name": "PT DCI Indonesia Tbk"
-    },
-    {
       "symbol": "BBRI.JK",
       "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk"
     },
     {
-      "symbol": "BREN.JK",
-      "company_name": "PT Barito Renewables Energy Tbk."
+      "symbol": "DCII.JK",
+      "company_name": "PT DCI Indonesia Tbk"
     },
     {
       "symbol": "BYAN.JK",
       "company_name": "Bayan Resources Tbk"
+    },
+    {
+      "symbol": "BREN.JK",
+      "company_name": "PT Barito Renewables Energy Tbk."
     },
     {
       "symbol": "BMRI.JK",
@@ -61,12 +61,12 @@
       "company_name": "Barito Pacific Tbk"
     },
     {
-      "symbol": "BBNI.JK",
-      "company_name": "PT Bank Negara Indonesia (Persero) Tbk"
-    },
-    {
       "symbol": "SMMA.JK",
       "company_name": "PT Sinar Mas Multiartha Tbk"
+    },
+    {
+      "symbol": "BBNI.JK",
+      "company_name": "PT Bank Negara Indonesia (Persero) Tbk"
     },
     {
       "symbol": "MPRO.JK",
@@ -109,36 +109,36 @@
       "company_name": "Indofood CBP Sukses Makmur Tbk"
     },
     {
-      "symbol": "ADRO.JK",
-      "company_name": "Alamtri Resources Indonesia Tbk"
-    },
-    {
       "symbol": "ANTM.JK",
       "company_name": "Aneka Tambang Tbk."
-    },
-    {
-      "symbol": "HMSP.JK",
-      "company_name": "HM Sampoerna Tbk"
     },
     {
       "symbol": "ISAT.JK",
       "company_name": "PT Indosat Tbk"
     },
     {
-      "symbol": "CDIA.JK",
-      "company_name": "PT Chandra Daya Investasi Tbk"
+      "symbol": "HMSP.JK",
+      "company_name": "HM Sampoerna Tbk"
     },
     {
       "symbol": "MDKA.JK",
       "company_name": "PT Merdeka Copper Gold Tbk"
     },
     {
-      "symbol": "BNLI.JK",
-      "company_name": "Bank Permata Tbk"
+      "symbol": "ADRO.JK",
+      "company_name": "Alamtri Resources Indonesia Tbk"
+    },
+    {
+      "symbol": "CDIA.JK",
+      "company_name": "PT Chandra Daya Investasi Tbk"
     },
     {
       "symbol": "BRIS.JK",
       "company_name": "PT Bank Syariah Indonesia Tbk"
+    },
+    {
+      "symbol": "BNLI.JK",
+      "company_name": "Bank Permata Tbk"
     },
     {
       "symbol": "BUMI.JK",
@@ -169,28 +169,20 @@
       "company_name": "PT Merdeka Battery Materials Tbk"
     },
     {
-      "symbol": "PTRO.JK",
-      "company_name": "Petrosea Tbk"
-    },
-    {
       "symbol": "PGUN.JK",
       "company_name": "PT Pradiksi Gunatama Tbk"
+    },
+    {
+      "symbol": "PTRO.JK",
+      "company_name": "Petrosea Tbk"
     },
     {
       "symbol": "SUPR.JK",
       "company_name": "Solusi Tunas Pratama Tbk"
     },
     {
-      "symbol": "GOTO.JK",
-      "company_name": "PT GoTo Gojek Tokopedia Tbk"
-    },
-    {
       "symbol": "CPIN.JK",
       "company_name": "Charoen Pokphand Indonesia Tbk"
-    },
-    {
-      "symbol": "INCO.JK",
-      "company_name": "Vale Indonesia Tbk"
     },
     {
       "symbol": "MLPT.JK",
@@ -199,6 +191,14 @@
     {
       "symbol": "MEGA.JK",
       "company_name": "Bank Mega Tbk"
+    },
+    {
+      "symbol": "INCO.JK",
+      "company_name": "Vale Indonesia Tbk"
+    },
+    {
+      "symbol": "INKP.JK",
+      "company_name": "Indah Kiat Pulp & Paper Tbk"
     }
   ],
   "pagination": {

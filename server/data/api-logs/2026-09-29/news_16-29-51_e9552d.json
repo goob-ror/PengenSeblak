@@ -1,0 +1,269 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T08:29:51.234Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 211
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Rupiah Breaches Rp18,000 as Bank Indonesia Admits Fundamental Problems and Shifts Intervention Strategy",
+        "body": "The rupiah weakened past Rp18,000/US$, touching a low of Rp18,036/US$ in trading on Tuesday (29/9), extending its depreciation of nearly 8% since the start of the year. Bank Indonesia (BI) Governor Destry Damayanti told the DPR's Commission XI on Monday (28/9) that Indonesia faces fundamental and structural problems, and that BI is reducing costly spot interventions, which now account for only about 30% of total interventions, while continuing interventions through Domestic Non-Delivery Forward (DNDF) and Non-Delivery Forward (NDF) instruments. BI has also offered hedging swap incentives that attracted US$6 billion in foreign capital inflow over the past month, while holding its benchmark rate at 5.75% at the mid-September Board of Governors meeting. The Financial System Stability Committee (KSSK), where BI coordinates, has aligned its vision to improve Indonesia's economic fundamentals, including boosting export performance and programs to attract foreign investment.",
+        "source": "https://www.idnfinancials.com/id/news/69591/rupiah-tembus-rp18-000-bi-akui-ada-masalah-fundamental",
+        "thumbnail": "https://photos.idnfinancials.com/static/web/_DESIGN%20GRAFIS/ARTIKEL%20IMAGE%20%28ARIF%29/RUPIAH-MELEMAH-1.jpg",
+        "timestamp": "2026-09-29T15:10:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Currency & FX",
+          "Central Bank",
+          "Government Policy",
+          "Foreign Investment",
+          "Bearish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT GoTo Gojek Tokopedia Tbk (GOTO) Trades Below Rp 50 as Analyst Sees Rebound Potential",
+        "body": "Shares of PT GoTo Gojek Tokopedia Tbk (GOTO) closed at Rp 36 on Tuesday (29/9), a second consecutive session below Rp 50 after the Indonesia Stock Exchange lowered the price floor to Rp 1 per share. Kiwoom Sekuritas analyst Abdul Azis said the move reflects a price discovery process and advised investors not to panic, noting rebound potential as prior pressure was largely market sentiment while fundamentals improve. GOTO posted consecutive quarterly net profits of Rp 171 billion in Q1-2026 and Rp 252 billion in Q2-2026, with Q2-2026 net revenue up 31% annually to Rp 5.7 trillion and adjusted EBITDA surpassing Rp 1 trillion against a full-year 2026 target of Rp 3.2-3.4 trillion. Additional potential catalysts include a share buyback with a maximum budget of Rp 3.5 trillion and a plan to cancel about 32 billion treasury shares, to be voted on at an extraordinary general meeting of shareholders on 14 October 2026.",
+        "source": "https://investasi.kontan.co.id/news/saham-goto-di-bawah-gocap-peluang-rebound-terbuka",
+        "thumbnail": "https://foto.kontan.co.id/hdw0wXag2SazlTyvNPULWka6Bk8=/smart/filters:format(webp)/2026/07/28/1825387209.jpg",
+        "timestamp": "2026-09-29T15:05:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Outlook for PT GoTo Gojek Tokopedia Tbk (GOTO) Shares After Regaining Liquidity Following Removal of Rp 50 Minimum Price",
+        "body": "Shares of PT GoTo Gojek Tokopedia Tbk (GOTO) entered a new phase after the Indonesia Stock Exchange (IDX) removed the minimum price floor of Rp 50, and the stock closed at Rp 43 on Monday (29/9/2026), down 14%, in what analyst Abdul Azis of Kiwoom Sekuritas called a price discovery process rather than a cause for panic. The company's fundamentals have improved, posting positive net profit of Rp 171 billion in Q1-2026 and Rp 252 billion in Q2-2026, with Q2 net revenue up 31% year-on-year to Rp 5.7 trillion and adjusted EBITDA surpassing Rp 1 trillion, on track toward its 2026 target of Rp 3.2 trillion to Rp 3.4 trillion. GOTO also has a buyback budget of up to Rp 3.5 trillion, with lower price levels potentially a favorable consideration for its timing. Additionally, shareholders will vote at an Extraordinary General Meeting of Shareholders on 14 October 2026 on the cancellation of around 32 billion treasury shares, which, if approved, would permanently reduce shares outstanding and proportionally raise each shareholder's ownership percentage.",
+        "source": "https://investor.id/market/455956/prospek-saham-goto-setelah-kembali-likuid",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/09/1789037773-1035x596.webp",
+        "timestamp": "2026-09-29T14:58:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Financial Metrics",
+          "Market Sentiment",
+          "Neutral"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "New Mining Services Regulation from Minister Bahlil Casts Shadow Over Listed Mining Companies Including PT Darma Henwa Tbk (DEWA)",
+        "body": "Minister of Energy and Mineral Resources Bahlil Lahadalia issued Decree Number 365.K/MB.01/MEM.B/2026 requiring IUP and IUPK holders to prioritize local mining services companies near mine sites and to obtain ministerial approval before using subsidiaries or affiliates in mining services. PT Darma Henwa Tbk (DEWA), controlled by Zurich Assets International Ltd with ultimate beneficial owner Nirwan Dermawan Bakrie, records receivables of Rp752.09 billion from PT Arutmin Indonesia and Rp436.47 billion from PT Kaltim Prima Coal, both entities in the PT Bumi Resources Tbk (BUMI) group, plus receivables from PT Citra Palu Minerals, a subsidiary of PT Bumi Resources Mineral Tbk (BRMS). Other listed miners with in-house contractors include PT Amman Mineral Internasional Tbk (AMMN), which holds 44.27% of Macmahon Holdings Limited through its subsidiary; PT Alamtri Resources Indonesia Tbk (ADRO), owner of PT Saptaindra Jasa Sejati; PT Bukit Asam Tbk (PTBA), which indirectly owns PT Satria Bahana Sarana with total assets of Rp2.48 trillion; PT Indo Tambangraya Megah Tbk (ITMG), owner of 99.99% of PT Tambang Raya Usaha Tama; PT Bayan Resources Tbk (BYAN), owner of PT Indonesia Pratama with assets of US$884.56 million; and PT United Tractors Tbk (UNTR), owner of PT Pamapersada Nusantara with assets of Rp100.12 trillion. The rule does not outright ban affiliate usage, as exemptions apply for national strategic projects, mineral refining facilities, and domestic mineral and coal supply needs.",
+        "source": "https://www.bloombergtechnoz.com/detail-news/123023/deretan-emiten-tambang-dibayangi-kebijakan-baru-bahlil",
+        "thumbnail": "https://images.bloombergtechnoz.com/data/2026/07/image-20260715195342.jpg",
+        "timestamp": "2026-09-29T14:40:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Commodities",
+          "Bearish"
+        ],
+        "symbols": [
+          "DEWA.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "BRI Danareksa Sekuritas Cuts PT Merdeka Battery Materials Tbk (MBMA) Earnings Estimates and Price Target for 2026-2028",
+        "body": "BRI Danareksa Sekuritas analyst Andhika Audrey revised down net profit estimates for PT Merdeka Battery Materials Tbk (MBMA) for fiscal years 2026, 2027, and 2028 by 34.2%, 63.9%, and 68.6% respectively, also cutting the company's share price target. The revision reflects lower assumed average selling prices for downstream products and higher operating costs, which are pressuring margins. MBMA posted second-quarter 2026 revenue of US$592.6 million, up 30% quarter-on-quarter and 127% year-on-year, with first-half 2026 revenue of US$1.05 billion, up 67% year-on-year, though this reached only 39% of BRI Danareksa's estimate and 40% of consensus for 2026. First-half 2026 EBITDA reached US$310.6 million, up 306% year-on-year, and net profit was US$54.4 million, up 830% year-on-year, but only 35% of BRI Danareksa's estimate and 33% of consensus. Saprolite cash margin stood at US$26.7 per wet metric tonne and limonite at US$10.4 per wmt, held back by weakening nickel pig iron (NPI) and high grade nickel matte (HGNM) margins.",
+        "source": "https://investor.id/market/455953/cobaan-bagi-merdeka-battery-materials-mbma",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/1674003077.png",
+        "timestamp": "2026-09-29T14:11:00",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Commodities",
+          "Bearish"
+        ],
+        "symbols": [
+          "MBMA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "New Mining Services Regulation Could Pressure PT Alamtri Resources Indonesia Tbk (ADRO) and PT United Tractors Tbk (UNTR), Analysts Say",
+        "body": "Energy and Mineral Resources Ministerial Decree Number 365.K MB.01 MEM.B 2026, effective 18 September 2026, tightens rules on using affiliated companies as mining contractors, requiring approval from the Minister of Energy and Mineral Resources. Indo Premier Sekuritas analyst Ryan Winipta said PT Alamtri Resources Indonesia Tbk (ADRO), through its mining contractor PT Saptaindra Sejati (SIS), and PT United Tractors Tbk (UNTR), through PT Pamapersada Nusantara (PAMA), are the most exposed issuers, as AADI, ADMR, ADRO and SIS may be viewed as sharing the same ultimate beneficial owner, while PAMA serves as mining contractor for the PT Tuah Turangga Agung (TTA) coal mine with the same ultimate beneficial owner. The impact depends on exemption provisions, since approval may be granted for contractors supporting domestic mineral or coal supply, which could cover most coal miners given DMO obligations, though it remains unclear whether the exemption applies only to DMO production or all operations, and the regulation contains no transition provisions. PT Darma Henwa Tbk (DEWA) may also be affected given its plan to increase its share of work at PT Kaltim Prima Coal (KPC), owned by the BUMI group, while miners without in-house contractors relying on third-party contractors are expected to see limited impact.",
+        "source": "https://investasi.kontan.co.id/news/aturan-baru-jasa-tambang-berpotensi-menekan-kinerja-adro-dan-untr-ini-kata-analis",
+        "thumbnail": "https://foto.kontan.co.id/uowSUGi9GWYuMt7cIf8PU_IiI2k=/smart/filters:format(webp)/2018/07/20/1075397686.jpg",
+        "timestamp": "2026-09-29T14:03:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal",
+          "industrial-goods"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Analyst Ratings",
+          "Risk & Compliance",
+          "Bearish"
+        ],
+        "symbols": [
+          "ADRO.JK",
+          "UNTR.JK",
+          "DEWA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Sinar Mas Group Takes Control of Fiber Optic Infrastructure Issuer PT Ketrosden Triasmitra Tbk (KETR)",
+        "body": "Sinar Mas Group has officially taken control of fiber optic and terrestrial infrastructure issuer PT Ketrosden Triasmitra Tbk (KETR) through its affiliate PT Inti Mas Bangun Sejahtera (IMBS), which operates in the fiber optic infrastructure sector. IMBS secured control of KETR via a voluntary tender offer (VTO), acquiring 994,442,000 shares (35%), replacing PT Bahtera Bintang Nusantara (BBN) — the previous indirect controller through PT Fajar Sejahtera Mandiri Nusantara (FSMN) — as the new controlling shareholder. KETR Corporate Secretary Henry Rizard Rumopa stated there is no affiliation between BBN and IMBS, and the change of control has no negative impact on KETR's operations, legal standing, financial condition, or business continuity. Concurrently, a crossing transaction of 9.9 million lots of KETR shares took place on the negotiation market at an average price of Rp523 per share, totaling Rp520.1 billion, matching the Rp520 billion IMBS allocated for the VTO. The crossing price was at a discount of about 47.96% to KETR's regular market price of Rp1,005 per share, but a 0.04% premium to the average highest price on the Indonesia Stock Exchange before June 5, 2026.",
+        "source": "https://investor.id/market/455949/grup-sinar-mas-mencengkeram-bisnis-telekomunikasi",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/253x142-2/2026/08/1786573987-1920x1079.webp",
+        "timestamp": "2026-09-29T14:00:00",
+        "sector": "infrastructures",
+        "sub_sector": [
+          "telecommunication"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Ownership",
+          "Capital & Funding",
+          "Neutral"
+        ],
+        "symbols": [
+          "KETR.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 1,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Austindo Nusantara Jaya Tbk (ANJT) Provides up to Rp2 Trillion Loan Facility to Affiliate PT Adhitya Serayakorita at 8.5% Interest",
+        "body": "Palm oil issuer PT Austindo Nusantara Jaya Tbk (ANJT) signed a Loan Facility Agreement No. 360/ANJ/LA/01,006/IX/2026 on 25 September 2026 to provide a non-revolving rupiah loan facility of up to Rp2 trillion to its affiliate PT Adhitya Serayakorita (ASK), disclosed to the IDX on 29 September 2026. The loan carries a tenor to 30 June 2031 with interest of 8.5% per year on the outstanding principal, a late-payment rate of the agreement rate plus 2% per year, and is unsecured. The transaction equals 46.95% of ANJT's equity of Rp4.26 trillion as of 30 June 2026, making it a Material Transaction. ANJT and ASK are affiliated because both are controlled by First Resources Limited, and Isen Henry Tjong serves as Director of both companies; ASK will use the funds to refinance obligations and support working capital and operations, while ANJT views the deal as optimizing idle funds with potential additional interest income.",
+        "source": "https://emitennews.com/news/anjt-beri-pinjaman-ke-afiliasi-hingga-rp2t-dengan-bunga-85-per-tahun",
+        "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790665060.jpg?25119ab",
+        "timestamp": "2026-09-29T13:58:00",
+        "sector": "consumer-non-cyclicals",
+        "sub_sector": [
+          "food-beverage"
+        ],
+        "tags": [
+          "Credit",
+          "Capital & Funding",
+          "Partnerships & Agreements",
+          "Neutral"
+        ],
+        "symbols": [
+          "ANJT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 1,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10966,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

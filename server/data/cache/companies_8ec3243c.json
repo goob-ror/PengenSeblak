@@ -5,10 +5,10 @@
       "company_name": "PT Integra Indocabinet Tbk",
       "query_values": {
         "sub_sector": "Household Goods",
-        "market_cap": 1223125000000,
-        "last_close_price": 190,
-        "daily_close_change": -0.0206185567010309,
-        "pe_ttm": 21.9642624941433,
+        "market_cap": 1216687500000,
+        "last_close_price": 189,
+        "daily_close_change": 0.0161290322580645,
+        "pe_ttm": 21.8486611125952,
         "roe_ttm": 0.0120561988534141,
         "net_profit_margin[2025]": 0.0295351179481114,
         "der_mrq": 0.618712897686257
@@ -19,10 +19,10 @@
       "company_name": "PT Selaras Citra Nusantara Perkasa Tbk",
       "query_values": {
         "sub_sector": "Household Goods",
-        "market_cap": 410000000000,
-        "last_close_price": 164,
-        "daily_close_change": 0.00613496932515337,
-        "pe_ttm": 22.2462995393165,
+        "market_cap": 407500000000,
+        "last_close_price": 163,
+        "daily_close_change": 0.01875,
+        "pe_ttm": 22.1106513713939,
         "roe_ttm": 0.0526106412542347,
         "net_profit_margin[2025]": 0.0649772709099314,
         "der_mrq": 0.0710799095097585
@@ -33,10 +33,10 @@
       "company_name": "PT Chitose Internasional Tbk",
       "query_values": {
         "sub_sector": "Household Goods",
-        "market_cap": 195000000000,
-        "last_close_price": 195,
-        "daily_close_change": -0.0101522842639594,
-        "pe_ttm": 5.01566887432837,
+        "market_cap": 190000000000,
+        "last_close_price": 190,
+        "daily_close_change": 0.00529100529100529,
+        "pe_ttm": 4.88706198011482,
         "roe_ttm": 0.121837325222987,
         "net_profit_margin[2025]": 0.0585893181560702,
         "der_mrq": 0.226257988184881

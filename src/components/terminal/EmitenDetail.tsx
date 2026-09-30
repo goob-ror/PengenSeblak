@@ -176,11 +176,27 @@ export function EmitenDetail() {
             ),
           },
           {
-            label: "Free Float",
-            value: freeFloat.isPending ? (
+            label: "Valuasi (Pct)",
+            value: report.isPending ? (
               <Skeleton className="h-5 w-16" />
             ) : (
-              fmtNum(ff != null ? ff * 100 : null, 1, "%")
+              <span>
+                {peHistory.length > 0
+                  ? (() => {
+                      const currentPe = peHistory[peHistory.length - 1]?.pe ?? 0;
+                      const cheaper = peHistory.filter((p) => p.pe < currentPe).length;
+                      const pct =
+                        currentPe > 0 ? Math.round((cheaper / peHistory.length) * 100) : 0;
+                      return pct <= 20 ? (
+                        <span className="text-positive">P{pct} · Murah</span>
+                      ) : pct >= 80 ? (
+                        <span className="text-negative">P{pct} · Mahal</span>
+                      ) : (
+                        <span>P{pct} · Wajar</span>
+                      );
+                    })()
+                  : "—"}
+              </span>
             ),
           },
         ]}

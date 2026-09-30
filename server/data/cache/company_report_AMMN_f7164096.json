@@ -7,7 +7,7 @@
     "sub_industry": "Cooper",
     "sector": "Basic Materials",
     "sub_sector": "Basic Materials",
-    "market_cap": 342285987336320,
+    "market_cap": 328507525981680,
     "market_cap_rank": 7,
     "address": "Gedung Menara Karya Lantai 6 Unit A, B, C dan H\nJl. H.R. Rasuna Said Blok X-5 Kav. 1-2\nJakarta Selatan 12950",
     "employee_num": 1525,
@@ -16,9 +16,9 @@
     "website": "www.amman.co.id",
     "phone": "021 5799 4600",
     "email": "investor.relations@amman.co.id",
-    "last_close_price": 4720,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.00211416490486258,
+    "last_close_price": 4530,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.0402542372881356,
     "all_time_price": {
       "ytd_low": {
         "2026-05-22": 2710
@@ -27,7 +27,7 @@
         "2026-05-22": 2710
       },
       "90_d_low": {
-        "2026-06-30": 3070
+        "2026-07-01": 3070
       },
       "ytd_high": {
         "2026-01-08": 8450
@@ -62,9 +62,9 @@
     ]
   },
   "valuation": {
-    "last_close_price": 4720,
-    "latest_close_date": "2026-09-25",
-    "daily_close_change": -0.00211416490486258,
+    "last_close_price": 4530,
+    "latest_close_date": "2026-09-28",
+    "daily_close_change": -0.0402542372881356,
     "forward_pe": null,
     "intrinsic_value": -11850,
     "historical_valuation": [
@@ -108,17 +108,17 @@
         "enterprise_to_revenue": 18.2167083394604
       },
       {
-        "pb": 3.6704573722733,
-        "pe": 37.1252278514648,
-        "ps": 7.69580484177094,
-        "pcf": 1277.17069819713,
-        "peg": 9.87535895095503,
+        "pb": 3.52270591025382,
+        "pe": 35.6307801201558,
+        "ps": 7.38601608754711,
+        "pcf": 0.163277500211965,
+        "peg": 1225.759165854447,
         "year": 2026,
-        "pb_peer_avg": 1.30587157719734,
-        "pe_peer_avg": 9.77114426717259,
-        "ps_peer_avg": 0.907557768518917,
-        "enterprise_to_ebitda": 17.58394946177352,
-        "enterprise_to_revenue": 0.170125783885315
+        "pb_peer_avg": 1.28683339171489,
+        "pe_peer_avg": 9.51267104525416,
+        "ps_peer_avg": 0.824764787583903,
+        "enterprise_to_ebitda": 17.03234320369712,
+        "enterprise_to_revenue": 9.5655701967312
       }
     ]
   },

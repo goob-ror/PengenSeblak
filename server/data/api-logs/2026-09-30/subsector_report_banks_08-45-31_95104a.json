@@ -1,0 +1,65 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-30T00:45:31.494Z",
+    "endpoint": "/subsector/report/banks/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 627
+  },
+  "data": {
+    "sector": "Financials",
+    "sub_sector": "Banks",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 0.0786210454409308,
+          "avg_annual_revenue_growth": 0.0868262872737093
+        },
+        "2020": {
+          "avg_annual_earning_growth": -0.117573902194456,
+          "avg_annual_revenue_growth": 0.442115088029988
+        },
+        "2021": {
+          "avg_annual_earning_growth": -4.2112197086433,
+          "avg_annual_revenue_growth": 0.20136323563076
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.406078937791293,
+          "avg_annual_revenue_growth": 0.383507919684192
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.224774031279459,
+          "avg_annual_revenue_growth": 0.130160741011318
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.0670246128113528,
+          "avg_annual_revenue_growth": 0.362107767992458
+        },
+        "2025": {
+          "avg_annual_earning_growth": -0.195854693444407,
+          "avg_annual_revenue_growth": 0.0170767403145129
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.165485208666457,
+          "revenue_growth": 0.198811348175573
+        },
+        "2027": {
+          "base_year": 2025,
+          "eps_growth": 0.25362484542898,
+          "revenue_growth": 0.287051032829956
+        }
+      }
+    }
+  }
+}

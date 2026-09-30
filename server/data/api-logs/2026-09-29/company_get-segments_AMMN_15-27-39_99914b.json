@@ -1,0 +1,62 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T07:27:39.686Z",
+    "endpoint": "/company/get-segments/AMMN/",
+    "query_params": {},
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 508
+  },
+  "data": {
+    "symbol": "AMMN.JK",
+    "financial_year": 2024,
+    "revenue_breakdown": [
+      {
+        "value": 19362564957000,
+        "source": "Copper",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 23673704953000,
+        "source": "Gold",
+        "target": "Total Revenue"
+      },
+      {
+        "value": 21304555572000,
+        "source": "Total Revenue",
+        "target": "Cost of Revenue"
+      },
+      {
+        "value": 21731714338000,
+        "source": "Total Revenue",
+        "target": "Gross Profit"
+      },
+      {
+        "value": 19143072112000,
+        "source": "Gross Profit",
+        "target": "Operating Income"
+      },
+      {
+        "value": 2588642226000,
+        "source": "Gross Profit",
+        "target": "Operating Expense"
+      },
+      {
+        "value": 300164746000,
+        "source": "Operating Expense",
+        "target": "Accretion"
+      },
+      {
+        "value": 1949148166000,
+        "source": "Operating Expense",
+        "target": "Marketing, general and administrative"
+      },
+      {
+        "value": 339329314000,
+        "source": "Operating Expense",
+        "target": "Exploration cost"
+      }
+    ]
+  }
+}

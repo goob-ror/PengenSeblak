@@ -1,0 +1,60 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T06:27:57.907Z",
+    "endpoint": "/subsector/report/basic-materials/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 664
+  },
+  "data": {
+    "sector": "Basic Materials",
+    "sub_sector": "Basic Materials",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -0.741807727506223,
+          "avg_annual_revenue_growth": -0.109825463098324
+        },
+        "2020": {
+          "avg_annual_earning_growth": 0.373006003791216,
+          "avg_annual_revenue_growth": 0.00792396582293431
+        },
+        "2021": {
+          "avg_annual_earning_growth": 3.72269566866769,
+          "avg_annual_revenue_growth": 0.325317311337328
+        },
+        "2022": {
+          "avg_annual_earning_growth": 62.193746229179,
+          "avg_annual_revenue_growth": 0.524103383057675
+        },
+        "2023": {
+          "avg_annual_earning_growth": 1.16582538917256,
+          "avg_annual_revenue_growth": 0.217085540033967
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.753833284180654,
+          "avg_annual_revenue_growth": 0.317846868048925
+        },
+        "2025": {
+          "avg_annual_earning_growth": 1.91837814175021,
+          "avg_annual_revenue_growth": 0.582134766866669
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.702635085538589,
+          "revenue_growth": -0.108240499302643
+        }
+      }
+    }
+  }
+}

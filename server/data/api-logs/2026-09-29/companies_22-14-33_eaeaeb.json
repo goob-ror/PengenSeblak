@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T14:14:33.265Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Household Goods' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and last_close_price > 0 and daily_close_change > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 562
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "CINT.JK",
+        "company_name": "PT Chitose Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 4.86134060127211,
+          "roe_ttm": 0.121837325222987,
+          "net_profit_margin[2025]": 0.0585893181560702,
+          "last_close_price": 189,
+          "daily_close_change": -0.0307692307692308,
+          "der_mrq": 0.226257988184881
+        }
+      },
+      {
+        "symbol": "SCNP.JK",
+        "company_name": "PT Selaras Citra Nusantara Perkasa Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 21.7037068676259,
+          "roe_ttm": 0.0526106412542347,
+          "net_profit_margin[2025]": 0.0649772709099314,
+          "last_close_price": 160,
+          "daily_close_change": -0.024390243902439,
+          "der_mrq": 0.0710799095097585
+        }
+      },
+      {
+        "symbol": "WOOD.JK",
+        "company_name": "PT Integra Indocabinet Tbk",
+        "query_values": {
+          "sub_sector": "Household Goods",
+          "pe_ttm": 21.5018569679508,
+          "roe_ttm": 0.0120561988534141,
+          "net_profit_margin[2025]": 0.0295351179481114,
+          "last_close_price": 186,
+          "daily_close_change": -0.0210526315789474,
+          "der_mrq": 0.618712897686257
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 3,
+      "showing": 3,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

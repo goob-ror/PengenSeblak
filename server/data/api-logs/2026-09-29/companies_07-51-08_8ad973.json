@@ -1,0 +1,162 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T23:51:08.622Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Banks' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and last_close_price > 0 and daily_close_change > -100",
+      "limit": "30",
+      "offset": "30",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 277
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "DNAR.JK",
+        "company_name": "PT Bank Oke Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 9.07300819565899,
+          "roe_ttm": 0.0570393274551135,
+          "net_profit_margin[2025]": 0.221933317167879,
+          "last_close_price": 121,
+          "daily_close_change": 0.00833333333333333
+        }
+      },
+      {
+        "symbol": "MASB.JK",
+        "company_name": "PT Bank Multiarta Sentosa Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 21.3685398120854,
+          "roe_ttm": 0.0517009742663315,
+          "net_profit_margin[2025]": 0.20629895777272,
+          "last_close_price": 3280,
+          "daily_close_change": 0
+        }
+      },
+      {
+        "symbol": "MAYA.JK",
+        "company_name": "PT Bank Mayapada Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 77.5611114377353,
+          "roe_ttm": 0.00347312896180315,
+          "net_profit_margin[2025]": 0.00915498076766843,
+          "last_close_price": 202,
+          "daily_close_change": -0.0194174757281553
+        }
+      },
+      {
+        "symbol": "MCOR.JK",
+        "company_name": "PT Bank China Construction Bank Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 8.17593160023759,
+          "roe_ttm": 0.0416526184404634,
+          "net_profit_margin[2025]": 0.283308563021678,
+          "last_close_price": 66,
+          "daily_close_change": 0.0153846153846154
+        }
+      },
+      {
+        "symbol": "MEGA.JK",
+        "company_name": "Bank Mega Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 13.8218807145823,
+          "roe_ttm": 0.146635969907065,
+          "net_profit_margin[2025]": 0.436159950181815,
+          "last_close_price": 1950,
+          "daily_close_change": 0.029023746701847
+        }
+      },
+      {
+        "symbol": "NISP.JK",
+        "company_name": "PT Bank OCBC NISP Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 5.43833155437456,
+          "roe_ttm": 0.117665948057835,
+          "net_profit_margin[2025]": 0.389637655462017,
+          "last_close_price": 1250,
+          "daily_close_change": 0.00401606425702811
+        }
+      },
+      {
+        "symbol": "NOBU.JK",
+        "company_name": "PT Bank Nationalnobu Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.36729137681456,
+          "roe_ttm": 0.131998176470535,
+          "net_profit_margin[2025]": 0.296375477903303,
+          "last_close_price": 505,
+          "daily_close_change": -0.0380952380952381
+        }
+      },
+      {
+        "symbol": "PNBN.JK",
+        "company_name": "Bank Pan Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.594029971498,
+          "roe_ttm": 0.0531869085999254,
+          "net_profit_margin[2025]": 0.252900120212999,
+          "last_close_price": 840,
+          "daily_close_change": 0
+        }
+      },
+      {
+        "symbol": "PNBS.JK",
+        "company_name": "PT Bank Panin Dubai Syariah Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 22.6446545872208,
+          "roe_ttm": 0.0248122881626423,
+          "net_profit_margin[2025]": 0.0415602556892446,
+          "last_close_price": 44,
+          "daily_close_change": 0.0232558139534884
+        }
+      },
+      {
+        "symbol": "SDRA.JK",
+        "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 6.52925868949856,
+          "roe_ttm": 0.0407724307268729,
+          "net_profit_margin[2025]": -0.579388994609868,
+          "last_close_price": 204,
+          "daily_close_change": 0.0099009900990099
+        }
+      },
+      {
+        "symbol": "SUPA.JK",
+        "company_name": "PT Super Bank Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Banks",
+          "pe_ttm": 90.0477703632919,
+          "roe_ttm": 0.0221198969446929,
+          "net_profit_margin[2025]": 0.0616651139657713,
+          "last_close_price": 490,
+          "daily_close_change": 0.00823045267489712
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 41,
+      "showing": 11,
+      "limit": 30,
+      "offset": 30,
+      "has_next": false,
+      "has_previous": true,
+      "next_offset": null,
+      "previous_offset": 0
+    }
+  }
+}

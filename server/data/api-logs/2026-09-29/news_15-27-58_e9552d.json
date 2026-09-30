@@ -1,0 +1,274 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T07:27:58.795Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 523
+  },
+  "data": {
+    "results": [
+      {
+        "title": "Bank Indonesia Explains Causes as US Dollar Breaks Through Rp18,000 Again",
+        "body": "Bank Indonesia (BI) addressed the rupiah's weakening as the US dollar broke through Rp18,000 on Tuesday, September 29, 2026. Head of BI's Monetary and Securities Asset Management Department, Erwin Gunawan Hutapea, attributed the weakness to concerns over global inflation pressure and fiscal risks, along with oil prices rising above US$108 per barrel amid the lack of an agreement on opening the Strait of Hormuz. These factors pushed expectations of further US monetary tightening, lifting the 10-year UST yield to 5.23%, the highest since 2007, while increased importer demand for foreign currency near the end of Q3-2026 and portfolio outflows from emerging markets also weighed on the currency. The rupiah's quarter-to-date weakening of 0.67% remains in line with regional currencies, and foreign reserves rose to USD146.5 billion at the end of August 2026. BI said it continues to intervene consistently through NDF transactions in the offshore market, spot and DNDF transactions domestically, and purchases of government securities (SBN) in the secondary market to maintain exchange rate stability.",
+        "source": "https://www.cnbcindonesia.com/market/20260929111230-17-771705/bi-buka-suara-beberkan-penyebab-dolar-as-tembus-rp18000-lagi",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/09/23/logo-bank-indonesia-bi-1790158846530_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T11:16:22",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Currency & FX",
+          "Central Bank",
+          "Interest Rate",
+          "Global Economy",
+          "Neutral"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Astra International President Director Rudy Buys 4.4 Million ASII Shares Worth Rp20.81 Billion",
+        "body": "PT Astra International Tbk (ASII) President Director Rudy increased his stake in the automotive issuer by 4.4 million shares in three transactions between September 24 and 28, 2026, worth around Rp20.81 billion, according to an Indonesia Stock Exchange (IDX) disclosure. He bought 2.2 million shares at Rp4,760 on September 24 (Rp10.47 billion), 2 million shares at Rp4,700 on September 25 (Rp9.4 billion), and 200,000 shares at Rp4,700 on September 28 (Rp940 million), for an average price of about Rp4,730 per share. His holdings rose from 5.6 million to 10 million shares, lifting his voting rights from 0,0138% to 0,0247%. All purchases were direct buys of common shares for investment purposes, involved no repurchase agreement, and Rudy stated he is not a controlling shareholder.",
+        "source": "https://www.cnbcindonesia.com/market/20260929105541-17-771697/petinggi-astra-international-borong-44-juta-lembar-saham",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2018/02/12/21269b5e-e379-4b5e-85ec-30aafa901e85_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T11:10:22",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Ownership",
+          "Insider Trading",
+          "Institutional Investor",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASII.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Salim Group Affiliates BUMI and INDF Among Five Stocks Added to Indonesia Stock Exchange Short Selling List",
+        "body": "The Indonesia Stock Exchange (BEI) has approved five stocks for its initial short selling scheme starting 1 October 2026: PT Astra International Tbk (ASII), PT Bank Central Asia Tbk (BBCA), PT Barito Pacific Tbk (BRPT), PT Bumi Resources Tbk (BUMI), and PT Indofood Sukses Makmur Tbk (INDF). Two exchange members, PT Semesta Indovest Sekuritas (MG) and PT Ajaib Sekuritas Asia (XC), will facilitate the new trading from that date. Eligible investors must have held a customer fund account (RDN) for at least six months and a minimum capital of Rp50 million, with a short selling transaction cap of 0.02% of outstanding shares. BEI estimates the scheme could boost market liquidity by up to 17%, assuming five exchange members participate.",
+        "source": "https://www.bloombergtechnoz.com/detail-news/123000/afiliasi-grup-salim-bumi-indf-masuk-daftar-saham-short-selling",
+        "thumbnail": "https://images.bloombergtechnoz.com/data/2026/08/image-20260814105646.jpeg",
+        "timestamp": "2026-09-29T11:08:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal",
+          "food-beverage",
+          "multi-sector-holdings",
+          "banks",
+          "basic-materials"
+        ],
+        "tags": [
+          "Market Sentiment",
+          "Government Policy",
+          "Institutional Investor",
+          "Neutral"
+        ],
+        "symbols": [
+          "BUMI.JK",
+          "INDF.JK",
+          "ASII.JK",
+          "BBCA.JK",
+          "BRPT.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 1,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Two Directors of PT Merdeka Copper Gold Tbk (MDKA) Buy 1 Million Shares at Rp2,830 Each",
+        "body": "Two directors of PT Merdeka Copper Gold Tbk (MDKA), Albert Saputro and Titien Supeno, purchased a total of 1 million MDKA shares at Rp2,830 per share on 23 September 2026, for a total transaction value of about Rp3 billion. After the purchases, Albert Saputro's ownership in MDKA rose to 0.016% and Titien Supeno's to 0.012%, according to disclosure to the Indonesia Stock Exchange (IDX). The transactions come as MDKA plans a private placement (PMTHMETD IV) of up to 2,447,298,377 shares, or at most 10% of its fully paid-up capital, to fund business development and strengthen its capital structure. Of the proceeds, 30% is allocated for working capital and the remainder for business development, with existing shareholders facing dilution of up to 9.091%.",
+        "source": "https://www.cnbcindonesia.com/market/20260929100943-17-771675/2-bos-mdka-kompakan-borong-1-juta-saham-di-harga-rp2830",
+        "thumbnail": "https://akcdn.detik.net.id/visual/2026/07/13/proyek-porfiri-tembaga-emas-gua-macan-area-tambang-tujuh-bukit-di-banyuwangi-jawa-timur-yang-dikelola-pt-merdeka-copper-gold-t-1783927075224_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T11:00:22",
+        "sector": "basic-materials",
+        "sub_sector": [
+          "basic-materials"
+        ],
+        "tags": [
+          "Private Placement",
+          "Ownership",
+          "Capital & Funding",
+          "Insider Trading",
+          "Neutral"
+        ],
+        "symbols": [
+          "MDKA.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 1,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Bayan Resources Tbk (BYAN) Confirms Low Tuck Kwong Remains Controlling Shareholder After Haji Isam's Acquisition of 30% Stake",
+        "body": "PT Bayan Resources Tbk (BYAN) confirmed that Low Tuck Kwong remains the company's main and controlling shareholder following PT Jhonlin Baratama's acquisition of a 30% stake in BYAN, owned by Andi Syamsuddin Arsyad alias Haji Isam, on 16 September 2026. After the transaction, Low Tuck Kwong will hold 20.853%, or about 6,951,170,541 BYAN shares, while Elaine Low will hold 3,799,584,529 shares, equivalent to around 11.399%. Low Tuck Kwong and Elaine Low signed a conditional sale and purchase agreement with PT Jhonlin Baratama as buyer on 16 September 2026 covering 10,000,000,500 BYAN shares. BYAN Director Alexander Ery Wibowo stated there is no plan to change the company's Board of Directors or Board of Commissioners, and the company has not received any request to hold a General Meeting of Shareholders on the matter.",
+        "source": "https://finance.detik.com/bursa-dan-valas/d-8683823/terungkap-status-low-tuck-kwong-usai-haji-isam-borong-30-saham-byan",
+        "thumbnail": "https://awsimages.detik.net.id/api/wm/2022/12/26/low-tuck-kwong-3_169.jpeg?wid=54&w=1200&v=1&t=jpeg",
+        "timestamp": "2026-09-29T10:42:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Ownership",
+          "Mergers & Acquisitions",
+          "Shareholders General Meeting",
+          "Neutral"
+        ],
+        "symbols": [
+          "BYAN.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 0,
+          "management": 1,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT GoTo Gojek Tokopedia Tbk (GOTO) Hits Auto Reject Bottom for Second Consecutive Day, Now at Rp37",
+        "body": "Shares of PT GoTo Gojek Tokopedia Tbk (GOTO) hit the Auto Reject Bottom (ARB) for two consecutive days, falling 13.95% to Rp37 after trading at Rp43, down 14%, on Monday. The decline followed the Indonesia Stock Exchange (IDX) policy lowering the floor price in the Regular and Cash Markets from Rp50 to Rp1 per share, effective Monday, 28 September 2026. GoTo management, through Head of Corporate Affairs Audrey Petriny, said the price movement reflects technical factors rather than fundamentals, citing Q2-2026 net profit of Rp252 billion, net revenue of Rp5.7 trillion, and adjusted EBITDA above Rp1 trillion, with full-year adjusted EBITDA guidance of Rp3.2-3.4 trillion. The company also plans to cancel more than 32 billion treasury shares, about 2.7% of shares outstanding, subject to shareholder approval at an extraordinary general meeting on 14 October.",
+        "source": "https://www.cnbcindonesia.com/market/20260929101856-17-771677/saham-goto-arb-dua-hari-berturut-turut-kini-bertengger-di-rp37",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/08/04/dok-goto-1785833212922_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T10:40:23",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Financial Metrics",
+          "Market Sentiment",
+          "Neutral"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "IHSG Falls Over 2% as Rupiah Breaches Rp18,000/US$; Coordinating Minister Airlangga Hartarto Responds",
+        "body": "Coordinating Minister for Economic Affairs Airlangga Hartarto commented on the weakening of Indonesia's financial markets, calling the correction normal over a mid-term period. On Tuesday, 29 September 2026, the Jakarta Composite Index (IHSG) fell 127.29 points, or 2.07%, to 6,020.57 around 09:28 WIB, deepening its year-to-date decline to 30.09%. The rupiah depreciated 0.19% to Rp18,000/US$ by 09:55 WIB, breaching the psychological level, after opening down 0.03% at Rp17,970/US$ and closing 0.48% weaker at Rp17,965/US$ the previous day. Airlangga noted the Indonesia Stock Exchange (BEI) has prepared capital market regulations, including the reactivation of short selling effective 15 September 2026, a mechanism allowing investors to profit from falling share prices through securities lending with brokerages offering short selling facilities. He added that the government and Bank Indonesia (BI) continue to monitor the rupiah's movements.",
+        "source": "https://www.cnbcindonesia.com/market/20260929100927-17-771673/ihsg-ambruk-2-dolar-as-ke-rp18000-menko-airlangga-buka-suara",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/09/24/kiri-kanan-gubernur-bank-indonesia-destry-damayanti-menko-bidang-perekonomian-airlangga-hartarto-dan-ketua-dewan-komisioner-oj-1790221837718_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T10:25:23",
+        "sector": "financials",
+        "sub_sector": [
+          "investment-service"
+        ],
+        "tags": [
+          "Currency & FX",
+          "Government Policy",
+          "Central Bank",
+          "Market Sentiment",
+          "Bearish"
+        ],
+        "symbols": [],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 2,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Coal Issuer PT Harum Energy (HRUM), Owned by Conglomerate Kiki Barki, Plans Jumbo Share Buyback",
+        "body": "PT Harum Energy (HRUM), a coal issuer owned by conglomerate Kiki Barki, announced a share buyback plan worth a maximum of Rp120 billion. The buyback period is planned to run for three months, from September 28 to December 24, 2026, with all funds sourced from internal cash, which management said will not significantly affect the company's financial capability. During the period, all employees, majority shareholders, and affiliates are prohibited from transacting in the company's shares. HRUM's shares are majority controlled by PT Karunia Bara Perkasa with 79.79% ownership, with Lawrence Barki and Steven Scott Barki as ultimate beneficiaries, each also holding direct stakes of 0.095% and 0.085% respectively.",
+        "source": "https://www.cnbcindonesia.com/market/20260929095554-17-771668/emiten-milik-konglomerat-kiki-barki--hrum--mau-buyback-saham-jumbo",
+        "thumbnail": "https://awsimages.detik.net.id/visual/2026/06/08/layar-menampilkan-pergerakan-indeks-harga-saham-gabungan-ihsg-di-gedung-bursa-efek-indonesia-bei-jakarta-senin-862026-cnbc-ind-1780893110993_169.jpeg?w=900&q=80",
+        "timestamp": "2026-09-29T10:21:23",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Ownership",
+          "Bullish"
+        ],
+        "symbols": [
+          "HRUM.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 1,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10945,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

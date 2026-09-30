@@ -5,10 +5,10 @@
       "company_name": "PT Bank Central Asia Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 759713314387500,
-        "last_close_price": 6225,
-        "daily_close_change": -0.004,
-        "pe_ttm": 13.0723222351916,
+        "market_cap": 750560141925000,
+        "last_close_price": 6150,
+        "daily_close_change": -0.0120481927710843,
+        "pe_ttm": 12.9148243769363,
         "roe_ttm": 0.214714061275701,
         "net_profit_margin[2025]": 0.513696762091813
       }
@@ -18,10 +18,10 @@
       "company_name": "PT Bank Rakyat Indonesia (Persero) Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 471136312383180,
-        "last_close_price": 3140,
-        "daily_close_change": -0.00317460317460317,
-        "pe_ttm": 7.55964761540832,
+        "market_cap": 475637614730790,
+        "last_close_price": 3170,
+        "daily_close_change": 0.00955414012738853,
+        "pe_ttm": 7.63187354803961,
         "roe_ttm": 0.189617543571432,
         "net_profit_margin[2025]": 0.312471192774854
       }
@@ -31,10 +31,10 @@
       "company_name": "PT Bank Mandiri (Persero) Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 371447999983920,
-        "last_close_price": 4020,
-        "daily_close_change": -0.0147058823529412,
-        "pe_ttm": 5.30681885940169,
+        "market_cap": 372371999983880,
+        "last_close_price": 4030,
+        "daily_close_change": 0.00248756218905473,
+        "pe_ttm": 5.3200199013405,
         "roe_ttm": 0.238870046621558,
         "net_profit_margin[2025]": 0.4191224071999
       }
@@ -44,25 +44,12 @@
       "company_name": "PT Bank Negara Indonesia (Persero) Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 127758215659560,
-        "last_close_price": 3460,
-        "daily_close_change": -0.0114285714285714,
-        "pe_ttm": 6.14024758094897,
+        "market_cap": 127019728863840,
+        "last_close_price": 3440,
+        "daily_close_change": -0.00578034682080925,
+        "pe_ttm": 6.10475482036545,
         "roe_ttm": 0.123679520615341,
         "net_profit_margin[2025]": 0.313433712119701
-      }
-    },
-    {
-      "symbol": "BNLI.JK",
-      "company_name": "Bank Permata Tbk",
-      "query_values": {
-        "sub_sector": "Banks",
-        "market_cap": 70922700931500,
-        "last_close_price": 1980,
-        "daily_close_change": -0.01,
-        "pe_ttm": 19.3709120537547,
-        "roe_ttm": 0.0810920409645041,
-        "net_profit_margin[2025]": 0.285705150064818
       }
     },
     {
@@ -70,12 +57,25 @@
       "company_name": "PT Bank Syariah Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 68958495234890,
-        "last_close_price": 1510,
-        "daily_close_change": 0,
-        "pe_ttm": 8.63924588798628,
+        "market_cap": 69186834623085,
+        "last_close_price": 1515,
+        "daily_close_change": 0.0033112582781457,
+        "pe_ttm": 8.66785266244981,
         "roe_ttm": 0.15638532297638,
         "net_profit_margin[2025]": 0.290325148599603
+      }
+    },
+    {
+      "symbol": "BNLI.JK",
+      "company_name": "Bank Permata Tbk",
+      "query_values": {
+        "sub_sector": "Banks",
+        "market_cap": 67878039527875,
+        "last_close_price": 1895,
+        "daily_close_change": -0.0429292929292929,
+        "pe_ttm": 18.5393324958915,
+        "roe_ttm": 0.0810920409645041,
+        "net_profit_margin[2025]": 0.285705150064818
       }
     },
     {
@@ -83,10 +83,10 @@
       "company_name": "Bank Mega Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 44053118556490,
-        "last_close_price": 1895,
-        "daily_close_change": -0.0231958762886598,
-        "pe_ttm": 13.4320327969916,
+        "market_cap": 45331705110900,
+        "last_close_price": 1950,
+        "daily_close_change": 0.029023746701847,
+        "pe_ttm": 13.8218807145823,
         "roe_ttm": 0.146635969907065,
         "net_profit_margin[2025]": 0.436159950181815
       }
@@ -98,7 +98,7 @@
         "sub_sector": "Banks",
         "market_cap": 43061055946320,
         "last_close_price": 1730,
-        "daily_close_change": -0.00574712643678161,
+        "daily_close_change": 0,
         "pe_ttm": 6.27884442150456,
         "roe_ttm": 0.121798073776537,
         "net_profit_margin[2025]": 0.399716651159189
@@ -109,10 +109,10 @@
       "company_name": "PT Bank Danamon Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 41315740046070,
-        "last_close_price": 4270,
-        "daily_close_change": -0.0295454545454545,
-        "pe_ttm": 7.32232969194838,
+        "market_cap": 41509256392890,
+        "last_close_price": 4290,
+        "daily_close_change": 0.00468384074941452,
+        "pe_ttm": 7.35662631814018,
         "roe_ttm": 0.0918861464205125,
         "net_profit_margin[2025]": 0.175345982449906
       }
@@ -122,10 +122,10 @@
       "company_name": "PT Bank OCBC NISP Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 28281141159840,
-        "last_close_price": 1245,
-        "daily_close_change": -0.00796812749003984,
-        "pe_ttm": 5.41657822815706,
+        "market_cap": 28394720040000,
+        "last_close_price": 1250,
+        "daily_close_change": 0.00401606425702811,
+        "pe_ttm": 5.43833155437456,
         "roe_ttm": 0.117665948057835,
         "net_profit_margin[2025]": 0.389637655462017
       }
@@ -137,7 +137,7 @@
         "sub_sector": "Banks",
         "market_cap": 20023622638320,
         "last_close_price": 840,
-        "daily_close_change": -0.0117647058823529,
+        "daily_close_change": 0,
         "pe_ttm": 6.594029971498,
         "roe_ttm": 0.0531869085999254,
         "net_profit_margin[2025]": 0.252900120212999
@@ -150,7 +150,7 @@
         "sub_sector": "Banks",
         "market_cap": 17761308876220,
         "last_close_price": 910,
-        "daily_close_change": -0.0319148936170213,
+        "daily_close_change": 0,
         "pe_ttm": 54.1719676950855,
         "roe_ttm": 0.0366100019629908,
         "net_profit_margin[2025]": 0.084379409094909
@@ -161,10 +161,10 @@
       "company_name": "PT Allo Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 16995233562830,
-        "last_close_price": 790,
-        "daily_close_change": -0.0365853658536585,
-        "pe_ttm": 29.258541815282,
+        "market_cap": 16887668793445,
+        "last_close_price": 785,
+        "daily_close_change": -0.00632911392405063,
+        "pe_ttm": 29.0733611708815,
         "roe_ttm": 0.0791338832547715,
         "net_profit_margin[2025]": 0.289528322253259
       }
@@ -174,10 +174,10 @@
       "company_name": "PT Super Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 16309211060700,
-        "last_close_price": 486,
-        "daily_close_change": -0.028,
-        "pe_ttm": 89.3126865235915,
+        "market_cap": 16443443250500,
+        "last_close_price": 490,
+        "daily_close_change": 0.00823045267489712,
+        "pe_ttm": 90.0477703632919,
         "roe_ttm": 0.0221198969446929,
         "net_profit_margin[2025]": 0.0616651139657713
       }
@@ -187,10 +187,10 @@
       "company_name": "PT Krom Bank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 16188993502600,
-        "last_close_price": 4450,
-        "daily_close_change": -0.0154867256637168,
-        "pe_ttm": 84.7153202351512,
+        "market_cap": 15643297092400,
+        "last_close_price": 4300,
+        "daily_close_change": -0.0337078651685393,
+        "pe_ttm": 81.8597476429551,
         "roe_ttm": 0.0535985466441082,
         "net_profit_margin[2025]": 0.0756470612847541
       }
@@ -200,10 +200,10 @@
       "company_name": "PT Bank Tabungan Negara (Persero) Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 15075098466365,
-        "last_close_price": 1085,
-        "daily_close_change": -0.0180995475113122,
-        "pe_ttm": 3.59189446746194,
+        "market_cap": 15144568966210,
+        "last_close_price": 1090,
+        "daily_close_change": 0.00460829493087558,
+        "pe_ttm": 3.60844697652858,
         "roe_ttm": 0.111747188718739,
         "net_profit_margin[2025]": 0.157146072766518
       }
@@ -213,10 +213,10 @@
       "company_name": "PT Bank Maybank Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 14091840141357,
-        "last_close_price": 187,
-        "daily_close_change": -0.0105820105820106,
-        "pe_ttm": 7.50950029781326,
+        "market_cap": 14242555009179,
+        "last_close_price": 189,
+        "daily_close_change": 0.0106951871657754,
+        "pe_ttm": 7.58981580901982,
         "roe_ttm": 0.0581573534146686,
         "net_profit_margin[2025]": 0.175256460850833
       }
@@ -226,10 +226,10 @@
       "company_name": "PT Bank Jago Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 11389897772000,
-        "last_close_price": 830,
-        "daily_close_change": -0.0235294117647059,
-        "pe_ttm": 33.6745096515736,
+        "market_cap": 11115442404000,
+        "last_close_price": 810,
+        "daily_close_change": -0.0240963855421687,
+        "pe_ttm": 32.8630756840658,
         "roe_ttm": 0.0374715419683264,
         "net_profit_margin[2025]": 0.094555997508027
       }
@@ -239,12 +239,25 @@
       "company_name": "PT Bank Maspion Indonesia Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 8566541855040,
-        "last_close_price": 478,
-        "daily_close_change": -0.0244897959183673,
-        "pe_ttm": 650.239296990499,
+        "market_cap": 8745758211840,
+        "last_close_price": 488,
+        "daily_close_change": 0.0209205020920502,
+        "pe_ttm": 663.842629563522,
         "roe_ttm": 0.00202658028730374,
         "net_profit_margin[2025]": 0.0423011831127094
+      }
+    },
+    {
+      "symbol": "BSWD.JK",
+      "company_name": "Bank of India Indonesia Tbk",
+      "query_values": {
+        "sub_sector": "Banks",
+        "market_cap": 8436069588870,
+        "last_close_price": 2310,
+        "daily_close_change": 0.245283018867925,
+        "pe_ttm": 121.04760396156,
+        "roe_ttm": 0.0195388141434247,
+        "net_profit_margin[2025]": 0.145951500244384
       }
     },
     {
@@ -252,10 +265,10 @@
       "company_name": "PT Bank Mestika Dharma Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 8078132254500,
-        "last_close_price": 1995,
-        "daily_close_change": 0,
-        "pe_ttm": 26.8413388325958,
+        "market_cap": 8138870091000,
+        "last_close_price": 2010,
+        "daily_close_change": 0.0075187969924812,
+        "pe_ttm": 27.0431534102845,
         "roe_ttm": 0.0561985177061549,
         "net_profit_margin[2025]": 0.324467056103198
       }
@@ -265,10 +278,10 @@
       "company_name": "Bank Pembangunan Daerah Jawa Barat dan Banten Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 7864253082995,
-        "last_close_price": 755,
-        "daily_close_change": 0,
-        "pe_ttm": 3.4405795435582,
+        "market_cap": 7916334229240,
+        "last_close_price": 760,
+        "daily_close_change": 0.00662251655629139,
+        "pe_ttm": 3.46336483854865,
         "roe_ttm": 0.115640559815791,
         "net_profit_margin[2025]": 0.117378819098719
       }
@@ -278,10 +291,10 @@
       "company_name": "Bank Pembangunan Daerah Jawa Timur Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 7581324981510,
-        "last_close_price": 510,
-        "daily_close_change": 0,
-        "pe_ttm": 2.99054277208394,
+        "market_cap": 7655651697015,
+        "last_close_price": 515,
+        "daily_close_change": 0.00980392156862745,
+        "pe_ttm": 3.01986181886908,
         "roe_ttm": 0.117123971919631,
         "net_profit_margin[2025]": 0.186391358198893
       }
@@ -291,25 +304,12 @@
       "company_name": "PT Bank BTPN Syariah Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 7054663275000,
-        "last_close_price": 925,
-        "daily_close_change": -0.0364583333333333,
-        "pe_ttm": 5.8211499568447,
+        "market_cap": 7207196535000,
+        "last_close_price": 945,
+        "daily_close_change": 0.0216216216216216,
+        "pe_ttm": 5.94701265861431,
         "roe_ttm": 0.118108040757586,
         "net_profit_margin[2025]": 0.251732502349715
-      }
-    },
-    {
-      "symbol": "BSWD.JK",
-      "company_name": "Bank of India Indonesia Tbk",
-      "query_values": {
-        "sub_sector": "Banks",
-        "market_cap": 6774419518335,
-        "last_close_price": 1855,
-        "daily_close_change": 0.249158249158249,
-        "pe_ttm": 97.2048940903439,
-        "roe_ttm": 0.0195388141434247,
-        "net_profit_margin[2025]": 0.145951500244384
       }
     },
     {
@@ -317,10 +317,10 @@
       "company_name": "PT Bank Mayapada Internasional Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 5336672905312,
-        "last_close_price": 206,
-        "daily_close_change": -0.00961538461538462,
-        "pe_ttm": 79.0969750305617,
+        "market_cap": 5233048188704,
+        "last_close_price": 202,
+        "daily_close_change": -0.0194174757281553,
+        "pe_ttm": 77.5611114377353,
         "roe_ttm": 0.00347312896180315,
         "net_profit_margin[2025]": 0.00915498076766843
       }
@@ -332,7 +332,7 @@
         "sub_sector": "Banks",
         "market_cap": 4551778124240,
         "last_close_price": 3280,
-        "daily_close_change": -0.00303951367781155,
+        "daily_close_change": 0,
         "pe_ttm": 21.3685398120854,
         "roe_ttm": 0.0517009742663315,
         "net_profit_margin[2025]": 0.20629895777272
@@ -343,10 +343,10 @@
       "company_name": "PT Bank Amar Indonesia Tbk.",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 4112586129760,
-        "last_close_price": 226,
-        "daily_close_change": -0.0087719298245614,
-        "pe_ttm": 14.9444790336893,
+        "market_cap": 4076191562240,
+        "last_close_price": 224,
+        "daily_close_change": -0.00884955752212389,
+        "pe_ttm": 14.8122270068425,
         "roe_ttm": 0.0800434086809218,
         "net_profit_margin[2025]": 0.126675384527168
       }
@@ -356,10 +356,10 @@
       "company_name": "PT Bank Nationalnobu Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 3886921216500,
-        "last_close_price": 525,
-        "daily_close_change": -0.0186915887850467,
-        "pe_ttm": 6.61946133233196,
+        "market_cap": 3738848027300,
+        "last_close_price": 505,
+        "daily_close_change": -0.0380952380952381,
+        "pe_ttm": 6.36729137681456,
         "roe_ttm": 0.131998176470535,
         "net_profit_margin[2025]": 0.296375477903303
       }
@@ -369,10 +369,10 @@
       "company_name": "PT Bank Aladin Syariah Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 3372843879024,
-        "last_close_price": 228,
-        "daily_close_change": -0.0256410256410256,
-        "pe_ttm": 30.9273488086414,
+        "market_cap": 3461602928472,
+        "last_close_price": 234,
+        "daily_close_change": 0.0263157894736842,
+        "pe_ttm": 31.7412264088688,
         "roe_ttm": 0.0329651030633663,
         "net_profit_margin[2025]": 0.187150588241138
       }
@@ -382,10 +382,10 @@
       "company_name": "PT Bank Woori Saudara Indonesia 1906 Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "market_cap": 2938144133980,
-        "last_close_price": 202,
-        "daily_close_change": -0.0194174757281553,
-        "pe_ttm": 6.46524634940544,
+        "market_cap": 2967234669960,
+        "last_close_price": 204,
+        "daily_close_change": 0.0099009900990099,
+        "pe_ttm": 6.52925868949856,
         "roe_ttm": 0.0407724307268729,
         "net_profit_margin[2025]": -0.579388994609868
       }

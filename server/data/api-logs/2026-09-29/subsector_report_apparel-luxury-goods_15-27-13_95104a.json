@@ -1,0 +1,60 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T07:27:13.935Z",
+    "endpoint": "/subsector/report/apparel-luxury-goods/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 609
+  },
+  "data": {
+    "sector": "Consumer Cyclicals",
+    "sub_sector": "Apparel & Luxury Goods",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -5.95103051376729,
+          "avg_annual_revenue_growth": -0.012446426948459
+        },
+        "2020": {
+          "avg_annual_earning_growth": -1.05069364126739,
+          "avg_annual_revenue_growth": -0.23106987619059
+        },
+        "2021": {
+          "avg_annual_earning_growth": -1.01074010487239,
+          "avg_annual_revenue_growth": 0.00229555089211528
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.0791620497215857,
+          "avg_annual_revenue_growth": 0.169454727452316
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.209443364545321,
+          "avg_annual_revenue_growth": 0.102169253006172
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.260448967799216,
+          "avg_annual_revenue_growth": 0.301123943650634
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.381310472407227,
+          "avg_annual_revenue_growth": 0.463644329961173
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": -0.341092256076156,
+          "revenue_growth": -0.484156837466814
+        }
+      }
+    }
+  }
+}

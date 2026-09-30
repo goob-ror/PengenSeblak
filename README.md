@@ -58,15 +58,14 @@ Every analytical number in the app is **computed from live API data** — no moc
 
 ### Terminal Emiten — Company & Peer Terminal
 - Peer comparison of 2–5 emitens (search across top-50 IDX names by market cap, persisted to localStorage).
-- **Matriks Komparasi** — fundamentals from live company reports.
-- **Dominance Score** — head-to-head market-leader matrix from a weighted fundamental composite.
-- **Kesehatan & Distres** — **Piotroski F-Score** (0–9) and **Altman Z-Score** (incl. bank branch) with plain-language hover tooltips for every input metric.
+- **Matriks Komparasi** — fundamentals from live company reports, with Valuation Percentile Rank replacing decorative Free Float.
+- **Dominance Score** — head-to-head market-leader matrix from a weighted fundamental composite. Individual peers can be removed (clears their client cache); "Hapus semua" clears the whole set.
+- **Kesehatan & Distres** — **Piotroski F-Score** (0–9) and **Altman Z-Score** (incl. bank branch) with plain-language hover tooltips for every input metric, **plus a plain-language synthesis paragraph** explaining what the score means and what to watch.
 - Revenue-segment breakdown (HHI concentration) per selected peer.
-- Free float map.
 
 ### Halaman Detail Emiten — `/emiten/{symbol}`
 - Dedicated per-company analytics page (opened from global search, sector tables, or anomaly sheets).
-- Metric strip (price, market cap, P/E, EPS, dividend yield, free float), Piotroski + Altman, historical P/E band, revenue segments, related anomalies, and news mentioning the ticker.
+- Metric strip (price, market cap, P/E, EPS, dividend yield, valuation percentile), Piotroski + Altman, historical P/E band, revenue segments, related anomalies, and news mentioning the ticker.
 - **Watchlist star** — add/remove to the persisted watchlist straight from the page.
 
 ### Berita & Katalis — News Intelligence
@@ -79,6 +78,7 @@ Every analytical number in the app is **computed from live API data** — no moc
 - Real screener rows (from the shared anomaly-scan queries — **zero extra API credits**), filtered by quality threshold, ROE minimum, classification, and flag toggles.
 - **Deterministic decision labels**: *Undervalued Quality*, *Growth at Reasonable Price*, *Dividend Trap Alert*, *Balanced Fundamentals*.
 - Multi-factor decision matrix, sortable columns, watchlist toggle per row.
+- **Valuation Percentile Rank** table — replaces the old decorative ESG panel; ranks each emiten's P/E against its own history (0 extra credits, shared data).
 
 ### Daftar Pantauan — Watchlist
 - Persisted (localStorage) watchlist with live price/change/P/E/ROE and anomaly tags.
@@ -109,12 +109,30 @@ Browser (React 19 + Vite, port 8080)
 
 The Sectors API charges per request, so the server stack is built to avoid wasted calls:
 
-1. **Redis + file cache with per-endpoint TTL** (fundamentals 24h, sector reports 6h, prices 15m, news 5m, static lists 7d).
+1. **Redis + file cache with per-endpoint TTL** — every endpoint has its own freshness window (see table below); stale data is served from cache until the TTL expires, then one fresh request refills it.
 2. **TanStack Query client cache** — no refetch while data is fresh; query keys shared across pages so one fetch feeds every consumer.
 3. **In-flight request dedup** — identical concurrent requests share one upstream call.
 4. **Sections selector** — company reports request only needed sections (6 credits/symbol instead of 8).
 5. **Cache-aware prefetch** on startup in development; morning warm-up cron before market open.
 6. **Endpoint registry with local validation** — malformed requests are rejected before reaching the paid API.
+
+#### Cache TTL by data category
+
+How old data can get before a new API call is made — server-side (Redis/file) and client-side (TanStack Query):
+
+| Data category | Server TTL | Client staleTime | Why |
+|---|---|---|---|
+| **Company reports** (overview, valuation, financials, dividend) | **24 hours** | 1 hour | Annual data — won't change intraday |
+| **Sector reports** (growth, stability, valuation) | **6 hours** | 6 minutes | Recomputed daily, stable within a session |
+| **Daily prices / IHSG index** | **15 min** during market hours, **24 h** after close | 15 minutes | Intraday during IDX hours (09:00–15:50 WIB), then frozen |
+| **Foreign flow** (buy/sell per day) | **15 min** | 15 minutes | Moves intraday with market activity |
+| **Broker activity** | **30 min** | — | Broker flows settle after each session |
+| **News** | **5 min** | 5 minutes | Most volatile — new articles arrive continuously |
+| **Corporate actions** | **1 hour** | — | Scheduled announcements, stable within the hour |
+| **Suspensions** | **10 min** | — | Can happen at any time |
+| **Static lists** (subsectors, tags, company list) | **7 days** | 7 days | Changes only with new listings/delistings |
+
+> **Effect:** a full page reload during market hours costs ~0 credits if data was fetched within the last 5–15 minutes. A fresh morning visit costs ~20 credits total across all pages; subsequent navigation for the rest of the day is free.
 
 ---
 
@@ -198,6 +216,7 @@ Market data by [Sectors API](https://sectors.app).
 
 ## Notes
 
+- **Analysis, not advice** — every screen includes plain-language synthesis explaining what the numbers mean. The sidebar carries a persistent disclaimer: *"Alat analisis dan informasi pasar. Bukan rekomendasi investasi."*
 - **No automated trading** — this is decision support only.
 - **No fabricated data** — where an API field is missing, the UI shows "—" and says so, rather than inventing a number.
 - Not officially affiliated with IDX or Sectors.app.

@@ -18,11 +18,11 @@
       "company_name": "PT Multitrend Indo Tbk.",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 95.2176950768421,
+        "pe_ttm": 93.1364339822664,
         "roe_ttm": 0.00910000321873604,
         "net_profit_margin[2025]": -0.0152964392824762,
-        "last_close_price": 183,
-        "daily_close_change": -0.0108108108108108,
+        "last_close_price": 179,
+        "daily_close_change": -0.0218579234972678,
         "der_mrq": 0.508684571015923
       }
     },
@@ -44,11 +44,11 @@
       "company_name": "PT Industri dan Perdagangan Bintraco Dharma Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 10.6757959203245,
+        "pe_ttm": 10.4868437801418,
         "roe_ttm": 0.111402848693096,
         "net_profit_margin[2025]": 0.0313283406950719,
-        "last_close_price": 113,
-        "daily_close_change": -0.096,
+        "last_close_price": 111,
+        "daily_close_change": -0.0176991150442478,
         "der_mrq": 0.809057741346913
       }
     },
@@ -61,7 +61,7 @@
         "roe_ttm": 0.0474679857425166,
         "net_profit_margin[2025]": 0.00641235572547225,
         "last_close_price": 282,
-        "daily_close_change": -0.0208333333333333,
+        "daily_close_change": 0,
         "der_mrq": 1.14875168430171
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "PT Caturkarda Depo Bangunan Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 18.6454884117684,
+        "pe_ttm": 19.1449211370837,
         "roe_ttm": 0.058669275532439,
         "net_profit_margin[2025]": 0.0267880683609912,
-        "last_close_price": 224,
-        "daily_close_change": 0.00900900900900901,
+        "last_close_price": 230,
+        "daily_close_change": 0.0267857142857143,
         "der_mrq": 0.220952749779037
       }
     },
@@ -83,11 +83,11 @@
       "company_name": "Erajaya Swasembada Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 6.89205867312014,
+        "pe_ttm": 6.72258182050243,
         "roe_ttm": 0.128985846723742,
         "net_profit_margin[2025]": 0.0156118024519967,
-        "last_close_price": 610,
-        "daily_close_change": 0.0166666666666667,
+        "last_close_price": 595,
+        "daily_close_change": -0.0245901639344262,
         "der_mrq": 0.729201899184088
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT Sinar Eka Selaras Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 8.09802551537286,
+        "pe_ttm": 7.9402717715669,
         "roe_ttm": 0.10782917904137,
         "net_profit_margin[2025]": 0.0260286804325055,
-        "last_close_price": 308,
-        "daily_close_change": -0.0128205128205128,
+        "last_close_price": 302,
+        "daily_close_change": -0.0194805194805195,
         "der_mrq": 0.172014801547705
       }
     },
@@ -109,11 +109,11 @@
       "company_name": "Indomobil Sukses Internasional Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 34.0565112820858,
+        "pe_ttm": 33.8573503973952,
         "roe_ttm": 0.00598357122501207,
         "net_profit_margin[2025]": 0.00433807260157133,
-        "last_close_price": 855,
-        "daily_close_change": -0.0115606936416185,
+        "last_close_price": 850,
+        "daily_close_change": -0.00584795321637427,
         "der_mrq": 3.39073350212735
       }
     },
@@ -126,7 +126,7 @@
         "roe_ttm": 2.57160067758479,
         "net_profit_margin[2025]": 0.125395740985127,
         "last_close_price": 1575,
-        "daily_close_change": -0.00630914826498423,
+        "daily_close_change": 0,
         "der_mrq": 8.28736783602182
       }
     },
@@ -135,11 +135,11 @@
       "company_name": "PT MAP Aktif Adiperkasa Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 9.48719642241431,
+        "pe_ttm": 9.63543386651453,
         "roe_ttm": 0.198421859476211,
         "net_profit_margin[2025]": 0.0892583958971205,
-        "last_close_price": 640,
-        "daily_close_change": -0.0153846153846154,
+        "last_close_price": 650,
+        "daily_close_change": 0.015625,
         "der_mrq": 0.263795598534358
       }
     },
@@ -152,7 +152,7 @@
         "roe_ttm": 0.132868794384053,
         "net_profit_margin[2025]": 0.0517871371138379,
         "last_close_price": 1550,
-        "daily_close_change": 0.0264900662251656,
+        "daily_close_change": 0,
         "der_mrq": 0.476905231969694
       }
     },
@@ -161,11 +161,11 @@
       "company_name": "PT Daya Intiguna Yasa Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 19.9497340780812,
+        "pe_ttm": 20.0552882266425,
         "roe_ttm": 0.27027164764357,
         "net_profit_margin[2025]": 0.140017237535921,
-        "last_close_price": 945,
-        "daily_close_change": -0.0104712041884817,
+        "last_close_price": 950,
+        "daily_close_change": 0.00529100529100529,
         "der_mrq": 0.519060544726776
       }
     },
@@ -178,7 +178,7 @@
         "roe_ttm": 0.0986030661947049,
         "net_profit_margin[2025]": 0.0284543085711795,
         "last_close_price": 1015,
-        "daily_close_change": -0.00490196078431373,
+        "daily_close_change": 0,
         "der_mrq": 0.0073936087561424
       }
     },
@@ -187,11 +187,11 @@
       "company_name": "PT Putra Mandiri Jembar Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 9.24674227354972,
+        "pe_ttm": 9.1766911957198,
         "roe_ttm": 0.0580625086692205,
         "net_profit_margin[2025]": 0.0114100809553783,
-        "last_close_price": 132,
-        "daily_close_change": -0.0364963503649635,
+        "last_close_price": 131,
+        "daily_close_change": -0.00757575757575758,
         "der_mrq": 0.030281824051012
       }
     },
@@ -200,11 +200,11 @@
       "company_name": "PT Prima Multi Usaha Indonesia Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 14.6623138710165,
+        "pe_ttm": 14.512698423353,
         "roe_ttm": 0.0854066607800178,
         "net_profit_margin[2025]": 0.00958727151364293,
-        "last_close_price": 98,
-        "daily_close_change": -0.0485436893203883,
+        "last_close_price": 97,
+        "daily_close_change": -0.0102040816326531,
         "der_mrq": 0.0516639068716074
       }
     },
@@ -213,11 +213,11 @@
       "company_name": "Ramayana Lestari Sentosa Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 11.2433910969528,
+        "pe_ttm": 11.3025668395684,
         "roe_ttm": 0.0691648668501042,
         "net_profit_margin[2025]": 0.112155593764784,
-        "last_close_price": 380,
-        "daily_close_change": -0.00523560209424084,
+        "last_close_price": 382,
+        "daily_close_change": 0.00526315789473684,
         "der_mrq": 0.125936594353887
       }
     },
@@ -226,11 +226,11 @@
       "company_name": "Sona Topas Tourism Industry Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 20.5540012616066,
+        "pe_ttm": 24.3475249843864,
         "roe_ttm": 0.131923875100259,
         "net_profit_margin[2025]": 0.0989877794165629,
-        "last_close_price": 2980,
-        "daily_close_change": 0.246861924686192,
+        "last_close_price": 3530,
+        "daily_close_change": 0.184563758389262,
         "der_mrq": 0.137821144634692
       }
     },
@@ -239,11 +239,11 @@
       "company_name": "PT Damai Sejahtera Abadi Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 18.7167875628269,
+        "pe_ttm": 19.2477602596447,
         "roe_ttm": 0.0858006219058364,
         "net_profit_margin[2025]": 0.0169193907972889,
-        "last_close_price": 141,
-        "daily_close_change": 0.0291970802919708,
+        "last_close_price": 145,
+        "daily_close_change": 0.0283687943262411,
         "der_mrq": 0.539882088043116
       }
     },
@@ -252,11 +252,11 @@
       "company_name": "PT Mega Perintis Tbk",
       "query_values": {
         "sub_sector": "Retailing",
-        "pe_ttm": 19.3767321875483,
+        "pe_ttm": 18.798322271502,
         "roe_ttm": 0.0748817981463679,
         "net_profit_margin[2025]": 0.019216760851859,
-        "last_close_price": 670,
-        "daily_close_change": -0.0218978102189781,
+        "last_close_price": 650,
+        "daily_close_change": -0.0298507462686567,
         "der_mrq": 0.39379911458621
       }
     }

@@ -1,0 +1,46 @@
+{
+  "symbol": "DCII.JK",
+  "financial_year": 2024,
+  "revenue_breakdown": [
+    {
+      "value": 1699843000000,
+      "source": "Colocation services",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 112603000000,
+      "source": "Others",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 755402000000,
+      "source": "Total Revenue",
+      "target": "Cost of Revenue"
+    },
+    {
+      "value": 1057044000000,
+      "source": "Total Revenue",
+      "target": "Gross Profit"
+    },
+    {
+      "value": 972217000000,
+      "source": "Gross Profit",
+      "target": "Operating Income"
+    },
+    {
+      "value": 84827000000,
+      "source": "Gross Profit",
+      "target": "Operating Expense"
+    },
+    {
+      "value": 5451000000,
+      "source": "Operating Expense",
+      "target": "Marketing"
+    },
+    {
+      "value": 79376000000,
+      "source": "Operating Expense",
+      "target": "General and administrative"
+    }
+  ]
+}

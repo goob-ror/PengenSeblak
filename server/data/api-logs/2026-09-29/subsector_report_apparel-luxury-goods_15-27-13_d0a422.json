@@ -1,0 +1,148 @@
+{
+  "_metadata": {
+    "logged_at": "2026-09-29T07:27:13.991Z",
+    "endpoint": "/subsector/report/apparel-luxury-goods/",
+    "query_params": {
+      "sections": "growth,stability,valuation,market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 4,
+    "cache_hit": false,
+    "response_time_ms": 622
+  },
+  "data": {
+    "sector": "Consumer Cyclicals",
+    "sub_sector": "Apparel & Luxury Goods",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": -5.95103051376729,
+          "avg_annual_revenue_growth": -0.012446426948459
+        },
+        "2020": {
+          "avg_annual_earning_growth": -1.05069364126739,
+          "avg_annual_revenue_growth": -0.23106987619059
+        },
+        "2021": {
+          "avg_annual_earning_growth": -1.01074010487239,
+          "avg_annual_revenue_growth": 0.00229555089211528
+        },
+        "2022": {
+          "avg_annual_earning_growth": 0.0791620497215857,
+          "avg_annual_revenue_growth": 0.169454727452316
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.209443364545321,
+          "avg_annual_revenue_growth": 0.102169253006172
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.260448967799216,
+          "avg_annual_revenue_growth": 0.301123943650634
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.381310472407227,
+          "avg_annual_revenue_growth": 0.463644329961173
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": -0.341092256076156,
+          "revenue_growth": -0.484156837466814
+        }
+      }
+    },
+    "stability": {
+      "weighted_max_drawdown": -0.50464507115004,
+      "weighted_rsd_close": 0.2128195371022203
+    },
+    "valuation": {
+      "historical_valuation": {
+        "2022": {
+          "pb": 0.654850207724691,
+          "pe": -0.484141307284018,
+          "ps": 0.365080323013477,
+          "pcf": 9.45638442340671
+        },
+        "2023": {
+          "pb": 0.735374767900864,
+          "pe": -1.14847937680473,
+          "ps": 0.414370349228113,
+          "pcf": 3.16179498043038
+        },
+        "2024": {
+          "pb": 0.604424234255795,
+          "pe": -0.066882548625723,
+          "ps": 0.264467931841686,
+          "pcf": 3.89542813814282
+        },
+        "2025": {
+          "pb": 0.749284683296504,
+          "pe": 5.0841960086024,
+          "ps": 0.404444719215138,
+          "pcf": 6.7264461583231
+        },
+        "2026": {
+          "pb": 0.935156612397504,
+          "pe": 3.53288947612586,
+          "ps": 0.311411239159648,
+          "pcf": 5.93827630187998,
+          "pb_rank": 8,
+          "pe_rank": 6,
+          "ps_rank": 2,
+          "pcf_rank": 18
+        }
+      }
+    },
+    "market_cap": {
+      "total_market_cap": 39077136665622,
+      "avg_market_cap": 1776233484801,
+      "quarterly_market_cap": {
+        "prev_ttm_mcap": {
+          "2024.Q4": 17941617925880,
+          "2025.Q1": 21220885018326,
+          "2025.Q2": 21195991962980,
+          "2025.Q3": 28341344068513
+        },
+        "current_ttm_mcap": {
+          "2025.Q4": 40994548337155,
+          "2026.Q1": 38098705140946,
+          "2026.Q2": 30217120730180,
+          "2026.Q3": 41644066434330
+        },
+        "current_ttm_mcap_pavg": {
+          "2025.Q4": 493879003688186,
+          "2026.Q1": 386891798460446.94,
+          "2026.Q2": 308244092474525.2,
+          "2026.Q3": 358951002750835.94
+        }
+      },
+      "mcap_summary": {
+        "mcap_change": {
+          "1w": 0.01648045918995637,
+          "1y": 0.41280157496245506,
+          "ytd": -0.023267796311893622
+        },
+        "monthly_performance": {
+          "2025-10-31": 0.31683772974466196,
+          "2025-11-28": 0.0640709709684835,
+          "2025-12-30": 0.03229258236539172,
+          "2026-01-30": 0.19034092257506063,
+          "2026-02-27": 0.011874944840719825,
+          "2026-03-31": -0.22841122157727353,
+          "2026-04-30": 0.05712400850938633,
+          "2026-05-29": -0.16580203015883593,
+          "2026-06-30": -0.10061052839637459,
+          "2026-07-31": 0.10842045645576254,
+          "2026-08-31": 0.2258007340919942,
+          "2026-09-25": -0.024731665151208455
+        },
+        "performance_quantile": 0.848484848484849
+      }
+    }
+  }
+}

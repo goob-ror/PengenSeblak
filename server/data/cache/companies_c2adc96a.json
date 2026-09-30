@@ -5,11 +5,11 @@
       "company_name": "PT Bali Towerindo Sentra Tbk.",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 28.3769776148288,
+        "pe_ttm": 30.1367901800895,
         "roe_ttm": 0.0735729880686813,
         "net_profit_margin[2025]": 0.147098726314231,
-        "last_close_price": 1290,
-        "daily_close_change": -0.0114942528735632,
+        "last_close_price": 1370,
+        "daily_close_change": 0.062015503875969,
         "der_mrq": 1.44626756988727
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "PT Remala Abadi Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 16.9590137106817,
+        "pe_ttm": 16.8503020843312,
         "roe_ttm": 0.276614481854163,
         "net_profit_margin[2025]": 0.237044599136182,
-        "last_close_price": 1560,
-        "daily_close_change": -0.025,
+        "last_close_price": 1550,
+        "daily_close_change": -0.00641025641025641,
         "der_mrq": 1.03554471757312
       }
     },
@@ -35,7 +35,7 @@
         "roe_ttm": 0.0974256933230812,
         "net_profit_margin[2025]": 0.369690478132685,
         "last_close_price": 1625,
-        "daily_close_change": 0.00308641975308642,
+        "daily_close_change": 0,
         "der_mrq": 0.931555433402715
       }
     },
@@ -44,11 +44,11 @@
       "company_name": "PT Visi Telekomunikasi Infrastruktur Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 17.9103783759261,
+        "pe_ttm": 17.6469904586331,
         "roe_ttm": 0.0436241794049719,
         "net_profit_margin[2025]": 0.343082924523514,
-        "last_close_price": 272,
-        "daily_close_change": -0.0144927536231884,
+        "last_close_price": 268,
+        "daily_close_change": -0.0147058823529412,
         "der_mrq": 0.0000449788524840877
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "PT Sinergi Inti Andalan Prima Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 174.798622827354,
+        "pe_ttm": 172.354598166346,
         "roe_ttm": 0.00980843010385051,
         "net_profit_margin[2025]": 0.26671438802502,
-        "last_close_price": 286,
-        "daily_close_change": -0.0137931034482759,
+        "last_close_price": 282,
+        "daily_close_change": -0.013986013986014,
         "der_mrq": 0.41028525059752
       }
     },
@@ -83,11 +83,11 @@
       "company_name": "PT Indosat Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 9.65366949062539,
+        "pe_ttm": 9.91224992341,
         "roe_ttm": 0.186638333296297,
         "net_profit_margin[2025]": 0.0974855666254132,
-        "last_close_price": 2240,
-        "daily_close_change": -0.0468085106382979,
+        "last_close_price": 2300,
+        "daily_close_change": 0.0267857142857143,
         "der_mrq": 0.461562410144167
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT Ketrosden Triasmitra Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 39.2079089025926,
+        "pe_ttm": 38.6227162324046,
         "roe_ttm": 0.0592386314319067,
         "net_profit_margin[2025]": 0.184583635769898,
-        "last_close_price": 1005,
-        "daily_close_change": 0.0307692307692308,
+        "last_close_price": 990,
+        "daily_close_change": -0.0149253731343284,
         "der_mrq": 0.580522117083415
       }
     },
@@ -109,11 +109,11 @@
       "company_name": "PT Ekamas Mora Republik Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 368.440149226059,
+        "pe_ttm": 366.010873516876,
         "roe_ttm": 0.0315501359631357,
         "net_profit_margin[2025]": 0.112117139615891,
-        "last_close_price": 4550,
-        "daily_close_change": -0.0501043841336117,
+        "last_close_price": 4520,
+        "daily_close_change": -0.00659340659340659,
         "der_mrq": 0.941388266126534
       }
     },
@@ -122,11 +122,11 @@
       "company_name": "PT Dayamitra Telekomunikasi Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 17.7598362404332,
+        "pe_ttm": 17.9945477325975,
         "roe_ttm": 0.0666450471648443,
         "net_profit_margin[2025]": 0.222292170101729,
-        "last_close_price": 454,
-        "daily_close_change": -0.0257510729613734,
+        "last_close_price": 460,
+        "daily_close_change": 0.013215859030837,
         "der_mrq": 0.577335733776115
       }
     },
@@ -152,7 +152,7 @@
         "roe_ttm": 0.115400933859572,
         "net_profit_margin[2025]": 0.224382090557974,
         "last_close_price": 1445,
-        "daily_close_change": -0.0136518771331058,
+        "daily_close_change": 0,
         "der_mrq": 2.20504667046937
       }
     },
@@ -165,7 +165,7 @@
         "roe_ttm": 0.129493948742288,
         "net_profit_margin[2025]": 0.121396737130474,
         "last_close_price": 2370,
-        "daily_close_change": -0.016597510373444,
+        "daily_close_change": 0,
         "der_mrq": 0.422067809682012
       }
     },
@@ -174,11 +174,11 @@
       "company_name": "Sarana Menara Nusantara Tbk",
       "query_values": {
         "sub_sector": "Telecommunication",
-        "pe_ttm": 5.81403255770116,
+        "pe_ttm": 5.96623236287658,
         "roe_ttm": 0.133489974059567,
         "net_profit_margin[2025]": 0.275986019410249,
-        "last_close_price": 382,
-        "daily_close_change": -0.0205128205128205,
+        "last_close_price": 392,
+        "daily_close_change": 0.0261780104712042,
         "der_mrq": 1.54828535473383
       }
     }

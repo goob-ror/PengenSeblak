@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     server: {
       host: true,
-      allowedHosts: ["loraine-resistible-hans.ngrok-free.dev"],
+      allowedHosts: ["loraine-resistible-hans.ngrok-free.dev", "playset-sappiness-voyage.ngrok-free.dev"],
       proxy: {
         "/api": {
           target: "http://localhost:3001",

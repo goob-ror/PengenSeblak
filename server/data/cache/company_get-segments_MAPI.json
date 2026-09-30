@@ -1,0 +1,56 @@
+{
+  "symbol": "MAPI.JK",
+  "financial_year": 2024,
+  "revenue_breakdown": [
+    {
+      "value": 36282118000000,
+      "source": "Retail and wholesale sales",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 1274547000000,
+      "source": "Consignment sales commission",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 118985000000,
+      "source": "Rent and service revenues",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 160241000000,
+      "source": "Others",
+      "target": "Total Revenue"
+    },
+    {
+      "value": 21695454000000,
+      "source": "Total Revenue",
+      "target": "Cost of Revenue"
+    },
+    {
+      "value": 16140437000000,
+      "source": "Total Revenue",
+      "target": "Gross Profit"
+    },
+    {
+      "value": 3450378000000,
+      "source": "Gross Profit",
+      "target": "Operating Income"
+    },
+    {
+      "value": 12690059000000,
+      "source": "Gross Profit",
+      "target": "Operating Expense"
+    },
+    {
+      "value": 10779356000000,
+      "source": "Operating Expense",
+      "target": "Selling"
+    },
+    {
+      "value": 1910703000000,
+      "source": "Operating Expense",
+      "target": "General and administrative"
+    }
+  ]
+}

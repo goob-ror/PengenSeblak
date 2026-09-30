@@ -8,32 +8,32 @@
         "avg_annual_revenue_growth": null
       },
       "2019": {
-        "avg_annual_earning_growth": -5.97341964613787,
-        "avg_annual_revenue_growth": -0.0118335879456009
+        "avg_annual_earning_growth": -5.95103051376729,
+        "avg_annual_revenue_growth": -0.012446426948459
       },
       "2020": {
-        "avg_annual_earning_growth": -1.04412658764658,
-        "avg_annual_revenue_growth": -0.226255848251755
+        "avg_annual_earning_growth": -1.05069364126739,
+        "avg_annual_revenue_growth": -0.23106987619059
       },
       "2021": {
-        "avg_annual_earning_growth": -0.980920023228711,
-        "avg_annual_revenue_growth": 0.00708226727834213
+        "avg_annual_earning_growth": -1.01074010487239,
+        "avg_annual_revenue_growth": 0.00229555089211528
       },
       "2022": {
-        "avg_annual_earning_growth": 0.0861005911211207,
-        "avg_annual_revenue_growth": 0.172022219545554
+        "avg_annual_earning_growth": 0.0791620497215857,
+        "avg_annual_revenue_growth": 0.169454727452316
       },
       "2023": {
-        "avg_annual_earning_growth": 0.224459245787346,
-        "avg_annual_revenue_growth": 0.111522616127822
+        "avg_annual_earning_growth": 0.209443364545321,
+        "avg_annual_revenue_growth": 0.102169253006172
       },
       "2024": {
-        "avg_annual_earning_growth": 0.262062307171586,
-        "avg_annual_revenue_growth": 0.304648010285995
+        "avg_annual_earning_growth": 0.260448967799216,
+        "avg_annual_revenue_growth": 0.301123943650634
       },
       "2025": {
-        "avg_annual_earning_growth": 0.383167232971909,
-        "avg_annual_revenue_growth": 0.476829427129512
+        "avg_annual_earning_growth": 0.381310472407227,
+        "avg_annual_revenue_growth": 0.463644329961173
       }
     },
     "growth_forecasts": {

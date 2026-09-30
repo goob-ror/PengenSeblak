@@ -149,6 +149,13 @@
       "foreign_buy_idr": 2931738523400,
       "foreign_sell_idr": 3191566065000,
       "foreign_share": 0.3284
+    },
+    {
+      "date": "2026-09-29",
+      "net_foreign_inflow": -536711449100,
+      "foreign_buy_idr": 4117977638000,
+      "foreign_sell_idr": 4654689087100,
+      "foreign_share": 0.3739
     }
   ]
 }
