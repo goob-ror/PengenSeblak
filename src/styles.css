@@ -164,3 +164,14 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Fix browser autofill overriding input background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px oklch(0.18 0.008 240) inset !important;
+  -webkit-text-fill-color: oklch(0.945 0.008 90) !important;
+  caret-color: oklch(0.945 0.008 90);
+  transition: background-color 9999s ease-in-out 0s;
+}

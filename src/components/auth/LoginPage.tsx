@@ -171,7 +171,7 @@ export function LoginPage() {
                   Email
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/25" />
+                  <Mail className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/60 z-10" />
                   <input
                     ref={emailRef}
                     id="login-email"
@@ -203,7 +203,7 @@ export function LoginPage() {
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/25" />
+                  <Lock className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/60 z-10" />
                   <input
                     id="login-password"
                     type={showPassword ? "text" : "password"}
