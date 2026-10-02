@@ -3186,8 +3186,8 @@ export function NewsIntelligence() {
       <PageHeader title="Intelijen Berita">
         <ExportMenu title="News Catalyst Analysis" />
       </PageHeader>
-      <div className="grid gap-4 xl:grid-cols-[1fr_280px]">
-        <div className="space-y-4">
+      <div className="grid gap-4 xl:grid-cols-[1fr_280px] xl:items-start">
+        <div>
           <Panel
             title="Feed Berita"
             kicker="Berita pasar IDX terbaru"
@@ -3237,7 +3237,7 @@ export function NewsIntelligence() {
                 ))}
               </select>
             </div>
-            <div className="max-h-[70vh] overflow-y-auto">
+            <div className="overflow-y-auto max-h-[820px]">
               {newsFeed.isPending ? (
                 <div className="space-y-2 p-4">
                   {Array.from({ length: 10 }, (_, i) => (
@@ -3289,7 +3289,6 @@ export function NewsIntelligence() {
                             {t}
                           </Tag>
                         ))}
-                        {/* Sentiment label derived from tags */}
                         {(() => {
                           const tags = (n.tags ?? []).map((t) => t.toLowerCase());
                           if (tags.includes("bullish")) return <Tag tone="positive">Positive</Tag>;
