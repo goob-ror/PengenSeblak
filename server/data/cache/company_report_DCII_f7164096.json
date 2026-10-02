@@ -7,7 +7,7 @@
     "sub_industry": "IT Services & Consulting",
     "sector": "Technology",
     "sub_sector": "Software & IT Services",
-    "market_cap": 471981688200000,
+    "market_cap": 461969955420000,
     "market_cap_rank": 3,
     "address": "Equity Tower, Lantai 17 Unit F SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52 – 53, Jakarta 12190",
     "employee_num": 108,
@@ -16,9 +16,9 @@
     "website": "www.dci-indonesia.com",
     "phone": "+62 21 2903 7500",
     "email": "corpsec@dci-indonesia.com",
-    "last_close_price": 198000,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": 0,
+    "last_close_price": 193800,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0212121212121212,
     "all_time_price": {
       "ytd_low": {
         "2026-06-08": 170000
@@ -33,7 +33,7 @@
         "2026-01-05": 245250
       },
       "52_w_high": {
-        "2025-10-02": 301000
+        "2025-10-09": 295100
       },
       "90_d_high": {
         "2026-08-12": 207500
@@ -57,9 +57,9 @@
     ]
   },
   "valuation": {
-    "last_close_price": 198000,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": 0,
+    "last_close_price": 193800,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0212121212121212,
     "forward_pe": null,
     "intrinsic_value": -559,
     "historical_valuation": [
@@ -116,17 +116,17 @@
         "enterprise_to_revenue": 188.333193571094
       },
       {
-        "pb": 101.952925341642,
-        "pe": 422.574300934713,
-        "ps": 158.206276206026,
-        "pcf": 5.34299173391549,
-        "peg": 317.69073505180177,
+        "pb": 99.7902875313647,
+        "pe": 413.610603642159,
+        "ps": 154.850385498626,
+        "pcf": 5.22965554562031,
+        "peg": 310.951840671915,
         "year": 2026,
-        "pb_peer_avg": 1.90413668042644,
-        "pe_peer_avg": 16.0859712145022,
-        "ps_peer_avg": 1.36994470743511,
-        "enterprise_to_ebitda": 275.832590079793,
-        "enterprise_to_revenue": 158.953477572552
+        "pb_peer_avg": 1.98356466874175,
+        "pe_peer_avg": 15.7229409179341,
+        "ps_peer_avg": 1.37988964140894,
+        "enterprise_to_ebitda": 270.00909983608636,
+        "enterprise_to_revenue": 155.597586865152
       }
     ]
   },

@@ -7,7 +7,7 @@
     "sub_industry": "Banks",
     "sector": "Financials",
     "sub_sector": "Banks",
-    "market_cap": 750560141925000,
+    "market_cap": 732253797000000,
     "market_cap_rank": 1,
     "address": "Menara BCA, Grand Indonesia\r\nJalan MH Thamrin No. 1\r\nJakarta 10310",
     "employee_num": 27937,
@@ -16,9 +16,9 @@
     "website": "www.bca.co.id",
     "phone": "021-23588000",
     "email": "investor_relations@bca.co.id",
-    "last_close_price": 6150,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": -0.0120481927710843,
+    "last_close_price": 6000,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0123456790123457,
     "all_time_price": {
       "ytd_low": {
         "2026-06-09": 4820
@@ -27,7 +27,7 @@
         "2026-06-09": 4820
       },
       "90_d_low": {
-        "2026-07-02": 5625
+        "2026-07-06": 5975
       },
       "ytd_high": {
         "2026-01-06": 8175
@@ -49,7 +49,6 @@
     "tags": [
       "dividend-yield-ttm-above-5-percent",
       "esg-under-25",
-      "last-volume-above-10d-volume-average",
       "top-20-institution-selling",
       "top-90d-transaction-value"
     ],
@@ -71,10 +70,10 @@
     ]
   },
   "valuation": {
-    "last_close_price": 6150,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": -0.0120481927710843,
-    "forward_pe": 12.7466420576215,
+    "last_close_price": 6000,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0123456790123457,
+    "forward_pe": 12.435748348899,
     "intrinsic_value": 13694,
     "historical_valuation": [
       {
@@ -130,15 +129,15 @@
         "enterprise_to_revenue": null
       },
       {
-        "pb": 2.77535483276078,
-        "pe": 12.9148243769363,
-        "ps": 6.56877345861926,
-        "pcf": -94.4257733416743,
-        "peg": 10.901771232831685,
+        "pb": 2.70766325147393,
+        "pe": 12.5998286604257,
+        "ps": 6.40855947182366,
+        "pcf": -92.1227056991945,
+        "peg": 10.635874373494326,
         "year": 2026,
-        "pb_peer_avg": 0.765797521007612,
-        "pe_peer_avg": 8.8704304290544,
-        "ps_peer_avg": 2.45541218014609,
+        "pb_peer_avg": 0.757929752197244,
+        "pe_peer_avg": 8.62446989794829,
+        "ps_peer_avg": 2.40544833690834,
         "enterprise_to_ebitda": null,
         "enterprise_to_revenue": null
       }
@@ -1525,25 +1524,25 @@
           {
             "date": "2026-08-31",
             "total": 25,
-            "yield": 0.0040650406504065
+            "yield": 0.00416666666666667
           },
           {
             "date": "2026-06-17",
             "total": 20,
-            "yield": 0.0032520325203252
+            "yield": 0.00333333333333333
           },
           {
             "date": "2026-03-30",
             "total": 281,
-            "yield": 0.0456910569105691
+            "yield": 0.0468333333333333
           }
         ],
-        "total_yield": 0.0530081300813008,
+        "total_yield": 0.0543333333333333,
         "total_dividend": 326
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.0619512195121951,
+    "yield_ttm": 0.0635,
     "dividend_yield_avg": {
       "period": 5,
       "avg_yield": 0.0283050412777811

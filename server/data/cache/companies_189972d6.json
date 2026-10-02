@@ -5,11 +5,11 @@
       "company_name": "Adi Sarana Armada Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 5.31233309435289,
+        "pe_ttm": 4.99984291233213,
         "roe_ttm": 0.121763616342546,
         "net_profit_margin[2025]": 0.0697471249672572,
-        "last_close_price": 595,
-        "daily_close_change": 0.0170940170940171,
+        "last_close_price": 560,
+        "daily_close_change": -0.0260869565217391,
         "der_mrq": 1.27897753165977
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "PT Blue Bird Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 6.32625923784646,
+        "pe_ttm": 6.20537530336532,
         "roe_ttm": 0.099683091915866,
         "net_profit_margin[2025]": 0.111446607771783,
-        "last_close_price": 1570,
-        "daily_close_change": -0.00317460317460317,
+        "last_close_price": 1540,
+        "daily_close_change": -0.00645161290322581,
         "der_mrq": 0.34886682203045
       }
     },
@@ -31,10 +31,10 @@
       "company_name": "PT Batavia Prosperindo Trans Tbk.",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 6.1913357774645,
+        "pe_ttm": 6.28238483301545,
         "roe_ttm": 0.0612552038554015,
         "net_profit_margin[2025]": 0.0578695480818707,
-        "last_close_price": 68,
+        "last_close_price": 69,
         "daily_close_change": 0,
         "der_mrq": 2.25417172453743
       }
@@ -48,7 +48,7 @@
         "roe_ttm": 0.284187604669139,
         "net_profit_margin[2025]": 0.170803350928283,
         "last_close_price": 276,
-        "daily_close_change": 0.104,
+        "daily_close_change": 0,
         "der_mrq": 0.793101042007476
       }
     },
@@ -57,11 +57,11 @@
       "company_name": "PT Indomobil Multi Jasa Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 9.42730992034757,
+        "pe_ttm": 9.09062028033516,
         "roe_ttm": 0.0348713283335585,
         "net_profit_margin[2025]": 0.0212362026478747,
-        "last_close_price": 168,
-        "daily_close_change": 0,
+        "last_close_price": 162,
+        "daily_close_change": -0.0414201183431953,
         "der_mrq": 4.8437604328561
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "Steady Safe Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 11.6695817326426,
+        "pe_ttm": 18.1697434872286,
         "roe_ttm": 0.415593315129338,
         "net_profit_margin[2025]": 0.188484865776079,
-        "last_close_price": 456,
-        "daily_close_change": -0.147663551401869,
+        "last_close_price": 710,
+        "daily_close_change": 0.245614035087719,
         "der_mrq": 0
       }
     },
@@ -83,11 +83,11 @@
       "company_name": "PT Transkon Jaya Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 598.461946457126,
+        "pe_ttm": 608.436312231412,
         "roe_ttm": 0.000770769533210527,
         "net_profit_margin[2025]": 0.00638955221587599,
-        "last_close_price": 120,
-        "daily_close_change": -0.0476190476190476,
+        "last_close_price": 122,
+        "daily_close_change": -0.00813008130081301,
         "der_mrq": 0.619629096632435
       }
     },
@@ -96,10 +96,10 @@
       "company_name": "PT WEHA Transportasi Indonesia Tbk",
       "query_values": {
         "sub_sector": "Transportation",
-        "pe_ttm": 7.27663651139145,
+        "pe_ttm": 7.70891194771173,
         "roe_ttm": 0.0770907085710264,
         "net_profit_margin[2025]": 0.069851486488623,
-        "last_close_price": 101,
+        "last_close_price": 107,
         "daily_close_change": 0,
         "der_mrq": 0.424261839396527
       }

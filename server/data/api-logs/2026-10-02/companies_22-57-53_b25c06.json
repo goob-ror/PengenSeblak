@@ -1,0 +1,134 @@
+{
+  "_metadata": {
+    "logged_at": "2026-10-02T14:57:53.807Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Transportation' and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and last_close_price > 0 and daily_close_change > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 464
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "ASSA.JK",
+        "company_name": "Adi Sarana Armada Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 4.99984291233213,
+          "roe_ttm": 0.121763616342546,
+          "net_profit_margin[2025]": 0.0697471249672572,
+          "last_close_price": 560,
+          "daily_close_change": -0.0260869565217391,
+          "der_mrq": 1.27897753165977
+        }
+      },
+      {
+        "symbol": "BIRD.JK",
+        "company_name": "PT Blue Bird Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 6.20537530336532,
+          "roe_ttm": 0.099683091915866,
+          "net_profit_margin[2025]": 0.111446607771783,
+          "last_close_price": 1540,
+          "daily_close_change": -0.00645161290322581,
+          "der_mrq": 0.34886682203045
+        }
+      },
+      {
+        "symbol": "BPTR.JK",
+        "company_name": "PT Batavia Prosperindo Trans Tbk.",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 6.28238483301545,
+          "roe_ttm": 0.0612552038554015,
+          "net_profit_margin[2025]": 0.0578695480818707,
+          "last_close_price": 69,
+          "daily_close_change": 0,
+          "der_mrq": 2.25417172453743
+        }
+      },
+      {
+        "symbol": "HELI.JK",
+        "company_name": "PT Jaya Trishindo Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 8.8174789830771,
+          "roe_ttm": 0.284187604669139,
+          "net_profit_margin[2025]": 0.170803350928283,
+          "last_close_price": 276,
+          "daily_close_change": 0,
+          "der_mrq": 0.793101042007476
+        }
+      },
+      {
+        "symbol": "IMJS.JK",
+        "company_name": "PT Indomobil Multi Jasa Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 9.09062028033516,
+          "roe_ttm": 0.0348713283335585,
+          "net_profit_margin[2025]": 0.0212362026478747,
+          "last_close_price": 162,
+          "daily_close_change": -0.0414201183431953,
+          "der_mrq": 4.8437604328561
+        }
+      },
+      {
+        "symbol": "SAFE.JK",
+        "company_name": "Steady Safe Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 18.1697434872286,
+          "roe_ttm": 0.415593315129338,
+          "net_profit_margin[2025]": 0.188484865776079,
+          "last_close_price": 710,
+          "daily_close_change": 0.245614035087719,
+          "der_mrq": 0
+        }
+      },
+      {
+        "symbol": "TRJA.JK",
+        "company_name": "PT Transkon Jaya Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 608.436312231412,
+          "roe_ttm": 0.000770769533210527,
+          "net_profit_margin[2025]": 0.00638955221587599,
+          "last_close_price": 122,
+          "daily_close_change": -0.00813008130081301,
+          "der_mrq": 0.619629096632435
+        }
+      },
+      {
+        "symbol": "WEHA.JK",
+        "company_name": "PT WEHA Transportasi Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Transportation",
+          "pe_ttm": 7.70891194771173,
+          "roe_ttm": 0.0770907085710264,
+          "net_profit_margin[2025]": 0.069851486488623,
+          "last_close_price": 107,
+          "daily_close_change": 0,
+          "der_mrq": 0.424261839396527
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 8,
+      "showing": 8,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}

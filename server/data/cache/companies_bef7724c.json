@@ -9,7 +9,7 @@
         "roe_ttm": 0.0235087799147856,
         "net_profit_margin[2025]": 0.0158149448225651,
         "last_close_price": 288,
-        "daily_close_change": 0.00699300699300699,
+        "daily_close_change": -0.0204081632653061,
         "der_mrq": 0.0177864248128523
       }
     },
@@ -31,11 +31,11 @@
       "company_name": "PT Logindo Samudramakmur Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 3.40286206604792,
+        "pe_ttm": 3.33046074549371,
         "roe_ttm": 0.16411502915714,
         "net_profit_margin[2025]": 0.31294909063424,
-        "last_close_price": 94,
-        "daily_close_change": -0.0105263157894737,
+        "last_close_price": 92,
+        "daily_close_change": -0.0315789473684211,
         "der_mrq": 0.658357409308296
       }
     },
@@ -48,7 +48,7 @@
         "roe_ttm": 0.201397823116628,
         "net_profit_margin[2025]": 0.0829914200373975,
         "last_close_price": 136,
-        "daily_close_change": -0.0072992700729927,
+        "daily_close_change": 0.00740740740740741,
         "der_mrq": 0.303773851186253
       }
     },
@@ -57,11 +57,11 @@
       "company_name": "PT Mitrabara Adiperdana Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 30.0869104851026,
+        "pe_ttm": 29.2097410832046,
         "roe_ttm": 0.0208413371081171,
         "net_profit_margin[2025]": 0.00939227489450672,
-        "last_close_price": 1715,
-        "daily_close_change": 0.0208333333333333,
+        "last_close_price": 1665,
+        "daily_close_change": -0.0029940119760479,
         "der_mrq": 0.213267577295647
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "Mitrabahtera Segara Sejati Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 13.6790429963545,
+        "pe_ttm": 13.7262121101351,
         "roe_ttm": 0.0899163092602334,
         "net_profit_margin[2025]": 0.439765023624031,
-        "last_close_price": 2900,
-        "daily_close_change": 0.00346020761245675,
+        "last_close_price": 2910,
+        "daily_close_change": 0.0069204152249135,
         "der_mrq": 0.130071227024229
       }
     },
@@ -83,11 +83,11 @@
       "company_name": "PT Prima Andalan Mandiri Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 9.31787558883445,
+        "pe_ttm": 9.29192050362878,
         "roe_ttm": 0.131091288436332,
         "net_profit_margin[2025]": 0.0999984475339236,
-        "last_close_price": 3590,
-        "daily_close_change": 0,
+        "last_close_price": 3580,
+        "daily_close_change": 0.00845070422535211,
         "der_mrq": 0.0947247347715401
       }
     },
@@ -96,11 +96,11 @@
       "company_name": "PT Medco Energi Internasional Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 14.532937397356,
+        "pe_ttm": 13.7366120605146,
         "roe_ttm": 0.0617379617311531,
         "net_profit_margin[2025]": 0.042093504776094,
-        "last_close_price": 1460,
-        "daily_close_change": -0.0234113712374582,
+        "last_close_price": 1380,
+        "daily_close_change": -0.00719424460431655,
         "der_mrq": 1.55798440542677
       }
     },
@@ -109,11 +109,11 @@
       "company_name": "PT Multikarya Asia Pasifik Raya Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 85.9945276137322,
+        "pe_ttm": 86.378431754865,
         "roe_ttm": 0.124530637732715,
         "net_profit_margin[2025]": 0.136437925154946,
-        "last_close_price": 1120,
-        "daily_close_change": -0.00444444444444444,
+        "last_close_price": 1125,
+        "daily_close_change": -0.0131578947368421,
         "der_mrq": 0.363675690520573
       }
     },
@@ -122,11 +122,11 @@
       "company_name": "Samindo Resources Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 9.18081607722617,
+        "pe_ttm": 8.95468760241764,
         "roe_ttm": 0.0767644088465536,
         "net_profit_margin[2025]": 0.0911176446608718,
-        "last_close_price": 1015,
-        "daily_close_change": 0,
+        "last_close_price": 990,
+        "daily_close_change": -0.01,
         "der_mrq": 0.0837099983019996
       }
     },
@@ -135,11 +135,11 @@
       "company_name": "PT Perusahaan Gas Negara Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 8.58152528779341,
+        "pe_ttm": 8.25261665306962,
         "roe_ttm": 0.0639632440659049,
         "net_profit_margin[2025]": 0.0541673112578178,
-        "last_close_price": 1435,
-        "daily_close_change": -0.00347222222222222,
+        "last_close_price": 1380,
+        "daily_close_change": -0.010752688172043,
         "der_mrq": 0.19582528721696
       }
     },
@@ -148,11 +148,11 @@
       "company_name": "Perdana Karya Perkasa Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 76.894055308081,
+        "pe_ttm": 76.2689003868771,
         "roe_ttm": 0.234273446807622,
         "net_profit_margin[2025]": 0.0515029875001263,
-        "last_close_price": 6150,
-        "daily_close_change": 0.0423728813559322,
+        "last_close_price": 6100,
+        "daily_close_change": 0.012448132780083,
         "der_mrq": 0.00214330101626699
       }
     },
@@ -161,11 +161,11 @@
       "company_name": "Bukit Asam Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 7.54806600040195,
+        "pe_ttm": 7.40244414830417,
         "roe_ttm": 0.187335381935615,
         "net_profit_margin[2025]": 0.0686949254384184,
-        "last_close_price": 3110,
-        "daily_close_change": -0.0220125786163522,
+        "last_close_price": 3050,
+        "daily_close_change": -0.0224358974358974,
         "der_mrq": 0.117815179597497
       }
     },
@@ -174,11 +174,11 @@
       "company_name": "Petrosea Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 109.167127226837,
+        "pe_ttm": 107.622309388722,
         "roe_ttm": 0.0939705299167362,
         "net_profit_margin[2025]": 0.0324978368993941,
-        "last_close_price": 5300,
-        "daily_close_change": 0,
+        "last_close_price": 5225,
+        "daily_close_change": 0.0195121951219512,
         "der_mrq": 2.87470927292952
       }
     },
@@ -187,11 +187,11 @@
       "company_name": "Rukun Raharja Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 20.8242905804964,
+        "pe_ttm": 20.6653265302636,
         "roe_ttm": 0.140916850430774,
         "net_profit_margin[2025]": 0.102150205296128,
-        "last_close_price": 655,
-        "daily_close_change": 0,
+        "last_close_price": 650,
+        "daily_close_change": -0.0225563909774436,
         "der_mrq": 1.12725764892894
       }
     },
@@ -200,11 +200,11 @@
       "company_name": "PT Raharja Energi Cepu Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 29.3511735146174,
+        "pe_ttm": 28.7853677601188,
         "roe_ttm": 0.329868807699651,
         "net_profit_margin[2025]": 0.309542191261142,
-        "last_close_price": 4150,
-        "daily_close_change": 0.042713567839196,
+        "last_close_price": 4070,
+        "daily_close_change": -0.00245098039215686,
         "der_mrq": 2.41875353567634
       }
     },
@@ -213,11 +213,11 @@
       "company_name": "PT Kian Santang Muliatama Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 8.11866236224314,
+        "pe_ttm": 8.03041603221876,
         "roe_ttm": 0.155946448703512,
         "net_profit_margin[2025]": 0.0584433403097498,
-        "last_close_price": 92,
-        "daily_close_change": 0.0222222222222222,
+        "last_close_price": 91,
+        "daily_close_change": -0.0108695652173913,
         "der_mrq": 0.0304897490186479
       }
     },
@@ -226,11 +226,11 @@
       "company_name": "PT RMK Energy Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 24.9635376157443,
+        "pe_ttm": 23.1804277860483,
         "roe_ttm": 0.163946692619317,
         "net_profit_margin[2025]": 0.109070267201764,
-        "last_close_price": 364,
-        "daily_close_change": 0.00552486187845304,
+        "last_close_price": 338,
+        "daily_close_change": -0.0174418604651163,
         "der_mrq": 0.551543171377955
       }
     },
@@ -239,11 +239,11 @@
       "company_name": "Radiant Utama Interinsco Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 10.8325840312759,
+        "pe_ttm": 11.0630645425797,
         "roe_ttm": 0.023661463504157,
         "net_profit_margin[2025]": 0.00670365508099387,
-        "last_close_price": 188,
-        "daily_close_change": 0,
+        "last_close_price": 192,
+        "daily_close_change": 0.0158730158730159,
         "der_mrq": 0.869371740204067
       }
     },
@@ -252,11 +252,11 @@
       "company_name": "PT Sumber Global Energy Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 51.0383139022887,
+        "pe_ttm": 51.38551331659,
         "roe_ttm": 0.0869770720607256,
         "net_profit_margin[2025]": 0.0316445394340421,
-        "last_close_price": 735,
-        "daily_close_change": -0.0134228187919463,
+        "last_close_price": 740,
+        "daily_close_change": 0.0136986301369863,
         "der_mrq": 0.861112126001476
       }
     },
@@ -265,11 +265,11 @@
       "company_name": "PT Sillo Maritime Perdana Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 25.9470365834161,
+        "pe_ttm": 26.5504560388443,
         "roe_ttm": 0.0640898322495849,
         "net_profit_margin[2025]": 0.103483381759171,
-        "last_close_price": 2580,
-        "daily_close_change": 0.00389105058365759,
+        "last_close_price": 2640,
+        "daily_close_change": 0.00380228136882129,
         "der_mrq": 1.50096412597416
       }
     },
@@ -278,11 +278,11 @@
       "company_name": "PT Sigma Energy Compressindo Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 7.70702323328826,
+        "pe_ttm": 8.06716450587183,
         "roe_ttm": 0.09041312123608,
         "net_profit_margin[2025]": 0.083691116883978,
-        "last_close_price": 107,
-        "daily_close_change": -0.00925925925925926,
+        "last_close_price": 112,
+        "daily_close_change": 0,
         "der_mrq": 0.28618337455141
       }
     },
@@ -291,11 +291,11 @@
       "company_name": "Golden Eagle Energy Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 153.104717352902,
+        "pe_ttm": 154.420803748485,
         "roe_ttm": 0.120042947218774,
         "net_profit_margin[2025]": 0.039220904729358,
-        "last_close_price": 3490,
-        "daily_close_change": -0.00285714285714286,
+        "last_close_price": 3520,
+        "daily_close_change": 0,
         "der_mrq": 0.302982231764998
       }
     },
@@ -304,11 +304,11 @@
       "company_name": "PT Soechi Lines Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 11.7644876749258,
+        "pe_ttm": 11.8601339161854,
         "roe_ttm": 0.0483664759790529,
         "net_profit_margin[2025]": 0.0493192060297806,
-        "last_close_price": 615,
-        "daily_close_change": 0.00819672131147541,
+        "last_close_price": 620,
+        "daily_close_change": 0,
         "der_mrq": 0.462482336763688
       }
     },
@@ -317,11 +317,11 @@
       "company_name": "PT Sunindo Pratama Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 10.1521405074783,
+        "pe_ttm": 9.91964874013148,
         "roe_ttm": 0.180017388903989,
         "net_profit_margin[2025]": 0.1970509341472,
-        "last_close_price": 655,
-        "daily_close_change": -0.0223880597014925,
+        "last_close_price": 640,
+        "daily_close_change": -0.0229007633587786,
         "der_mrq": 0.188215772900421
       }
     },
@@ -330,11 +330,11 @@
       "company_name": "PT Super Energy Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 1885.94750577274,
+        "pe_ttm": 1855.13137005749,
         "roe_ttm": 0.0111657249507414,
         "net_profit_margin[2025]": -0.0761901950500287,
-        "last_close_price": 3060,
-        "daily_close_change": 0,
+        "last_close_price": 3010,
+        "daily_close_change": -0.0033112582781457,
         "der_mrq": 5.48770179796943
       }
     },
@@ -343,11 +343,11 @@
       "company_name": "PT Transcoal Pacific Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 61.8514561087725,
+        "pe_ttm": 50.5568423845619,
         "roe_ttm": 0.0605563574903898,
         "net_profit_margin[2025]": 0.0611403532600178,
-        "last_close_price": 1725,
-        "daily_close_change": 0.0648148148148148,
+        "last_close_price": 1410,
+        "daily_close_change": -0.0903225806451613,
         "der_mrq": 0.534737385159747
       }
     },
@@ -356,11 +356,11 @@
       "company_name": "Trans Power Marine Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 8.12833109578517,
+        "pe_ttm": 8.02043289539864,
         "roe_ttm": 0.0759619152950868,
         "net_profit_margin[2025]": 0.157495745050833,
-        "last_close_price": 452,
-        "daily_close_change": -0.0131004366812227,
+        "last_close_price": 446,
+        "daily_close_change": -0.00446428571428571,
         "der_mrq": 0.810209508174661
       }
     },
@@ -369,11 +369,11 @@
       "company_name": "PT Ulima Nitra Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 13.2724101313953,
+        "pe_ttm": 15.9501770877294,
         "roe_ttm": 0.0551679413148035,
         "net_profit_margin[2025]": 0.0657919202844105,
-        "last_close_price": 114,
-        "daily_close_change": -0.0172413793103448,
+        "last_close_price": 137,
+        "daily_close_change": 0.212389380530973,
         "der_mrq": 0.25498586858627
       }
     },
@@ -382,11 +382,11 @@
       "company_name": "Wintermar Offshore Marine Tbk",
       "query_values": {
         "sub_sector": "Oil, Gas & Coal",
-        "pe_ttm": 6.69913091153585,
+        "pe_ttm": 6.76059082815545,
         "roe_ttm": 0.0879742174453881,
         "net_profit_margin[2025]": 0.246344312712322,
-        "last_close_price": 545,
-        "daily_close_change": -0.018018018018018,
+        "last_close_price": 550,
+        "daily_close_change": -0.0350877192982456,
         "der_mrq": 0.293071104035366
       }
     }

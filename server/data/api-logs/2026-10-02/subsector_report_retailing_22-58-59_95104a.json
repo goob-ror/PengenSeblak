@@ -1,0 +1,60 @@
+{
+  "_metadata": {
+    "logged_at": "2026-10-02T14:58:59.598Z",
+    "endpoint": "/subsector/report/retailing/",
+    "query_params": {
+      "sections": "growth"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 324
+  },
+  "data": {
+    "sector": "Consumer Cyclicals",
+    "sub_sector": "Retailing",
+    "growth": {
+      "weighted_avg_growth_data": {
+        "2018": {
+          "avg_annual_earning_growth": null,
+          "avg_annual_revenue_growth": null
+        },
+        "2019": {
+          "avg_annual_earning_growth": 5.05755133603319,
+          "avg_annual_revenue_growth": 0.0713394057074497
+        },
+        "2020": {
+          "avg_annual_earning_growth": -1.00632178078092,
+          "avg_annual_revenue_growth": -0.317966127084372
+        },
+        "2021": {
+          "avg_annual_earning_growth": 43.5800152167524,
+          "avg_annual_revenue_growth": 0.445316404041415
+        },
+        "2022": {
+          "avg_annual_earning_growth": 1.95979628072865,
+          "avg_annual_revenue_growth": 0.429913347663967
+        },
+        "2023": {
+          "avg_annual_earning_growth": 0.14992425037686,
+          "avg_annual_revenue_growth": 0.241117053121779
+        },
+        "2024": {
+          "avg_annual_earning_growth": 0.218105248419433,
+          "avg_annual_revenue_growth": 0.21536515083434
+        },
+        "2025": {
+          "avg_annual_earning_growth": 0.0555194951243088,
+          "avg_annual_revenue_growth": 0.145243359925146
+        }
+      },
+      "growth_forecasts": {
+        "2026": {
+          "base_year": 2025,
+          "eps_growth": 0.213033916544727,
+          "revenue_growth": 0.137113459288468
+        }
+      }
+    }
+  }
+}

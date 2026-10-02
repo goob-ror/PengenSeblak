@@ -5,11 +5,11 @@
       "company_name": "PT Bersama Mencapai Puncak Tbk.",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 76.7242265201794,
+        "pe_ttm": 71.6931296991841,
         "roe_ttm": 0.026137626467246,
         "net_profit_margin[2025]": 0.0230110768802083,
-        "last_close_price": 244,
-        "daily_close_change": 0.0252100840336134,
+        "last_close_price": 228,
+        "daily_close_change": -0.0172413793103448,
         "der_mrq": 0.0101504904137017
       }
     },
@@ -18,11 +18,11 @@
       "company_name": "PT Bukit Uluwatu Villa Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 601.199067590308,
+        "pe_ttm": 558.927258150365,
         "roe_ttm": 0.0121520426108877,
         "net_profit_margin[2025]": 0.264100871868531,
-        "last_close_price": 640,
-        "daily_close_change": 0.0666666666666667,
+        "last_close_price": 595,
+        "daily_close_change": -0.00833333333333333,
         "der_mrq": 0.211050654049064
       }
     },
@@ -31,11 +31,11 @@
       "company_name": "PT Citra Putra Realty Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 271.90604151216,
+        "pe_ttm": 273.869262028494,
         "roe_ttm": 0.917948611408219,
         "net_profit_margin[2025]": 0.0342154642383072,
-        "last_close_price": 2770,
-        "daily_close_change": 0,
+        "last_close_price": 2790,
+        "daily_close_change": 0.0072202166064982,
         "der_mrq": 11.1263989591659
       }
     },
@@ -57,11 +57,11 @@
       "company_name": "PT Intra GolfLink Resorts Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 61.0512186350103,
+        "pe_ttm": 58.8577616780638,
         "roe_ttm": 0.00664573140259198,
         "net_profit_margin[2025]": 0.240393149335069,
-        "last_close_price": 167,
-        "daily_close_change": 0,
+        "last_close_price": 161,
+        "daily_close_change": -0.0359281437125748,
         "der_mrq": 0.0603524602495052
       }
     },
@@ -70,11 +70,11 @@
       "company_name": "PT Griptha Putra Persada Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 33.1862103575474,
+        "pe_ttm": 32.5600554451409,
         "roe_ttm": 0.040555997341132,
         "net_profit_margin[2025]": 0.0911213199239924,
-        "last_close_price": 106,
-        "daily_close_change": -0.0275229357798165,
+        "last_close_price": 104,
+        "daily_close_change": -0.0630630630630631,
         "der_mrq": 0.200327649871446
       }
     },
@@ -87,7 +87,7 @@
         "roe_ttm": 0.0182114752582866,
         "net_profit_margin[2025]": 1.59004802469849,
         "last_close_price": 145,
-        "daily_close_change": -0.0522875816993464,
+        "daily_close_change": -0.0202702702702703,
         "der_mrq": 0.00198479643045095
       }
     },
@@ -100,7 +100,7 @@
         "roe_ttm": 0.00867956625888328,
         "net_profit_margin[2025]": 0.00639328598461092,
         "last_close_price": 102,
-        "daily_close_change": 0,
+        "daily_close_change": -0.0285714285714286,
         "der_mrq": 0.611409874886837
       }
     },
@@ -113,7 +113,7 @@
         "roe_ttm": 0.131718257791797,
         "net_profit_margin[2025]": 0.123346108368675,
         "last_close_price": 1370,
-        "daily_close_change": 0.0185873605947955,
+        "daily_close_change": 0,
         "der_mrq": 0.605889244036119
       }
     },
@@ -122,11 +122,11 @@
       "company_name": "PT Puri Sentul Permai Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 131.939222342601,
+        "pe_ttm": 138.775451479524,
         "roe_ttm": 0.0522146609993848,
         "net_profit_margin[2025]": 0.0610284225532856,
-        "last_close_price": 386,
-        "daily_close_change": -0.0398009950248756,
+        "last_close_price": 406,
+        "daily_close_change": 0.00495049504950495,
         "der_mrq": 0.0535503422259709
       }
     },
@@ -135,11 +135,11 @@
       "company_name": "PT DMS Propertindo Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 25.2645554387749,
+        "pe_ttm": 23.0612511853933,
         "roe_ttm": 0.057274029326261,
         "net_profit_margin[2025]": 0.339620520469792,
-        "last_close_price": 172,
-        "daily_close_change": 0.0117647058823529,
+        "last_close_price": 157,
+        "daily_close_change": -0.0654761904761905,
         "der_mrq": 0.342054333033929
       }
     },
@@ -161,11 +161,11 @@
       "company_name": "PT Merry Riana Edukasi Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 192.346268582234,
+        "pe_ttm": 190.548639903895,
         "roe_ttm": 0.012926525594326,
         "net_profit_margin[2025]": 0.120792831543474,
-        "last_close_price": 107,
-        "daily_close_change": 0.0288461538461538,
+        "last_close_price": 106,
+        "daily_close_change": 0,
         "der_mrq": 0.013088391234187
       }
     },
@@ -174,11 +174,11 @@
       "company_name": "Panorama Sentrawisata Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 6.69157389889574,
+        "pe_ttm": 6.72519989838768,
         "roe_ttm": 0.0663575344421599,
         "net_profit_margin[2025]": 0.0234605553045918,
-        "last_close_price": 398,
-        "daily_close_change": -0.00995024875621891,
+        "last_close_price": 400,
+        "daily_close_change": 0.0050251256281407,
         "der_mrq": 0.0840879280300906
       }
     },
@@ -187,11 +187,11 @@
       "company_name": "Destinasi Tirta Nusantara Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 9.26242606749317,
+        "pe_ttm": 9.41023073878295,
         "roe_ttm": 0.224970940005653,
         "net_profit_margin[2025]": 0.0490324704871938,
-        "last_close_price": 376,
-        "daily_close_change": -0.0157068062827225,
+        "last_close_price": 382,
+        "daily_close_change": 0,
         "der_mrq": 1.10346922908917
       }
     },
@@ -200,10 +200,10 @@
       "company_name": "Pembangunan Jaya Ancol Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 4.52421316220731,
+        "pe_ttm": 4.50419451989665,
         "roe_ttm": 0.0878424791152172,
         "net_profit_margin[2025]": 0.160714014960636,
-        "last_close_price": 452,
+        "last_close_price": 450,
         "daily_close_change": 0,
         "der_mrq": 0.375704631305688
       }
@@ -213,11 +213,11 @@
       "company_name": "Pioneerindo Gourmet International Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 9.10000871757428,
+        "pe_ttm": 8.98079462957112,
         "roe_ttm": 0.134010867346097,
         "net_profit_margin[2025]": 0.0275581391107802,
-        "last_close_price": 1145,
-        "daily_close_change": -0.0378151260504202,
+        "last_close_price": 1130,
+        "daily_close_change": -0.0258620689655172,
         "der_mrq": 0.320334561822003
       }
     },
@@ -226,11 +226,11 @@
       "company_name": "PT Sarimelati Kencana Tbk",
       "query_values": {
         "sub_sector": "Consumer Services",
-        "pe_ttm": 30.4075914816824,
+        "pe_ttm": 30.5793857838387,
         "roe_ttm": 0.0167746349699067,
         "net_profit_margin[2025]": 0.00810785325601506,
-        "last_close_price": 177,
-        "daily_close_change": -0.00561797752808989,
+        "last_close_price": 178,
+        "daily_close_change": -0.0111111111111111,
         "der_mrq": 0.235978655170002
       }
     }

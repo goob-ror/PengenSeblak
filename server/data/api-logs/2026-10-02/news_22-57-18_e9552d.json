@@ -1,0 +1,293 @@
+{
+  "_metadata": {
+    "logged_at": "2026-10-02T14:57:18.900Z",
+    "endpoint": "/news/",
+    "query_params": {
+      "extension": "idx",
+      "limit": "8"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1303
+  },
+  "data": {
+    "results": [
+      {
+        "title": "IDX Implements Short Selling and Intraday Short Selling Gradually Starting October 1, 2026",
+        "body": "PT Bursa Efek Indonesia (IDX) stated that the implementation of Short Selling and Intraday Short Selling (IDSS) transactions is being carried out gradually, taking into account the readiness of mechanisms, infrastructure, Exchange Members, and risk management. The initial phase, effective October 1, 2026, grants IDSS facility licenses to two Exchange Members, PT Ajaib Sekuritas Asia and PT Semesta Indovest Sekuritas, and covers five stocks in the Short Selling List: ASII, BBCA, BRPT, BUMI, and INDF, selected for their high free float and liquidity. Short Selling quotas are set per Exchange Member based on average daily transaction value in the Regular Market over the prior month: members with average daily value below Rp750 billion may short sell up to 0.02 percent of listed shares per day, those between Rp750 billion and Rp1.5 trillion up to 0.03 percent, and those above Rp1.5 trillion up to 0.05 percent. IDSS investors must deposit an initial margin of at least Rp50 million or 50 percent of the Short Selling transaction value, whichever is higher, with margin adequacy monitored via the Short Selling Ratio and a forced buy mechanism executed automatically at the end of each trading day for IDSS positions; a transition period allows domestic individual investors access to Short Selling until December 31, 2026.",
+        "source": "https://www.antaranews.com/berita/5769017/bei-intraday-short-selling-diterapkan-secara-bertahap",
+        "thumbnail": "https://img.antaranews.com/cache/1200x800/2026/09/30/1000679410.jpg",
+        "timestamp": "2026-10-02T19:50:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings",
+          "banks",
+          "basic-materials",
+          "oil-gas-coal",
+          "food-beverage"
+        ],
+        "tags": [
+          "Politics & Regulation",
+          "Market Sentiment",
+          "Domestic Investor"
+        ],
+        "symbols": [
+          "ASII.JK",
+          "BBCA.JK",
+          "BRPT.JK",
+          "BUMI.JK",
+          "INDF.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 0,
+          "financials": 0,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Astra International Tbk (ASII) to Distribute Rp 3.89 Trillion Interim Dividend, or Rp 98 Per Share",
+        "body": "PT Astra International Tbk (ASII), an issuer in the automotive sector, will distribute an interim dividend for the 2026 fiscal year totaling Rp 3.89 trillion, equivalent to Rp 98 per share, approved by the board of commissioners on 31 December 2026. The dividend is supported by net profit attributable to the parent entity of Rp 12.53 trillion as of 30 June 2026, unrestricted retained earnings of Rp 219.33 trillion, and total equity of Rp 289.84 trillion. The cum dividend date in the regular and negotiation markets is 12 October 2026, the ex dividend date is 13 October 2026, the record date is 14 October 2026, and payment is scheduled for 30 October 2026. ASII shares closed at Rp 4,630 on 2 October 2026, up 2.56% from the previous session.",
+        "source": "https://investasi.kontan.co.id/news/astra-international-asii-bagi-dividen-interim-rp-389-triliun-cek-jadwalnya",
+        "thumbnail": "https://foto.kontan.co.id/gS5QU-zbmfDpXwCRleHRSGJYBD8=/smart/filters:format(webp)/2021/06/17/1811460084p.jpg",
+        "timestamp": "2026-10-02T19:45:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "multi-sector-holdings"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "ASII.JK"
+        ],
+        "dimension": {
+          "future": 0,
+          "dividend": 2,
+          "ownership": 0,
+          "technical": 1,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT GoTo Gojek Tokopedia Tbk (GOTO) Shares Rise 7.14% as Investors Eye Valuation and Buyback",
+        "body": "Shares of PT GoTo Gojek Tokopedia Tbk (GOTO) closed up 7.14% at Rp 30 on Friday (2/10), the fourth session after the Indonesia Stock Exchange (BEI) removed the Rp 50 floor price and replaced it with Rp 1, though the stock remains down about 40% over the past week. The company posted a second-quarter 2026 net profit of Rp 252 billion, its second consecutive profitable quarter, with net revenue of Rp 5.7 trillion and adjusted EBITDA of Rp 1 trillion. GOTO holds RUPSLB approval from 18 June 2026 for a Rp 3.5 trillion buyback running through 18 June 2027, and will seek approval at a RUPSLB on 14 October 2026 to reduce capital by withdrawing 32.18 billion treasury shares bought back between 12 June 2024 and 11 June 2025. Analysts from BRI Danareksa Sekuritas and Phillip Sekuritas Indonesia noted the stock trades below one times price-to-book value, with Friday's transaction value reaching Rp 2.68 trillion on 97.54 billion shares, and consensus fair value estimates of Rp 65 to Rp 74 per share.",
+        "source": "https://investasi.kontan.co.id/news/saham-goto-naik-714-investor-mulai-cermati-valuasi-dan-buyback",
+        "thumbnail": "https://foto.kontan.co.id/zIJaWtO__-1JC7u1kY8kHjPBjS8=/smart/filters:format(webp)/2022/12/13/432139012p.jpg",
+        "timestamp": "2026-10-02T19:13:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Undervalued",
+          "Financial Metrics",
+          "Analyst Ratings",
+          "Neutral"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Futura Energi Global Tbk (FUTR) Acquires 51% Stake in PT Dumai Tirta Persada from PT Adhi Karya Tbk (ADHI) for Rp 141 Billion",
+        "body": "PT Futura Energi Global Tbk (FUTR) signed a conditional sale and purchase agreement (CSPA) on 30 September 2026 to acquire 51% of PT Dumai Tirta Persada, or 74,353 shares, from PT Adhi Karya Tbk (ADHI) for Rp 141 billion after winning a bidding process. The acquisition makes PT Dumai Tirta Persada the first operational infrastructure asset in FUTR's portfolio. PT Dumai Tirta Persada operates a water treatment plant (WTP) in Dumai, Riau, under a public-private partnership (KPBU) scheme. FUTR President Director Anggara Suryawan said the water business aligns with renewable energy characteristics, relying on long-term contracts and recurring revenue, and the transaction remains subject to fulfillment of conditions precedent.",
+        "source": "https://investasi.kontan.co.id/news/futura-energi-global-futr-serok-aset-adhi-senilai-rp-141-miliar",
+        "thumbnail": "https://foto.kontan.co.id/B1mrtT7wJqlM50Tem4i0uGqVftc=/smart/filters:format(webp)/2026/07/03/861925925p.jpg",
+        "timestamp": "2026-10-02T17:46:00",
+        "sector": "consumer-cyclicals",
+        "sub_sector": [
+          "media-entertainment",
+          "heavy-constructions-civil-engineering"
+        ],
+        "tags": [
+          "Mergers & Acquisitions",
+          "Asset Purchase",
+          "Ownership",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "FUTR.JK",
+          "ADHI.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 2,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 1,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Gojek Tokopedia Tbk (GOTO) Shares Rebound as Rp 3.5 Trillion Buyback Plan Draws Analyst Attention",
+        "body": "Shares of PT Gojek Tokopedia Tbk (GOTO) rose 7.14% to Rp 30 per share on Friday (2/10/2026), the fourth day of recovery after PT Bursa Efek Indonesia (BEI) removed the floor price from Rp 50 to Rp 1 per share, though the stock remains down 40% over the past week. GOTO management, which holds an extraordinary general shareholders meeting (RUPSLB) approval from 18 June 2026 for a share buyback with a Rp 3.5 trillion budget covering 19 June 2026 to 18 June 2027, said the price pressure is technical and that current prices do not reflect strengthening fundamentals, citing Q2-2026 net profit of Rp 252 billion, net revenue of Rp 5.7 trillion, and adjusted EBITDA of Rp 1 trillion. GOTO will also seek RUPSLB approval on 14 October 2026 to reduce capital by withdrawing 32.18 billion treasury shares bought back from shareholders between 12 June 2024 and 11 June 2025. Analysts from BRI Danareksa Sekuritas and Phillip Sekuritas Indonesia noted the stock trades below one times price-to-book value, with consensus fair value of Rp 65 to Rp 74 per share, and said the discounted price is a good window for executing the buyback.",
+        "source": "https://investasi.kontan.co.id/news/saham-goto-kembali-bangkit-terdongkrak-buyback-rp-35-triliun-begini-prospeknya",
+        "thumbnail": "https://foto.kontan.co.id/doRCtxlrTxlCpZovU1NwuBMks0k=/smart/filters:format(webp)/2026/07/29/556771766p.jpg",
+        "timestamp": "2026-10-02T17:41:00",
+        "sector": "technology",
+        "sub_sector": [
+          "software-it-services"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Financial Metrics",
+          "Analyst Ratings",
+          "Shareholders General Meeting",
+          "Bullish"
+        ],
+        "symbols": [
+          "GOTO.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 0,
+          "ownership": 1,
+          "technical": 2,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "PT Adaro Andalan Indonesia Tbk (AADI) Seen Paying Rp1,612 per Share Dividend with 14% Yield After Kestrel Sale",
+        "body": "PT Adaro Andalan Indonesia Tbk (AADI) is expected to pay a large dividend of Rp1,612 per share, equivalent to a 14% yield, following the completion of its sale of a 47.99% stake and warrants in the Kestrel coal mine to Yancoal Australia. The transaction is valued at US$814 million before tax, equal to 20.69% of AADI's equity, with an after-tax value of about US$734.83 million and net cash received of US$700 million after tax and SPA adjustments. AADI may also receive an additional US$550 million over the next five years depending on metallurgical coal price developments. According to BRI Danareksa Sekuritas (BRIDS), AADI indicated the proceeds will be used for domestic business development, dividends, and partial debt repayment.",
+        "source": "https://investor.id/market/456458/dividen-rp1612-per-saham-siap-meluncur-yield-14-",
+        "thumbnail": "https://img2.beritasatu.com/cache/investor/960x620-w/2026/05/1779620474-702x462.webp",
+        "timestamp": "2026-10-02T17:40:00",
+        "sector": "energy",
+        "sub_sector": [
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Dividend Announcement",
+          "Mergers & Acquisitions",
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Bullish"
+        ],
+        "symbols": [
+          "AADI.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 2,
+          "ownership": 1,
+          "technical": 0,
+          "valuation": 1,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Six Indonesian Issuers Announce Share Buyback Plans, Including PT United Tractors Tbk (UNTR) and PT Sarana Menara Nusantara Tbk (TOWR)",
+        "body": "Several issuers on the Indonesia Stock Exchange (BEI) have announced share buyback plans ahead of the end of 2026, with allocated funds ranging from Rp 120 billion to Rp 2 trillion. From the Astra group, two subsidiaries announced buybacks: PT United Tractors Tbk (UNTR) with up to Rp 2 trillion and PT Astra Agro Lestari Tbk (AALI) with Rp 400 billion. Other issuers preparing buyback funds are PT Sarana Menara Nusantara Tbk (TOWR) with Rp 500 billion, PT Harum Energy Tbk (HRUM) with Rp 120 billion, PT Merdeka Battery Materials Tbk (MBMA) with Rp 1.38 trillion, and PT Kalbe Farma Tbk (KLBF) with Rp 500 billion. Analysts noted buyback effectiveness depends on fund size relative to market capitalization and actual realization, and that UNTR's Rp 2 trillion plan may signal management views its shares as undervalued after first-half profit fell 88.2% due to RKAB and Martabe mine issues, while TOWR's valuation (PER around 6.5x, PBV around 0.8x) was highlighted as attractive with short-term targets of Rp 450-500.",
+        "source": "https://investasi.kontan.co.id/news/enam-emiten-ramai-ramai-buyback-saham-ada-untr-hingga-towr",
+        "thumbnail": "https://foto.kontan.co.id/n1RoYpQx-HX700ZP3jVPQ6T23PY=/smart/filters:format(webp)/2020/04/06/313011323p.jpg",
+        "timestamp": "2026-10-02T17:28:00",
+        "sector": "industrials",
+        "sub_sector": [
+          "industrial-goods",
+          "basic-materials",
+          "telecommunication",
+          "pharmaceuticals-health-care-research",
+          "food-beverage",
+          "oil-gas-coal"
+        ],
+        "tags": [
+          "Stock Buyback",
+          "Analyst Ratings",
+          "Financial Metrics",
+          "Undervalued",
+          "Neutral"
+        ],
+        "symbols": [
+          "UNTR.JK",
+          "MBMA.JK",
+          "TOWR.JK",
+          "KLBF.JK",
+          "AALI.JK",
+          "HRUM.JK"
+        ],
+        "dimension": {
+          "future": 1,
+          "dividend": 1,
+          "ownership": 1,
+          "technical": 1,
+          "valuation": 2,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      },
+      {
+        "title": "Small Banks Sustain Growth Through August 2026, Led by PT Bank Ina Perdana Tbk, PT Bank Oke Indonesia Tbk (OK Bank), and PT Super Bank Indonesia Tbk",
+        "body": "Several small banks in the KBMI I and KBMI II groups continued to record business growth through August 2026 despite pressure on funding costs and asset quality challenges. Per OJK data, KBMI I loans grew only 0.03% year-on-year to Rp 758.28 trillion as of July 2026 while profit before tax fell 10.95% yoy to Rp 10.03 trillion, whereas KBMI II loans grew 10.62% yoy to Rp 1,064.34 trillion with profit up 7.04% yoy to Rp 20.29 trillion. PT Bank Ina Perdana Tbk posted loans of Rp 16.64 trillion, up 20.12% yoy, and net profit of Rp 66.6 billion, up 110.73% yoy, while targeting over 10% loan and third-party funds (DPK) growth by end-2026. PT Bank Oke Indonesia Tbk (OK Bank) recorded loans of Rp 11.32 trillion, up 13.35% yoy, and net profit of Rp 161.86 billion, up 66.55% yoy, while PT Super Bank Indonesia Tbk booked net profit of Rp 259.15 billion, up 482.78% yoy, supported by net interest income of Rp 1.4 trillion (up 44% yoy), assets of Rp 27.3 trillion (up 73% yoy), loans of Rp 13.5 trillion (up 55% yoy), and DPK of Rp 17.3 trillion (up 84% yoy) with over 8 million customers.",
+        "source": "https://keuangan.kontan.co.id/news/kinerja-bank-kecil-tetap-tumbuh-hingga-agustus-2026",
+        "thumbnail": "https://foto.kontan.co.id/KrGF5DBl9OSEbVA733aZT3nWrWg=/smart/2023/08/11/1057308531p.jpg",
+        "timestamp": "2026-10-02T17:22:00",
+        "sector": "financials",
+        "sub_sector": [
+          "banks"
+        ],
+        "tags": [
+          "Financial Metrics",
+          "Credit",
+          "Business Expansion",
+          "Bullish"
+        ],
+        "symbols": [
+          "BINA.JK",
+          "DNAR.JK",
+          "SUPA.JK"
+        ],
+        "dimension": {
+          "future": 2,
+          "dividend": 0,
+          "ownership": 0,
+          "technical": 0,
+          "valuation": 0,
+          "financials": 2,
+          "management": 0,
+          "sustainability": 0
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 10892,
+      "showing": 8,
+      "limit": 8,
+      "offset": 0,
+      "has_next": true,
+      "has_previous": false,
+      "next_offset": 8,
+      "previous_offset": null
+    }
+  }
+}

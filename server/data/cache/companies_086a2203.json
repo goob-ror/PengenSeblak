@@ -9,7 +9,7 @@
         "roe_ttm": 0.0570393274551135,
         "net_profit_margin[2025]": 0.221933317167879,
         "last_close_price": 121,
-        "daily_close_change": 0.00833333333333333
+        "daily_close_change": -0.00819672131147541
       }
     },
     {
@@ -29,11 +29,11 @@
       "company_name": "PT Bank Mayapada Internasional Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 77.5611114377353,
+        "pe_ttm": 76.4092137431155,
         "roe_ttm": 0.00347312896180315,
         "net_profit_margin[2025]": 0.00915498076766843,
-        "last_close_price": 202,
-        "daily_close_change": -0.0194174757281553
+        "last_close_price": 199,
+        "daily_close_change": -0.005
       }
     },
     {
@@ -45,7 +45,7 @@
         "roe_ttm": 0.0416526184404634,
         "net_profit_margin[2025]": 0.283308563021678,
         "last_close_price": 66,
-        "daily_close_change": 0.0153846153846154
+        "daily_close_change": -0.0149253731343284
       }
     },
     {
@@ -53,11 +53,11 @@
       "company_name": "Bank Mega Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 13.8218807145823,
+        "pe_ttm": 13.7155585552394,
         "roe_ttm": 0.146635969907065,
         "net_profit_margin[2025]": 0.436159950181815,
-        "last_close_price": 1950,
-        "daily_close_change": 0.029023746701847
+        "last_close_price": 1935,
+        "daily_close_change": 0
       }
     },
     {
@@ -65,11 +65,11 @@
       "company_name": "PT Bank OCBC NISP Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 5.43833155437456,
+        "pe_ttm": 5.39482490193957,
         "roe_ttm": 0.117665948057835,
         "net_profit_margin[2025]": 0.389637655462017,
-        "last_close_price": 1250,
-        "daily_close_change": 0.00401606425702811
+        "last_close_price": 1240,
+        "daily_close_change": -0.008
       }
     },
     {
@@ -81,7 +81,7 @@
         "roe_ttm": 0.131998176470535,
         "net_profit_margin[2025]": 0.296375477903303,
         "last_close_price": 505,
-        "daily_close_change": -0.0380952380952381
+        "daily_close_change": 0.01
       }
     },
     {
@@ -89,11 +89,11 @@
       "company_name": "Bank Pan Indonesia Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 6.594029971498,
+        "pe_ttm": 6.51552961469445,
         "roe_ttm": 0.0531869085999254,
         "net_profit_margin[2025]": 0.252900120212999,
-        "last_close_price": 840,
-        "daily_close_change": 0
+        "last_close_price": 830,
+        "daily_close_change": -0.0177514792899408
       }
     },
     {
@@ -101,11 +101,11 @@
       "company_name": "PT Bank Panin Dubai Syariah Tbk",
       "query_values": {
         "sub_sector": "Banks",
-        "pe_ttm": 22.6446545872208,
+        "pe_ttm": 20.5860496247462,
         "roe_ttm": 0.0248122881626423,
         "net_profit_margin[2025]": 0.0415602556892446,
-        "last_close_price": 44,
-        "daily_close_change": 0.0232558139534884
+        "last_close_price": 40,
+        "daily_close_change": -0.024390243902439
       }
     },
     {
@@ -117,7 +117,7 @@
         "roe_ttm": 0.0407724307268729,
         "net_profit_margin[2025]": -0.579388994609868,
         "last_close_price": 204,
-        "daily_close_change": 0.0099009900990099
+        "daily_close_change": -0.00970873786407767
       }
     },
     {
@@ -129,7 +129,7 @@
         "roe_ttm": 0.0221198969446929,
         "net_profit_margin[2025]": 0.0616651139657713,
         "last_close_price": 490,
-        "daily_close_change": 0.00823045267489712
+        "daily_close_change": -0.0120967741935484
       }
     }
   ],

@@ -7,7 +7,7 @@
     "sub_industry": "Electric Utilities",
     "sector": "Infrastructures",
     "sub_sector": "Utilities",
-    "market_cap": 390655762400000,
+    "market_cap": 383966451400000,
     "market_cap_rank": 5,
     "address": "Wisma Barito Pacific II, Lantai 23,\nJl. Let. Jend. S. Parman Kav. 60, RT 010, RW 005, Slipi, Palmerah, Jakarta 11410,\nIndonesia",
     "employee_num": 679,
@@ -16,9 +16,9 @@
     "website": "www.baritorenewables.co.id",
     "phone": "(021) 530 6711",
     "email": "corpsec@baritorenewables.co.id",
-    "last_close_price": 2920,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": -0.0363036303630363,
+    "last_close_price": 2870,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0103448275862069,
     "all_time_price": {
       "ytd_low": {
         "2026-05-25": 2300
@@ -27,7 +27,7 @@
         "2026-05-25": 2300
       },
       "90_d_low": {
-        "2026-09-29": 2890
+        "2026-10-01": 2830
       },
       "ytd_high": {
         "2026-01-02": 9800
@@ -49,7 +49,6 @@
     "tags": [
       "90-d-low",
       "esg-under-25",
-      "last-volume-above-10d-volume-average",
       "public-float-under-25",
       "top-20-institution-selling",
       "top-90d-transaction-value"
@@ -63,9 +62,9 @@
     ]
   },
   "valuation": {
-    "last_close_price": 2920,
-    "latest_close_date": "2026-09-29",
-    "daily_close_change": -0.0363036303630363,
+    "last_close_price": 2870,
+    "latest_close_date": "2026-10-01",
+    "daily_close_change": -0.0103448275862069,
     "forward_pe": null,
     "intrinsic_value": 77,
     "historical_valuation": [
@@ -109,17 +108,17 @@
         "enterprise_to_revenue": 131.345044149179
       },
       {
-        "pb": 31.3772775050986,
-        "pe": 148.30349642059,
-        "ps": 35.7436625883697,
-        "pcf": 2.65371499859072,
-        "peg": 91.45548184739852,
+        "pb": 30.8399953560387,
+        "pe": 145.764052988731,
+        "ps": 35.1316135714456,
+        "pcf": 2.60827467327238,
+        "peg": 89.88946332261429,
         "year": 2026,
-        "pb_peer_avg": 1.18353285349818,
-        "pe_peer_avg": 23.7864964048447,
-        "ps_peer_avg": 9.33202463893299,
-        "enterprise_to_ebitda": 60.442063916795256,
-        "enterprise_to_revenue": 38.8654391992324
+        "pb_peer_avg": 1.19738591690123,
+        "pe_peer_avg": 23.3546769106868,
+        "ps_peer_avg": 9.05814190671896,
+        "enterprise_to_ebitda": 59.49022838982478,
+        "enterprise_to_revenue": 38.2533901823083
       }
     ]
   },
@@ -569,18 +568,18 @@
           {
             "date": "2026-07-03",
             "total": 4.0933,
-            "yield": 0.00140181502250776
+            "yield": 0.00142623688701138
           }
         ],
-        "total_yield": 0.00140181502250776,
+        "total_yield": 0.00142623688701138,
         "total_dividend": 4.0933
       }
     },
     "upcoming_dividends": null,
-    "yield_ttm": 0.00140181502250776,
+    "yield_ttm": 0.00142623688701138,
     "dividend_yield_avg": {
       "period": 2,
-      "avg_yield": 0.00143533800166477
+      "avg_yield": 0.00144754893391658
     },
     "dividend_ttm": 4.0933,
     "payout_ratio": 0.207891303695095,

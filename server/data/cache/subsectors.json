@@ -60,12 +60,12 @@
     "subsector": "industrial-services"
   },
   {
-    "sector": "financials",
-    "subsector": "insurance"
-  },
-  {
     "sector": "technology",
     "subsector": "software-it-services"
+  },
+  {
+    "sector": "financials",
+    "subsector": "insurance"
   },
   {
     "sector": "infrastructures",

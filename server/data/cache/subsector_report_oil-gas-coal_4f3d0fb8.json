@@ -9,44 +9,44 @@
       },
       "2019": {
         "avg_annual_earning_growth": -0.36633479456126,
-        "avg_annual_revenue_growth": 0.867638624799657
+        "avg_annual_revenue_growth": 0.868406454692728
       },
       "2020": {
-        "avg_annual_earning_growth": 68.9826693639726,
-        "avg_annual_revenue_growth": 121.680914635018
+        "avg_annual_earning_growth": 68.2752890597846,
+        "avg_annual_revenue_growth": 120.836121803257
       },
       "2021": {
-        "avg_annual_earning_growth": 2.28829611826942,
-        "avg_annual_revenue_growth": 2.03237172475105
+        "avg_annual_earning_growth": 2.27415686085824,
+        "avg_annual_revenue_growth": 2.01345936438619
       },
       "2022": {
-        "avg_annual_earning_growth": 3.55931362619736,
-        "avg_annual_revenue_growth": 1.15376385386651
+        "avg_annual_earning_growth": 3.53298445704536,
+        "avg_annual_revenue_growth": 1.15840834914733
       },
       "2023": {
-        "avg_annual_earning_growth": 0.0420996901705947,
-        "avg_annual_revenue_growth": -0.0492696840684086
+        "avg_annual_earning_growth": 0.0609558163717795,
+        "avg_annual_revenue_growth": -0.0409823784068841
       },
       "2024": {
-        "avg_annual_earning_growth": 37.3717752367644,
-        "avg_annual_revenue_growth": 60.5866526182925
+        "avg_annual_earning_growth": 36.7017376131408,
+        "avg_annual_revenue_growth": 59.9393100070462
       },
       "2025": {
-        "avg_annual_earning_growth": 2.19935823976404,
-        "avg_annual_revenue_growth": 0.0562861093743302
+        "avg_annual_earning_growth": 2.17756522508626,
+        "avg_annual_revenue_growth": 0.055439599952449
       }
     },
     "growth_forecasts": {
       "2026": {
         "base_year": 2025,
-        "eps_growth": 1.00025419701917,
-        "revenue_growth": 0.378614691305155
+        "eps_growth": 0.990663844768247,
+        "revenue_growth": 0.377707209300299
       }
     }
   },
   "stability": {
-    "weighted_max_drawdown": -0.546095087669805,
-    "weighted_rsd_close": 0.2640478648280065
+    "weighted_max_drawdown": -0.546261482983955,
+    "weighted_rsd_close": 0.26479592845041205
   },
   "valuation": {
     "historical_valuation": {
@@ -57,9 +57,9 @@
         "pcf": 2.98957712046044
       },
       "2023": {
-        "pb": 0.995046150975719,
-        "pe": 8.59526632434083,
-        "ps": 1.13810500743138,
+        "pb": 1.04958873891478,
+        "pe": 8.82392244211565,
+        "ps": 1.07231241464621,
         "pcf": 4.59373885491333
       },
       "2024": {
@@ -75,20 +75,20 @@
         "pcf": 5.57839022356436
       },
       "2026": {
-        "pb": 1.23227372209455,
-        "pe": 10.5772500151207,
-        "ps": 1.39341768609847,
-        "pcf": 4.45430601091747,
-        "pb_rank": 19,
-        "pe_rank": 24,
+        "pb": 1.20577321194198,
+        "pe": 10.6878136041289,
+        "ps": 1.41703493501539,
+        "pcf": 4.42566309310111,
+        "pb_rank": 17,
+        "pe_rank": 23,
         "ps_rank": 20,
-        "pcf_rank": 9
+        "pcf_rank": 10
       }
     }
   },
   "market_cap": {
-    "total_market_cap": 1545044090166072,
-    "avg_market_cap": 17360045956922.158,
+    "total_market_cap": 1530950697165913,
+    "avg_market_cap": 17201693226583.293,
     "quarterly_market_cap": {
       "prev_ttm_mcap": {
         "2024.Q4": 1771904139010974,
@@ -100,23 +100,22 @@
         "2025.Q4": 2595021980568499,
         "2026.Q1": 1976204418888987,
         "2026.Q2": 1302694337990472,
-        "2026.Q3": 1664321642312840
+        "2026.Q3": 1522409386036422
       },
       "current_ttm_mcap_pavg": {
         "2025.Q4": 414065646430956.5,
         "2026.Q1": 326325994905820.6,
         "2026.Q2": 268479179435141.03,
-        "2026.Q3": 308242328504632.5
+        "2026.Q3": 286540947285407.8
       }
     },
     "mcap_summary": {
       "mcap_change": {
-        "1w": -0.029223816304664016,
-        "1y": -0.3465161090207564,
-        "ytd": -0.40047734678166275
+        "1w": -0.03895577977121834,
+        "1y": -0.3403679218511342,
+        "ytd": -0.4133346856264765
       },
       "monthly_performance": {
-        "2025-10-31": -0.03056670108891903,
         "2025-11-28": 0.14517696419358778,
         "2025-12-30": -0.01816445198149235,
         "2026-01-30": -0.05291812274227523,
@@ -127,9 +126,9 @@
         "2026-06-30": -0.016525193628052073,
         "2026-07-31": 0.11377730789789621,
         "2026-08-31": 0.12864307200052902,
-        "2026-09-28": -0.049944169423977745
+        "2026-09-30": -0.07031902877188355
       },
-      "performance_quantile": 0.151515151515152
+      "performance_quantile": 0.212121212121212
     }
   }
 }

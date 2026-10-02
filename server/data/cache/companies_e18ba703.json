@@ -77,10 +77,6 @@
       "company_name": "PT Merdeka Gold Resources Tbk"
     },
     {
-      "symbol": "CUAN.JK",
-      "company_name": "PT Petrindo Jaya Kreasi Tbk"
-    },
-    {
       "symbol": "CASA.JK",
       "company_name": "PT Capital Financial Indonesia Tbk"
     },
@@ -89,20 +85,20 @@
       "company_name": "United Tractors Tbk"
     },
     {
-      "symbol": "AADI.JK",
-      "company_name": "PT Adaro Andalan Indonesia Tbk"
+      "symbol": "CUAN.JK",
+      "company_name": "PT Petrindo Jaya Kreasi Tbk"
     },
     {
-      "symbol": "BRMS.JK",
-      "company_name": "Bumi Resources Minerals Tbk"
+      "symbol": "AADI.JK",
+      "company_name": "PT Adaro Andalan Indonesia Tbk"
     },
     {
       "symbol": "PANI.JK",
       "company_name": "PT Pantai Indah Kapuk Dua Tbk."
     },
     {
-      "symbol": "IMPC.JK",
-      "company_name": "PT Impack Pratama Industri Tbk"
+      "symbol": "BRMS.JK",
+      "company_name": "Bumi Resources Minerals Tbk"
     },
     {
       "symbol": "ICBP.JK",
@@ -113,32 +109,36 @@
       "company_name": "Aneka Tambang Tbk."
     },
     {
+      "symbol": "IMPC.JK",
+      "company_name": "PT Impack Pratama Industri Tbk"
+    },
+    {
       "symbol": "ISAT.JK",
       "company_name": "PT Indosat Tbk"
-    },
-    {
-      "symbol": "HMSP.JK",
-      "company_name": "HM Sampoerna Tbk"
-    },
-    {
-      "symbol": "MDKA.JK",
-      "company_name": "PT Merdeka Copper Gold Tbk"
-    },
-    {
-      "symbol": "ADRO.JK",
-      "company_name": "Alamtri Resources Indonesia Tbk"
     },
     {
       "symbol": "CDIA.JK",
       "company_name": "PT Chandra Daya Investasi Tbk"
     },
     {
-      "symbol": "BRIS.JK",
-      "company_name": "PT Bank Syariah Indonesia Tbk"
+      "symbol": "HMSP.JK",
+      "company_name": "HM Sampoerna Tbk"
+    },
+    {
+      "symbol": "ADRO.JK",
+      "company_name": "Alamtri Resources Indonesia Tbk"
+    },
+    {
+      "symbol": "MDKA.JK",
+      "company_name": "PT Merdeka Copper Gold Tbk"
     },
     {
       "symbol": "BNLI.JK",
       "company_name": "Bank Permata Tbk"
+    },
+    {
+      "symbol": "BRIS.JK",
+      "company_name": "PT Bank Syariah Indonesia Tbk"
     },
     {
       "symbol": "BUMI.JK",
@@ -149,56 +149,56 @@
       "company_name": "Unilever Indonesia Tbk"
     },
     {
-      "symbol": "ADMR.JK",
-      "company_name": "PT Alamtri Minerals Indonesia Tbk"
-    },
-    {
       "symbol": "INDF.JK",
       "company_name": "Indofood Sukses Makmur Tbk"
+    },
+    {
+      "symbol": "ADMR.JK",
+      "company_name": "PT Alamtri Minerals Indonesia Tbk"
     },
     {
       "symbol": "NCKL.JK",
       "company_name": "PT Trimegah Bangun Persada Tbk"
     },
     {
-      "symbol": "AMRT.JK",
-      "company_name": "PT Sumber Alfaria Trijaya Tbk."
-    },
-    {
-      "symbol": "MBMA.JK",
-      "company_name": "PT Merdeka Battery Materials Tbk"
-    },
-    {
       "symbol": "PGUN.JK",
       "company_name": "PT Pradiksi Gunatama Tbk"
+    },
+    {
+      "symbol": "AMRT.JK",
+      "company_name": "PT Sumber Alfaria Trijaya Tbk."
     },
     {
       "symbol": "PTRO.JK",
       "company_name": "Petrosea Tbk"
     },
     {
+      "symbol": "MBMA.JK",
+      "company_name": "PT Merdeka Battery Materials Tbk"
+    },
+    {
       "symbol": "SUPR.JK",
       "company_name": "Solusi Tunas Pratama Tbk"
+    },
+    {
+      "symbol": "GEMS.JK",
+      "company_name": "Golden Energy Mines Tbk"
     },
     {
       "symbol": "CPIN.JK",
       "company_name": "Charoen Pokphand Indonesia Tbk"
     },
     {
-      "symbol": "MLPT.JK",
-      "company_name": "PT Multipolar Technology Tbk"
-    },
-    {
       "symbol": "MEGA.JK",
       "company_name": "Bank Mega Tbk"
     },
     {
-      "symbol": "INCO.JK",
-      "company_name": "Vale Indonesia Tbk"
+      "symbol": "BDMN.JK",
+      "company_name": "PT Bank Danamon Indonesia Tbk"
     },
     {
-      "symbol": "INKP.JK",
-      "company_name": "Indah Kiat Pulp & Paper Tbk"
+      "symbol": "MLPT.JK",
+      "company_name": "PT Multipolar Technology Tbk"
     }
   ],
   "pagination": {

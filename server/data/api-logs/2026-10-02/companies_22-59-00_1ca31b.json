@@ -1,0 +1,311 @@
+{
+  "_metadata": {
+    "logged_at": "2026-10-02T14:59:00.545Z",
+    "endpoint": "/companies/",
+    "query_params": {
+      "where": "sub_sector='Retailing' and market_cap > 0 and last_close_price > 0 and daily_close_change > -100 and pe_ttm > 0 and roe_ttm > -100 and net_profit_margin[2025] > -100 and der_mrq >= 0",
+      "limit": "30",
+      "offset": "0",
+      "include_query_values": "true",
+      "order_by": "-market_cap"
+    },
+    "http_status": 200,
+    "credits_used": 1,
+    "cache_hit": false,
+    "response_time_ms": 1147
+  },
+  "data": {
+    "results": [
+      {
+        "symbol": "MAPI.JK",
+        "company_name": "Mitra Adiperkasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 24568000000000,
+          "last_close_price": 1480,
+          "daily_close_change": -0.0451612903225806,
+          "pe_ttm": 9.88361567829169,
+          "roe_ttm": 0.132868794384053,
+          "net_profit_margin[2025]": 0.0517871371138379,
+          "der_mrq": 0.476905231969694
+        }
+      },
+      {
+        "symbol": "MDIY.JK",
+        "company_name": "PT Daya Intiguna Yasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 23804920440000,
+          "last_close_price": 945,
+          "daily_close_change": 0,
+          "pe_ttm": 19.9497340780812,
+          "roe_ttm": 0.27027164764357,
+          "net_profit_margin[2025]": 0.140017237535921,
+          "der_mrq": 0.519060544726776
+        }
+      },
+      {
+        "symbol": "MAPA.JK",
+        "company_name": "PT MAP Aktif Adiperkasa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 17957520000000,
+          "last_close_price": 630,
+          "daily_close_change": 0.008,
+          "pe_ttm": 9.33895897831409,
+          "roe_ttm": 0.198421859476211,
+          "net_profit_margin[2025]": 0.0892583958971205,
+          "der_mrq": 0.263795598534358
+        }
+      },
+      {
+        "symbol": "ERAA.JK",
+        "company_name": "Erajaya Swasembada Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 9490250000000,
+          "last_close_price": 595,
+          "daily_close_change": 0,
+          "pe_ttm": 6.72258182050243,
+          "roe_ttm": 0.128985846723742,
+          "net_profit_margin[2025]": 0.0156118024519967,
+          "der_mrq": 0.729201899184088
+        }
+      },
+      {
+        "symbol": "BOGA.JK",
+        "company_name": "PT Apollo Global Interactive Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 5895465625500,
+          "last_close_price": 1550,
+          "daily_close_change": 0,
+          "pe_ttm": 1384.52676989629,
+          "roe_ttm": 0.00938966312327874,
+          "net_profit_margin[2025]": 0.00665893206448794,
+          "der_mrq": 0.593421760441027
+        }
+      },
+      {
+        "symbol": "ACES.JK",
+        "company_name": "PT Aspirasi Hidup Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 5547006262800,
+          "last_close_price": 324,
+          "daily_close_change": -0.029940119760479,
+          "pe_ttm": 7.23998903788157,
+          "roe_ttm": 0.118779289693386,
+          "net_profit_margin[2025]": 0.0774109497538464,
+          "der_mrq": 0.153305368483079
+        }
+      },
+      {
+        "symbol": "MPMX.JK",
+        "company_name": "PT Mitra Pinasthika Mustika Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 4430832908760,
+          "last_close_price": 1010,
+          "daily_close_change": -0.00980392156862745,
+          "pe_ttm": 8.0721013008761,
+          "roe_ttm": 0.0986030661947049,
+          "net_profit_margin[2025]": 0.0284543085711795,
+          "der_mrq": 0.0073936087561424
+        }
+      },
+      {
+        "symbol": "LPPF.JK",
+        "company_name": "PT MDS Retailing Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 3485692073200,
+          "last_close_price": 1565,
+          "daily_close_change": -0.00634920634920635,
+          "pe_ttm": 4.51098478242864,
+          "roe_ttm": 2.57160067758479,
+          "net_profit_margin[2025]": 0.125395740985127,
+          "der_mrq": 8.28736783602182
+        }
+      },
+      {
+        "symbol": "IMAS.JK",
+        "company_name": "Indomobil Sukses Internasional Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 3375175927955,
+          "last_close_price": 845,
+          "daily_close_change": -0.0174418604651163,
+          "pe_ttm": 33.6581895127047,
+          "roe_ttm": 0.00598357122501207,
+          "net_profit_margin[2025]": 0.00433807260157133,
+          "der_mrq": 3.39073350212735
+        }
+      },
+      {
+        "symbol": "SONA.JK",
+        "company_name": "Sona Topas Tourism Industry Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 2801952000000,
+          "last_close_price": 4230,
+          "daily_close_change": 0,
+          "pe_ttm": 29.1756460861061,
+          "roe_ttm": 0.131923875100259,
+          "net_profit_margin[2025]": 0.0989877794165629,
+          "der_mrq": 0.137821144634692
+        }
+      },
+      {
+        "symbol": "RALS.JK",
+        "company_name": "Ramayana Lestari Sentosa Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 2653904000000,
+          "last_close_price": 374,
+          "daily_close_change": -0.00531914893617021,
+          "pe_ttm": 11.0658638691062,
+          "roe_ttm": 0.0691648668501042,
+          "net_profit_margin[2025]": 0.112155593764784,
+          "der_mrq": 0.125936594353887
+        }
+      },
+      {
+        "symbol": "PMJS.JK",
+        "company_name": "PT Putra Mandiri Jembar Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1939539600000,
+          "last_close_price": 141,
+          "daily_close_change": 0.0601503759398496,
+          "pe_ttm": 9.87720197401902,
+          "roe_ttm": 0.0580625086692205,
+          "net_profit_margin[2025]": 0.0114100809553783,
+          "der_mrq": 0.030281824051012
+        }
+      },
+      {
+        "symbol": "CARS.JK",
+        "company_name": "PT Industri dan Perdagangan Bintraco Dharma Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1605000000000,
+          "last_close_price": 107,
+          "daily_close_change": -0.018348623853211,
+          "pe_ttm": 10.1089394997763,
+          "roe_ttm": 0.111402848693096,
+          "net_profit_margin[2025]": 0.0313283406950719,
+          "der_mrq": 0.809057741346913
+        }
+      },
+      {
+        "symbol": "CSAP.JK",
+        "company_name": "Catur Sentosa Adiprana Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1557189991374,
+          "last_close_price": 274,
+          "daily_close_change": -0.0352112676056338,
+          "pe_ttm": 8.51217185740479,
+          "roe_ttm": 0.0474679857425166,
+          "net_profit_margin[2025]": 0.00641235572547225,
+          "der_mrq": 1.14875168430171
+        }
+      },
+      {
+        "symbol": "ERAL.JK",
+        "company_name": "PT Sinar Eka Selaras Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1556250000000,
+          "last_close_price": 300,
+          "daily_close_change": 0,
+          "pe_ttm": 7.88768719029824,
+          "roe_ttm": 0.10782917904137,
+          "net_profit_margin[2025]": 0.0260286804325055,
+          "der_mrq": 0.172014801547705
+        }
+      },
+      {
+        "symbol": "DEPO.JK",
+        "company_name": "PT Caturkarda Depo Bangunan Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 1534540000000,
+          "last_close_price": 226,
+          "daily_close_change": -0.0087719298245614,
+          "pe_ttm": 18.8119659868735,
+          "roe_ttm": 0.058669275532439,
+          "net_profit_margin[2025]": 0.0267880683609912,
+          "der_mrq": 0.220952749779037
+        }
+      },
+      {
+        "symbol": "PMUI.JK",
+        "company_name": "PT Prima Multi Usaha Indonesia Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 580000000000,
+          "last_close_price": 100,
+          "daily_close_change": 0.0416666666666667,
+          "pe_ttm": 14.9615447663433,
+          "roe_ttm": 0.0854066607800178,
+          "net_profit_margin[2025]": 0.00958727151364293,
+          "der_mrq": 0.0516639068716074
+        }
+      },
+      {
+        "symbol": "ZONE.JK",
+        "company_name": "PT Mega Perintis Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 552558888530,
+          "last_close_price": 635,
+          "daily_close_change": -0.0078125,
+          "pe_ttm": 18.3645148344674,
+          "roe_ttm": 0.0748817981463679,
+          "net_profit_margin[2025]": 0.019216760851859,
+          "der_mrq": 0.39379911458621
+        }
+      },
+      {
+        "symbol": "BABY.JK",
+        "company_name": "PT Multitrend Indo Tbk.",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 545271877162,
+          "last_close_price": 191,
+          "daily_close_change": 0.0213903743315508,
+          "pe_ttm": 99.3802172659937,
+          "roe_ttm": 0.00910000321873604,
+          "net_profit_margin[2025]": -0.0152964392824762,
+          "der_mrq": 0.508684571015923
+        }
+      },
+      {
+        "symbol": "UFOE.JK",
+        "company_name": "PT Damai Sejahtera Abadi Tbk",
+        "query_values": {
+          "sub_sector": "Retailing",
+          "market_cap": 405756637020,
+          "last_close_price": 140,
+          "daily_close_change": -0.00709219858156028,
+          "pe_ttm": 18.5840443886225,
+          "roe_ttm": 0.0858006219058364,
+          "net_profit_margin[2025]": 0.0169193907972889,
+          "der_mrq": 0.539882088043116
+        }
+      }
+    ],
+    "pagination": {
+      "total_count": 20,
+      "showing": 20,
+      "limit": 30,
+      "offset": 0,
+      "has_next": false,
+      "has_previous": false,
+      "next_offset": null,
+      "previous_offset": null
+    }
+  }
+}
