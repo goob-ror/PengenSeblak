@@ -725,7 +725,7 @@ export function MarketOverview() {
               ? Array.from({ length: 8 }, (_, i) => (
                   <div
                     key={i}
-                    className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5"
+                    className="grid grid-cols-[20px_52px_1fr_48px] items-center gap-2 px-3 py-2.5 sm:grid-cols-[28px_72px_1fr_64px] sm:gap-3 sm:px-4"
                   >
                     <Skeleton className="h-3 w-5" />
                     <Skeleton className="h-3 w-14" />
@@ -745,7 +745,7 @@ export function MarketOverview() {
                   return (
                     <div
                       key={s.name}
-                      className="grid grid-cols-[28px_72px_1fr_64px] items-center gap-3 px-4 py-2.5 hover:bg-secondary/50 transition-colors"
+                      className="grid grid-cols-[20px_52px_1fr_48px] items-center gap-2 px-3 py-2.5 transition-colors hover:bg-secondary/50 sm:grid-cols-[28px_72px_1fr_64px] sm:gap-3 sm:px-4"
                       title={`SHI: ${s.score}`}
                     >
                       <span className="text-[10px] tabular-nums text-muted-foreground">
@@ -827,7 +827,7 @@ export function MarketOverview() {
               return (
                 <div
                   key={s.name}
-                  className="grid grid-cols-[28px_1fr_56px_auto] items-center gap-3 px-4 py-3 hover:bg-secondary/50 transition-colors"
+                  className="grid grid-cols-[24px_1fr_48px_auto] items-center gap-2 px-3 py-3 transition-colors hover:bg-secondary/50 sm:grid-cols-[28px_1fr_56px_auto] sm:gap-3 sm:px-4"
                 >
                   <span className="text-[10px] tabular-nums text-muted-foreground">
                     {String(i + 1).padStart(2, "0")}
@@ -1264,13 +1264,13 @@ export function MarketOverview() {
       </div>
 
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
-        <SheetContent className="border-border bg-popover">
+        <SheetContent className="flex flex-col border-border bg-popover">
           <SheetHeader>
             <SheetTitle>{detail?.label}</SheetTitle>
             <SheetDescription>{detail?.company_name}</SheetDescription>
           </SheetHeader>
           {detail && (
-            <>
+            <div className="flex-1 overflow-y-auto">
               <div className="grid grid-cols-2 gap-5 p-5">
                 {meta("Emiten", detail.symbol)}
                 {meta("Sub-sektor", detail.sub_sector)}
@@ -1329,20 +1329,20 @@ export function MarketOverview() {
                   (misal DER untuk perbankan bukan metrik yang bermakna).
                 </p>
               </div>
-            </>
+            </div>
           )}
         </SheetContent>
       </Sheet>
 
       {/* ── News detail Sheet (same pattern as anomaly detail) ────── */}
       <Sheet open={!!newsDetail} onOpenChange={(v) => !v && setNewsDetail(null)}>
-        <SheetContent className="border-border bg-popover">
+        <SheetContent className="flex flex-col border-border bg-popover">
           <SheetHeader>
             <SheetTitle className="text-sm leading-snug">Detail Katalis Pasar</SheetTitle>
             <SheetDescription>{newsDetail?.timestamp?.slice(0, 10) ?? ""}</SheetDescription>
           </SheetHeader>
           {newsDetail && (
-            <div className="flex flex-col gap-4 overflow-y-auto p-5">
+            <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-5">
               <h3 className="text-sm font-semibold leading-relaxed text-foreground">
                 {newsDetail.title}
               </h3>
@@ -1519,9 +1519,7 @@ export function SectorIntelligence() {
   const sectorDqSet = useMemo(() => {
     const syms = new Set((universe.data ?? []).map((c) => c.symbol));
     return new Set(
-      (anom.data?.dqNotices ?? [])
-        .filter((n) => syms.has(n.symbol))
-        .map((n) => n.symbol),
+      (anom.data?.dqNotices ?? []).filter((n) => syms.has(n.symbol)).map((n) => n.symbol),
     );
   }, [anom.data?.dqNotices, universe.data]);
 
@@ -1566,37 +1564,39 @@ export function SectorIntelligence() {
   return (
     <div className="space-y-4">
       <PageHeader title="Intelijen Sektor">
-        <div className="relative">
-          <Search className="absolute left-2.5 top-2 size-3.5 text-muted-foreground" />
-          <Input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari emiten…"
-            className="h-8 w-44 pl-8 text-xs"
-          />
-        </div>
-        <select
-          value={selectedSlug}
-          onChange={(e) => selectSector(e.target.value)}
-          disabled={subsectorList.isPending}
-          className="h-8 max-w-55 border border-input bg-background px-3 text-xs"
-        >
-          {subsectorList.isPending && <option>Memuat sektor…</option>}
-          {!subsectorList.isPending && sectors.length === 0 && (
-            <option>Daftar sektor tidak tersedia</option>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="relative">
+            <Search className="absolute left-2.5 top-2 size-3.5 text-muted-foreground" />
+            <Input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Cari emiten…"
+              className="h-8 w-36 pl-8 text-xs sm:w-44"
+            />
+          </div>
+          <select
+            value={selectedSlug}
+            onChange={(e) => selectSector(e.target.value)}
+            disabled={subsectorList.isPending}
+            className="h-8 max-w-[200px] border border-input bg-background px-3 text-xs sm:max-w-55"
+          >
+            {subsectorList.isPending && <option>Memuat sektor…</option>}
+            {!subsectorList.isPending && sectors.length === 0 && (
+              <option>Daftar sektor tidak tersedia</option>
+            )}
+            {sectors.map((s) => (
+              <option key={s.slug} value={s.slug}>
+                {s.sectorName} · {s.subSector}
+              </option>
+            ))}
+          </select>
+          {!subsectorList.isPending && selected && !isSubsectorVerified(selected.slug) && (
+            <span className="text-[10px] text-warning">
+              Nama tampilan sektor ini belum terverifikasi — data emiten mungkin kosong
+            </span>
           )}
-          {sectors.map((s) => (
-            <option key={s.slug} value={s.slug}>
-              {s.sectorName} · {s.subSector}
-            </option>
-          ))}
-        </select>
-        {!subsectorList.isPending && selected && !isSubsectorVerified(selected.slug) && (
-          <span className="text-[10px] text-warning">
-            Nama tampilan sektor ini belum terverifikasi — data emiten mungkin kosong
-          </span>
-        )}
-        <ExportMenu title={`${selected?.subSector ?? "Sector"} Research`} />
+          <ExportMenu title={`${selected?.subSector ?? "Sector"} Research`} />
+        </div>
       </PageHeader>
 
       {/* If the API list itself failed, say so instead of faking data */}
@@ -1891,8 +1891,8 @@ export function SectorIntelligence() {
             Gagal memuat universe emiten.
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-225">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[560px]">
               <thead>
                 <tr>
                   <th className={th}>Ticker</th>
@@ -2557,7 +2557,7 @@ export function CompanyTerminal() {
           ))}
         </div>
       </Panel>
-      <div className="grid gap-4 2xl:grid-cols-[1.2fr_.8fr]">
+      <div className="grid gap-4 lg:grid-cols-1 2xl:grid-cols-[1.2fr_.8fr]">
         <Panel
           title="Matriks Komparasi Peer"
           kicker="Fundamental live Sectors API"
@@ -2576,13 +2576,15 @@ export function CompanyTerminal() {
               Pilih emiten dari panel di atas untuk membandingkan.
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-170">
+            <div className="w-full overflow-x-auto">
+              <table className="w-full min-w-[480px]">
                 <thead>
                   <tr>
-                    <th className={th}>Indikator</th>
+                    <th className={cn(th, "w-[140px] max-w-[140px] sm:w-[180px] sm:max-w-[180px]")}>
+                      Indikator
+                    </th>
                     {peers.map((c) => (
-                      <th className={th} key={c.symbol}>
+                      <th className={cn(th, "w-[80px] min-w-[72px]")} key={c.symbol}>
                         <div className="text-primary">{c.symbol}</div>
                         <div className="mt-1 normal-case text-muted-foreground">
                           {c.isPending
@@ -2596,9 +2598,14 @@ export function CompanyTerminal() {
                 <tbody>
                   {matrixRows.map(({ label, tooltip, get }) => (
                     <tr key={label}>
-                      <td className={cn(td, "text-muted-foreground")}>
+                      <td
+                        className={cn(
+                          td,
+                          "max-w-[140px] truncate text-muted-foreground sm:max-w-[180px]",
+                        )}
+                      >
                         <span className="flex items-center gap-1">
-                          {label}
+                          <span className="truncate text-[11px] sm:text-xs">{label}</span>
                           <MethodTip text={tooltip} />
                         </span>
                       </td>
@@ -2609,7 +2616,7 @@ export function CompanyTerminal() {
                             key={a.symbol}
                             className={cn(
                               td,
-                              "text-base font-medium",
+                              "text-center text-sm font-medium sm:text-base",
                               colIdx === 0 && "bg-accent/30",
                             )}
                           >
@@ -2720,7 +2727,7 @@ export function CompanyTerminal() {
             Pilih emiten untuk menghitung Piotroski F-Score dan Altman Z-Score.
           </div>
         ) : (
-          <div className="grid gap-px bg-border md:grid-cols-3">
+          <div className="grid gap-px bg-border sm:grid-cols-2 xl:grid-cols-3">
             {analyses.map((a) => {
               const inList = has(a.symbol);
               const fs = a.fScore;
@@ -2886,7 +2893,7 @@ export function CompanyTerminal() {
             Pilih emiten untuk melihat valuasi, free float, analyst gap, dan HHI.
           </div>
         ) : (
-          <div className="grid gap-px bg-border md:grid-cols-3">
+          <div className="grid gap-px bg-border sm:grid-cols-2 xl:grid-cols-3">
             {analyses.map((a) => {
               const r = a.report;
               const pctlTone: Tone =
@@ -3211,7 +3218,7 @@ export function NewsIntelligence() {
             }
           >
             <div className="flex flex-wrap gap-2 border-b border-border p-3">
-              <div className="relative min-w-44 flex-1">
+              <div className="relative min-w-36 flex-1 sm:min-w-44">
                 <Search className="absolute left-2.5 top-2.5 size-3.5 text-muted-foreground" />
                 <Input
                   value={query}
@@ -3230,7 +3237,7 @@ export function NewsIntelligence() {
                 ))}
               </select>
             </div>
-            <div className="max-h-285 overflow-y-auto">
+            <div className="max-h-[70vh] overflow-y-auto">
               {newsFeed.isPending ? (
                 <div className="space-y-2 p-4">
                   {Array.from({ length: 10 }, (_, i) => (
@@ -3252,11 +3259,13 @@ export function NewsIntelligence() {
                     <button
                       key={`${n.timestamp}-${i}`}
                       onClick={() => setDetail(n)}
-                      className="grid w-full gap-3 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid-cols-[60px_1fr_auto]"
+                      className="flex w-full flex-col gap-2 border-b border-border px-4 py-4 text-left hover:bg-secondary/50 md:grid md:grid-cols-[60px_1fr_auto]"
                     >
                       <span className="text-xs text-muted-foreground tabular-nums">
-                        <span className="block">{n.timestamp?.slice(0, 10)}</span>
-                        <span className="block">{n.timestamp?.slice(11, 16)}</span>
+                        <span className="inline md:block">{n.timestamp?.slice(0, 10)}</span>
+                        <span className="inline ml-2 md:ml-0 md:block">
+                          {n.timestamp?.slice(11, 16)}
+                        </span>
                       </span>
                       <div>
                         <div className="text-sm leading-5">{n.title}</div>
@@ -3274,7 +3283,7 @@ export function NewsIntelligence() {
                           )}
                         </div>
                       </div>
-                      <div className="flex items-start gap-1.5 flex-wrap justify-end">
+                      <div className="flex items-start gap-1.5 flex-wrap md:justify-end">
                         {(n.tags ?? []).slice(0, 2).map((t) => (
                           <Tag key={t} tone="accent">
                             {t}
@@ -3528,46 +3537,49 @@ export function NewsIntelligence() {
       <IpoTracker />
 
       <Sheet open={!!detail} onOpenChange={(v) => !v && setDetail(null)}>
-        <SheetContent className="border-border bg-popover">
+        <SheetContent className="flex flex-col border-border bg-popover">
           <SheetHeader>
             <SheetTitle>Detail Berita</SheetTitle>
             <SheetDescription>{detail?.title}</SheetDescription>
           </SheetHeader>
           {detail && (
-            <div className="space-y-5 p-5">
-              <div className="grid grid-cols-2 gap-4">
-                {detail.sector && meta("Sektor", detail.sector)}
-                {(detail.sub_sector ?? []).length > 0 &&
-                  meta("Sub-sektor", detail.sub_sector!.join(", "))}
-                {(detail.symbols ?? []).length > 0 &&
-                  meta("Emiten", detail.symbols!.map((s) => s.replace(".JK", "")).join(", "))}
-                {detail.timestamp && meta("Waktu", detail.timestamp.replace("T", " ").slice(0, 16))}
+            <div className="flex-1 overflow-y-auto">
+              <div className="space-y-5 p-5">
+                <div className="grid grid-cols-2 gap-4">
+                  {detail.sector && meta("Sektor", detail.sector)}
+                  {(detail.sub_sector ?? []).length > 0 &&
+                    meta("Sub-sektor", detail.sub_sector!.join(", "))}
+                  {(detail.symbols ?? []).length > 0 &&
+                    meta("Emiten", detail.symbols!.map((s) => s.replace(".JK", "")).join(", "))}
+                  {detail.timestamp &&
+                    meta("Waktu", detail.timestamp.replace("T", " ").slice(0, 16))}
+                </div>
+                {detail.body && (
+                  <div className="border-l-2 border-primary bg-accent/40 p-4">
+                    <InsightLabel>Ringkasan</InsightLabel>
+                    <p className="mt-2 text-xs leading-5">{detail.body}</p>
+                  </div>
+                )}
+                {(detail.tags ?? []).length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {detail.tags!.map((t) => (
+                      <Tag key={t} tone="accent">
+                        {t}
+                      </Tag>
+                    ))}
+                  </div>
+                )}
+                {detail.source && (
+                  <a
+                    href={detail.source}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] text-primary hover:underline"
+                  >
+                    Baca artikel lengkap <ChevronRight className="size-3" />
+                  </a>
+                )}
               </div>
-              {detail.body && (
-                <div className="border-l-2 border-primary bg-accent/40 p-4">
-                  <InsightLabel>Ringkasan</InsightLabel>
-                  <p className="mt-2 text-xs leading-5">{detail.body}</p>
-                </div>
-              )}
-              {(detail.tags ?? []).length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {detail.tags!.map((t) => (
-                    <Tag key={t} tone="accent">
-                      {t}
-                    </Tag>
-                  ))}
-                </div>
-              )}
-              {detail.source && (
-                <a
-                  href={detail.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[11px] text-primary hover:underline"
-                >
-                  Baca artikel lengkap <ChevronRight className="size-3" />
-                </a>
-              )}
             </div>
           )}
         </SheetContent>
@@ -3772,7 +3784,7 @@ export function DecisionScreener() {
         <span className="text-[10px] text-muted-foreground">{result.length} emiten cocok</span>
         <ExportMenu title="Decision Matrix Results" />
       </PageHeader>
-      <div className="grid gap-4 xl:grid-cols-[310px_1fr]">
+      <div className="grid gap-4 lg:grid-cols-[280px_1fr] xl:grid-cols-[310px_1fr]">
         <Panel title="Faktor Screening" kicker="Konfigurasi aturan">
           <div className="p-4">
             <Range label="Kualitas minimum" value={minSafety} set={setMinSafety} />
@@ -3836,7 +3848,7 @@ export function DecisionScreener() {
         </Panel>
         <div className="space-y-4">
           <Panel title="Matriks Keputusan Multi-Faktor" kicker="Klasifikasi yang dapat dijelaskan">
-            <div className="grid gap-px bg-border md:grid-cols-3">
+            <div className="grid gap-px bg-border sm:grid-cols-3">
               {matrices.map(([a, b, t]) => (
                 <button
                   key={a}
@@ -3862,8 +3874,8 @@ export function DecisionScreener() {
               <span className="text-[10px] text-muted-foreground">{result.length} cocok</span>
             }
           >
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-235">
+            <div className="w-full overflow-x-auto">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr>
                     <th className={th}>Ticker</th>
@@ -4305,8 +4317,8 @@ export function Watchlist() {
       ) : (
         <>
           <Panel title="Ringkasan Pantauan" kicker="Kondisi dipantau">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-215">
+            <div className="w-full overflow-x-auto">
+              <table className="w-full min-w-[560px]">
                 <thead>
                   <tr>
                     {[

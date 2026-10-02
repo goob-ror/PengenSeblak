@@ -140,7 +140,7 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
     </>
   );
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-border bg-terminal lg:flex">
         {nav}
       </aside>
@@ -159,7 +159,7 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
           </Button>
         </div>
       )}
-      <div className="lg:pl-60">
+      <div className="min-w-0 lg:pl-60">
         <header className="sticky top-0 z-30 flex h-12 items-center border-b border-border bg-background/95 px-4 backdrop-blur">
           <Button
             className="mr-3 lg:hidden"
@@ -169,14 +169,19 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
           >
             <Menu />
           </Button>
-          <div className="flex items-center gap-2 text-[10px] uppercase">
+          <div className="flex min-w-0 items-center gap-2 text-[10px] uppercase">
             <span
-              className={cn("size-1.5", session.isOpen ? "bg-positive" : "bg-muted-foreground")}
+              className={cn(
+                "size-1.5 shrink-0",
+                session.isOpen ? "bg-positive" : "bg-muted-foreground",
+              )}
             />
-            <span className={session.isOpen ? "text-positive" : "text-muted-foreground"}>
+            <span
+              className={cn("shrink-0", session.isOpen ? "text-positive" : "text-muted-foreground")}
+            >
               {session.isOpen ? "IDX" : "IDX"}
             </span>
-            <span className="hidden text-muted-foreground sm:inline">
+            <span className="hidden truncate text-muted-foreground sm:inline">
               {session.label} · Jakarta {clock.timeHHMM} WIB
             </span>
           </div>
@@ -184,17 +189,24 @@ export function TerminalShell({ children }: { children: React.ReactNode }) {
             onClick={() => setSearch(true)}
             variant="outline"
             size="sm"
-            className="ml-auto hidden w-64 justify-start text-muted-foreground md:flex"
+            className="ml-auto hidden w-64 shrink-0 justify-start text-muted-foreground md:flex"
           >
             <Search />
             Cari ticker, sektor, berita <kbd className="ml-auto text-[9px]">⌘K</kbd>
           </Button>
+          <button
+            onClick={() => setSearch(true)}
+            className="ml-auto flex size-8 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-secondary md:hidden"
+            aria-label="Buka pencarian"
+          >
+            <Search className="size-4" />
+          </button>
           <div className="ml-3 hidden text-right text-[10px] sm:block">
             <div>{clock.dateISO}</div>
             <div className="text-muted-foreground tabular-nums">{clock.timeHHMMSS} WIB</div>
           </div>
         </header>
-        <main className="p-4 md:p-6">{children}</main>
+        <main className="min-w-0 p-3 sm:p-4 md:p-6">{children}</main>
       </div>
       <SearchDialog open={search} onOpenChange={setSearch} />
     </div>
@@ -240,7 +252,7 @@ function SearchDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="top-[18%] max-w-2xl translate-y-0 border-border bg-popover p-0">
+      <DialogContent className="top-[18%] w-[calc(100vw-2rem)] max-w-2xl translate-y-0 border-border bg-popover p-0">
         <DialogHeader className="sr-only">
           <DialogTitle>Pencarian Global</DialogTitle>
         </DialogHeader>
