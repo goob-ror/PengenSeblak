@@ -26,13 +26,15 @@ export function Panel({
 }) {
   return (
     <section className={cn("panel-in border border-border bg-card", className)}>
-      <header className="relative flex min-h-11 items-center justify-between gap-3 border-b border-border px-4 py-2">
+      <header className="relative flex min-h-11 flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-2">
         <div className="absolute left-0 top-0 h-0.5 w-12 bg-primary" />
-        <div className="flex items-center gap-2">
-          <h2 className="text-sm font-semibold text-foreground">{title}</h2>
-          {kicker && <span className="text-[10px] uppercase text-primary/70">{kicker}</span>}
+        <div className="flex min-w-0 items-center gap-2">
+          <h2 className="truncate text-sm font-semibold text-foreground">{title}</h2>
+          {kicker && (
+            <span className="shrink-0 text-[10px] uppercase text-primary/70">{kicker}</span>
+          )}
         </div>
-        {action}
+        {action && <div className="shrink-0">{action}</div>}
       </header>
       {children}
     </section>
@@ -137,20 +139,22 @@ export function MetricStrip({
   items: { label: string; value: ReactNode; sub?: ReactNode; tone?: Tone | undefined }[];
 }) {
   return (
-    <div className="grid border border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
+    <div className="grid grid-cols-2 border border-border bg-card sm:grid-cols-3 lg:grid-cols-6">
       {items.map((x, i) => (
         <div
           key={x.label}
           className={cn(
-            "relative min-h-[72px] px-4 py-3 transition-colors hover:bg-secondary/50",
+            "relative min-h-[64px] overflow-hidden px-3 py-2.5 transition-colors hover:bg-secondary/50 sm:min-h-[72px] sm:px-4 sm:py-3",
             i > 0 && "border-l border-border",
           )}
         >
           <div className="absolute left-0 top-0 h-0.5 w-full bg-primary/30" />
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{x.label}</div>
+          <div className="truncate text-[9px] uppercase tracking-wide text-muted-foreground sm:text-[10px]">
+            {x.label}
+          </div>
           <div
             className={cn(
-              "mt-1.5 text-xl font-semibold text-data",
+              "mt-1 truncate text-base font-semibold text-data sm:mt-1.5 sm:text-xl",
               x.tone === "positive" && "text-positive",
               x.tone === "negative" && "text-negative",
               x.tone === "warning" && "text-warning",
@@ -159,7 +163,11 @@ export function MetricStrip({
           >
             {x.value}
           </div>
-          {x.sub && <div className="mt-1 text-[11px] text-muted-foreground">{x.sub}</div>}
+          {x.sub && (
+            <div className="mt-0.5 truncate text-[10px] text-muted-foreground sm:mt-1 sm:text-[11px]">
+              {x.sub}
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -218,21 +226,24 @@ export function PageHeader({
 }) {
   return (
     <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:items-end sm:justify-between">
-      <div className="flex items-start gap-3">
+      <div className="flex min-w-0 items-start gap-3">
         <div className="mt-1 h-8 w-0.5 shrink-0 bg-primary" />
-        <div>
+        <div className="min-w-0">
           <div className="text-[10px] uppercase tracking-widest text-primary">{eyebrow}</div>
-          <h1 className="mt-0.5 text-2xl font-semibold text-foreground">{title}</h1>
+          <h1 className="mt-0.5 truncate text-xl font-semibold text-foreground sm:text-2xl">
+            {title}
+          </h1>
           <p className="mt-1 text-[10px] text-muted-foreground">
-            DATA <span className="text-primary font-medium">→</span> ANALYSIS{" "}
-            <span className="text-primary font-medium">→</span> INSIGHT
+            DATA <span className="font-medium text-primary">→</span> ANALYSIS{" "}
+            <span className="font-medium text-primary">→</span> INSIGHT
           </p>
         </div>
       </div>
-      {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
+      {children && <div className="flex flex-wrap items-center gap-2 sm:shrink-0">{children}</div>}
     </div>
   );
 }
 export const th =
   "whitespace-nowrap px-3 py-2 text-left text-[10px] font-medium uppercase text-muted-foreground";
-export const td = "whitespace-nowrap border-t border-border px-3 py-2 text-xs text-foreground";
+export const td =
+  "whitespace-nowrap border-t border-border px-3 py-2 text-xs text-foreground max-w-[200px] truncate";
